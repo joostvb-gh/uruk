@@ -13,7 +13,7 @@
 # or (at your option) any later version.  You should have received a copy of
 # the GNU General Public License along with this file (see COPYING).
 
-# $Id: pod.mk,v 1.2 2003-08-09 14:24:17 joostvb Exp $
+# $Id: pod.mk,v 1.3 2003-11-04 16:38:12 joostvb Exp $
 
 PODS := $(shell for f in *.pod; do test -f $$f && echo -n $$f " "; done)
 BASES       := $(basename $(PODS))
@@ -48,5 +48,5 @@ all: $(TXTS) $(HTMLS) $(TROFFS) $(PSS) $(PDFS)
 	ps2pdf $< $@
 
 clean:
-	-rm -f *.pdf *.ps *.html *.txt *.overstrike-txt *.ps~ *.pdf~ *.7
+	-rm -f $(PDFS) $(PSS) $(HTMLS) $(TXTS) $(OVERSTRIKES) $(TROFFS)
 
