@@ -4,7 +4,7 @@ caspar (20040531-1) unstable; urgency=low
     /usr/share/doc/caspar/NEWS.gz
   * Splitted into caspar and caspar-doc packages.
 
- -- Joost van Baal <joostvb-caspar-deb-15@mdcc.cx>  Mon, 31 May 2004 17:52:48 +0200
+ -- Joost van Baal <joostvb@debian.org>  Mon, 31 May 2004 17:52:48 +0200
 
 caspar (20030825-1) unstable; urgency=low
 

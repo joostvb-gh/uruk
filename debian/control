@@ -1,14 +1,14 @@
 Source: caspar
 Section: devel
 Priority: optional
-Maintainer: Joost van Baal <joostvb-caspar-deb-15@mdcc.cx>
+Maintainer: Joost van Baal <joostvb@debian.org>
 Build-Depends-Indep: debhelper (>= 4)
-Standards-Version: 3.5.8
+Standards-Version: 3.6.1.0
 
 Package: caspar
 Architecture: all
 Depends: make
-Suggests: jade, jadetex, tetex-bin, w3m, gs-common, psutils, lpr, postscript-viewer, man-db, docbook-dsssl, caspar-doc
+Suggests: jade, jadetex, tetex-bin, w3m, gs-common, psutils, lpr, gv | postscript-viewer, man-db, docbook-dsssl, caspar-doc
 Description: Makefile snippets for common tasks
  Caspar offers Makefile snippets for tasks like installing system
  configuration files you maintain using CVS, or typesetting LaTeX, DocBook
