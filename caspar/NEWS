@@ -1,5 +1,10 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20050302
+
+- Fixed caspar(7) manpage: the last part was not typesetted.  Duh.
+
+
 caspar version 20050301
 
 - BEWARE!  BACKWARDS INCOMPATIBILITY!  mk/caspar.mk is no longer supply backward
@@ -9,13 +14,12 @@ caspar version 20050301
   A crude way to update your Makefiles would be to run something along the lines
   of:
 
-   % find . -name Makefile | while read f; do sed -i 's/SDIR/csp_SCPDIR/g' $f; done
-   % find . -name Makefile | while read f; do sed -i 's/(SUH)/(csp_SUH)/g' $f; done
-   % find . -name Makefile | while read f; do sed -i 's/^LOAD /csp_LOAD /g' $f; done
-   % find . -name Makefile | while read f; do sed -i 's/(SUHS)/(csp_SUHS)/g' $f; done
-   % find . -name Makefile | while read f; do sed -i 's/^SUH /csp_SUH /g' $f; done
-   % find . -name Makefile | while read f; do sed -i 's/^SUHS /csp_SUHS /g' $f; done
-   % find . -name install.mk | while read f; do sed -i 's/^SRDIRS /csp_SUHDIRS /g' $f; done
+   % find . -name Makefile | while read f; \
+       do sed -i 's/SDIR/csp_SCPDIR/g; s/(SUH)/(csp_SUH)/g; \
+                  s/^LOAD /csp_LOAD /; s/(SUHS)/(csp_SUHS)/g; \
+                  s/^SUH /csp_SUH /; s/^SUHS /csp_SUHS /' $f; done
+   % find . -name install.mk | while read f; \
+       do sed -i 's/^SRDIRS /csp_SUHDIRS /g' $f; done
 
   This kinda worked for me.  YMMV.
 - New variables csp_TABOO{DIRS,FILES}_{ADD,SKIP} in caspar.mk.  See caspar(7).
@@ -76,4 +80,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.11 2005-03-01 20:54:06 joostvb Exp $
+# $Id: NEWS,v 1.12 2005-03-02 08:42:23 joostvb Exp $

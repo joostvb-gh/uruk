@@ -1,12 +1,14 @@
-$Id: TODO,v 1.34 2005-03-01 21:01:17 joostvb Exp $
+$Id: TODO,v 1.35 2005-03-02 08:42:23 joostvb Exp $
 
--- docbook stuff --
+--- typesetting stuff ---
 
-get toc printed in html mode. even while using nochunks mode.
+- get toc printed in html mode. even while using nochunks mode.
 
-license should be printed, see rh vs deb doc
+- license should be printed, see rh vs deb doc.
 
---- mk stuff ---
+- add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
+
+--- install stuff ---
 
 - this whole thing could probably better use rsync, or, alternatively, all
   caspar functionality should be incorporated in cfengine, a tool for
@@ -24,6 +26,8 @@ license should be printed, see rh vs deb doc
   - supply daemons.mk: csp_SSHDEBIANLOAD csp_URUKREDHATLOAD , etc, to use
     in load targets
 
+- install-recursive should call mkdir if appropriate
+
 - The scp invocation is inefficient:
 
    % make -n README.txt-install net.txt-install
@@ -36,19 +40,8 @@ license should be printed, see rh vs deb doc
 
   $@ vs $? might be helpful.
 
-- Check mk/Makefile.am: check if it now does the right thing when using
-  DESTDIR in package build scripts.  (In version 20040721, it still created
-  symlinks like
-
-   ./usr/include/caspar/mk/caspar.mk -> /usr/local/src/debian/caspar/20040721/caspar-20040721/debian/caspar/usr/share/caspar/mk/caspar.mk
-
-  .
-
-- caspar(7) manpage (html, at least) is broken: last part missing.
-
 -- other stuff ---
 
-- Document registration at directory.fsf.org
 - Add link to http://lists.debian.org/debian-devel/2005/02/msg00495.html ,
   mention the non-caspar make-your-/etc-a-working-copy hack.  Could be
   on webpage.
