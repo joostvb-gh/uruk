@@ -1,0 +1,225 @@
+\: vim:syntax=tex
+\: $Id: uruk-rc.azm,v 1.14 2004/06/25 08:08:42 joostvb Exp $
+
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
+
+\def{"man::synstyle"}{long}
+\def{"man::defstyle"}{long}
+\import{man.zmm}
+
+\import{./include.zmm}
+
+\set{"man::name"}{uruk-rc}
+\set{"man::html-title"}{Uruk rc file}
+\set{"man::section"}{5}
+
+\"man::preamble"
+\${html}{\"man::maketoc"}
+
+\sec{name}{NAME}
+\NAME{uruk-rc}{uruk resource file, defining access policy}
+
+\sec{synopsis}{SYNOPSIS}
+  \par
+  \rcpath
+
+\sec{description}{DESCRIPTION}
+
+\rc is a shell script snippet, sourced in \uruk by /bin/sh.
+
+\par
+
+\rc lists IP adresses, allowed to use services.
+
+\par
+
+The simplest valid \rc file is
+
+\verbatim{\
+ interfaces=}
+
+This \rc file blocks all tcp and udp traffic: this is the default behaviour.
+
+The simplest \rc file which does allow traffic looks like e.g.:
+
+\verbatim{\
+interfaces=eth0
+
+ip_eth0=192.168.26.27
+net_eth0=192.168.0.0/16
+
+services_eth0_tcp=local
+ports_eth0_tcp_local="0:65535"
+sources_eth0_tcp_local="0.0.0.0/0"
+
+services_eth0_udp=local
+ports_eth0_udp_local="0:65535"
+sources_eth0_udp_local="0.0.0.0/0"}
+
+This \rc file allows all traffic.
+
+\cpar{Hooks}
+
+Uruk offers hooks for inserting your owns code between iptables invokations.
+Examples will show the usefulness of these hooks.
+
+\par
+
+In \rc, there is:
+
+\verbatim{\
+ rc_b=$etcdir/bootp}
+
+while the file \tt{bootp} reads
+
+\verbatim{\
+ iptables -A INPUT -m state --state NEW -i eth0 \\
+   --protocol udp --destination-port bootps -j ACCEPT
+}
+.
+
+This enables one to add rules for packets with broadcast addresses in their
+destination.  (Uruk has no support for this in it's regular \rc.)
+
+\par
+
+In \rc there is:
+
+\verbatim{\
+ rc_d=$etcdir/dns}
+
+while the file \tt{dns} reads
+
+\verbatim{\
+  for source in 10.5.0.27 10.56.0.40
+  do
+    $iptables -A INPUT -i eth0 --protocol udp \\
+      --source "$source" --source-port domain \\
+      --destination "$ip_eth0" \\
+      --destination-port 30000: -j ACCEPT
+  done}
+
+This allows one to allow (return)traffic, disregarding the state.  (Uruk has no
+support for this in it's regular \rc.)
+
+For now, you'll have to study the \uruk source to find out which hook (there
+are hooks rc_a, rc_b, ... , rc_i) to use.
+
+
+\cpar{Network interfaces with multiple IP adresses}
+
+Since Uruk version > 20040210, Uruk support situations where a network
+interface has more than one IP adress attached.
+
+\par
+
+New variables \v{ips_}\it{nic} and \v{bcasts_}\it{nic} are introduced.
+If \v{ips_}\it{nic} is set, e.g. like
+
+\verbatim{\
+ ips_eth0="ip0 ip1 ip2"}
+
+we assume multiple (three in this example) IPs are assigned to \v{eth0}.  If
+this variable is not set, behaviour is backwards compatible, and only one IP is
+supported on \v{eth0}.
+
+\par
+
+In multiple-IP mode, IP adresses are listed as e.g.
+
+\verbatim{\
+ ip_eth0_ip0="137.56.247.16"}
+
+(If you're used to the Linux ifconfig(8) output, you could use the name \v{ip1}
+for \v{eth0:1}, and \v{ip0} for \v{eth0}.)
+
+The old-style \it{ports}, \it{services} and \it{sources} variables look like
+e.g.
+
+\verbatim{\
+ services_eth0_ip2_tcp=local
+ ports_eth0_ip2_tcp_local=smtp
+ sources_eth0_ip2_tcp_local=$localnet}
+
+and, similarly,
+
+\verbatim{\
+ net_eth0_ip1=192.168.0.0/16}
+
+Furthermore, for dropping broadcast packets, specify e.g.
+
+\verbatim{\
+ bcasts_eth0="ip0 ip2"            # yes, possibly a subset of ips_eth0
+ bcast_eth0_ip0="10.0.0.255"
+ bcast_eth0_ip2=""10.0.255.255"}
+
+The \it{interfaces_nocast} variable still holds things like \v{eth0} and \v{eth1}.
+
+Old-style \rc files are still valid and behave fully backwards compatible.
+
+
+\sec{debugging}{DEBUGGING}
+
+To debug the \uruk script, add a "set -x" to your \rc file: this shows what is
+done, along with executing it.  (Like an uruk '-v' option.)
+
+\par
+
+If you'd rather prefer not to execute, but just watch what would've been done,
+add a
+
+\verbatim{\
+  iptables='echo iptables'}
+
+to your \rc file.  (Like an uruk '-n' option.)  If you have this statement set,
+you can run \uruk under a non-priviliged user account.
+
+\sec{files}{FILES}
+
+\rcpath
+
+\sec{see also}{SEE ALSO}
+
+A well-commented example \rc file is in \ttexpath.
+
+\par
+
+uruk(8)
+
+\sec{version}{VERSION}
+
+$Id: uruk-rc.azm,v 1.14 2004/06/25 08:08:42 joostvb Exp $
+
+\sec{copyright}{COPYRIGHT}
+
+Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
+Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
+Copyright (C) 2003, 2004 Joost van Baal
+
+\par
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+\par
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+\par
+
+You should have received a copy of the GNU General Public License
+along with this program (see COPYING); if not, check with
+http://www.gnu.org/copyleft/gpl.html or write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
+
+\sec{author}{AUTHOR}
+
+\"man::author"
+
+\"man::postamble"
+

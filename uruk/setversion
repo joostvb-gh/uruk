@@ -1,0 +1,22 @@
+# $Id: setversion,v 1.7 2003/08/29 14:12:31 joostvb Exp $
+
+# This script is free software; you can distribute it and/or modify it
+# under the terms of the GNU GPL.  See the file COPYING.
+
+# thanks Raja R Harinath, see the post
+#  Subject: Re: how to automatically generate package version, calling AC_INIT
+#  From: Raja R Harinath
+#  Date: Sun, 27 Apr 2003 09:33:02 -0500
+#  Message-ID: <d9r87o2eox.fsf@cs.umn.edu>
+# on autoconf@gnu.org
+
+echo 'm4_define([AD1_VERSION], ['`date +%Y%m%d`'])' > VERSION.m4
+
+# compatibility with other ad1810 packages
+date +%Y%m%d > VERSION
+
+# zoem stuff
+date +%e > stamp.day
+date +%b > stamp.month
+date +%Y > stamp.year
+

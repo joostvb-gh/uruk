@@ -1,0 +1,49 @@
+#!/bin/sh -e
+
+# $Id: bootstrap,v 1.4 2004/03/11 09:02:36 joostvb Exp $
+
+# bootstrap - script to bootstrap the distribution rolling engine
+
+# usage:
+# ./bootstrap && ./configure && make distcheck
+#
+# this yields a tarball which one can install doing
+#
+# $ tar zxf PACKAGENAME-*.tar.gz
+# $ cd PACKAGENAME-*
+# $ ./configure
+# $ make
+# # make install
+
+# requirements:
+#  GNU autoconf, from e.g. ftp.gnu.org:/pub/gnu/autoconf/autoconf-2.50.tar.gz
+#  GNU automake, from e.g. ftp.cygnus.com:/pub/tromey
+#  cvs2cl, from http://www.red-bean.com/cvs2cl/ (see Makefile.am)
+
+set -x
+
+test -f ChangeLog || {
+    touch ChangeLog && cvs2cl --prune
+}
+
+test -f VERSION.m4 || ./setversion
+
+test -f acinclude.m4 || {
+    if test -f /usr/share/autoconf-archive/ac_define_dir.m4
+    then
+        ln -s /usr/share/autoconf-archive/ac_define_dir.m4 acinclude.m4
+    else
+        cat <<EOT
+You need the autoconf-archive Debian package, version >= 20031029-1.
+Alternatively, you could please install the GNU Autoconf Macro Archive's
+http://www.gnu.org/software/ac-archive/htmldoc/ac_define_dir.html as
+acinclude.m4.
+EOT
+   fi
+}
+
+aclocal \
+    && automake --add-missing --verbose --gnu \
+    && autoconf
+
+

@@ -1,0 +1,109 @@
+Uruk NEWS - user visible changes (and some other changes also.)
+
+Refer to ChangeLog for detailed per-file info.
+
+uruk version 20040625
+
+- Fixed bug in multiple IP per network interface mode.  Uruk was
+  unusable in such a setup.
+- Some tweaking of build system.
+
+
+uruk version 20040216
+
+- Fixed severe bugs in uruk script: 20040213 was unusable.
+- init script now supports chkconfig: Red Hat is now better supported.
+
+
+uruk version 20040213
+
+- Support for multiple IP adresses on one network interface added.  New
+  variables ips_<nic> and bcasts_<nic> introduced.  See uruk-rc(5).  Don't
+  worry: your old rc file will still behave as it used to.
+
+
+uruk version 20040210
+
+- Allow more ICMP types by default.  Tnx Wessel Dankers for suggestion.
+- The Uruk init script is now more helpful when often-encountered errors occur.
+- Added warning to uruk(8) manpage: uruk does no sanity checking.
+
+
+uruk version 20031111
+
+- We no longer create our own ``block'' chain: the built-in INPUT and OUTPUT
+  chains suffice for our purposes.  This makes uruk's rule setup much more
+  simple.  Thanks to Wessel Dankers.
+- rc_1, ... , rc_10 are NO LONGER SUPPORTED.  We use rc_a, rc_b, rc_c, ... now.
+  In the future, rc_aa, rc_aab, ... might get added.  You'll HAVE TO rewrite
+  your rc_<n> style stuff MANUALLY.  See the notes on UPGRADE in the README
+  file.  (Your uruk/rc file will still work fine.  No other changes in the
+  configuration file syntax are introduced in this release.)
+- If you have saved your rules using iptables-save or the uruk init script,
+  you'll have to rebuild them.  The old-style rules are not supported by this
+  uruk release.
+
+
+uruk version 20031026
+
+- Fixed bug which made "/etc/init.d/uruk stop" to fail.
+- Documented more of uruk's features.
+
+
+uruk version 20031008
+
+- Init script more robust, especially on fresh installs. (We still suffer
+  from at least one bug though, see TODO.)
+- Started documenting rc_<n> hooks.
+- Various minor and cosmetic cleanups in documentation.
+
+
+uruk version 20031004
+
+- ad1810-firewall is now called uruk.
+- big changes in build system and documentation system:
+  - manpages have been converted from Perl's pod format to zoem format.  See
+    README for details.
+  - now build-depends on zoem: documentation depends on configure-time
+    settings.
+- ad1810-firewall under some circumstances was not reboot-resistent: I've
+  missed a change in the Debian iptables package behaviour.
+  The Debian iptables package >= 1.2.7-8 (7 Dec 2002) will not call
+  /etc/init.d/iptables on boot by default.  We now ship our own
+  init script to deal with this (thanks to Laurence J. Lane).
+
+
+ad1810-firewall version 20030829
+
+- ad1810-firewall-rc manpage converted from pod to zoem
+  ( http://micans.org/zoem ).
+- rc_1, rc_2, .... rc_10 feature supported by ad1810-firewall script: set
+  e.g. rc_1=/usr/local/etc/ad1810-firewall/rc_1 in your
+  ad1810-firewall-rc(5).  This file should contain shell code.  This is
+  executed early in the ad1810-firewall routine, allowing finegrained tweaking
+  of rules, for systems with special demands.  For now, see the
+  ad1810-firewall shell code for more details.  More documentation will follow.
+
+
+ad1810-firewall version 20030512
+
+- Moving manpage format from pod to zoem.
+- Fixed automatic version numbering in build system; no more wacky vyyyymmdd
+  versions.  Thanks Raja R Harinath on the autoconf list.
+- rc should no longer define e.g. sources_eth0_tcp_www, where www is a port,
+  but e.g. sources_eth0_tcp_public, where public is a symbolic name for a
+  (set of) services.  Furthermore, the new variable ports_eth0_tcp_public
+  should be defined as e.g. "www".
+
+
+ad1810-firewall version v20030427
+
+- rc File location now depends on sysconfdir, as set during configure.
+- Various documentation updates.
+
+
+ad1810-firewall version v20030426
+
+- First public alpha release.  Untested!
+
+# $Id: NEWS,v 1.21 2004/06/25 08:34:14 joostvb Exp $

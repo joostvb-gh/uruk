@@ -1,0 +1,34 @@
+\: $Id: include.zmm.in,v 1.4 2004/02/10 17:08:39 joostvb Exp $
+
+\: This file is free software; you can distribute it and/or modify it
+\: under the terms of the GNU GPL.  See the file COPYING.
+\:
+\: Copyright (C) 2003, 2004 Joost van Baal, Copyright (C) 2002, 2003 Stijn van Dongen
+
+\setx{"man::year"}{\zinsert{../stamp.year}}
+\setx{"man::month"}{\zinsert{../stamp.month}}
+\setx{"man::day"}{\zinsert{../stamp.day}}
+\setx{"man::tag"}{\zinsert{../VERSION}}
+
+\setx{"man::year"}{\tr{}{\012}{}{\"man::year"}}
+\setx{"man::month"}{\tr{}{\012}{}{\"man::month"}}
+\setx{"man::day"}{\tr{}{\012}{}{\"man::day"}}
+\setx{"man::tag"}{\tr{}{\012}{}{\"man::tag"}}
+
+\set{"man::author"}{Joost van Baal <joostvb-uruk@mdcc.cx>}
+
+\: this needs zoem > 03-265 (zoem CVS 2003-10-08)
+\: \set{"man::cat"}{@PACKAGE_NAME@}
+
+\def{uruk}{\bf{uruk}}
+\def{rc}{\it{rc}}
+
+\def{rcpath}{@SYSCONF_PATH@/@PACKAGE_TARNAME@/rc}
+\def{statepath}{@LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@}
+\def{initpath}{@SYSCONF_PATH@/init.d/uruk}
+\def{expath}{@DATA_PATH@/doc/@PACKAGE_TARNAME@/examples/rc}
+
+\def{ttrcpath}{\tt{\rcpath}}
+\def{ttinitpath}{\tt{\initpath}}
+\def{ttexpath}{\tt{\expath}}
+

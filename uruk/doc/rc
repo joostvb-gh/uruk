@@ -1,0 +1,73 @@
+# $Id: rc,v 1.10 2004/02/10 17:08:38 joostvb Exp $
+# Sample Uruk rc file
+
+# Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
+# Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
+# Copyright (C) 2003, 2004 Joost van Baal
+#
+# This file is part of Uruk.  Uruk is free software; you can redistribute
+# it and/or modify it under the terms of the GNU GPL, see the file named
+# COPYING.
+
+# Uncomment this if you want to run uruk in verbose mode
+# set -x
+
+# Uncomment this if you want to test-run uruk: don't execute iptables
+# statements, just show them
+# iptables='echo iptables'
+
+# List of network interfaces.  lo should not be in this list. For every
+# interface <if>, variables ip_<if>, bcast_<if> and net_<if> should be
+# defined.
+interfaces="eth0 eth1"
+
+# For each interface <if> in interfaces, ip_<if> and net_<if> should be
+# defined
+ip_eth0=10.56.0.201
+ip_eth1=192.168.0.4
+
+# To which network does this interface belong?  Should be one of
+# 0.0.0.0/0 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16. Used to decide wether a
+# packet for this interface is spoofed, and therefore should get dropped.
+net_eth0=0.0.0.0/0
+net_eth1=192.168.0.0/16
+
+# Subset of interfaces, which should drop broadcast and multicast packets
+interfaces_nocast="eth0"
+
+# For each interface <if> in interfaces_nocast, bcast_<if> should be defined
+bcast_eth0=10.56.255.255
+
+
+# You can define any shell variable, and reference it later on
+localnet="10.56.0.0/16"
+all=0.0.0.0/0
+
+# For both tcp and udp, symbolic names of (sets of) services could be
+# defined, in variables services_<if>_{tcp,udp}.
+services_eth0_tcp="mail local public"
+
+# For every servicename <s>, every interface <if>, and tcp and/or udp, a list
+# of allowed source addresses should be defined in a variable
+# sources_<if>_{tcp,udp}_<s> .  Furthermore a list of ports should be defined
+# in a variable ports_<if>_{tcp,udp}_<s> .
+
+# A valid source is 192.168.6.26, another valid source is 192.168.6.0/24.
+sources_eth0_tcp_mail="10.0.0.0/24 10.56.38.0/24 192.168.6.26"
+sources_eth0_tcp_local=$localnet
+sources_eth0_tcp_public=$all
+
+ports_eth0_tcp_mail=smtp
+ports_eth0_tcp_local="ssh ftp"
+ports_eth0_tcp_public="www"
+
+
+services_eth0_udp="syslog local"
+
+sources_eth0_udp_syslog="10.56.0.10/32"
+sources_eth0_udp_local=$localnet
+
+ports_eth0_udp_syslog="syslog"
+# Port ranges are allowed too
+ports_eth0_udp_local="ntp 605:608 853:876"
+

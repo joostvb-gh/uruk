@@ -1,0 +1,237 @@
+\: vim:syntax=tex
+\: $Id: uruk.azm,v 1.19 2004/03/18 16:40:09 joostvb Exp $
+
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
+
+\def{"man::synstyle"}{long}
+\def{"man::defstyle"}{long}
+\import{man.zmm}
+
+\import{./include.zmm}
+
+\set{"man::name"}{uruk}
+\set{"man::html-title"}{uruk}
+\set{"man::section"}{8}
+
+\"man::preamble"
+\${html}{\"man::maketoc"}
+
+\sec{name}{NAME}
+\NAME{uruk}{wrapper for Linux iptables, setting up firewall rules}
+
+\sec{synopsis}{SYNOPSIS}
+  \par
+  \uruk
+
+\sec{description}{DESCRIPTION}
+
+\uruk loads an \rc file (see \sibref{uruk-rc}{uruk-rc(5)}) which defines
+network service access policy, and invokes iptables to set up firewall rules
+implementing this policy.
+
+\sec{getting started}{GETTING STARTED}
+
+Once the \uruk script is installed, you want to go use it, of
+course.
+
+\par
+
+First, create an \rc file.  See \sibref{uruk-rc}{uruk-rc(5)} for info on how to
+do this.  Once this file is created and installed (this script looks in
+\ttrcpath by default), you're ready to run \uruk.  You might want to test your
+\rc file by running  \uruk in debug mode, see \sibref{uruk-rc}{uruk-rc(5)}.
+
+\cpar{Vanilla iptables}
+
+After editing \rc, load your rules like this.  First flush your current rules:
+
+\verbatim{\
+ # iptables -F}
+
+Then enable your \rc rules
+
+\verbatim{\
+ # uruk}
+
+. Inspect the rules by doing:
+
+\verbatim{\
+ # iptables -L}
+
+.
+
+If you want to make these changes surviving a reboot, use an init script.  The
+\bf{iptables-restore(8)} and \bf{iptables-save(8)} commands from the iptables
+package might be helpful.  Or use the init script as shipped with this package.
+
+\cpar{Using the Uruk init script}
+
+I assume the Uruk init script is installed as explained in the README file.
+Then, bootstrap the stuff by doing:
+
+\verbatim{\
+ # iptables -F}
+
+(This opens your box!)  Then do
+
+\verbatim{\
+
+ # uruk
+ # \initpath save active
+ # \initpath clear
+ # \initpath save inactive
+ # \initpath start}
+
+. After the final \ttinitpath start command, your box is protected again.
+
+\par
+
+When rebooting, everything will be fine: \ttinitpath stores
+state in \tt{\statepath/iptables}, using
+iptables-save(8), which comes with Linux iptables.
+
+
+\cpar{Using ifupdown}
+
+In case you have just one network interface which should get protected, you
+could use \bf{interfaces(5)} from the ifupdown package instead
+of the init script:
+
+\verbatim{\
+ # mkdir -p \statepath/iptables
+
+ # iptables -F
+
+ # iptables-save -c > \statepath/iptables/down
+ # uruk
+ # iptables-save -c > \statepath/iptables/up}
+
+Add
+
+\verbatim{\
+ pre-up iptables-restore < \statepath/iptables/up
+ post-down iptables-restore < \statepath/iptables/down}
+
+to your interfaces stanza, in your \tt{/etc/network/interfaces} .
+
+
+\sec{loading a new rc file}{LOADING A NEW \rc FILE}
+
+Need to change your rules?
+
+\cpar{Using the Uruk init script}
+
+Do
+
+\verbatim{\
+ # vi \rcpath
+ # \initpath stop
+ # uruk
+ # \initpath save active}
+
+Between the \ttinitpath stop and the uruk command, your box is open.
+
+\sec{policy}{DEFAULT POLICY}
+
+By default, \uruk drops packets which have unknown private network adresses in
+their source or destination.
+
+\par
+
+By default, \uruk drops all ICMP packets with type other than
+
+\begin{itemize{
+    {contiguous}{1}
+    {compact}{1}
+    {type}{mark}
+  }
+}
+  \item address-mask-reply
+  \item address-mask-request
+  \item destination-unreachable (this is a catch-all for a lot of types)
+  \item echo-request
+  \item echo-reply
+  \item parameter-problem (catch-all for ip-header-bad and required-option-missing)
+  \item timestamp-reply
+  \item timestamp-request
+  \item ttl-zero-during-transit
+  \item ttl-zero-during-reassembly
+\end{itemize}
+
+\par
+
+By default, the FORWARD chain is left untouched, so has policy ACCEPT.  (This
+won't do much harm, since packet forwarding is disabled by default in the Linux
+kernel.  However, if you don't mind being paranoid, you might want to add a
+
+\verbatim{\
+ iptables --policy FORWARD REJECT}
+
+to your $rc_a uruk hook.  See \sibref{uruk-rc}{uruk-rc(5)}.)
+
+\par
+
+By default, \uruk logs all UDP and TCP packets which are blocked by the user
+defined policies.  Loglevel is debug, logprefix is "iptables:".
+
+\par
+
+Blocked TCP packets are answered with a tcp-reset.
+
+\sec{warning}{WARNING}
+
+In order to keep the \uruk script small and simple, the script does very little
+error handling.  It does not check the contents of the \rc file in any way
+before executing it.  When your \rc file contains bogus stuff, \uruk will very
+likely behave in unexpected ways.  Caveat emptor.
+
+
+\sec{see also}{SEE ALSO}
+
+\sibref{uruk-rc}{uruk-rc(5)}, The Uruk homepage is at
+\httpref{http://mdcc.cx/uruk/} .
+ \par
+\bf{iptables(8)}, \bf{iptables-save(8)},
+\bf{iptables-restore(8)}, \httpref{http://www.netfilter.org/}
+\: (no manpage online :( )
+\: http://lists.mdcc.cx/mcl-devel/msg00297.html
+ \par
+\bf{interfaces(5)}, \httpref{http://ifupdown.sourceforge.net/}
+
+\sec{version}{VERSION}
+
+This manpage: $Id: uruk.azm,v 1.19 2004/03/18 16:40:09 joostvb Exp $
+
+\sec{copyright}{COPYRIGHT}
+
+Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
+Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
+Copyright (C) 2003, 2004 Joost van Baal
+
+\par
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+\par
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+\par
+
+You should have received a copy of the GNU General Public License
+along with this program (see COPYING); if not, check with
+http://www.gnu.org/copyleft/gpl.html or write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
+
+\sec{author}{AUTHOR}
+
+\"man::author"
+
+\"man::postamble"
+

@@ -1,0 +1,7 @@
+$Id: AUTHORS,v 1.4 2003/10/04 11:59:26 joostvb Exp $
+
+Uruk was written by Joost van Baal.
+
+The Uruk init script was written by Laurence J. Lane for the Debian iptables
+package.
+

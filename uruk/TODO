@@ -1,0 +1,14 @@
+Fix bugs in uruk script.  See comments.
+
+Add support for variable uruk_version : version of uruk when rc file was
+created.
+
+Now that a zoem > October 8, 2003 is released, start using the man::cat
+macro.  See include.zmm.in.
+
+Check documentation: uruk-rc manpage needs more stuff.
+
+Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
+can use the same rc file format.
+
+# $Id: TODO,v 1.21 2004/02/18 11:33:32 joostvb Exp $

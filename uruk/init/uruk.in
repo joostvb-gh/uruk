@@ -1,0 +1,228 @@
+#!/bin/sh
+#
+# Uruk init script.
+#
+# chkconfig: 2345 08 92
+# description: starts, stops and saves iptables state, as created by uruk
+# beware! above two lines are parsed by chkconfig(8), as commonly found on RPM
+# based systems
+
+# Copyright (C) 2002, 2003 Laurence J. Lane
+# Copyright (C) 2003, 2004 Joost van Baal
+#
+# This file is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License.
+
+# Based upon /etc/init.d/iptables as shipped with the Debian iptables
+# package by Laurence J. Lane
+
+# $Id: uruk.in,v 1.12 2004/02/16 13:29:50 joostvb Exp $
+
+set -e
+
+# do sanity check on uruk environment.
+# set this to false when using this script in non-uruk environments
+enable_uruk_check=true
+
+# enable ipv6 support
+enable_ipv6=false
+
+# set enable_autosave to "true" to autosave the active ruleset
+# when going from start to stop
+enable_autosave=true
+
+# set enable_save_counters to "true" to save table counters with
+# rulesets
+enable_save_counters=true
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+initd="$0"
+
+initd_abort () {
+  cmd=$1
+  shift
+  echo "Aborting iptables $cmd: $@."
+  exit 0
+}
+
+initd_have_a_cow_man () {
+  for i in $@; do
+    if ! command -v "$i" >/dev/null 2>&1; then
+      initd_abort initd "no $i executable"
+      exit 0
+    fi
+  done
+}
+
+initd_clear () {
+  rm -f "$autosave"
+  echo -n "Clearing ${iptables_command} ruleset: default ACCEPT policy"
+  $iptables_save | sed "/-/d;/^#/d;s/DROP/ACCEPT/" | $iptables_restore
+  echo "."
+}
+
+initd_halt () {
+  rm -f $autosave
+  echo -n "Clearing ${iptables_command} ruleset: default DROP policy"
+  $iptables_save | sed "/-/d;/^#/d;s/ACCEPT/DROP/" | $iptables_restore
+  echo "."
+}
+
+initd_load () {
+  ruleset="$libdir/$@"
+  if ! test -f "$ruleset"; then
+    echo "You are trying to load ruleset \"$@\" while file $ruleset is not present."
+cat <<EOT
+This might be due to a not-initialized Uruk installation.  Read the "Using the
+Uruk init script" subsection in the "GETTING STARTED" section in the uruk(8)
+manpage to learn how this should be done.
+EOT
+    initd_abort load "unknown ruleset \"$@\""
+    if ! test "${ruleset#${libdir}/}" = active -o inactive; then
+        usage
+    fi
+    exit 0
+  fi
+  if test "${ruleset#${libdir}/}" = inactive; then
+    initd_autosave
+  fi
+  rm -f "$autosave"
+  ruleset="$libdir/$@"
+  echo -n "Loading ${iptables_command} ruleset: load \"$@\""
+  $iptables_restore < "$ruleset"
+  echo "."
+}
+
+initd_counters () {
+  if ! test -d "$libdir"; then
+    mkdir -p "$libdir"
+  fi
+  if test "${enable_save_counters:-false}" = true; then
+    echo -n " with counters"
+    $iptables_save -c > "$ruleset"
+  else
+    $iptables_save | sed '/^:/s@\[[0-9]\{1,\}:[0-9]\{1,\}\]@[0:0]@g' > "$ruleset"
+  fi
+}
+
+initd_save () {
+  rm -f $autosave
+  ruleset="${libdir}/$@"
+  echo -n "Saving ${iptables_command} ruleset: save \"$@\""
+   initd_counters
+  echo "."
+}
+
+initd_autosave () {
+  if test -f $autosave -a ${enable_autosave-false} = true; then
+    ruleset="${libdir}/active"
+    echo -n "Autosaving ${iptables_command} ruleset: save \"active\""
+    initd_counters
+    echo "."
+  fi
+}
+
+usage () {
+cat << END
+$initd options:
+  start|restart|reload|force-reload
+     load the "active" ruleset
+  save <ruleset>
+     save the current ruleset
+  load <ruleset>
+     load a ruleset
+  stop
+     load the "inactive" ruleset
+  clear
+     remove all rules and user-defined chains, set default policy to ACCEPT
+  halt
+     remove all rules and user-defined chains, set default policy to DROP
+
+Saved ruleset locations: @LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/iptables/ and
+@LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/ip6tables/ .
+
+END
+}
+
+initd_main () {
+  case "$1" in
+    start|restart|reload|force-reload)
+      initd_load active
+      if test ${enable_autosave-false} = true; then
+        touch $autosave
+      fi
+      ;;
+    stop)
+      initd_load inactive
+      ;;
+    clear)
+      initd_clear
+      ;;
+    halt)
+      initd_halt
+      ;;
+    save)
+      shift
+      if test -z "$*"; then
+        initd_abort save "no ruleset name given"
+      else
+        initd_save "$*"
+      fi
+      ;;
+    load)
+      shift
+      if test -z "$*"; then
+        initd_abort load "no ruleset name given"
+      else
+        initd_load "$*"
+      fi
+      ;;
+    *)
+      if test "$iptables_command" = "iptables"; then
+        if test -n "$*"; then
+          echo "Unknown command: \"$*\""
+        fi
+        usage
+      fi
+      ;;
+  esac
+}
+
+initd_preload() {
+  iptables="/sbin/${iptables_command}"
+  iptables_save="${iptables}-save"
+  iptables_restore="${iptables}-restore"
+  libdir="@LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/${iptables_command}"
+  autosave="${libdir}/autosave"
+  initd_have_a_cow_man "$iptables_save" "$iptables_restore"
+  ${iptables_command} -nL >/dev/null
+  initd_main $*
+}
+
+check_uruk() {
+  initd_have_a_cow_man uruk >/dev/null
+  uruk_config="@SYSCONF_PATH@/@PACKAGE_TARNAME@/rc"
+  # check for existence of uruk rc file.
+  if ! test -r $uruk_config; then
+    echo "No file $uruk_config present."
+    exit 1
+  fi
+  # check for sanity of uruk rc file.
+  if grep -q URUK_IS_UNCONFIGURED $uruk_config; then
+    echo "Uruk is unconfigured.  Please create a sane file $uruk_config."
+    exit 0
+  fi
+}
+
+if test $enable_uruk_check = true; then
+  check_uruk
+fi
+
+iptables_command=iptables initd_preload $*
+if test "$enable_ipv6" = "true"; then
+  iptables_command=ip6tables initd_preload $*
+fi
+
+exit 0
+

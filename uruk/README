@@ -1,0 +1,141 @@
+INTRODUCTION
+
+Uruk is a simple shell script (uruk(5)) which calls Linux
+iptables.  It uses a template file to get lists of source addresses, allowed to
+use specific network services.
+
+
+
+
+REQUIREMENTS
+
+Uruk is useful only on GNU/Linux systems.  However, the rc file (see
+uruk-rc(5)) could be used by other packet filtering engine wrappers
+too.
+
+For this script to work, your Linux kernel needs stuff from the
+netfilter/iptables project ( http://www.netfilter.org/ ).  The specific
+needed settings are
+
+ .config variable           module name   description in ``make config''
+
+ CONFIG_IP_NF_IPTABLES      ip_tables.o   (``IP tables support'')
+ CONFIG_IP_NF_TARGET_LOG    ipt_LOG.o     (``LOG target support'')
+ CONFIG_IP_NF_MATCH_STATE   ipt_state.o   (``Connection state match support'')
+ CONFIG_IP_NF_TARGET_REJECT ipt_REJECT.o  (``REJECT target support'')
+
+for CONFIG_IP_NF_MATCH_STATE, you need
+
+ CONFIG_IP_NF_CONNTRACK                   (``Connection tracking'')
+
+.  Furthermore, you need the iptables(8) command, as shipped with the iptables
+package from the netfilter project.
+
+
+For typesetting the documentation (the uruk(8) and uruk-rc(5) manpages), you'll
+need zoem.  Zoem is a an interpretive macro language, for creating mark-up
+languages, by Stijn van Dongen.  Information about zoem, as well as tarballs
+for download, can be found on the zoem webpage at http://micans.org/zoem/ .
+Binary zoem packages for Debian GNU/Linux are available via ``deb
+http://mdcc.cx/debian local contrib''.  Pretypesetted uruk docs are not
+shipped, since their contents depend on your ./configure settings.
+
+
+INSTALL
+
+See the INSTALL file for generic installation instructions.  The Uruk init
+script, in init/uruk, gets installed in /usr/local/etc/init.d/ by default.
+Symlinks are _not_ created.  You'll have to create them yourself, after running
+'make install'.  E.g. do:
+
+ root@nagy:/etc/init.d# ln -s /usr/local/etc/init.d/uruk
+ root@nagy:~# update-rc.d uruk defaults
+
+.
+
+(If you lack update-rc.d, do something like
+
+ root@kubl01:/etc# ln -s ../init.d/uruk rc0.d/K92uruk
+ root@kubl01:/etc# ln -s ../init.d/uruk rc1.d/K92uruk
+ root@kubl01:/etc# ln -s ../init.d/uruk rc2.d/S20uruk
+ root@kubl01:/etc# ln -s ../init.d/uruk rc3.d/S20uruk
+ root@kubl01:/etc# ln -s ../init.d/uruk rc4.d/S20uruk
+ root@kubl01:/etc# ln -s ../init.d/uruk rc5.d/S08uruk
+ root@kubl01:/etc# ln -s ../init.d/uruk rc6.d/K92uruk
+
+)
+
+
+UPGRADE
+
+After uruk version 20031026, the hooks are no longer called rc_1, rc_2, ....
+rc_10, but rc_a, ... rc_i.  rc_1 is taken over by rc_a; rc_9 and rc_10 are
+taken over by rc_i.  For most situations, replacing ``-A block'' with ``-A
+INPUT'' suffices to translate rc_<n> to rc_<a>.  However, please take a look at
+the uruk script itself to find out.  uruk-rc(5) is updated and contains some
+examples.
+
+See also the NEWS file.
+
+
+POST INSTALLATION STUFF
+
+See the ``GETTING STARTED'' section in the uruk(8) manpage for
+hints.
+
+
+MORE INFORMATION, SIMILAR TOOLS
+
+The uruk(8) and uruk-rc(5) manpages are available in HTML
+format too.  By default, they're installed in
+/usr/local/share/doc/uruk/html/ .
+
+The Uruk webpage is at http://mdcc.cx/uruk/ .
+
+See also http://www.openbsd.org/faq/faq6.html#6.2 and pf.conf(5) (online on
+http://resin.csoft.net/cgi-bin/man.cgi?section=5&topic=pf.conf ) for general
+ideas on packet filtering.
+
+A tool doing similar stuff as this script is Auke Kok's ``ferm'', available
+from http://www.geo.vu.nl/~koka/ferm/ .  Other tools, with varying levels of
+userfriendlyness (or bloatedness) are: ipmasq, shorewall, firestarter, ipmenu,
+fireflier, firewall-easy, fwbuilder, fwctl, gfcc, lokkit, gnome-lokkit,
+gshield, guarddog, hlfl, knetfilter, mason and gshield.  Another list of
+alternatives is in the "Securing Debian Manual",
+http://www.debian.org/doc/manuals/securing-debian-howto/ch-sec-services.en.html#s-firewall-pack
+; this howto is also available via the Debian harden-doc package.
+
+
+TRIVIA
+
+Uruk is named after the city of Uruk in Mesopotamia (now Iraq), that Gilgamesh
+ruled in the Epic of Gilgamesh.  This epic reads something like:
+
+ View its strong walls, for which there is no equal.
+
+(I only have access to a Dutch translation here, which reads:
+
+ De muren van Oeroek, het Oeroek van de schaapskooien, liet hij bouwen.
+ ...
+ Bekijk zijn overgelijkelijke borstwering.
+ ...
+ Bestijg de muren van Oeroek, loop erop.
+ Beproef de fundering, bekijk het tichelwerk.
+ Is zijn tichelwerk niet van baksteen?
+
+.)
+
+The city of Uruk is known under the name Erech in the bible:
+
+  9 He was a mighty hunter before the LORD: wherefore it is said, Even as
+ Nimrod the mighty hunter before the LORD.
+  10 And the beginning of his kingdom was Babel, and Erech, and Accad, and
+ Calneh, in the land of Shinar.
+                                         Gen10:9-10, KJV
+
+It has nothing to do with http://www.uruk.org/ , where Erich Boleyn's Home Page
+is.
+
+
+# $Id: README,v 1.15 2004/08/18 07:02:47 joostvb Exp $
+

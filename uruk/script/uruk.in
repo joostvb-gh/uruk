@@ -1,0 +1,277 @@
+#!/bin/sh
+
+# $Id: uruk.in,v 1.24 2004/09/10 07:00:15 joostvb Exp $
+
+# Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
+# Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
+# Copyright (C) 2003, 2004 Joost van Baal
+# 
+# This file is part of Uruk.  Uruk is free software; you can redistribute
+# it and/or modify it under the terms of the GNU GPL, see the file named
+# COPYING.
+
+
+#
+# peeksheet: iptables predefined chains:
+#
+#               - INPUT - - localhost - - OUTPUT -
+#             /                                    \
+# PREROUTING - - - - - - - - FORWARD  - - - - - - - - POSTROUTING
+#
+
+iptables=/sbin/iptables
+test -x $iptables || exit 0
+
+etcdir="@SYSCONF_PATH@/@PACKAGE_TARNAME@"
+
+config=$etcdir/rc
+
+test -r $config || {
+    echo >&2 "No readable rc file $config found.  Please create one." && exit 1
+}
+
+. $config
+
+test -r "$rc_a" && . "$rc_a"
+
+#
+# bootstrap these rules
+#
+
+$iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+test -r "$rc_b" && . "$rc_b"
+
+#
+# protect interfaces_public agains spoofing
+#
+
+for iface in ${interfaces}
+do
+    #
+    # don't allow anyone to spoof non-routeable addresses
+    #
+
+    eval is="\"\$ips_${iface}\""
+    if test -n "$is"
+    then
+        interfaces_x=
+        for i in $is
+        do
+            interfaces_x="$interfaces_x ${iface}_$i"
+        done
+    else
+        interfaces_x=$iface
+    fi
+
+    for iface_x in $interfaces_x
+    do
+        eval net="\"\$net_${iface_x}\""
+        for no_route_ip in 127.0.0.1/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16
+        do
+            if test $no_route_ip != "$net"
+            then
+                # TODO: this behaves odd in multiple-IP cases.  Furthermore,
+                # excluding one private network from being dropped works ugly.
+                $iptables -A INPUT -i $iface --source $no_route_ip -j DROP
+                $iptables -A INPUT -i $iface --destination $no_route_ip \
+                  -j DROP
+
+                $iptables -A OUTPUT -o $iface --source $no_route_ip -j DROP
+                $iptables -A OUTPUT -o $iface --destination $no_route_ip \
+                  -j DROP
+            fi
+        done
+
+        # block outgoing packets that don't have our address as source,
+        # they are either spoofed or something is misconfigured (NAT disabled,
+        # for instance), we want to be nice and don't send out garbage.
+        #
+        # NOTE: this is stricter than above no_route_ip rule.
+        if test -n "$is"
+        then
+            # this rule is only enabled in single-ip-per-nic situations.
+            # in multiple ip mode, we'd have to drop only if source is
+            # not _one_ of the nic's IPs
+
+            # supporting this for multiple-ips would need multiple chains
+            # or, perhaps, some iptables extension.
+            :
+        else
+            eval ip="\"\$ip_${iface_x}\""
+            $iptables -A OUTPUT -o $iface --source ! "$ip" -j DROP
+
+            # drop all incoming packets which don't have us as destination
+            $iptables -A INPUT -i $iface --destination ! "$ip" -j DROP
+            # NOTE: this is stricter than above no_route_ip rule.  If this
+            # rule is used, above rule ``$iptables -A INPUT -i $iface
+            # --destination $no_route_ip -j DROP'' could get disabled. See
+            # also the broadcast rule below.
+        fi
+    done
+
+    # Always allow outgoing connections
+    $iptables -A OUTPUT -m state --state NEW -o $iface -j ACCEPT
+done
+
+test -r "$rc_c" && . "$rc_c"
+
+#
+# allow traffic to offered services, from trusted sources
+#
+
+for iface in $interfaces
+do
+    eval is="\"\$ips_${iface}\""
+    if test -n "$is"
+    then
+        interfaces_x=
+        for i in $is
+        do
+            interfaces_x="$interfaces_x ${iface}_$i"
+        done
+    else
+        interfaces_x=$iface
+    fi
+
+    for iface_x in $interfaces_x
+    do
+        eval ip="\"\$ip_${iface_x}\""
+        for proto in tcp udp
+        do
+            eval services="\"\$services_${iface_x}_${proto}\""
+            if test -n "$services"
+            then
+                for service in $services
+                do
+                    # service is a servicegroupname, e.g. "local"
+                    eval sources="\"\$sources_${iface_x}_${proto}_${service}\""
+                    eval ports="\"\$ports_${iface_x}_${proto}_${service}\""
+                    if test -n "$ports"
+                    then
+                        for port in $ports
+                        do
+                            # port is e.g. www or 1023
+                            for source in $sources
+                            do
+                                # source is e.g. 10.56.0.10/32
+                                $iptables -A INPUT -m state --state NEW \
+                                  -i $iface --protocol $proto \
+                                  --source "$source" --destination "$ip" \
+                                  --destination-port "$port" -j ACCEPT
+                            done
+                        done
+                    fi
+                done
+            fi
+        done
+    done
+done
+
+test -r "$rc_d" && . "$rc_d"
+
+#
+# traffic on lo is trusted
+#
+
+$iptables -A INPUT  -i lo -j ACCEPT
+$iptables -A OUTPUT -o lo -j ACCEPT
+
+test -r "$rc_e" && . "$rc_e"
+
+#
+# Don't answer broadcast and multicast packets
+#
+for iface in $interfaces_nocast
+do
+    eval is="\"\$bcasts_${iface}\""
+    if test -n "$is"
+    then
+        interfaces_x=
+        for i in $is
+        do
+            interfaces_x="$interfaces_x ${iface}_$i"
+        done
+    else
+        interfaces_x=$iface
+    fi
+
+    for iface_x in $interfaces_x
+    do
+        eval bcast="\"\$bcast_${iface_x}\""
+        $iptables -A INPUT -i $iface --destination "$bcast" -j DROP
+    done
+
+    $iptables -A INPUT -i $iface --destination 255.255.255.255 -j DROP
+done
+
+test -r "$rc_f" && . "$rc_f"
+
+#
+# icmp stuff. See RFC 1122 and also RFC 792, RFC 950, RFC 1812, RFC 1349,
+# RFC 2474 and Stevens' TCP/IP Illustrated Chapter 6, p 69.
+# The icmp types are even in %num2icmp_type in Lire::Firewall.
+# Running "iptables -p icmp -h" gives iptables's idea of icmp types
+#
+
+#
+# by default, we disallow
+#
+#  source-quench
+#  redirect (
+#   network-redirect
+#   host-redirect
+#   TOS-network-redirect
+#   TOS-host-redirect
+#  )
+#  router-advertisement
+#  router-solicitation
+#
+# you might want to allow just
+#
+#  echo-request echo-reply ttl-zero-during-transit \
+#   ttl-zero-during-reassembly ip-header-bad required-option-missing
+#
+# this make's ping's succeed, as well as traceroute.  however, stuff
+# debugging network problems might be _much_ more difficult when disallowing
+# lots of other icmp types.  If you really want to do this, use rc_g.
+#
+
+for type in \
+  address-mask-reply \
+  address-mask-request \
+  destination-unreachable \
+  echo-reply \
+  echo-request \
+  parameter-problem \
+  timestamp-reply \
+  timestamp-request \
+  ttl-zero-during-reassembly \
+  ttl-zero-during-transit
+do
+    $iptables -A INPUT --protocol icmp --icmp-type $type -j ACCEPT
+done
+
+test -r "$rc_g" && . "$rc_g"
+
+#
+# log packets who make it till here: denied packets (not denied broadcasts
+#     or spoofed stuff)
+#
+
+$iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: '
+
+test -r "$rc_h" && . "$rc_h"
+
+#
+# reject all others
+#
+
+$iptables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
+$iptables -A INPUT -j REJECT
+
+test -r "$rc_i" && . "$rc_i"
+
+# make sure we exit 0, even if last test failed
+exit 0
+
