@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.6 2003-08-06 11:07:05 joostvb Exp $
+# $Id: caspar.mk,v 1.7 2003-08-22 13:46:22 joostvb Exp $
 
 # Copyright (C) 2002 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 # 
@@ -23,10 +23,18 @@ endif
 
 endif
 
+# possibility to choose own cp(1) and scp(1)
+CP ?= cp
+SCP ?= scp
+
+# extra arguments for cp(1) and scp(1)
+CPFLAGS ?=
+SCPFLAGS ?=
+
 CPDIRS ?= $(CDIR)
 
-RULES = $(foreach dir,$(SRDIRS),scp "$(subst -install,,$@)" $(dir);) \
-	$(foreach dir,$(CPDIRS),cp "$(subst -install,,$@)" $(dir);)
+RULES = $(foreach dir,$(SRDIRS),$(SCP) $(SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
+	$(foreach dir,$(CPDIRS),$(CP) $(CPFLAGS) "$(subst -install,,$@)" $(dir);)
 
 # files, not directories
 FILES := $(shell for f in *; do test -f $$f && echo $$f; done)
