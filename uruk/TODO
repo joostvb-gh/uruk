@@ -1,3 +1,6 @@
+Fix uruk manpage: it doesn't show anything below "By default, uruk drops all
+ICMP packets with type other than".
+
 Fix bugs in uruk script.  See comments.
 
 Add support for variable uruk_version : version of uruk when rc file was
