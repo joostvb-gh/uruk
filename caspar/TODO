@@ -1,4 +1,13 @@
-$Id: TODO,v 1.9 2002-03-24 15:44:36 joostvb Exp $
+$Id: TODO,v 1.10 2002-03-31 10:03:04 joostvb Exp $
+
+-- docbook stuff --
+
+add support for DocBook in SGML:
+
+ sgmltools --verbose --dsssl-spec=/usr/local/share/sgml/caspar/print.dsl --backend=ps abs-book.sgml > abs-book.ps
+
+gv can't grok the generated PostScript.  duh.  however, we have a .dvi file in /             tmp/ :
+
 
 --- mk stuff ---
 
