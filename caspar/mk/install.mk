@@ -4,10 +4,14 @@
 
 # the Makefile in the repository should define SRDIRS and CPDIRS
 
-# $Id: install.mk,v 1.1 2002-02-26 17:50:54 joostvb Exp $
+# $Id: install.mk,v 1.2 2002-02-26 19:13:14 joostvb Exp $
+
+ifdef SUH
+SRDIRS ?= $(SUH):$(DIR)
+endif
 
 RULES = $(foreach dir,$(SRDIRS),scp "$(subst -install,,$@)" $(dir);) \
-	$(foreach dir,$(CPDIRS),cp $@ $(dir);)
+	$(foreach dir,$(CPDIRS),cp "$(subst -install,,$@)" $(dir);)
 
 # files, not directories
 FILES := $(shell for f in *; do test -f $$f && echo -n $$f " "; done)

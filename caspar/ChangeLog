@@ -1,5 +1,9 @@
 caspar (20020226)
 
+  * mk/install.mk: we conditionally set SRDIRS using SUH and DIR: now Makefiles
+     can use these two vars too.
+  * mk/install.mk: Now CPDIRS uses <file>-install as targetname, as SRDIRS
+     already did.
   * First tarball build.
 
  -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Tue, 26 Feb 2002 18:36:49 +0100
