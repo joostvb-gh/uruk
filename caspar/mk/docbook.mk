@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.7 2003-07-24 09:57:50 joostvb Exp $
+# $Id: docbook.mk,v 1.8 2003-07-24 10:01:09 joostvb Exp $
 
 # Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #  
@@ -64,8 +64,6 @@ LATEX ?= latex
 
 W3M ?= w3m
 DVIPS ?= dvips
-PS2PDF ?= ps2pdf
-
 PSNUP ?= psnup
 
 LPR ?= lpr
