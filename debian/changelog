@@ -2,6 +2,7 @@ caspar (20040531-1) unstable; urgency=low
 
   * New upstream.  Beware: change in user interface, see
     /usr/share/doc/caspar/NEWS.gz
+  * Splitted into caspar and caspar-doc packages.
 
  -- Joost van Baal <joostvb-caspar-deb-15@mdcc.cx>  Mon, 31 May 2004 17:52:48 +0200
 
