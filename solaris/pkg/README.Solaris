@@ -1,0 +1,27 @@
+# $Id: README.Solaris,v 1.1 2005-03-04 21:02:54 joostvb Exp $
+# $Source: /cvsroot/caspar/caspar/solaris/pkg/README.Solaris,v $
+
+This is a caspar Solaris package.  Caspar is available from
+http://mdcc.cx/caspar/ .  This package is available from
+http://mdcc.cx/pub/caspar/ .
+
+For this package to be useful, you need
+FIXME .
+
+TODO
+====
+
+FIXME .
+
+ChangeLog
+=========
+
+FIXME .
+
+caspar (1.9_1)
+
+ * Initial package for Solaris.
+
+ -- Joost van Baal <joostvb-caspar.mdcc.cx>   Fri, 04 Mar 2005 22:01:17 +0100
+
+
