@@ -5,8 +5,6 @@ iptables.  It uses a template file to get lists of source addresses, allowed to
 use specific network services.
 
 
-
-
 REQUIREMENTS
 
 Uruk is useful only on GNU/Linux systems.  However, the rc file (see
@@ -84,6 +82,19 @@ See the ``GETTING STARTED'' section in the uruk(8) manpage for
 hints.
 
 
+HACKING
+
+Uruk version control is handled using the GNU arch revision control system, on
+http://arch.gna.org/uruk/ .  You can get a fresh copy by running
+
+ tla register-archive my@address.org--2004-uruk \
+        http://arch.gna.org/uruk/archive-2004
+ tla get my@address.org--2004-uruk/uruk--mainline--0.1 uruk
+
+See http://wiki.gnuarch.org/ and
+http://regexps.srparish.net/tutorial-tla/arch.html for information about arch.
+
+
 MORE INFORMATION, SIMILAR TOOLS
 
 The uruk(8) and uruk-rc(5) manpages are available in HTML
@@ -137,5 +148,5 @@ It has nothing to do with http://www.uruk.org/ , where Erich Boleyn's Home Page
 is.
 
 
-# $Id: README,v 1.15 2004/08/18 07:02:47 joostvb Exp $
+# this file maintained using arch at http://arch.gna.org/uruk/
 
