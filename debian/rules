@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-# $Id: rules,v 1.5 2004-05-31 20:55:42 joostvb Exp $
+# $Id: rules,v 1.6 2004-05-31 21:01:59 joostvb Exp $
 
 # Based upon sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
@@ -88,6 +88,8 @@ install: build
 	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/caspar-typesetting.{ps,html,txt}
 	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/caspar.{ps,html,txt}
 	rm $(CURDIR)/debian/caspar/usr/share/man/man7/caspar*.7
+	rmdir $(CURDIR)/debian/caspar/usr/share/man/man7
+	rmdir $(CURDIR)/debian/caspar/usr/share/man
 
 	# get rid of COPYING (we use the debian/copyright file)
 	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/COPYING
