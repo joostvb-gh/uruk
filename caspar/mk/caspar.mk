@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.11 2004-05-31 13:05:48 joostvb Exp $
+# $Id: caspar.mk,v 1.12 2004-09-09 11:20:16 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -78,7 +78,7 @@ RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -instal
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
 
 # exclude editor backup files and other stuff
-FILES   := $(filter-out Makefile CVS %~ \#%\#, $(FILES))
+FILES   := $(filter-out Makefile CVS %~ \#%\# pod2htmd.tmp pod2htmi.tmp, $(FILES))
 
 TARGETS := $(patsubst %,%-install,$(FILES))
 TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
