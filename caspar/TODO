@@ -1,8 +1,12 @@
-$Id: TODO,v 1.8 2002-03-13 12:09:55 joostvb Exp $
+$Id: TODO,v 1.9 2002-03-24 15:44:36 joostvb Exp $
 
 --- mk stuff ---
 
-this whole thing could probably better use rsync
+this whole thing could probably better use rsync, or, alternatively, all caspar
+functionality should be incorporated in cfengine, a tool for configuring and
+maintaining network machines.
+
+add support for sudo, rsync, install(1)
 
 a lot of features are still undocumented
 
@@ -10,8 +14,3 @@ convert README to pod or dbx
 
 add big example
 
-add support for sudo, rsync, install(1)
-
---- docbook stuff ---
-
-check print.dsl and html.dsl for copyright
