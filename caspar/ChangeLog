@@ -1,7 +1,7 @@
 caspar ( )
 
   * TODO: Found bug in caspar.mk.
-  * README: Added note about cvs-conf.
+  * README: Added note about cvs-conf.  Added pointer to Debian package.
 
  -- 
 

@@ -1,4 +1,4 @@
-$Id: README,v 1.6 2002-05-04 20:39:48 joostvb Exp $
+$Id: README,v 1.7 2002-09-11 15:51:30 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -30,9 +30,12 @@ After install, /usr/local/share/doc/caspar will be created and filled, a file
 /usr/local/share/caspar/mk/caspar.mk will get installed, and a symlink
 /usr/local/include/caspar/mk/caspar.mk will get created.
 
-- requirements - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- requirements, packages  - - - - - - - - - - - - - - - - - - - - - - - - -
 
 GNU make.
+
+A Debian package (for e.g. Debian GNU/Linux) is available from `deb
+http://mdcc.cx/debian local contrib'.
 
 - usage - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
