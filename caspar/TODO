@@ -1,4 +1,4 @@
-$Id: TODO,v 1.12 2002-04-02 11:24:00 joostvb Exp $
+$Id: TODO,v 1.13 2003-02-03 15:22:41 joostvb Exp $
 
 -- docbook stuff --
 
@@ -22,4 +22,4 @@ The function $(subst -install,,$@) in caspar.mk breaks when filename itself
 has the substring -install.  We might have to use sed here, and strip only
 a _trailing_ '-install' from the maketarget.
 
-
+Add a better hook for the -load target: more generic please.
