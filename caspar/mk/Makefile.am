@@ -1,5 +1,7 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.6 2003-03-31 20:40:08 joostvb Exp $
+## $Id: Makefile.am,v 1.7 2003-08-02 22:06:58 joostvb Exp $
+
+PACKAGE = @PACKAGE_TARNAME@
 
 mkdir = $(datadir)/$(PACKAGE)/mk
 mk_DATA = caspar.mk docbook.mk pod.mk

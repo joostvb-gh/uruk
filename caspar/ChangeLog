@@ -1,3 +1,11 @@
+caspar (20030803)
+
+  * mk/Makefile.am, sgml/Makefile.am: bugfix. new build system needs new
+    PACKAGE variable.  stuff got installed in /usr/share/mk/ (not
+    /usr/share/caspar/mk/)
+
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Sun, 03 Aug 2003 00:06:34 +0200
+
 caspar (20030802)
 
   * more bugfixes: generating pdf from LaTeX was broken since caspar 20030716.

@@ -1,5 +1,7 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.1 2002-03-13 12:09:56 joostvb Exp $
+## $Id: Makefile.am,v 1.2 2003-08-02 22:06:58 joostvb Exp $
+
+PACKAGE = @PACKAGE_TARNAME@
 
 sgmldir = $(datadir)/sgml/$(PACKAGE)
 sgml_DATA = print.dsl html.dsl
