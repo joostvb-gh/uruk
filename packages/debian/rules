@@ -1,0 +1,82 @@
+#!/usr/bin/make -f
+
+# $Id: rules,v 1.8 2004/02/16 15:26:57 joostvb Exp $
+#
+# Made with the aid of debmake, by Christoph Lameter,
+# based on the sample debian/rules file for GNU hello by Ian Jackson.
+
+# Copyright (C) 2003, 2004 Joost van Baal
+#
+# This file is part of the Debian uruk package.  This script is free
+# software; you can redistribute it and/or modify it under the terms
+# of the GNU GPL, available on-line at
+# http://www.gnu.org/copyleft/gpl.html .
+
+# debmake includes deb-make(1).  We don't use dh_make: let's see if
+# we can get rid of build-depending on debhelper (and on debmake too,
+# when we're at it).
+
+package=uruk
+docdir = debian/$(package)/usr/share/doc/$(package)
+
+build:
+	$(checkdir)
+	./configure --prefix=/usr --mandir=\$${prefix}/share/man \
+          --sysconfdir=/etc --localstatedir=/var
+	$(MAKE)
+	touch build
+
+clean:
+	$(checkdir)
+	rm -f build
+	-$(MAKE) distclean
+	rm -f `find . -name "*~"`
+	rm -rf debian/$(package) debian/files* debian/substvars
+
+binary-indep: checkroot build
+	$(checkdir)
+	rm -rf debian/$(package)
+	install -d debian/$(package)
+	cd debian/$(package) && install -d `cat ../dirs`
+	$(MAKE) install prefix=$(CURDIR)/debian/$(package)/usr \
+          mandir=$(CURDIR)/debian/$(package)/usr/share/man \
+          sysconfdir=$(CURDIR)/debian/$(package)/etc \
+          localstatedir=$(CURDIR)/debian/$(package)/var
+	mkdir -p debian/$(package)/etc/uruk
+	cp -a debian/rc debian/$(package)/etc/uruk
+	rm $(CURDIR)/debian/$(package)/usr/share/doc/$(package)/COPYING
+	rm $(CURDIR)/debian/$(package)/usr/share/doc/$(package)/ChangeLog
+	rm $(CURDIR)/debian/$(package)/usr/share/doc/$(package)/uruk*.azm
+	cp -a NEWS debian/copyright $(docdir)
+	cp -a debian/changelog $(docdir)/changelog.Debian
+	cp -a debian/README $(docdir)/README.Debian
+	cp -a debian/TODO $(docdir)/TODO.Debian
+	cp -a ChangeLog $(docdir)/changelog
+	cd $(docdir) && gzip -9 changelog changelog.Debian
+	gzip -r9 debian/$(package)/usr/share/man
+	mkdir debian/$(package)/DEBIAN
+	dpkg-gencontrol -isp -Pdebian/$(package)
+	cp -a debian/conffiles debian/$(package)/DEBIAN
+	for f in postinst prerm postrm; do \
+          cp -a debian/$$f debian/$(package)/DEBIAN; \
+          chmod a+x debian/$(package)/DEBIAN/$$f; \
+        done
+	chown -R root.root debian/$(package)
+	chmod -R go=rX debian/$(package)
+	dpkg --build debian/$(package) ..
+
+binary-arch: checkroot build
+	$(checkdir)
+
+define checkdir
+	test -f debian/rules
+endef
+
+binary: binary-indep binary-arch
+
+checkroot:
+	$(checkdir)
+	test root = "`whoami`"
+
+.PHONY: binary binary-arch binary-indep clean checkroot
+

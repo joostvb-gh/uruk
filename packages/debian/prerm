@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# $Id: prerm,v 1.1 2003/10/05 13:55:24 joostvb Exp $
+
+set -e
+
+if test -x /etc/init.d/uruk
+then
+    if test -x /usr/sbin/invoke-rc.d
+    then
+        invoke-rc.d uruk stop
+    else
+        /etc/init.d/uruk stop
+    fi
+fi
+

@@ -1,0 +1,11 @@
+#! /bin/sh
+
+# $Id: postrm,v 1.2 2003/10/05 15:47:03 joostvb Exp $
+
+set -e
+
+if test "$1" = purge
+then
+    update-rc.d uruk remove >/dev/null
+fi
+

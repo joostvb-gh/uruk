@@ -1,0 +1,12 @@
+# $Id: uruk-source.1.README.RPM,v 1.5 2004/07/30 13:49:31 joostvb Exp $
+
+After your first install of this RPM, you'll need to configure and initialize
+uruk.  See uruk(8) for notes on how to do this.
+
+Be sure to disable other IP filtering stuff, like /etc/init.d/iptables and
+/etc/init.d/ipchains .  This can be done by moving the files
+/etc/sysconfig/{iptables,ipchains} elsewhere.
+
+An example uruk rc file is installed in /usr/share/doc/uruk-*/rc.
+
+                                                    -- JvB, 2004-02

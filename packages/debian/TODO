@@ -1,0 +1,8 @@
+# $Id: TODO,v 1.3 2004/02/10 14:16:59 joostvb Exp $
+
+We might want to check /var/lib/uruk/iptables stuff on
+purge/removal/reinstallation.
+
+Before upgrade, /etc/init.d/uruk stop is called; after upgrade 'start' is
+called.  Firewallrules are off during upgrade.  Hrm...
+

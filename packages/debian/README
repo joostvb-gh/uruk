@@ -1,0 +1,5 @@
+
+The Uruk Debian package installs /etc/init.d/uruk.  The remark about
+this init script in the Uruk README file can be ignored.
+
+ -- Joost van Baal

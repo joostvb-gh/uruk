@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# $Id: postinst,v 1.3 2004/02/10 14:16:59 joostvb Exp $
+
+set -e
+
+if test -x /etc/init.d/uruk
+then
+    update-rc.d uruk start 40 S . stop 89 0 6 . >/dev/null
+    if test -x /usr/sbin/invoke-rc.d
+    then
+        invoke-rc.d uruk start
+    else
+        /etc/init.d/uruk start
+    fi
+fi
+
