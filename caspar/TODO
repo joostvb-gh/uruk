@@ -1,8 +1,12 @@
-$Id: TODO,v 1.14 2003-04-27 10:20:29 joostvb Exp $
+$Id: TODO,v 1.15 2003-07-14 20:29:33 joostvb Exp $
 
 -- docbook stuff --
 
 get toc printed in html mode. even while using nochunks mode.
+
+license should be printed, see rh vs deb doc
+
+make it possible to run pdfjadetex for pdf output
 
 --- mk stuff ---
 
@@ -23,3 +27,4 @@ has the substring -install.  We might have to use sed here, and strip only
 a _trailing_ '-install' from the maketarget.
 
 Add a better hook for the -load target: more generic please.
+
