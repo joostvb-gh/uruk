@@ -1,5 +1,6 @@
 VERSION
 VERSION.m4
+ChangeLog
 config.*
 configure.lineno
 autom4te.cache
