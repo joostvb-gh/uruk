@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.13 2005-02-28 21:46:21 joostvb Exp $
+\: $Id: caspar.azm,v 1.14 2005-03-01 20:40:28 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -47,17 +47,17 @@ or
 
 \sec{description}{DESCRIPTION}
 
-Caspar offers Makefile snippets for common tasks, like installing stuff you've
-got under version control, or typesetting LaTeX, DocBook XML and DocBook SGML
-documents.
+Caspar offers Makefile snippets for common tasks, like installing configuration
+files, or typesetting LaTeX, DocBook XML and DocBook SGML documents.
   \par
 The typesetting functionality is delivered by \"docbook.mk" and \"pod.mk".
 This is documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
   \par
-The installing-stuff-under-version-control functionality is delivered by
-\"caspar.mk".  (That's what the rest of the manual will talk about.)  It
-enables one to run 'make install' from within a CVS (or Subversion or any other
-version control system, for that matter) tree.
+The installing-stuff functionality functionality is delivered by \"caspar.mk".
+(That's what the rest of the manual will talk about.)  It enables one to run
+'make install' from within a tree which typically holds configuration files,
+managed using CVS (or Subversion or any other version control system, for that
+matter).
   \par
 It is useful in cases like this: all configuration files of some host are under
 version control, and, after commiting a change to CVS, you want to be able to
@@ -86,14 +86,26 @@ Makefile, which looks like e.g.
 }
 .
 
-From within the CVS tree, one can call:
+If you'd like to use the \it{install-recursive} target too, in directories
+which hold subdirectories (but not files), you'll have to create a Makefile
+which looks something like
+
+\verbatim{
+ include ../../include/install.mk
+}
+
+.  From within the CVS tree, one can call:
 
 \verbatim{
   make <filename>-install
   make install
   make load
   make
+  make install-recursive
 }
+
+The \it{install-recursive} target descends down the tree, and calls \tt{make
+install} in each subdirectory.
 
 \sec{variables}{VARIABLES}
 
