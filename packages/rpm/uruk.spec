@@ -1,6 +1,6 @@
 # $Id: uruk.spec,v 1.8 2004/07/30 14:11:23 joostvb Exp $
 
-# Copyright (C) 2004 Tilburg University http://www.uvt.nl/
+# Copyright (C) 2004, 2005 Tilburg University http://www.uvt.nl/
 #
 # This file is part of uruk.  Uruk is free software; you can redistribute
 # it and/or modify it under the terms of the GNU General Public License as

@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-03-10 09:34:14 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-12
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-12
+
+    autoconf archive is moved.  Thanks Anton Sluijtman
+    
+    
+
+    modified files:
+     packages/rpm/uruk.spec uruk/ChangeLog uruk/bootstrap
+
+
 2004-11-20 19:04:18 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-11
 
     Summary:

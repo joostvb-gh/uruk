@@ -36,8 +36,7 @@ test -f acinclude.m4 || {
         cat <<EOT
 You need the autoconf-archive Debian package, version >= 20031029-1.
 Alternatively, you could please install the GNU Autoconf Macro Archive's
-http://www.gnu.org/software/ac-archive/htmldoc/ac_define_dir.html as
-acinclude.m4.
+http://autoconf-archive.cryp.to/ac_define_dir.m4 as acinclude.m4.
 EOT
    fi
 }
