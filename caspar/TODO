@@ -1,4 +1,10 @@
-$Id: TODO,v 1.4 2002-02-26 19:17:55 joostvb Exp $
+$Id: TODO,v 1.5 2002-02-26 22:24:41 joostvb Exp $
+
+this whole thing could probably better use rsync
+
+a lot of features are still undocumented
+
+- personal stuff - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 /home/joostvb/cvs-gelfand/include/install.mk
 and
@@ -8,12 +14,6 @@ almost implement our idea.
 
 get rid of:
 
-X /home/joostvb/cvs-gelfand/gelfand/include/install.mk
-X /home/joostvb/cvs-gelfand/include/install.mk
-X /home/joostvb/cvs-gelfand/mdcc.cx/djb/include/install.mk
-X /home/joostvb/cvs-gelfand/mdcc.cx/include/install.mk
-X /home/joostvb/cvs-gelfand/mdcc.cx/www/include/install.mk
-X /home/joostvb/cvs-gelfand/yosida/include/install.mk
 /home/joostvb/cvs-hibou/hibou/include/install.mk
 /home/joostvb/cvs-topaz/topaz/include/install.mk
 
@@ -30,5 +30,3 @@ and other joostvb/ stuff
 cvs-gelfand/mdcc.cx/djb : one big mess...
 
 
-
-this whole thing could probably better use rsync

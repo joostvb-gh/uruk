@@ -1,12 +1,31 @@
-$Id: README,v 1.1 2002-02-26 17:50:54 joostvb Exp $
+$Id: README,v 1.2 2002-02-26 22:24:41 joostvb Exp $
 
 caspar - run 'make install' from within a cvs tree
+
+- caspar? - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 caspar is named after Caspar the Friendly Ghost, since that's the title
 of the Daniel Johnston song I was listening to when deciding to package
 my homegrown scripts.
 
- some thoughts
+- usage - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Within a CVS tree, create a file include/install.mk, with contents like e.g.
+
+ SUH = root@some.host.somewhere
+ include caspar/mk/install.mk
+
+.  Within each other directory of the CVS tree which holds files, create a
+Makefile, which looks like e.g.
+
+ DIR = /some/dir/ectory
+ include ../../include/install.mk
+
+.
+
+
+
+- some thoughts - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 The default GNU make include path is .:PREFIX/include:/usr/gnu/include:
 /usr/local/include:/usr/include .  See make.info, node `Include'.  FHS however
@@ -15,9 +34,22 @@ files for the C and C++ programming languages should be placed.'  This makes
 GNU make somewhat incompatible with the FHS :( .  GNU make could better use
 something like '/usr/share/mk' in its default include path.
 
- include caspar/mk/foo.mk
+We work around this by creating the following symlink when being 'make
+install'-ed:
 
- /usr/local/include/caspar/mk/foo.mk -> ../../../share/caspar/mk/foo.mk
+ /usr/local/include/caspar/mk/install.mk ->
+                                    /usr/local/share/caspar/mk/install.mk
 
-includedir PREFIX/include
-datadir    PREFIX/share
+.
+
+The enables us to be able to call
+
+ include caspar/mk/install.mk
+
+from a Makefile.
+
+- more info - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+The caspar homepage is at http://mdcc.cx/pub/caspar/ .
+
+
