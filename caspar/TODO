@@ -1,4 +1,4 @@
-$Id: TODO,v 1.22 2004-07-03 04:08:00 joostvb Exp $
+$Id: TODO,v 1.23 2004-07-03 04:09:22 joostvb Exp $
 
 -- docbook stuff --
 
@@ -54,4 +54,8 @@ license should be printed, see rh vs deb doc
   However, I don't think this is possible with current (3.80-6) Make.  The
   built-in implicit rules are compiled in make binary, so adding the caspar
   ones to some magic directory will likely not work.
+
+- Supply a script to convert Makefile in caspar < 20040531 style to >= 20040531
+  style.
+
 
