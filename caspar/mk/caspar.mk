@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.10 2004-05-30 14:44:08 joostvb Exp $
+# $Id: caspar.mk,v 1.11 2004-05-31 13:05:48 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -13,7 +13,7 @@
 
 # backwards compatibility: old var names
 ifdef CDIR
-csp_CDIR     ?= $(CDIR)
+csp_CPDIR     ?= $(CDIR)
 endif
 ifdef CP
 csp_CP       ?= $(CP)
@@ -34,10 +34,10 @@ ifdef SCPFLAGS
 csp_SCPFLAGS ?= $(SCPFLAGS)
 endif
 ifdef SDIR
-csp_SDIR     ?= $(SDIR)
+csp_SCPDIR   ?= $(SDIR)
 endif
 ifdef SRDIRS
-csp_SRDIRS   ?= $(SRDIRS)
+csp_SUHDIRS  ?= $(SRDIRS)
 endif
 ifdef SUH
 csp_SUH      ?= $(SUH)
@@ -45,46 +45,46 @@ endif
 ifdef SUHS
 csp_SUHS     ?= $(SUHS)
 endif
+# end of backwards compatibility hack.  this hack was introduced in 2004-05.
+# guess it should be removed at about 2005-05.
 
 
-#####
-
-ifdef csp_SDIR
+ifdef csp_SCPDIR
 
 ifdef csp_SUHS
-csp_SRDIRS ?= $(patsubst %,%:$(csp_SDIR),$(csp_SUHS))
+csp_SUHDIRS  ?= $(patsubst %,%:$(csp_SCPDIR),$(csp_SUHS))
 endif
 
 ifdef csp_SUH
-csp_SRDIRS ?= $(csp_SUH):$(csp_SDIR)
+csp_SUHDIRS  ?= $(csp_SUH):$(csp_SCPDIR)
 endif
 
 endif
 
 # possibility to choose own cp(1) and scp(1)
-csp_CP ?= cp
-csp_SCP ?= scp
+csp_CP       ?= cp
+csp_SCP      ?= scp
 
 # extra arguments for cp(1) and scp(1)
-csp_CPFLAGS ?=
+csp_CPFLAGS  ?=
 csp_SCPFLAGS ?=
 
-csp_CPDIRS ?= $(csp_CDIR)
+csp_CPDIRS   ?= $(csp_CPDIR)
 
-RULES = $(foreach dir,$(csp_SRDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
+RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);)
 
 # files, not directories
-FILES := $(shell for f in *; do test -f $$f && echo $$f; done)
+FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
 
 # exclude editor backup files and other stuff
-FILES := $(filter-out Makefile CVS %~ \#%\#, $(FILES))
+FILES   := $(filter-out Makefile CVS %~ \#%\#, $(FILES))
 
 TARGETS := $(patsubst %,%-install,$(FILES))
 TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
 
-DIRS := $(shell for d in *; do test -d $$d && echo $$d; done)
-DIRS := $(filter-out CVS, $(DIRS))
+DIRS    := $(shell for d in *; do test -d $$d && echo $$d; done)
+DIRS    := $(filter-out CVS, $(DIRS))
 
 define do-recursive
 for subdir in $(DIRS); \
