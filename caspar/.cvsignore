@@ -2,3 +2,7 @@ VERSION
 config.*
 aclocal.m4
 caspar-*.tar.gz
+caspar-*.tar.gz.asc
+configure
+Makefile
+Makefile.in
