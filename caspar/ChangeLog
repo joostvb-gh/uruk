@@ -1,11 +1,12 @@
-caspar ( )
+caspar (20030331)
 
   * mk/caspar.mk: ommitting SDIR results in scp to get skipped
-  * mk/caspar.mk: added SUHS hack: now possible to install on multiple
-    hosts.
+  * mk/caspar.mk: added SUHS hack: now possible to install on multiple hosts.
+  * mk/docbook.mk: sane default target added.
+  * mk/Makefile.am: some fiddling to get make distcheck working with automake 1.7
   * README: documented new tricks.
 
- -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx> ....
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Mon, 31 Mar 2003 22:04:18 +0200
 
 caspar (20030203)
 
