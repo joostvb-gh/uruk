@@ -1,11 +1,17 @@
-caspar (    )
+caspar (20030802)
 
   * more bugfixes: generating pdf from LaTeX was broken since caspar 20030716.
   * mk/docbook.mk: now uses pdflatex for generating PDF directly from LaTeX
     (without intermediate PostScript).  calls latex 3 times: make sure tocs
     get created.  no longer uses ps2pdf.
+  * mk/caspar.mk: get rid of non-portable 'echo -n': this made caspar fail
+    on Solaris.  Tnx Piet Lauwen for bugreport and suggestion for fix.
+  * Makefile.am, bootstrap, setversion, configure.ac/configure.in:
+    moved to autoconf 2.53 style, renamed configure.in to configure.ac: new
+    autotools naming convention.  (Now uses same build system as AD1810
+    Firewall ( http://mdcc.cx/ad1810-firewall/ ).
 
- -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  ....
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Sat, 02 Aug 2003 23:26:06 +0200
 
 caspar (20030718)
 

@@ -1,16 +1,30 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.3 2003-02-05 21:57:01 joostvb Exp $
+# $Id: bootstrap,v 1.4 2003-08-02 21:41:12 joostvb Exp $
 
-#
 # bootstrap - script to bootstrap the distribution rolling engine
+
+# This script is free software; you can distribute it and/or modify it
+# under the terms of the GNU GPL.  See the file COPYING.
+
+# usage:
+# ./bootstrap && ./configure && make distcheck
 #
+# this yields a tarball which one can install doing
+#
+# $ tar zxf PACKAGENAME-*.tar.gz
+# $ cd PACKAGENAME-*
+# $ ./configure
+# $ make
+# # make install
+
+# requirements:
+#  GNU autoconf, from e.g. ftp.gnu.org:/pub/gnu/autoconf/autoconf-2.50.tar.gz
+#  GNU automake, from e.g. ftp.cygnus.com:/pub/tromey
 
 set -x
 
-if [ ! -f VERSION ]; then
-	./setversion
-fi
+test -f VERSION.m4 || ./setversion
 
 aclocal \
     && automake --add-missing --verbose --gnu \
