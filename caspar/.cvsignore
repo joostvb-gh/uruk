@@ -1,4 +1,5 @@
 VERSION
+VERSION.m4
 config.*
 configure.lineno
 autom4te.cache

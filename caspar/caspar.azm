@@ -1,36 +1,59 @@
-$Id: README,v 1.12 2003-08-09 10:40:45 joostvb Exp $
+\: vim:syntax=tex
+\: $Id: caspar.azm,v 1.1 2003-08-09 10:40:45 joostvb Exp $
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
-caspar - Makefile snippets for common tasks
+\def{"man::synstyle"}{long}
+\def{"man::defstyle"}{long}
+\import{man.zmm}
 
-- 
+\import{./include.zmm}
 
-See caspar.azm, see INSTALL
+\"man::preamble"
+\${html}{\"man::maketoc"}
 
-After install, /usr/local/share/doc/caspar will be created and filled, a file
-/usr/local/share/caspar/mk/caspar.mk will get installed, and a symlink
-/usr/local/include/caspar/mk/caspar.mk will get created.
+\def{docbook.mk}{\it{docbook.mk}}
+\def{pod.mk}{\it{pod.mk}}
+\def{caspar.mk}{\it{caspar.mk}}
+\def{caspar}{\bf{caspar}}
 
-- requirements, packages  - - - - - - - - - - - - - - - - - - - - - - - - -
+\sec{name}{NAME}
+  \par
+  caspar - Makefile snippets for common tasks
 
-GNU make.
+\sec{synopsis}{SYNOPSIS}
+  \par
+  SDIR = /some/dir/ectory
+  include ../include/install.mk
 
-A Debian package (for e.g. Debian GNU/Linux) is available from `deb
-http://mdcc.cx/debian local contrib'.
+  include caspar/mk/docbook.mk
 
+  include caspar/mk/pod.mk
 
+\sec{description}{DESCRIPTION}
 
+Caspar offers Makefile snippets for common tasks, like installing stuff you've
+got under version control, or typesetting LaTeX, DocBook XML and DocBook SGML
+documents.
+  \par
+The typesetting functionality is delivered by \docbook.mk and \pod.mk.  This is
+not yet fully documented.  Some comments on usage are in \docbook.mk and \pod.mk
+itself though.
+  \par
+The installing-stuff-under-version-control functionality is delivered by
+\caspar.mk.  (That's what the rest of the manual will talk about.)  It enables
+one to run 'make install' from within a CVS tree.
+  \par
+Its useful in cases like this: all configuration files of some host are under
+version control, and, after commiting a change to CVS, you want to be able to
+easily install the new config file on the host.
+  \par
+With \caspar, all you have to do is specify the hostname in one place, and
+specify the name of the target directory in each CVS directory.
+  \par
 
+\sec{usage}{USAGE}
 
-
-
-
-
-
-
-
-- usage - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Within a CVS tree, create a file include/install.mk, with contents like e.g.
+Within a CVS tree, create a file \it{include/install.mk}, with contents like e.g.
 
  SUH = root@some.host.somewhere
  include caspar/mk/caspar.mk
@@ -170,3 +193,8 @@ docbookmk, by Michael Wiedmann ( http://www.miwie.org/docbkmake/ ) offers
 probably a superset of Caspar's docbook.mk functionality.
 
 
+
+
+caspar is named after Caspar the Friendly Ghost, since that's the title
+of the Daniel Johnston song I was listening to when deciding to package
+my homegrown scripts.
