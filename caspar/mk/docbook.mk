@@ -1,4 +1,12 @@
-# $Id: docbook.mk,v 1.5 2003-07-16 09:43:10 joostvb Exp $
+# $Id: docbook.mk,v 1.6 2003-07-18 09:01:18 joostvb Exp $
+
+# Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
+#  
+# This file is part of caspar.  Caspar is free software; you can redistribute
+# it and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the License,
+# or (at your option) any later version.  You should have received a copy of
+# the GNU General Public License along with this file (see COPYING).
 
 #
 #  Usage:
@@ -22,7 +30,6 @@
 #
 # read the source for more fancy stuff
 #
-
 
 # see also /usr/local/src/debian/maint-guide/maint-guide-1.0.2/Makefile
 # for a debiandoc-sgml example.
@@ -61,6 +68,7 @@ PS2PDF ?= ps2pdf
 PSNUP ?= psnup
 
 LPR ?= lpr
+# gnome-gv might do well too
 GV ?= gv
 
 SGML2HTML_RULE = $(JADE) -E$(JADE_MAXERRORS) -t sgml -d $(HTML_DSL) $<
@@ -77,12 +85,13 @@ SGML2JTEX_RULE = $(JADE) -E$(JADE_MAXERRORS) -t tex -d $(PRINT_DSL) \
 XML2JTEX_RULE  = $(JADE) -E$(JADE_MAXERRORS) -t tex -d $(PRINT_DSL) \
   -o $@ $(XMLDCL) $<
 
-# run twice for toc processing
+# run three times for toc processing
 JTEX2DVI_RULE  = $(JADETEX) $< && $(JADETEX) $< && $(JADETEX) $< && \
-  rm $*.log $*.out $*.aux
+  rm -f $*.log $*.out $*.aux
 
-JTEX2PDF_RULE = $(PDFJADETEX) $< && $(PDFJADETEX) $< && \
-  rm $*.out $*.log $*.aux
+# rm -f: intermediate files might not exist
+JTEX2PDF_RULE = $(PDFJADETEX) $< && $(PDFJADETEX) $< && $(PDFJADETEX) $< && \
+  rm -f $*.log $*.out $*.aux
 
 TEX2DVI_RULE   = $(LATEX) $<
 
@@ -108,7 +117,6 @@ all: $(outputs)
 
 %.dvi: %.tex
 	$(TEX2DVI_RULE)
-# 	rm $*.log
 
 %.ps: %.dvi
 	$(DVI2PS_RULE)
@@ -144,5 +152,5 @@ all: $(outputs)
 clean:
 	-rm *.aux *.log *.dvi *.jtex
 
-.PRECIOUS: %.ps
+.PRECIOUS: %.ps %.html
 
