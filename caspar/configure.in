@@ -1,5 +1,5 @@
 dnl
-dnl $Id: configure.in,v 1.1 2002-02-26 17:52:17 joostvb Exp $
+dnl $Id: configure.in,v 1.2 2002-03-13 12:09:55 joostvb Exp $
 dnl
 dnl After editing this file, run automake to regenerate Makefile.in's.
 dnl Process this file with autoconf to produce a configure script.
@@ -11,5 +11,6 @@ AC_PROG_INSTALL
 AC_OUTPUT([
    Makefile
    mk/Makefile
+   sgml/Makefile
 ])
 

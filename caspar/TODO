@@ -1,4 +1,6 @@
-$Id: TODO,v 1.7 2002-02-27 16:55:41 joostvb Exp $
+$Id: TODO,v 1.8 2002-03-13 12:09:55 joostvb Exp $
+
+--- mk stuff ---
 
 this whole thing could probably better use rsync
 
@@ -10,3 +12,6 @@ add big example
 
 add support for sudo, rsync, install(1)
 
+--- docbook stuff ---
+
+check print.dsl and html.dsl for copyright

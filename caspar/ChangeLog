@@ -1,3 +1,11 @@
+caspar (20020313)
+
+  * mk/docbook.mk: clean target more robust: `-rm' instead of `rm', now uses
+    caspar/{html,print}.dsl.
+  * sgml/{html,print}.dsl: added.  Used by mk/docbook.mk.
+
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Wed, 13 Mar 2002 13:09:09 +0100
+
 caspar (20020301)
 
   * README: added requirements section.

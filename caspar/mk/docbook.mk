@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.1 2002-03-01 15:15:06 joostvb Exp $
+# $Id: docbook.mk,v 1.2 2002-03-13 12:09:55 joostvb Exp $
 
 #
 #  Usage:
@@ -24,6 +24,14 @@
 
 XMLDCL ?= /usr/share/sgml/declaration/xml.dcl
 
+# my jade looks in "caspar/print.dsl",
+#  "/usr/local/share/sgml/caspar/print.dsl",
+#  "/usr/local/lib/sgml/caspar/print.dsl",
+#  "/usr/share/sgml/caspar/print.dsl"
+# when i specify -d caspar/print.dsl
+HTML_DSL ?= caspar/html.dsl
+PRINT_DSL ?= caspar/print.dsl
+
 # JADE = /usr/bin/jade
 JADE ?= jade
 # PDFJADETEX = /usr/bin/pdfjadetex
@@ -39,12 +47,12 @@ PSNUP ?= psnup
 LPR ?= lpr
 GV ?= gv
 
-XML2HTML_RULE = $(JADE) -t sgml -d html.dsl $(XMLDCL) $<
+XML2HTML_RULE = $(JADE) -t sgml -d $(HTML_DSL) $(XMLDCL) $<
 
 # lynx doesn't deal well with too wide blurbs of <literallayout>  :(
 HTML2TXT_RULE = $(W3M) -dump $< > $@
 
-XML2JTEX_RULE = $(JADE) -t tex -d print.dsl -o $@ $(XMLDCL) $<
+XML2JTEX_RULE = $(JADE) -t tex -d $(PRINT_DSL) -o $@ $(XMLDCL) $<
 
 # run twice for toc processing
 JTEX2DVI_RULE = $(JADETEX) $< && $(JADETEX) $< && $(JADETEX) $< && rm -f $*.log $*.out $*.aux
@@ -91,7 +99,7 @@ PS22PS_RULE = $(PSNUP) -2 $< $@
 	$(LPR) $<
 
 clean:
-	rm *.aux *.log *.dvi
+	-rm *.aux *.log *.dvi
 
 .PRECIOUS: %.ps
 
