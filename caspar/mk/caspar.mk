@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.16 2005-02-28 21:55:01 joostvb Exp $
+# $Id: caspar.mk,v 1.17 2005-03-02 07:24:37 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -32,7 +32,7 @@ csp_SCPFLAGS ?=
 
 csp_CPDIRS   ?= $(csp_CPDIR)
 
-csp_TABOOFILES_DEFAULT ?= Makefile CVS %~ \#%\# pod2htmd.tmp pod2htmi.tmp
+csp_TABOOFILES_DEFAULT ?= Makefile %~ \#%\# pod2htmd.tmp pod2htmi.tmp
 csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_SKIP), $(csp_TABOOFILES_DEFAULT)) $(csp_TABOOFILES_ADD)
 
 csp_TABOODIRS_DEFAULT ?= CVS
