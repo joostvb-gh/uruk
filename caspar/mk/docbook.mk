@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.6 2003-07-18 09:01:18 joostvb Exp $
+# $Id: docbook.mk,v 1.7 2003-07-24 09:57:50 joostvb Exp $
 
 # Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #  
@@ -58,6 +58,7 @@ JADE ?= jade
 JADE_MAXERRORS ?= 10
 
 PDFJADETEX ?= pdfjadetex
+PDFLATEX ?= pdflatex
 JADETEX ?= jadetex
 LATEX ?= latex
 
@@ -93,10 +94,13 @@ JTEX2DVI_RULE  = $(JADETEX) $< && $(JADETEX) $< && $(JADETEX) $< && \
 JTEX2PDF_RULE = $(PDFJADETEX) $< && $(PDFJADETEX) $< && $(PDFJADETEX) $< && \
   rm -f $*.log $*.out $*.aux
 
-TEX2DVI_RULE   = $(LATEX) $<
+TEX2DVI_RULE   = $(LATEX) $< && $(LATEX) $< && $(LATEX) $< && \
+  rm -f $*.log $*.aux
 
 DVI2PS_RULE    = $(DVIPS) -f < $< > $@
-# PS2PDF_RULE    = $(PS2PDF) $< $@
+TEX2PDF_RULE   = $(PDFLATEX) $< && $(PDFLATEX) $< && $(PDFLATEX) $< && \
+  rm -f $*.log $*.aux
+
 PS22PS_RULE    = $(PSNUP) -2 $< $@
 
 # create nice default target
@@ -121,9 +125,8 @@ all: $(outputs)
 %.ps: %.dvi
 	$(DVI2PS_RULE)
 
-# pdfjadetex makes the fonts look better
-# %.pdf: %.ps
-#	$(PS2PDF_RULE)
+%.pdf: %.tex
+	$(TEX2PDF_RULE)
 
 %.pdf: %.jtex
 	$(JTEX2PDF_RULE)
