@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.7 2004-05-31 13:46:47 joostvb Exp $
+# $Id: bootstrap,v 1.8 2004-07-21 11:21:47 joostvb Exp $
 
 # bootstrap - script to bootstrap the distribution rolling engine
 
@@ -30,6 +30,11 @@ test -f ChangeLog || {
 }
 
 test -f VERSION.m4 || ./setversion
+
+# If you have pkg-config 0.15.0-4 installed, and use aclocal >= 1.8, you'll
+# get see a bug in /usr/share/aclocal/pkg.m4 , see
+# http://bugs.debian.org/221818 for the bugreport (and a patch)
+# This bug makes aclocal whine, but is not effectively harming us.
 
 aclocal \
     && automake --add-missing --verbose --gnu \
