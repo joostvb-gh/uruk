@@ -1,4 +1,4 @@
-$Id: README,v 1.15 2004-05-31 13:47:33 joostvb Exp $
+$Id: README,v 1.16 2004-07-11 16:39:50 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -64,7 +64,7 @@ CVS commits messages are being emailed, using syncmail.  Contact the author if
 you'd like to get these messages in your mailbox.
 
 
-- some thoughts - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- some thoughts on include path - - - - - - - - - - - - - - - - - - - - - - - - -
 
 The default GNU make include path is .:PREFIX/include:/usr/gnu/include:
 /usr/local/include:/usr/include .  See make.info, node `Include'.  FHS however
@@ -86,5 +86,20 @@ This enables us to be able to call
  include caspar/mk/caspar.mk
 
 from a Makefile.
+
+
+- some thoughts on implicit rules - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Add our implicit pattern rules to Make built-in implicit rules?
+
+When no ./Makefile exists, but ./foo.c does, make knows what to do when asked
+to ``make foo''.  Furthermore, in absence of ./Makefile, ``TEX=latex make
+blah.dvi'' does something sane with blah.tex.
+
+It'd be cool if we could add to Make's built-in implicit rules, and have our
+implicit rules work, even if no Makefile exists in the current directory.
+However, I don't think this is possible with current (3.80-6) Make.  The
+built-in implicit rules are compiled in make binary, so adding the caspar ones
+to some magic directory will likely not work.
 
 

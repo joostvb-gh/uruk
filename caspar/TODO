@@ -1,4 +1,4 @@
-$Id: TODO,v 1.23 2004-07-03 04:09:22 joostvb Exp $
+$Id: TODO,v 1.24 2004-07-11 16:39:50 joostvb Exp $
 
 -- docbook stuff --
 
@@ -14,12 +14,6 @@ license should be printed, see rh vs deb doc
 
 - add support for sudo, rsync, install(1)
 
-- a lot of features are still undocumented
-
-- convert README to pod or dbx
-
-- add big example
-
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only
   a _trailing_ '-install' from the maketarget.
@@ -32,28 +26,15 @@ license should be printed, see rh vs deb doc
 
 - The scp invocation is inefficient:
 
-   % make -n README.txt-install beheersnet.txt-install
+   % make -n README.txt-install net.txt-install
    scp "README.txt" pong:/data/www/doc/doc/;
-   scp "beheersnet.txt" pong:/data/www/doc/doc/;
+   scp "net.txt" pong:/data/www/doc/doc/;
 
   Should be:
 
-   scp "README.txt" "beheersnet.txt" pong:/data/www/doc/doc/;
+   scp "README.txt" "net.txt" pong:/data/www/doc/doc/;
 
   $@ vs $? might be helpful.
-
-- contact adress for bugreports missing in docs.
-
-- Add our implicit pattern rules to built-in implicit rules?  When no
-  ./Makefile exists, but ./foo.c does, make knows what to do when asked to
-  ``make foo''.  Furthermore, in absence of ./Makefile,
-  ``TEX=latex make blah.dvi'' does something sane with blah.tex.
-
-  It'd be cool if we could add to Make's built-in implicit rules, and have our
-  implicit rules work, even if no Makefile exists in the current directory.
-  However, I don't think this is possible with current (3.80-6) Make.  The
-  built-in implicit rules are compiled in make binary, so adding the caspar
-  ones to some magic directory will likely not work.
 
 - Supply a script to convert Makefile in caspar < 20040531 style to >= 20040531
   style.
