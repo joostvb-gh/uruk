@@ -1,3 +1,10 @@
+caspar (   )
+
+  * TODO: I'd like a TOC in HTML output from DocBook. (Even while we're doing
+    nochunks mode)
+
+ --
+
 caspar (20030331)
 
   * mk/caspar.mk: ommitting SDIR results in scp to get skipped
