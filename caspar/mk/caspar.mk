@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.1 2002-02-27 16:53:27 joostvb Exp $
+# $Id: caspar.mk,v 1.2 2002-03-01 15:15:06 joostvb Exp $
 
 # Copyright (C) 2002 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 # 
@@ -8,7 +8,8 @@
 # or (at your option) any later version.  You should have received a copy of
 # the GNU General Public License along with this file (see COPYING).
 
-# the Makefile in the repository should define SRDIRS and CPDIRS
+# see the caspar README file (probably installed in
+# /usr/local/share/doc/caspar/README) for usage
 
 ifdef SUH
 SRDIRS ?= $(SUH):$(SDIR)
@@ -38,30 +39,3 @@ $(TARGETS):
 .PHONY: $(TARGETS)
 .PHONY: $(LOAD)
 
-#############################################################
-#
-# a makefile could like this:
-#
-# #!/usr/bin/make -f
-#
-# SRDIRS = user@sshreachablehost:bin/ \
-#       otheruser@othersshreachablehost:script/
-# # as you see, it's not needed to specify a list of
-# # RRDIRS, if it would be empty anyway
-#
-# XSRDIRS = $(SRDIRS)
-#
-# # XFILES: a list of file which should not be installed in
-# # SRDIRS and RRDIRS, but in XRRDIRS and XSRDIRS
-# XFILES = afilename
-#
-# # XXFILES: a list of files for which we've got our own rules
-# XXFILES = afile
-#
-# include ../../include/Makefile.geninst
-#
-# afile:
-#     script < afile    
-#
-# # end of example Makefile
-#

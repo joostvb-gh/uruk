@@ -1,4 +1,4 @@
-$Id: TODO.local,v 1.1 2002-02-27 16:55:41 joostvb Exp $
+$Id: TODO.local,v 1.2 2002-03-01 15:15:06 joostvb Exp $
 
 - personal stuff - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -18,5 +18,8 @@ and other joostvb/ stuff
 cvs-gelfand/mdcc.cx/djb : one big mess...
 ~/cv...z/topaz/etc/tinydns/root : mess...
 cvs-gelfand/gelfand/vanbaal/public_html a mess
+
+cvs-hibou:
+ home/vanbaal/etc/Makefile
 
 

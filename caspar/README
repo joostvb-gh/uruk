@@ -1,12 +1,22 @@
-$Id: README,v 1.3 2002-02-27 16:53:27 joostvb Exp $
+$Id: README,v 1.4 2002-03-01 15:15:06 joostvb Exp $
 
-caspar - run 'make install' from within a CVS tree
+caspar - Makefile snippets for common tasks
 
 - caspar? - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 caspar is named after Caspar the Friendly Ghost, since that's the title
 of the Daniel Johnston song I was listening to when deciding to package
 my homegrown scripts.
+
+Caspar offers Makefile snippets for common tasks, like installing stuff you've
+got under version control, or typesetting LaTeX or DocBook XML documents.
+
+The typesetting functionality is delivered by docbook.mk.  This is not yet
+documented: `Read the source, Luke!'
+
+The installing-stuff-under-version-control functionality is delivered by
+caspar.mk.  (That's what the rest of the README will talk about.)  It enables
+one to run 'make install' from within a CVS tree.
 
 Its useful in cases like this: all configuration files of some host are under
 version control, and, after commiting a change to CVS, you want to be able to
@@ -18,6 +28,10 @@ specify the name of the target directory in each CVS directory.
 After install, /usr/local/share/doc/caspar will be created and filled, a file
 /usr/local/share/caspar/mk/caspar.mk will get installed, and a symlink
 /usr/local/include/caspar/mk/caspar.mk will get created.
+
+- requirements - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+GNU make.
 
 - usage - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

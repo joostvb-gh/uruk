@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.1 2002-02-26 17:51:15 joostvb Exp $
+# $Id: bootstrap,v 1.2 2002-03-01 15:15:06 joostvb Exp $
 
 #
 # bootstrap - script to bootstrap the distribution rolling engine
@@ -9,7 +9,6 @@
 set -x
 
 if [ ! -f VERSION ]; then
-	chmod a+x setversion
 	./setversion
 fi
 

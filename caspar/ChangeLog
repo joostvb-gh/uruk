@@ -1,10 +1,10 @@
-caspar (  )
+caspar (20020301)
 
   * README: added requirements section.
   * mk/docbook.mk: added: useful for generating PostScript and stuff from LaTeX
      or DocBook XML sources.
 
- -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx> XXX
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Fri,  1 Mar 2002 16:18:54 +0100
 
 caspar (20020227)
 
