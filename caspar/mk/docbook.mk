@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.10 2004-03-11 16:18:15 joostvb Exp $
+# $Id: docbook.mk,v 1.11 2004-09-09 11:36:36 joostvb Exp $
 
 # Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #  
@@ -87,7 +87,7 @@ sources := $(basename $(wildcard *.dbx *.tex *.sgml))
 outputs := $(addsuffix .ps,$(sources)) $(addsuffix .pdf,$(sources)) \
   $(addsuffix .html,$(sources)) $(addsuffix  .txt,$(sources))
 
-all: $(outputs)
+typeset: $(outputs)
 
 %.jtex: %.sgml
 	$(SGML2JTEX_RULE)
