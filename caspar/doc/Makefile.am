@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.1 2003-08-09 12:56:48 joostvb Exp $
+## $Id: Makefile.am,v 1.2 2003-08-09 13:05:43 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -17,17 +17,22 @@ ZOEM = zoem
 ## http://www.w3.org/People/Raggett/tidy/ , by Dave Raggett <dsr@w3.org>
 TIDY = tidy -quiet
 
+## http://w3m.sourceforge.net/
+## w3m is a text-based web browser, which can be used as a text formatting tool
+## which typesets HTML into plain text.
+W3M = w3m
+
 docdir = $(datadir)/doc/$(PACKAGE_TARNAME)
 
 azms = caspar.azm
-typetargets = caspar.html caspar.ps
+typetargets = caspar.html caspar.ps caspar.txt
 
 doc_DATA = $(typetargets) $(azms)
 man_MANS = caspar.7
 
 EXTRA_DIST = $(doc_DATA) $(man_MANS)
 
-SUFFIXES = .7 .azm .html .ps
+SUFFIXES = .7 .azm .html .ps .txt
 
 .azm.7:
 	$(ZOEM) -d roff -i $< -o $@
@@ -40,6 +45,9 @@ SUFFIXES = .7 .azm .html .ps
 	$(ZOEM) -d html -i $< -o $@
 	$(ZOEM) -d html -i $< -o $@
 	- $(TIDY) -e $@
+
+.html.txt:
+	$(W3M) -dump $< > $@
 
 MAINTAINERCLEANFILES = $(man_MANS) $(typetargets)
 
