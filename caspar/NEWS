@@ -7,6 +7,28 @@ caspar version
 - Experimental install-recursive target added.  If you'd like to play with it,
   you won't need to adjust your Makefile's.  Just type `make install-recursive'
   and decide wether you like this feature.
+- BEWARE! Change in user interface!  caspar.mk variables have been renamed:
+
+   new name     old name
+   ========     ========
+
+   csp_CP       CP
+   csp_CPFLAGS  CPFLAGS
+   csp_CPDIR    CDIR
+   csp_CPDIRS   CPDIRS
+   csp_LOAD     LOAD
+   csp_SCP      SCP
+   csp_SCPFLAGS SCPFLAGS
+   csp_SCPDIR   SDIR
+   csp_SUH      SUH
+   csp_SUHS     SUHS
+   csp_SUHDIRS  SRDIRS
+
+  This is done to make sure no unexpected name clashes occur.
+
+  For now, we offer a backward compatibility hack: your old Makefile's will
+  continue to work.  However, you're advised to switch to the new user
+  interface a.s.a.p.
 
 caspar version 20030825
 
@@ -22,4 +44,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.6 2004-03-11 16:20:29 joostvb Exp $
+# $Id: NEWS,v 1.7 2004-05-31 13:06:32 joostvb Exp $
