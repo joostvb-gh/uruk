@@ -1,5 +1,5 @@
 dnl
-dnl $Id: configure.ac,v 1.1 2003-08-02 21:41:12 joostvb Exp $
+dnl $Id: configure.ac,v 1.2 2003-08-09 14:23:02 joostvb Exp $
 dnl
 dnl After editing this file, run automake to regenerate Makefile.in's.
 dnl Process this file with autoconf to produce a configure script.
@@ -22,12 +22,13 @@ AC_COPYRIGHT([
 Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 ])
 
-AC_REVISION($Revision: 1.1 $)
+AC_REVISION($Revision: 1.2 $)
 
 AC_PROG_INSTALL
 
 AC_CONFIG_FILES([
    Makefile
+   doc/Makefile
    mk/Makefile
    sgml/Makefile
 ])
