@@ -1,5 +1,26 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version
+
+- mk/caspar.mk is no longer supply backward compatibility with caspar <=
+  20030825.  If you use old-style Makefiles, you'll have to fix these now.
+  See the 20040531 NEWS item for details.
+
+  A crude way to update your Makefile's would be to run something along the lines
+  of:
+
+   % find . -name Makefile | while read f; do sed -i 's/SDIR/csp_SCPDIR/g' $f; done
+   % find . -name Makefile | while read f; do sed -i 's/(SUH)/(csp_SUH)/g' $f; done
+   % find . -name Makefile | while read f; do sed -i 's/^LOAD /csp_LOAD /g' $f; done 
+   % find . -name Makefile | while read f; do sed -i 's/(SUHS)/(csp_SUHS)/g' $f; done
+   % find . -name Makefile | while read f; do sed -i 's/^SUH /csp_SUH /g' $f; done
+   % find . -name Makefile | while read f; do sed -i 's/^SUHS /csp_SUHS /g' $f; done
+   % find . -name install.mk | while read f; do sed -i 's/^SRDIRS /csp_SUHDIRS /g' $f; done
+
+  This kinda worked for me.  YMMV.
+- New variables csp_TABOO{DIRS,FILES}_{ADD,SKIP} in caspar.mk.
+  See caspar(7).
+
 caspar version 20040721
 
 - This release is planned to get shipped with Debian: it will be available
@@ -51,4 +72,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.9 2004-07-21 14:58:27 joostvb Exp $
+# $Id: NEWS,v 1.10 2005-03-01 20:41:27 joostvb Exp $

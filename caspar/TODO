@@ -1,4 +1,4 @@
-$Id: TODO,v 1.32 2005-02-28 21:46:17 joostvb Exp $
+$Id: TODO,v 1.33 2005-03-01 20:41:27 joostvb Exp $
 
 -- docbook stuff --
 
@@ -35,11 +35,6 @@ license should be printed, see rh vs deb doc
    scp "README.txt" "net.txt" pong:/data/www/doc/doc/;
 
   $@ vs $? might be helpful.
-
-- Supply a script to convert Makefile in caspar < 20040531 style to >= 20040531
-  style.
-
-- Document the install-recursive target.
 
 - Check mk/Makefile.am: check if it now does the right thing when using
   DESTDIR in package build scripts.  (In version 20040721, it still created
