@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.8 2003-12-15 06:08:31 joostvb Exp $
+# $Id: caspar.mk,v 1.9 2004-03-11 16:17:47 joostvb Exp $
 
 # Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 # 
@@ -45,6 +45,16 @@ FILES := $(filter-out Makefile CVS %~ \#%\#, $(FILES))
 TARGETS := $(patsubst %,%-install,$(FILES))
 TARGETS := $(filter-out $(LOAD), $(TARGETS))
 
+DIRS := $(shell for d in *; do test -d $$d && echo $$d; done)
+DIRS := $(filter-out CVS, $(DIRS))
+
+define do-recursive
+for subdir in $(DIRS); \
+do \
+    (cd $$subdir && $(MAKE) -$(MAKEFLAGS) install-recursive); \
+done
+endef
+
 all: install load
 
 install: $(TARGETS)
@@ -53,6 +63,9 @@ load: $(LOAD)
 
 $(TARGETS):
 	$(RULES)
+
+install-recursive: install
+	$(do-recursive)
 
 .PHONY: $(TARGETS)
 .PHONY: $(LOAD)
