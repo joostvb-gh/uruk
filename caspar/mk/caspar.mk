@@ -1,14 +1,20 @@
-# general install file, to be included in Makefiles
-# works for dumb directories, for which the repository
-# only needs to be scp-ed to install environment as is
+# $Id: caspar.mk,v 1.1 2002-02-27 16:53:27 joostvb Exp $
+
+# Copyright (C) 2002 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
+# 
+# This file is part of caspar.  Caspar is free software; you can redistribute
+# it and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the License,
+# or (at your option) any later version.  You should have received a copy of
+# the GNU General Public License along with this file (see COPYING).
 
 # the Makefile in the repository should define SRDIRS and CPDIRS
 
-# $Id: install.mk,v 1.2 2002-02-26 19:13:14 joostvb Exp $
-
 ifdef SUH
-SRDIRS ?= $(SUH):$(DIR)
+SRDIRS ?= $(SUH):$(SDIR)
 endif
+
+CPDIRS ?= $(CDIR)
 
 RULES = $(foreach dir,$(SRDIRS),scp "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(CPDIRS),cp "$(subst -install,,$@)" $(dir);)
@@ -18,18 +24,19 @@ FILES := $(shell for f in *; do test -f $$f && echo -n $$f " "; done)
 FILES := $(filter-out Makefile CVS %~, $(FILES))
 
 TARGETS := $(patsubst %,%-install,$(FILES))
-TARGETS := $(filter-out $(XXTARGETS), $(TARGETS))
+TARGETS := $(filter-out $(LOAD), $(TARGETS))
 
-all: install $(XXTARGETS)
+all: install load
 
 install: $(TARGETS)
+
+load: $(LOAD)
 
 $(TARGETS):
 	$(RULES)
 
-# overrule timestamp check
 .PHONY: $(TARGETS)
-.PHONY: $(XXTARGETS)
+.PHONY: $(LOAD)
 
 #############################################################
 #

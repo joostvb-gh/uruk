@@ -1,6 +1,6 @@
-$Id: README,v 1.2 2002-02-26 22:24:41 joostvb Exp $
+$Id: README,v 1.3 2002-02-27 16:53:27 joostvb Exp $
 
-caspar - run 'make install' from within a cvs tree
+caspar - run 'make install' from within a CVS tree
 
 - caspar? - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -8,12 +8,23 @@ caspar is named after Caspar the Friendly Ghost, since that's the title
 of the Daniel Johnston song I was listening to when deciding to package
 my homegrown scripts.
 
+Its useful in cases like this: all configuration files of some host are under
+version control, and, after commiting a change to CVS, you want to be able to
+easily install the new config file on the host.
+
+With caspar, all you have to do is specify the hostname in one place, and
+specify the name of the target directory in each CVS directory.
+
+After install, /usr/local/share/doc/caspar will be created and filled, a file
+/usr/local/share/caspar/mk/caspar.mk will get installed, and a symlink
+/usr/local/include/caspar/mk/caspar.mk will get created.
+
 - usage - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Within a CVS tree, create a file include/install.mk, with contents like e.g.
 
  SUH = root@some.host.somewhere
- include caspar/mk/install.mk
+ include caspar/mk/caspar.mk
 
 .  Within each other directory of the CVS tree which holds files, create a
 Makefile, which looks like e.g.
@@ -23,6 +34,78 @@ Makefile, which looks like e.g.
 
 .
 
+The variables one can set in a calling Makefile are: SUH (ssh-reachable
+user@host), SDIR (directory on ssh reachable host), CDIR (directory to which we
+can copy(1), instead of scp), LOAD (targets which should depend on the `load'
+target).
+
+From within the CVS tree, one can call:
+
+  make <filename>-install
+  make install
+  make load
+  make
+
+Some examples:
+
+Using CDIR and LOAD
+
+ username/etc/Makefile is
+
+  CDIR = $(HOME)/etc
+  LOAD = crontab-load
+  include ../include/install.mk
+
+  crontab-load:
+        crontab $(CDIR)/crontab
+
+ while ../include/install.mk is just
+
+  include caspar/mk/caspar.mk
+
+Using SDIR and LOAD:
+
+ etc/Makefile is
+
+  SDIR = /etc
+  LOAD = aliases-load
+  include ../include/install.mk
+
+  aliases-load:
+      ssh $(SUH) "cd /etc; postalias aliases; postfix reload"
+
+ while ../include/install.mk is
+
+  SUH = root@some.host.somewhere
+  include caspar/mk/caspar.mk
+
+
+- gimme some of the stuff you've been smoking!  - - - - - - - - - - - - - - - -
+
+"What've you been smoking!?  A completely fullblown autoconfiscated tarball for
+just a eeny weeny Makefile snippet!?  I'm not gonna install that!  No way!"
+
+Well, there's no accounting for taste...  If I use the same files on many
+hosts, I prefer to install them from a tarball.  If you were asked to work with
+a caspar-ized CVS tree, you can work around installing the tarball by doing
+something like this:
+
+ cd ~/cvs/kingkong/include
+
+kingkong is a CVS module, holding files which should get installed on host
+kingkong.
+
+Create a file install.mk there, which looks like
+
+ SUH = admin@kingkong.example.org
+ include caspar/mk/caspar.mk
+
+Now, do
+
+ echo caspar >> .cvsignore
+ mkdir -p caspar/mk
+
+and copy caspar.mk to the just created directory caspar/mk/ .
 
 
 - some thoughts - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -37,14 +120,14 @@ something like '/usr/share/mk' in its default include path.
 We work around this by creating the following symlink when being 'make
 install'-ed:
 
- /usr/local/include/caspar/mk/install.mk ->
-                                    /usr/local/share/caspar/mk/install.mk
+ /usr/local/include/caspar/mk/caspar.mk ->
+                                    /usr/local/share/caspar/mk/caspar.mk
 
 .
 
 The enables us to be able to call
 
- include caspar/mk/install.mk
+ include caspar/mk/caspar.mk
 
 from a Makefile.
 

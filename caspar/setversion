@@ -1,1 +1,1 @@
-echo "`date +%Y%m%d`" >VERSION
+echo "`date +%Y%m%d`" > VERSION

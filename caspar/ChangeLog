@@ -1,3 +1,13 @@
+caspar (20020227)
+
+  * README: finally got to document it.
+  * mk/caspar.mk: renamed `DIR' to `SDIR'; renamed XXTARGETS to LOAD: more
+     descriptive name.
+  * mk/caspar.mk: used to be called mk/install.mk.
+  * mk/caspar.mk: added target `load'.  added variable CDIR.
+
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Wed, 27 Feb 2002 08:40:38 +0100
+
 caspar (20020226)
 
   * mk/install.mk: we conditionally set SRDIRS using SUH and DIR: now Makefiles

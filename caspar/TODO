@@ -1,4 +1,4 @@
-$Id: TODO,v 1.6 2002-02-27 16:53:27 joostvb Exp $
+$Id: TODO,v 1.7 2002-02-27 16:55:41 joostvb Exp $
 
 this whole thing could probably better use rsync
 
@@ -9,37 +9,4 @@ convert README to pod or dbx
 add big example
 
 add support for sudo, rsync, install(1)
-
-- personal stuff - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/home/joostvb/cvs-gelfand/include/install.mk
-and
-/home/joostvb/cvs-gelfand/mdcc.cx/djb/include/install.mk
-
-almost implement our idea.
-
-nice example:
-
-cvs-gelfand/mdcc.cx/djb/tinydns/int/Makefile
-cvs-gelfand/gelfand/vanbaal/etc/Makefile
-cvs-gelfand/yosida/etc/qmail/control/Makefile
-cvs-topaz/topaz/etc/Makefile
-
-check:
-
-cvs-hibou/hibou/etc/Makefile
-
-get rid of:
-
-/home/joostvb/cvs-hibou/hibou/include/install.mk
-
-todo:
-
-joostvb@gelfand:~/cvs-gelfand/mdcc.cx/www/joostvb/verlanglijst
-and other joostvb/ stuff
-
-cvs-gelfand/mdcc.cx/djb : one big mess...
-~/cv...z/topaz/etc/tinydns/root : mess...
-cvs-gelfand/gelfand/vanbaal/public_html a mess
-
 

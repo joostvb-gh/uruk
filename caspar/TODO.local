@@ -1,0 +1,22 @@
+$Id: TODO.local,v 1.1 2002-02-27 16:55:41 joostvb Exp $
+
+- personal stuff - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+check:
+
+cvs-hibou/hibou/etc/Makefile
+
+get rid of:
+
+/home/joostvb/cvs-hibou/hibou/include/install.mk
+
+todo:
+
+joostvb@gelfand:~/cvs-gelfand/mdcc.cx/www/joostvb/verlanglijst
+and other joostvb/ stuff
+
+cvs-gelfand/mdcc.cx/djb : one big mess...
+~/cv...z/topaz/etc/tinydns/root : mess...
+cvs-gelfand/gelfand/vanbaal/public_html a mess
+
+
