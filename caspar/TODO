@@ -1,4 +1,4 @@
-$Id: TODO,v 1.29 2004-08-15 20:28:33 joostvb Exp $
+$Id: TODO,v 1.30 2005-02-16 09:15:31 joostvb Exp $
 
 -- docbook stuff --
 
@@ -49,6 +49,10 @@ license should be printed, see rh vs deb doc
 
   .
 
-- Document registration at directory.fsf.org
+-- other stuff ---
 
+- Document registration at directory.fsf.org
+- Add link to http://lists.debian.org/debian-devel/2005/02/msg00495.html ,
+  mention the non-caspar make-your-/etc-a-working-copy hack.  Could be
+  on webpage.
 
