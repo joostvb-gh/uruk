@@ -1,12 +1,21 @@
+caspar (  )
+
+  * README: added requirements section.
+  * mk/docbook.mk: added: useful for generating PostScript and stuff from LaTeX
+     or DocBook XML sources.
+
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx> XXX
+
 caspar (20020227)
 
   * README: finally got to document it.
   * mk/caspar.mk: renamed `DIR' to `SDIR'; renamed XXTARGETS to LOAD: more
      descriptive name.
   * mk/caspar.mk: used to be called mk/install.mk.
-  * mk/caspar.mk: added target `load'.  added variable CDIR.
+  * mk/caspar.mk: added target `load'.  added variable CDIR.  got rid of
+     obsolete comments.
 
- -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Wed, 27 Feb 2002 08:40:38 +0100
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Wed, 27 Feb 2002 18:06:16 +0100
 
 caspar (20020226)
 
