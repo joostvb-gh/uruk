@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.4 2003-03-31 20:03:40 joostvb Exp $
+# $Id: docbook.mk,v 1.5 2003-07-16 09:43:10 joostvb Exp $
 
 #
 #  Usage:
@@ -15,7 +15,7 @@
 #
 #   $ make clean
 #
-# other targets: filename.ps, filename.html, filename.printbig,
+# other targets: filename.ps, filename.pdf, filename.html, filename.printbig,
 #   filename.dvi, ...
 #
 # variables you might like to set in your Makefile: XMLDCL, HTML_DSL, PRINT_DSL
@@ -50,7 +50,7 @@ JADE ?= jade
 # of 10 errors: we don't wanna have our console spammed by errormessages
 JADE_MAXERRORS ?= 10
 
-# PDFJADETEX = /usr/bin/pdfjadetex
+PDFJADETEX ?= pdfjadetex
 JADETEX ?= jadetex
 LATEX ?= latex
 
@@ -79,12 +79,15 @@ XML2JTEX_RULE  = $(JADE) -E$(JADE_MAXERRORS) -t tex -d $(PRINT_DSL) \
 
 # run twice for toc processing
 JTEX2DVI_RULE  = $(JADETEX) $< && $(JADETEX) $< && $(JADETEX) $< && \
-  rm -f $*.log $*.out $*.aux
+  rm $*.log $*.out $*.aux
+
+JTEX2PDF_RULE = $(PDFJADETEX) $< && $(PDFJADETEX) $< && \
+  rm $*.out $*.log $*.aux
 
 TEX2DVI_RULE   = $(LATEX) $<
 
 DVI2PS_RULE    = $(DVIPS) -f < $< > $@
-PS2PDF_RULE    = $(PS2PDF) $< $@
+# PS2PDF_RULE    = $(PS2PDF) $< $@
 PS22PS_RULE    = $(PSNUP) -2 $< $@
 
 # create nice default target
@@ -110,8 +113,12 @@ all: $(outputs)
 %.ps: %.dvi
 	$(DVI2PS_RULE)
 
-%.pdf: %.ps
-	$(PS2PDF_RULE)
+# pdfjadetex makes the fonts look better
+# %.pdf: %.ps
+#	$(PS2PDF_RULE)
+
+%.pdf: %.jtex
+	$(JTEX2PDF_RULE)
 
 %.html: %.sgml
 	$(SGML2HTML_RULE)
