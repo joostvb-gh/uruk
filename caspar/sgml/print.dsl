@@ -2,7 +2,7 @@
 <!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL>
 ]>
 
-<!-- $Id: print.dsl,v 1.1 2002-03-13 12:09:56 joostvb Exp $ -->
+<!-- $Id: print.dsl,v 1.2 2004-03-11 16:15:25 joostvb Exp $ -->
 
 <style-sheet>
   <style-specification use="docbook">
@@ -19,7 +19,17 @@
 (define %generate-article-titlepage% #t)
 (define %generate-article-toc-on-titlepage% #t)
 
-;; we want it to look like default LaTeX
+
+;; (define %visual-acuity% "normal")      ;; General measure of document text
+                                          ;; size. See dbparam.dsl. bf-size maps
+                                          ;; visual-acuity to normal-param text
+                                          ;; size. normal is 10pt, presbyopic is
+                                          ;; 12pt.
+
+
+
+;; we want it to look like default LaTeX.  One could also choose
+;; "Times New Roman" here.
 (define %title-font-family% "Computer Modern")
                                           ;; The font family used in titles
 (define %body-font-family% "Computer Modern")
