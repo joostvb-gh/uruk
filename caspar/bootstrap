@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.6 2003-12-17 22:09:09 joostvb Exp $
+# $Id: bootstrap,v 1.7 2004-05-31 13:46:47 joostvb Exp $
 
 # bootstrap - script to bootstrap the distribution rolling engine
 
@@ -8,7 +8,7 @@
 # under the terms of the GNU GPL.  See the file COPYING.
 
 # usage:
-# ./bootstrap && ./configure && make distcheck
+# ./bootstrap && ./configure && fakeroot make distcheck
 #
 # this yields a tarball which one can install doing
 #
