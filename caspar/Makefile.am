@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.9 2003-08-09 14:53:52 joostvb Exp $
+## $Id: Makefile.am,v 1.10 2004-07-21 14:32:05 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -15,6 +15,9 @@ VERSION.m4 VERSION stamp.year stamp.month stamp.day: ChangeLog
 	./setversion
 
 CONFIGURE_DEPENDENCIES = VERSION.m4
+
+## Hook `dist-bzip2' to `dist'.
+AUTOMAKE_OPTIONS = dist-bzip2 check-news
 
 ## used in make dist[check]
 VERSION = @PACKAGE_VERSION@
