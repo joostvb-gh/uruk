@@ -1,4 +1,4 @@
-$Id: TODO,v 1.17 2003-07-24 10:06:31 joostvb Exp $
+$Id: TODO,v 1.18 2004-02-26 11:35:24 joostvb Exp $
 
 -- docbook stuff --
 
@@ -8,21 +8,37 @@ license should be printed, see rh vs deb doc
 
 --- mk stuff ---
 
-this whole thing could probably better use rsync, or, alternatively, all caspar
-functionality should be incorporated in cfengine, a tool for configuring and
-maintaining network machines.
+- this whole thing could probably better use rsync, or, alternatively, all
+  caspar functionality should be incorporated in cfengine, a tool for
+  configuring and maintaining network machines.
 
-add support for sudo, rsync, install(1)
+- add support for sudo, rsync, install(1)
 
-a lot of features are still undocumented
+- a lot of features are still undocumented
 
-convert README to pod or dbx
+- convert README to pod or dbx
 
-add big example
+- add big example
 
-The function $(subst -install,,$@) in caspar.mk breaks when filename itself
+- The function $(subst -install,,$@) in caspar.mk breaks when filename itself
 has the substring -install.  We might have to use sed here, and strip only
 a _trailing_ '-install' from the maketarget.
 
-Add a better hook for the -load target: more generic please.
+- Add a better hook for the -load target: more generic please.
+
+- The scp invocation is inefficient:
+
+ % make -n README.txt-install beheersnet.txt-install
+ scp "README.txt" pong:/data/www/doc/doc/;
+ scp "beheersnet.txt" pong:/data/www/doc/doc/;
+
+Should be:
+
+ scp "README.txt" "beheersnet.txt" pong:/data/www/doc/doc/;
+
+$@ vs $? might be helpful.
+
+- contact adress for bugrapports missing in docs.
+
+
 
