@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.7 2003-12-15 06:08:31 joostvb Exp $
+\: $Id: caspar.azm,v 1.8 2004-05-31 13:04:59 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -51,15 +51,15 @@ Caspar offers Makefile snippets for common tasks, like installing stuff you've
 got under version control, or typesetting LaTeX, DocBook XML and DocBook SGML
 documents.
   \par
-The typesetting functionality is delivered by \"docbook.mk" and \"pod.mk".  This is
-documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
+The typesetting functionality is delivered by \"docbook.mk" and \"pod.mk".
+This is documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
   \par
 The installing-stuff-under-version-control functionality is delivered by
 \"caspar.mk".  (That's what the rest of the manual will talk about.)  It
 enables one to run 'make install' from within a CVS (or Subversion or any other
 version control system, for that matter) tree.
   \par
-Its useful in cases like this: all configuration files of some host are under
+It is useful in cases like this: all configuration files of some host are under
 version control, and, after commiting a change to CVS, you want to be able to
 easily install the new configuration file on the host.
   \par
@@ -69,10 +69,11 @@ specify the name of the target directory in each CVS directory.
 
 \sec{usage}{USAGE}
 
-Within a CVS tree, create a file \it{include/install.mk}, with contents like e.g.
+Within a CVS tree, create a file \it{include/install.mk}, with contents like
+e.g.
 
 \verbatim{
- SUH = root@some.host.somewhere
+ csp_SUH = root@some.host.somewhere
  include caspar/mk/caspar.mk
 }
 
@@ -80,17 +81,10 @@ Within a CVS tree, create a file \it{include/install.mk}, with contents like e.g
 Makefile, which looks like e.g.
 
 \verbatim{
- DIR = /some/dir/ectory/
+ csp_DIR = /some/dir/ectory/
  include ../../include/install.mk
 }
 .
-
-The variables one can set in a calling Makefile are: \tt{SCP} (scp binary, just
-"scp" by default), \tt{SCPFLAGS} (extra arguments to pass to scp invocation,
-e.g. '\tt{-i .ssh/id_rsa-root}', \tt{SUH} (ssh-reachable user@host), \tt{SDIR}
-(directory on ssh reachable host, with trailing /), \tt{CDIR} (directory to
-which we can copy(1), instead of scp), \tt{LOAD} (targets which should depend
-on the `load' target).
 
 From within the CVS tree, one can call:
 
@@ -101,19 +95,50 @@ From within the CVS tree, one can call:
   make
 }
 
+\sec{variables}{VARIABLES}
+
+The variables one can set in a calling Makefile are:
+
+\begin{itemize}{
+  {contiguous}{1}
+  {w1}{7}
+}
+  \item{\tt{csp_CP}}       cp binary, just "cp" by default
+  \item{\tt{csp_CPFLAGS}}  extra arguments to pass to cp invocation, none by
+    default
+  \item{\tt{csp_SCP}}      scp binary, just "scp" by default
+  \item{\tt{csp_SCPFLAGS}} extra arguments to pass to scp invocation, e.g.
+    '\tt{-i .ssh/id_rsa-root}'
+  \item{\tt{csp_SUH}}      ssh-reachable user@host (Secure User at Host)
+  \item{\tt{csp_SUHS}}     space separated list of ssh-reachable user@host
+    items (Secure User at HostS)
+  \item{\tt{csp_CPDIR}}    directory to which we can cp(1), instead of scp
+    (CoPy DIRectory)
+  \item{\tt{csp_CPDIRS}}   space separated list of directories to which we can
+    copy (CoPy DIRectorieS)
+  \item{\tt{csp_SCPDIR}}   directory on ssh reachable host, with trailing /
+    (Secure CoPy DIRectory)
+  \item{\tt{csp_SUHDIRS}}  this is the list \tt{$(csp_SUH):$(dir)} for each
+    \tt{$(dir)} in \tt{$(csp_SUHS)} (or where \tt{dir = $(csp_SCPDIR)}, in
+    case \tt{csp_SUHS} is not set).
+    However, more items can get added to this list on the fly.
+  \item{\tt{csp_LOAD}}     targets which should depend on the `load' target.
+\end{itemize}
+
+
 \sec{examples}{EXAMPLES}
 
 Some examples:
 
-Using \tt{CDIR} and \tt{LOAD}: \it{username/etc/Makefile} is
+Using \tt{csp_CPDIR} and \tt{csp_LOAD}: \it{username/etc/Makefile} is
 
 \verbatim{
-  CDIR = $(HOME)/etc/
-  LOAD = crontab-load
+  csp_CPDIR = $(HOME)/etc/
+  csp_LOAD = crontab-load
   include ../include/install.mk
 
   crontab-load:
-        crontab $(CDIR)/crontab
+        crontab $(csp_CPDIR)/crontab
 }
 
 while \it{../include/install.mk} is just
@@ -123,28 +148,28 @@ while \it{../include/install.mk} is just
 }
 .
 
-Using \tt{SDIR} and \tt{LOAD}: \it{etc/Makefile} is
+Using \tt{csp_SCPDIR} and \tt{csp_LOAD}: \it{etc/Makefile} is
 
 \verbatim{
-  SDIR = /etc/
-  LOAD = aliases-load
+  csp_SCPDIR = /etc/
+  csp_LOAD = aliases-load
   include ../include/install.mk
 
   aliases-load:
-      ssh $(SUH) "cd /etc; postalias aliases; postfix reload"
+      ssh $(csp_SUH) "cd /etc; postalias aliases; postfix reload"
 }
 
 while \it{../include/install.mk} is
 
 \verbatim{
-  SUH = root@some.host.somewhere
+  csp_SUH = root@some.host.somewhere
   include caspar/mk/caspar.mk
 }
 
 More advanced tricks: supply e.g.
 
 \verbatim{
- SUHS = root@localhost root@some.host.somewhere
+ csp_SUHS = root@localhost root@some.host.somewhere
 }
 
 in \"install.mk", to install on multiple hosts.
@@ -152,7 +177,7 @@ in \"install.mk", to install on multiple hosts.
 Run
 
 \verbatim{
- SUH=joe@otherhost make filename-install
+ csp_SUH=joe@otherhost make filename-install
 }
 
 to install filename as \tt{joe@otherhost}, instead of the default as given in
@@ -173,8 +198,8 @@ do
 
 \sec{environment}{ENVIRONMENT}
 
-For \"caspar.mk": \tt{CDIR}, \tt{CP}, \tt{CPFLAGS}, \tt{LOAD}, \tt{SCP},
-\tt{SCPFLAGS}, \tt{SUH}, \tt{SUHS}.
+For \"caspar.mk": \tt{csp_CPDIR}, \tt{csp_CP}, \tt{csp_CPFLAGS}, \tt{csp_LOAD},
+\tt{csp_SCP}, \tt{csp_SCPFLAGS}, \tt{csp_SUH}, \tt{csp_SUHS}.
 
 \sec{bugs}{BUGS}
 
