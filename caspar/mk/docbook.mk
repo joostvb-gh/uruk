@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.3 2002-03-31 10:03:04 joostvb Exp $
+# $Id: docbook.mk,v 1.4 2003-03-31 20:03:40 joostvb Exp $
 
 #
 #  Usage:
@@ -86,6 +86,13 @@ TEX2DVI_RULE   = $(LATEX) $<
 DVI2PS_RULE    = $(DVIPS) -f < $< > $@
 PS2PDF_RULE    = $(PS2PDF) $< $@
 PS22PS_RULE    = $(PSNUP) -2 $< $@
+
+# create nice default target
+sources := $(basename $(wildcard *.dbx *.tex *.sgml))
+outputs := $(addsuffix .ps,$(sources)) $(addsuffix .pdf,$(sources)) \
+  $(addsuffix .html,$(sources)) $(addsuffix  .txt,$(sources))
+
+all: $(outputs)
 
 %.jtex: %.sgml
 	$(SGML2JTEX_RULE)
