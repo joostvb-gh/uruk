@@ -1,4 +1,4 @@
-$Id: TODO,v 1.21 2004-05-31 13:46:19 joostvb Exp $
+$Id: TODO,v 1.22 2004-07-03 04:08:00 joostvb Exp $
 
 -- docbook stuff --
 
@@ -24,7 +24,11 @@ license should be printed, see rh vs deb doc
   has the substring -install.  We might have to use sed here, and strip only
   a _trailing_ '-install' from the maketarget.
 
-- Add a better hook for the -load target: more generic please.
+- load stuff:
+  - Add a better hook for the -load target: more generic please.
+  - Create a ``load-recursive'' target.
+  - supply daemons.mk: csp_SSHDEBIANLOAD csp_URUKREDHATLOAD , etc, to use
+    in load targets
 
 - The scp invocation is inefficient:
 
@@ -50,6 +54,4 @@ license should be printed, see rh vs deb doc
   However, I don't think this is possible with current (3.80-6) Make.  The
   built-in implicit rules are compiled in make binary, so adding the caspar
   ones to some magic directory will likely not work.
-
-- Create a ``load-recursive'' target.
 
