@@ -1,9 +1,17 @@
-caspar (   )
+caspar (20030718)
+
+  * bugfix release
+  * mk/docbook.mk: run pdfjadetex 3 times: fixes toc. rm -f intermediate
+    files: no sure wether they will get created. added license referal
+
+
+caspar (20030716)
 
   * TODO: I'd like a TOC in HTML output from DocBook. (Even while we're doing
     nochunks mode)
   * README: added link to http://www.miwie.org/docbkmake/ , which seems
     similar to docbook.mk in it's goals
+  * mk/docbook.mk: use pdfjadetex for generating pdf: fonts look better
 
  --
 
