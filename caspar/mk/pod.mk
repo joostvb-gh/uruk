@@ -13,7 +13,7 @@
 # or (at your option) any later version.  You should have received a copy of
 # the GNU General Public License along with this file (see COPYING).
 
-# $Id: pod.mk,v 1.3 2003-11-04 16:38:12 joostvb Exp $
+# $Id: pod.mk,v 1.4 2004-09-09 11:25:11 joostvb Exp $
 
 PODS := $(shell for f in *.pod; do test -f $$f && echo -n $$f " "; done)
 BASES       := $(basename $(PODS))
@@ -24,7 +24,7 @@ TROFFS      := $(patsubst %,%.7,$(BASES))
 PSS         := $(patsubst %,%.ps,$(BASES))
 PDFS        := $(patsubst %,%.pdf,$(BASES))
 
-all: $(TXTS) $(HTMLS) $(TROFFS) $(PSS) $(PDFS)
+typeset: $(TXTS) $(HTMLS) $(TROFFS) $(PSS) $(PDFS)
 
 %.7: %.pod
 	pod2man $< $@

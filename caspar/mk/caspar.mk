@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.12 2004-09-09 11:20:16 joostvb Exp $
+# $Id: caspar.mk,v 1.13 2004-09-09 11:25:11 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -71,6 +71,9 @@ csp_SCPFLAGS ?=
 
 csp_CPDIRS   ?= $(csp_CPDIR)
 
+csp_TABOOFILES ?= Makefile CVS %~ \#%\# pod2htmd.tmp pod2htmi.tmp
+csp_TABOODIRS  ?= CVS
+
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);)
 
@@ -78,13 +81,13 @@ RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -instal
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
 
 # exclude editor backup files and other stuff
-FILES   := $(filter-out Makefile CVS %~ \#%\# pod2htmd.tmp pod2htmi.tmp, $(FILES))
+FILES   := $(filter-out $(csp_TABOOFILES), $(FILES))
 
 TARGETS := $(patsubst %,%-install,$(FILES))
 TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
 
 DIRS    := $(shell for d in *; do test -d $$d && echo $$d; done)
-DIRS    := $(filter-out CVS, $(DIRS))
+DIRS    := $(filter-out $(csp_TABOODIRS), $(DIRS))
 
 define do-recursive
 for subdir in $(DIRS); \
