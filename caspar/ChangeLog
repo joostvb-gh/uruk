@@ -1,11 +1,11 @@
-caspar ( )
+caspar (20020331)
 
   * mk/docbook.mk: jade will quit after max 10 errors, not 200: we will be
     able to see the very first error without having to scroll back.  Added
     support for DocBook SGML sourcefiles.  Added some more comments on usage.
   * README: updated.
 
- -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Sun, 31 Mar 2002 12:04:31 +0200
 
 caspar (20020313)
 
