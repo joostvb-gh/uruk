@@ -37,6 +37,10 @@ enable_save_counters=true
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
+# @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ can overrule
+# enable_uruk_check, enable_ipv6, enable_autosave, enable_save_counters and PATH
+test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PACKAGE_TARNAME@
+
 initd="$0"
 
 initd_abort () {
