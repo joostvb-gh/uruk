@@ -1,4 +1,4 @@
-$Id: README,v 1.7 2002-09-11 15:51:30 joostvb Exp $
+$Id: README,v 1.8 2002-11-22 08:13:56 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -97,6 +97,13 @@ Using SDIR and LOAD:
   SUH = root@some.host.somewhere
   include caspar/mk/caspar.mk
 
+
+When you don't want to ssh to root@some.host.somewhere directly, you could
+do
+
+ sudo rsync -az /path/to/your/config_archive /etc
+
+.
 
 - gimme some of the stuff you've been smoking!  - - - - - - - - - - - - - - - -
 

@@ -2,6 +2,7 @@ caspar ( )
 
   * TODO: Found bug in caspar.mk.
   * README: Added note about cvs-conf.  Added pointer to Debian package.
+    Added note about usage with rsync.
 
  -- 
 
