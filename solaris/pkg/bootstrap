@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# $Id: bootstrap,v 1.1 2005-03-09 15:47:47 joostvb Exp $
+# $Source: /cvsroot/caspar/caspar/solaris/pkg/bootstrap,v $
+
+# bootstrap - bootstrap the solaris package building process from CVS
+
+if test -f $HOME/.csbs/bootstrap
+then
+    sh $HOME/.csbs/bootstrap
+else
+    echo >&2 "To create a caspar Solaris package from CVS, you need CSBS's bootstrap in ~/.csbs/ .  Get CSBS from http://mdcc.cx/csbs ."
+    exit 1
+fi
+

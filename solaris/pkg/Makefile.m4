@@ -1,15 +1,14 @@
 divert(-1)
 changequote([, ])
-# $Id: Makefile.m4,v 1.2 2005-03-06 17:23:04 joostvb Exp $
+# $Id: Makefile.m4,v 1.3 2005-03-09 15:47:46 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/solaris/pkg/Makefile.m4,v $
 
-# Process this file with csbs's ( http://mdcc.cx/csbs ) bootstrap to
-# generate a solaris/Makefile.
+# Process this file with ./bootstrap to generate a solaris/Makefile.
 
 define([CSBS_VENDORTAG], [UVT])
 define([CSBS_TARNAME], [caspar])
 define([CSBS_UPVERSION], [20050302])
-define([CSBS_PKGVERSION], [1])
+define([CSBS_PKGVERSION], [2])
 # max 6 chars: some old solaris-en break otherwise
 define([CSBS_SHORTTARNAME], [caspar])
 
