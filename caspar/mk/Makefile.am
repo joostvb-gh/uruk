@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.9 2004-07-21 15:34:02 joostvb Exp $
+## $Id: Makefile.am,v 1.10 2005-03-01 20:53:22 joostvb Exp $
 
 PACKAGE = @PACKAGE_TARNAME@
 
@@ -9,12 +9,12 @@ EXTRA_DIST = caspar.mk docbook.mk pod.mk
 
 install-data-hook:
 	$(mkdir_p) $(DESTDIR)$(includedir)/$(PACKAGE)/mk
-	$(LN_S) $(mkdir)/caspar.mk $(DESTDIR)$(includedir)/$(PACKAGE)/mk/caspar.mk
-	$(LN_S) $(mkdir)/docbook.mk $(DESTDIR)$(includedir)/$(PACKAGE)/mk/docbook.mk
-	$(LN_S) $(mkdir)/pod.mk $(DESTDIR)$(includedir)/$(PACKAGE)/mk/pod.mk
+	for f in $(mk_DATA); do \
+          $(LN_S) $(mkdir)/$$f $(DESTDIR)$(includedir)/$(PACKAGE)/mk/$$f; \
+        done
 
 uninstall-hook:
-	rm $(DESTDIR)$(includedir)/$(PACKAGE)/mk/caspar.mk
-	rm $(DESTDIR)$(includedir)/$(PACKAGE)/mk/docbook.mk
-	rm $(DESTDIR)$(includedir)/$(PACKAGE)/mk/pod.mk
+	for f in $(mk_DATA); do \
+          rm $(DESTDIR)$(includedir)/$$f; \
+        done
 
