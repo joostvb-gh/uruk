@@ -1,3 +1,13 @@
+caspar (20050302-1) unstable; urgency=low
+
+  * New upstream (missed 20050301).
+  * Beware!  This version is incompatible with caspar <= 20030825.  See
+    upstream NEWS file for details.
+  * debian/rules: use DESTDIR (what was I smoking?).  Get rid of now-unneeded
+    symlink fix.
+
+ -- Joost van Baal <joostvb@debian.org>  Wed, 02 Mar 2005 10:26:15 +0100
+
 caspar (20040721-1) unstable; urgency=low
 
   * New upstream.

@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-# $Id: rules,v 1.7 2004-07-21 16:59:34 joostvb Exp $
+# $Id: rules,v 1.8 2005-03-02 09:31:23 joostvb Exp $
 
 # Based upon sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
@@ -46,7 +46,7 @@ build-stamp:  config.status
 clean:
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp 
+	rm -f build-stamp
 
 	# commands to clean up after the build process.
 	-$(MAKE) distclean
@@ -65,18 +65,7 @@ install: build
 	dh_installdirs
 
 	# commands to install the package into debian/caspar.
-	$(MAKE) install prefix=$(CURDIR)/debian/caspar/usr
-
-	# fix symlinks (they now point to absolute files in build system)
-	# this is due to an upstream bug, probably fixed in upstream
-	# mk/Makefile.am 1.9, caspar > 20040721.
-	rm $(CURDIR)/debian/caspar/usr/include/caspar/mk/*.mk
-	ln -s ../../../share/caspar/mk/caspar.mk \
-          $(CURDIR)/debian/caspar/usr/include/caspar/mk/caspar.mk
-	ln -s ../../../share/caspar/mk/docbook.mk \
-          $(CURDIR)/debian/caspar/usr/include/caspar/mk/docbook.mk
-	ln -s ../../../share/caspar/mk/pod.mk \
-          $(CURDIR)/debian/caspar/usr/include/caspar/mk/pod.mk
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/caspar
 
 	# clean up unneeded docs
 	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/caspar*.azm
