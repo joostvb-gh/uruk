@@ -1,4 +1,4 @@
-$Id: TODO,v 1.25 2004-07-21 14:56:20 joostvb Exp $
+$Id: TODO,v 1.26 2004-07-21 15:34:02 joostvb Exp $
 
 -- docbook stuff --
 
@@ -41,3 +41,10 @@ license should be printed, see rh vs deb doc
 
 - Document the install-recursive target.
 
+- Check mk/Makefile.am: check if it now does the right thing when using
+  DESTDIR in package build scripts.  (In version 20040721, it still created
+  symlinks like
+
+   ./usr/include/caspar/mk/caspar.mk -> /usr/local/src/debian/caspar/20040721/caspar-20040721/debian/caspar/usr/share/caspar/mk/caspar.mk
+
+  .
