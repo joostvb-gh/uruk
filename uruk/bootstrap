@@ -18,12 +18,12 @@
 # requirements:
 #  GNU autoconf, from e.g. ftp.gnu.org:/pub/gnu/autoconf/autoconf-2.50.tar.gz
 #  GNU automake, from e.g. ftp.cygnus.com:/pub/tromey
-#  cvs2cl, from http://www.red-bean.com/cvs2cl/ (see Makefile.am)
+#  GNU arch, from e.g. http://regexps.srparish.net/www/
 
 set -x
 
 test -f ChangeLog || {
-    touch ChangeLog && cvs2cl --prune
+    tla changelog > ChangeLog
 }
 
 test -f VERSION.m4 || ./setversion
