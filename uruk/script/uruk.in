@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# $Id: uruk.in,v 1.24 2004/09/10 07:00:15 joostvb Exp $
+# this file maintained using arch at http://arch.gna.org/uruk/
 
 # Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
 # Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/

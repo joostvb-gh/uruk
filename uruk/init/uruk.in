@@ -16,7 +16,7 @@
 # Based upon /etc/init.d/iptables as shipped with the Debian iptables
 # package by Laurence J. Lane
 
-# $Id: uruk.in,v 1.12 2004/02/16 13:29:50 joostvb Exp $
+# this file maintained using arch at http://arch.gna.org/uruk/
 
 set -e
 

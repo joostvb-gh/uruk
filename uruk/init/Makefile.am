@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.3 2004/02/10 17:08:38 joostvb Exp $
+## this file maintained using arch at http://arch.gna.org/uruk/
 
 ## Copyright (C) 2003, 2004 Joost van Baal
 

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.7 2004/02/10 17:08:39 joostvb Exp $
+## this file maintained using arch at http://arch.gna.org/uruk/
 
 sbin_SCRIPTS = uruk
 
