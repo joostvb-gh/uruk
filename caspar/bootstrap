@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.5 2003-08-09 13:41:24 joostvb Exp $
+# $Id: bootstrap,v 1.6 2003-12-17 22:09:09 joostvb Exp $
 
 # bootstrap - script to bootstrap the distribution rolling engine
 
@@ -20,7 +20,7 @@
 
 # requirements:
 #  GNU autoconf, from e.g. ftp.gnu.org:/pub/gnu/autoconf/autoconf-2.50.tar.gz
-#  GNU automake, from e.g. ftp.cygnus.com:/pub/tromey
+#  GNU automake, from e.g. ftp.cygnus.com:/pub/tromey/
 #  cvs2cl, from http://www.red-bean.com/cvs2cl/ (see Makefile.am)
 
 set -x
