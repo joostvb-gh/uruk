@@ -1,13 +1,10 @@
-$Id: TODO,v 1.16 2003-07-24 09:50:00 joostvb Exp $
+$Id: TODO,v 1.17 2003-07-24 10:06:31 joostvb Exp $
 
 -- docbook stuff --
 
 get toc printed in html mode. even while using nochunks mode.
 
 license should be printed, see rh vs deb doc
-
-generating pdf from LaTeX is broken now.  Make it call "pdflatex *.tex";
-this generated *.pdf.
 
 --- mk stuff ---
 
