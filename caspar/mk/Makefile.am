@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.10 2005-03-01 20:53:22 joostvb Exp $
+## $Id: Makefile.am,v 1.11 2005-03-01 20:56:08 joostvb Exp $
 
 PACKAGE = @PACKAGE_TARNAME@
 
@@ -15,6 +15,6 @@ install-data-hook:
 
 uninstall-hook:
 	for f in $(mk_DATA); do \
-          rm $(DESTDIR)$(includedir)/$$f; \
+          rm $(DESTDIR)$(includedir)/$(PACKAGE)/mk/$$f; \
         done
 
