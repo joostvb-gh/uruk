@@ -10,10 +10,20 @@ Architecture: all
 Depends: make
 Suggests: jade, jadetex, tetex-bin, w3m, gs-common, psutils, lpr, gv | postscript-viewer, man-db, docbook-dsssl, caspar-doc
 Description: Makefile snippets for common tasks
- Caspar offers Makefile snippets for tasks like installing system
- configuration files you maintain using CVS, or typesetting LaTeX, DocBook
- XML and DocBook SGML documents.  You'll need at least jade, jadetex and
- tetex-bin from the suggested packages if you want to do any typesetting.
+ Caspar offers Makefile snippets for tasks like installing files you maintain
+ using a version control system, or typesetting documents in some markup
+ language.
+ .
+ If you need to maintain and distribute lots of files (system configuration
+ files for Unix hosts using a version control system, e.g.), caspar is likely
+ useful for you.
+ .
+ If you write documents in a markup language like LaTeX, DocBook
+ XML, DocBook SGML or POD, and want to automate the typesetting, you'll
+ like caspar.  Of course, you'll need at least jade, jadetex and tetex-bin
+ from the suggested packages if you want to do any DocBook typesetting.
+ .
+ It's not strictly necessary to know how to write Makefiles when using caspar.
  .
  Homepage: http://mdcc.cx/caspar/
 
@@ -23,7 +33,7 @@ Section: doc
 Suggests: caspar
 Conflicts: caspar << 20040531-1
 Description: documentation for caspar
- Caspar offers Makefile snippets for common tasks, like installing system
- configuration files or typesetting documentation.
+ Caspar offers Makefile snippets for common tasks, like installing (system
+ configuration) files or typesetting documentation.
  .
  This is the caspar manpages and other documentation.

@@ -1,3 +1,11 @@
+caspar (20040721-1) unstable; urgency=low
+
+  * New upstream.
+  * First upload to Debian archive (closes: #260675).
+  * control: revamped extended description.
+
+ -- Joost van Baal <joostvb@debian.org>  Wed, 21 Jul 2004 17:24:28 +0200
+
 caspar (20040531-1) unstable; urgency=low
 
   * New upstream.  Beware: change in user interface, see

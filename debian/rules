@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-# $Id: rules,v 1.6 2004-05-31 21:01:59 joostvb Exp $
+# $Id: rules,v 1.7 2004-07-21 16:59:34 joostvb Exp $
 
 # Based upon sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
@@ -68,6 +68,8 @@ install: build
 	$(MAKE) install prefix=$(CURDIR)/debian/caspar/usr
 
 	# fix symlinks (they now point to absolute files in build system)
+	# this is due to an upstream bug, probably fixed in upstream
+	# mk/Makefile.am 1.9, caspar > 20040721.
 	rm $(CURDIR)/debian/caspar/usr/include/caspar/mk/*.mk
 	ln -s ../../../share/caspar/mk/caspar.mk \
           $(CURDIR)/debian/caspar/usr/include/caspar/mk/caspar.mk
