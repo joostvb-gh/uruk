@@ -1,0 +1,144 @@
+\: vim:syntax=tex
+\: $Id: caspar-typesetting.azm,v 1.1 2003-08-09 14:30:26 joostvb Exp $
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
+
+\def{"man::synstyle"}{long}
+\def{"man::defstyle"}{long}
+\import{man.zmm}
+
+\import{./include.zmm}
+
+\set{"man::name"}{caspar-typesetting}
+\set{"man::html-title"}{caspar-typesetting}
+
+\"man::preamble"
+\${html}{\"man::maketoc"}
+
+\def{"docbook.mk"}{\it{docbook.mk}}
+\def{"pod.mk"}{\it{pod.mk}}
+
+\sec{name}{NAME}
+  \par
+  caspar-typesetting - Makefile snippets for common typesetting tasks
+
+\sec{synopsis}{SYNOPSIS}
+
+In a Makefile, do
+
+\verbatim{
+  include caspar/mk/docbook.mk
+}
+
+or
+
+\verbatim{
+  include caspar/mk/pod.mk
+}
+.
+
+\sec{description}{DESCRIPTION}
+
+The caspar \"docbook.mk" and \"pod.mk" files are Makefile snippets for common
+typesetting tasks, like typesetting LaTeX (see \publref{latex}),
+DocBook XML, DocBook SGML (see \publref{dbx})  and POD (see \publref{pod})
+(Perl's Plain Old Documentation format) documents.  You just have to type
+\tt{make}, instead of stuff like \tt{jade -t tex -d caspar/print.dsl
+/usr/share/sgml/declaration/xml.dcl foobar.dbx}.
+
+\sec{usage}{USAGE}
+
+In a directory where you maintain .dbx (Docbook XML) or .tex (LaTeX) files, do
+
+\verbatim{
+   $ echo include caspar/mk/docbook.mk > Makefile
+
+   $ vi karenina.dbx
+   $ make karenina.view
+   $ make karenina.print
+
+   $ vi svejk.tex
+   $ make svejk.view
+   $ make svejk.print
+
+   $ make
+   $ make clean
+}
+
+Other targets: \tt{filename.ps}, \tt{filename.pdf}, \tt{filename.2ps}, \tt{filename.html},
+\tt{filename.printbig}, \tt{filename.dvi}.
+  \par
+Variables you might like to set in your Makefile: \tt{XMLDCL}, \tt{HTML_DSL},
+\tt{PRINT_DSL}.
+  \par
+In a directory where you maintain .pod files, do
+
+\verbatim{
+   $ echo include caspar/mk/pod.mk > Makefile
+   $ vi lire.pod
+   $ perldoc ./lire.pod
+   $ make lire.pdf
+   $ make
+   $ less lire.overstrike-txt
+   $ make clean
+}
+
+Other targets: \tt{filename.ps}, \tt{filename.html}, \tt{filename.txt}, ...
+(Similar to the ones supplied by \"docbook.mk".
+
+\sec{examples}{EXAMPLES}
+
+Some examples:  Overriding the caspar-supplied DSSSL files:  Create your own
+print.dls and html.dsl, in the same directory as your Docbook XML files.  Your
+Makefile should read:
+
+\verbatim{
+ PRINT_DSL = print.dsl
+ HTML_DSL = html.dsl
+ include caspar/mk/docbook.mk
+}
+
+Overriding the standard html-to-text convertor:
+
+\verbatim{
+ $ W3M=lynx make svejk.txt
+}
+
+.
+
+\sec{files}{FILES}
+
+\par
+ \it{caspar/mk/docbook.mk}, \it{caspar/mk/pod.mk}
+
+\sec{environment}{ENVIRONMENT}
+
+For \"docbook.mk": files: \tt{XMLDCL}, \tt{HTML_DSL}, \tt{PRINT_DSL};
+utilities: \tt{JADE}, \tt{PDFJADETEX}, \tt{PDFLATEX \tt{JADETEX}, \tt{LATEX},
+\tt{W3M}, \tt{DVIPS}, \tt{PSNUP}, \tt{LPR}, \tt{GV}; settings:
+\tt{JADE_MAXERRORS}.  These variables can get adjusted in Makefile, as well as
+in the shell environment.
+  \par
+\"pod.mk" Uses no enviroment variables.
+
+\sec{author}{AUTHOR}
+
+\"man::author"
+
+\sec{seealso}{SEE ALSO}
+
+caspar(7)
+ \par
+\publanch{pod}
+perlpod(1) about the Plain Old Documentation format
+ \par
+\publanch{dbx}
+\it{DocBook: The Definitive Guide} on \httpref{http://docbook.org/},
+ \par
+\publanch{latex}
+The LaTeX Project Homepage on \httpref{http://www.latex-project.org/}.
+ \par
+Some comments on advanced usage are in the files \"docbook.mk" and \"pod.mk" itself.
+
+\"man::postamble"
+
+
