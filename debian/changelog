@@ -1,8 +1,10 @@
-caspar (20030802-1) unstable; urgency=low
+caspar (20030809-1) unstable; urgency=low
 
   * New upstream.
+  * doc-base.caspar, doc-base.caspar-typesetting: added, upstream
+    documentation is now more fancy.
 
- -- Joost van Baal <joostvb-caspar-deb-15@mdcc.cx>  Sat, 02 Aug 2003 23:49:32 +0200
+ -- Joost van Baal <joostvb-caspar-deb-15@mdcc.cx>  Sat, 09 Aug 2003 17:24:28 +0200
 
 caspar (20030718-1) unstable; urgency=low
 

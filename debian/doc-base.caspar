@@ -1,0 +1,16 @@
+Document: caspar
+Title: caspar - Makefile snippets for common tasks
+Author: Joost van Baal
+Abstract: The manual describes the installing-stuff-under-version-control functionality delivered by caspar's caspar.mk
+Section: Apps/Devel
+
+Format: postscript
+Files: /usr/share/doc/caspar/caspar.ps.gz
+
+Format: HTML
+Index: /usr/share/doc/caspar/caspar.html
+Files: /usr/share/doc/caspar/caspar.html
+
+Format: text
+Files: /usr/share/doc/caspar/caspar.txt.gz
+

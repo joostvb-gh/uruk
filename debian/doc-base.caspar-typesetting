@@ -1,0 +1,16 @@
+Document: caspar-typesetting
+Title: caspar-typesetting - Makefile snippets for common typesetting tasks
+Author: Joost van Baal
+Abstract: This manual describes the typesetting functionality (LaTeX, Docbook XML and POD) delivered by caspar's docbook.mk and pod.mk files
+Section: Apps/Text
+
+Format: postscript
+Files: /usr/share/doc/caspar/caspar-typesetting.ps.gz
+
+Format: HTML
+Index: /usr/share/doc/caspar/caspar-typesetting.html
+Files: /usr/share/doc/caspar/caspar-typesetting.html
+
+Format: text
+Files: /usr/share/doc/caspar/caspar-typesetting.txt.gz
+
