@@ -8,5 +8,6 @@ aclocal.m4
 caspar-*.tar.gz
 caspar-*.tar.gz.asc
 configure
+stamp.*
 Makefile
 Makefile.in

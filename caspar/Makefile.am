@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.7 2003-08-09 13:41:24 joostvb Exp $
+## $Id: Makefile.am,v 1.8 2003-08-09 14:31:05 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -27,5 +27,5 @@ doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS
 
 ## Only files from the current directory or from subdirectory which
 ## don't have their own Makefile.am should be listed here.
-EXTRA_DIST = bootstrap setversion VERSION.m4
+EXTRA_DIST = bootstrap setversion VERSION.m4 VERSION
 
