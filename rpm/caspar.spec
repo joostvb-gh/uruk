@@ -1,4 +1,4 @@
-# $Id: caspar.spec,v 1.1 2004-01-05 12:46:30 joostvb Exp $
+# $Id: caspar.spec,v 1.2 2004-01-23 15:26:07 joostvb Exp $
 
 # Copyright (C) 2004 Tilburg University http://www.uvt.nl/
 #
@@ -71,5 +71,5 @@ rm -rf %{buildroot}
 %changelog
 * Mon Jan 05 2004 Joost van Baal <joostvb@uvt.nl>
 - initial specfile.  LaTeX and DocBook based typesetting probably broken
-  in this package.
+  in this package.  Very untested.
 
