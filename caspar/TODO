@@ -1,4 +1,4 @@
-$Id: TODO,v 1.2 2002-02-26 17:54:28 joostvb Exp $
+$Id: TODO,v 1.3 2002-02-26 19:13:14 joostvb Exp $
 
 /home/joostvb/cvs-gelfand/include/install.mk
 and
@@ -6,22 +6,26 @@ and
 
 almost implement our idea.
 
-
-
 get rid of:
 
-/home/joostvb/cvs-gelfand/gelfand/include/install.mk
-/home/joostvb/cvs-gelfand/include/install.mk
-/home/joostvb/cvs-gelfand/mdcc.cx/djb/include/install.mk
-/home/joostvb/cvs-gelfand/mdcc.cx/include/install.mk
-/home/joostvb/cvs-gelfand/mdcc.cx/www/include/install.mk
-/home/joostvb/cvs-gelfand/yosida/include/install.mk
+X /home/joostvb/cvs-gelfand/gelfand/include/install.mk
+X /home/joostvb/cvs-gelfand/include/install.mk
+X /home/joostvb/cvs-gelfand/mdcc.cx/djb/include/install.mk
+X /home/joostvb/cvs-gelfand/mdcc.cx/include/install.mk
+X /home/joostvb/cvs-gelfand/mdcc.cx/www/include/install.mk
+X /home/joostvb/cvs-gelfand/yosida/include/install.mk
 /home/joostvb/cvs-hibou/hibou/include/install.mk
 /home/joostvb/cvs-topaz/topaz/include/install.mk
 
-adjust:
+done:
 
-joostvb@gelfand:~/cvs-gelfand/gelfand% rgrep install.mk
+joostvb@gelfand:~/cvs-gelfand/gelfand
+joostvb@gelfand:~/cvs-gelfand/mdcc.cx/
+
+todo:
+
+cvs-gelfand/mdcc.cx/djb : one big mess...
+
 
 
 this whole thing could probably better use rsync
