@@ -1,4 +1,4 @@
-$Id: README,v 1.16 2004-07-11 16:39:50 joostvb Exp $
+$Id: README,v 1.17 2004-07-21 14:55:40 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -22,7 +22,12 @@ For the typesetting functionality, one needs Jade, LaTeX, W3M, Ghostscript, and
 Docbook DSSSL.
 
 A Debian caspar package (for e.g. Debian GNU/Linux) is available from `deb
-http://mdcc.cx/debian local contrib'.
+http://mdcc.cx/debian local contrib'.  It is expected to get distributed with
+the Debian system real soon now; once that's true,
+http://packages.debian.org/caspar should show something interesting.
+
+If you're interested in a caspar RPM, the spec file on
+http://mdcc.cx/pub/caspar/caspar.spec might be helpful.
 
 
 - gimme some of the stuff you've been smoking!  - - - - - - - - - - - - - - - -
@@ -43,7 +48,7 @@ kingkong.
 
 Create a file install.mk there, which looks like
 
- SUH = admin@kingkong.example.org
+ csp_SUH = admin@kingkong.example.org
  include caspar/mk/caspar.mk
 
 Now, do
@@ -64,7 +69,7 @@ CVS commits messages are being emailed, using syncmail.  Contact the author if
 you'd like to get these messages in your mailbox.
 
 
-- some thoughts on include path - - - - - - - - - - - - - - - - - - - - - - - - -
+- some thoughts on include path - - - - - - - - - - - - - - - - - - - - - - - -
 
 The default GNU make include path is .:PREFIX/include:/usr/gnu/include:
 /usr/local/include:/usr/include .  See make.info, node `Include'.  FHS however
@@ -88,7 +93,7 @@ This enables us to be able to call
 from a Makefile.
 
 
-- some thoughts on implicit rules - - - - - - - - - - - - - - - - - - - - - - - - -
+- some thoughts on implicit rules - - - - - - - - - - - - - - - - - - - - - - -
 
 Add our implicit pattern rules to Make built-in implicit rules?
 
