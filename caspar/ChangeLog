@@ -2,6 +2,8 @@ caspar (   )
 
   * TODO: I'd like a TOC in HTML output from DocBook. (Even while we're doing
     nochunks mode)
+  * README: added link to http://www.miwie.org/docbkmake/ , which seems
+    similar to docbook.mk in it's goals
 
  --
 

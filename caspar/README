@@ -1,4 +1,4 @@
-$Id: README,v 1.10 2003-02-12 11:35:43 joostvb Exp $
+$Id: README,v 1.11 2003-05-17 11:18:33 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -170,10 +170,13 @@ The enables us to be able to call
 
 from a Makefile.
 
-- more info - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- more info, similar packages - - - - - - - - - - - - - - - - - - - - - - - - -
 
 The caspar homepage is at http://mdcc.cx/pub/caspar/ .
 
 The `cvs-conf' package probably offers about the same functionality.
+
+docbookmk, by Michael Wiedmann ( http://www.miwie.org/docbkmake/ ) offers
+probably a superset of Caspar's docbook.mk functionality.
 
 
