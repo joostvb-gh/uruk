@@ -1,7 +1,7 @@
-# $Id: caspar.mk,v 1.9 2004-03-11 16:17:47 joostvb Exp $
+# $Id: caspar.mk,v 1.10 2004-05-30 14:44:08 joostvb Exp $
 
-# Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
-# 
+# Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
+#
 # This file is part of caspar.  Caspar is free software; you can redistribute
 # it and/or modify it under the terms of the GNU General Public License as
 # published by the Free Software Foundation; either version 2 of the License,
@@ -11,30 +11,68 @@
 # see the caspar README file (probably installed in
 # /usr/local/share/doc/caspar/README) for usage
 
+# backwards compatibility: old var names
+ifdef CDIR
+csp_CDIR     ?= $(CDIR)
+endif
+ifdef CP
+csp_CP       ?= $(CP)
+endif
+ifdef CPDIRS
+csp_CPDIRS   ?= $(CPDIRS)
+endif
+ifdef CPFLAGS
+csp_CPFLAGS  ?= $(CPFLAGS)
+endif
+ifdef LOAD
+csp_LOAD     ?= $(LOAD)
+endif
+ifdef SCP
+csp_SCP      ?= $(SCP)
+endif
+ifdef SCPFLAGS
+csp_SCPFLAGS ?= $(SCPFLAGS)
+endif
 ifdef SDIR
-
+csp_SDIR     ?= $(SDIR)
+endif
+ifdef SRDIRS
+csp_SRDIRS   ?= $(SRDIRS)
+endif
+ifdef SUH
+csp_SUH      ?= $(SUH)
+endif
 ifdef SUHS
-SRDIRS ?= $(patsubst %,%:$(SDIR),$(SUHS))
+csp_SUHS     ?= $(SUHS)
 endif
 
-ifdef SUH
-SRDIRS ?= $(SUH):$(SDIR)
+
+#####
+
+ifdef csp_SDIR
+
+ifdef csp_SUHS
+csp_SRDIRS ?= $(patsubst %,%:$(csp_SDIR),$(csp_SUHS))
+endif
+
+ifdef csp_SUH
+csp_SRDIRS ?= $(csp_SUH):$(csp_SDIR)
 endif
 
 endif
 
 # possibility to choose own cp(1) and scp(1)
-CP ?= cp
-SCP ?= scp
+csp_CP ?= cp
+csp_SCP ?= scp
 
 # extra arguments for cp(1) and scp(1)
-CPFLAGS ?=
-SCPFLAGS ?=
+csp_CPFLAGS ?=
+csp_SCPFLAGS ?=
 
-CPDIRS ?= $(CDIR)
+csp_CPDIRS ?= $(csp_CDIR)
 
-RULES = $(foreach dir,$(SRDIRS),$(SCP) $(SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
-	$(foreach dir,$(CPDIRS),$(CP) $(CPFLAGS) "$(subst -install,,$@)" $(dir);)
+RULES = $(foreach dir,$(csp_SRDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
+	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);)
 
 # files, not directories
 FILES := $(shell for f in *; do test -f $$f && echo $$f; done)
@@ -43,7 +81,7 @@ FILES := $(shell for f in *; do test -f $$f && echo $$f; done)
 FILES := $(filter-out Makefile CVS %~ \#%\#, $(FILES))
 
 TARGETS := $(patsubst %,%-install,$(FILES))
-TARGETS := $(filter-out $(LOAD), $(TARGETS))
+TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
 
 DIRS := $(shell for d in *; do test -d $$d && echo $$d; done)
 DIRS := $(filter-out CVS, $(DIRS))
@@ -59,7 +97,7 @@ all: install load
 
 install: $(TARGETS)
 
-load: $(LOAD)
+load: $(csp_LOAD)
 
 $(TARGETS):
 	$(RULES)
@@ -68,5 +106,5 @@ install-recursive: install
 	$(do-recursive)
 
 .PHONY: $(TARGETS)
-.PHONY: $(LOAD)
+.PHONY: $(csp_LOAD)
 
