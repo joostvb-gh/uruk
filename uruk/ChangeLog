@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2004-11-17 20:40:25 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-10
+
+    Summary:
+      uruk now honors environment variables URUK_IPTABLES and URUK_CONFIG
+    Revision:
+      uruk--mainline--0.1--patch-10
+
+    
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/script/uruk.in
+
+
 2004-11-02 20:16:04 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-9
 
     Summary:

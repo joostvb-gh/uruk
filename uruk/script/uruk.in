@@ -19,12 +19,12 @@
 # PREROUTING - - - - - - - - FORWARD  - - - - - - - - POSTROUTING
 #
 
-iptables=/sbin/iptables
+iptables=${URUK_IPTABLES:-/sbin/iptables}
 test -x $iptables || exit 0
 
 etcdir="@SYSCONF_PATH@/@PACKAGE_TARNAME@"
 
-config=$etcdir/rc
+config=${URUK_CONFIG:-${etcdir}/rc}
 
 test -r $config || {
     echo >&2 "No readable rc file $config found.  Please create one." && exit 1

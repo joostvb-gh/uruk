@@ -14,4 +14,11 @@ Check documentation: uruk-rc manpage needs more stuff.
 Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
 can use the same rc file format.
 
+( GNU Arch peeksheet:
+
+joostvb@nagy:~/arch/uruk/uruk/script% tla commit
+joostvb@nagy:~/arch/uruk/uruk/script% tla archive-mirror joostvb-arch@mdcc.cx--2004-uruk
+
+)
+
 # this file maintained using arch at http://arch.gna.org/uruk/
