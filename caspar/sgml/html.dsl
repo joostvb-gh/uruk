@@ -2,7 +2,7 @@
 <!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN" CDATA DSSSL>
 ]>
 
-<!-- $Id: html.dsl,v 1.1 2002-03-13 12:09:56 joostvb Exp $ -->
+<!-- $Id: html.dsl,v 1.2 2003-04-27 10:20:29 joostvb Exp $ -->
 
 <style-sheet>
 <style-specification use="docbook">
@@ -16,6 +16,12 @@
 (define rootchunk #t)                   ;; Do make a 'root' page
 (define %use-id-as-filename% #t)        ;; Use book id as filename
 (define %html-ext% ".html")             ;; give it a proper html extension
+
+;; %generate-set-toc% and %generate-book-toc% are #t in dbparam.dsl
+;; %generate-book-titlepage% and %generate-article-titlepage% are #t
+;; %generate-part-toc-on-titlepage% is #t
+
+;; it seems toc is generated, but not printed in nochunks mode
 
 </style-specification-body>
 </style-specification>

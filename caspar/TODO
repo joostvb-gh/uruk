@@ -1,8 +1,8 @@
-$Id: TODO,v 1.13 2003-02-03 15:22:41 joostvb Exp $
+$Id: TODO,v 1.14 2003-04-27 10:20:29 joostvb Exp $
 
 -- docbook stuff --
 
-nothing, as of now.
+get toc printed in html mode. even while using nochunks mode.
 
 --- mk stuff ---
 
