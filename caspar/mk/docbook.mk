@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.9 2003-08-09 14:24:17 joostvb Exp $
+# $Id: docbook.mk,v 1.10 2004-03-11 16:18:15 joostvb Exp $
 
 # Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #  
@@ -71,6 +71,8 @@ JTEX2DVI_RULE  = $(JADETEX) $< && $(JADETEX) $< && $(JADETEX) $< && \
 JTEX2PDF_RULE = $(PDFJADETEX) $< && $(PDFJADETEX) $< && $(PDFJADETEX) $< && \
   rm -f $*.log $*.out $*.aux
 
+# One of the GNU Make implicit rules makes N.dvi from N.tex with the
+# command $(TEX)
 TEX2DVI_RULE   = $(LATEX) $< && $(LATEX) $< && $(LATEX) $< && \
   rm -f $*.log $*.aux
 
