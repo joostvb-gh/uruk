@@ -1,4 +1,4 @@
-$Id: TODO,v 1.28 2004-08-07 13:11:54 joostvb Exp $
+$Id: TODO,v 1.29 2004-08-15 20:28:33 joostvb Exp $
 
 -- docbook stuff --
 
@@ -49,28 +49,6 @@ license should be printed, see rh vs deb doc
 
   .
 
-- register caspar at directory.fsf.org
-
-Caspar offers Makefile snippets for tasks like installing files you maintain using a version control system, or typesetting documents in some markup language.
-
-If you need to maintain and distribute lots of files (system configuration files for Unix hosts using a version control system, e.g.), caspar is likely useful for you.
-
-If you write documents in a markup language like LaTeX, DocBook XML, DocBook SGML or POD, caspar can automate the typesetting for you.
-
-System Administration
-
-
-http://mdcc.cx/pub/caspar/caspar-latest.tar.gz
-
-
-bug-directory@gnu.org.
-
-http://directory.fsf.org/newform.html
-
-submit:
-
-The requested URL /cgi-bin/dir-entry.cgi/ was not found on this server.
-
-have complained...
+- Document registration at directory.fsf.org
 
 
