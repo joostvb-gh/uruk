@@ -1,5 +1,5 @@
 # Based upon autoscan(1) output.
-# $Id: configure.ac,v 1.20 2004/03/11 09:02:36 joostvb Exp $
+# this file maintained using arch at http://arch.gna.org/uruk/
 # Process this file with autoconf to produce a configure script.
 
 # This script is free software; you can distribute it and/or modify it

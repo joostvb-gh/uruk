@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.4 2004/03/11 09:02:36 joostvb Exp $
+# this file maintained using arch at http://arch.gna.org/uruk/
 
 # bootstrap - script to bootstrap the distribution rolling engine
 
