@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.5 2003-08-02 21:41:12 joostvb Exp $
+# $Id: caspar.mk,v 1.6 2003-08-06 11:07:05 joostvb Exp $
 
 # Copyright (C) 2002 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 # 
@@ -30,7 +30,9 @@ RULES = $(foreach dir,$(SRDIRS),scp "$(subst -install,,$@)" $(dir);) \
 
 # files, not directories
 FILES := $(shell for f in *; do test -f $$f && echo $$f; done)
-FILES := $(filter-out Makefile CVS %~, $(FILES))
+
+# exclude editor backup files and other stuff
+FILES := $(filter-out Makefile CVS %~ \#%\#, $(FILES))
 
 TARGETS := $(patsubst %,%-install,$(FILES))
 TARGETS := $(filter-out $(LOAD), $(TARGETS))
