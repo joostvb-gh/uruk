@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.14 2005-02-23 09:29:07 joostvb Exp $
+# $Id: caspar.mk,v 1.15 2005-02-23 09:36:14 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -72,10 +72,10 @@ csp_SCPFLAGS ?=
 csp_CPDIRS   ?= $(csp_CPDIR)
 
 csp_TABOOFILES_DEFAULT ?= Makefile CVS %~ \#%\# pod2htmd.tmp pod2htmi.tmp
-csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_EXCLUDE), $(csp_TABOOFILES_DEFAULT)) $(csp_TABOOFILES_INCLUDE)
+csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_SKIP), $(csp_TABOOFILES_DEFAULT)) $(csp_TABOOFILES_ADD)
 
 csp_TABOODIRS_DEFAULT ?= CVS
-csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_EXCLUDE), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_INCLUDE)
+csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);)

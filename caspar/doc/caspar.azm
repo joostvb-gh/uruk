@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.11 2004-09-09 11:38:16 joostvb Exp $
+\: $Id: caspar.azm,v 1.12 2005-02-23 09:36:10 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -125,8 +125,15 @@ The variables one can set in a calling Makefile are:
   \item{\tt{csp_LOAD}}     targets which should depend on the `load' target.
   \item{\tt{csp_TABOOFILES}} files which should never be installed.  set to
     \tt{Makefile CVS %~ \#%\# pod2htmd.tmp pod2htmi.tmp} by default.
+  \item{\tt{csp_TABOOFILES_ADD}} extra files which should never be installed;
+    added to list in \tt{csp_TABOOFILES}.
+  \item{\tt{csp_TABOOFILES_SKIP}} files which should be installed, even if
+    in initial \tt{csp_TABOOFILES} list.  Removed from \tt{csp_TABOOFILES}
+    list.
   \item{\tt{csp_TABOODIRS}}  directories to exclude in install-recursive target.
     set to CVS by default.
+  \item{\tt{csp_TABOODIRS_ADD}, \tt{csp_TABOODIRS_SKIP}}  see
+    \tt{csp_TABOOFILES} equivalents.
 \end{itemize}
 
 
