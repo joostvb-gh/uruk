@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar-typesetting.azm,v 1.1 2003-08-09 14:30:26 joostvb Exp $
+\: $Id: caspar-typesetting.azm,v 1.2 2003-08-09 14:53:18 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -39,11 +39,10 @@ or
 \sec{description}{DESCRIPTION}
 
 The caspar \"docbook.mk" and \"pod.mk" files are Makefile snippets for common
-typesetting tasks, like typesetting LaTeX (see \publref{latex}),
-DocBook XML, DocBook SGML (see \publref{dbx})  and POD (see \publref{pod})
-(Perl's Plain Old Documentation format) documents.  You just have to type
-\tt{make}, instead of stuff like \tt{jade -t tex -d caspar/print.dsl
-/usr/share/sgml/declaration/xml.dcl foobar.dbx}.
+typesetting tasks, like typesetting LaTeX (see \publref{latex}), DocBook XML,
+DocBook SGML (see \publref{dbx})  and POD (see \publref{pod}) documents.  You
+just have to type \tt{make}, instead of stuff like \tt{jade -t tex -d
+caspar/print.dsl /usr/share/sgml/declaration/xml.dcl foobar.dbx}.
 
 \sec{usage}{USAGE}
 
@@ -83,7 +82,7 @@ In a directory where you maintain .pod files, do
 }
 
 Other targets: \tt{filename.ps}, \tt{filename.html}, \tt{filename.txt}, ...
-(Similar to the ones supplied by \"docbook.mk".
+(Similar to the ones supplied by \"docbook.mk").
 
 \sec{examples}{EXAMPLES}
 
@@ -113,7 +112,7 @@ Overriding the standard html-to-text convertor:
 \sec{environment}{ENVIRONMENT}
 
 For \"docbook.mk": files: \tt{XMLDCL}, \tt{HTML_DSL}, \tt{PRINT_DSL};
-utilities: \tt{JADE}, \tt{PDFJADETEX}, \tt{PDFLATEX \tt{JADETEX}, \tt{LATEX},
+utilities: \tt{JADE}, \tt{PDFJADETEX}, \tt{PDFLATEX}, \tt{JADETEX}, \tt{LATEX},
 \tt{W3M}, \tt{DVIPS}, \tt{PSNUP}, \tt{LPR}, \tt{GV}; settings:
 \tt{JADE_MAXERRORS}.  These variables can get adjusted in Makefile, as well as
 in the shell environment.
@@ -126,10 +125,11 @@ in the shell environment.
 
 \sec{seealso}{SEE ALSO}
 
-caspar(7)
+\sibref{caspar}{caspar(7)}
+
  \par
 \publanch{pod}
-perlpod(1) about the Plain Old Documentation format
+perlpod(1) about Perl's Plain Old Documentation format
  \par
 \publanch{dbx}
 \it{DocBook: The Definitive Guide} on \httpref{http://docbook.org/},

@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.2 2003-08-09 14:24:17 joostvb Exp $
+\: $Id: caspar.azm,v 1.3 2003-08-09 14:53:18 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -52,7 +52,7 @@ got under version control, or typesetting LaTeX, DocBook XML and DocBook SGML
 documents.
   \par
 The typesetting functionality is delivered by \"docbook.mk" and \"pod.mk".  This is
-documented in caspar-typesetting(7).
+documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
   \par
 The installing-stuff-under-version-control functionality is delivered by
 \"caspar.mk".  (That's what the rest of the manual will talk about.)  It enables
@@ -189,7 +189,7 @@ my homegrown scripts.
 
 \sec{seealso}{SEE ALSO}
 
-caspar-typesetting(7)
+\sibref{caspar-typesetting}{caspar-typesetting(7)}
   \par
 The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
   \par
