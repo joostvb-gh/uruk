@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.8 2003-07-24 10:01:09 joostvb Exp $
+# $Id: docbook.mk,v 1.9 2003-08-09 14:24:17 joostvb Exp $
 
 # Copyright (C) 2002, 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #  
@@ -8,28 +8,7 @@
 # or (at your option) any later version.  You should have received a copy of
 # the GNU General Public License along with this file (see COPYING).
 
-#
-#  Usage:
-#
-#   $ echo 'include caspar/mk/docbook.mk' > Makefile
-#
-#   $ vi karenina.dbx
-#   $ make karenina.view
-#   $ make karenina.print
-#
-#   $ vi svejk.tex
-#   $ make svejk.view
-#   $ make svejk.print
-#
-#   $ make clean
-#
-# other targets: filename.ps, filename.pdf, filename.html, filename.printbig,
-#   filename.dvi, ...
-#
-# variables you might like to set in your Makefile: XMLDCL, HTML_DSL, PRINT_DSL
-#
-# read the source for more fancy stuff
-#
+# See caspar-typesetting(7) for usage information.
 
 # see also /usr/local/src/debian/maint-guide/maint-guide-1.0.2/Makefile
 # for a debiandoc-sgml example.

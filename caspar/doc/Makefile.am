@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.3 2003-08-09 13:41:24 joostvb Exp $
+## $Id: Makefile.am,v 1.4 2003-08-09 14:24:17 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -24,11 +24,12 @@ W3M = w3m
 
 docdir = $(datadir)/doc/$(PACKAGE_TARNAME)
 
-azms = caspar.azm
-typetargets = caspar.html caspar.ps caspar.txt
+azms = caspar.azm caspar-typesetting.azm
+typetargets = caspar.html caspar.ps caspar.txt caspar-typesetting.html \
+  caspar-typesetting.ps caspar-typesetting.txt
 
 doc_DATA = $(typetargets) $(azms) ChangeLog.2002
-man_MANS = caspar.7
+man_MANS = caspar.7 caspar-typesetting.7
 
 EXTRA_DIST = $(doc_DATA) $(man_MANS)
 

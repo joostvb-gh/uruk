@@ -1,6 +1,8 @@
 # pod.mk - typeset documentation from .pod files .  See perlpod(1) for
 # information on Perl's pod, Plain Old Documention .
 #
+# See caspar-typesetting(7) for usage info.
+#
 # this Makefile snippet needs GNU Make
 
 # Copyright (C) 2003 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
@@ -11,22 +13,7 @@
 # or (at your option) any later version.  You should have received a copy of
 # the GNU General Public License along with this file (see COPYING).
 
-# $Id: pod.mk,v 1.1 2003-02-03 15:22:34 joostvb Exp $
-
-#  Usage:
-#
-#   $ echo 'include caspar/mk/pod.mk' > Makefile
-#
-#   $ vi lire.pod
-#   $ perldoc ./lire.pod
-#   $ make lire.pdf
-#   $ make
-#   $ less lire.overstrike-txt
-#   $ make clean
-#
-# other targets: filename.ps, filename.html, filename.txt, ...
-#
-# read the source for more fancy stuff
+# $Id: pod.mk,v 1.2 2003-08-09 14:24:17 joostvb Exp $
 
 PODS := $(shell for f in *.pod; do test -f $$f && echo -n $$f " "; done)
 BASES       := $(basename $(PODS))
