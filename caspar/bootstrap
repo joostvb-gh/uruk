@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.8 2004-07-21 11:21:47 joostvb Exp $
+# $Id: bootstrap,v 1.9 2004-07-21 14:36:05 joostvb Exp $
 
 # bootstrap - script to bootstrap the distribution rolling engine
 
@@ -8,9 +8,9 @@
 # under the terms of the GNU GPL.  See the file COPYING.
 
 # usage:
-# ./bootstrap && ./configure && fakeroot make distcheck
+# ./bootstrap && ./configure && make distcheck
 #
-# this yields a tarball which one can install doing
+# this yields a tarball (and a .tar.bz2 too) which one can install doing
 #
 # $ tar zxf PACKAGENAME-*.tar.gz
 # $ cd PACKAGENAME-*
@@ -19,9 +19,11 @@
 # # make install
 
 # requirements:
-#  GNU autoconf, from e.g. ftp.gnu.org:/pub/gnu/autoconf/autoconf-2.50.tar.gz
+#  GNU autoconf, from e.g. ftp.gnu.org:/pub/gnu/autoconf/
 #  GNU automake, from e.g. ftp.cygnus.com:/pub/tromey/
 #  cvs2cl, from http://www.red-bean.com/cvs2cl/ (see Makefile.am)
+
+# The build system is known to work with aclocal and automake 1.8.5.
 
 set -x
 
@@ -37,6 +39,6 @@ test -f VERSION.m4 || ./setversion
 # This bug makes aclocal whine, but is not effectively harming us.
 
 aclocal \
-    && automake --add-missing --verbose --gnu \
+    && automake --add-missing --gnu --verbose --warnings=all \
     && autoconf
 
