@@ -1,4 +1,4 @@
-$Id: TODO,v 1.31 2005-02-23 09:09:08 joostvb Exp $
+$Id: TODO,v 1.32 2005-02-28 21:46:17 joostvb Exp $
 
 -- docbook stuff --
 
@@ -40,9 +40,6 @@ license should be printed, see rh vs deb doc
   style.
 
 - Document the install-recursive target.
-
-- Give an example for csp_TABOODIRS usage, e.g. in case one wants to install
-  a Makefile.
 
 - Check mk/Makefile.am: check if it now does the right thing when using
   DESTDIR in package build scripts.  (In version 20040721, it still created

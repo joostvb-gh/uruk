@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.12 2005-02-23 09:36:10 joostvb Exp $
+\: $Id: caspar.azm,v 1.13 2005-02-28 21:46:21 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -81,7 +81,7 @@ e.g.
 Makefile, which looks like e.g.
 
 \verbatim{
- csp_DIR = /some/dir/ectory/
+ csp_SCPDIR = /some/dir/ectory/
  include ../../include/install.mk
 }
 .
@@ -141,6 +141,8 @@ The variables one can set in a calling Makefile are:
 
 Some examples:
 
+\par
+
 Using \tt{csp_CPDIR} and \tt{csp_LOAD}: \it{username/etc/Makefile} is
 
 \verbatim{
@@ -177,22 +179,42 @@ while \it{../include/install.mk} is
   include caspar/mk/caspar.mk
 }
 
+Using the csp_TABOOFILES_{ADD,SKIP} variables is handy if you want to
+\it{install} a \it{Makefile}, instead of using it:  Create \it{Makefile} just
+as you'd like to have it installed on the remote location.  Now, create
+\it{GNUmakefile} as e.g.
+
+\verbatim{
+  csp_TABOOFILES_SKIP = Makefile
+  csp_TABOOFILES_ADD = GNUmakefile
+
+  csp_SCPDIR = /etc/foobar/
+  csp_SUH = root@some.host.somewhere
+
+  load:
+        ssh $(csp_SUH) "make -C $(csp_SCPDIR)"
+}
+
+Now, \tt{make install} and \tt{make load} will do the right thing.
+
+\par
+
 More advanced tricks: supply e.g.
 
 \verbatim{
  csp_SUHS = root@localhost root@some.host.somewhere
 }
 
-in \"install.mk", to install on multiple hosts.
-
-Run
+in \it{install.mk}, to install on multiple hosts.  Run
 
 \verbatim{
  csp_SUH=joe@otherhost make filename-install
 }
 
 to install filename as \tt{joe@otherhost}, instead of the default as given in
-\"install.mk".
+\it{install.mk}.
+
+\par
 
 When you don't want to ssh to \tt{root@some.host.somewhere} directly, you could
 do
