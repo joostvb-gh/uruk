@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.4 2003-08-22 13:50:00 joostvb Exp $
+\: $Id: caspar.azm,v 1.5 2003-11-12 14:00:20 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -55,8 +55,9 @@ The typesetting functionality is delivered by \"docbook.mk" and \"pod.mk".  This
 documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
   \par
 The installing-stuff-under-version-control functionality is delivered by
-\"caspar.mk".  (That's what the rest of the manual will talk about.)  It enables
-one to run 'make install' from within a CVS tree.
+\"caspar.mk".  (That's what the rest of the manual will talk about.)  It
+enables one to run 'make install' from within a CVS (or Subversion or any other
+version control system, for that matter) tree.
   \par
 Its useful in cases like this: all configuration files of some host are under
 version control, and, after commiting a change to CVS, you want to be able to
@@ -79,7 +80,7 @@ Within a CVS tree, create a file \it{include/install.mk}, with contents like e.g
 Makefile, which looks like e.g.
 
 \verbatim{
- DIR = /some/dir/ectory
+ DIR = /some/dir/ectory/
  include ../../include/install.mk
 }
 .
@@ -87,9 +88,9 @@ Makefile, which looks like e.g.
 The variables one can set in a calling Makefile are: \tt{SCP} (scp binary, just
 "scp" by default), \tt{SCPFLAGS} (extra arguments to pass to scp invocation,
 e.g. '\tt{-i .ssh/id_rsa-root}', \tt{SUH} (ssh-reachable user@host), \tt{SDIR}
-(directory on ssh reachable host), \tt{CDIR} (directory to which we can
-copy(1), instead of scp), \tt{LOAD} (targets which should depend on the `load'
-target).
+(directory on ssh reachable host, with trailing /), \tt{CDIR} (directory to
+which we can copy(1), instead of scp), \tt{LOAD} (targets which should depend
+on the `load' target).
 
 From within the CVS tree, one can call:
 
@@ -107,7 +108,7 @@ Some examples:
 Using \tt{CDIR} and \tt{LOAD}: \it{username/etc/Makefile} is
 
 \verbatim{
-  CDIR = $(HOME)/etc
+  CDIR = $(HOME)/etc/
   LOAD = crontab-load
   include ../include/install.mk
 
@@ -125,7 +126,7 @@ while \it{../include/install.mk} is just
 Using \tt{SDIR} and \tt{LOAD}: \it{etc/Makefile} is
 
 \verbatim{
-  SDIR = /etc
+  SDIR = /etc/
   LOAD = aliases-load
   include ../include/install.mk
 
@@ -198,8 +199,8 @@ The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
   \par
 The `cvs-conf' package probably offers about the same functionality.
   \par
-docbookmk, by Michael Wiedmann ( \httpref{http://www.miwie.org/docbkmake/} ) offers
-probably a superset of Caspar's \"docbook.mk" functionality.
+docbookmk, by Michael Wiedmann ( \httpref{http://www.miwie.org/docbkmake/} )
+offers probably a superset of Caspar's \"docbook.mk" functionality.
 
 \"man::postamble"
 
