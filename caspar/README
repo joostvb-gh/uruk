@@ -1,13 +1,17 @@
-$Id: README,v 1.14 2003-12-17 22:02:17 joostvb Exp $
+$Id: README,v 1.15 2004-05-31 13:47:33 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
 See doc/caspar.txt for general information about this package, see INSTALL
 for generic installation instructions.
 
-After install, /usr/local/share/doc/caspar will be created and filled, a file
-/usr/local/share/caspar/mk/caspar.mk will get installed, and a symlink
-/usr/local/include/caspar/mk/caspar.mk will get created.
+The caspar homepage is at http://mdcc.cx/caspar/ .  Feedback (bugs, feature
+requests, etc.) can be sent to joostvb *dash* caspar *at* mdcc *dot* cx.
+
+After install, directories /usr/local/share/doc/caspar/,
+/usr/local/share/caspar/mk/ /usr/local/include/caspar/mk/
+/usr/local/share/sgml/caspar/ are created and populated, and manpages caspar(7)
+and caspar-typesetting(7) are installed.
 
 
 - requirements, packages  - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -55,6 +59,9 @@ and copy caspar.mk to the just created directory caspar/mk/ .
 Thanks to the volunteer admins of http://alioth.debian.org/ , anonymous CVS
 access to the caspar sources is available.  See
 http://alioth.debian.org/projects/caspar/ for more information.
+
+CVS commits messages are being emailed, using syncmail.  Contact the author if
+you'd like to get these messages in your mailbox.
 
 
 - some thoughts - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
