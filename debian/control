@@ -2,7 +2,7 @@ Source: caspar
 Section: devel
 Priority: optional
 Maintainer: Joost van Baal <joostvb-caspar-deb-15@mdcc.cx>
-Build-Depends-Indep: debhelper (>> 3.0.0)
+Build-Depends-Indep: debhelper (>= 4)
 Standards-Version: 3.5.8
 
 Package: caspar
