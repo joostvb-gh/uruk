@@ -1,11 +1,17 @@
 caspar ( )
 
+  * mk/caspar.mk: ommitting SDIR results in scp to get skipped
+
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx> ....
+
+caspar (20030203)
+
   * TODO: Found bug in caspar.mk.
   * README: Added note about cvs-conf.  Added pointer to Debian package.
     Added note about usage with rsync.
   * mk/pod.mk: Added: support for typesetting Perl's Plain Old Documentation.
 
- -- 
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Mon, 03 Feb 2003 16:23:09 +0100
 
 caspar (20020331)
 
