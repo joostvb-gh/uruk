@@ -1,5 +1,10 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version
+
+- The caspar CVS is moved to http://alioth.debian.org/.  Thanks
+  to the Alioth admins!
+
 caspar version 20030825
 
 - CPFLAGS and SCPFLAGS added to caspar.mk.  See caspar(7), as
@@ -14,4 +19,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.4 2003-08-25 11:30:05 joostvb Exp $
+# $Id: NEWS,v 1.5 2003-12-17 22:02:17 joostvb Exp $

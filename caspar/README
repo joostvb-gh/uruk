@@ -1,4 +1,4 @@
-$Id: README,v 1.13 2003-08-09 13:04:45 joostvb Exp $
+$Id: README,v 1.14 2003-12-17 22:02:17 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -48,6 +48,13 @@ Now, do
  mkdir -p caspar/mk
 
 and copy caspar.mk to the just created directory caspar/mk/ .
+
+
+- hacking on caspar - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Thanks to the volunteer admins of http://alioth.debian.org/ , anonymous CVS
+access to the caspar sources is available.  See
+http://alioth.debian.org/projects/caspar/ for more information.
 
 
 - some thoughts - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
