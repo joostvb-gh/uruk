@@ -1,4 +1,4 @@
-$Id: README,v 1.9 2003-02-03 15:22:41 joostvb Exp $
+$Id: README,v 1.10 2003-02-12 11:35:43 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -98,6 +98,19 @@ Using SDIR and LOAD:
   SUH = root@some.host.somewhere
   include caspar/mk/caspar.mk
 
+
+More advanced tricks: supply e.g.
+
+ SUHS = root@localhost root@some.host.somewhere
+
+in install.mk, to install on multiple hosts.
+
+Run
+
+ SUH=joe@otherhost make filename-install
+
+to install filename as joe@otherhost, instead of the default as given in
+install.mk.
 
 When you don't want to ssh to root@some.host.somewhere directly, you could
 do

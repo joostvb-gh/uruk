@@ -1,6 +1,9 @@
 caspar ( )
 
   * mk/caspar.mk: ommitting SDIR results in scp to get skipped
+  * mk/caspar.mk: added SUHS hack: now possible to install on multiple
+    hosts.
+  * README: documented new tricks.
 
  -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx> ....
 
