@@ -1,0 +1,23 @@
+$Id: README,v 1.1 2002-02-26 17:50:54 joostvb Exp $
+
+caspar - run 'make install' from within a cvs tree
+
+caspar is named after Caspar the Friendly Ghost, since that's the title
+of the Daniel Johnston song I was listening to when deciding to package
+my homegrown scripts.
+
+ some thoughts
+
+The default GNU make include path is .:PREFIX/include:/usr/gnu/include:
+/usr/local/include:/usr/include .  See make.info, node `Include'.  FHS however
+says: '/usr/include [...] is where all of the system's general-use include
+files for the C and C++ programming languages should be placed.'  This makes
+GNU make somewhat incompatible with the FHS :( .  GNU make could better use
+something like '/usr/share/mk' in its default include path.
+
+ include caspar/mk/foo.mk
+
+ /usr/local/include/caspar/mk/foo.mk -> ../../../share/caspar/mk/foo.mk
+
+includedir PREFIX/include
+datadir    PREFIX/share

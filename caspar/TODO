@@ -1,4 +1,4 @@
-$Id: TODO,v 1.1 2002-02-26 17:50:54 joostvb Exp $
+$Id: TODO,v 1.2 2002-02-26 17:54:28 joostvb Exp $
 
 /home/joostvb/cvs-gelfand/include/install.mk
 and
@@ -23,3 +23,5 @@ adjust:
 
 joostvb@gelfand:~/cvs-gelfand/gelfand% rgrep install.mk
 
+
+this whole thing could probably better use rsync
