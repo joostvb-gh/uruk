@@ -1,0 +1,532 @@
+2004-09-10 09:00  joostvb
+
+	* script/uruk.in: ouch, _lots_ of RFCs talk about ICMP...
+
+2004-09-10 08:39  joostvb
+
+	* script/uruk.in: comment about icmp types updated
+
+2004-08-18 09:02  joostvb
+
+	* README: bible quote about uruk added to trivia section
+
+2004-07-03 19:15  joostvb
+
+	* TODO.local: obsolete by now
+
+2004-06-25 10:34  joostvb
+
+	* NEWS: release 20040625: this is a prerelease
+
+2004-06-25 10:08  joostvb
+
+	* man/uruk-rc.azm: fix bug in example for multiple-ip-per-nic setup
+
+2004-03-18 17:40  joostvb
+
+	* man/uruk.azm: added note about default FORWARD policy. Thanks
+	  Wessel Dankers
+
+2004-03-11 10:02  joostvb
+
+	* bootstrap, configure.ac: use AC_DEFINE_DIR as shipped with
+	  autoconf-archive; do not fork
+
+2004-02-17 16:41  joostvb
+
+	* script/uruk.in: added comment: we should deal more sane with
+	  dropping private and thus probably spoofed packets in multiple-ip
+	  mode
+
+2004-02-17 15:42  joostvb
+
+	* script/uruk.in: revert back to dropping input packets with
+	  destination other than our IP
+
+2004-02-17 13:09  joostvb
+
+	* script/uruk.in: uruk failed in multiple IP-per-nic mode.
+	  workaround enabled: be less strict on possibly spoofed packets
+
+2004-02-17 11:10  joostvb
+
+	* man/uruk-rc.azm: added note on debugging as non-priviliged user
+
+2004-02-16 14:37  joostvb
+
+	* NEWS: release 20040216
+
+2004-02-16 14:29  joostvb
+
+	* init/uruk.in: uruk init script now has some chkconfig stuff in,
+	  to easy maintenance for people on systems using this init system
+	  (red hat, e.g.)
+
+2004-02-16 14:28  joostvb
+
+	* script/uruk.in: fixed some pretty fatal typos
+
+2004-02-13 17:03  joostvb
+
+	* NEWS: release 20040213
+
+2004-02-13 17:01  joostvb
+
+	* NEWS, TODO, man/uruk-rc.azm: documented multiple IP-per-nic setup
+
+2004-02-13 17:01  joostvb
+
+	* script/uruk.in: handle dropping broadcasts in multiple-ip-per nic
+	  setup
+
+2004-02-10 18:08  joostvb
+
+	* Makefile.am, configure.ac, doc/Makefile.am, doc/rc,
+	  init/Makefile.am, init/uruk.in, man/Makefile.am,
+	  man/include.zmm.in, man/uruk-rc.azm, man/uruk.azm,
+	  script/Makefile.am: update copyright statements: 2004
+
+2004-02-10 18:08  joostvb
+
+	* TODO: documented plan on how to get multiple-IP-per-interface
+	  support
+
+2004-02-10 18:01  joostvb
+
+	* script/uruk.in: first shot at allowing more than one IP assigned
+	  to one physical NIC
+
+2004-02-10 14:54  joostvb
+
+	* NEWS, TODO: release 20040210
+
+2004-02-10 14:53  joostvb
+
+	* NEWS, man/uruk.azm: warn users
+
+2004-02-10 14:45  joostvb
+
+	* init/uruk.in: be more helpful in case of errors
+
+2004-01-16 16:40  joostvb
+
+	* man/uruk.azm: updated manpage to reflect new icmp policy
+
+2004-01-16 16:33  joostvb
+
+	* script/uruk.in: allow more icmp stuff, as suggested by Wessel
+	  Dankers
+
+2004-01-06 13:43  joostvb
+
+	* TODO.local: moving to savannah
+
+2003-11-28 13:30  joostvb
+
+	* script/uruk.in: peek sheet added
+
+2003-11-13 12:46  joostvb
+
+	* script/uruk.in: shell code cleanup
+
+2003-11-11 13:40  joostvb
+
+	* NEWS: release 20031111
+
+2003-11-11 13:38  joostvb
+
+	* script/uruk.in: finetuning of dealing with packets with bogus
+	  dest/source addresses
+
+2003-11-11 13:12  joostvb
+
+	* man/Makefile.am: handle non-ascii stuff slightly better
+
+2003-11-11 12:02  joostvb
+
+	* README: notes on upgrading
+
+2003-11-11 11:58  joostvb
+
+	* TODO, script/uruk.in: no longer use block chain, replace rc_<n>
+	  by rc_<a>, dont keep state for lo traffic
+
+2003-11-11 11:56  joostvb
+
+	* man/: uruk-rc.azm, uruk.azm: no longer use block chain, replace
+	  rc_<n> by rc_<a>
+
+2003-10-27 17:20  joostvb
+
+	* README, man/uruk.azm: minor improvements
+
+2003-10-26 16:41  joostvb
+
+	* NEWS: release 20031026
+
+2003-10-26 16:28  joostvb
+
+	* init/uruk.in: fixed bug: /etc/init.d/uruk stop did NOT load
+	  inactive ruleset. now it does.
+
+2003-10-26 13:04  joostvb
+
+	* man/: uruk-rc.azm, uruk.azm: documented default policy, gave some
+	  hello-world-style rc examples
+
+2003-10-08 22:05  joostvb
+
+	* TODO, man/include.zmm.in: preparing centered header in manpage,
+	  awaiting zoem release
+
+2003-10-08 21:32  joostvb
+
+	* Makefile.am: fix small bug in version handling
+
+2003-10-08 20:43  joostvb
+
+	* NEWS: release 20031008
+
+2003-10-08 20:38  joostvb
+
+	* man/: include.zmm.in, uruk.azm: zoem syntax finetuning
+
+2003-10-08 20:35  joostvb
+
+	* man/uruk-rc.azm: added some notes about rc_<n> hooks
+
+2003-10-05 20:33  joostvb
+
+	* configure.ac, man/.cvsignore, man/uruk-rc.azm,
+	  man/uruk-rc.azm.in, man/uruk.azm, man/uruk.azm.in: move zoem
+	  defines to single file: cleanup
+
+2003-10-05 20:24  joostvb
+
+	* init/uruk.in: act sanely when var/lib/uruk directory not yet
+	  present on system
+
+2003-10-05 20:19  joostvb
+
+	* init/uruk.in: init script acts sanely when present on systems
+	  with borken uruk setup
+
+2003-10-05 18:31  joostvb
+
+	* TODO: another wishlist bug
+
+2003-10-05 16:03  joostvb
+
+	* TODO: wishlist bug added
+
+2003-10-05 16:03  joostvb
+
+	* doc/rc, script/uruk.in: added copyright statement
+
+2003-10-04 22:26  joostvb
+
+	* NEWS: release 20031004
+
+2003-10-04 22:24  joostvb
+
+	* TODO: found a BUG
+
+2003-10-04 22:24  joostvb
+
+	* doc/rc, man/uruk-rc.azm.in, man/uruk.azm.in: documentation
+	  updated and improved
+
+2003-10-04 22:20  joostvb
+
+	* README: more notes on zoem
+
+2003-10-04 18:06  joostvb
+
+	* README, configure.ac, man/Makefile.am: we build-depend on zoem
+	  (and groff and col) now.  check wether these programs are
+	  available
+
+2003-10-04 17:30  joostvb
+
+	* configure.ac, man/uruk-rc.azm, man/uruk-rc.azm.in: expand
+	  pathnames in uruk-rc manpage
+
+2003-10-04 17:24  joostvb
+
+	* configure.ac, init/.cvsignore, init/uruk.in, man/.cvsignore,
+	  man/uruk.azm, man/uruk.azm.in, script/uruk.in: use hacked
+	  AC_DEFINE_DIR from autoconf macro archive, for flexible expansion
+	  of pathnames in scripts and docs
+
+2003-10-04 14:20  joostvb
+
+	* README, configure.ac, init/uruk, init/uruk.in, man/uruk.azm: sane
+	  default statedir for init script
+
+2003-10-04 13:59  joostvb
+
+	* AUTHORS, Makefile.am, NEWS, README, TODO, configure.ac,
+	  init/.cvsignore, init/Makefile.am, man/uruk.azm: integrated init
+	  script in build environement, started documenting usage of init
+	  script
+
+2003-10-04 12:29  joostvb
+
+	* init/uruk: changed default autosave behaviour
+
+2003-10-04 12:25  joostvb
+
+	* init/uruk: added copyright statement
+
+2003-10-04 12:13  joostvb
+
+	* init/uruk: /usr/share/doc/iptables/examples/oldinitdscript.gz as
+	  shipped with Debian iptables 1.2.8-4, used to be used as
+	  /etc/init.d/iptables
+
+2003-10-04 11:55  joostvb
+
+	* man/: Makefile.am, uruk.azm: next step in converting from pod to
+	  zoem syntax
+
+2003-10-04 11:29  joostvb
+
+	* man/Makefile.am, script/Makefile.am: renamed ad1810-firewall
+	  script to uruk, renamed manpages
+
+2003-10-04 11:24  joostvb
+
+	* .cvsignore, AUTHORS, NEWS, README, THANKS, TODO, configure.ac,
+	  doc/rc, man/include.zmm, man/uruk-rc.azm, man/uruk.azm,
+	  script/.cvsignore: changed name from ad1810-firewall to uruk
+
+2003-10-04 10:54  joostvb
+
+	* README, man/uruk.azm: more pointers to alternative tools
+
+2003-09-04 11:54  joostvb
+
+	* man/uruk.azm: ifupdown integration
+
+2003-09-04 11:34  joostvb
+
+	* man/uruk.azm: warning for deprecated Debian integration added
+
+2003-09-04 11:31  joostvb
+
+	* man/: ad1810-firewall.pod, uruk.azm: first shot at converting to
+	  zoem
+
+2003-08-29 16:43  joostvb
+
+	* NEWS: release 20030829
+
+2003-08-29 16:33  joostvb
+
+	* Makefile.am, man/Makefile.am, man/include.zmm, man/uruk-rc.azm:
+	  zoem finetuning
+
+2003-08-29 16:19  joostvb
+
+	* configure.ac, man/ad1810-firewall.pod, man/uruk-rc.azm: new
+	  author email adress
+
+2003-08-29 16:15  joostvb
+
+	* man/ad1810-firewall-rc.pod: ad1810-firewall-rc zoemized
+
+2003-08-29 16:12  joostvb
+
+	* setversion, man/include.zmm, man/uruk-rc.azm: autozoemization
+
+2003-08-29 15:50  joostvb
+
+	* TODO: bugreport by Wessel Dankers
+
+2003-08-29 15:41  joostvb
+
+	* doc/rc: fixed inconsistencies, improved documentation.  Tnx Fruit
+
+2003-08-24 13:56  joostvb
+
+	* script/uruk.in: minor tweak
+
+2003-08-14 10:51  joostvb
+
+	* man/Makefile.am: migrating to zoem manpages sources, phase 2
+
+2003-08-14 10:35  joostvb
+
+	* script/uruk.in: more robust by better quoting, tnx Fruit
+
+2003-06-01 14:39  joostvb
+
+	* script/uruk.in: enable injecting homebrew rules and scripts
+
+2003-05-28 11:41  joostvb
+
+	* man/ad1810-firewall.pod: more notes on debian iptables package
+
+2003-05-25 17:41  joostvb
+
+	* man/ad1810-firewall.pod: added extra note on working with Debian
+	  iptables package
+
+2003-05-25 17:14  joostvb
+
+	* doc/rc: even more explicit
+
+2003-05-12 13:57  joostvb
+
+	* script/uruk.in: fixed new sources_ usage bug
+
+2003-05-12 13:06  joostvb
+
+	* NEWS: release 20030512
+
+2003-05-12 13:04  joostvb
+
+	* man/uruk-rc.azm: zoem-ized manpage
+
+2003-05-11 14:31  joostvb
+
+	* man/Makefile.am: trying out zoem.  its _FAST_
+
+2003-05-06 19:01  joostvb
+
+	* NEWS, doc/rc, script/uruk.in: more flex
+
+2003-04-27 16:44  joostvb
+
+	* TODO, configure.ac, setversion: fixed autoversion stuff, tnx Raja
+	  R Harinath
+
+2003-04-27 16:11  joostvb
+
+	* NEWS: version v20030427 released
+
+2003-04-27 16:06  joostvb
+
+	* TODO: added referer to post to autoconf list: version numbering
+	  generating issues
+
+2003-04-27 16:04  joostvb
+
+	* bootstrap: bugfix in ChangeLog generating code
+
+2003-04-27 16:04  joostvb
+
+	* README: moved some stuff from ad1810-firewall manpage to README
+
+2003-04-27 16:02  joostvb
+
+	* man/Makefile.am: fixed bug in manpage section numbering
+
+2003-04-27 16:01  joostvb
+
+	* man/ad1810-firewall.pod: getting started notes added
+
+2003-04-27 16:00  joostvb
+
+	* Makefile.am, configure.ac, script/Makefile.am, script/uruk.in: rc
+	  file location now depends on sysconfdir, as set during configure
+
+2003-04-27 14:24  joostvb
+
+	* script/: ad1810-firewall, uruk.in: rc file location now depends
+	  on sysconfdir
+
+2003-04-26 19:35  joostvb
+
+	* Makefile.am, bootstrap, configure.ac, setversion: compatibility:
+	  created old-style VERSION file
+
+2003-04-26 19:28  joostvb
+
+	* NEWS, README, TODO, doc/.cvsignore: some loose ends remain...
+
+2003-04-26 19:24  joostvb
+
+	* doc/: Makefile.am, rc: separate example rc file
+
+2003-04-26 19:23  joostvb
+
+	* Makefile.am, THANKS, TODO, configure.ac, man/Makefile.am,
+	  man/ad1810-firewall-rc.pod, man/ad1810-firewall.pod,
+	  script/Makefile.am: moved example to doc/examples/rc, moved
+	  script to sbin
+
+2003-04-26 18:54  joostvb
+
+	* AUTHORS, README, TODO, configure.ac, man/Makefile.am,
+	  man/ad1810-firewall.pod, script/Makefile.am: generate manpages in
+	  html format too
+
+2003-04-26 18:39  joostvb
+
+	* Makefile.am, README, configure.ac, setversion, man/Makefile.am,
+	  man/ad1810-firewall-rc.pod, man/ad1810-firewall.pod,
+	  script/Makefile, script/Makefile.am, script/ad1810-firewall:
+	  separated manpages, set up manpage for rc file format
+
+2003-04-26 17:48  joostvb
+
+	* configure.ac: autoconf 2.53 is fine too: we can use the Debian
+	  woody devel environment
+
+2003-04-26 17:33  joostvb
+
+	* script/Makefile.am: autoconfiscated
+
+2003-04-26 17:32  joostvb
+
+	* Makefile.am, configure.ac, setversion: automatic release version
+	  number generating
+
+2003-04-26 11:04  joostvb
+
+	* AUTHORS, Makefile.am, NEWS, README, THANKS, TODO, bootstrap,
+	  configure.ac, setversion: autotoolized
+
+2003-03-28 13:02  joostvb
+
+	* script/ad1810-firewall: Corno Vromas said: yes, open source is ok
+	  (fr mar 28, 2003, 13:00, UvT kantine)
+
+2003-03-27 22:08  joostvb
+
+	* script/ad1810-firewall: no longer in debug mode
+
+2003-03-27 21:41  joostvb
+
+	* script/ad1810-firewall: more comments
+
+2003-03-27 19:37  joostvb
+
+	* include/install.mk: hibou uses it too
+
+2003-03-27 18:51  joostvb
+
+	* include/install.mk: casparized
+
+2003-03-27 18:50  joostvb
+
+	* script/ad1810-firewall: comments, syntax
+
+2003-03-27 12:34  joostvb
+
+	* script/firewall: renamed
+
+2003-03-27 12:34  joostvb
+
+	* script/ad1810-firewall: enable config sourcing
+
+2003-03-27 12:30  joostvb
+
+	* script/firewall: support for public vs private interfaces
+
+2003-03-27 12:07  joostvb
+
+	* script/firewall: from
+	  cvs/perlharbor/syst_netw/systems/unique/bolzano/usr/local/sbin
+
