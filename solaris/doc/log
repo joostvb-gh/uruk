@@ -21,3 +21,6 @@ joostvb@pong:~/lo.../caspar-20050302/solaris% wget http://mdcc.cx/csbs/csbs-wd/m
 
 joostvb@pong:~/lo...c/caspar/caspar-20050302% make -f solaris/Makefile binary-stamp
 
+% man -M /usr/share/man diff
+
+
