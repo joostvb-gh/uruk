@@ -5,6 +5,7 @@ config.*
 configure.lineno
 autom4te.cache
 aclocal.m4
+caspar-*.tar.bz2
 caspar-*.tar.gz
 caspar-*.tar.gz.asc
 configure
