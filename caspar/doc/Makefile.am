@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.4 2003-08-09 14:24:17 joostvb Exp $
+## $Id: Makefile.am,v 1.5 2003-08-09 14:53:52 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -22,7 +22,8 @@ TIDY = tidy -quiet
 ## which typesets HTML into plain text.
 W3M = w3m
 
-docdir = $(datadir)/doc/$(PACKAGE_TARNAME)
+PACKAGE = @PACKAGE_TARNAME@
+docdir = $(datadir)/doc/$(PACKAGE)
 
 azms = caspar.azm caspar-typesetting.azm
 typetargets = caspar.html caspar.ps caspar.txt caspar-typesetting.html \

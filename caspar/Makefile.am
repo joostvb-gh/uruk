@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.8 2003-08-09 14:31:05 joostvb Exp $
+## $Id: Makefile.am,v 1.9 2003-08-09 14:53:52 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -22,7 +22,7 @@ PACKAGE = @PACKAGE_TARNAME@
 
 SUBDIRS = doc mk sgml
 
-docdir = $(datadir)/doc/$(PACKAGE_TARNAME)
+docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS
 
 ## Only files from the current directory or from subdirectory which
