@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.6 2003-11-12 14:11:08 joostvb Exp $
+\: $Id: caspar.azm,v 1.7 2003-12-15 06:08:31 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -199,7 +199,9 @@ The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
   \par
 The `cvs-conf' package ( \httpref{http://project.tuxfamily.org/cvs-conf},
 \httpref{http://packages.debian.org/unstable/utils/cvs-conf.html} ) probably
-offers about the same functionality as \"caspar.mk".
+offers about the same functionality as \"caspar.mk".  However, this package
+seems largely unmaintained (between September 2002 and November 2003, at
+least).
   \par
 docbookmk, by Michael Wiedmann ( \httpref{http://www.miwie.org/docbkmake/} )
 offers probably a superset of Caspar's \"docbook.mk" functionality.
