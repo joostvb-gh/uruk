@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.2 2002-03-01 15:15:06 joostvb Exp $
+# $Id: caspar.mk,v 1.3 2003-02-05 22:42:05 joostvb Exp $
 
 # Copyright (C) 2002 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 # 
@@ -12,7 +12,9 @@
 # /usr/local/share/doc/caspar/README) for usage
 
 ifdef SUH
+ifdef SDIR
 SRDIRS ?= $(SUH):$(SDIR)
+endif
 endif
 
 CPDIRS ?= $(CDIR)
