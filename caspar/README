@@ -1,4 +1,4 @@
-$Id: README,v 1.4 2002-03-01 15:15:06 joostvb Exp $
+$Id: README,v 1.5 2002-03-31 10:03:04 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -9,10 +9,11 @@ of the Daniel Johnston song I was listening to when deciding to package
 my homegrown scripts.
 
 Caspar offers Makefile snippets for common tasks, like installing stuff you've
-got under version control, or typesetting LaTeX or DocBook XML documents.
+got under version control, or typesetting LaTeX, DocBook XML and DocBook SGML
+documents.
 
 The typesetting functionality is delivered by docbook.mk.  This is not yet
-documented: `Read the source, Luke!'
+fully documented.  Some comments on usage are in docbook.mk itself though.
 
 The installing-stuff-under-version-control functionality is delivered by
 caspar.mk.  (That's what the rest of the README will talk about.)  It enables

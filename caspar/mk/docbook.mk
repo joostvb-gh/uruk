@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.2 2002-03-13 12:09:55 joostvb Exp $
+# $Id: docbook.mk,v 1.3 2002-03-31 10:03:04 joostvb Exp $
 
 #
 #  Usage:
@@ -15,6 +15,11 @@
 #
 #   $ make clean
 #
+# other targets: filename.ps, filename.html, filename.printbig,
+#   filename.dvi, ...
+#
+# variables you might like to set in your Makefile: XMLDCL, HTML_DSL, PRINT_DSL
+#
 # read the source for more fancy stuff
 #
 
@@ -29,11 +34,22 @@ XMLDCL ?= /usr/share/sgml/declaration/xml.dcl
 #  "/usr/local/lib/sgml/caspar/print.dsl",
 #  "/usr/share/sgml/caspar/print.dsl"
 # when i specify -d caspar/print.dsl
+#
+# when using your own print.dsl, your Makefile could read
+#
+#  PRINT_DSL = print.dsl
+#  include caspar/mk/docbook.mk
+#
+#
 HTML_DSL ?= caspar/html.dsl
 PRINT_DSL ?= caspar/print.dsl
 
 # JADE = /usr/bin/jade
 JADE ?= jade
+# jade's -E option.  the jade default is 200.  we choose a maximum
+# of 10 errors: we don't wanna have our console spammed by errormessages
+JADE_MAXERRORS ?= 10
+
 # PDFJADETEX = /usr/bin/pdfjadetex
 JADETEX ?= jadetex
 LATEX ?= latex
@@ -47,22 +63,32 @@ PSNUP ?= psnup
 LPR ?= lpr
 GV ?= gv
 
-XML2HTML_RULE = $(JADE) -t sgml -d $(HTML_DSL) $(XMLDCL) $<
+SGML2HTML_RULE = $(JADE) -E$(JADE_MAXERRORS) -t sgml -d $(HTML_DSL) $<
+
+XML2HTML_RULE  = $(JADE) -E$(JADE_MAXERRORS) -t sgml -d $(HTML_DSL) \
+  $(XMLDCL) $<
 
 # lynx doesn't deal well with too wide blurbs of <literallayout>  :(
-HTML2TXT_RULE = $(W3M) -dump $< > $@
+HTML2TXT_RULE  = $(W3M) -dump $< > $@
 
-XML2JTEX_RULE = $(JADE) -t tex -d $(PRINT_DSL) -o $@ $(XMLDCL) $<
+SGML2JTEX_RULE = $(JADE) -E$(JADE_MAXERRORS) -t tex -d $(PRINT_DSL) \
+  -o $@ $<
+
+XML2JTEX_RULE  = $(JADE) -E$(JADE_MAXERRORS) -t tex -d $(PRINT_DSL) \
+  -o $@ $(XMLDCL) $<
 
 # run twice for toc processing
-JTEX2DVI_RULE = $(JADETEX) $< && $(JADETEX) $< && $(JADETEX) $< && rm -f $*.log $*.out $*.aux
+JTEX2DVI_RULE  = $(JADETEX) $< && $(JADETEX) $< && $(JADETEX) $< && \
+  rm -f $*.log $*.out $*.aux
 
-TEX2DVI_RULE = $(LATEX) $<
+TEX2DVI_RULE   = $(LATEX) $<
 
-DVI2PS_RULE = $(DVIPS) -f < $< > $@
-PS2PDF_RULE = $(PS2PDF) $< $@
-PS22PS_RULE = $(PSNUP) -2 $< $@
+DVI2PS_RULE    = $(DVIPS) -f < $< > $@
+PS2PDF_RULE    = $(PS2PDF) $< $@
+PS22PS_RULE    = $(PSNUP) -2 $< $@
 
+%.jtex: %.sgml
+	$(SGML2JTEX_RULE)
 
 %.jtex: %.dbx
 	$(XML2JTEX_RULE)
@@ -79,6 +105,9 @@ PS22PS_RULE = $(PSNUP) -2 $< $@
 
 %.pdf: %.ps
 	$(PS2PDF_RULE)
+
+%.html: %.sgml
+	$(SGML2HTML_RULE)
 
 %.html: %.dbx
 	$(XML2HTML_RULE)
@@ -99,7 +128,7 @@ PS22PS_RULE = $(PSNUP) -2 $< $@
 	$(LPR) $<
 
 clean:
-	-rm *.aux *.log *.dvi
+	-rm *.aux *.log *.dvi *.jtex
 
 .PRECIOUS: %.ps
 
