@@ -4,6 +4,7 @@ caspar (20030718)
   * mk/docbook.mk: run pdfjadetex 3 times: fixes toc. rm -f intermediate
     files: no sure wether they will get created. added license referal
 
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Fri, 18 Jul 2003 11:12:43 +0200
 
 caspar (20030716)
 
@@ -13,14 +14,15 @@ caspar (20030716)
     similar to docbook.mk in it's goals
   * mk/docbook.mk: use pdfjadetex for generating pdf: fonts look better
 
- --
+ -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Wed, 16 Jul 2003 21:03:17 +0200
 
 caspar (20030331)
 
   * mk/caspar.mk: ommitting SDIR results in scp to get skipped
   * mk/caspar.mk: added SUHS hack: now possible to install on multiple hosts.
   * mk/docbook.mk: sane default target added.
-  * mk/Makefile.am: some fiddling to get make distcheck working with automake 1.7
+  * mk/Makefile.am: some fiddling to get make distcheck working with
+    automake 1.7
   * README: documented new tricks.
 
  -- Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>  Mon, 31 Mar 2003 22:04:18 +0200
