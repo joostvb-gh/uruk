@@ -1,6 +1,7 @@
 caspar ( )
 
   * TODO: Found bug in caspar.mk.
+  * README: Added note about cvs-conf.
 
  -- 
 

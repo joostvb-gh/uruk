@@ -1,4 +1,4 @@
-$Id: README,v 1.5 2002-03-31 10:03:04 joostvb Exp $
+$Id: README,v 1.6 2002-05-04 20:39:48 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
@@ -149,5 +149,7 @@ from a Makefile.
 - more info - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 The caspar homepage is at http://mdcc.cx/pub/caspar/ .
+
+The `cvs-conf' package probably offers about the same functionality.
 
 
