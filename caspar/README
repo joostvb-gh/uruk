@@ -1,118 +1,31 @@
-$Id: README,v 1.12 2003-08-09 10:40:45 joostvb Exp $
+$Id: README,v 1.13 2003-08-09 13:04:45 joostvb Exp $
 
 caspar - Makefile snippets for common tasks
 
-- 
-
-See caspar.azm, see INSTALL
+See doc/caspar.txt for general information about this package, see INSTALL
+for generic installation instructions.
 
 After install, /usr/local/share/doc/caspar will be created and filled, a file
 /usr/local/share/caspar/mk/caspar.mk will get installed, and a symlink
 /usr/local/include/caspar/mk/caspar.mk will get created.
 
+
 - requirements, packages  - - - - - - - - - - - - - - - - - - - - - - - - -
 
 GNU make.
 
-A Debian package (for e.g. Debian GNU/Linux) is available from `deb
+For the typesetting functionality, one needs Jade, LaTeX, W3M, Ghostscript, and
+Docbook DSSSL.
+
+A Debian caspar package (for e.g. Debian GNU/Linux) is available from `deb
 http://mdcc.cx/debian local contrib'.
 
-
-
-
-
-
-
-
-
-
-
-
-- usage - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Within a CVS tree, create a file include/install.mk, with contents like e.g.
-
- SUH = root@some.host.somewhere
- include caspar/mk/caspar.mk
-
-.  Within each other directory of the CVS tree which holds files, create a
-Makefile, which looks like e.g.
-
- DIR = /some/dir/ectory
- include ../../include/install.mk
-
-.
-
-The variables one can set in a calling Makefile are: SUH (ssh-reachable
-user@host), SDIR (directory on ssh reachable host), CDIR (directory to which we
-can copy(1), instead of scp), LOAD (targets which should depend on the `load'
-target).
-
-From within the CVS tree, one can call:
-
-  make <filename>-install
-  make install
-  make load
-  make
-
-Some examples:
-
-Using CDIR and LOAD
-
- username/etc/Makefile is
-
-  CDIR = $(HOME)/etc
-  LOAD = crontab-load
-  include ../include/install.mk
-
-  crontab-load:
-        crontab $(CDIR)/crontab
-
- while ../include/install.mk is just
-
-  include caspar/mk/caspar.mk
-
-Using SDIR and LOAD:
-
- etc/Makefile is
-
-  SDIR = /etc
-  LOAD = aliases-load
-  include ../include/install.mk
-
-  aliases-load:
-      ssh $(SUH) "cd /etc; postalias aliases; postfix reload"
-
- while ../include/install.mk is
-
-  SUH = root@some.host.somewhere
-  include caspar/mk/caspar.mk
-
-
-More advanced tricks: supply e.g.
-
- SUHS = root@localhost root@some.host.somewhere
-
-in install.mk, to install on multiple hosts.
-
-Run
-
- SUH=joe@otherhost make filename-install
-
-to install filename as joe@otherhost, instead of the default as given in
-install.mk.
-
-When you don't want to ssh to root@some.host.somewhere directly, you could
-do
-
- sudo rsync -az /path/to/your/config_archive /etc
-
-.
 
 - gimme some of the stuff you've been smoking!  - - - - - - - - - - - - - - - -
 
 "What've you been smoking!?  A completely fullblown autoconfiscated tarball for
-just a eeny weeny Makefile snippet!?  I'm not gonna install that!  No way!"
+just a eeny weeny Makefile snippet, to be able to install my hosts
+configuration files from CVS!?  I'm not gonna install that!  No way!"
 
 Well, there's no accounting for taste...  If I use the same files on many
 hosts, I prefer to install them from a tarball.  If you were asked to work with
@@ -154,19 +67,10 @@ install'-ed:
 
 .
 
-The enables us to be able to call
+This enables us to be able to call
 
  include caspar/mk/caspar.mk
 
 from a Makefile.
-
-- more info, similar packages - - - - - - - - - - - - - - - - - - - - - - - - -
-
-The caspar homepage is at http://mdcc.cx/pub/caspar/ .
-
-The `cvs-conf' package probably offers about the same functionality.
-
-docbookmk, by Michael Wiedmann ( http://www.miwie.org/docbkmake/ ) offers
-probably a superset of Caspar's docbook.mk functionality.
 
 
