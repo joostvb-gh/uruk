@@ -1,6 +1,6 @@
-# $Id: caspar.mk,v 1.15 2005-02-23 09:36:14 joostvb Exp $
+# $Id: caspar.mk,v 1.16 2005-02-28 21:55:01 joostvb Exp $
 
-# Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
+# Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
 # This file is part of caspar.  Caspar is free software; you can redistribute
 # it and/or modify it under the terms of the GNU General Public License as
@@ -8,46 +8,7 @@
 # or (at your option) any later version.  You should have received a copy of
 # the GNU General Public License along with this file (see COPYING).
 
-# see the caspar README file (probably installed in
-# /usr/local/share/doc/caspar/README) for usage
-
-# backwards compatibility: old var names
-ifdef CDIR
-csp_CPDIR     ?= $(CDIR)
-endif
-ifdef CP
-csp_CP       ?= $(CP)
-endif
-ifdef CPDIRS
-csp_CPDIRS   ?= $(CPDIRS)
-endif
-ifdef CPFLAGS
-csp_CPFLAGS  ?= $(CPFLAGS)
-endif
-ifdef LOAD
-csp_LOAD     ?= $(LOAD)
-endif
-ifdef SCP
-csp_SCP      ?= $(SCP)
-endif
-ifdef SCPFLAGS
-csp_SCPFLAGS ?= $(SCPFLAGS)
-endif
-ifdef SDIR
-csp_SCPDIR   ?= $(SDIR)
-endif
-ifdef SRDIRS
-csp_SUHDIRS  ?= $(SRDIRS)
-endif
-ifdef SUH
-csp_SUH      ?= $(SUH)
-endif
-ifdef SUHS
-csp_SUHS     ?= $(SUHS)
-endif
-# end of backwards compatibility hack.  this hack was introduced in 2004-05.
-# guess it should be removed at about 2005-05.
-
+# see caspar(7) for usage
 
 ifdef csp_SCPDIR
 
