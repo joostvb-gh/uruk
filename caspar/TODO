@@ -1,4 +1,4 @@
-$Id: TODO,v 1.24 2004-07-11 16:39:50 joostvb Exp $
+$Id: TODO,v 1.25 2004-07-21 14:56:20 joostvb Exp $
 
 -- docbook stuff --
 
@@ -39,4 +39,5 @@ license should be printed, see rh vs deb doc
 - Supply a script to convert Makefile in caspar < 20040531 style to >= 20040531
   style.
 
+- Document the install-recursive target.
 
