@@ -20,7 +20,6 @@
 #
 
 iptables=${URUK_IPTABLES:-/sbin/iptables}
-test -x $iptables || exit 0
 
 etcdir="@SYSCONF_PATH@/@PACKAGE_TARNAME@"
 

@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-04-14 12:02:14 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-15
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-15
+
+    don't test wether $iptables is executable: it might be set to 'echo foo'
+    
+
+    modified files:
+     uruk/ChangeLog uruk/script/uruk.in
+
+
 2005-04-14 11:10:02 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-14
 
     Summary:
