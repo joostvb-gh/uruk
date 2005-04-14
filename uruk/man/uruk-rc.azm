@@ -58,6 +58,9 @@ sources_eth0_udp_local="0.0.0.0/0"}
 
 This \rc file allows all traffic.
 
+For a more reasonable \rc file, look at the well-commented example \rc file in
+\ttexpath.
+
 \cpar{Hooks}
 
 Uruk offers hooks for inserting your owns code between iptables invokations.
@@ -185,10 +188,6 @@ A well-commented example \rc file is in \ttexpath.
 \par
 
 uruk(8)
-
-\sec{version}{VERSION}
-
-$Id: uruk-rc.azm,v 1.14 2004/06/25 08:08:42 joostvb Exp $
 
 \sec{copyright}{COPYRIGHT}
 

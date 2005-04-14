@@ -8,7 +8,7 @@
 # based systems
 
 # Copyright (C) 2002, 2003 Laurence J. Lane
-# Copyright (C) 2003, 2004 Joost van Baal
+# Copyright (C) 2003, 2004, 2005 Joost van Baal
 #
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License.
@@ -77,11 +77,6 @@ initd_load () {
   ruleset="$libdir/$@"
   if ! test -f "$ruleset"; then
     echo "You are trying to load ruleset \"$@\" while file $ruleset is not present."
-cat <<EOT
-This might be due to a not-initialized Uruk installation.  Read the "Using the
-Uruk init script" subsection in the "GETTING STARTED" section in the uruk(8)
-manpage to learn how this should be done.
-EOT
     initd_abort load "unknown ruleset \"$@\""
     if ! test "${ruleset#${libdir}/}" = active -o inactive; then
         usage
@@ -131,7 +126,8 @@ usage () {
 cat << END
 $initd options:
   start|restart|reload|force-reload
-     load the "active" ruleset
+     load the "active" ruleset. in case this file doesn't exist, try to
+     create it using uruk-save and load it.
   save <ruleset>
      save the current ruleset
   load <ruleset>
@@ -152,12 +148,29 @@ END
 initd_main () {
   case "$1" in
     start|restart|reload|force-reload)
+      # act sane if active state file missing
+      ruleset="${libdir}/active"
+      if ! test -s $ruleset; then
+          cat << END
+  Hrm, $uruk_config is present, but $ruleset is not filled yet.  Let's assume
+  you've read the uruk-rc(5) manpage and your $uruk_config is sane.  This
+  file will be used to fill $ruleset now.
+END
+          uruk-save > $ruleset
+      fi
       initd_load active
       if test ${enable_autosave-false} = true; then
         touch $autosave
       fi
       ;;
     stop)
+      # act sane if inactive state file missing
+      ruleset="${libdir}/inactive"
+      if ! test -s $ruleset; then
+          echo "Hrm, $ruleset is not filled yet.  Filling it."
+          initd_clear
+          initd_save inactive
+      fi
       initd_load inactive
       ;;
     clear)
@@ -197,6 +210,7 @@ initd_preload() {
   iptables="/sbin/${iptables_command}"
   iptables_save="${iptables}-save"
   iptables_restore="${iptables}-restore"
+  uruk_config="@SYSCONF_PATH@/@PACKAGE_TARNAME@/rc"
   libdir="@LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/${iptables_command}"
   autosave="${libdir}/autosave"
   initd_have_a_cow_man "$iptables_save" "$iptables_restore"

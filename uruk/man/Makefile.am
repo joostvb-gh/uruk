@@ -3,7 +3,7 @@
 
 ## Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
 ## Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
-## Copyright (C) 2003, 2004 Joost van Baal
+## Copyright (C) 2003, 2004, 2005 Joost van Baal
 
 ## zoem hacks based upon work by Stijn van Dongen.
 
@@ -27,12 +27,14 @@ TIDY = tidy -quiet
 ## which typesets HTML into plain text.
 W3M = w3m
 
-azms = uruk-rc.azm uruk.azm
-typetargets = uruk-rc.html uruk-rc.ps uruk-rc.txt uruk.html uruk.ps uruk.txt
-tmpfiles = uruk-rc.zmt uruk-rc.zmr uruk.zmt uruk.zmr
+azms = uruk-rc.azm uruk-save.azm uruk.azm
+typetargets = uruk-rc.html uruk-rc.ps uruk-rc.txt \
+  uruk-save.html uruk-save.ps uruk-save.txt uruk.html uruk.ps uruk.txt
+tmpfiles = uruk-rc.zmt uruk-rc.zmr uruk-save.zmt uruk-save.zmr \
+  uruk.zmt uruk.zmr
 
 doc_DATA = $(typetargets) $(azms)
-man_MANS = uruk.8 uruk-rc.5
+man_MANS = uruk.8 uruk-rc.5 uruk-save.8
 
 EXTRA_DIST = $(azms)
 DISTCLEANFILES = $(man_MANS) $(typetargets) $(tmpfiles)

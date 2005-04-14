@@ -26,8 +26,13 @@
 \sec{description}{DESCRIPTION}
 
 \uruk loads an \rc file (see \sibref{uruk-rc}{uruk-rc(5)}) which defines
-network service access policy, and invokes iptables to set up firewall rules
-implementing this policy.
+network service access policy, and invokes \bf{iptables(8)} to set up firewall
+rules implementing this policy.  By default the file \ttrcpath is used; one can
+overrule this by specifying another file in the URUK_CONFIG environment
+variable.  Under some circumstances, it's useful to use another command for
+iptables; this can be achieved by setting the URUK_IPTABLES environment
+variables.  See \sibref{uruk-rc}{uruk-rc(5)} for details.
+
 
 \sec{getting started}{GETTING STARTED}
 
@@ -39,7 +44,7 @@ course.
 First, create an \rc file.  See \sibref{uruk-rc}{uruk-rc(5)} for info on how to
 do this.  Once this file is created and installed (this script looks in
 \ttrcpath by default), you're ready to run \uruk.  You might want to test your
-\rc file by running  \uruk in debug mode, see \sibref{uruk-rc}{uruk-rc(5)}.
+\rc file by running \uruk in debug mode, see \sibref{uruk-rc}{uruk-rc(5)}.
 
 \cpar{Vanilla iptables}
 
@@ -131,6 +136,16 @@ Do
 
 Between the \ttinitpath stop and the uruk command, your box is open.
 
+Alternatively, you could use the \uruk-save script.  This is faster,
+but not as robust as using \uruk itself.  However, if you don't use
+any hooks in your \rc file, you're save.  Use it like this:
+
+\verbatim{\
+ # vi \rcpath
+ # uruk-save
+ # \initpath stop
+ # \initpath start}
+
 \sec{policy}{DEFAULT POLICY}
 
 By default, \uruk drops packets which have unknown private network adresses in
@@ -185,6 +200,10 @@ error handling.  It does not check the contents of the \rc file in any way
 before executing it.  When your \rc file contains bogus stuff, \uruk will very
 likely behave in unexpected ways.  Caveat emptor.
 
+\sec{environment}{ENVIRONMENT}
+
+\uruk honors environment variables URUK_IPTABLES (\tt{/sbin/iptables} by
+default) and URUK_CONFIG (\ttrcpath by default).
 
 \sec{see also}{SEE ALSO}
 
@@ -198,15 +217,11 @@ likely behave in unexpected ways.  Caveat emptor.
  \par
 \bf{interfaces(5)}, \httpref{http://ifupdown.sourceforge.net/}
 
-\sec{version}{VERSION}
-
-This manpage: $Id: uruk.azm,v 1.19 2004/03/18 16:40:09 joostvb Exp $
-
 \sec{copyright}{COPYRIGHT}
 
 Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
 Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
-Copyright (C) 2003, 2004 Joost van Baal
+Copyright (C) 2003, 2004, 2005 Joost van Baal
 
 \par
 

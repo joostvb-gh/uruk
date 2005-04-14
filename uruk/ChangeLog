@@ -2,6 +2,33 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-04-14 18:21:17 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-16
+
+    Summary:
+      almost ready for next release
+    Revision:
+      uruk--mainline--0.1--patch-16
+
+    Fixed wishlist bug from 2004-05-26, Wessel Dankers (might need more testing
+    though).  Ship and install uruk-save(8) script and manpage.  init script
+    behaves more sane when saved state files are missing: we are now able to
+    generate these on the fly.
+    
+    Minor improvement of uruk-rc(5) manpage.
+    
+    Document URUK_CONFIG and URUK_IPTABLES in uruk(8) manpage.  Document one way of
+    using uruk-save in uruk(8) manpage.
+    
+    In the uruk script itself, only some typos in comments have been fixed.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/NEWS uruk/TODO uruk/configure.ac
+     uruk/doc/rc uruk/init/uruk.in uruk/man/Makefile.am
+     uruk/man/include.zmm.in uruk/man/uruk-rc.azm uruk/man/uruk.azm
+     uruk/script/Makefile.am uruk/script/uruk.in
+
+
 2005-04-14 12:02:14 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-15
 
     Summary:

@@ -2,6 +2,23 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version xxxxxx
+
+- Uruk now is maintained using GNU Arch on http://arch.gna.org/uruk/ .
+  See README.
+- ChangeLog entries from 2003 split off in ChangeLog.2003.
+- Uruk(8) now honors environment variables URUK_IPTABLES (/sbin/iptables by
+  default) and URUK_CONFIG (/etc/uruk/rc by default).
+- Now ships new script uruk-save(8); which saves /etc/uruk/rc in
+  iptables-{save,restore} format, without invoking iptables.  You could
+  use it e.g. when loading a new rc file.  See the updated uruk(8) manpage.
+- The uruk init script now honors /etc/default/uruk.  See comments in the
+  code.
+- The uruk init script acts more sane when passed {stop,start} while no
+  saved rules files are present: it tries to generate these in such
+  circumstances.  It will warn you it's doing so.
+
+
 uruk version 20040625
 
 - Fixed bug in multiple IP per network interface mode.  Uruk was

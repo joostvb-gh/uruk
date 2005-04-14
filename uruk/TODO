@@ -6,24 +6,10 @@ Fix bugs in uruk script.  See comments.
 Add support for variable uruk_version : version of uruk when rc file was
 created.
 
-Now that a zoem > October 8, 2003 is released, start using the man::cat
-macro.  See include.zmm.in.
-
 Check documentation: uruk-rc manpage needs more stuff.
 
 Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
 can use the same rc file format.
-
-Message-ID: <20040526114431.GN1060@trogdor.uvt.nl>
-Date: Wed, 26 May 2004 13:44:31 +0200
-Zou het mogelijk zijn dat uruk in plaats van iptables aan te roepen, z'n
-aanroepen zelf in /var/lib/iptables/active opslaat?
-Related to this: make /etc/init.d/uruk {stop,start} act more intuitive:
-start should load /etc/uruk/rc .
-Alternative: have an uruk-mode in which uruk dumps to /var/lib/iptables/active
-_without_ invoking iptables.  That would mean something like: reimplement
-(part of) /usr/local/src/debian/iptables/iptables-1.2.11/upstream/iptables-1.2.11/iptables-save.c .
-See script/uruk-save.in: a first start.
 
 Date: Wed, 9 Feb 2005 15:09:16 +0100
 Message-ID: <20050209140916.GZ1487@trogdor.uvt.nl>

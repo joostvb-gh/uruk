@@ -17,9 +17,6 @@
 
 \set{"man::author"}{Joost van Baal <joostvb-uruk@mdcc.cx>}
 
-\: this needs zoem > 03-265 (zoem CVS 2003-10-08)
-\: \set{"man::cat"}{@PACKAGE_NAME@}
-
 \def{uruk}{\bf{uruk}}
 \def{rc}{\it{rc}}
 

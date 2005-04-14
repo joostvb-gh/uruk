@@ -214,7 +214,7 @@ test -r "$rc_f" && . "$rc_f"
 #
 
 #
-# by default, we disallow
+# By default, we disallow
 #
 #  source-quench
 #  redirect (
@@ -226,12 +226,12 @@ test -r "$rc_f" && . "$rc_f"
 #  router-advertisement
 #  router-solicitation
 #
-# you might want to allow just
+# You might want to allow just
 #
 #  echo-request echo-reply ttl-zero-during-transit \
 #   ttl-zero-during-reassembly ip-header-bad required-option-missing
 #
-# this make's ping's succeed, as well as traceroute.  however, stuff
+# This makes pings succeed, as well as traceroute.  However
 # debugging network problems might be _much_ more difficult when disallowing
 # lots of other icmp types.  If you really want to do this, use rc_g.
 #

@@ -43,12 +43,12 @@ bcast_eth0=10.56.255.255
 localnet="10.56.0.0/16"
 all=0.0.0.0/0
 
-# For both tcp and udp, symbolic names of (sets of) services could be
-# defined, in variables services_<if>_{tcp,udp}.
+# For each interface, and for both tcp and udp, symbolic names of (sets of)
+# services could be defined, in variables services_<if>_{tcp,udp}.
 services_eth0_tcp="mail local public"
 
-# For every servicename <s>, every interface <if>, and tcp and/or udp, a list
-# of allowed source addresses should be defined in a variable
+# For every servicesetname <s>, every interface <if>, and tcp and/or udp, a
+# list of allowed source addresses should be defined in a variable
 # sources_<if>_{tcp,udp}_<s> .  Furthermore a list of ports should be defined
 # in a variable ports_<if>_{tcp,udp}_<s> .
 
@@ -57,6 +57,7 @@ sources_eth0_tcp_mail="10.0.0.0/24 10.56.38.0/24 192.168.6.26"
 sources_eth0_tcp_local=$localnet
 sources_eth0_tcp_public=$all
 
+# Symbolic port names are fine.
 ports_eth0_tcp_mail=smtp
 ports_eth0_tcp_local="ssh ftp"
 ports_eth0_tcp_public="www"
