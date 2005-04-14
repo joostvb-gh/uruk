@@ -11,6 +11,10 @@ Check documentation: uruk-rc manpage needs more stuff.
 Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
 can use the same rc file format.
 
+Reimplement uruk-save: make it more robust.  See
+http://www.faqs.org/docs/iptables/iptables-save.html for example of file
+format.  Use logic from iptables-save.c.
+
 Date: Wed, 9 Feb 2005 15:09:16 +0100
 Message-ID: <20050209140916.GZ1487@trogdor.uvt.nl>
 Herken broadcasts (misschien aan destination MAC-adres?) en log ze niet.
