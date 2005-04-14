@@ -2,6 +2,24 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-04-14 11:10:02 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-14
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-14
+
+    adding a hook to save uruk's rc directly to iptables-save file: more
+    flexibility
+    
+
+    new files:
+     uruk/script/.arch-ids/uruk-save.in.id uruk/script/uruk-save.in
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2005-04-14 09:54:39 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-13
 
     Summary:

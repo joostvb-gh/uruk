@@ -18,12 +18,18 @@ Message-ID: <20040526114431.GN1060@trogdor.uvt.nl>
 Date: Wed, 26 May 2004 13:44:31 +0200
 Zou het mogelijk zijn dat uruk in plaats van iptables aan te roepen, z'n
 aanroepen zelf in /var/lib/iptables/active opslaat?
-related to this: make /etc/init.d/uruk {stop,start} act more intuitive:
+Related to this: make /etc/init.d/uruk {stop,start} act more intuitive:
 start should load /etc/uruk/rc .
+Alternative: have an uruk-mode in which uruk dumps to /var/lib/iptables/active
+_without_ invoking iptables.  That would mean something like: reimplement
+(part of) /usr/local/src/debian/iptables/iptables-1.2.11/upstream/iptables-1.2.11/iptables-save.c .
+See script/uruk-save.in: a first start.
 
 Date: Wed, 9 Feb 2005 15:09:16 +0100
 Message-ID: <20050209140916.GZ1487@trogdor.uvt.nl>
-herken broadcasts (misschien aan destination MAC-adres?) en log ze niet.
+Herken broadcasts (misschien aan destination MAC-adres?) en log ze niet.
+
+Add IPv6 support.
 
 ( GNU Arch peeksheet:
 
