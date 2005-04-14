@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-04-14 18:25:16 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-17
+
+    Summary:
+      release 20050414: this is a prerelease
+    Revision:
+      uruk--mainline--0.1--patch-17
+
+    
+    
+
+    modified files:
+     uruk/ChangeLog uruk/Makefile.am uruk/NEWS
+
+
 2005-04-14 18:21:17 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-16
 
     Summary:

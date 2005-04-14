@@ -1,17 +1,12 @@
 ## Process this file with automake to produce Makefile.in
-## this file maintained using arch at http://arch.gna.org/uruk/
+## This file maintained using arch at http://arch.gna.org/uruk/
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
 
 ## Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
 ## Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
-## Copyright (C) 2003, 2004 Joost van Baal
-
-## you need cvs2cl for this to work.  get it from
-## http://www.red-bean.com/cvs2cl/ .
-ChangeLog: NEWS
-	cvs2cl --accum --prune
+## Copyright (C) 2003, 2004, 2005 Joost van Baal
 
 VERSION.m4 VERSION stamp.year stamp.month stamp.day: ChangeLog
 	./setversion
@@ -25,7 +20,7 @@ PACKAGE = @PACKAGE_TARNAME@
 SUBDIRS = script man doc init
 
 docdir = $(datadir)/doc/$(PACKAGE)
-doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO
+doc_DATA = AUTHORS COPYING ChangeLog ChangeLog.2003 README THANKS TODO
 
 EXTRA_DIST = bootstrap setversion VERSION.m4 VERSION \
   stamp.month stamp.year stamp.day

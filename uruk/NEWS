@@ -2,8 +2,9 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version xxxxxx
+uruk version 20050414
 
+- This is a pre-release.
 - Uruk now is maintained using GNU Arch on http://arch.gna.org/uruk/ .
   See README.
 - ChangeLog entries from 2003 split off in ChangeLog.2003.
