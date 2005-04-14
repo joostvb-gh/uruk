@@ -155,11 +155,10 @@ their source or destination.
 
 By default, \uruk drops all ICMP packets with type other than
 
-\begin{itemize{
+\begin{itemize}{
     {contiguous}{1}
     {compact}{1}
     {type}{mark}
-  }
 }
   \item address-mask-reply
   \item address-mask-request

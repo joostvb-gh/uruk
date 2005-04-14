@@ -22,6 +22,6 @@ SUBDIRS = script man doc init
 docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog ChangeLog.2003 README THANKS TODO
 
-EXTRA_DIST = bootstrap setversion VERSION.m4 VERSION \
-  stamp.month stamp.year stamp.day
+EXTRA_DIST = bootstrap ChangeLog.2003 setversion stamp.month stamp.year \
+  stamp.day VERSION.m4 VERSION
 

@@ -154,7 +154,10 @@ initd_main () {
           cat << END
   Hrm, $uruk_config is present, but $ruleset is not filled yet.  Let's assume
   you've read the uruk-rc(5) manpage and your $uruk_config is sane.  This
-  file will be used to fill $ruleset now.
+  file will be used to fill $ruleset now, using uruk-save.  I assume you are
+  NOT using any hooks in your rc file, see uruk-save(8)!  If you don't like
+  all this, read the "Using the Uruk init script" part in the GETTING STARTED
+  section of the uruk(8) manpage.
 END
           uruk-save > $ruleset
       fi

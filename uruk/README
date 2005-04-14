@@ -30,13 +30,13 @@ for CONFIG_IP_NF_MATCH_STATE, you need
 package from the netfilter project.
 
 
-For typesetting the documentation (the uruk(8) and uruk-rc(5) manpages), you'll
-need zoem.  Zoem is a an interpretive macro language, for creating mark-up
-languages, by Stijn van Dongen.  Information about zoem, as well as tarballs
-for download, can be found on the zoem webpage at http://micans.org/zoem/ .
-Binary zoem packages for Debian GNU/Linux are available via ``deb
-http://mdcc.cx/debian local contrib''.  Pretypesetted uruk docs are not
-shipped, since their contents depend on your ./configure settings.
+For typesetting the documentation (the uruk(8), uruk-rc(5) and uruk-save(8)
+manpages), you'll need zoem.  Zoem is a an interpretive macro language, for
+creating mark-up languages, by Stijn van Dongen.  Information about zoem, as
+well as tarballs for download, can be found on the zoem webpage at
+http://micans.org/zoem/ .  Binary zoem packages are shipped with Debian
+GNU/Linux.  Pretypesetted uruk docs are not shipped, since their contents
+depend on your ./configure settings.
 
 
 INSTALL
@@ -97,9 +97,8 @@ http://regexps.srparish.net/tutorial-tla/arch.html for information about arch.
 
 MORE INFORMATION, SIMILAR TOOLS
 
-The uruk(8) and uruk-rc(5) manpages are available in HTML
-format too.  By default, they're installed in
-/usr/local/share/doc/uruk/html/ .
+The uruk(8), uruk-rc(5) and uruk-save(8) manpages are available in HTML format
+too.  By default, they're installed in /usr/local/share/doc/uruk/html/ .
 
 The Uruk webpage is at http://mdcc.cx/uruk/ .
 

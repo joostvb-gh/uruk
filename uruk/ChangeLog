@@ -2,6 +2,25 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-04-14 18:43:50 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-18
+
+    Summary:
+      some minor tweaks to sneak in the 20050414 release
+    Revision:
+      uruk--mainline--0.1--patch-18
+
+    Makefile.am: ship ChangeLog.2003.
+    README: zoem is distributed with Debian now.
+    init/uruk.in: warn about uruk-save unsafeness.
+    man/uruk.azm: _finally_ fix the zoem bug, so that this manpage is completely
+     typesetted again.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/Makefile.am uruk/README uruk/init/uruk.in
+     uruk/man/uruk.azm
+
+
 2005-04-14 18:25:16 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-17
 
     Summary:
