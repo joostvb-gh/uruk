@@ -2,6 +2,28 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-04-15 21:33:35 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-22
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-22
+
+    this stuff is moved
+    
+
+    removed files:
+     packages/.arch-ids/=id packages/debian/.arch-ids/=id
+     packages/rpm/.arch-ids/=id
+
+    modified files:
+     uruk/ChangeLog
+
+    removed directories:
+     packages packages/.arch-ids packages/debian
+     packages/debian/.arch-ids packages/rpm packages/rpm/.arch-ids
+
+
 2005-04-15 21:32:08 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-21
 
     Summary:
