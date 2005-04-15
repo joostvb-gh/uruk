@@ -2,6 +2,46 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-04-15 21:32:08 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-21
+
+    Summary:
+      moved to new archive
+    Revision:
+      uruk--mainline--0.1--patch-21
+
+    maintained in http://arch.gna.org/uruk/archive-2005-uruk-pkg/ now
+    
+
+    removed files:
+     packages/.arch-ids/debian.log.id packages/.arch-ids/rpm.log.id
+     packages/debian.log packages/debian/.arch-ids/README.id
+     packages/debian/.arch-ids/TODO.id
+     packages/debian/.arch-ids/changelog.id
+     packages/debian/.arch-ids/conffiles.id
+     packages/debian/.arch-ids/control.id
+     packages/debian/.arch-ids/copyright.id
+     packages/debian/.arch-ids/dirs.id
+     packages/debian/.arch-ids/postinst.id
+     packages/debian/.arch-ids/postrm.id
+     packages/debian/.arch-ids/prerm.id
+     packages/debian/.arch-ids/rc.id
+     packages/debian/.arch-ids/rules.id packages/debian/README
+     packages/debian/TODO packages/debian/changelog
+     packages/debian/conffiles packages/debian/control
+     packages/debian/copyright packages/debian/dirs
+     packages/debian/postinst packages/debian/postrm
+     packages/debian/prerm packages/debian/rc packages/debian/rules
+     packages/rpm.log
+     packages/rpm/.arch-ids/uruk-source.1.README.RPM.id
+     packages/rpm/.arch-ids/uruk-source.2.TODO.RPM.id
+     packages/rpm/.arch-ids/uruk.spec.id
+     packages/rpm/uruk-source.1.README.RPM
+     packages/rpm/uruk-source.2.TODO.RPM packages/rpm/uruk.spec
+
+    modified files:
+     uruk/ChangeLog
+
+
 2005-04-15 05:01:27 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-20
 
     Summary:

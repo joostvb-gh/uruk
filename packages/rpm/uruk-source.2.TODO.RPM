@@ -1,8 +1,0 @@
-# $Id: uruk-source.2.TODO.RPM,v 1.2 2004/02/16 14:32:55 joostvb Exp $
-
-Add a BuildRequires: zoem, once a zoem rpm is available.
-
-Add a depends: iptables.
-
-When first starting via init script, show errormessage referring to README.RPM.
-
