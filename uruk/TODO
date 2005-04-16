@@ -12,14 +12,21 @@ Reimplement uruk-save: make it more robust.  See
 http://www.faqs.org/docs/iptables/iptables-save.html for example of file
 format.  Use logic from iptables-save.c.
 
+Add yet another warning about uruk-save: it'll fail if rc is in verbose or
+debug mode.
+
 Date: Wed, 9 Feb 2005 15:09:16 +0100
 Message-ID: <20050209140916.GZ1487@trogdor.uvt.nl>
 Herken broadcasts (misschien aan destination MAC-adres?) en log ze niet.
 
-Add IPv6 support.
+Add IPv6 support: sources6_<if>_....
 
 Uruk init script should not only inspect /etc/default/uruk, but also
 /etc/sysconfig/uruk (Red Hat / Fedora style)
+
+Ship example /etc/default/uruk with this package, move out of Debian package.
+
+force-reload in init script could do the uruk-save trick.
 
 ( GNU Arch peeksheet:
 
