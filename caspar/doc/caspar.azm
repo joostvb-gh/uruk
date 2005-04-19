@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.16 2005-04-19 15:39:37 joostvb Exp $
+\: $Id: caspar.azm,v 1.17 2005-04-19 15:44:19 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -216,6 +216,14 @@ as you'd like to have it installed on the remote location.  Now, create
 }
 
 Now, \tt{make install} and \tt{make load} will do the right thing.
+
+Using the csp_EXTRAFILES variable is handy if you want to install files
+with a leading dot.   E.g.:
+
+\verbatim{
+  csp_EXTRAFILES = .bashrc
+  csp_SUHDIRS = root@some.host.somewhere:
+}
 
 \par
 
