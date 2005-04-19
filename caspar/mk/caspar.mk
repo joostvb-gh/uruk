@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.17 2005-03-02 07:24:37 joostvb Exp $
+# $Id: caspar.mk,v 1.18 2005-04-19 15:31:16 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -32,10 +32,13 @@ csp_SCPFLAGS ?=
 
 csp_CPDIRS   ?= $(csp_CPDIR)
 
-csp_TABOOFILES_DEFAULT ?= Makefile %~ \#%\# pod2htmd.tmp pod2htmi.tmp
+csp_EXTRAFILES_DEFAULTS ?=
+csp_EXTRAFILES ?= $(filter-out $(csp_EXTRAFILES_SKIP), $(csp_EXTRAFILES_DEFAULT)) $(csp_EXTRAFILES_ADD)
+
+csp_TABOOFILES_DEFAULT ?= Makefile .%.swp %~ \#%\# pod2htmd.tmp pod2htmi.tmp
 csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_SKIP), $(csp_TABOOFILES_DEFAULT)) $(csp_TABOOFILES_ADD)
 
-csp_TABOODIRS_DEFAULT ?= CVS
+csp_TABOODIRS_DEFAULT ?= CVS .svn
 csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
@@ -45,7 +48,7 @@ RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -instal
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
 
 # exclude editor backup files and other stuff
-FILES   := $(filter-out $(csp_TABOOFILES), $(FILES))
+FILES   := $(filter-out $(csp_TABOOFILES), $(FILES)) $(csp_EXTRAFILES)
 
 TARGETS := $(patsubst %,%-install,$(FILES))
 TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
