@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.19 2005-04-19 15:32:22 joostvb Exp $
+# $Id: caspar.mk,v 1.20 2005-04-20 08:51:38 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -32,8 +32,7 @@ csp_SCPFLAGS ?=
 
 csp_CPDIRS   ?= $(csp_CPDIR)
 
-csp_EXTRAFILES_DEFAULT ?=
-csp_EXTRAFILES ?= $(filter-out $(csp_EXTRAFILES_SKIP), $(csp_EXTRAFILES_DEFAULT)) $(csp_EXTRAFILES_ADD)
+csp_EXTRAFILES ?=
 
 csp_TABOOFILES_DEFAULT ?= Makefile .%.swp %~ \#%\# pod2htmd.tmp pod2htmi.tmp
 csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_SKIP), $(csp_TABOOFILES_DEFAULT)) $(csp_TABOOFILES_ADD)
