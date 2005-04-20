@@ -1,5 +1,16 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version CURRENT
+
+- New variable csp_EXTRAFILES added.  This enables one to succesfully run
+
+    make .bashrc-install
+
+  .  Aren't you all happy now?  Thanks Guus Sliepen for the patch.
+- In order to have csp_EXTRAFILES behave nice, .%.swp is added to
+  csp_TABOOFILES_DEFAULT and .svn is added to csp_TABOODIRS_DEFAULT.
+
+
 caspar version 20050302
 
 - Fixed caspar(7) manpage: the last part was not typesetted.  Duh.
@@ -80,4 +91,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.12 2005-03-02 08:42:23 joostvb Exp $
+# $Id: NEWS,v 1.13 2005-04-20 08:55:12 joostvb Exp $
