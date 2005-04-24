@@ -5,21 +5,24 @@ joostvb@pong:~/local/src/caspar% wget http://mdcc.cx/pub/caspar/caspar-20050302.
 joostvb@pong:~/local/src/caspar% tar zxf caspar-20050302.tar.gz 
 joostvb@pong:~/lo...c/caspar/caspar-20050302% mkdir solaris
 
-joostvb@topaz:~/ww...www/mdcc.cx/csbs/csbs-wd% tla update
+joostvb@topaz:~/arch/csbs% tla update
 
-joostvb@pong:~/lo.../caspar-20050302/solaris% wget http://mdcc.cx/csbs/csbs-wd/csbs.m4
+joostvb@pong:~/.csbs% wget http://mdcc.cx/csbs/csbs-wd/csbs.m4
+joostvb@pong:~/.csbs% wget http://mdcc.cx/csbs/csbs-wd/makeMakefile
 
-joostvb@pong:~/lo.../caspar-20050302/solaris% ln -s ~/.csbs/csbs.m4 .
+joostvb@nagy:~/cv...n.org/caspar/solaris/pkg% cvs commit -m 'new upstream' Makefile.m4 README.Solaris 
+
+joostvb@topaz:~/cv...ebian.org/caspar/solaris% cvs update
 
 joostvb@pong:~/lo.../caspar-20050302/solaris% wget http://mdcc.cx/~joostvb/packages/cvs/caspar/solaris/pkg/Makefile.m4
+joostvb@pong:~/lo.../caspar-20050424/solaris% wget http://mdcc.cx/~joostvb/packages/cvs/caspar/solaris/pkg/README.Solaris
 
 joostvb@pong:~/lo.../caspar-20050302/solaris% /usr/xpg4/bin/m4 -DCSBS_DATE="[`date --rfc`]" -DCSBS_ID="`id -un`" -DCSBS_HOSTNAME="`hostname`" Makefile.m4 > Makefile 
 
+joostvb@pong:~/lo.../caspar-20050424/solaris% ln -s ~/.csbs/bootstrap
+joostvb@pong:~/lo.../caspar-20050424/solaris% sh ./bootstrap
 
-joostvb@pong:~/lo.../caspar-20050302/solaris% wget http://mdcc.cx/csbs/csbs-wd/makeMakefile
-
-
-joostvb@pong:~/lo...c/caspar/caspar-20050302% make -f solaris/Makefile binary-stamp
+joostvb@pong:~/lo...c/caspar/caspar-20050424% make -f solaris/Makefile
 
 % man -M /usr/share/man diff
 
