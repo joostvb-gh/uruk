@@ -1,4 +1,4 @@
-# $Id: README.Solaris,v 1.4 2005-03-09 17:02:39 joostvb Exp $
+# $Id: README.Solaris,v 1.5 2005-04-24 18:13:21 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/solaris/pkg/README.Solaris,v $
 
 This is a caspar Solaris package.  Caspar is available from
@@ -17,6 +17,12 @@ Make sure ARCH=all is our default in Makefile.
 
 ChangeLog
 =========
+
+caspar (20050424_1)
+
+ * New upstream.
+
+ -- Joost van Baal <joostvb-caspar.mdcc.cx>  Sun, 24 Apr 2005 20:11:47 +0200
 
 caspar (20050302_2)
 
