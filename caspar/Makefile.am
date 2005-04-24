@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.10 2004-07-21 14:32:05 joostvb Exp $
+## $Id: Makefile.am,v 1.11 2005-04-24 15:59:26 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -27,6 +27,15 @@ SUBDIRS = doc mk sgml
 
 docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS
+
+## local targets
+MY_RDIR = topaz:www/mdcc.cx/pub/caspar/
+
+sign: distcheck
+        list='$(DIST_ARCHIVES)'; for i in $$list; do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
+
+publish: sign
+        list='$(DIST_ARCHIVES)'; for i in $$list; do echo "scp $$i $$i.asc $(MY_RDIR)"; scp $$i $$i.asc $(MY_RDIR); done
 
 ## Only files from the current directory or from subdirectory which
 ## don't have their own Makefile.am should be listed here.
