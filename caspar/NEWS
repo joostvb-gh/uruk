@@ -1,8 +1,8 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version CURRENT
+caspar version 20050424
 
-- New variable csp_EXTRAFILES added.  This enables one to succesfully run
+- New variable csp_EXTRAFILES added.  This enables one to succesfully run e.g.
 
     make .bashrc-install
 
@@ -91,4 +91,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.13 2005-04-20 08:55:12 joostvb Exp $
+# $Id: NEWS,v 1.14 2005-04-24 15:46:48 joostvb Exp $
