@@ -1,6 +1,9 @@
 caspar (20050424-1) unstable; urgency=low
 
   * New upstream.
+  * debian/copyright: minor update.
+  * debian/{postinst,postrm,preinst,prerm}: caspar maintainer scripts removed:
+    not needed.
   * Ship README.Debian with caspar, containing hint about where to find
     upstream NEWS file.  Thanks Laurent Fousse e.a. for suggestion.
 

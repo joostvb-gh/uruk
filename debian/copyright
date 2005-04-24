@@ -3,11 +3,11 @@ Tue,  2 Apr 2002 11:37:19 +0200.
 
 It was downloaded from http://mdcc.cx/pub/caspar/ .
 
-Upstream Author: Joost van Baal <joostvb-caspar-cl-21@mdcc.cx>
+Upstream Author: Joost van Baal <joostvb-caspar@mdcc.cx>
 
 Copyright:
 
-   Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
+   Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar@mdcc.cx>
 
    This package is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,6 +23,6 @@ Copyright:
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
    02111-1307, USA.
 
-On Debian GNU/Linux systems, the complete text of the GNU General
-Public License can be found in `/usr/share/common-licenses/GPL'.
+On Debian systems, the complete text of the GNU General Public License can be
+found in `/usr/share/common-licenses/GPL'.
 
