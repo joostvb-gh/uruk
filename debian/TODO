@@ -1,6 +1,0 @@
-
-NEWS should get shipped with caspar, not with caspar-doc.  We're shipping
-changelog with that one too.  It contains pretty important information.
-Thanks Laurent Fousse for suggestion.
-
-

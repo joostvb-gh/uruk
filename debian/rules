@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-# $Id: rules,v 1.8 2005-03-02 09:31:23 joostvb Exp $
+# $Id: rules,v 1.9 2005-04-24 16:56:51 joostvb Exp $
 
 # Based upon sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
@@ -58,6 +58,10 @@ clean:
 
 	dh_clean
 
+#
+# we split the package in caspar and caspar-doc.  Rationale: as of 2005-03,
+# caspar-doc is more than twice the size of caspar.
+#
 install: build
 	dh_testdir
 	dh_testroot

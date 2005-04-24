@@ -1,3 +1,11 @@
+caspar (20050424-1) unstable; urgency=low
+
+  * New upstream.
+  * Ship README.Debian with caspar, containing hint about where to find
+    upstream NEWS file.  Thanks Laurent Fousse e.a. for suggestion.
+
+ -- Joost van Baal <joostvb@debian.org>  Sun, 24 Apr 2005 18:35:06 +0200
+
 caspar (20050302-1) unstable; urgency=low
 
   * New upstream (missed 20050301).
