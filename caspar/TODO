@@ -1,4 +1,4 @@
-$Id: TODO,v 1.35 2005-03-02 08:42:23 joostvb Exp $
+$Id: TODO,v 1.36 2005-04-24 15:41:35 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -10,9 +10,8 @@ $Id: TODO,v 1.35 2005-03-02 08:42:23 joostvb Exp $
 
 --- install stuff ---
 
-- this whole thing could probably better use rsync, or, alternatively, all
-  caspar functionality should be incorporated in cfengine, a tool for
-  configuring and maintaining network machines.
+- this whole thing could probably better use rsync, or, alternatively, perhaps
+  all caspar functionality could be incorporated in cfengine.  See caspar(7).
 
 - add support for sudo, rsync, install(1)
 
@@ -39,10 +38,4 @@ $Id: TODO,v 1.35 2005-03-02 08:42:23 joostvb Exp $
    scp "README.txt" "net.txt" pong:/data/www/doc/doc/;
 
   $@ vs $? might be helpful.
-
--- other stuff ---
-
-- Add link to http://lists.debian.org/debian-devel/2005/02/msg00495.html ,
-  mention the non-caspar make-your-/etc-a-working-copy hack.  Could be
-  on webpage.
 
