@@ -1,7 +1,7 @@
 PKG="@PKGNAME@"
 NAME="@TARNAME@"
 VERSION="@VERSION@"
-ARCH=all
+ARCH="@ARCH@"
 CATEGORY="application"
 VENDOR="Joost van Baal, http://mdcc.cx/caspar"
 DESC=Makefile snippets for common tasks
@@ -9,5 +9,5 @@ EMAIL="joostvb-caspar.mdcc.cx"
 PSTAMP="Joost van Baal"
 BASEDIR="/"
 CLASSES="none"
-UVTCVSVERSION="$Id: pkginfo.in,v 1.3 2005-03-05 10:48:52 joostvb Exp $"
+UVTCVSVERSION="$Id: pkginfo.in,v 1.4 2005-04-24 19:53:28 joostvb Exp $"
 UVTCOMMENT="see pkginfo(4)"
