@@ -1,33 +1,29 @@
 
+See http://mdcc.cx/csbs/csbs-wd/csbs.html#creating_a_source_package_from_a_tarball !
+
 joostvb@pong:~/local/src/caspar% wget http://mdcc.cx/pub/caspar/caspar-20050302.tar.gz
 joostvb@pong:~/local/src/caspar% wget http://mdcc.cx/pub/caspar/caspar-20050302.tar.gz.asc
 
-joostvb@pong:~/local/src/caspar% tar zxf caspar-20050302.tar.gz 
-joostvb@pong:~/lo...c/caspar/caspar-20050302% mkdir solaris
+joostvb@pong:~/local/src/caspar% tar zxf caspar-20050302.tar.gz
+joostvb@pong:~/local/src/caspar% mv caspar-20050424 caspar-20050424.orig
+joostvb@pong:~/local/src/caspar% tar zxf caspar-20050424.tar.gz
+joostvb@pong:~/local/src/caspar% mkdir caspar-20050424/solaris
 
 joostvb@topaz:~/arch/csbs% tla update
 
-joostvb@pong:~/.csbs% wget http://mdcc.cx/csbs/csbs-wd/csbs.m4
-joostvb@pong:~/.csbs% wget http://mdcc.cx/csbs/csbs-wd/makeMakefile
+joostvb@pong:~/.csbs% for f in bootstrap csbs.m4 makeMakefile; do wget http://mdcc.cx/csbs/csbs-wd/$f; done
 
 joostvb@nagy:~/cv...n.org/caspar/solaris/pkg% cvs commit -m 'new upstream' Makefile.m4 README.Solaris 
 
 joostvb@topaz:~/cv...ebian.org/caspar/solaris% cvs update
 
-joostvb@pong:~/lo.../caspar-20050302/solaris% wget http://mdcc.cx/~joostvb/packages/cvs/caspar/solaris/pkg/Makefile.m4
-joostvb@pong:~/lo.../caspar-20050424/solaris% wget http://mdcc.cx/~joostvb/packages/cvs/caspar/solaris/pkg/README.Solaris
-joostvb@pong:~/lo.../caspar-20050424/solaris% wget http://mdcc.cx/~joostvb/packages/cvs/caspar/solaris/pkg/bootstrap
-joostvb@pong:~/lo.../caspar-20050424/solaris% wget http://mdcc.cx/~joostvb/packages/cvs/caspar/solaris/pkg/prototype 
-joostvb@pong:~/lo.../caspar-20050424/solaris% wget http://mdcc.cx/~joostvb/packages/cvs/caspar/solaris/pkg/pkginfo.in
+joostvb@pong:~/lo.../caspar-20050302/solaris% for f in Makefile.m4 README.Solaris bootstrap pkginfo.in prototype; do wget http://mdcc.cx/~joostvb/packages/cvs/caspar/solaris/pkg/$f; done
 
 joostvb@pong:~/lo.../caspar-20050424/solaris% sh ./bootstrap
 
-% man -M /usr/share/man diff
-
 joostvb@pong:~/lo...c/caspar/caspar-20050424% make -f solaris/Makefile source
 
-oops, fails...
+joostvb@pong:~/local/src/caspar% gunzip -dc caspar-20050424_1.diff.gz| less
 
-
-
+joostvb@pong:~/lo...c/caspar/caspar-20050424% make -f solaris/Makefile
 
