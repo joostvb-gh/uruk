@@ -18,6 +18,13 @@ debug mode.
 Date: Wed, 9 Feb 2005 15:09:16 +0100
 Message-ID: <20050209140916.GZ1487@trogdor.uvt.nl>
 Herken broadcasts (misschien aan destination MAC-adres?) en log ze niet.
+.
+loglevel= 0 < 20  zero:    be silent
+         20 < 40  low:     log denied packets, targetted at our IPs  (wsl-mode)
+         40 < 60  medium:  log denied non-broadcasts                 (default)
+         60 < 80  high:    log denied packets
+         80 < 99  fascist: log all packets
+test -gt -lt
 
 Add IPv6 support: sources6_<if>_....
 
