@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-05-26 05:14:36 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-25
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-25
+
+    another idea on how to implement better (less spammy) logging
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2005-05-25 21:51:55 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-24
 
     Summary:
