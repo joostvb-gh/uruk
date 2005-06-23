@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.20 2005-04-20 08:51:38 joostvb Exp $
+# $Id: caspar.mk,v 1.21 2005-06-23 09:18:35 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -74,6 +74,5 @@ $(TARGETS):
 install-recursive: install
 	$(do-recursive)
 
-.PHONY: $(TARGETS)
-.PHONY: $(csp_LOAD)
+.PHONY: $(TARGETS) $(csp_LOAD) install load
 
