@@ -38,9 +38,9 @@ test -r "$rc_a" && . "$rc_a"
 #
 
 # 40 < 60 (         50) medium:  log denied non-broadcasts  (default)
-test -n $loglevel || loglevel=50
+test -z "$loglevel" && loglevel=50
 
-if test $logleven -ge 80
+if test $loglevel -ge 80
 then
     # 80 < 99 (         90) fascist: log all packets
     $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: '
@@ -272,6 +272,7 @@ then
     # be silent
     :
 elif test $loglevel -lt 40
+then
     # log denied packets, targetted at our IPs
     for iface in $interfaces
     do
@@ -295,6 +296,7 @@ elif test $loglevel -lt 40
         done
     done
 elif test $loglevel -lt 60
+then
     # 40 < 60 (         50) medium:  log denied non-broadcasts  (default)
     $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: '
 fi

@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-07-18 16:17:43 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-29
+
+    Summary:
+      fix sh bugs
+    Revision:
+      uruk--mainline--0.1--patch-29
+
+    
+    
+
+    modified files:
+     uruk/ChangeLog uruk/script/uruk.in
+
+
 2005-07-18 15:59:10 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-28
 
     Summary:
