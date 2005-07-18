@@ -165,11 +165,10 @@ Old-style \rc files are still valid and behave fully backwards compatible.
 By default, uruk logs denied packets.  This is adjustable using the
 \it{loglevel} variable.  The settings are:
 
-\begin{itemize{
+\begin{itemize}{
     {contiguous}{1}
     {compact}{1}
     {type}{mark}
-  }
 }
 
 \item "zero": be silent; do not log any packet.  \it{loglevel} is 10.
