@@ -19,19 +19,14 @@ Date: Wed, 9 Feb 2005 15:09:16 +0100
 Message-ID: <20050209140916.GZ1487@trogdor.uvt.nl>
 Herken broadcasts (misschien aan destination MAC-adres?) en log ze niet.
 .
-loglevel= 0 < 20 (suggest: 10) zero:    be silent
-         20 < 40 (suggest: 30) low:     log denied packets, targetted at our IPs  (wsl-mode)
-         40 < 60 (         50) medium:  log denied non-broadcasts                 (default)
-         60 < 80 (         70) high:    log denied packets
-         80 < 99 (         90) fascist: log all packets
-test -gt -lt
-.
 alternative implementation: near code-snippet:
  # supporting this for multiple-ips would need multiple chains
  # or, perhaps, some iptables extension.
-It seems log-spamming happens only in multiple-ip-per-nic mode.
+This log-spamming happens only in multiple-ip-per-nic mode.
 Do DROP stuff just before log, would that work?  (No, we really can't do
 something like "--dest !(ip1 or ip2 or ip3)".)
+.
+yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
 Add IPv6 support: sources6_<if>_....
 

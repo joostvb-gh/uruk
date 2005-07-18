@@ -16,6 +16,10 @@
 # statements, just show them
 # iptables='echo iptables'
 
+# Log denied packets, which are targetted at one of our IPs.  Do not log
+# blocked broadcasts.
+loglevel=30
+
 # List of network interfaces.  lo should not be in this list. For every
 # interface <if>, variables ip_<if>, bcast_<if> and net_<if> should be
 # defined.

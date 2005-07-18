@@ -186,7 +186,8 @@ to your $rc_a uruk hook.  See \sibref{uruk-rc}{uruk-rc(5)}.)
 \par
 
 By default, \uruk logs all UDP and TCP packets which are blocked by the user
-defined policies.  Loglevel is debug, logprefix is "iptables:".
+defined policies.  Loglevel is debug, logprefix is "iptables:".  See
+also the notes on \it{loglevel} in \sibref{uruk-rc}{uruk-rc(5)}.
 
 \par
 

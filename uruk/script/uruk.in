@@ -37,6 +37,15 @@ test -r "$rc_a" && . "$rc_a"
 # bootstrap these rules
 #
 
+# 40 < 60 (         50) medium:  log denied non-broadcasts  (default)
+test -n $loglevel || loglevel=50
+
+if test $logleven -ge 80
+then
+    # 80 < 99 (         90) fascist: log all packets
+    $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: '
+fi
+
 $iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 test -r "$rc_b" && . "$rc_b"
@@ -254,11 +263,44 @@ done
 test -r "$rc_g" && . "$rc_g"
 
 #
-# log packets who make it till here: denied packets (not denied broadcasts
-#     or spoofed stuff)
+# log packets which make it till here: denied packets (not denied broadcasts
+#     or spoofed stuff).  take loglevel into account.
 #
 
-$iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: '
+if test $loglevel -lt 20
+then
+    # be silent
+    :
+elif test $loglevel -lt 40
+    # log denied packets, targetted at our IPs
+    for iface in $interfaces
+    do
+        eval is="\"\$ips_${iface}\""
+        if test -n "$is"
+        then
+            interfaces_x=
+            for i in $is
+            do
+                interfaces_x="$interfaces_x ${iface}_$i"
+            done
+        else
+            interfaces_x=$iface
+        fi
+
+        for iface_x in $interfaces_x
+        do
+            eval ip="\"\$ip_${iface_x}\""
+            $iptables -A INPUT -i $iface --destination $ip \
+              -j LOG --log-level debug --log-prefix 'iptables: '
+        done
+    done
+elif test $loglevel -lt 60
+    # 40 < 60 (         50) medium:  log denied non-broadcasts  (default)
+    $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: '
+fi
+
+# FIXME : yet to implement:
+# 60 < 80 (         70) high:    log denied packets
 
 test -r "$rc_h" && . "$rc_h"
 
