@@ -2,6 +2,14 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 20050718
+
+- This is a pre-release.
+- Added support for loglevel, see uruk-rc(5).  Some people were annoyed
+  by uruk's syslog spamming.  If you're one of these, set loglevel=30 (or
+  10) in your rc-file.
+
+
 uruk version 20050414
 
 - This is a pre-release.
