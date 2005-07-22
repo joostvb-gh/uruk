@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-07-22 07:50:14 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-30
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-30
+
+    be more clear on how to set loglevel in rc file.  Thanks Wessel Dankers for bugreport.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/man/uruk-rc.azm
+
+
 2005-07-18 16:17:43 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-29
 
     Summary:

@@ -171,15 +171,15 @@ By default, uruk logs denied packets.  This is adjustable using the
     {type}{mark}
 }
 
-\item "zero": be silent; do not log any packet.  \it{loglevel} is 10.
+\item "zero": be silent; do not log any packet.  \rc file features \v{loglevel=10}.
 
 \item "low": log denied packets, which are targetted at one of our IPs.
-  \it{loglevel} is 30.
+  \rc file features \v{loglevel=30}.
 
 \item "medium": log denied non-broadcast packets.  This is the default:
-  \it{loglevel} is unset or \it{loglevel} is set to 50.
+  \it{loglevel} is unset or \rc file features \v{loglevel=50}.
 
-\item "fascist": log all packets. \it{loglevel} is 90.
+\item "fascist": log all packets. \rc file features \v{loglevel=90}.
 
 \end{itemize}
 
