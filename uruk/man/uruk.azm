@@ -143,8 +143,7 @@ any hooks in your \rc file, you're save.  Use it like this:
 \verbatim{\
  # vi \rcpath
  # uruk-save
- # \initpath stop
- # \initpath start}
+ # \initpath load active}
 
 \sec{policy}{DEFAULT POLICY}
 

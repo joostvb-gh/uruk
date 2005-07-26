@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-07-26 11:06:27 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-33
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-33
+
+    when using uruk-save, use it atomically
+    
+
+    modified files:
+     uruk/ChangeLog uruk/man/uruk.azm
+
+
 2005-07-26 10:08:52 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-32
 
     Summary:
