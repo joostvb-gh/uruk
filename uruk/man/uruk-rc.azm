@@ -222,6 +222,14 @@ you can run \uruk under a non-priviliged user account.
 
 \par
 
+If you'd rather not fiddle with your \rc file to debug, run something like:
+
+\verbatim{\
+
+  URUK_IPTABLES='echo iptables' sh -x uruk}
+
+\par
+
 See also the notes on \it{loglevel}.
 
 \sec{files}{FILES}

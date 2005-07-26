@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-07-26 10:08:52 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-32
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-32
+
+    yet another way to debug
+    
+
+    modified files:
+     uruk/ChangeLog uruk/man/uruk-rc.azm
+
+
 2005-07-26 09:50:18 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-31
 
     Summary:
