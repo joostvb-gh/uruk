@@ -1,6 +1,6 @@
-$Id: TODO,v 1.38 2005-08-01 11:20:55 joostvb Exp $
+$Id: TODO,v 1.39 2005-08-01 12:12:09 joostvb Exp $
 
-- rename bootstrap to autogen.sh.  reimplement as something like
+- reimplement bootstrap as something like
 
    AUTOMAKE=automake-1.9 ACLOCAL=aclocal-1.9 autoreconf --install \
       --symlink --make
