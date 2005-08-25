@@ -106,12 +106,14 @@ See also http://www.openbsd.org/faq/faq6.html#6.2 and pf.conf(5) (online on
 http://resin.csoft.net/cgi-bin/man.cgi?section=5&topic=pf.conf ) for general
 ideas on packet filtering.
 
-A tool doing similar stuff as this script is Auke Kok's ``ferm'', available
-from http://www.geo.vu.nl/~koka/ferm/ .  Other tools, with varying levels of
-userfriendlyness (or bloatedness) are: ipmasq, shorewall, firestarter, ipmenu,
-fireflier, firewall-easy, fwbuilder, fwctl, gfcc, lokkit, gnome-lokkit,
-gshield, guarddog, hlfl, knetfilter, mason and gshield.  Another list of
-alternatives is in the "Securing Debian Manual",
+Tools doing similar stuff as this script are Auke Kok's ``ferm'', available
+from http://www.geo.vu.nl/~koka/ferm/ and Arno van Amersfoort's
+``arno-iptables-firewall'', available from
+http://rocky.eld.leidenuniv.nl/page/iptables/iptframe.htm .  Other tools, with
+varying levels of userfriendlyness (or bloatedness) are: ipmasq, shorewall,
+firestarter, ipmenu, fireflier, firewall-easy, fwbuilder, fwctl, gfcc, lokkit,
+gnome-lokkit, gshield, guarddog, hlfl, knetfilter, mason and gshield.  Another
+list of alternatives is in the "Securing Debian Manual",
 http://www.debian.org/doc/manuals/securing-debian-howto/ch-sec-services.en.html#s-firewall-pack
 ; this howto is also available via the Debian harden-doc package.
 
