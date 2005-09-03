@@ -29,7 +29,7 @@
 
 \par
 
-\rc lists IP adresses, allowed to use services.
+\rc lists IP addresses, allowed to use services.
 
 \par
 
@@ -61,7 +61,7 @@ This \rc file allows all traffic.
 For a more reasonable \rc file, look at the well-commented example \rc file in
 \ttexpath.
 
-\cpar{Hooks}
+\sec{Hooks}{HOOKS}
 
 Uruk offers hooks for inserting your owns code between iptables invokations.
 Examples will show the usefulness of these hooks.
@@ -105,30 +105,48 @@ while the file \tt{dns} reads
 This allows one to allow (return)traffic, disregarding the state.  (Uruk has no
 support for this in it's regular \rc.)
 
+In \rc there is:
+
+\verbatim{\
+ rc_a=${etcdir}/nat}
+
+while the file \tt{nat} reads
+
+\verbatim{\
+  $iptables -t nat -A POSTROUTING --out-interface eth0 -j SNAT --to-source $ip_eth0}
+
+This allows Network Address Translation.  However, beware!  Like all extensive
+use of hooks, this will break the \uruk_save script.  If you make sure your
+active iptables rules are wiped, and invoke \uruk manually to load new rules,
+you're save.
+
+\par
+
 For now, you'll have to study the \uruk source to find out which hook (there
 are hooks rc_a, rc_b, ... , rc_i) to use.
 
 
-\cpar{Network interfaces with multiple IP adresses}
+\sec{Network interfaces with multiple IP addresses}{NETWORK INTERFACES WITH
+MULTIPLE IP ADDRESSES}
 
-Since Uruk version > 20040210, Uruk support situations where a network
-interface has more than one IP adress attached.
+Uruk supports situations where a network interface has more than one IP address
+attached.  Variables \v{ips_}\it{nic} and \v{bcasts_}\it{nic} are used for
+this.
 
 \par
 
-New variables \v{ips_}\it{nic} and \v{bcasts_}\it{nic} are introduced.
 If \v{ips_}\it{nic} is set, e.g. like
 
 \verbatim{\
  ips_eth0="ip0 ip1 ip2"}
 
 we assume multiple (three in this example) IPs are assigned to \v{eth0}.  If
-this variable is not set, behaviour is backwards compatible, and only one IP is
-supported on \v{eth0}.
+this variable is not set, behaviour is compatible with Uruk version < 20040213,
+and only one IP is supported on \v{eth0}.
 
 \par
 
-In multiple-IP mode, IP adresses are listed as e.g.
+In multiple-IP mode, IP addresses are listed as e.g.
 
 \verbatim{\
  ip_eth0_ip0="137.56.247.16"}
@@ -159,6 +177,12 @@ Furthermore, for dropping broadcast packets, specify e.g.
 The \it{interfaces_nocast} variable still holds things like \v{eth0} and \v{eth1}.
 
 Old-style \rc files are still valid and behave fully backwards compatible.
+
+
+\sec{logging and debugging}{LOGGING AND DEBUGGING}
+
+Uruk has support for logging network packets, and for debugging the uruk
+script.
 
 \cpar{Logging}
 
@@ -204,7 +228,7 @@ By default, uruk logs denied packets.  This is adjustable using the
 \:         80 < 99 (         90) fascist: log all packets
 
 
-\sec{debugging}{DEBUGGING}
+\cpar{Debugging}
 
 To debug the \uruk script, add a "set -x" to your \rc file: this shows what is
 done, along with executing it.  (Like an uruk '-v' option.)

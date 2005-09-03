@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-09-03 13:57:31 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-37
+
+    Summary:
+      fix typo, add example for NAT
+    Revision:
+      uruk--mainline--0.1--patch-37
+
+    
+    
+
+    modified files:
+     uruk/ChangeLog uruk/man/include.zmm.in uruk/man/uruk-rc.azm
+     uruk/man/uruk.azm
+
+
 2005-08-25 18:37:51 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-36
 
     Summary:

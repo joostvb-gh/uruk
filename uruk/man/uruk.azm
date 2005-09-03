@@ -147,7 +147,7 @@ any hooks in your \rc file, you're save.  Use it like this:
 
 \sec{policy}{DEFAULT POLICY}
 
-By default, \uruk drops packets which have unknown private network adresses in
+By default, \uruk drops packets which have unknown private network addresses in
 their source or destination.
 
 \par

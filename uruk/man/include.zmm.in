@@ -18,6 +18,7 @@
 \set{"man::author"}{Joost van Baal <joostvb-uruk@mdcc.cx>}
 
 \def{uruk}{\bf{uruk}}
+\def{uruk_save}{\bf{uruk-save}}
 \def{rc}{\it{rc}}
 
 \def{rcpath}{@SYSCONF_PATH@/@PACKAGE_TARNAME@/rc}
