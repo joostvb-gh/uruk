@@ -1,4 +1,4 @@
-$Id: TODO,v 1.40 2005-09-20 20:48:47 joostvb Exp $
+$Id: TODO,v 1.41 2005-09-20 22:46:19 joostvb Exp $
 
 - reimplement bootstrap as something like
 
@@ -18,14 +18,11 @@ $Id: TODO,v 1.40 2005-09-20 20:48:47 joostvb Exp $
 - this whole thing could probably better use rsync, or, alternatively, perhaps
   all caspar functionality could be incorporated in cfengine.  See caspar(7).
 
-- add support for sudo, rsync, install(1)
-
-  One sudo-trick:
-
-   % ssh yosida 'sudo sh -c "cat - > /etc/fstab"' < fstab
-
-  Adding support for sudo would allow for "PermitRootLogin no" in
-  /etc/ssh/sshd_config .
+- finish support for sudo, rsync, install(1).  Find out why sucp always asks for
+  a password.  Doesn't sudo keep this validate-thingie when our TTY is
+  "unknown"?  Document this: Adding support for sudo via sucp allows for
+  "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this: sucp won't
+  prevent the given password from being echoed.
 
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only
