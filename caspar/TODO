@@ -1,4 +1,4 @@
-$Id: TODO,v 1.39 2005-08-01 12:12:09 joostvb Exp $
+$Id: TODO,v 1.40 2005-09-20 20:48:47 joostvb Exp $
 
 - reimplement bootstrap as something like
 
@@ -19,6 +19,13 @@ $Id: TODO,v 1.39 2005-08-01 12:12:09 joostvb Exp $
   all caspar functionality could be incorporated in cfengine.  See caspar(7).
 
 - add support for sudo, rsync, install(1)
+
+  One sudo-trick:
+
+   % ssh yosida 'sudo sh -c "cat - > /etc/fstab"' < fstab
+
+  Adding support for sudo would allow for "PermitRootLogin no" in
+  /etc/ssh/sshd_config .
 
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only
@@ -44,11 +51,11 @@ $Id: TODO,v 1.39 2005-08-01 12:12:09 joostvb Exp $
 
   $@ vs $? might be helpful.
 
-- Implement csp_SUHS_SUBSET: only deal with this subset of csp_SUHS.  If SUHS in
-  csp_SUHS_SUBSET is no subset of csp_SUHS, skip it.  Requested by Wessel Dankers
-  (and the author).  It'll work nice in cases where you have lots of subdirectories
-  holding information for lots of groups of hosts when you want to install just for
-  a small group (or 1) hosts.
+- Implement csp_SUHS_SUBSET: only deal with this subset of csp_SUHS.  If SUHS
+  in csp_SUHS_SUBSET is no subset of csp_SUHS, skip it.  Requested by Wessel
+  Dankers (and the author).  It'll work nice in cases where you have lots of
+  subdirectories holding information for lots of groups of hosts when you want
+  to install just for a small group (or 1) hosts.
 
 
 
