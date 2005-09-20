@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.21 2005-06-23 09:18:35 joostvb Exp $
+# $Id: caspar.mk,v 1.22 2005-09-20 21:23:20 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -22,6 +22,9 @@ endif
 
 endif
 
+csp_PUSHDIR  ?= $(csp_SCPDIR)
+csp_PUSH     ?= sucp
+
 # possibility to choose own cp(1) and scp(1)
 csp_CP       ?= cp
 csp_SCP      ?= scp
@@ -41,7 +44,8 @@ csp_TABOODIRS_DEFAULT ?= CVS .svn
 csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
-	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);)
+	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
+	$(foreach uh,$(csp_PUSHUHS),$(csp_PUSH) "$(subst -install,,$@)" $(uh) $(csp_PUSHDIR);)
 
 # files, not directories
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
