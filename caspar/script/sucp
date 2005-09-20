@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# $Id: sucp,v 1.1 2005-09-20 21:47:51 joostvb Exp $
+# $Source: /cvsroot/caspar/caspar/caspar/script/Attic/sucp,v $
+
+# sucp - mix scp with sudo
+#
+# example usage:
+#  sucp fstab rms@bilbo /etc
+
+# first make sure our sudo-timestamp is fresh
+ssh $2 sudo -v
+# now run sudo: we won't be prompted for a password; and
+# can use stdin for our data
+exec ssh $2 "sudo sh -c \"cat - > $3/$1\"" < $1
+
