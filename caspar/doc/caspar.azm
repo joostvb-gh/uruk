@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.20 2005-04-24 15:41:35 joostvb Exp $
+\: $Id: caspar.azm,v 1.21 2005-09-21 16:41:41 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -121,9 +121,17 @@ The variables one can set in a calling Makefile are:
   \item{\tt{csp_SCP}}      scp binary, just "scp" by default
   \item{\tt{csp_SCPFLAGS}} extra arguments to pass to scp invocation, e.g.
     '\tt{-i .ssh/id_rsa-root}'
+  \item{\tt{csp_PUSH}}     script or program which will push files to remote
+                           location.  The script will be passed 3 arguments:
+                           local \it{filename}, \it{[user@]host} and remote
+                           \it{directory}.  \it{[user@]host} will be set
+                           to all elements of \tt{$(csp_PUSHUHS)};
+                           \it{directory} will be set to \tt{$(csp_PUSHDIR)}.
   \item{\tt{csp_SUH}}      ssh-reachable user@host (Secure User at Host)
   \item{\tt{csp_SUHS}}     space separated list of ssh-reachable user@host
     items (Secure User at HostS)
+  \item{\tt{csp_PUSHUHS}}  space separated list of user@host items, reachable
+                           using \tt{$(csp_PUSH)}.
   \item{\tt{csp_CPDIR}}    directory to which we can cp(1), instead of scp
     (CoPy DIRectory)
   \item{\tt{csp_CPDIRS}}   space separated list of directories to which we can
@@ -134,6 +142,9 @@ The variables one can set in a calling Makefile are:
     \tt{$(dir)} in \tt{$(csp_SUHS)} (or where \tt{dir = $(csp_SCPDIR)}, in
     case \tt{csp_SUHS} is not set).
     However, more items can get added to this list on the fly.
+  \item{\tt{csp_PUSHDIR}}  directory on host, reachable using script
+                           \tt{$(csp_PUSH)}.  Set to \tt{$(csp_SCPDIR)} by
+                           default.
   \item{\tt{csp_LOAD}}     targets which should depend on the `load' target.
   \item{\tt{csp_EXTRAFILES}} extra files which should be installed.
     Can be used to include files starting with a dot.
