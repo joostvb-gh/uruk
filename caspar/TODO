@@ -1,4 +1,4 @@
-$Id: TODO,v 1.41 2005-09-20 22:46:19 joostvb Exp $
+$Id: TODO,v 1.42 2005-10-01 12:02:44 joostvb Exp $
 
 - reimplement bootstrap as something like
 
@@ -20,9 +20,11 @@ $Id: TODO,v 1.41 2005-09-20 22:46:19 joostvb Exp $
 
 - finish support for sudo, rsync, install(1).  Find out why sucp always asks for
   a password.  Doesn't sudo keep this validate-thingie when our TTY is
-  "unknown"?  Document this: Adding support for sudo via sucp allows for
+  "unknown"?  Does the -T ssh option fix this?  Document this: Adding support
+  for sudo via sucp allows for
   "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this: sucp won't
-  prevent the given password from being echoed.
+  prevent the given password from being echoed.  Document new variables
+  csp_PUSHDIR, csp_PUSH, csp_PUSHUHS, new script: sucp.
 
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only
