@@ -41,6 +41,46 @@ Ship example /etc/default/uruk with this package, move out of Debian package.
 
 force-reload in init script could do the uruk-save trick.
 
+reimplement init-script:
+.
+Message-ID: <20050802190924.GF5525@nagy.mdcc.cx>
+References: <20050802100132.GS7281@banach.uvt.nl> <20050802101045.GD25869@trogdor.uvt.nl>
+On Tue, Aug 02, 2005 at 12:10:45PM +0200, Wessel Dankers wrote:
+> On 2005‒08‒02 12:01:32+0200, Joost van Baal wrote:
+> > - je wilt je machine naar pre-uruk toestand kunnen terugbrengen.
+> > - je wilt dat  stop, start  doet wat je denkt dat t doet.
+> > - feature dat je met t handje iptables-invocatie bij je uruk
+> >   kunt stoppen is crap: cruft hoopt op.
+> - start en stop idempotent maken
+>
+> #! /bin/sh -e
+>
+> case "$1" in
+> start)
+>       iptables-save >inactive
+>       uruk-save     >active
+>       iptables-load <active
+>       ;;
+> stop)
+>       if [ -e inactive ]
+>       then
+>               iptables-load <inactive
+>               rm inactive
+>       else
+>               echo "Uruk not running; none stopped"
+>       fi
+>       ;;
+> reload)
+>       uruk-save     >active
+>       iptables-load <active
+>       ;;
+> restart)
+>       $0 stop
+>       $0 start
+> esac
+
+phase out support for services_eth0_udp, but enforce ipS_eth0; warn for obsolete syntax
+
 ( GNU Arch peeksheet:
 
 joostvb@nagy:~/arch/uruk/uruk/script% tla commit
