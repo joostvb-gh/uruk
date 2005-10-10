@@ -2,6 +2,27 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-10 20:49:26 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-40
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-40
+
+    
+    
+
+    new files:
+     uruk/etc/.arch-ids/=id uruk/etc/.arch-ids/rc_d_ipv6.id
+     uruk/etc/rc_d_ipv6
+
+    modified files:
+     uruk/ChangeLog
+
+    new directories:
+     uruk/etc uruk/etc/.arch-ids
+
+
 2005-10-09 14:03:51 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-39
 
     Summary:
