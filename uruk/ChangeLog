@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-10 21:04:45 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-41
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-41
+
+    typo fix, some start of documentation of this ipv6 stuff
+    
+    
+
+    modified files:
+     uruk/ChangeLog uruk/etc/rc_d_ipv6
+
+
 2005-10-10 20:49:26 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-40
 
     Summary:

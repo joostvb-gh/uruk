@@ -8,6 +8,8 @@
 
 # rc_d_ipv6 - have your rc_d source this file if you'd like to play with
 #               IPv6 support in uruk
+#
+# New variables used: ip6_<...>, sources6_<...>, ip6tables
 
 for iface in $interfaces
 do
@@ -25,7 +27,7 @@ do
 
     for iface_x in $interfaces_x
     do
-        eval ip="\"\$ip_${iface_x}\""
+        eval ip="\"\$ip6_${iface_x}\""
 
         for proto in tcp udp
         do
