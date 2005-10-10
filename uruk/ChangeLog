@@ -2,6 +2,25 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-10 21:26:22 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-43
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-43
+
+    this is enough to get limited ipv6 working.
+    
+
+    new files:
+     uruk/etc/.arch-ids/rc_g_ipv6.id
+     uruk/etc/.arch-ids/rc_h_ipv6.id uruk/etc/rc_g_ipv6
+     uruk/etc/rc_h_ipv6
+
+    modified files:
+     uruk/ChangeLog uruk/etc/rc_i_ipv6
+
+
 2005-10-10 21:18:21 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-42
 
     Summary:

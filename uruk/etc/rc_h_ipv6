@@ -8,9 +8,5 @@
 
 # See rc_d_ipv6 for some notes on this file.
 
-$ip6tables -A INPUT -j DROP
+$ip6tables -A INPUT -j LOG --log-level debug --log-prefix 'ip6tables: '
 
-# these:
-#  $ip6tables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
-#  $ip6tables -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
-# would be better but don't seem to be supported with stock kernel.
