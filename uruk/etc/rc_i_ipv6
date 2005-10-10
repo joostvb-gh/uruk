@@ -1,0 +1,12 @@
+# this file maintained using arch at http://arch.gna.org/uruk/
+
+# Copyright (C) 2005 Joost van Baal
+#
+# This file is part of Uruk.  Uruk is free software; you can redistribute
+# it and/or modify it under the terms of the GNU GPL, see the file named
+# COPYING.
+
+# See rc_d_ipv6 for some notes on this file.
+
+$ip6tables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
+$ip6tables -A INPUT -j REJECT --reject-with icmp6-adm-prohibited

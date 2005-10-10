@@ -9,7 +9,8 @@
 # rc_d_ipv6 - have your rc_d source this file if you'd like to play with
 #               IPv6 support in uruk
 #
-# New variables used: ip6_<...>, sources6_<...>, ip6tables
+# New variables used: ip6_<...>, sources6_<...>, ip6tables.
+# Be sure you've set "enable_ipv6=true" in /etc/default/uruk.
 
 for iface in $interfaces
 do
