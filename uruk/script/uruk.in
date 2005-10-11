@@ -21,6 +21,20 @@
 
 iptables=${URUK_IPTABLES:-/sbin/iptables}
 
+# By default, we don't do any /sbin/ip6tables calls.  This will change
+# once Uruk's IPv6 support is blessed mature.
+ip6tables=${URUK_IP6TABLES:-":"}
+#
+# Add
+#
+#  ip6tables=/sbin/ip6tables
+#
+# to your rc file if you'd like to play with IPv6 support in uruk
+#
+# New variables used: ip6_<...>, sources6_<...>, ip6tables.
+# Be sure you've set "enable_ipv6=true" in /etc/default/uruk.
+
+
 etcdir="@SYSCONF_PATH@/@PACKAGE_TARNAME@"
 
 config=${URUK_CONFIG:-${etcdir}/rc}
@@ -145,6 +159,7 @@ do
     for iface_x in $interfaces_x
     do
         eval ip="\"\$ip_${iface_x}\""
+        eval ip6="\"\$ip6_${iface_x}\""
         for proto in tcp udp
         do
             eval services="\"\$services_${iface_x}_${proto}\""
@@ -154,6 +169,7 @@ do
                 do
                     # service is a servicegroupname, e.g. "local"
                     eval sources="\"\$sources_${iface_x}_${proto}_${service}\""
+                    eval sources6="\"\$sources6_${iface_x}_${proto}_${service}\""
                     eval ports="\"\$ports_${iface_x}_${proto}_${service}\""
                     if test -n "$ports"
                     then
@@ -166,6 +182,13 @@ do
                                 $iptables -A INPUT -m state --state NEW \
                                   -i $iface --protocol $proto \
                                   --source "$source" --destination "$ip" \
+                                  --destination-port "$port" -j ACCEPT
+                            done
+                            for source6 in $sources6
+                            do
+                                $ip6tables -A INPUT \
+                                  -i $iface --protocol $proto \
+                                  --source "$source6" --destination "$ip6" \
                                   --destination-port "$port" -j ACCEPT
                             done
                         done
@@ -260,6 +283,9 @@ do
     $iptables -A INPUT --protocol icmp --icmp-type $type -j ACCEPT
 done
 
+# for now, we allow _all_ ICMPv6 packets.
+$ip6tables -A INPUT --protocol icmpv6 -j ACCEPT
+
 test -r "$rc_g" && . "$rc_g"
 
 #
@@ -304,6 +330,9 @@ fi
 # FIXME : yet to implement:
 # 60 < 80 (         70) high:    log denied packets
 
+# FIXME : For now, we don't offer any configurable logging for IPv6
+$ip6tables -A INPUT -j LOG --log-level debug --log-prefix 'ip6tables: '
+
 test -r "$rc_h" && . "$rc_h"
 
 #
@@ -312,6 +341,12 @@ test -r "$rc_h" && . "$rc_h"
 
 $iptables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
 $iptables -A INPUT -j REJECT
+
+$ip6tables -A INPUT -j DROP
+# FIXME : these:
+#  $ip6tables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
+#  $ip6tables -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
+# would be better but don't seem to be supported with stock linux kernel.
 
 test -r "$rc_i" && . "$rc_i"
 
