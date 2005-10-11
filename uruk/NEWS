@@ -6,6 +6,8 @@ uruk version ......
 
 - More examples in uruk-rc(5) manpage.  Thanks Roland van Hout for
   suggestion.
+- Experimental ip6tables support added.  See comments in the uruk script.
+
 
 uruk version 20050718
 

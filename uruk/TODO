@@ -32,7 +32,8 @@ something like "--dest !(ip1 or ip2 or ip3)".)
 .
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
-Add IPv6 support: sources6_<if>_....
+Finish IPv6 support.  Think about how to hack uruk-save.  Change to
+enabled-by-default.  Document it.
 
 Uruk init script should not only inspect /etc/default/uruk, but also
 /etc/sysconfig/uruk (Red Hat / Fedora style)
