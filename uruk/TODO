@@ -1,9 +1,5 @@
 Fix bugs in uruk script.  See comments.
 
-Reimplement bootstrap as something like
-   AUTOMAKE=automake-1.9 ACLOCAL=aclocal-1.9 autoreconf --install \
-      --symlink --make
-
 Add support for variable uruk_version : version of uruk when rc file was
 created.
 
