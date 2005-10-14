@@ -31,7 +31,7 @@ something like "--dest !(ip1 or ip2 or ip3)".)
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
 Finish IPv6 support.  Think about how to hack uruk-save.  Change to
-enabled-by-default.  Document it.
+enabled-by-default.  Add support for loglevel variable. Document it.
 
 Uruk init script should not only inspect /etc/default/uruk, but also
 /etc/sysconfig/uruk (Red Hat / Fedora style)
