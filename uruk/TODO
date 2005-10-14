@@ -1,7 +1,5 @@
 Fix bugs in uruk script.  See comments.
 
-Check FSF adres in copyright boiler plates.
-
 Reimplement bootstrap as something like
    AUTOMAKE=automake-1.9 ACLOCAL=aclocal-1.9 autoreconf --install \
       --symlink --make
@@ -10,6 +8,8 @@ Add support for variable uruk_version : version of uruk when rc file was
 created.
 
 Check documentation: uruk-rc manpage needs more stuff.
+
+Perhaps we need an uruk-init manpage, for the init script.
 
 Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
 can use the same rc file format.
@@ -81,6 +81,9 @@ On Tue, Aug 02, 2005 at 12:10:45PM +0200, Wessel Dankers wrote:
 >       $0 stop
 >       $0 start
 > esac
+.
+I guess I need an "use-uruk-save" setting in /etc/default/uruk, defaulting to
+"no".
 
 phase out support for services_eth0_udp, but enforce ipS_eth0; warn for obsolete syntax
 
