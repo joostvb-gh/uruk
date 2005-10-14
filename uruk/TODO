@@ -1,5 +1,7 @@
 Fix bugs in uruk script.  See comments.
 
+Check FSF adres in copyright boiler plates.
+
 Reimplement bootstrap as something like
    AUTOMAKE=automake-1.9 ACLOCAL=aclocal-1.9 autoreconf --install \
       --symlink --make

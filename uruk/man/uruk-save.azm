@@ -1,0 +1,103 @@
+\: vim:syntax=tex
+\: this file maintained using arch at http://arch.gna.org/uruk/
+
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
+
+\def{"man::synstyle"}{long}
+\def{"man::defstyle"}{long}
+\import{man.zmm}
+
+\import{./include.zmm}
+
+\set{"man::name"}{uruk-save}
+\set{"man::html-title"}{uruk-save}
+\set{"man::section"}{8}
+
+\"man::preamble"
+\${html}{\"man::maketoc"}
+
+\sec{name}{NAME}
+\NAME{uruk-save}{save uruk rc configuration in iptables-save-style format}
+
+\sec{synopsis}{SYNOPSIS}
+  \par
+  \uruk-save
+   \synoptopt{-6}
+
+\sec{options}{OPTIONS}
+
+\begin{itemize}
+
+\begin{\defopt{-6}{}} Don't save iptables rules but save ip6tables rules,
+for IPv6 filtering.
+
+\sec{description}{DESCRIPTION}
+
+\uruk-save saves the IPv4 rules in \ttrcpath in \bf{iptables-save(5)}-style
+format, without invoking \bf{iptables(8)}.  If the \bf{-6} option is given, the
+IPv6 rules (if any) in \ttrcpath are saved, in \bf{ip6tables-save(5)}-style
+format.  It prints output to stdout; suggested invocation therefore is
+
+\verbatim{\
+ # uruk-save > \statepath/iptables/active}
+
+or
+
+\verbatim{\
+ # uruk-save -6 > \statepath/ip6tables/active}
+
+.  This script is useful if you don't like the default behaviour of the uruk
+init script, and would like it to load the current uruk rc file instead of the
+current active file.  Please note: generally you don't need to invoke this
+script manually: the init script which comes with uruk is suitable for most
+cases, it invokes \uruk-save if needed.
+
+\sec{warning}{WARNING}
+
+Just as \uruk, in order to keep the \uruk-save script small and simple, the
+script does very little error handling.  It does not check the contents of the
+\rc file in any way before executing it.  When your \rc file contains bogus
+stuff, \uruk-save will very likely behave in unexpected ways.  Caveat emptor.
+
+Things will likely break if you do fancy stuff in an \rc hook file.  For
+instance, \uruk-save saves the filter table only.  If you define mangle or nat
+tables, things will break.
+
+\sec{see also}{SEE ALSO}
+
+\sibref{uruk}{uruk(8)}, \sibref{uruk-rc}{uruk-rc(5)} .
+ \par
+\bf{iptables(8)}, \bf{iptables-save(8)},
+\bf{iptables-restore(8)}, \httpref{http://www.netfilter.org/}
+
+\sec{copyright}{COPYRIGHT}
+
+Copyright (C) 2005 Joost van Baal
+
+\par
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+\par
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+\par
+
+You should have received a copy of the GNU General Public License
+along with this program (see COPYING); if not, check with
+http://www.gnu.org/copyleft/gpl.html or write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
+
+\sec{author}{AUTHOR}
+
+\"man::author"
+
+\"man::postamble"
+

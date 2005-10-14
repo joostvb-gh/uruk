@@ -21,7 +21,12 @@ cat <<EOT
 :OUTPUT ACCEPT [0:0]
 EOT
 
-URUK_IPTABLES='echo [0:0]' uruk
+if test "$1" = "-6"
+then
+    URUK_IPTABLES=':' URUK_IP6TABLES='echo [0:0]' uruk
+else
+    URUK_IPTABLES='echo [0:0]' URUK_IP6TABLES=':' uruk
+fi
 
 echo "COMMIT"
 echo -n "# Completed on "

@@ -2,6 +2,23 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-14 04:50:11 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-47
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-47
+
+    uruk-save is now IPv6 aware
+    
+
+    new files:
+     uruk/man/.arch-ids/uruk-save.azm.id uruk/man/uruk-save.azm
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/script/uruk-save.in
+
+
 2005-10-11 19:06:19 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-46
 
     Summary:
