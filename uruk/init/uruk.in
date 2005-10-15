@@ -27,6 +27,9 @@ enable_uruk_check=true
 # enable ipv6 support
 enable_ipv6=false
 
+# enable calling the unstable uruk-save script
+enable_uruk_save=false
+
 # set enable_autosave to "true" to autosave the active ruleset
 # when going from start to stop
 enable_autosave=true
@@ -42,7 +45,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # On Debian systems, configuration for init scripts is in /etc/default/
 test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PACKAGE_TARNAME@
 # On Red Hat systems, configuration for init scripts is in /etc/sysconfig/
-test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PACKAGE_TARNAME@
+test -f @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@
 
 initd="$0"
 
@@ -79,7 +82,7 @@ initd_halt () {
 initd_load () {
   ruleset="$libdir/$@"
   if ! test -f "$ruleset"; then
-    echo "You are trying to load ruleset \"$@\" while file $ruleset is not present."
+    echo "Can't load ruleset \"$@\": file $ruleset is not present"
     initd_abort load "unknown ruleset \"$@\""
     if ! test "${ruleset#${libdir}/}" = active -o inactive; then
         usage
@@ -125,6 +128,37 @@ initd_autosave () {
   fi
 }
 
+initd_active () {
+  if test $enable_uruk_save = true; then
+      if test $iptables_command = ip6tables; then
+          uruk-save -6 > "${libdir}/active"
+      else
+          uruk-save > "${libdir}/active"
+      fi
+      initd_load active
+  else
+      if test $iptables_command = ip6tables; then
+          # skip all iptables commands in uruk
+          URUK_IPTABLES=':' uruk
+      else
+          # skip all ip6tables commands in uruk
+          URUK_IP6TABLES=':' uruk
+      fi
+      initd_save active
+  fi
+}
+
+initd_stop () {
+  # act sane if inactive state file missing
+  ruleset="${libdir}/inactive"
+  if test -s $ruleset; then
+      initd_load inactive
+      rm $ruleset
+  else
+      echo "Uruk not running (no inactive file found)"
+  fi
+}
+
 usage () {
 cat << END
 $initd options:
@@ -133,6 +167,9 @@ $initd options:
      create it using uruk-save and load it.
   save <ruleset>
      save the current ruleset
+  create <active|inactive>
+     create a "active" or "inactive" ruleset with sane defaults: "active"
+     will be based upon your uruk rc file.  "inactive" will allow all traffic.
   load <ruleset>
      load a ruleset
   stop
@@ -150,34 +187,25 @@ END
 
 initd_main () {
   case "$1" in
-    start|restart|reload|force-reload)
-      # act sane if active state file missing
-      ruleset="${libdir}/active"
-      if ! test -s $ruleset; then
-          cat << END
-  Hrm, $uruk_config is present, but $ruleset is not filled yet.  Let's assume
-  you've read the uruk-rc(5) manpage and your $uruk_config is sane.  This
-  file will be used to fill $ruleset now, using uruk-save.  I assume you are
-  NOT using any hooks in your rc file, see uruk-save(8)!  If you don't like
-  all this, read the "Using the Uruk init script" part in the GETTING STARTED
-  section of the uruk(8) manpage.
-END
-          uruk-save > $ruleset
+    start)
+      if ! test -s "${libdir}/inactive"; then
+          initd_save inactive
       fi
-      initd_load active
+      initd_active
       if test ${enable_autosave-false} = true; then
         touch $autosave
       fi
       ;;
     stop)
-      # act sane if inactive state file missing
-      ruleset="${libdir}/inactive"
-      if ! test -s $ruleset; then
-          echo "Hrm, $ruleset is not filled yet.  Filling it."
-          initd_clear
-          initd_save inactive
-      fi
-      initd_load inactive
+      initd_stop
+      ;;
+    reload|force-reload)
+      # FIXME does not behave sane when uruk not running!
+      initd_active
+      ;;
+    restart)
+      initd_stop
+      initd_start
       ;;
     clear)
       initd_clear
@@ -192,6 +220,33 @@ END
       else
         initd_save "$*"
       fi
+      ;;
+    create)
+      shift
+      case "$*" in
+        active)
+          if test $enable_uruk_save = true; then
+              if test $iptables_command = ip6tables; then
+                  uruk-save -6 > "${libdir}/active"
+              else
+                  uruk-save > "${libdir}/active"
+              fi
+          else
+              cat <<END
+ Either set enable_uruk_save to true in
+ @SYSCONF_PATH@/{default,sysconfig}/@PACKAGE_TARNAME@ or call this script with
+ the \"start\" option: cannot create active file without touching your live
+ rules if using uruk-save is disallowed."
+END
+          ;;
+        inactive)
+          initd_clear
+          initd_save inactive
+          ;;
+        *)
+          echo "No sane defaults for \"$*\" known"
+          ;;
+      esac
       ;;
     load)
       shift
@@ -243,8 +298,20 @@ if test $enable_uruk_check = true; then
   check_uruk
 fi
 
+if test $enable_uruk_save = true; then
+
+          cat <<END
+  Hrm, $uruk_config is present, but $ruleset is not filled yet.  Let's assume
+  you've read the uruk-rc(5) manpage and your $uruk_config is sane.  This
+  file will be used to fill $ruleset now, using uruk-save.  I assume you are
+  NOT using any hooks in your rc file, see uruk-save(8)!  If you don't like
+  all this, read the "Using the Uruk init script" part in the GETTING STARTED
+  section of the uruk(8) manpage.
+END
+
+
 iptables_command=iptables initd_preload $*
-if test "$enable_ipv6" = "true"; then
+if test $enable_ipv6 = true; then
   iptables_command=ip6tables initd_preload $*
 fi
 
