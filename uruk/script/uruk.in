@@ -29,7 +29,7 @@ ip6tables=${URUK_IP6TABLES:-":"}
 #
 #  ip6tables=/sbin/ip6tables
 #
-# to your rc file if you'd like to play with IPv6 support in uruk
+# to your rc file if you'd like to play with IPv6 support in Uruk
 #
 # New variables used: ip6_<...>, sources6_<...>, ip6tables.
 # Be sure you've set "enable_ipv6=true" in /etc/default/uruk.
@@ -44,6 +44,13 @@ test -r $config || {
 }
 
 . $config
+
+test -n "$version" && test $version -lt 20040210 && \
+  cat >&2 <<EOT
+ Uruk rc file $config claims to be pre-20040210 format.  That's likely not supported.
+ Please read the Uruk README file for upgrade instructions.
+EOT
+  && exit 1
 
 test -r "$rc_a" && . "$rc_a"
 

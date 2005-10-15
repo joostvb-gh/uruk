@@ -16,6 +16,9 @@
 # statements, just show them
 # iptables='echo iptables'
 
+# Uruk version compatibility of this rc file
+version=2005NNNN # FIXME
+
 # Log denied packets, which are targetted at one of our IPs.  Do not log
 # blocked broadcasts.
 loglevel=30

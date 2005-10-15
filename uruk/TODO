@@ -1,9 +1,8 @@
 Fix bugs in uruk script.  See comments.
 
-Add support for variable uruk_version : version of uruk when rc file was
-created.
-
 Check documentation: uruk-rc manpage needs more stuff.
+
+Fix doc/rc version variable.
 
 Perhaps we need an uruk-init manpage, for the init script.
 

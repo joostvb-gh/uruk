@@ -126,8 +126,7 @@ For now, you'll have to study the \uruk source to find out which hook (there
 are hooks rc_a, rc_b, ... , rc_i) to use.
 
 
-\sec{Network interfaces with multiple IP addresses}{NETWORK INTERFACES WITH
-MULTIPLE IP ADDRESSES}
+\sec{Network interfaces with multiple IP addresses}{NETWORK INTERFACES WITH MULTIPLE IP ADDRESSES}
 
 Uruk supports situations where a network interface has more than one IP address
 attached.  Variables \v{ips_}\it{nic} and \v{bcasts_}\it{nic} are used for
@@ -256,6 +255,49 @@ If you'd rather not fiddle with your \rc file to debug, run something like:
 
 See also the notes on \it{loglevel}.
 
+\sec{variables}{VARIABLES}
+
+The uruk script honors the following variables in \rc files:
+
+\begin{itemize}{
+    {contiguous}{1}
+    {compact}{1}
+    {type}{mark}
+}
+
+\item "version" Uruk version compatibility of this \rc file
+
+\item "loglevel"
+
+\item "iptables" Full pathname of iptables executable.
+
+\item "ip6tables" Full pathname of ip6tables executable.
+
+\item "interfaces" List of network interfaces.
+
+\end{itemize}
+
+More variables are available.  For now, you'll have to take a look at the
+example \rc file in \ttexpath for more details.
+
+
+\sec{environment variables}{ENVIRONMENT VARIABLES}
+
+You can override some defaults in the shell before executing the uruk script.
+The following variables are honored:
+
+\begin{itemize}{
+    {contiguous}{1}
+    {compact}{1}
+    {type}{mark}
+}
+
+\item "URUK_CONFIG" Full pathname of \rc file
+\item "URUK_IPTABLES" Full pathname of iptables executable.  Overrides \it{iptables}.
+\item "URUK_IP6TABLES" Full pathname of ip6tables executable.  Overrides \it{ip6tables}.
+
+\end{itemize}
+
 \sec{files}{FILES}
 
 \rcpath
@@ -272,7 +314,7 @@ uruk(8)
 
 Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
 Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
-Copyright (C) 2003, 2004 Joost van Baal
+Copyright (C) 2003, 2004, 2005 Joost van Baal
 
 \par
 
