@@ -30,6 +30,9 @@ enable_ipv6=false
 # enable calling the unstable uruk-save script
 enable_uruk_save=false
 
+# display a warning before each uruk-save call
+enable_uruk_save_warning=true
+
 # set enable_autosave to "true" to autosave the active ruleset
 # when going from start to stop
 enable_autosave=true
@@ -85,7 +88,7 @@ initd_load () {
     echo "Can't load ruleset \"$@\": file $ruleset is not present"
     initd_abort load "unknown ruleset \"$@\""
     if ! test "${ruleset#${libdir}/}" = active -o inactive; then
-        usage
+      usage
     fi
     exit 0
   fi
@@ -115,7 +118,7 @@ initd_save () {
   rm -f $autosave
   ruleset="${libdir}/$@"
   echo -n "Saving ${iptables_command} ruleset: save \"$@\""
-   initd_counters
+  initd_counters
   echo "."
 }
 
@@ -130,21 +133,32 @@ initd_autosave () {
 
 initd_active () {
   if test $enable_uruk_save = true; then
-      if test $iptables_command = ip6tables; then
-          uruk-save -6 > "${libdir}/active"
-      else
-          uruk-save > "${libdir}/active"
-      fi
-      initd_load active
+    warn_uruk_save
+    if test $iptables_command = ip6tables; then
+      uruk-save -6 > "${libdir}/active"
+    else
+      uruk-save > "${libdir}/active"
+    fi
+    initd_load active
   else
-      if test $iptables_command = ip6tables; then
-          # skip all iptables commands in uruk
-          URUK_IPTABLES=':' uruk
-      else
-          # skip all ip6tables commands in uruk
-          URUK_IP6TABLES=':' uruk
-      fi
-      initd_save active
+    if test $iptables_command = ip6tables; then
+      # skip all iptables commands in uruk
+      URUK_IPTABLES=':' uruk
+    else
+      # skip all ip6tables commands in uruk
+      URUK_IP6TABLES=':' uruk
+    fi
+    initd_save active
+  fi
+}
+
+initd_start () {
+  if ! test -s "${libdir}/inactive"; then
+    initd_save inactive
+  fi
+  initd_active
+  if test ${enable_autosave-false} = true; then
+    touch $autosave
   fi
 }
 
@@ -152,32 +166,36 @@ initd_stop () {
   # act sane if inactive state file missing
   ruleset="${libdir}/inactive"
   if test -s $ruleset; then
-      initd_load inactive
-      rm $ruleset
+    initd_load inactive
+    rm $ruleset
   else
-      echo "Uruk not running (no inactive file found)"
+    echo "Uruk not running (no inactive file found)"
   fi
 }
 
 usage () {
 cat << END
 $initd options:
-  start|restart|reload|force-reload
-     load the "active" ruleset. in case this file doesn't exist, try to
-     create it using uruk-save and load it.
+  start
+     If not yet done, save current iptables status in "inactive" ruleset.
+     (Re)build and load the "active" ruleset.
   save <ruleset>
-     save the current ruleset
+     Save the current iptables status in given ruleset.
   create <active|inactive>
-     create a "active" or "inactive" ruleset with sane defaults: "active"
-     will be based upon your uruk rc file.  "inactive" will allow all traffic.
+     create an "active" or "inactive" ruleset with sane defaults: "active"
+     will be based upon the uruk rc file.  "inactive" will allow all traffic.
   load <ruleset>
-     load a ruleset
+     load a saved ruleset
+  reload|force-reload
+     (Re)build and load the "active" ruleset.
   stop
-     load the "inactive" ruleset
+     Load the "inactive" ruleset.
+  restart
+     Perform stop-actions followed by start-actions.
   clear
-     remove all rules and user-defined chains, set default policy to ACCEPT
+     Remove all rules and user-defined chains, set default policy to ACCEPT.
   halt
-     remove all rules and user-defined chains, set default policy to DROP
+     Remove all rules and user-defined chains, set default policy to DROP.
 
 Saved ruleset locations: @LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/iptables/ and
 @LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/ip6tables/ .
@@ -188,13 +206,7 @@ END
 initd_main () {
   case "$1" in
     start)
-      if ! test -s "${libdir}/inactive"; then
-          initd_save inactive
-      fi
-      initd_active
-      if test ${enable_autosave-false} = true; then
-        touch $autosave
-      fi
+      initd_start
       ;;
     stop)
       initd_stop
@@ -226,18 +238,20 @@ initd_main () {
       case "$*" in
         active)
           if test $enable_uruk_save = true; then
-              if test $iptables_command = ip6tables; then
-                  uruk-save -6 > "${libdir}/active"
-              else
-                  uruk-save > "${libdir}/active"
-              fi
+            warn_uruk_save
+            if test $iptables_command = ip6tables; then
+              uruk-save -6 > "${libdir}/active"
+            else
+              uruk-save > "${libdir}/active"
+            fi
           else
-              cat <<END
+            cat <<END
  Either set enable_uruk_save to true in
  @SYSCONF_PATH@/{default,sysconfig}/@PACKAGE_TARNAME@ or call this script with
  the \"start\" option: cannot create active file without touching your live
  rules if using uruk-save is disallowed."
 END
+          fi
           ;;
         inactive)
           initd_clear
@@ -294,21 +308,21 @@ check_uruk() {
   fi
 }
 
+warn_uruk_save() {
+  if test $enable_uruk_save_warning = true; then
+    cat <<END
+ About to call the uruk-save script.  You should have read the uruk-rc(5)
+ manpage.  Your $uruk_config should be sane.  You should NOT be using any hooks
+ in your rc file, see uruk-save(8)!  If you don't like all this, read the "Using
+ the Uruk init script" part in the GETTING STARTED section of the uruk(8)
+ manpage.
+END
+  fi
+}
+
 if test $enable_uruk_check = true; then
   check_uruk
 fi
-
-if test $enable_uruk_save = true; then
-
-          cat <<END
-  Hrm, $uruk_config is present, but $ruleset is not filled yet.  Let's assume
-  you've read the uruk-rc(5) manpage and your $uruk_config is sane.  This
-  file will be used to fill $ruleset now, using uruk-save.  I assume you are
-  NOT using any hooks in your rc file, see uruk-save(8)!  If you don't like
-  all this, read the "Using the Uruk init script" part in the GETTING STARTED
-  section of the uruk(8) manpage.
-END
-
 
 iptables_command=iptables initd_preload $*
 if test $enable_ipv6 = true; then

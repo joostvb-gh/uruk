@@ -59,9 +59,16 @@ script does very little error handling.  It does not check the contents of the
 \rc file in any way before executing it.  When your \rc file contains bogus
 stuff, \uruk-save will very likely behave in unexpected ways.  Caveat emptor.
 
+\par
+
 Things will likely break if you do fancy stuff in an \rc hook file.  For
 instance, \uruk-save saves the filter table only.  If you define mangle or nat
 tables, things will break.
+
+\par
+
+If your \rc file is in verbose mode (i.e. it features \tt{set -x}) or in no-act
+mode (i.e. it features \tt{iptables='echo iptables'}), \uruk-save fails.
 
 \sec{see also}{SEE ALSO}
 

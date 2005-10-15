@@ -14,12 +14,16 @@ Reimplement uruk-save: make it more robust.  See
 http://www.faqs.org/docs/iptables/iptables-save.html for example of file
 format.  Use logic from iptables-save.c.
 
-Add yet another warning about uruk-save: it'll fail if rc is in verbose or
-debug mode.
-
-Add LSB stuff to uruk init script.
+Make uruk init-script LSB compliant.  See mounall.sh.  Use LSB init functions,
+see /usr/share/doc/lsb-base/ .
+http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
+Supply arguments like "status" in init script, see
+http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.html
+.
 
 Is it sane to allow all traffic in default inactive rule?
+
+Document init script variables enable_uruk_save, enable_uruk_save_warning
 
 Check save_counters support in init script.  It's likely broken.
 
@@ -36,8 +40,10 @@ something like "--dest !(ip1 or ip2 or ip3)".)
 .
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
-Finish IPv6 support.  Think about how to hack uruk-save.  Change to
-enabled-by-default.  Add support for loglevel variable. Document it.
+Finish IPv6 support.  Change to enabled-by-default.  Add support for loglevel
+variable. Document it.
+
+Document uruk-save -6 flag in uruk getting started section.
 
 Document this change: Uruk init script not only inspects /etc/default/uruk, but also
 /etc/sysconfig/uruk (Red Hat / Fedora style)
