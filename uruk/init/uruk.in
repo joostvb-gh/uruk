@@ -82,6 +82,10 @@ initd_halt () {
   echo "."
 }
 
+initd_flush () {
+  ${iptables_command} -F
+}
+
 initd_load () {
   ruleset="$libdir/$@"
   if ! test -f "$ruleset"; then
@@ -141,6 +145,7 @@ initd_active () {
     fi
     initd_load active
   else
+    initd_flush
     if test $iptables_command = ip6tables; then
       # skip all iptables commands in uruk
       URUK_IPTABLES=':' uruk
@@ -186,7 +191,7 @@ $initd options:
      will be based upon the uruk rc file.  "inactive" will allow all traffic.
   load <ruleset>
      load a saved ruleset
-  reload|force-reload
+  force-reload
      (Re)build and load the "active" ruleset.
   stop
      Load the "inactive" ruleset.
@@ -196,6 +201,8 @@ $initd options:
      Remove all rules and user-defined chains, set default policy to ACCEPT.
   halt
      Remove all rules and user-defined chains, set default policy to DROP.
+  flush
+     Flush all rules from the current iptables status.
 
 Saved ruleset locations: @LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/iptables/ and
 @LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/ip6tables/ .
@@ -211,7 +218,7 @@ initd_main () {
     stop)
       initd_stop
       ;;
-    reload|force-reload)
+    force-reload)
       # FIXME does not behave sane when uruk not running!
       initd_active
       ;;
@@ -224,6 +231,9 @@ initd_main () {
       ;;
     halt)
       initd_halt
+      ;;
+    flush)
+      initd_flush
       ;;
     save)
       shift

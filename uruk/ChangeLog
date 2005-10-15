@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-15 19:49:26 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-55
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-55
+
+    we cannot support "reload": we generally can't atomically load new rc file.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/init/uruk.in
+
+
 2005-10-15 19:28:45 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-54
 
     Summary:

@@ -14,8 +14,7 @@ Reimplement uruk-save: make it more robust.  See
 http://www.faqs.org/docs/iptables/iptables-save.html for example of file
 format.  Use logic from iptables-save.c.
 
-Make uruk init-script LSB compliant.  See mounall.sh.  Use LSB init functions,
-see /usr/share/doc/lsb-base/ .
+Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
 Supply arguments like "status" in init script, see
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.html
