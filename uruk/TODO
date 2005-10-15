@@ -17,6 +17,8 @@ format.  Use logic from iptables-save.c.
 Add yet another warning about uruk-save: it'll fail if rc is in verbose or
 debug mode.
 
+Add LSB stuff to uruk init script.
+
 Date: Wed, 9 Feb 2005 15:09:16 +0100
 Message-ID: <20050209140916.GZ1487@trogdor.uvt.nl>
 Herken broadcasts (misschien aan destination MAC-adres?) en log ze niet.
@@ -33,7 +35,7 @@ yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug
 Finish IPv6 support.  Think about how to hack uruk-save.  Change to
 enabled-by-default.  Add support for loglevel variable. Document it.
 
-Uruk init script should not only inspect /etc/default/uruk, but also
+Document this change: Uruk init script not only inspects /etc/default/uruk, but also
 /etc/sysconfig/uruk (Red Hat / Fedora style)
 
 Ship example /etc/default/uruk with this package, move out of Debian package.
@@ -56,7 +58,10 @@ On Tue, Aug 02, 2005 at 12:10:45PM +0200, Wessel Dankers wrote:
 >
 > case "$1" in
 > start)
->       iptables-save >inactive
+>       if [ ! -e inactive ]
+>       then
+>               iptables-save >inactive
+>       fi
 >       uruk-save     >active
 >       iptables-load <active
 >       ;;

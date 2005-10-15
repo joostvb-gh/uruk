@@ -39,6 +39,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ can overrule
 # enable_uruk_check, enable_ipv6, enable_autosave, enable_save_counters and PATH
+# On Debian systems, configuration for init scripts is in /etc/default/
+test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PACKAGE_TARNAME@
+# On Red Hat systems, configuration for init scripts is in /etc/sysconfig/
 test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PACKAGE_TARNAME@
 
 initd="$0"

@@ -8,6 +8,8 @@ uruk version ......
   suggestion.
 - Experimental ip6tables support added.  See comments in the uruk script.
   New option "-6" for uruk-save(8).
+- The uruk init script now sources both /etc/default/uruk and
+  /etc/sysconfig/uruk (if present, of course).  FIXME: adjust manpage.
 - The uruk init script is (FIXME) rewritten.  See README on what the
   implications are if you're upgrading.
 
