@@ -8,6 +8,8 @@ uruk version ......
   suggestion.
 - Experimental ip6tables support added.  See comments in the uruk script.
   New option "-6" for uruk-save(8).
+- The uruk init script is (FIXME) rewritten.  See README on what the
+  implications are if you're upgrading.
 
 
 uruk version 20050718

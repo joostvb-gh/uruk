@@ -80,6 +80,8 @@ On Tue, Aug 02, 2005 at 12:10:45PM +0200, Wessel Dankers wrote:
 .
 I guess I need an "use-uruk-save" setting in /etc/default/uruk, defaulting to
 "no".
+.
+Add a note on implictions of upgrade to README.
 
 phase out support for services_eth0_udp, but enforce ipS_eth0; warn for obsolete syntax
 

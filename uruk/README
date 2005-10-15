@@ -66,6 +66,46 @@ Symlinks are _not_ created.  You'll have to create them yourself, after running
 
 UPGRADE
 
+upgrading from uruk <= 20050718
+
+Behaviour of the uruk init script has changed.  To understand this, consider
+the uruk states: Iptables rules are kept in:
+
+ liverules inactivestatefile activestatefile uruk-rc
+
+. Actions on copying rules from one to the other are:
+
+ init.d/uruk stop
+ init.d/uruk start
+ init.d/uruk reload
+ sbin/uruk
+ uruk-save
+
+The actions perform the following copies:
+
+ sbin/uruk         : uruk-rc            -> liverules
+ uruk-save         : uruk-rc            -> activestatefile
+
+Uruk's init behaviour <= 20050718:
+
+ init.d/uruk stop  : inactivestatefile  -> liverules [1]
+ init.d/uruk start : activestatefile    -> liverules [1]
+ init.d/uruk reload: activestatefile    -> liverules [1]
+
+Uruk's init behaviour > 20050718:
+
+ init.d/uruk stop  : inactivestatefile  -> liverules [1]
+ init.d/uruk start : liverules          -> inactivestatefile;
+                     uruk-rc            -> activestatefile  ;
+                     uruk-rc            -> liverules
+ init.d/uruk reload: uruk-rc            -> activestatefile  ;
+                     uruk-rc            -> liverules
+
+[1] depends on wether or not inactivestatefile and activestatefile are present.
+
+
+upgrading from uruk < 20031026
+
 After uruk version 20031026, the hooks are no longer called rc_1, rc_2, ....
 rc_10, but rc_a, ... rc_i.  rc_1 is taken over by rc_a; rc_9 and rc_10 are
 taken over by rc_i.  For most situations, replacing ``-A block'' with ``-A
