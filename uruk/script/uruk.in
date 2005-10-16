@@ -52,7 +52,10 @@ test -n "$version" && test $version -lt 20040210 && \
 EOT
   && exit 1
 
-test -r "$rc_a" && . "$rc_a"
+uruk_log () {
+    $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: ' $@
+    $ip6tables -A INPUT -j LOG --log-level debug --log-prefix 'ip6tables: ' $@
+}
 
 #
 # bootstrap these rules
@@ -61,10 +64,12 @@ test -r "$rc_a" && . "$rc_a"
 # 40 < 60 (         50) medium:  log denied non-broadcasts  (default)
 test -z "$loglevel" && loglevel=50
 
+test -r "$rc_a" && . "$rc_a"
+
 if test $loglevel -ge 80
 then
     # 80 < 99 (         90) fascist: log all packets
-    $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: '
+    uruk_log
 fi
 
 $iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
@@ -324,21 +329,17 @@ then
         for iface_x in $interfaces_x
         do
             eval ip="\"\$ip_${iface_x}\""
-            $iptables -A INPUT -i $iface --destination $ip \
-              -j LOG --log-level debug --log-prefix 'iptables: '
+            uruk_log -i $iface --destination $ip
         done
     done
 elif test $loglevel -lt 60
 then
     # 40 < 60 (         50) medium:  log denied non-broadcasts  (default)
-    $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: '
+    uruk_log
 fi
 
 # FIXME : yet to implement:
 # 60 < 80 (         70) high:    log denied packets
-
-# FIXME : For now, we don't offer any configurable logging for IPv6
-$ip6tables -A INPUT -j LOG --log-level debug --log-prefix 'ip6tables: '
 
 test -r "$rc_h" && . "$rc_h"
 

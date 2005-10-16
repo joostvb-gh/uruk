@@ -2,6 +2,24 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-16 16:12:45 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-59
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-59
+
+    deal sane with ipv6 logging.  ship /etc/default/uruk example file.
+    
+
+    new files:
+     uruk/doc/.arch-ids/default.id uruk/doc/default
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/doc/Makefile.am
+     uruk/script/uruk.in
+
+
 2005-10-16 15:49:45 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-58
 
     Summary:

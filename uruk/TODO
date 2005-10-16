@@ -35,15 +35,12 @@ something like "--dest !(ip1 or ip2 or ip3)".)
 .
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
-Finish IPv6 support.  Change to enabled-by-default.  Add support for loglevel
-variable. Document it.
-
-Document uruk-save -6 flag in uruk getting started section.
+Finish IPv6 support.  Change to enabled-by-default.  Document it.
 
 Document this change: Uruk init script not only inspects /etc/default/uruk, but also
 /etc/sysconfig/uruk (Red Hat / Fedora style)
 
-Ship example /etc/default/uruk with this package, move out of Debian package.
+Document example /etc/default/uruk shipped with this package, adjust INSTALL instructions.
 
 document reimplemented init-script:
 .

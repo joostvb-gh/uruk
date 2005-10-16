@@ -1,0 +1,30 @@
+# this file maintained using arch at http://arch.gna.org/uruk/
+#
+# configuration for /etc/init.d/uruk.  Install in /etc/default/uruk (Debian) or
+# /etc/sysconfig/uruk (Red Hat)
+#
+# If you wanna do really wacky stuff, you might want to overrule
+# PATH here
+## PATH=$PATH:/usr/local/bin
+#
+# enable_uruk_check - wether to check for existence and sanity of uruk rc
+# file; set to false if you don't like this, e.g. when using the uruk initscript
+# in non-uruk environments
+## enable_uruk_check=true
+#
+# enable_ipv6 - wether to enable IPv6 support.
+## enable_ipv6=false
+#
+# enable calling the unstable uruk-save script
+## enable_uruk_save=false
+#
+# display a warning before each uruk-save call
+## enable_uruk_save_warning=true
+#
+# set enable_autosave to "true" to autosave the active ruleset
+# when going from start to stop
+## enable_autosave=true
+#
+# set enable_save_counters to "true" to save table counters with
+# rulesets
+## enable_save_counters=true
