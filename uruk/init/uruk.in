@@ -83,7 +83,7 @@ initd_halt () {
 }
 
 initd_flush () {
-  ${iptables_command} -F
+  $iptables_command -F
 }
 
 initd_load () {
@@ -135,15 +135,19 @@ initd_autosave () {
   fi
 }
 
+initd_active_uruk_save () {
+  warn_uruk_save
+  if test $iptables_command = ip6tables; then
+    uruk-save -6 > "${libdir}/active"
+  else
+    uruk-save > "${libdir}/active"
+  fi
+  initd_load active
+}
+
 initd_active () {
   if test $enable_uruk_save = true; then
-    warn_uruk_save
-    if test $iptables_command = ip6tables; then
-      uruk-save -6 > "${libdir}/active"
-    else
-      uruk-save > "${libdir}/active"
-    fi
-    initd_load active
+    initd_active_uruk_save
   else
     initd_flush
     if test $iptables_command = ip6tables; then
@@ -191,6 +195,9 @@ $initd options:
      will be based upon the uruk rc file.  "inactive" will allow all traffic.
   load <ruleset>
      load a saved ruleset
+  reload
+     (Re)build and load the "active" ruleset, without temporarily clearing the
+     current iptables status.
   force-reload
      (Re)build and load the "active" ruleset.
   stop
@@ -226,6 +233,18 @@ initd_main () {
       initd_stop
       initd_start
       ;;
+    reload)
+      if test $enable_uruk_save = true; then
+        # FIXME does not behave sane when uruk not running!
+        initd_active_uruk_save
+      else
+        cat <<END
+ Either set enable_uruk_save to true in
+ @SYSCONF_PATH@/{default,sysconfig}/@PACKAGE_TARNAME@ or call this script with
+ the \"force-reload\" option: cannot reload active file without touching your live
+ rules if using uruk-save is disallowed."
+END
+      fi
     clear)
       initd_clear
       ;;

@@ -20,8 +20,6 @@ http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.
 
 Is it sane to allow all traffic in default inactive rule?
 
-Add reload option to init script, only supported when enable_uruk_save is set.
-
 Check save_counters support in init script.  It's likely broken.
 
 Date: Wed, 9 Feb 2005 15:09:16 +0100

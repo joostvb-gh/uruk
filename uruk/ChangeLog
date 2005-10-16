@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-16 15:49:45 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-58
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-58
+
+    add reload option to init script
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/init/uruk.in
+
+
 2005-10-16 12:20:31 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-57
 
     Summary:
