@@ -245,6 +245,7 @@ initd_main () {
  rules if using uruk-save is disallowed."
 END
       fi
+      ;;
     clear)
       initd_clear
       ;;
