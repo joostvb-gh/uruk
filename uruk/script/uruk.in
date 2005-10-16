@@ -45,12 +45,14 @@ test -r $config || {
 
 . $config
 
-test -n "$version" && test $version -lt 20040210 && \
-  cat >&2 <<EOT
- Uruk rc file $config claims to be pre-20040210 format.  That's likely not supported.
- Please read the Uruk README file for upgrade instructions.
+if test \( -n "$version" \) -a \( "$version" -lt 20040210 \)
+then
+    cat >&2 <<EOT
+ Uruk rc file $config claims to be pre-20040210 format.  That's likely not
+ supported.  Please read the Uruk README file for upgrade instructions.
 EOT
-  && exit 1
+    exit 1
+fi
 
 uruk_log () {
     $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: ' $@
