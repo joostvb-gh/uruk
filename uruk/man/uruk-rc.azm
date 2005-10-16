@@ -253,7 +253,15 @@ If you'd rather not fiddle with your \rc file to debug, run something like:
 
 \par
 
-See also the notes on \it{loglevel}.
+If you'd like to test a new \rc file before installing it, run something like:
+
+\verbatim{\
+
+  URUK_CONFIG=/path/to/new/uruk/rc/file uruk}
+
+\par
+
+Of course, all these tweaks can be combined.  See also the notes on \it{loglevel}.
 
 \sec{variables}{VARIABLES}
 

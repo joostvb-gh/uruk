@@ -1,6 +1,5 @@
 \: vim:syntax=tex
 \: this file maintained using arch at http://arch.gna.org/uruk/
-
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -17,7 +16,7 @@
 \${html}{\"man::maketoc"}
 
 \sec{name}{NAME}
-\NAME{uruk}{wrapper for Linux iptables, setting up firewall rules}
+\NAME{uruk}{wrapper for Linux iptables, for managing firewall rules}
 
 \sec{synopsis}{SYNOPSIS}
   \par
@@ -30,8 +29,9 @@ network service access policy, and invokes \bf{iptables(8)} to set up firewall
 rules implementing this policy.  By default the file \ttrcpath is used; one can
 overrule this by specifying another file in the URUK_CONFIG environment
 variable.  Under some circumstances, it's useful to use another command for
-iptables; this can be achieved by setting the URUK_IPTABLES environment
-variables.  See \sibref{uruk-rc}{uruk-rc(5)} for details.
+iptables; this can be achieved by setting the URUK_IPTABLES (and/or
+URUK_IP6TABLES) environment variables.  See \sibref{uruk-rc}{uruk-rc(5)} for
+details.
 
 
 \sec{getting started}{GETTING STARTED}
@@ -65,29 +65,22 @@ Then enable your \rc rules
 
 .
 
-If you want to make these changes surviving a reboot, use an init script.  The
+If you want to make these changes survive a reboot, use the init script as
+shipped with this package.   If you'd rather write your own init script, the
 \bf{iptables-restore(8)} and \bf{iptables-save(8)} commands from the iptables
-package might be helpful.  Or use the init script as shipped with this package.
+package might be helpful.
 
 \cpar{Using the Uruk init script}
 
-I assume the Uruk init script is installed as explained in the README file.
-Then, bootstrap the stuff by doing:
+Assumed is the Uruk init script is installed as explained in the README file.
+Activate uruk by doing:
 
 \verbatim{\
- # iptables -F}
-
-(This opens your box!)  Then do
-
-\verbatim{\
-
- # uruk
- # \initpath save active
- # \initpath clear
- # \initpath save inactive
  # \initpath start}
 
-. After the final \ttinitpath start command, your box is protected again.
+Now your pre-uruk iptables rules (if any) are saved as the "inactive" ruleset.
+While executing \tt{\initpath start}, your box is open during a short while.
+If you don't like this, read about \uruk_save.
 
 \par
 
@@ -119,6 +112,11 @@ Add
 
 to your interfaces stanza, in your \tt{/etc/network/interfaces} .
 
+\par
+
+However, beware!  Uruk will fiddle with the global iptables rules.  Some
+default uruk rules affect \it{all} network interfaces.
+
 
 \sec{loading a new rc file}{LOADING A NEW \rc FILE}
 
@@ -130,20 +128,34 @@ Do
 
 \verbatim{\
  # vi \rcpath
- # \initpath stop
- # uruk
- # \initpath save active}
+ # \initpath force-reload}
 
-Between the \ttinitpath stop and the uruk command, your box is open.
+While executing \ttinitpath force-reload, your box is open during a short
+while.  If you don't like this, read about \uruk_save.
 
-Alternatively, you could use the \uruk-save script.  This is faster,
-but not as robust as using \uruk itself.  However, if you don't use
-any hooks in your \rc file, you're save.  Use it like this:
+\sec{using uruk-save as the initscript backend}{USING uruk-save AS THE INITSCRIPT BACKEND}
+
+By default, \uruk_save is not used by the uruk init script.  You might want to
+use it, though.  The \uruk_save script is faster and when using \uruk_save,
+your box won't be open while loading new rules.  But beware: \uruk_save is not
+as robust as using \uruk itself.  However, if you don't use any hooks in your
+\rc file, you're save.
+
+\par
+
+The init script will use \uruk_save only if asked to do so in /etc/default/uruk
+(or /etc/sysconfig/uruk).  If this file features
 
 \verbatim{\
- # vi \rcpath
- # uruk-save
- # \initpath load active}
+
+ enable_uruk_save=true
+ enable_uruk_save_warning=false}
+
+\uruk_save is used whenever appropriate.  The \tt{enable_uruk_save_warning}
+variable controls whether a warning should get displayed whenever \uruk_save is
+called.
+
+See \sibref{uruk-save}{uruk-save(8)} for more details.
 
 \sec{policy}{DEFAULT POLICY}
 

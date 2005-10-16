@@ -17,11 +17,10 @@ Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
 Supply arguments like "status" in init script, see
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.html
-.
 
 Is it sane to allow all traffic in default inactive rule?
 
-Document init script variables enable_uruk_save, enable_uruk_save_warning
+Add reload option to init script, only supported when enable_uruk_save is set.
 
 Check save_counters support in init script.  It's likely broken.
 
@@ -48,53 +47,20 @@ Document this change: Uruk init script not only inspects /etc/default/uruk, but 
 
 Ship example /etc/default/uruk with this package, move out of Debian package.
 
-force-reload in init script could do the uruk-save trick.
-
-reimplement init-script:
+document reimplemented init-script:
 .
-Message-ID: <20050802190924.GF5525@nagy.mdcc.cx>
-References: <20050802100132.GS7281@banach.uvt.nl> <20050802101045.GD25869@trogdor.uvt.nl>
-On Tue, Aug 02, 2005 at 12:10:45PM +0200, Wessel Dankers wrote:
-> On 2005‒08‒02 12:01:32+0200, Joost van Baal wrote:
 > > - je wilt je machine naar pre-uruk toestand kunnen terugbrengen.
 > > - je wilt dat  stop, start  doet wat je denkt dat t doet.
 > > - feature dat je met t handje iptables-invocatie bij je uruk
 > >   kunt stoppen is crap: cruft hoopt op.
 > - start en stop idempotent maken
->
-> #! /bin/sh -e
->
-> case "$1" in
-> start)
->       if [ ! -e inactive ]
->       then
->               iptables-save >inactive
->       fi
->       uruk-save     >active
->       iptables-load <active
->       ;;
-> stop)
->       if [ -e inactive ]
->       then
->               iptables-load <inactive
->               rm inactive
->       else
->               echo "Uruk not running; none stopped"
->       fi
->       ;;
-> reload)
->       uruk-save     >active
->       iptables-load <active
->       ;;
-> restart)
->       $0 stop
->       $0 start
-> esac
 .
 I guess I need an "use-uruk-save" setting in /etc/default/uruk, defaulting to
 "no".
 .
 Add a note on implictions of upgrade to README.
+
+Do extensive testing!
 
 phase out support for services_eth0_udp, but enforce ipS_eth0; warn for obsolete syntax
 
