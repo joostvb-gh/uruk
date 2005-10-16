@@ -4,6 +4,8 @@ Check documentation: uruk-rc manpage needs more stuff.
 
 Fix doc/rc version variable.
 
+Finish NEWS.
+
 Perhaps we need an uruk-init manpage, for the init script.
 
 Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
@@ -43,12 +45,6 @@ Document this change: Uruk init script not only inspects /etc/default/uruk, but 
 Document example /etc/default/uruk shipped with this package, adjust INSTALL instructions.
 
 document reimplemented init-script:
-.
-> > - je wilt je machine naar pre-uruk toestand kunnen terugbrengen.
-> > - je wilt dat  stop, start  doet wat je denkt dat t doet.
-> > - feature dat je met t handje iptables-invocatie bij je uruk
-> >   kunt stoppen is crap: cruft hoopt op.
-> - start en stop idempotent maken
 .
 I guess I need an "use-uruk-save" setting in /etc/default/uruk, defaulting to
 "no".
