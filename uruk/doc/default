@@ -9,7 +9,7 @@
 #
 # enable_uruk_check - wether to check for existence and sanity of uruk rc
 # file; set to false if you don't like this, e.g. when using the uruk initscript
-# in non-uruk environments
+# for managing saved rulesets only (i.e. not for calling uruk or uruk-save)
 ## enable_uruk_check=true
 #
 # enable_ipv6 - wether to enable IPv6 support.

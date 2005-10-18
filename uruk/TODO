@@ -4,7 +4,7 @@ Check documentation: uruk-rc manpage needs more stuff.
 
 Fix doc/rc version variable.
 
-Finish NEWS.
+Finish NEWS, check FIXME's
 
 Perhaps we need an uruk-init manpage, for the init script.
 
@@ -39,21 +39,16 @@ yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug
 
 Finish IPv6 support.  Change to enabled-by-default.  Document it.
 
-Document this change: Uruk init script not only inspects /etc/default/uruk, but also
-/etc/sysconfig/uruk (Red Hat / Fedora style)
-
-Document example /etc/default/uruk shipped with this package, adjust INSTALL instructions.
+Document example /etc/default/uruk shipped with this package, adjust INSTALL
+instructions.
 
 document reimplemented init-script:
-.
-I guess I need an "use-uruk-save" setting in /etc/default/uruk, defaulting to
-"no".
-.
 Add a note on implictions of upgrade to README.
 
 Do extensive testing!
 
-phase out support for services_eth0_udp, but enforce ipS_eth0; warn for obsolete syntax
+phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
+obsolete syntax
 
 ( GNU Arch peeksheet:
 

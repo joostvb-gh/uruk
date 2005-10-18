@@ -21,7 +21,6 @@
 set -e
 
 # do sanity check on uruk environment.
-# set this to false when using this script in non-uruk environments
 enable_uruk_check=true
 
 # enable ipv6 support
