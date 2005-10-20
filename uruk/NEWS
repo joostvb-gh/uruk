@@ -10,6 +10,8 @@ uruk version ......
   See comments in the uruk script.  New option "-6" for uruk-save(8).
 - The uruk init script now sources both /etc/default/uruk and
   /etc/sysconfig/uruk (if present, of course).  FIXME: adjust manpage.
+  An example file for /etc/{default,sysconfig}/uruk is now shipped and
+  gets installed in /usr/[local/]share/doc/uruk/examples/.
 - Major overhaul of the uruk init script (FIXME).  This script now is more
   integrated in the uruk framework.
   + The pre-uruk situation is now saved and restorable.
@@ -26,9 +28,8 @@ uruk version ......
 - uruk(8) now checks for the Uruk version the rc file was created for.
   This will allow for more sane behaviour in case of future incompatible
   upgrades.
-- An example file for /etc/{default,sysconfig}/uruk is now shipped and
-  gets installed in /usr/[local/]share/doc/uruk/examples/.
 - Buildsystem: ./bootstrap now uses autoreconf(1).
+
 
 uruk version 20050718
 

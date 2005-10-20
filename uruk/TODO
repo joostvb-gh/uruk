@@ -15,6 +15,9 @@ Reimplement uruk-save: make it more robust.  See
 http://www.faqs.org/docs/iptables/iptables-save.html for example of file
 format.  Use logic from iptables-save.c.
 
+Perhaps when loading a new rules, we should build a new chain and once
+finished, enable it atomically with one iptables call.
+
 Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
 Supply arguments like "status" in init script, see
@@ -37,7 +40,8 @@ something like "--dest !(ip1 or ip2 or ip3)".)
 .
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
-Finish IPv6 support.  Change to enabled-by-default.  Document it.
+Finish IPv6 support.  Think about lack of connection tracking support in
+ip6tables. Change to enabled-by-default.  Document it.
 
 Document example /etc/default/uruk shipped with this package, adjust INSTALL
 instructions.
