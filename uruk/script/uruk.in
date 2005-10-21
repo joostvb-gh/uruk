@@ -228,7 +228,7 @@ $iptables -A INPUT  -i lo -j ACCEPT
 $iptables -A OUTPUT -o lo -j ACCEPT
 
 $ip6tables -A INPUT -i lo -j ACCEPT
-$ip6tables -A OUTPUT -i lo -j ACCEPT
+$ip6tables -A OUTPUT -o lo -j ACCEPT
 
 test -r "$rc_e" && . "$rc_e"
 

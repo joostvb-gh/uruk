@@ -137,9 +137,13 @@ initd_autosave () {
 initd_active_uruk_save () {
   warn_uruk_save
   if test $iptables_command = ip6tables; then
+    echo -n "Saving IPv6 uruk rules as active ruleset"
     uruk-save -6 > "${libdir}/active"
+    echo "."
   else
+    echo -n "Saving IPv4 uruk rules as active ruleset"
     uruk-save > "${libdir}/active"
+    echo "."
   fi
   initd_load active
 }
@@ -150,11 +154,15 @@ initd_active () {
   else
     initd_flush
     if test $iptables_command = ip6tables; then
+      echo -n "Loading IPv6 uruk rules"
       # skip all iptables commands in uruk
       URUK_IPTABLES=':' uruk
+      echo "."
     else
+      echo -n "Loading IPv4 uruk rules"
       # skip all ip6tables commands in uruk
       URUK_IP6TABLES=':' uruk
+      echo "."
     fi
     initd_save active
   fi
@@ -269,9 +277,13 @@ END
           if test $enable_uruk_save = true; then
             warn_uruk_save
             if test $iptables_command = ip6tables; then
+              echo -n "Saving IPv6 uruk rules as active ruleset"
               uruk-save -6 > "${libdir}/active"
+              echo "."
             else
+              echo -n "Saving IPv4 uruk rules as active ruleset"
               uruk-save > "${libdir}/active"
+              echo "."
             fi
           else
             cat <<END
