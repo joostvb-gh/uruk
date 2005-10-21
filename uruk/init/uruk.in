@@ -82,7 +82,9 @@ initd_halt () {
 }
 
 initd_flush () {
+  echo -n "Flushing all current $iptables_command rules"
   $iptables_command -F
+  echo "."
 }
 
 initd_load () {
