@@ -40,8 +40,7 @@ something like "--dest !(ip1 or ip2 or ip3)".)
 .
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
-Finish IPv6 support.  Think about lack of connection tracking support in
-ip6tables. Change to enabled-by-default.  Document it.
+Finish IPv6 support.  Change to enabled-by-default.  Document it.
 
 Document example /etc/default/uruk shipped with this package, adjust INSTALL
 instructions.

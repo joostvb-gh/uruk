@@ -76,6 +76,11 @@ fi
 
 $iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
+# ip6tables has no connection tracking support.
+$ip6tables -A INPUT --protocol tcp ! --syn --destination-port 1024: -j ACCEPT
+$ip6tables -A INPUT --protocol udp --destination-port 1024: -j ACCEPT
+
+
 test -r "$rc_b" && . "$rc_b"
 
 #
@@ -221,6 +226,9 @@ test -r "$rc_d" && . "$rc_d"
 
 $iptables -A INPUT  -i lo -j ACCEPT
 $iptables -A OUTPUT -o lo -j ACCEPT
+
+$ip6tables -A INPUT -i lo -j ACCEPT
+$ip6tables -A OUTPUT -i lo -j ACCEPT
 
 test -r "$rc_e" && . "$rc_e"
 
