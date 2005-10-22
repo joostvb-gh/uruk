@@ -27,12 +27,15 @@ ip6tables=${URUK_IP6TABLES:-":"}
 #
 # Add
 #
-#  ip6tables=/sbin/ip6tables
+#  ip6tables=${URUK_IP6TABLES:-/sbin/ip6tables}
 #
-# to your rc file if you'd like to play with IPv6 support in Uruk
+# to your rc file and
+#
+#  "enable_ipv6=true"
+#
+# to /etc/default/uruk if you'd like to play with IPv6 support in Uruk
 #
 # New variables used: ip6_<...>, sources6_<...>, ip6tables.
-# Be sure you've set "enable_ipv6=true" in /etc/default/uruk.
 
 
 etcdir="@SYSCONF_PATH@/@PACKAGE_TARNAME@"

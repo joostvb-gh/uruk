@@ -4,7 +4,9 @@ Check documentation: uruk-rc manpage needs more stuff.
 
 Fix doc/rc version variable.
 
-Finish NEWS, check FIXME's
+Finish NEWS: version.
+
+Use the "build" init option: add to installation notes.
 
 Perhaps we need an uruk-init manpage, for the init script.
 

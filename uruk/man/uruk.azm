@@ -79,8 +79,9 @@ package might be helpful.
 \cpar{Using the Uruk init script}
 
 Assumed is the Uruk init script is installed as explained in the README file.
-Optionally, install and tweak \tt{\defpath} (You might like to enable support
-for IPv6 rules, or for \uruk_save.)  Now activate uruk by doing:
+Optionally, install /etc/default/uruk (or /etc/sysconfig/uruk) and tweak it.
+An example file is in \tt{\defpath} (You might like to enable support for IPv6
+rules, or for \uruk_save.)  Now activate uruk by doing:
 
 \verbatim{\
  # \initpath start}

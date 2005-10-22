@@ -68,8 +68,21 @@ UPGRADE
 
 upgrading from uruk <= 20050718
 
-Behaviour of the uruk init script has changed.  To understand this, consider
-the uruk states: Iptables rules are kept in:
+You might like to use the experimental IPv6 support.  See the NEWS file.
+
+Behaviour of the uruk init script has changed.  Before 20050718, you were
+advised to run
+
+ /etc/init.d/uruk stop; uruk; /etc/init.d/uruk save active
+
+.  This has changed.  One now should run
+
+ /etc/init.d/uruk force-reload
+
+after changing the uruk rc file.
+
+Some details: To understand this, consider the uruk states: Iptables rules are
+kept in:
 
  liverules inactivestatefile activestatefile uruk-rc
 
@@ -98,10 +111,13 @@ Uruk's init behaviour > 20050718:
  init.d/uruk start : liverules          -> inactivestatefile;
                      uruk-rc            -> activestatefile  ;
                      uruk-rc            -> liverules
- init.d/uruk reload: uruk-rc            -> activestatefile  ;
+ init.d/uruk force-reload:
+                     uruk-rc            -> activestatefile  ;
                      uruk-rc            -> liverules
 
 [1] depends on wether or not inactivestatefile and activestatefile are present.
+
+The NEWS file has some notes on this change too.
 
 
 upgrading from uruk < 20031026
