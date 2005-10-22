@@ -118,8 +118,15 @@ See also the NEWS file.
 
 POST INSTALLATION STUFF
 
-See the ``GETTING STARTED'' section in the uruk(8) manpage for
-hints.
+Uruk will _not_ "just work" out of the box.  It needs manual configuration.
+For those of you who don't like reading lots of documentation:
+
+ # cp /usr[/local]/share/doc/uruk/examples/rc [/usr/local]/etc/uruk/
+ # vi [/usr/local]/etc/uruk/
+ # /etc/init.d/uruk start
+
+See the ``GETTING STARTED'' section in the uruk(8) manpage for more
+information.
 
 
 HACKING

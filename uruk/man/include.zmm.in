@@ -25,6 +25,7 @@
 \def{statepath}{@LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@}
 \def{initpath}{@SYSCONF_PATH@/init.d/uruk}
 \def{expath}{@DATA_PATH@/doc/@PACKAGE_TARNAME@/examples/rc}
+\def{defpath}{@DATA_PATH@/doc/@PACKAGE_TARNAME@/examples/default}
 
 \def{ttrcpath}{\tt{\rcpath}}
 \def{ttinitpath}{\tt{\initpath}}

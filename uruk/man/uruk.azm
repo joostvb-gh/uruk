@@ -41,6 +41,12 @@ course.
 
 \par
 
+If you're in a hurry, read the "POST INSTALLATION STUFF" section in the uruk
+README file; it features a quick setup guide.  We'll spell out the details
+here.
+
+\par
+
 First, create an \rc file.  See \sibref{uruk-rc}{uruk-rc(5)} for info on how to
 do this.  Once this file is created and installed (this script looks in
 \ttrcpath by default), you're ready to run \uruk.  You might want to test your
@@ -73,7 +79,8 @@ package might be helpful.
 \cpar{Using the Uruk init script}
 
 Assumed is the Uruk init script is installed as explained in the README file.
-Activate uruk by doing:
+Optionally, install and tweak \tt{\defpath} (You might like to enable support
+for IPv6 rules, or for \uruk_save.)  Now activate uruk by doing:
 
 \verbatim{\
  # \initpath start}

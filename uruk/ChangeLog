@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-22 09:59:32 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-68
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-68
+
+    add quick setup guide to README, and refer to it.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/README uruk/man/include.zmm.in
+     uruk/man/uruk.azm
+
+
 2005-10-21 22:23:12 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-67
 
     Summary:
