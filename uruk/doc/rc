@@ -31,6 +31,8 @@ interfaces="eth0 eth1"
 # For each interface <if> in interfaces, ip_<if> and net_<if> should be
 # defined
 ip_eth0=10.56.0.201
+# If you have enabled IPv6 support, supply IPv6 addresses like this:
+# ip6_eth0=2006:488:1a9b:0:4a54:e8ff:fe2b:f25c
 ip_eth1=192.168.0.4
 
 # To which network does this interface belong?  Should be one of
@@ -60,9 +62,14 @@ services_eth0_tcp="mail local public"
 # in a variable ports_<if>_{tcp,udp}_<s> .
 
 # A valid source is 192.168.6.26, another valid source is 192.168.6.0/24.
+# One can add DNS domainnames like gandalf.example.com too: iptables will
+# perform a DNS lookup
 sources_eth0_tcp_mail="10.0.0.0/24 10.56.38.0/24 192.168.6.26"
-sources_eth0_tcp_local=$localnet
+sources_eth0_tcp_local="$localnet gandalf.example.com"
 sources_eth0_tcp_public=$all
+# If you have enabled IPv6 support, supply IPv6 addresses like this:
+# sources6_eth0_tcp_public="0000:0000:0000:0000:0000:0000:0000:0000/0"
+
 
 # Symbolic port names are fine.
 ports_eth0_tcp_mail=smtp

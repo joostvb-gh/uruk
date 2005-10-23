@@ -1,12 +1,16 @@
-Fix bugs in uruk script.  See comments.
+Use the "build" init option: add to installation notes.  Check installation
+notes.
 
-Check documentation: uruk-rc manpage needs more stuff.
-
-Fix doc/rc version variable.
+Do extensive testing!
 
 Finish NEWS: version.
 
-Use the "build" init option: add to installation notes.
+Fix doc/rc version variable.
+
+Fix bugs in uruk script: (force-)reload should do something sane when
+uruk not running.
+
+Check documentation: uruk-rc manpage needs more stuff.
 
 Perhaps we need an uruk-init manpage, for the init script.
 
@@ -17,8 +21,9 @@ Reimplement uruk-save: make it more robust.  See
 http://www.faqs.org/docs/iptables/iptables-save.html for example of file
 format.  Use logic from iptables-save.c.
 
-Perhaps when loading a new rules, we should build a new chain and once
-finished, enable it atomically with one iptables call.
+Think about alternative for uruk-save: create a chain, and enable it once it's
+fully build by doing just one iptables call.  This would allow truly atomical
+loading of new rulesets.
 
 Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
@@ -44,15 +49,7 @@ yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug
 
 Finish IPv6 support.  Change to enabled-by-default.  Document it.
 
-Document example /etc/default/uruk shipped with this package, adjust INSTALL
-instructions.
-
-document reimplemented init-script:
-Add a note on implictions of upgrade to README.
-
-Do extensive testing!
-
-phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
+Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
 obsolete syntax
 
 ( GNU Arch peeksheet:
