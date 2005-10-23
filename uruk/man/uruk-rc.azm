@@ -63,7 +63,7 @@ For a more reasonable \rc file, look at the well-commented example \rc file in
 
 \sec{Hooks}{HOOKS}
 
-Uruk offers hooks for inserting your owns code between iptables invokations.
+Uruk offers hooks for inserting your own code between iptables invocations.
 Examples will show the usefulness of these hooks.
 
 \par
@@ -229,27 +229,29 @@ By default, uruk logs denied packets.  This is adjustable using the
 
 \cpar{Debugging}
 
-To debug the \uruk script, add a "set -x" to your \rc file: this shows what is
-done, along with executing it.  (Like an uruk '-v' option.)
+To debug the \uruk script, invoke uruk as
+
+\verbatim{\
+ sh -x \sbinpath/uruk}
+
+this shows what is done, along with executing it.  (Like an uruk '-v' option.)
+(Alternatively, add "set -x" to your \rc file.)
 
 \par
 
 If you'd rather prefer not to execute, but just watch what would've been done,
-add a
+invoke uruk as
+
+\verbatim{\
+ URUK_IPTABLES='echo iptables' uruk}
+
+(Like an uruk '-n' option.)  If you have this statement set, you can run \uruk
+under a non-priviliged user account.  Alternatively, add a
 
 \verbatim{\
   iptables='echo iptables'}
 
-to your \rc file.  (Like an uruk '-n' option.)  If you have this statement set,
-you can run \uruk under a non-priviliged user account.
-
-\par
-
-If you'd rather not fiddle with your \rc file to debug, run something like:
-
-\verbatim{\
-
-  URUK_IPTABLES='echo iptables' sh -x uruk}
+to your \rc file.
 
 \par
 
@@ -261,7 +263,8 @@ If you'd like to test a new \rc file before installing it, run something like:
 
 \par
 
-Of course, all these tweaks can be combined.  See also the notes on \it{loglevel}.
+Of course, all these tweaks can be combined.  See also the notes on
+\it{loglevel}.
 
 \sec{variables}{VARIABLES}
 
