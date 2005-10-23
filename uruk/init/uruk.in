@@ -346,7 +346,7 @@ check_uruk() {
   fi
   # check for sanity of uruk rc file.
   if grep -q URUK_IS_UNCONFIGURED $uruk_config; then
-    echo "Uruk is unconfigured.  Please create a sane file $uruk_config."
+    echo "Uruk is unconfigured.  Please create a sane file $uruk_config.  See uruk(8)."
     exit 0
   fi
 }

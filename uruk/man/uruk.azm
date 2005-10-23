@@ -33,17 +33,20 @@ iptables; this can be achieved by setting the URUK_IPTABLES (and/or
 URUK_IP6TABLES) environment variables.  See \sibref{uruk-rc}{uruk-rc(5)} for
 details.
 
+\sec{quick setup guide}{QUICK SETUP GUIDE}
+
+Uruk will \it{not} "just work" out of the box.  It needs manual configuration.
+For those of you who don't like reading lots of documentation:
+
+\verbatim{\
+ # cp \expath \rcpath
+ # vi \rcpath
+ # /etc/init.d/uruk start}
 
 \sec{getting started}{GETTING STARTED}
 
-Once the \uruk script is installed, you want to go use it, of
-course.
-
-\par
-
-If you're in a hurry, read the "POST INSTALLATION STUFF" section in the uruk
-README file; it features a quick setup guide.  We'll spell out the details
-here.
+Once the \uruk script is installed, you want to go use it, of course.  We'll
+give a detailed description of what to do here.
 
 \par
 
