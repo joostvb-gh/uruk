@@ -3,8 +3,8 @@
 
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
-\def{"man::synstyle"}{long}
-\def{"man::defstyle"}{long}
+\def{"man::synstyle"}{short}
+\def{"man::defstyle"}{short}
 \import{man.zmm}
 
 \import{./include.zmm}
@@ -21,19 +21,21 @@
 
 \sec{synopsis}{SYNOPSIS}
   \par
-  \uruk-save
-   \synoptopt{-6}
+  \uruk_save
+   \synoptopt{-6}{save ip6tables rules}
 
 \sec{options}{OPTIONS}
 
 \begin{itemize}
 
-\begin{\defopt{-6}{}} Don't save iptables rules but save ip6tables rules,
-for IPv6 filtering.
+\item{\defopt{-6}{save ip6tables rules}} Don't save iptables rules but save
+ip6tables rules, for IPv6 filtering.
+
+\end{itemize}
 
 \sec{description}{DESCRIPTION}
 
-\uruk-save saves the IPv4 rules in \ttrcpath in \bf{iptables-save(5)}-style
+\uruk_save saves the IPv4 rules in \ttrcpath in \bf{iptables-save(5)}-style
 format, without invoking \bf{iptables(8)}.  If the \bf{-6} option is given, the
 IPv6 rules (if any) in \ttrcpath are saved, in \bf{ip6tables-save(5)}-style
 format.  It prints output to stdout; suggested invocation therefore is
@@ -50,25 +52,25 @@ or
 init script, and would like it to load the current uruk rc file instead of the
 current active file.  Please note: generally you don't need to invoke this
 script manually: the init script which comes with uruk is suitable for most
-cases, it invokes \uruk-save if needed.
+cases, it invokes \uruk_save if needed.
 
 \sec{warning}{WARNING}
 
-Just as \uruk, in order to keep the \uruk-save script small and simple, the
+Just as \uruk, in order to keep the \uruk_save script small and simple, the
 script does very little error handling.  It does not check the contents of the
 \rc file in any way before executing it.  When your \rc file contains bogus
-stuff, \uruk-save will very likely behave in unexpected ways.  Caveat emptor.
+stuff, \uruk_save will very likely behave in unexpected ways.  Caveat emptor.
 
 \par
 
 Things will likely break if you do fancy stuff in an \rc hook file.  For
-instance, \uruk-save saves the filter table only.  If you define mangle or nat
+instance, \uruk_save saves the filter table only.  If you define mangle or nat
 tables, things will break.
 
 \par
 
 If your \rc file is in verbose mode (i.e. it features \tt{set -x}) or in no-act
-mode (i.e. it features \tt{iptables='echo iptables'}), \uruk-save fails.
+mode (i.e. it features \tt{iptables='echo iptables'}), \uruk_save fails.
 
 \sec{see also}{SEE ALSO}
 
