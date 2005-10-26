@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-10-26 09:53:19 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-76
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-76
+
+    uruk-rc html manpage now holds link to uruk html manpage
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/man/uruk-rc.azm
+
+
 2005-10-26 09:46:19 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-75
 
     Summary:

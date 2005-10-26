@@ -1,3 +1,5 @@
+Create "upload" target in /Makefile.am
+
 Fix bugs in uruk script: (force-)reload should do something sane when
 uruk not running.
 
