@@ -3,21 +3,14 @@
 
 # Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
 # Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
-# Copyright (C) 2003, 2004 Joost van Baal
+# Copyright (C) 2003, 2004, 2005 Joost van Baal
 #
 # This file is part of Uruk.  Uruk is free software; you can redistribute
 # it and/or modify it under the terms of the GNU GPL, see the file named
 # COPYING.
 
-# Uncomment this if you want to run uruk in verbose mode
-# set -x
-
-# Uncomment this if you want to test-run uruk: don't execute iptables
-# statements, just show them
-# iptables='echo iptables'
-
 # Uruk version compatibility of this rc file
-version=2005NNNN # FIXME
+version=20051026
 
 # Log denied packets, which are targetted at one of our IPs.  Do not log
 # blocked broadcasts.

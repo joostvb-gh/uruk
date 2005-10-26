@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version ......
+uruk version 20051026
 
 - More examples in uruk-rc(5) manpage.  Thanks Roland van Hout for
   suggestion.

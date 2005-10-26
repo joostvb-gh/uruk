@@ -5,10 +5,10 @@
 \:
 \: Copyright (C) 2003, 2004 Joost van Baal, Copyright (C) 2002, 2003 Stijn van Dongen
 
-\setx{"man::year"}{\zinsert{../stamp.year}}
-\setx{"man::month"}{\zinsert{../stamp.month}}
-\setx{"man::day"}{\zinsert{../stamp.day}}
-\setx{"man::tag"}{\zinsert{../VERSION}}
+\setx{"man::year"}{\zinsert{@top_srcdir@/stamp.year}}
+\setx{"man::month"}{\zinsert{@top_srcdir@/stamp.month}}
+\setx{"man::day"}{\zinsert{@top_srcdir@/stamp.day}}
+\setx{"man::tag"}{\zinsert{@top_srcdir@/VERSION}}
 
 \setx{"man::year"}{\tr{}{\012}{}{\"man::year"}}
 \setx{"man::month"}{\tr{}{\012}{}{\"man::month"}}

@@ -1,9 +1,3 @@
-Do extensive testing!
-
-Finish NEWS: version.
-
-Fix doc/rc version variable.
-
 Fix bugs in uruk script: (force-)reload should do something sane when
 uruk not running.
 
