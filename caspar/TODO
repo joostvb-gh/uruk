@@ -1,4 +1,4 @@
-$Id: TODO,v 1.42 2005-10-01 12:02:44 joostvb Exp $
+$Id: TODO,v 1.43 2005-10-26 11:30:55 joostvb Exp $
 
 - reimplement bootstrap as something like
 
@@ -25,6 +25,8 @@ $Id: TODO,v 1.42 2005-10-01 12:02:44 joostvb Exp $
   "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this: sucp won't
   prevent the given password from being echoed.  Document new variables
   csp_PUSHDIR, csp_PUSH, csp_PUSHUHS, new script: sucp.
+  Make sucp honor CSP_SUDOUSER (defaults to root if unset).  Rename sucp to
+  csp_sucp.
 
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only
