@@ -66,7 +66,11 @@ Symlinks are _not_ created.  You'll have to create them yourself, after running
 
 UPGRADE
 
-upgrading from uruk <= 20050718
+For upgrades from any version: run /etc/init.d/uruk force-reload after
+installation.  Read the NEWS file.
+
+
+* upgrading from uruk <= 20050718
 
 You might like to use the experimental IPv6 support.  See the NEWS file.
 
@@ -117,10 +121,8 @@ Uruk's init behaviour > 20050718:
 
 [1] depends on wether or not inactivestatefile and activestatefile are present.
 
-The NEWS file has some notes on this change too.
 
-
-upgrading from uruk < 20031026
+* upgrading from uruk < 20031026
 
 After uruk version 20031026, the hooks are no longer called rc_1, rc_2, ....
 rc_10, but rc_a, ... rc_i.  rc_1 is taken over by rc_a; rc_9 and rc_10 are
@@ -128,8 +130,6 @@ taken over by rc_i.  For most situations, replacing ``-A block'' with ``-A
 INPUT'' suffices to translate rc_<n> to rc_<a>.  However, please take a look at
 the uruk script itself to find out.  uruk-rc(5) is updated and contains some
 examples.
-
-See also the NEWS file.
 
 
 POST INSTALLATION STUFF

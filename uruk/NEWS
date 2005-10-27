@@ -2,6 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 20051027
+
+- Fixed bug in uruk script.  Reported to pop up when /bin/sh is bash
+  and $version is not set in /etc/uruk/rc.
+
+
 uruk version 20051026
 
 - More examples in uruk-rc(5) manpage.  Thanks Roland van Hout for
