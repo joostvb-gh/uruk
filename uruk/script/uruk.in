@@ -48,13 +48,16 @@ test -r $config || {
 
 . $config
 
-if test \( -n "$version" \) -a \( "$version" -lt 20040210 \)
+if test -n "$version"
 then
-    cat >&2 <<EOT
+    if test "$version" -lt 20040210
+    then
+        cat >&2 <<EOT
  Uruk rc file $config claims to be pre-20040210 format.  That's likely not
  supported.  Please read the Uruk README file for upgrade instructions.
 EOT
-    exit 1
+        exit 1
+    fi
 fi
 
 uruk_log () {
