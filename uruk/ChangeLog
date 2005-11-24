@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-11-24 18:07:32 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-79
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-79
+
+    found new referral to lsb stuff
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2005-10-27 18:58:01 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-78
 
     Summary:

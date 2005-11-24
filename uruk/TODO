@@ -22,6 +22,7 @@ Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
 Supply arguments like "status" in init script, see
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.html
+Use example from /u/s/d/lsb-core/examples/init-skeleton.gz .
 
 Is it sane to allow all traffic in default inactive rule?
 
