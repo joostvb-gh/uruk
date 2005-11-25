@@ -2,7 +2,7 @@
 #
 # Uruk init script.
 #
-# chkconfig: 2345 08 92
+# chkconfig: 2345 11 89
 # description: starts, stops and saves iptables state, as created by uruk
 # beware! above two lines are parsed by chkconfig(8), as commonly found on RPM
 # based systems

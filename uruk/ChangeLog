@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-11-25 15:56:26 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-80
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-80
+
+    on Red Hat, run start uruk initscript _after_ /etc/init.d/network (and stop
+    before /etc/init.d/network). network has S10network and K90network.  This is
+    needed since we build our rules from the uruk rc file (not the saved rules
+    files).  Building rules from an rc file might need a configured network
+    interface: some users like to invoke /sbin/ip to learn about the current IP.
+    
+    
+    
+
+    modified files:
+     uruk/ChangeLog uruk/init/uruk.in
+
+
 2005-11-24 18:07:32 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-79
 
     Summary:
