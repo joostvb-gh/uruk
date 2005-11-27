@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version CURRENT 20051127
+uruk version 20051127
 
 - On Red Hat, run start uruk initscript _after_ network interfaces are
   configured.  (We have always been doing this in the Debian package.)
