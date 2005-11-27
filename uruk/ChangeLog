@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-11-27 15:27:36 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-81
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-81
+
+    more issues with init-script
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2005-11-25 15:56:26 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-80
 
     Summary:

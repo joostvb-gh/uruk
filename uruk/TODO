@@ -1,3 +1,12 @@
+Debian package: S40uruk could better be S41uruk: explicitly start after
+networking (which is S40networking).
+
+Create an /etc/init.d/uruk-pre script, which is run as early as possible, and
+_before_ network interfaces are configured.  It should disable all
+networktraffic (except for traffic on loopbackinterface).  Only later,
+networkinterfaces are configured, /etc/init.d/uruk is run and networkservices
+are started.
+
 Create "upload" target in /Makefile.am
 
 Fix bugs in uruk script: (force-)reload should do something sane when
