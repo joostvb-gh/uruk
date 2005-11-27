@@ -3,17 +3,18 @@
 \: This file is free software; you can distribute it and/or modify it
 \: under the terms of the GNU GPL.  See the file COPYING.
 \:
-\: Copyright (C) 2003, 2004 Joost van Baal, Copyright (C) 2002, 2003 Stijn van Dongen
+\: based upon mac/zoem.zmm in the zoem sources.
+\: Copyright (C) 2003, 2004, 2005 Joost van Baal, Copyright (C) 2002, 2003 Stijn van Dongen
 
 \setx{"man::year"}{\zinsert{@top_srcdir@/stamp.year}}
 \setx{"man::month"}{\zinsert{@top_srcdir@/stamp.month}}
 \setx{"man::day"}{\zinsert{@top_srcdir@/stamp.day}}
 \setx{"man::tag"}{\zinsert{@top_srcdir@/VERSION}}
 
-\setx{"man::year"}{\tr{}{\012}{}{\"man::year"}}
-\setx{"man::month"}{\tr{}{\012}{}{\"man::month"}}
-\setx{"man::day"}{\tr{}{\012}{}{\"man::day"}}
-\setx{"man::tag"}{\tr{}{\012}{}{\"man::tag"}}
+\setx{"man::year"}{\tr{{delete}{[:space:]}}{\"man::year"}}
+\setx{"man::month"}{\tr{{delete}{[:space:]}}{\"man::month"}}
+\setx{"man::day"}{\tr{{delete}{[:space:]}}{\"man::day"}}
+\setx{"man::tag"}{\tr{{delete}{[:space:]}}{\"man::tag"}}
 
 \set{"man::author"}{Joost van Baal <joostvb-uruk@mdcc.cx>}
 

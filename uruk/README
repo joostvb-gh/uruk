@@ -31,10 +31,10 @@ package from the netfilter project.
 
 
 For typesetting the documentation (the uruk(8), uruk-rc(5) and uruk-save(8)
-manpages), you'll need zoem.  Zoem is a an interpretive macro language, for
-creating mark-up languages, by Stijn van Dongen.  Information about zoem, as
-well as tarballs for download, can be found on the zoem webpage at
-http://micans.org/zoem/ .  Binary zoem packages are shipped with Debian
+manpages), you'll need zoem >= 05-328.  Zoem is a an interpretive macro
+language, for creating mark-up languages, by Stijn van Dongen.  Information
+about zoem, as well as tarballs for download, can be found on the zoem webpage
+at http://micans.org/zoem/ .  Binary zoem packages are shipped with Debian
 GNU/Linux.  Pretypesetted uruk docs are not shipped, since their contents
 depend on your ./configure settings.
 
