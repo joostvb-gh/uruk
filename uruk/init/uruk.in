@@ -49,6 +49,17 @@ test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PA
 # On Red Hat systems, configuration for init scripts is in /etc/sysconfig/
 test -f @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@
 
+#
+#                        /lib/lsb/init-functions
+# Red Hat EL AS rel 2.1        No
+# Red Hat EL AS rel 3          Yes
+#
+# Debian GNU/Linux Sarge       Yes, in lsb-base package
+#
+# See /usr/share/doc/lsb-core/examples/init-skeleton.gz for sample lsb init
+# script.  If we wanna be compliant with Red Hat EL AS rel 2.1, we'd need to
+# implement our own log_success_msg, log_failure_msg and log_warning_msg.
+
 initd="$0"
 
 initd_abort () {

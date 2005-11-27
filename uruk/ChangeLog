@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2005-11-27 16:01:12 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-82
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-82
+
+    document bug: window of opportunity during system boot.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/NEWS uruk/TODO uruk/init/uruk.in
+
+
 2005-11-27 15:27:36 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-81
 
     Summary:
