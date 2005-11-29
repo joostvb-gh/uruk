@@ -113,7 +113,9 @@ In \rc there is:
 while the file \tt{nat} reads
 
 \verbatim{\
-  $iptables -t nat -A POSTROUTING --out-interface eth0 -j SNAT --to-source $ip_eth0}
+  $iptables -t nat -A POSTROUTING \\
+    --out-interface eth0 -j SNAT \\
+    --to-source $ip_eth0}
 
 This allows Network Address Translation.  However, beware!  Like all extensive
 use of hooks, this will break the \uruk_save script.  If you make sure your
@@ -169,7 +171,7 @@ and, similarly,
 Furthermore, for dropping broadcast packets, specify e.g.
 
 \verbatim{\
- bcasts_eth0="ip0 ip2"            # yes, possibly a subset of ips_eth0
+ bcasts_eth0="ip0 ip2"     # yes, possibly a subset of ips_eth0
  bcast_eth0_ip0="10.0.0.255"
  bcast_eth0_ip2=""10.0.255.255"}
 

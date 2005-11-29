@@ -10,7 +10,7 @@ uruk version 20051129
   system to learn about current IP adresses.  With uruk 20051026 and 20051027,
   such usage was not possible.  See TODO for notes on pending issues related
   to this.
-
+- Build-depend upon zoem >= 05-328.
 
 uruk version 20051027
 

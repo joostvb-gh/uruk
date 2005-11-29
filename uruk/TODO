@@ -10,6 +10,13 @@ networkinterfaces are configured, /etc/init.d/uruk is run and networkservices
 are started.  After that, services are started (so even with the current setup
 we _do_ protect our services).
 
+Fix some zoem issues: when running "make distcheck", we get warnings:
+
+ uruk-rc.5:82: warning [p 1, 6.3i]: can't break line
+ uruk-rc.5:82: warning [p 1, 6.3i]: cannot adjust line
+ uruk.8:125: warning [p 1, 9.6i]: can't break line
+ uruk.8:141: warning [p 2, 1.5i]: cannot adjust line
+
 Create "upload" target in /Makefile.am
 
 Fix bugs in uruk script: (force-)reload should do something sane when
