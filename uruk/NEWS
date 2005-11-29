@@ -2,13 +2,14 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20051127
+uruk version 20051129
 
 - On Red Hat, run start uruk initscript _after_ network interfaces are
-  configured.  (We have always been doing this in the Debian package.)
-  This is needed in order to support usage where the rc file queries the
-  operating system to learn about current IP adresses.  With uruk 20051026
-  and 20051027, such usage was not possible.
+  configured.  (We have always been doing this in the Debian package.) This is
+  needed in order to support usage where the rc file queries the operating
+  system to learn about current IP adresses.  With uruk 20051026 and 20051027,
+  such usage was not possible.  See TODO for notes on pending issues related
+  to this.
 
 
 uruk version 20051027
