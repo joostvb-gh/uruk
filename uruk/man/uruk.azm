@@ -39,9 +39,10 @@ Uruk will \it{not} "just work" out of the box.  It needs manual configuration.
 For those of you who don't like reading lots of documentation:
 
 \verbatim{\
- # cp \expath \rcpath
+ # cp \expath \\
+     \rcpath
  # vi \rcpath
- # /etc/init.d/uruk start}
+ # \initpath start}
 
 \sec{getting started}{GETTING STARTED}
 
@@ -82,16 +83,16 @@ package might be helpful.
 \cpar{Using the Uruk init script}
 
 Assumed is the Uruk init script is installed as explained in the README file.
-Optionally, install /etc/default/uruk (or /etc/sysconfig/uruk) and tweak it.
-An example file is in \tt{\defpath} (You might like to enable support for IPv6
-rules, or for \uruk_save.)  Now activate uruk by doing:
+Optionally, install \tt{/etc/default/uruk} (or \tt{/etc/sysconfig/uruk}) and
+tweak it.  An example file is in \tt{\defpath} (You might like to enable
+support for IPv6 rules, or for \uruk_save.)  Now activate uruk by doing:
 
 \verbatim{\
  # \initpath start}
 
 Now your pre-uruk iptables rules (if any) are saved as the "inactive" ruleset.
 While executing \tt{\initpath start}, your box is open during a short while.
-If you don't like this, read about \uruk_save.
+If you don't like this, read below about \uruk_save.
 
 \par
 
@@ -100,10 +101,10 @@ state in \tt{\statepath/iptables}, using
 iptables-save(8), which comes with Linux iptables.
 
 
-\cpar{Using ifupdown}
+\cpar{Using Debian ifupdown}
 
 In case you have just one network interface which should get protected, you
-could use \bf{interfaces(5)} from the ifupdown package instead
+could use \bf{interfaces(5)} from the Debian ifupdown package instead
 of the init script:
 
 \verbatim{\
@@ -125,7 +126,12 @@ to your interfaces stanza, in your \tt{/etc/network/interfaces} .
 
 \par
 
-However, beware!  Uruk will fiddle with the global iptables rules.  Some
+Similar tricks might be possible on GNU/Linux systems from other distributions.
+The author is interested.
+
+\par
+
+However, beware!  Uruk will fiddle with the global iptables rules: some
 default uruk rules affect \it{all} network interfaces.
 
 
@@ -142,7 +148,8 @@ Do
  # \initpath force-reload}
 
 While executing \ttinitpath force-reload, your box is open during a short
-while.  If you don't like this, read about \uruk_save.
+while.  If you don't like this, read below about \uruk_save.
+
 
 \sec{using uruk-save as the initscript backend}{USING uruk-save AS THE INITSCRIPT BACKEND}
 
@@ -154,8 +161,8 @@ as robust as using \uruk itself.  However, if you don't use any hooks in your
 
 \par
 
-The init script will use \uruk_save only if asked to do so in /etc/default/uruk
-(or /etc/sysconfig/uruk).  If this file features
+The init script will use \uruk_save only if asked to do so in \tt{/etc/default/uruk}
+(or \tt{/etc/sysconfig/uruk}).  If this file features
 
 \verbatim{\
 
@@ -170,8 +177,17 @@ See \sibref{uruk-save}{uruk-save(8)} for more details.
 
 \sec{policy}{DEFAULT POLICY}
 
-By default, \uruk drops packets which have unknown private network addresses in
-their source or destination.
+By default, \uruk drops packets which have unknown RFC 1918 private network
+addresses in their source or destination.
+
+\par
+
+It rejects packets with source nor destination for one of our IPs.
+
+\par
+
+Packets belonging to locally initiated sessions are allowed: we match state;
+the local host can act as a client for any remote service.
 
 \par
 
@@ -224,20 +240,35 @@ likely behave in unexpected ways.  Caveat emptor.
 
 \sec{environment}{ENVIRONMENT}
 
-\uruk honors environment variables URUK_IPTABLES (\tt{/sbin/iptables} by
-default) and URUK_CONFIG (\ttrcpath by default).
+You can override some defaults in the shell before executing the uruk script.
+\uruk honors the following variables:
+
+\begin{itemize}{
+    {contiguous}{1}
+    {compact}{1}
+    {type}{mark}
+}
+
+\item "URUK_CONFIG" Full pathname of \rc file; \ttrcpath by default.
+\item "URUK_IPTABLES" Full pathname of iptables executable.
+ \tt{/sbin/iptables} by default.  Overrides \it{iptables}.
+\item "URUK_IP6TABLES" Full pathname of ip6tables executable, for experimental
+ IPv6 support.  Overrides \it{ip6tables}.
+
+\end{itemize}
+
+
 
 \sec{see also}{SEE ALSO}
 
-\sibref{uruk-rc}{uruk-rc(5)}, The Uruk homepage is at
+\sibref{uruk-rc}{uruk-rc(5)}, \sibref{uruk-save}{uruk-save(8)}. The Uruk homepage is at
 \httpref{http://mdcc.cx/uruk/} .
  \par
 \bf{iptables(8)}, \bf{iptables-save(8)},
 \bf{iptables-restore(8)}, \httpref{http://www.netfilter.org/}
 \: (no manpage online :( )
-\: http://lists.mdcc.cx/mcl-devel/msg00297.html
  \par
-\bf{interfaces(5)}, \httpref{http://ifupdown.sourceforge.net/}
+\bf{interfaces(5)}, \httpref{http://packages.debian.org/ifupdown}.
 
 \sec{copyright}{COPYRIGHT}
 

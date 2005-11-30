@@ -21,7 +21,7 @@
 
 \sec{synopsis}{SYNOPSIS}
   \par
-  \rcpath
+  \tt{\rcpath}
 
 \sec{description}{DESCRIPTION}
 
@@ -31,16 +31,13 @@
 
 \rc lists IP addresses, allowed to use services.
 
-\par
+\sec{examples}{EXAMPLES}
 
-The simplest valid \rc file is
+The simplest valid \rc file is the empty file.  This \rc file blocks all TCP
+and UDP connection attempts to services on our host: this is the default
+behaviour.
 
-\verbatim{\
- interfaces=}
-
-This \rc file blocks all tcp and udp traffic: this is the default behaviour.
-
-The simplest \rc file which does allow traffic looks like e.g.:
+The simplest \rc file which does allow traffic to our services looks like e.g.:
 
 \verbatim{\
 interfaces=eth0
@@ -56,7 +53,7 @@ services_eth0_udp=local
 ports_eth0_udp_local="0:65535"
 sources_eth0_udp_local="0.0.0.0/0"}
 
-This \rc file allows all traffic.
+This \rc file allows all UDP and TCP traffic to eth0's IP.
 
 For a more reasonable \rc file, look at the well-commented example \rc file in
 \ttexpath.
@@ -66,7 +63,7 @@ For a more reasonable \rc file, look at the well-commented example \rc file in
 Uruk offers hooks for inserting your own code between iptables invocations.
 Examples will show the usefulness of these hooks.
 
-\par
+\cpar{allowing broadcasts}
 
 In \rc, there is:
 
@@ -84,7 +81,7 @@ while the file \tt{bootp} reads
 This enables one to add rules for packets with broadcast addresses in their
 destination.  (Uruk has no support for this in it's regular \rc.)
 
-\par
+\cpar{allowing non-matching returntraffic}
 
 In \rc there is:
 
@@ -105,6 +102,8 @@ while the file \tt{dns} reads
 This allows one to allow (return)traffic, disregarding the state.  (Uruk has no
 support for this in it's regular \rc.)
 
+\cpar{allowing NAT}
+
 In \rc there is:
 
 \verbatim{\
@@ -120,7 +119,7 @@ while the file \tt{nat} reads
 This allows Network Address Translation.  However, beware!  Like all extensive
 use of hooks, this will break the \uruk_save script.  If you make sure your
 active iptables rules are wiped, and invoke \uruk manually to load new rules,
-you're save.
+you're safe.  Using the init-script with it's default settings is safe too.
 
 \par
 
@@ -142,8 +141,7 @@ If \v{ips_}\it{nic} is set, e.g. like
  ips_eth0="ip0 ip1 ip2"}
 
 we assume multiple (three in this example) IPs are assigned to \v{eth0}.  If
-this variable is not set, behaviour is compatible with Uruk version < 20040213,
-and only one IP is supported on \v{eth0}.
+this variable is not set only one IP is supported on \v{eth0}.
 
 \par
 
@@ -155,7 +153,7 @@ In multiple-IP mode, IP addresses are listed as e.g.
 (If you're used to the Linux ifconfig(8) output, you could use the name \v{ip1}
 for \v{eth0:1}, and \v{ip0} for \v{eth0}.)
 
-The old-style \it{ports}, \it{services} and \it{sources} variables look like
+The \it{ports}, \it{services} and \it{sources} variables look like
 e.g.
 
 \verbatim{\
@@ -173,11 +171,10 @@ Furthermore, for dropping broadcast packets, specify e.g.
 \verbatim{\
  bcasts_eth0="ip0 ip2"     # yes, possibly a subset of ips_eth0
  bcast_eth0_ip0="10.0.0.255"
- bcast_eth0_ip2=""10.0.255.255"}
+ bcast_eth0_ip2="10.0.255.255"}
 
-The \it{interfaces_nocast} variable still holds things like \v{eth0} and \v{eth1}.
-
-Old-style \rc files are still valid and behave fully backwards compatible.
+The \it{interfaces_nocast} variable holds things like \v{eth0} and \v{eth1},
+like in single-IP-per-nic mode.
 
 
 \sec{logging and debugging}{LOGGING AND DEBUGGING}
@@ -265,8 +262,7 @@ If you'd like to test a new \rc file before installing it, run something like:
 
 \par
 
-Of course, all these tweaks can be combined.  See also the notes on
-\it{loglevel}.
+Of course, all these tweaks can be combined.
 
 \sec{variables}{VARIABLES}
 
@@ -293,6 +289,10 @@ The uruk script honors the following variables in \rc files:
 More variables are available.  For now, you'll have to take a look at the
 example \rc file in \ttexpath for more details.
 
+\par
+
+See \sibref{uruk}{uruk(8)} for notes on environment variables.
+
 
 \sec{environment variables}{ENVIRONMENT VARIABLES}
 
@@ -313,7 +313,7 @@ The following variables are honored:
 
 \sec{files}{FILES}
 
-\rcpath
+\tt{\rcpath}
 
 \sec{see also}{SEE ALSO}
 
@@ -321,7 +321,7 @@ A well-commented example \rc file is in \ttexpath.
 
 \par
 
-\sibref{uruk}{uruk(8)}
+\sibref{uruk}{uruk(8)}, \sibref{uruk-save}{uruk-save(8)}
 
 \sec{copyright}{COPYRIGHT}
 
