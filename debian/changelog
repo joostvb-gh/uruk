@@ -1,3 +1,9 @@
+caspar (XXXXXXXXXX) unstable; urgency=low
+
+  *  debian/control: found out how to add Homepage pseudo-field (finally!)
+
+ -- Joost van Baal <joostvb@debian.org>  Thu, 08 Dec 2005 17:21:35 +0100
+
 caspar (20050424-1) unstable; urgency=low
 
   * New upstream.
