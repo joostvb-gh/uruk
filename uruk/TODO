@@ -10,6 +10,10 @@ networkinterfaces are configured, /etc/init.d/uruk is run and networkservices
 are started.  (N.B.: so even with the current setup we _do_ protect our
 services).
 
+/etc/init.d/uruk flush does not flush nat nor mangle table.  This means
+force-reload breaks when these tables are in use.  See comment near initd_flush.
+Document workaround.  Tnx Wessel.
+
 In uruk-rc manpage, include example rc-file verbatim.  Include license text.
 
 Create "upload" target in /Makefile.am

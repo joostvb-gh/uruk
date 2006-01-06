@@ -93,6 +93,15 @@ initd_halt () {
 }
 
 initd_flush () {
+  # This will NOT flush the mangle or nat table.  If we wanna do that, we'd have to do
+  # something like
+  #
+  #  while read -r table;do iptables -t $table -F;done </proc/net/ip_tables_names
+  #
+  # However, this won't work for ip6tables; for that we'd have to read ip6_tables_names.
+  # We can't use the $iptables_command variable for constructing the name of that file.
+  # I give up: this would introduce too much cruft.
+
   echo -n "Flushing all current $iptables_command rules"
   $iptables_command -F
   echo "."
