@@ -53,7 +53,8 @@ services_eth0_udp=local
 ports_eth0_udp_local="0:65535"
 sources_eth0_udp_local="0.0.0.0/0"}
 
-This \rc file allows all UDP and TCP traffic to eth0's IP.
+This \rc file allows all UDP and TCP traffic from publicly routable IPs to
+eth0's IP.
 
 For a more reasonable \rc file, look at the well-commented example \rc file in
 \ttexpath.
