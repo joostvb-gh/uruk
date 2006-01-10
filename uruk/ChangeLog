@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2006-01-10 15:54:17 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-92
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-92
+
+    add idea for a better way to unsupport an interface.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2006-01-10 15:46:23 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-91
 
     Summary:
