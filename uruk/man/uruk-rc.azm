@@ -122,6 +122,26 @@ use of hooks, this will break the \uruk_save script.  If you make sure your
 active iptables rules are wiped, and invoke \uruk manually to load new rules,
 you're safe.  Using the init-script with it's default settings is safe too.
 
+\cpar{allowing \it{any} traffic on an interface}
+
+In \rc there is:
+
+\verbatim{\
+ rc_a=${etcdir}/allow}
+
+while the file \tt{allow} reads
+
+\verbatim{\
+  $iptables -A INPUT -i eth2 -j ACCEPT}
+
+and while \rc features
+
+\verbatim{\
+  interfaces="eth0 eth1"}
+
+.  This allows any traffic on \tt{eth2}, including any ICMP packets and packets
+from any source address.
+
 \par
 
 For now, you'll have to study the \uruk source to find out which hook (there
