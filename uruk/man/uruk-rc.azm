@@ -132,7 +132,8 @@ In \rc there is:
 while the file \tt{allow} reads
 
 \verbatim{\
-  $iptables -A INPUT -i eth2 -j ACCEPT}
+  $iptables -A INPUT -i eth2 -j ACCEPT
+  $iptables -A OUTPUT -i eth2 -j ACCEPT}
 
 and while \rc features
 

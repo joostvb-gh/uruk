@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2006-01-16 16:16:44 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-93
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-93
+
+    improved way to unprotect an interface, thanks Wessel Dankers
+    
+
+    modified files:
+     uruk/ChangeLog uruk/man/uruk-rc.azm
+
+
 2006-01-10 15:54:17 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-92
 
     Summary:
