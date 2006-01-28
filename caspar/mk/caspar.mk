@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.23 2006-01-28 11:53:27 joostvb Exp $
+# $Id: caspar.mk,v 1.24 2006-01-28 12:16:15 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -22,10 +22,19 @@ endif
 
 endif
 
-csp_DIR  ?= $(csp_SCPDIR)
+ifdef csp_sucp_DIR
 
-# fixme: should default to csp_scp
-csp_PUSH     ?= csp_sucp
+ifdef csp_sucp_UHOST
+csp_sucp_UHOSTS ?= $(csp_sucp_UHOST)
+endif
+
+endif
+
+# fixme: use this variable
+csp_DIR      ?= $(csp_SCPDIR)
+
+# fixme: use this variable
+csp_PUSH     ?= csp_scp
 
 # possibility to choose own cp(1) and scp(1)
 csp_CP       ?= cp
@@ -47,7 +56,10 @@ csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) 
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
-	$(foreach uh,$(csp_UHOSTS),$(csp_PUSH) "$(subst -install,,$@)" $(uh) $(csp_DIR);)
+	$(foreach uh,$(csp_sucp_UHOSTS),csp_sucp "$(subst -install,,$@)" $(uh) $(csp_sucp_DIR);)
+
+# FIXME: add a default rule like this one
+# $(foreach uh,$(csp_UHOSTS),$(csp_PUSH) "$(subst -install,,$@)" $(uh) $(csp_DIR);)
 
 # files, not directories
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
