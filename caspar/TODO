@@ -1,4 +1,4 @@
-$Id: TODO,v 1.43 2005-10-26 11:30:55 joostvb Exp $
+$Id: TODO,v 1.44 2006-01-28 11:24:12 joostvb Exp $
 
 - reimplement bootstrap as something like
 
@@ -27,6 +27,18 @@ $Id: TODO,v 1.43 2005-10-26 11:30:55 joostvb Exp $
   csp_PUSHDIR, csp_PUSH, csp_PUSHUHS, new script: sucp.
   Make sucp honor CSP_SUDOUSER (defaults to root if unset).  Rename sucp to
   csp_sucp.
+
+  OK, guess this will be the new UI:
+
+  New variables: csp_PUSH (default: csp_scp make function), csp_HOST,
+  csp_HOSTS, csp_DIR; csp_scp_HOST, csp_scp_HOSTS, csp_scp_DIR, csp_sucp_HOST,
+  csp_sucp_DIR.  csp_cp_HOST is silently ignored.
+
+    csp_cp file dummy dir  (yuk!)
+    csp_scp file [user@]host dir
+    csp_sucp file [user@]host dir [su-user]
+
+  plugins can use csp_<plugin>_someextravar if needed.
 
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only
