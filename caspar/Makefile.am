@@ -1,10 +1,10 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.11 2005-04-24 15:59:26 joostvb Exp $
+## $Id: Makefile.am,v 1.12 2006-01-29 20:10:56 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
 
-## Copyright (C) 2003 Joost van Baal
+## Copyright (C) 2003, 2004, 2005, 2006 Joost van Baal
 
 ## you need cvs2cl for this to work.  get it from
 ## http://www.red-bean.com/cvs2cl/ .
@@ -32,10 +32,10 @@ doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS
 MY_RDIR = topaz:www/mdcc.cx/pub/caspar/
 
 sign: distcheck
-        list='$(DIST_ARCHIVES)'; for i in $$list; do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
+	for i in $(DIST_ARCHIVES); do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
 
 publish: sign
-        list='$(DIST_ARCHIVES)'; for i in $$list; do echo "scp $$i $$i.asc $(MY_RDIR)"; scp $$i $$i.asc $(MY_RDIR); done
+	list='$(DIST_ARCHIVES)'; for i in $$list; do echo "scp $$i $$i.asc $(MY_RDIR)"; scp $$i $$i.asc $(MY_RDIR); done
 
 ## Only files from the current directory or from subdirectory which
 ## don't have their own Makefile.am should be listed here.

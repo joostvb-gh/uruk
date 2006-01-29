@@ -1,6 +1,6 @@
-# $Id: caspar.mk,v 1.24 2006-01-28 12:16:15 joostvb Exp $
+# $Id: caspar.mk,v 1.25 2006-01-29 20:10:56 joostvb Exp $
 
-# Copyright (C) 2002, 2003, 2004, 2005 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
+# Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
 # This file is part of caspar.  Caspar is free software; you can redistribute
 # it and/or modify it under the terms of the GNU General Public License as
