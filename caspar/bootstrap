@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.9 2004-07-21 14:36:05 joostvb Exp $
+# $Id: bootstrap,v 1.10 2006-01-29 20:07:33 joostvb Exp $
 
 # bootstrap - script to bootstrap the distribution rolling engine
 
@@ -23,8 +23,6 @@
 #  GNU automake, from e.g. ftp.cygnus.com:/pub/tromey/
 #  cvs2cl, from http://www.red-bean.com/cvs2cl/ (see Makefile.am)
 
-# The build system is known to work with aclocal and automake 1.8.5.
-
 set -x
 
 test -f ChangeLog || {
@@ -33,12 +31,5 @@ test -f ChangeLog || {
 
 test -f VERSION.m4 || ./setversion
 
-# If you have pkg-config 0.15.0-4 installed, and use aclocal >= 1.8, you'll
-# get see a bug in /usr/share/aclocal/pkg.m4 , see
-# http://bugs.debian.org/221818 for the bugreport (and a patch)
-# This bug makes aclocal whine, but is not effectively harming us.
-
-aclocal \
-    && automake --add-missing --gnu --verbose --warnings=all \
-    && autoconf
+AUTOMAKE=automake-1.9 ACLOCAL=aclocal-1.9 autoreconf --install --symlink
 

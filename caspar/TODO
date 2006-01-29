@@ -1,9 +1,4 @@
-$Id: TODO,v 1.45 2006-01-28 12:18:35 joostvb Exp $
-
-- reimplement bootstrap as something like
-
-   AUTOMAKE=automake-1.9 ACLOCAL=aclocal-1.9 autoreconf --install \
-      --symlink --make
+$Id: TODO,v 1.46 2006-01-29 20:07:33 joostvb Exp $
 
 --- typesetting stuff ---
 
