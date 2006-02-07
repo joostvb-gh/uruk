@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.25 2006-01-29 20:10:56 joostvb Exp $
+# $Id: caspar.mk,v 1.26 2006-02-07 06:16:40 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -10,17 +10,27 @@
 
 # see caspar(7) for usage
 
-ifdef csp_SCPDIR
+# backward compatibility
+csp_scp_DIR    ?= $(csp_SCPDIR)
+csp_scp_UHOSTS ?= $(csp_SUHS)
+csp_scp_UHOST  ?= $(csp_SUH)
 
-ifdef csp_SUHS
-csp_SUHDIRS  ?= $(patsubst %,%:$(csp_SCPDIR),$(csp_SUHS))
+csp_cp_DIR     ?= $(csp_CPDIR)
+csp_CPDIRS     ?= $(csp_cp_DIR)
+
+
+ifdef csp_scp_DIR
+
+ifdef csp_scp_UHOSTS
+csp_SUHDIRS  ?= $(patsubst %,%:$(csp_scp_DIR),$(csp_UHOSTS))
 endif
 
-ifdef csp_SUH
-csp_SUHDIRS  ?= $(csp_SUH):$(csp_SCPDIR)
+ifdef csp_scp_UHOST
+csp_SUHDIRS  ?= $(csp_scp_UHOST):$(csp_scp_DIR)
 endif
 
 endif
+
 
 ifdef csp_sucp_DIR
 
@@ -30,21 +40,16 @@ endif
 
 endif
 
-# fixme: use this variable
-csp_DIR      ?= $(csp_SCPDIR)
-
-# fixme: use this variable
 csp_PUSH     ?= csp_scp
 
 # possibility to choose own cp(1) and scp(1)
 csp_CP       ?= cp
 csp_SCP      ?= scp
+csp_SUCP     ?= csp_sucp
 
 # extra arguments for cp(1) and scp(1)
 csp_CPFLAGS  ?=
 csp_SCPFLAGS ?=
-
-csp_CPDIRS   ?= $(csp_CPDIR)
 
 csp_EXTRAFILES ?=
 
@@ -56,10 +61,8 @@ csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) 
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
-	$(foreach uh,$(csp_sucp_UHOSTS),csp_sucp "$(subst -install,,$@)" $(uh) $(csp_sucp_DIR);)
-
-# FIXME: add a default rule like this one
-# $(foreach uh,$(csp_UHOSTS),$(csp_PUSH) "$(subst -install,,$@)" $(uh) $(csp_DIR);)
+	$(foreach uh,$(csp_sucp_UHOSTS),$(csp_SUCP) "$(subst -install,,$@)" $(uh) $(csp_sucp_DIR);) \
+	$(foreach uh,$(csp_UHOSTS),$(csp_PUSH) "$(subst -install,,$@)" $(uh) $(csp_DIR);)
 
 # files, not directories
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
