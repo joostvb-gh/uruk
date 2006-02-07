@@ -1,4 +1,4 @@
-$Id: TODO,v 1.46 2006-01-29 20:07:33 joostvb Exp $
+$Id: TODO,v 1.47 2006-02-07 06:18:00 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -25,7 +25,8 @@ $Id: TODO,v 1.46 2006-01-29 20:07:33 joostvb Exp $
 
   OK, guess this will be the new UI:
 
-  New variables: csp_PUSH (default: csp_scp make function), csp_UHOST,
+  New variables: csp_PUSH (default: csp_scp make function), csp_SUCP,
+  csp_UHOST,
   csp_UHOSTS, csp_DIR; csp_scp_UHOST, csp_scp_UHOSTS, csp_scp_DIR,
   csp_sucp_UHOST, csp_sucp_DIR.  csp_cp_UHOST is silently ignored.
 
@@ -38,6 +39,14 @@ $Id: TODO,v 1.46 2006-01-29 20:07:33 joostvb Exp $
   1) implement csp_DIR, csp_PUSH, csp_UHOST
   2) do other stuff without breaking backwards compatibility
   3) ...
+
+  csp_SUHS now is csp_scp_UHOSTS  (or use csp_UHOSTS)
+  csp_SUH now is csp_scp_UHOST    (or use csp_UHOST)
+  csp_SCPDIR now is csp_scp_DIR   (or use csp_DIR)
+
+  Test all examples as given in manpage.  Fix manpage.
+
+  The variable csp_CPDIRS will be phased out: no more multiple cp target dirs.
 
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only
