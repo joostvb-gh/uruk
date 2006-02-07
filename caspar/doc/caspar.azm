@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.21 2005-09-21 16:41:41 joostvb Exp $
+\: $Id: caspar.azm,v 1.22 2006-02-07 05:55:35 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -53,7 +53,7 @@ files, or typesetting LaTeX, DocBook XML and DocBook SGML documents.
 The typesetting functionality is delivered by \"docbook.mk" and \"pod.mk".
 This is documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
   \par
-The installing-stuff functionality functionality is delivered by \"caspar.mk".
+The installing-stuff functionality is delivered by \"caspar.mk".
 (That's what the rest of the manual will talk about.)  It enables one to run
 'make install' from within a tree which typically holds configuration files,
 managed using CVS (or Subversion or any other version control system, for that
@@ -73,7 +73,7 @@ Within a CVS tree, create a file \it{include/install.mk}, with contents like
 e.g.
 
 \verbatim{
- csp_SUH = root@some.host.somewhere
+ csp_UHOST = root@some.host.somewhere
  include caspar/mk/caspar.mk
 }
 
@@ -81,7 +81,7 @@ e.g.
 Makefile, which looks like e.g.
 
 \verbatim{
- csp_SCPDIR = /some/dir/ectory/
+ csp_DIR = /some/dir/ectory/
  include ../../include/install.mk
 }
 .
@@ -115,7 +115,7 @@ The variables one can set in a calling Makefile are:
   {contiguous}{1}
   {w1}{7}
 }
-  \item{\tt{csp_CP}}       cp binary, just "cp" by default
+  \item{\tt{csp_CP}}       cp binary, just "cp" by default    FIXME TODO
   \item{\tt{csp_CPFLAGS}}  extra arguments to pass to cp invocation, none by
     default
   \item{\tt{csp_SCP}}      scp binary, just "scp" by default
@@ -168,10 +168,11 @@ Some examples:
 
 \par
 
-Using \tt{csp_CPDIR} and \tt{csp_LOAD}: \it{username/etc/Makefile} is
+Using \tt{csp_CP} and \tt{csp_LOAD}: \it{username/etc/Makefile} is
 
-\verbatim{
-  csp_CPDIR = $(HOME)/etc/
+\verbatim{   FIXME TEST THIS
+  csp_PUSH = $(csp_CP)
+  csp_DIR = $(HOME)/etc/
   csp_LOAD = crontab-load
   include ../include/install.mk
 
@@ -186,21 +187,21 @@ while \it{../include/install.mk} is just
 }
 .
 
-Using \tt{csp_SCPDIR} and \tt{csp_LOAD}: \it{etc/Makefile} is
+Using \tt{csp_scp_DIR} and \tt{csp_LOAD}: \it{etc/Makefile} is
 
 \verbatim{
-  csp_SCPDIR = /etc/
+  csp_scp_DIR = /etc/
   csp_LOAD = aliases-load
   include ../include/install.mk
 
   aliases-load:
-      ssh $(csp_SUH) "cd /etc; postalias aliases; postfix reload"
+      ssh $(csp_scp_UHOST) "cd /etc; postalias aliases; postfix reload"
 }
 
 while \it{../include/install.mk} is
 
 \verbatim{
-  csp_SUH = root@some.host.somewhere
+  csp_scp_UHOST = root@some.host.somewhere
   include caspar/mk/caspar.mk
 }
 
@@ -213,11 +214,11 @@ as you'd like to have it installed on the remote location.  Now, create
   csp_TABOOFILES_SKIP = Makefile
   csp_TABOOFILES_ADD = GNUmakefile
 
-  csp_SCPDIR = /etc/foobar/
-  csp_SUH = root@some.host.somewhere
+  csp_scp_DIR = /etc/foobar/
+  csp_scp_UHOST = root@some.host.somewhere
 
   load:
-        ssh $(csp_SUH) "make -C $(csp_SCPDIR)"
+        ssh $(csp_scp_UHOST) "make -C $(csp_scp_DIR)"
 }
 
 Now, \tt{make install} and \tt{make load} will do the right thing.
@@ -235,13 +236,13 @@ with a leading dot.   E.g.:
 More advanced tricks: supply e.g.
 
 \verbatim{
- csp_SUHS = root@localhost root@some.host.somewhere
+ csp_UHOSTS = root@localhost root@some.host.somewhere
 }
 
 in \it{install.mk}, to install on multiple hosts.  Run
 
 \verbatim{
- csp_SUH=joe@otherhost make filename-install
+ csp_UHOST=joe@otherhost make filename-install
 }
 
 to install filename as \tt{joe@otherhost}, instead of the default as given in
@@ -257,7 +258,7 @@ do
 }
 .
 
-\sec{files}{FILES}
+\sec{files}{FILES}  FIXME  TODO
 
 \par
  \it{caspar/mk/caspar.mk}, \it{caspar/mk/docbook.mk}, \it{caspar/mk/pod.mk}
