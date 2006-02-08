@@ -1,16 +1,20 @@
 #!/bin/sh
 
-# $Id: csp_sucp,v 1.1 2006-01-28 11:52:22 joostvb Exp $
+# $Id: csp_sucp,v 1.2 2006-02-08 17:52:33 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/caspar/script/csp_sucp,v $
 
 # csp_sucp - mix scp with sudo
 #
 # example usage:
 #  csp_sucp fstab rms@bilbo /etc
+#  csp_sucp trailer.txt monty-python commit/trailer.txt list
+#
+
+test -n "$4" && opt_u="-u $4"
 
 # first make sure our sudo-timestamp is fresh
-ssh -T $2 sudo -v
+ssh -T $2 sudo -v $opt_u
 # now run sudo: we won't be prompted for a password; and
 # can use stdin for our data
-exec ssh $2 "sudo sh -c \"cat - > $3/$1\"" < $1
+exec ssh $2 "sudo $opt_u sh -c \"cat - > $3/$1\"" < $1
 

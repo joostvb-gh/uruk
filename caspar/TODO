@@ -1,4 +1,4 @@
-$Id: TODO,v 1.47 2006-02-07 06:18:00 joostvb Exp $
+$Id: TODO,v 1.48 2006-02-08 17:52:32 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -20,8 +20,9 @@ $Id: TODO,v 1.47 2006-02-07 06:18:00 joostvb Exp $
   "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this: sucp won't
   prevent the given password from being echoed.  Document new variables
   csp_DIR, csp_PUSH, csp_UHOSTS, new script: csp_sucp.
-  Make csp_sucp honor optional fourth arg CSP_SUDOUSER (defaults to root if
-  unset).
+  Make csp_sucp honor optional fourth arg CSP_SUDOUSER (or CSP_sucp_SUDOUSER?)
+  (causes to pass "-u $4" to sudo invocation; sudo defaults to root if -u is
+  not passed).
 
   OK, guess this will be the new UI:
 
