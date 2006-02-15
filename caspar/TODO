@@ -1,4 +1,4 @@
-$Id: TODO,v 1.50 2006-02-15 18:41:03 joostvb Exp $
+$Id: TODO,v 1.51 2006-02-15 19:08:27 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -13,8 +13,20 @@ $Id: TODO,v 1.50 2006-02-15 18:41:03 joostvb Exp $
 - finish support for sudo.  Document this: Adding support for sudo via sucp
   allows for "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this:
   sucp won't prevent the given password from being echoed.  Write manpage for
-  new script: csp_sucp.  Implement csp_scp (e.g. as make function): "csp_scp
-  file [user@]host dir".  Fix \sec{variables} in caspar.azm.
+  new script: csp_sucp.
+
+  Implement csp_scp (e.g. as make function): "csp_scp file [user@]host dir".
+  Guess make-function won't be very nice:
+
+    #                  file foo@bar dir/
+    csp_csp = $(csp_SCP) $(1) $(2):$(3)
+    #
+    # now one can write:
+    #  $(call csp_csp,file,$(uh),$(csp_DIR))
+
+  We'd have to adjust all our RULES.
+
+  Fix \sec{variables} in caspar.azm.
   Test all examples as given in manpage.  Fix manpage.  Finish NEWS.
 
 - this whole thing could probably better use rsync, or, alternatively, perhaps

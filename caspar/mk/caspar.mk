@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.27 2006-02-15 18:30:18 joostvb Exp $
+# $Id: caspar.mk,v 1.28 2006-02-15 19:08:27 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -17,7 +17,6 @@ csp_scp_UHOST  ?= $(csp_SUH)
 
 csp_cp_DIR     ?= $(csp_CPDIR)
 csp_CPDIRS     ?= $(csp_cp_DIR)
-
 
 ifdef csp_scp_DIR
 
@@ -40,8 +39,6 @@ endif
 
 endif
 
-csp_PUSH     ?= csp_scp
-
 # possibility to choose own cp(1) and scp(1)
 csp_CP       ?= cp
 csp_SCP      ?= scp
@@ -58,6 +55,8 @@ csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_SKIP), $(csp_TABOOFILES_DEFAULT)
 
 csp_TABOODIRS_DEFAULT ?= CVS .svn
 csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
+
+csp_PUSH     ?= csp_scp
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
