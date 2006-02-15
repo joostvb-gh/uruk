@@ -1,4 +1,4 @@
-$Id: TODO,v 1.49 2006-02-15 18:30:18 joostvb Exp $
+$Id: TODO,v 1.50 2006-02-15 18:41:03 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -10,44 +10,22 @@ $Id: TODO,v 1.49 2006-02-15 18:30:18 joostvb Exp $
 
 --- install stuff ---
 
+- finish support for sudo.  Document this: Adding support for sudo via sucp
+  allows for "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this:
+  sucp won't prevent the given password from being echoed.  Write manpage for
+  new script: csp_sucp.  Implement csp_scp (e.g. as make function): "csp_scp
+  file [user@]host dir".  Fix \sec{variables} in caspar.azm.
+  Test all examples as given in manpage.  Fix manpage.  Finish NEWS.
+
 - this whole thing could probably better use rsync, or, alternatively, perhaps
   all caspar functionality could be incorporated in cfengine.  See caspar(7).
 
 - add support for rsync, install(1).
 
-- finish support for sudo.  Document this: Adding support for sudo via sucp
-  allows for "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this:
-  sucp won't
-  prevent the given password from being echoed.  Document new variables
-  csp_DIR, csp_PUSH, csp_UHOSTS, new script: csp_sucp.
+- Some day we might want to implement "csp_cp file dummy dir".
 
-  OK, guess this will be the new UI:
-
-  New variables: csp_PUSH (default: csp_scp make function), csp_SUCP,
-  csp_UHOST,
-  csp_UHOSTS, csp_DIR; csp_scp_UHOST, csp_scp_UHOSTS, csp_scp_DIR,
-  csp_sucp_UHOST, csp_sucp_DIR.  csp_cp_UHOST is silently ignored.
-
-  csp_sucp_USER, env var CSP_SUCP_USER (sudo defaults to root if -u is not
-  passed).
-
-    csp_cp file dummy dir  (yuk!)
-    csp_scp file [user@]host dir
-    csp_sucp file [user@]host dir [su-user]
-
-  plugins can use csp_<plugin>_someextravar if needed.
-
-  1) implement csp_DIR, csp_PUSH, csp_UHOST
-  2) do other stuff without breaking backwards compatibility
-  3) ...
-
-  csp_SUHS now is csp_scp_UHOSTS  (or use csp_UHOSTS)
-  csp_SUH now is csp_scp_UHOST    (or use csp_UHOST)
-  csp_SCPDIR now is csp_scp_DIR   (or use csp_DIR)
-
-  Test all examples as given in manpage.  Fix manpage.
-
-  The variable csp_CPDIRS will be phased out: no more multiple cp target dirs.
+- Document and finish csp_PUSH-plugin architecture.  plugins can use
+  csp_<plugin>_someextravar if needed.
 
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only

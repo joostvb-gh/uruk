@@ -1,11 +1,14 @@
 #!/bin/sh
 
-# $Id: csp_sucp,v 1.3 2006-02-15 18:30:18 joostvb Exp $
+# $Id: csp_sucp,v 1.4 2006-02-15 18:41:04 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/caspar/script/csp_sucp,v $
 
 # csp_sucp - mix scp with sudo
 #
-# example usage:
+# usage:
+#  csp_sucp file [user@]host dir [su-user]
+#
+# examples:
 #  csp_sucp fstab rms@bilbo /etc
 #  csp_sucp trailer.txt monty-python commit/trailer.txt list
 

@@ -2,6 +2,21 @@ Refer to ChangeLog for detailed per-file info.
 
 caspar version CURRENT 20060129
 
+
+  New variables: csp_PUSH (default: csp_scp make function), csp_SUCP,
+  csp_UHOST, csp_UHOSTS, csp_DIR; csp_scp_UHOST, csp_scp_UHOSTS, csp_scp_DIR,
+  csp_sucp_UHOST, csp_sucp_DIR.  csp_cp_UHOST is silently ignored.
+
+  csp_sucp_USER, env var CSP_SUCP_USER (sudo defaults to root if -u is not
+  passed).
+
+  csp_SUHS now is csp_scp_UHOSTS  (or use csp_UHOSTS)
+  csp_SUH now is csp_scp_UHOST    (or use csp_UHOST)
+  csp_SCPDIR now is csp_scp_DIR   (or use csp_DIR)
+
+  The variable csp_CPDIRS will be phased out: no more multiple cp target dirs.
+
+
 - caspar.mk now has support for installing stuff using remote accounts
   protected by both ssh and sudo.
 
@@ -101,4 +116,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.15 2006-01-29 20:28:40 joostvb Exp $
+# $Id: NEWS,v 1.16 2006-02-15 18:41:03 joostvb Exp $
