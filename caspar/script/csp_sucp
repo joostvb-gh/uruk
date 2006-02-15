@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# $Id: csp_sucp,v 1.2 2006-02-08 17:52:33 joostvb Exp $
+# $Id: csp_sucp,v 1.3 2006-02-15 18:30:18 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/caspar/script/csp_sucp,v $
 
 # csp_sucp - mix scp with sudo
@@ -8,8 +8,9 @@
 # example usage:
 #  csp_sucp fstab rms@bilbo /etc
 #  csp_sucp trailer.txt monty-python commit/trailer.txt list
-#
 
+# command line argument overrules environment variable
+test -n "$CSP_SUCP_USER" && opt_u="$CSP_SUCP_USER"
 test -n "$4" && opt_u="-u $4"
 
 # first make sure our sudo-timestamp is fresh

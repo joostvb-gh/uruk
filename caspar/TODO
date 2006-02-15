@@ -1,4 +1,4 @@
-$Id: TODO,v 1.48 2006-02-08 17:52:32 joostvb Exp $
+$Id: TODO,v 1.49 2006-02-15 18:30:18 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -13,16 +13,13 @@ $Id: TODO,v 1.48 2006-02-08 17:52:32 joostvb Exp $
 - this whole thing could probably better use rsync, or, alternatively, perhaps
   all caspar functionality could be incorporated in cfengine.  See caspar(7).
 
-- finish support for sudo, rsync, install(1).  Find out why sucp always asks for
-  a password.  Doesn't sudo keep this validate-thingie when our TTY is
-  "unknown"?  Does the -T ssh option fix this?  Document this: Adding support
-  for sudo via sucp allows for
-  "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this: sucp won't
+- add support for rsync, install(1).
+
+- finish support for sudo.  Document this: Adding support for sudo via sucp
+  allows for "PermitRootLogin no" in /etc/ssh/sshd_config .  Document this:
+  sucp won't
   prevent the given password from being echoed.  Document new variables
   csp_DIR, csp_PUSH, csp_UHOSTS, new script: csp_sucp.
-  Make csp_sucp honor optional fourth arg CSP_SUDOUSER (or CSP_sucp_SUDOUSER?)
-  (causes to pass "-u $4" to sudo invocation; sudo defaults to root if -u is
-  not passed).
 
   OK, guess this will be the new UI:
 
@@ -30,6 +27,9 @@ $Id: TODO,v 1.48 2006-02-08 17:52:32 joostvb Exp $
   csp_UHOST,
   csp_UHOSTS, csp_DIR; csp_scp_UHOST, csp_scp_UHOSTS, csp_scp_DIR,
   csp_sucp_UHOST, csp_sucp_DIR.  csp_cp_UHOST is silently ignored.
+
+  csp_sucp_USER, env var CSP_SUCP_USER (sudo defaults to root if -u is not
+  passed).
 
     csp_cp file dummy dir  (yuk!)
     csp_scp file [user@]host dir
@@ -78,6 +78,4 @@ $Id: TODO,v 1.48 2006-02-08 17:52:32 joostvb Exp $
   Dankers (and the author).  It'll work nice in cases where you have lots of
   subdirectories holding information for lots of groups of hosts when you want
   to install just for a small group (or 1) hosts.
-
-
 

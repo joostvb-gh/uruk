@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.26 2006-02-07 06:16:40 joostvb Exp $
+# $Id: caspar.mk,v 1.27 2006-02-15 18:30:18 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -61,7 +61,7 @@ csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) 
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
-	$(foreach uh,$(csp_sucp_UHOSTS),$(csp_SUCP) "$(subst -install,,$@)" $(uh) $(csp_sucp_DIR);) \
+	$(foreach uh,$(csp_sucp_UHOSTS),$(csp_SUCP) "$(subst -install,,$@)" $(uh) $(csp_sucp_DIR) $(csp_sucp_USER);) \
 	$(foreach uh,$(csp_UHOSTS),$(csp_PUSH) "$(subst -install,,$@)" $(uh) $(csp_DIR);)
 
 # files, not directories

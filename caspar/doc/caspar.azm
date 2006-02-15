@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.22 2006-02-07 05:55:35 joostvb Exp $
+\: $Id: caspar.azm,v 1.23 2006-02-15 18:30:18 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -47,8 +47,9 @@ or
 
 \sec{description}{DESCRIPTION}
 
-Caspar offers Makefile snippets for common tasks, like installing configuration
-files, or typesetting LaTeX, DocBook XML and DocBook SGML documents.
+Caspar offers Makefile snippets for common tasks, like installing
+(configuration) files, or typesetting LaTeX, DocBook XML and DocBook SGML
+documents.
   \par
 The typesetting functionality is delivered by \"docbook.mk" and \"pod.mk".
 This is documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
