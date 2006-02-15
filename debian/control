@@ -3,7 +3,7 @@ Section: devel
 Priority: optional
 Maintainer: Joost van Baal <joostvb@debian.org>
 Build-Depends-Indep: debhelper (>= 4)
-Standards-Version: 3.6.1.0
+Standards-Version: 3.6.2.0
 
 Package: caspar
 Architecture: all
