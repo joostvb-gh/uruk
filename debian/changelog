@@ -1,8 +1,10 @@
-caspar (XXXXXXXXXX) unstable; urgency=low
+caspar (20050424-2) unstable; urgency=low
 
-  *  debian/control: found out how to add Homepage pseudo-field (finally!)
+  * debian/control: found out how to add Homepage pseudo-field (finally!)
+  * debian/control: fixed stupid mistake in Conflicts.  Thanks Daniel
+    Schepler.  (closes: #352784)
 
- -- Joost van Baal <joostvb@debian.org>  Thu, 08 Dec 2005 17:21:35 +0100
+ -- Joost van Baal <joostvb@debian.org>  Wed, 15 Feb 2006 09:42:54 +0100
 
 caspar (20050424-1) unstable; urgency=low
 
