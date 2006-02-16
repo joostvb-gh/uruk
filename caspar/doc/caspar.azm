@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.23 2006-02-15 18:30:18 joostvb Exp $
+\: $Id: caspar.azm,v 1.24 2006-02-16 11:10:20 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -105,8 +105,9 @@ which looks something like
   make install-recursive
 }
 
-The \it{install-recursive} target descends down the tree, and calls \tt{make
-install} in each subdirectory.
+Calling \tt{make install} (or \tt{make}) now will scp all files in the current
+directory to the remote location.  The \it{install-recursive} target descends
+down the tree, and calls \tt{make install} in each subdirectory.
 
 \sec{variables}{VARIABLES}
 
@@ -116,35 +117,31 @@ The variables one can set in a calling Makefile are:
   {contiguous}{1}
   {w1}{7}
 }
-  \item{\tt{csp_CP}}       cp binary, just "cp" by default    FIXME TODO
-  \item{\tt{csp_CPFLAGS}}  extra arguments to pass to cp invocation, none by
-    default
+  \item{\tt{csp_CP}}       cp binary, just "cp" by default
   \item{\tt{csp_SCP}}      scp binary, just "scp" by default
-  \item{\tt{csp_SCPFLAGS}} extra arguments to pass to scp invocation, e.g.
-    '\tt{-i .ssh/id_rsa-root}'
-  \item{\tt{csp_PUSH}}     script or program which will push files to remote
-                           location.  The script will be passed 3 arguments:
-                           local \it{filename}, \it{[user@]host} and remote
-                           \it{directory}.  \it{[user@]host} will be set
-                           to all elements of \tt{$(csp_PUSHUHS)};
-                           \it{directory} will be set to \tt{$(csp_PUSHDIR)}.
-  \item{\tt{csp_SUH}}      ssh-reachable user@host (Secure User at Host)
-  \item{\tt{csp_SUHS}}     space separated list of ssh-reachable user@host
-    items (Secure User at HostS)
-  \item{\tt{csp_PUSHUHS}}  space separated list of user@host items, reachable
+  \item{\tt{csp_SUCP}}     script wrapping sudo in ssh, csp_sucp by default
+  \item{\tt{csp_PUSH}}     make function for pushing files to remote location.
+                           Usually, this is a wrapper around a script or
+                           program.  The function will be passed 4 arguments:
+                           local \it{filename}, \it{[user@]host}, remote
+                           \it{directory} and (a possibly empty) extra argument.
+                           \it{[user@]host} will be set
+                           to all elements of \tt{$(csp_UHOSTS)};
+                           \it{directory} will be set to \tt{$(csp_DIR)}.  The
+                           fourth argument will be set to \tt{$(csp_XARG)}.
+                           Currenly, \tt{$(csp_scp_FUNC)}, \tt{$(csp_cp_FUNC)}
+                           and \tt{$(csp_sucp_FUNC)} are supported as push
+                           plugins.  If \tt{csp_PUSH} is unset, the default
+                           \tt{$(csp_scp_FUNC)} is used.
+  \item{\tt{csp_scp_UHOST}} ssh-reachable user@host
+  \item{\tt{csp_scp_UHOSTS}} space separated list of ssh-reachable user@host
+    items
+  \item{\tt{csp_UHOSTS}}  space separated list of user@host items, reachable
                            using \tt{$(csp_PUSH)}.
-  \item{\tt{csp_CPDIR}}    directory to which we can cp(1), instead of scp
-    (CoPy DIRectory)
-  \item{\tt{csp_CPDIRS}}   space separated list of directories to which we can
-    copy (CoPy DIRectorieS)
-  \item{\tt{csp_SCPDIR}}   directory on ssh reachable host, with trailing /
-    (Secure CoPy DIRectory)
-  \item{\tt{csp_SUHDIRS}}  this is the list \tt{$(csp_SUH):$(dir)} for each
-    \tt{$(dir)} in \tt{$(csp_SUHS)} (or where \tt{dir = $(csp_SCPDIR)}, in
-    case \tt{csp_SUHS} is not set).
-    However, more items can get added to this list on the fly.
-  \item{\tt{csp_PUSHDIR}}  directory on host, reachable using script
-                           \tt{$(csp_PUSH)}.  Set to \tt{$(csp_SCPDIR)} by
+  \item{\tt{csp_cp_DIR}}   directory to which we can cp(1), instead of scp
+  \item{\tt{csp_scp_DIR}}  directory on ssh reachable host, with trailing /
+  \item{\tt{csp_DIR}}      directory on host, reachable using function
+                           \tt{$(csp_PUSH)}.  Set to \tt{$(csp_scp_DIR)} by
                            default.
   \item{\tt{csp_LOAD}}     targets which should depend on the `load' target.
   \item{\tt{csp_EXTRAFILES}} extra files which should be installed.
@@ -162,14 +159,38 @@ The variables one can set in a calling Makefile are:
     \tt{csp_TABOOFILES} equivalents.
 \end{itemize}
 
+The following variables might get phased out or removed soonish:
+
+\begin{itemize}{
+  {contiguous}{1}
+  {w1}{7}
+}
+  \item{\tt{csp_CPFLAGS}}  extra arguments to pass to cp invocation, none by
+    default
+  \item{\tt{csp_SCPFLAGS}} extra arguments to pass to scp invocation, e.g.
+    '\tt{-i .ssh/id_rsa-root}'
+  \item{\tt{csp_SUH}}      ssh-reachable user@host (Secure User at Host)
+  \item{\tt{csp_SUHS}}     space separated list of ssh-reachable user@host
+    items (Secure User at HostS)
+  \item{\tt{csp_CPDIR}}    directory to which we can cp(1), instead of scp
+    (CoPy DIRectory)
+  \item{\tt{csp_CPDIRS}}   space separated list of directories to which we can
+    copy (CoPy DIRectorieS)
+  \item{\tt{csp_SCPDIR}}   directory on ssh reachable host, with trailing /
+    (Secure CoPy DIRectory)
+  \item{\tt{csp_SUHDIRS}}  this is the list \tt{$(csp_SUH):$(dir)} for each
+    \tt{$(dir)} in \tt{$(csp_SUHS)} (or where \tt{dir = $(csp_SCPDIR)}, in
+    case \tt{csp_SUHS} is not set).
+    However, more items can get added to this list on the fly.
+\end{itemize}
 
 \sec{examples}{EXAMPLES}
 
 Some examples:
 
-\par
+\cpar{Using csp_CP and csp_LOAD}
 
-Using \tt{csp_CP} and \tt{csp_LOAD}: \it{username/etc/Makefile} is
+\it{username/etc/Makefile} is
 
 \verbatim{   FIXME TEST THIS
   csp_PUSH = $(csp_CP)
@@ -188,7 +209,9 @@ while \it{../include/install.mk} is just
 }
 .
 
-Using \tt{csp_scp_DIR} and \tt{csp_LOAD}: \it{etc/Makefile} is
+\cpar{Using csp_scp_DIR and csp_LOAD}
+
+\it{etc/Makefile} is
 
 \verbatim{
   csp_scp_DIR = /etc/
@@ -205,6 +228,26 @@ while \it{../include/install.mk} is
   csp_scp_UHOST = root@some.host.somewhere
   include caspar/mk/caspar.mk
 }
+
+\cpar{Using the csp_sucp script}
+
+To use the csp_sucp script (and not the default scp(1)), add
+
+\verbatim{
+  csp_PUSH = $(csp_sucp_FUNC)
+}
+
+to \it{../include/install.mk}.  If you need to sudo(1) to another
+user on the remote host, add something like
+
+\verbatim{
+ csp_XARG = postgres
+}
+
+.  (If such a username is not supplied, sudo (and csp_sucp) use the default:
+root.)
+
+\cpar{Using the csp_TABOOFILES_{ADD,SKIP} variables}
 
 Using the csp_TABOOFILES_{ADD,SKIP} variables is handy if you want to
 \it{install} a \it{Makefile}, instead of using it:  Create \it{Makefile} just
@@ -224,6 +267,8 @@ as you'd like to have it installed on the remote location.  Now, create
 
 Now, \tt{make install} and \tt{make load} will do the right thing.
 
+\cpar{Using the csp_EXTRAFILES variable}
+
 Using the csp_EXTRAFILES variable is handy if you want to install files
 with a leading dot.   E.g.:
 
@@ -234,7 +279,9 @@ with a leading dot.   E.g.:
 
 \par
 
-More advanced tricks: supply e.g.
+\cpar{More advanced tricks}
+
+Supply e.g.
 
 \verbatim{
  csp_UHOSTS = root@localhost root@some.host.somewhere
@@ -259,15 +306,15 @@ do
 }
 .
 
-\sec{files}{FILES}  FIXME  TODO
+\sec{files}{FILES}
 
 \par
  \it{caspar/mk/caspar.mk}, \it{caspar/mk/docbook.mk}, \it{caspar/mk/pod.mk}
 
 \sec{environment}{ENVIRONMENT}
 
-For \"caspar.mk": \tt{csp_CPDIR}, \tt{csp_CP}, \tt{csp_CPFLAGS}, \tt{csp_LOAD},
-\tt{csp_SCP}, \tt{csp_SCPFLAGS}, \tt{csp_SUH}, \tt{csp_SUHS}, ...
+For \"caspar.mk": \tt{csp_cp_DIR}, \tt{csp_CP}, \tt{csp_LOAD},
+\tt{csp_SCP}, \tt{csp_UHOST}, \tt{csp_PUSH}, ...
 
 \sec{bugs}{BUGS}
 
