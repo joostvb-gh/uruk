@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.29 2006-02-16 10:30:16 joostvb Exp $
+# $Id: caspar.mk,v 1.30 2006-02-16 11:32:43 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -24,7 +24,7 @@ csp_UHOSTS     ?= $(csp_UHOST)
 
 #
 ifneq ($(csp_scp_DIR),)
-ifneq ($(csp_scp_UHOSTS,)
+ifneq ($(csp_scp_UHOSTS),)
 csp_SUHDIRS  ?= $(patsubst %,%:$(csp_scp_DIR),$(csp_UHOSTS))
 endif
 ifneq ($(csp_scp_UHOST),)
