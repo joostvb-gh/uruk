@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.28 2006-02-15 19:08:27 joostvb Exp $
+# $Id: caspar.mk,v 1.29 2006-02-16 10:30:16 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -18,25 +18,24 @@ csp_scp_UHOST  ?= $(csp_SUH)
 csp_cp_DIR     ?= $(csp_CPDIR)
 csp_CPDIRS     ?= $(csp_cp_DIR)
 
-ifdef csp_scp_DIR
+#
+csp_UHOSTS     ?= $(csp_UHOST)
 
-ifdef csp_scp_UHOSTS
+
+#
+ifneq ($(csp_scp_DIR),)
+ifneq ($(csp_scp_UHOSTS,)
 csp_SUHDIRS  ?= $(patsubst %,%:$(csp_scp_DIR),$(csp_UHOSTS))
 endif
-
-ifdef csp_scp_UHOST
+ifneq ($(csp_scp_UHOST),)
 csp_SUHDIRS  ?= $(csp_scp_UHOST):$(csp_scp_DIR)
 endif
-
 endif
 
-
-ifdef csp_sucp_DIR
-
-ifdef csp_sucp_UHOST
+ifneq ($(csp_sucp_DIR),)
+ifneq ($(csp_sucp_UHOST),)
 csp_sucp_UHOSTS ?= $(csp_sucp_UHOST)
 endif
-
 endif
 
 # possibility to choose own cp(1) and scp(1)
@@ -56,12 +55,19 @@ csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_SKIP), $(csp_TABOOFILES_DEFAULT)
 csp_TABOODIRS_DEFAULT ?= CVS .svn
 csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
 
-csp_PUSH     ?= csp_scp
+# wrap csp_SCP and other puch mechanisms in make function template
+csp_scp_FUNC  = $(csp_SCP) $(csp_CPFLAGS) $(1) $(2):$(3)
+csp_cp_FUNC   = $(csp_CP) $(csp_CPFLAGS) $(1) $(3)
+csp_sucp_FUNC = $(csp_SUCP) $(1) $(2) $(3) $(4)
+
+csp_PUSH     ?= $(csp_scp_FUNC)
+
+## RULES = $(foreach dir,$(csp_SUHDIRS),$(call csp_scp_FUNC,"$(subst -install,,$@)",$(dir);)
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach uh,$(csp_sucp_UHOSTS),$(csp_SUCP) "$(subst -install,,$@)" $(uh) $(csp_sucp_DIR) $(csp_sucp_USER);) \
-	$(foreach uh,$(csp_UHOSTS),$(csp_PUSH) "$(subst -install,,$@)" $(uh) $(csp_DIR);)
+	$(foreach uh,$(csp_UHOSTS),$(call csp_PUSH,"$(subst -install,,$@)",$(uh),$(csp_DIR),$(csp_XARG));)
 
 # files, not directories
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)

@@ -7,6 +7,8 @@ caspar version CURRENT 20060129
   csp_UHOST, csp_UHOSTS, csp_DIR; csp_scp_UHOST, csp_scp_UHOSTS, csp_scp_DIR,
   csp_sucp_UHOST, csp_sucp_DIR.  csp_cp_UHOST is silently ignored.
 
+  csp_XARG
+
   csp_sucp_USER, env var CSP_SUCP_USER (sudo defaults to root if -u is not
   passed).
 
@@ -116,4 +118,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.16 2006-02-15 18:41:03 joostvb Exp $
+# $Id: NEWS,v 1.17 2006-02-16 10:30:16 joostvb Exp $
