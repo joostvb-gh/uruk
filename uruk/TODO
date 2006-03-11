@@ -29,6 +29,26 @@ Once done, rip workaround example from uruk-rc manpage.
 
 Create "upload" target in /Makefile.am
 
+idea from Wessel Dankers:
+> Misschien handig om de regels:
+>
+> #
+> # traffic on lo is trusted
+> #
+>
+> $iptables -A INPUT  -i lo -j ACCEPT
+> $iptables -A OUTPUT -o lo -j ACCEPT
+>
+> $ip6tables -A INPUT -i lo -j ACCEPT
+> $ip6tables -A OUTPUT -o lo -j ACCEPT
+>
+> ...wat hogerop te plaatsen: deze test is vrij goedkoop en 't is fijn als de
+> pakketjes voor localhost niet al te erg vertraagd worden door de
+> byzantijnse regels voor de andere interfaces.
+
+Improve examples in documentation:
+<Fruit> joostvb: ik geloof dat #:# een leuke shorthand is voor #alle poorten#
+
 Fix bugs in uruk script: (force-)reload should do something sane when
 uruk not running.
 
