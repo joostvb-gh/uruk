@@ -8,6 +8,7 @@ caspar version 20060319
 - Typo in caspar.mk which lead to "invalid syntax in conditional" error
   is fixed.
 
+- Added csp_sucp(1) manpage.  This script now gets installed.
 
 caspar version 20060216
 
@@ -132,4 +133,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.19 2006-03-19 20:57:22 joostvb Exp $
+# $Id: NEWS,v 1.20 2006-03-19 20:58:00 joostvb Exp $
