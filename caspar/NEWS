@@ -1,6 +1,6 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 20060319
+caspar version current
 
 - Beware!  Yet another unstable bleeding edge snapshot release.  Test results
   are welcomed.
@@ -133,4 +133,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.20 2006-03-19 20:58:00 joostvb Exp $
+# $Id: NEWS,v 1.21 2006-03-19 20:58:18 joostvb Exp $
