@@ -1,0 +1,77 @@
+\: vim:syntax=tex
+\: $Id: csp_sucp.azm,v 1.1 2006-03-19 20:57:23 joostvb Exp $
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
+
+\def{"man::synstyle"}{long}
+\def{"man::defstyle"}{long}
+\import{man.zmm}
+
+\import{./include.zmm}
+
+\set{"man::name"}{csp_sucp}
+\set{"man::html-title"}{csp_sucp}
+
+\"man::preamble"
+\${html}{\"man::maketoc"}
+
+\def{csp_sucp}{\bf{csp_sucp}}
+
+\sec{name}{NAME}
+\NAME{csp_sucp}{Mix ssh with sudo, to allow for remote copy}
+
+\sec{synopsis}{SYNOPSIS}
+\par{
+  \csp_sucp
+    \synreqopt{file}{file}
+    \synreqopt{h}{[user@]host}
+    \synreqopt{dir}{directory}
+    \synoptopt{s}{su-user}
+}
+
+\sec{description}{DESCRIPTION}
+
+\csp_sucp calls cat(1) from within sudo(1) from within ssh(1).  This allows one
+to copy files to accounts on hosts one can only reach by calling sudo(1) on the
+ssh-reachable remote host.
+  \par
+Typically, one wants to install a root-owned file, but one does not want to
+allow access to the root-account directly from ssh.  Typically sudo is used as
+an extra line of defense.
+
+This is documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
+  \par
+
+\sec{usage}{USAGE}
+
+\csp_sucp is typically invoked using caspar(7).  See caspar(7) for
+information on how to link \csp_sucp to caspar.
+
+\sec{examples}{EXAMPLES}
+
+Some examples:
+
+\verbatim{
+  csp_sucp fstab rms@bilbo /etc}
+
+\verbatim{
+  csp_sucp trailer.txt monty-python commit/ list}
+
+\sec{bugs}{BUGS}
+
+If NOPASSWD is not set in the sudoers(5) file, and one's timestamp is expired,
+\csp_sucp will forward the sudo password prompt. The given password \tt{will}
+be echoed on the console!
+
+\sec{author}{AUTHOR}
+
+\"man::author"
+
+\sec{seealso}{SEE ALSO}
+
+\sibref{caspar}{caspar(7)}
+  \par
+The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
+
+\"man::postamble"
+
+

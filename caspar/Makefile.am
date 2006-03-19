@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.13 2006-01-29 20:28:40 joostvb Exp $
+## $Id: Makefile.am,v 1.14 2006-03-19 20:57:22 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -23,7 +23,7 @@ AUTOMAKE_OPTIONS = dist-bzip2 check-news
 VERSION = @PACKAGE_VERSION@
 PACKAGE = @PACKAGE_TARNAME@
 
-SUBDIRS = doc mk sgml
+SUBDIRS = doc mk sgml script
 
 docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS

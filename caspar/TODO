@@ -1,4 +1,4 @@
-$Id: TODO,v 1.54 2006-03-18 08:47:30 joostvb Exp $
+$Id: TODO,v 1.55 2006-03-19 20:57:22 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -11,7 +11,7 @@ $Id: TODO,v 1.54 2006-03-18 08:47:30 joostvb Exp $
 --- install stuff ---
 
 - finish support for sudo.  Document this: Adding support for sudo via sucp
-  allows for "PermitRootLogin no" in /etc/ssh/sshd_config .  Write manpage for
+  allows for "PermitRootLogin no" in /etc/ssh/sshd_config .  Finish manpage for
   new script: csp_sucp.  Finish \sec{variables} in caspar.azm (and other stuff too).
   Test all examples as given in manpage.   Finish NEWS.
 

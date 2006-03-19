@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.5 2003-08-09 14:53:52 joostvb Exp $
+## $Id: Makefile.am,v 1.6 2006-03-19 20:57:23 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -25,22 +25,30 @@ W3M = w3m
 PACKAGE = @PACKAGE_TARNAME@
 docdir = $(datadir)/doc/$(PACKAGE)
 
-azms = caspar.azm caspar-typesetting.azm
-typetargets = caspar.html caspar.ps caspar.txt caspar-typesetting.html \
-  caspar-typesetting.ps caspar-typesetting.txt
+azms = csp_sucp.azm caspar.azm caspar-typesetting.azm
+typetargets = csp_sucp.html csp_sucp.ps csp_sucp.txt caspar.html caspar.ps \
+  caspar.txt caspar-typesetting.html caspar-typesetting.ps \
+  caspar-typesetting.txt
 
 doc_DATA = $(typetargets) $(azms) ChangeLog.2002
-man_MANS = caspar.7 caspar-typesetting.7
+man_MANS = csp_sucp.1 caspar.7 caspar-typesetting.7
 
 EXTRA_DIST = $(doc_DATA) $(man_MANS)
 
-SUFFIXES = .7 .azm .html .ps .txt
+SUFFIXES = .1 .7 .azm .html .ps .txt
+
+.azm.1:
+	$(ZOEM) -d roff -i $< -o $@
+	$(ZOEM) -d roff -i $< -o $@
 
 .azm.7:
 	$(ZOEM) -d roff -i $< -o $@
 	$(ZOEM) -d roff -i $< -o $@
 
 .7.ps:
+	$(TROFF) -man $< > $@
+
+.1.ps:
 	$(TROFF) -man $< > $@
 
 .azm.html:

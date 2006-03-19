@@ -1,5 +1,14 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20060319
+
+- Beware!  Yet another unstable bleeding edge snapshot release.  Test results
+  are welcomed.
+
+- Typo in caspar.mk which lead to "invalid syntax in conditional" error
+  is fixed.
+
+
 caspar version 20060216
 
 - Beware! This is an unstable bleeding edge snapshot release.  Test results
@@ -123,4 +132,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.18 2006-02-16 11:22:22 joostvb Exp $
+# $Id: NEWS,v 1.19 2006-03-19 20:57:22 joostvb Exp $
