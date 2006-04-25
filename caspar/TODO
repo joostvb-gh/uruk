@@ -1,4 +1,4 @@
-$Id: TODO,v 1.55 2006-03-19 20:57:22 joostvb Exp $
+$Id: TODO,v 1.56 2006-04-25 22:08:31 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -7,6 +7,8 @@ $Id: TODO,v 1.55 2006-03-19 20:57:22 joostvb Exp $
 - license should be printed, see rh vs deb doc.
 
 - add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
+
+- refer to http://packages.debian.org/latex-make.
 
 --- install stuff ---
 
