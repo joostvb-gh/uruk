@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.25 2006-02-16 11:32:43 joostvb Exp $
+\: $Id: caspar.azm,v 1.26 2006-05-19 09:03:22 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -228,6 +228,26 @@ while \it{../include/install.mk} is
   csp_scp_UHOST = root@some.host.somewhere
   include caspar/mk/caspar.mk
 }
+
+
+\cpar{Combining the csp_LOAD target with multiple hosts}
+
+You'll have to loop over csp_SUHS to execute load-command.  Here's an example
+doing some preprocessing on the remote hosts too.
+
+\verbatim{
+  csp_SCPDIR = /etc/ssh/
+  csp_SUHS = root@some.host.somewhere root@some.other.host
+  csp_LOAD = sshd_config-load
+
+  sshd_config-load:
+      for suh in $(csp_SUHS); do \
+        ssh $$suh "cd $(csp_SCPDIR); \
+         m4 sshd_config.m4 > sshd_config && \
+         PATH=$$PATH:/sbin /etc/init.d/ssh restart"; \
+      done
+}
+
 
 \cpar{Using the csp_sucp script}
 
