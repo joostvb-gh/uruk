@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.26 2006-05-19 09:03:22 joostvb Exp $
+\: $Id: caspar.azm,v 1.27 2006-05-19 11:34:09 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -357,24 +357,55 @@ my homegrown scripts.
   \par
 The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
   \par
-The `cvs-conf' package ( \httpref{http://project.tuxfamily.org/cvs-conf},
-\httpref{http://packages.debian.org/stable/utils/cvs-conf.html} ) probably
+
+Lots of tools overlap (partly) with caspar in their functionality.  Here's a
+list.  A big part of it was collected by Ray Miller
+(\httpref{http://users.ox.ac.uk/~raym/}) of Oxford University, and published in
+the article "Configuration Management with Subversion, YAML and Perl Template
+Toolkit" in the SANE 2006 (\httpref{http://www.sane.nl/sane2006/}) conference
+proceedings.
+
+  \par
+
+The `cvs-conf' package (\httpref{http://project.tuxfamily.org/cvs-conf},
+\httpref{http://packages.debian.org/stable/utils/cvs-conf.html}) probably
 offers about the same functionality as \"caspar.mk".  However, this package
 seems largely unmaintained (between September 2002 and May 2004, at
 least).
   \par
-docbookmk, by Michael Wiedmann ( \httpref{http://www.miwie.org/docbkmake/} )
+docbookmk, by Michael Wiedmann (\httpref{http://www.miwie.org/docbkmake/})
 offers probably a superset of Caspar's \"docbook.mk" functionality.
   \par
 SUP, the Software Upgrade Protocol and it's implementation by Carnegie Mellon
 University offers another way to distribute (configuration)files.  Beware
 though: between Nov 1996 and June 2004, no new release has been published.  The
-Debian ( \httpref{ftp://ftp.debian.org/debian/pool/main/s/sup/} ) and NetBSD
+Debian (\httpref{ftp://ftp.debian.org/debian/pool/main/s/sup/}) and NetBSD
 packages are likely still maintained, though.
   \par
-cfengine ( \httpref{http://www.cfengine.org/} ), by Mark Burgess e.a., builds
+cfengine (\httpref{http://www.cfengine.org/}), by Mark Burgess e.a., builds
 expert systems to administrate and configure large computer networks: it
 delivers a very big superset of caspar's installation mechanism.
+  \par
+PIKT (\httpref{http://www.pikt.org/}) is intended primarily for system
+monitoring, but does do configuration management too.
+  \par
+LCFG (\httpref{http://www.lcfg.org/}) is another configuration management
+system.
+  \par
+The Arusha Project (ARK, at \httpref{http://ark.sf.net/}) provides a framework
+for collaborative system administration.
+  \par
+Puppet (\httpref{http://reductivelabs.com/projects/puppet}), also something
+like a configuration management system.
+  \par
+Bcfg2 (\httpref{http://trac.mcs.anl.gov/projects/bcfg2/}) is yet another
+configuration management system.
+  \par
+quattor (\httpref{http://quattor.web.cern.ch/}) is a system administration
+toolkit for installation, configuration and management of Unix systems.
+  \par
+rb3 and friends, as written and used by Ray Miller e.a. at Oxford University,
+(\httpref{http://users.ox.ac.uk/~raym/software/configuration-management/}).
   \par
 The \aref{http://svk.elixus.org/}{svk} version control system is said to be
 quite usable for handling configuration file management (without a separate
