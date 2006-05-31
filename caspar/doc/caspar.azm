@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.27 2006-05-19 11:34:09 joostvb Exp $
+\: $Id: caspar.azm,v 1.28 2006-05-31 14:06:13 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -108,6 +108,14 @@ which looks something like
 Calling \tt{make install} (or \tt{make}) now will scp all files in the current
 directory to the remote location.  The \it{install-recursive} target descends
 down the tree, and calls \tt{make install} in each subdirectory.
+
+\par
+
+Of course, you'll have to be able to ssh directly as root to the remote host to
+get this working (if you'd like to use \tt{csp_UHOST =
+root@some.host.somewhere}).  If you don't like this, and would like to have a
+\tt{PermitRootLogin no} in your \tt{/etc/ssh/sshd_config}, you can use
+csp_sucp(1).  See below.
 
 \sec{variables}{VARIABLES}
 
@@ -375,6 +383,10 @@ least).
   \par
 docbookmk, by Michael Wiedmann (\httpref{http://www.miwie.org/docbkmake/})
 offers probably a superset of Caspar's \"docbook.mk" functionality.
+  \par
+latex-make by the LaTeX Utils project on
+\httpref{http://gforge.inria.fr/projects/latex-utils/} seems to provide similar
+functionality as \"docbook.mk\" for LaTeX documents.
   \par
 SUP, the Software Upgrade Protocol and it's implementation by Carnegie Mellon
 University offers another way to distribute (configuration)files.  Beware
