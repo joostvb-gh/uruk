@@ -1,3 +1,15 @@
+caspar (20060531-1) unstable; urgency=low
+
+  * New upstream.
+  * debian/{caspar-doc.install,caspar-doc.doc-base.csp_sucp,rules}: install
+    and register csp_sucp(1) documentation.
+  * debian/control: bumped Standards-Version: from 3.6.2.0 to 3.7.2.0 (no
+    changes needed).
+  * debian/control: Build-Depends upon debhelper, not Build-Depends-Indep.
+    Thanks lintian.
+
+ -- Joost van Baal <joostvb@debian.org>  Wed, 31 May 2006 17:25:33 +0200
+
 caspar (20050424-2) unstable; urgency=low
 
   * debian/copyright: fixed FSF address.
