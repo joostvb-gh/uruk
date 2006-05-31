@@ -1,4 +1,4 @@
-$Id: TODO,v 1.60 2006-05-31 14:06:12 joostvb Exp $
+$Id: TODO,v 1.61 2006-05-31 14:57:18 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -30,7 +30,7 @@ $Id: TODO,v 1.60 2006-05-31 14:06:12 joostvb Exp $
   caspar is redundant: there is cfengine.  Perhaps people would be better of
   with a get-started-quick cfengine document. See caspar(7).
 
-- add support for rsync, install(1).
+- add support for install(1).
 
 - The function $(subst -install,,$@) in caspar.mk breaks when filename itself
   has the substring -install.  We might have to use sed here, and strip only
@@ -41,6 +41,9 @@ $Id: TODO,v 1.60 2006-05-31 14:06:12 joostvb Exp $
   - Create a ``load-recursive'' target.
   - supply daemons.mk: csp_SSHDEBIANLOAD csp_URUKREDHATLOAD , etc, to use
     in load targets
+
+- don't do "all: install load" but do "all: build install check load", with
+  optional user-supplied rules for csp_BUILD and csp_CHECK targets.
 
 - install-recursive should call mkdir if appropriate
 
