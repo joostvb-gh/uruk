@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar-typesetting.azm,v 1.5 2006-05-31 14:06:13 joostvb Exp $
+\: $Id: caspar-typesetting.azm,v 1.6 2006-05-31 14:26:24 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -39,9 +39,9 @@ or
 \sec{description}{DESCRIPTION}
 
 The caspar \"docbook.mk" and \"pod.mk" files are Makefile snippets for common
-typesetting tasks, like typesetting LaTeX (see \publref{latex}), DocBook XML,
-DocBook SGML (see \publref{dbx})  and POD (see \publref{pod}) documents.  You
-just have to type \tt{make}, instead of stuff like \tt{jade -t tex -d
+typesetting tasks, like typesetting LaTeX (see \refer{latex}), DocBook
+XML, DocBook SGML (see \refer{dbx})  and POD (see \refer{pod}) documents.
+You just have to type \tt{make}, instead of stuff like \tt{jade -t tex -d
 caspar/print.dsl /usr/share/sgml/declaration/xml.dcl foobar.dbx}.
 
 \sec{usage}{USAGE}
@@ -129,13 +129,13 @@ in the shell environment.
 \sibref{caspar}{caspar(7)}
 
  \par
-\publanch{pod}
+\reference{pod}
 perlpod(1) about Perl's Plain Old Documentation format
  \par
-\publanch{dbx}
+\reference{dbx}
 \it{DocBook: The Definitive Guide} on \httpref{http://docbook.org/},
  \par
-\publanch{latex}
+\reference{latex}
 The LaTeX Project Homepage on \httpref{http://www.latex-project.org/}.
  \par
 Some comments on advanced usage are in the files \"docbook.mk" and \"pod.mk"

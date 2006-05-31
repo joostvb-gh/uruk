@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.28 2006-05-31 14:06:13 joostvb Exp $
+\: $Id: caspar.azm,v 1.29 2006-05-31 14:26:24 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -386,7 +386,7 @@ offers probably a superset of Caspar's \"docbook.mk" functionality.
   \par
 latex-make by the LaTeX Utils project on
 \httpref{http://gforge.inria.fr/projects/latex-utils/} seems to provide similar
-functionality as \"docbook.mk\" for LaTeX documents.
+functionality as \"docbook.mk" for LaTeX documents.
   \par
 SUP, the Software Upgrade Protocol and it's implementation by Carnegie Mellon
 University offers another way to distribute (configuration)files.  Beware
