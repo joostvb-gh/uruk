@@ -1,6 +1,8 @@
 caspar (20050424-2) unstable; urgency=low
 
   * debian/copyright: fixed FSF address.
+  * debian/caspar-doc.doc-base.caspar-typesetting: caspar-typesetting.txt
+    is not compressed: fix filename :-/
   * debian/control: bumped Standards-Version from 3.6.1.0 to 3.6.2.0 (no
     changes needed.)
   * debian/control: found out how to add Homepage pseudo-field (finally!)
