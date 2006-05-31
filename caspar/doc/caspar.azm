@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.29 2006-05-31 14:26:24 joostvb Exp $
+\: $Id: caspar.azm,v 1.30 2006-05-31 14:39:18 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -249,10 +249,10 @@ doing some preprocessing on the remote hosts too.
   csp_LOAD = sshd_config-load
 
   sshd_config-load:
-      for suh in $(csp_SUHS); do \
-        ssh $$suh "cd $(csp_SCPDIR); \
-         m4 sshd_config.m4 > sshd_config && \
-         PATH=$$PATH:/sbin /etc/init.d/ssh restart"; \
+      for suh in $(csp_SUHS); do \\
+        ssh $$suh "cd $(csp_SCPDIR); \\
+         m4 sshd_config.m4 > sshd_config && \\
+         PATH=$$PATH:/sbin /etc/init.d/ssh restart"; \\
       done
 }
 
@@ -351,7 +351,7 @@ at \httpref{http://mdcc.cx/pub/caspar/caspar-latest/TODO}.)
 
 \sec{trivia}{TRIVIA}
 
-caspar is named after Caspar the Friendly Ghost, since that's the title
+Caspar is named after Caspar the Friendly Ghost, since that's the title
 of the Daniel Johnston song I was listening to when deciding to package
 my homegrown scripts.
 
