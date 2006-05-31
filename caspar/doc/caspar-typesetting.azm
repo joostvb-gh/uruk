@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar-typesetting.azm,v 1.3 2004-05-31 13:45:42 joostvb Exp $
+\: $Id: caspar-typesetting.azm,v 1.4 2006-05-31 13:53:52 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -137,8 +137,12 @@ perlpod(1) about Perl's Plain Old Documentation format
  \par
 \publanch{latex}
 The LaTeX Project Homepage on \httpref{http://www.latex-project.org/}.
+latex-make by the LaTeX Utils project on
+\httpref{http://gforge.inria.fr/projects/latex-utils/} seems to provide similar
+functionality as \"docbook.mk\" for LaTeX documents.
  \par
-Some comments on advanced usage are in the files \"docbook.mk" and \"pod.mk" itself.
+Some comments on advanced usage are in the files \"docbook.mk" and \"pod.mk"
+itself.
 
 \"man::postamble"
 

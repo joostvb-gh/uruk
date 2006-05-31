@@ -1,4 +1,4 @@
-$Id: TODO,v 1.58 2006-05-19 11:34:09 joostvb Exp $
+$Id: TODO,v 1.59 2006-05-31 13:53:52 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -7,8 +7,6 @@ $Id: TODO,v 1.58 2006-05-19 11:34:09 joostvb Exp $
 - license should be printed, see rh vs deb doc.
 
 - add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
-
-- refer to http://packages.debian.org/latex-make.
 
 --- install stuff ---
 
@@ -30,7 +28,8 @@ $Id: TODO,v 1.58 2006-05-19 11:34:09 joostvb Exp $
   _Do_ test this!
 
 - this whole thing could probably better use rsync, or, alternatively, perhaps
-  all caspar functionality could be incorporated in cfengine.  See caspar(7).
+  caspar is redundant: there is cfengine.  Perhaps people would be better of
+  with a get-started-quick cfengine document. See caspar(7).
 
 - add support for rsync, install(1).
 
