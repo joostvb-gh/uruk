@@ -1,4 +1,4 @@
-\: $Id: include.zmm,v 1.3 2006-01-29 20:25:44 joostvb Exp $
+\: $Id: include.zmm,v 1.4 2006-05-31 15:50:44 joostvb Exp $
 
 \: This file is free software; you can distribute it and/or modify it
 \: under the terms of the GNU GPL.  See the file COPYING.
@@ -10,7 +10,6 @@
 \setx{"man::day"}{\zinsert{../stamp.day}}
 
 \set{"man::author"}{Joost van Baal}
-\set{"man::section"}{7}
 \set{"man::tag"}{\zinsert{../VERSION}}
 
 \: \setx{"man::tag"}{\tr{}{\012}{}{\"man::tag"}}

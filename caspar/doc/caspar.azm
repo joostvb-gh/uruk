@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.30 2006-05-31 14:39:18 joostvb Exp $
+\: $Id: caspar.azm,v 1.31 2006-05-31 15:50:44 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -10,6 +10,7 @@
 
 \set{"man::name"}{caspar}
 \set{"man::html-title"}{caspar}
+\set{"man::section"}{7}
 
 \"man::preamble"
 \${html}{\"man::maketoc"}
