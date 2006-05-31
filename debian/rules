@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-# $Id: rules,v 1.9 2005-04-24 16:56:51 joostvb Exp $
+# $Id: rules,v 1.10 2006-05-31 16:00:51 joostvb Exp $
 
 # Based upon sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
@@ -29,7 +29,7 @@ endif
 
 config.status: configure
 	dh_testdir
-	# commands to configure the package.
+#	# commands to configure the package.
 	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info
 
 
@@ -38,7 +38,7 @@ build: build-stamp
 build-stamp:  config.status
 	dh_testdir
 
-	# commands to compile the package.
+#	# commands to compile the package.
 	$(MAKE)
 
 	touch build-stamp
@@ -48,13 +48,13 @@ clean:
 	dh_testroot
 	rm -f build-stamp
 
-	# commands to clean up after the build process.
+#	# commands to clean up after the build process.
 	-$(MAKE) distclean
 
-	# no need to copy config.sub or config.guess here.  architecture
-	# doesn't interest us: we don't compile anything, we just install
-	# plain ascii files.  the config.* stuff would just make the diff
-	# bigger.
+#	# no need to copy config.sub or config.guess here.  architecture
+#	# doesn't interest us: we don't compile anything, we just install
+#	# plain ascii files.  the config.* stuff would just make the diff
+#	# bigger.
 
 	dh_clean
 
@@ -68,27 +68,25 @@ install: build
 	dh_clean -k
 	dh_installdirs
 
-	# commands to install the package into debian/caspar.
+#	# commands to install the package into debian/caspar.
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/caspar
 
-	# clean up unneeded docs
-	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/caspar*.azm
+#	# clean up unneeded docs
+	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/c*sp*.azm
 
-	# process caspar-doc.install
+#	# process caspar-doc.install
 	dh_install --sourcedir=debian/caspar
 	dh_installdocs
 
-	# clean up files copied to caspar-doc
+#	# clean up files copied to caspar-doc
 	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/{AUTHORS,THANKS,README,TODO,NEWS,ChangeLog.2002}
-	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/caspar-typesetting.{ps,html,txt}
-	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/caspar.{ps,html,txt}
+	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/{caspar-typesetting,caspar,csp_sucp}.{ps,html,txt}
 	rm $(CURDIR)/debian/caspar/usr/share/man/man7/caspar*.7
 	rmdir $(CURDIR)/debian/caspar/usr/share/man/man7
-	rmdir $(CURDIR)/debian/caspar/usr/share/man
 
-	# get rid of COPYING (we use the debian/copyright file)
+#	# get rid of COPYING (we use the debian/copyright file)
 	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/COPYING
-	# get rid of ChangeLog (dealt with by dh_installchangelogs)
+#	# get rid of ChangeLog (dealt with by dh_installchangelogs)
 	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/ChangeLog
 	dh_installchangelogs -p caspar ChangeLog
 	mv $(CURDIR)/debian/caspar/usr/share/doc/caspar/changelog $(CURDIR)/debian/caspar-doc/usr/share/doc/caspar/
