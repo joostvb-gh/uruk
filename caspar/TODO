@@ -1,4 +1,4 @@
-$Id: TODO,v 1.61 2006-05-31 14:57:18 joostvb Exp $
+$Id: TODO,v 1.62 2006-06-01 08:24:43 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -12,7 +12,7 @@ $Id: TODO,v 1.61 2006-05-31 14:57:18 joostvb Exp $
 
 - finish support for sudo.  Finish manpage for new script: csp_sucp.  Finish
   \sec{variables} in caspar.azm (and other stuff too).  Test all examples as
-  given in manpage.   Finish NEWS.
+  given in manpage (the "Using csp_CP and csp_LOAD"-one is fine). Finish NEWS.
 
 - We'll have to drop support for csp_SUHDIRS.
 
