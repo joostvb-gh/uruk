@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.32 2006-06-07 13:28:28 joostvb Exp $
+# $Id: caspar.mk,v 1.33 2006-06-07 13:32:00 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -50,7 +50,7 @@ csp_TABOODIRS_DEFAULT ?= CVS .svn
 csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
 
 # wrap csp_SCP and other puch mechanisms in make function template
-csp_scp_FUNC  = $(csp_SCP) $(csp_CPFLAGS) $(1) $(2):$(3)
+csp_scp_FUNC  = $(csp_SCP) $(csp_SCPFLAGS) $(1) $(2):$(3)
 csp_cp_FUNC   = $(csp_CP) $(csp_CPFLAGS) $(1) $(3)
 csp_sucp_FUNC = $(csp_SUCP) $(1) $(2) $(3) $(4)
 
