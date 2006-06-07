@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.31 2006-06-05 15:40:12 joostvb Exp $
+# $Id: caspar.mk,v 1.32 2006-06-07 13:28:28 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -32,12 +32,6 @@ csp_SUHDIRS  ?= $(csp_scp_UHOST):$(csp_scp_DIR)
 endif
 endif
 
-ifneq ($(csp_sucp_DIR),)
-ifneq ($(csp_sucp_UHOST),)
-csp_sucp_UHOSTS ?= $(csp_sucp_UHOST)
-endif
-endif
-
 # possibility to choose own cp(1) and scp(1)
 csp_CP       ?= cp
 csp_SCP      ?= scp
@@ -66,7 +60,6 @@ csp_PUSH     ?= $(csp_scp_FUNC)
 
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
-	$(foreach uh,$(csp_sucp_UHOSTS),$(csp_SUCP) "$(subst -install,,$@)" $(uh) $(csp_sucp_DIR) $(csp_sucp_USER);) \
 	$(foreach uh,$(csp_UHOSTS),$(call csp_PUSH,"$(subst -install,,$@)",$(uh),$(csp_DIR),$(csp_XARG));)
 
 # files, not directories

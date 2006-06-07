@@ -25,17 +25,16 @@ caspar version 20060216
 
   .  To facilitate this, new variables have been introduced: csp_PUSH (default:
   a csp_scp make function), csp_SUCP, csp_UHOST, csp_UHOSTS, csp_DIR, csp_XARG;
-  csp_scp_UHOST, csp_scp_UHOSTS, csp_scp_DIR; csp_sucp_UHOST, csp_sucp_DIR,
-  csp_sucp_USER.
+  csp_scp_UHOST, csp_scp_UHOSTS, csp_scp_DIR.
 
   A script csp_sucp, dealing with the wrapping, is now shipped; it honors a
   CSP_SUCP_USER environment variable.
 
   Lots of variables are now deprecated:
 
-   for csp_SUHS now use csp_scp_UHOSTS  (or use csp_UHOSTS)
-   for csp_SUH now use csp_scp_UHOST    (or use csp_UHOST)
-   for csp_SCPDIR now use csp_scp_DIR   (or use csp_DIR)
+   for csp_SUHS   now use csp_UHOSTS (or use csp_scp_UHOSTS)
+   for csp_SUH    now use csp_UHOST  (or use csp_scp_UHOST)
+   for csp_SCPDIR now use csp_DIR    (or use csp_scp_DIR)
 
   The variable csp_CPDIRS will be phased out: no more multiple cp target dirs.
   Don't worry yet: we still supply full backwards compatibity.
@@ -47,6 +46,7 @@ caspar version 20060216
 
 caspar version 20050424
 
+- (This release was shipped with Debian.  We'll try to remain compatibility.)
 - New variable csp_EXTRAFILES added.  This enables one to succesfully run e.g.
 
     make .bashrc-install
@@ -58,6 +58,7 @@ caspar version 20050424
 
 caspar version 20050302
 
+- (This release was shipped with Debian.  We'll try to remain compatibility.)
 - Fixed caspar(7) manpage: the last part was not typesetted.  Duh.
 
 
@@ -136,4 +137,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.23 2006-05-31 14:40:33 joostvb Exp $
+# $Id: NEWS,v 1.24 2006-06-07 13:28:28 joostvb Exp $
