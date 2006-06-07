@@ -1,15 +1,19 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version XXXXXXXX
+
+- Fixed section of csp_sucp(1) manpage.
+- Minor bugfixes in caspar.mk.
+- Various improvements in caspar(7) manpage.
+
+
 caspar version 20060531
 
 - Beware!  Yet another unstable bleeding edge snapshot release.  Test results
   are again welcomed.
-
 - Typo in caspar.mk which lead to "invalid syntax in conditional" error
   is fixed.
-
 - Added csp_sucp(1) manpage.  This script now gets installed.
-
 - Minor improvements on other manpages.
 
 
@@ -137,4 +141,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.24 2006-06-07 13:28:28 joostvb Exp $
+# $Id: NEWS,v 1.25 2006-06-07 14:06:18 joostvb Exp $
