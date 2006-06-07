@@ -1,4 +1,4 @@
-$Id: TODO,v 1.63 2006-06-05 16:14:15 joostvb Exp $
+$Id: TODO,v 1.64 2006-06-07 13:48:18 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -11,8 +11,11 @@ $Id: TODO,v 1.63 2006-06-05 16:14:15 joostvb Exp $
 --- install stuff ---
 
 - finish support for sudo.  Finish manpage for new script: csp_sucp.  Finish
-  \sec{variables} in caspar.azm (and other stuff too).  Add more notes on how
-  to use csp_sucp to caspar(7).  Finish NEWS.
+  \sec{variables} in caspar.azm (and other stuff too).  Finish NEWS.
+
+- Once we've figured out how to make "load" pluggable, we can get rid of the
+  csp_scp_* variables (and of one RULE in caspar.mk).  (It's ugly to specify "ssh
+  $(csp_UHOST) foo".)
 
 - We'll have to drop support for csp_SUHDIRS.
 
@@ -42,8 +45,20 @@ $Id: TODO,v 1.63 2006-06-05 16:14:15 joostvb Exp $
   - supply daemons.mk: csp_SSHDEBIANLOAD csp_URUKREDHATLOAD , etc, to use
     in load targets
 
-- don't do "all: install load" but do "all: build install check load", with
-  optional user-supplied rules for csp_BUILD and csp_CHECK targets.
+- document this: we have a csp_BUILD too.  If you want to do some syntax check
+  on remote host too (and have a "make check" thing), do
+
+    csp_LOAD = check my-load
+
+    my-load:
+      ssh $(csp_scp_UHOST) do load stuff
+
+    check:
+      ssh $(csp_scp_UHOST) do check stuff
+
+  test wether "make load" won't load if "check" fails (it should)
+
+  document how to use csp_BUILD.
 
 - install-recursive should call mkdir if appropriate
 

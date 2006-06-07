@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.33 2006-06-07 13:32:00 joostvb Exp $
+# $Id: caspar.mk,v 1.34 2006-06-07 13:48:18 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -14,15 +14,15 @@
 csp_scp_DIR    ?= $(csp_SCPDIR)
 csp_scp_UHOSTS ?= $(csp_SUHS)
 csp_scp_UHOST  ?= $(csp_SUH)
-
 csp_cp_DIR     ?= $(csp_CPDIR)
-csp_CPDIRS     ?= $(csp_cp_DIR)
 
-#
+
+# we use plurals only
+csp_CPDIRS     ?= $(csp_cp_DIR)
 csp_UHOSTS     ?= $(csp_UHOST)
 
 
-#
+# backward compatibility
 ifneq ($(csp_scp_DIR),)
 ifneq ($(csp_scp_UHOSTS),)
 csp_SUHDIRS  ?= $(patsubst %,%:$(csp_scp_DIR),$(csp_scp_UHOSTS))
@@ -56,8 +56,11 @@ csp_sucp_FUNC = $(csp_SUCP) $(1) $(2) $(3) $(4)
 
 csp_PUSH     ?= $(csp_scp_FUNC)
 
+# ideally, we'd just have one rule here:
 ## RULES = $(foreach dir,$(csp_SUHDIRS),$(call csp_scp_FUNC,"$(subst -install,,$@)",$(dir);)
-
+# however, since we'd like to talk about e.g. csp_scp_UHOSTS when calling ssh in a load rule,
+# we stick with these 3 rules for now.
+#
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
 	$(foreach uh,$(csp_UHOSTS),$(call csp_PUSH,"$(subst -install,,$@)",$(uh),$(csp_DIR),$(csp_XARG));)
@@ -81,7 +84,9 @@ do \
 done
 endef
 
-all: install load
+all: build install load
+
+build: $(csp_BUILD)
 
 install: $(TARGETS)
 
@@ -93,5 +98,5 @@ $(TARGETS):
 install-recursive: install
 	$(do-recursive)
 
-.PHONY: $(TARGETS) $(csp_LOAD) install load
+.PHONY: $(csp_BUILD) $(TARGETS) $(csp_LOAD) build install load
 
