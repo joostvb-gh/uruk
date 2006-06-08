@@ -1,4 +1,4 @@
-$Id: TODO,v 1.65 2006-06-07 14:06:18 joostvb Exp $
+$Id: TODO,v 1.66 2006-06-08 08:12:11 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -13,12 +13,11 @@ $Id: TODO,v 1.65 2006-06-07 14:06:18 joostvb Exp $
 - Finish NEWS.
 
 - Once we've figured out how to make "load" pluggable, we can get rid of the
-  csp_scp_* variables (and of one RULE in caspar.mk).  (It's ugly to specify "ssh
-  $(csp_UHOST) foo".)
+  csp_scp_* variables (and of one RULE in caspar.mk).  (It's ugly to specify
+  "ssh $(csp_UHOST) foo".)
 
-- We'll have to drop support for csp_SUHDIRS.
-
-- Document and finish csp_PUSH-plugin architecture.
+- Decide on a plan for phasing out all variables marked as obsolete in
+  caspar(7) (including csp_SUHDIRS).
 
 - Don't do
    csp_scp_FUNC  = $(csp_SCP) $(csp_CPFLAGS) $(1) $(2):$(3)

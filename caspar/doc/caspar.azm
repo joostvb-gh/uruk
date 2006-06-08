@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.34 2006-06-07 13:18:33 joostvb Exp $
+\: $Id: caspar.azm,v 1.35 2006-06-08 08:12:13 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -187,10 +187,9 @@ The following variables might get phased out or removed soonish:
     copy (CoPy DIRectorieS)
   \item{\tt{csp_SCPDIR}}   directory on ssh reachable host, with trailing /
     (Secure CoPy DIRectory)
-  \item{\tt{csp_SUHDIRS}}  this is the list \tt{$(csp_SUH):$(dir)} for each
+  \item{\tt{csp_SUHDIRS}}  by default, this is the list \tt{$(csp_SUH):$(dir)} for each
     \tt{$(dir)} in \tt{$(csp_SUHS)} (or where \tt{dir = $(csp_SCPDIR)}, in
-    case \tt{csp_SUHS} is not set).
-    However, more items can get added to this list on the fly.
+    case \tt{csp_SUHS} is not set).  More items can get added to this list on the fly.
 \end{itemize}
 
 \sec{examples}{EXAMPLES}
@@ -338,6 +337,27 @@ with a leading dot.   E.g.:
 }
 
 \par
+
+\cpar{Plugging your own install script in caspar}
+
+If your script \tt{foobar} should be called as e.g.
+
+\verbatim{
+  foobar --file=fstab --user@host=joe@some.host \\
+    --dir=/etc/ --debuglevel=3
+}
+
+then make sure your \it{Makefile} features something like
+
+\verbatim{
+  csp_foobar_FUNC = foobar --file=$(1) --user@host=$(2) \\
+    --dir=$(3) --debuglevel=$(4)
+  csp_PUSH = $(csp_foobar_FUNC)
+  csp_XARG = 3
+}
+
+You can now use \tt{csp_UHOST} and \tt{csp_DIR} just as you're used to.
+
 
 \cpar{More advanced tricks}
 
