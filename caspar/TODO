@@ -1,4 +1,4 @@
-$Id: TODO,v 1.66 2006-06-08 08:12:11 joostvb Exp $
+$Id: TODO,v 1.67 2006-06-09 14:51:49 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -10,7 +10,26 @@ $Id: TODO,v 1.66 2006-06-08 08:12:11 joostvb Exp $
 
 --- install stuff ---
 
-- Finish NEWS.
+- *_csp_* is deprecated!  It's fine to combine csp_DIR with
+
+  load:
+   ssh
+
+ (or, beter
+
+  my_PUSH = ssh
+  load:
+   $(my_PUSH) foo bar
+
+  ).
+
+  Adjust manpage accordingly.  NB: users are invited to extend the interface.
+  They can add extra variables to their push mechanisms.  So we might be
+  able to abstract LOAD one day.
+
+- Supply a preset loop over hosts, for load target.
+
+- Update copyright year: 2006 (in debian package too).
 
 - Once we've figured out how to make "load" pluggable, we can get rid of the
   csp_scp_* variables (and of one RULE in caspar.mk).  (It's ugly to specify
@@ -75,4 +94,6 @@ $Id: TODO,v 1.66 2006-06-08 08:12:11 joostvb Exp $
   Dankers (and the author).  It'll work nice in cases where you have lots of
   subdirectories holding information for lots of groups of hosts when you want
   to install just for a small group (or 1) hosts.
+
+
 
