@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.14 2006-03-19 20:57:22 joostvb Exp $
+## $Id: Makefile.am,v 1.15 2006-06-10 15:38:21 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -31,11 +31,12 @@ doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS
 ## local targets
 MY_RDIR = topaz:www/mdcc.cx/pub/caspar/
 
-sign: distcheck
+sign:
 	for i in $(DIST_ARCHIVES); do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
 
-publish: sign
+publish:
 	for i in $(DIST_ARCHIVES); do echo "scp $$i $$i.asc $(MY_RDIR)"; scp $$i $$i.asc $(MY_RDIR); done
+	@echo now run update-tar-symlinks caspar
 
 ## Only files from the current directory or from subdirectory which
 ## don't have their own Makefile.am should be listed here.
