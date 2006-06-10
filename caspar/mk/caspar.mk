@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.34 2006-06-07 13:48:18 joostvb Exp $
+# $Id: caspar.mk,v 1.35 2006-06-10 13:40:20 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -10,25 +10,18 @@
 
 # see caspar(7) for usage
 
-# backward compatibility
-csp_scp_DIR    ?= $(csp_SCPDIR)
-csp_scp_UHOSTS ?= $(csp_SUHS)
-csp_scp_UHOST  ?= $(csp_SUH)
-csp_cp_DIR     ?= $(csp_CPDIR)
-
-
 # we use plurals only
-csp_CPDIRS     ?= $(csp_cp_DIR)
+csp_CPDIRS     ?= $(csp_CPDIR)
 csp_UHOSTS     ?= $(csp_UHOST)
 
 
 # backward compatibility
-ifneq ($(csp_scp_DIR),)
-ifneq ($(csp_scp_UHOSTS),)
-csp_SUHDIRS  ?= $(patsubst %,%:$(csp_scp_DIR),$(csp_scp_UHOSTS))
+ifneq ($(csp_SCPDIR),)
+ifneq ($(csp_SUHS),)
+csp_SUHDIRS  ?= $(patsubst %,%:$(csp_SCPDIR),$(csp_SUHS))
 endif
-ifneq ($(csp_scp_UHOST),)
-csp_SUHDIRS  ?= $(csp_scp_UHOST):$(csp_scp_DIR)
+ifneq ($(csp_SUH),)
+csp_SUHDIRS  ?= $(csp_SUH):$(csp_SCPDIR)
 endif
 endif
 
