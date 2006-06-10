@@ -1,4 +1,4 @@
-$Id: TODO,v 1.70 2006-06-10 13:54:09 joostvb Exp $
+$Id: TODO,v 1.71 2006-06-10 13:57:01 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -49,9 +49,6 @@ $Id: TODO,v 1.70 2006-06-10 13:54:09 joostvb Exp $
 - this whole thing could probably better use rsync, or, alternatively, perhaps
   caspar is redundant: there is cfengine.  Perhaps people would be better of
   with a get-started-quick cfengine document. See caspar(7).
-
-- Very likely, make(1) is not the tool to fix the problem caspar is trying to
-  adress.  Add to BUGS sections in caspar(7) manpage.
 
 - add support for install(1).
 

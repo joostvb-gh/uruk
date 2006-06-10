@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.37 2006-06-10 13:54:09 joostvb Exp $
+\: $Id: caspar.azm,v 1.38 2006-06-10 13:57:01 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -414,8 +414,11 @@ For \"caspar.mk": \tt{csp_cp_DIR}, \tt{csp_CP}, \tt{csp_LOAD},
 
 \sec{bugs}{BUGS}
 
-See TODO and/or BUGS, distributed with the caspar package.  (And online
-at \httpref{http://mdcc.cx/pub/caspar/caspar-latest/TODO}.)
+Very likely, GNU Make is not the best tool for doing the stuff \"caspar.mk" is
+doing.
+
+See also TODO, distributed with the caspar package.  (And online at
+\httpref{http://mdcc.cx/pub/caspar/caspar-latest/TODO}.)
 
 \sec{trivia}{TRIVIA}
 
