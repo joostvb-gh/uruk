@@ -1,4 +1,4 @@
-$Id: TODO,v 1.67 2006-06-09 14:51:49 joostvb Exp $
+$Id: TODO,v 1.68 2006-06-10 12:30:25 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -23,9 +23,12 @@ $Id: TODO,v 1.67 2006-06-09 14:51:49 joostvb Exp $
 
   ).
 
-  Adjust manpage accordingly.  NB: users are invited to extend the interface.
+  Adjust manpage accordingly: Fix the FIXME's.  NB: users are invited to extend the interface.
   They can add extra variables to their push mechanisms.  So we might be
   able to abstract LOAD one day.
+
+- Add a real-life complete example to manpage: multiple directories, multiple
+  hosts, groups of hosts.
 
 - Supply a preset loop over hosts, for load target.
 

@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.35 2006-06-08 08:12:13 joostvb Exp $
+\: $Id: caspar.azm,v 1.36 2006-06-10 12:30:25 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -142,16 +142,12 @@ The variables one can set in a calling Makefile are:
                            and \tt{$(csp_sucp_FUNC)} are supported as push
                            plugins.  If \tt{csp_PUSH} is unset, the default
                            \tt{$(csp_scp_FUNC)} is used.
-  \item{\tt{csp_scp_UHOST}} ssh-reachable user@host
-  \item{\tt{csp_scp_UHOSTS}} space separated list of ssh-reachable user@host
-    items
   \item{\tt{csp_UHOSTS}}  space separated list of user@host items, reachable
                            using \tt{$(csp_PUSH)}.
   \item{\tt{csp_cp_DIR}}   directory to which we can cp(1), instead of scp
-  \item{\tt{csp_scp_DIR}}  directory on ssh reachable host, with trailing /
   \item{\tt{csp_DIR}}      directory on host, reachable using function
-                           \tt{$(csp_PUSH)}.  Set to \tt{$(csp_scp_DIR)} by
-                           default.
+                           \tt{$(csp_PUSH)}.  (Set to internal variable \tt{$(csp_scp_DIR)} by
+                           default.)
   \item{\tt{csp_LOAD}}     targets which should depend on the `load' target.
   \item{\tt{csp_EXTRAFILES}} extra files which should be installed.
     Can be used to include files starting with a dot.
@@ -257,23 +253,25 @@ while \it{../include/install.mk} is just
 }
 .
 
-\cpar{Using csp_scp_DIR and csp_LOAD}
+\cpar{Using csp_DIR and csp_LOAD}
 
 \it{etc/Makefile} is
 
 \verbatim{
-  csp_scp_DIR = /etc/
+  csp_DIR = /etc/
   csp_LOAD = aliases-load
   include ../include/install.mk
 
   aliases-load:
-      ssh $(csp_scp_UHOST) "cd /etc; postalias aliases; postfix reload"
+      ssh $(csp_UHOST) "cd /etc; postalias aliases; postfix reload"
 }
+
+FIXME: abstract ssh
 
 while \it{../include/install.mk} is
 
 \verbatim{
-  csp_scp_UHOST = root@some.host.somewhere
+  csp_UHOST = root@some.host.somewhere
   include caspar/mk/caspar.mk
 }
 
@@ -284,18 +282,20 @@ You'll have to loop over csp_SUHS to execute load-command.  Here's an example
 doing some preprocessing on the remote hosts too.
 
 \verbatim{
-  csp_scp_DIR = /etc/ssh
-  csp_scp_UHOSTS = root@some.host.somewhere root@some.other.host
+  csp_DIR = /etc/ssh
+  csp_UHOSTS = root@some.host.somewhere root@some.other.host
   csp_LOAD = sshd_config-load
   include caspar/mk/caspar.mk
 
   sshd_config-load:
-      for suh in $(csp_scp_UHOSTS); do \\
-        ssh $$suh "cd $(csp_scp_DIR); \\
+      for suh in $(csp_UHOSTS); do \\
+        ssh $$suh "cd $(csp_DIR); \\
          m4 sshd_config.m4 > sshd_config && \\
          PATH=$$PATH:/sbin /etc/init.d/ssh restart"; \\
       done
 }
+
+FIXME: abstract ssh
 
 (In pre caspar 20060216 syntax, one would write this as
 
@@ -317,12 +317,14 @@ as you'd like to have it installed on the remote location.  Now, create
   csp_TABOOFILES_SKIP = Makefile
   csp_TABOOFILES_ADD = GNUmakefile
 
-  csp_scp_DIR = /etc/foobar/
-  csp_scp_UHOST = root@some.host.somewhere
+  csp_DIR = /etc/foobar/
+  csp_UHOST = root@some.host.somewhere
 
   load:
-        ssh $(csp_scp_UHOST) "make -C $(csp_scp_DIR)"
+        ssh $(csp_UHOST) "make -C $(csp_DIR)"
 }
+
+FIXME: abstract ssh
 
 Now, \tt{make install} and \tt{make load} will do the right thing.
 
