@@ -1,7 +1,16 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20060610
+
+- The variables csp_scp_DIR, csp_scp_UHOSTS, csp_scp_UHOST and csp_cp_DIR, which
+  were introduced in snapshot version 20060216, are no longer supported.  These
+  variable were redundant.  (Very likely, you'll need csp_UHOST[S], csp_DIR,
+  and maybe csp_PUSH and csp_LOAD only.)
+
+
 caspar version 20060608
 
+- Unstable bleeding edge snapshot release.
 - Fixed section of csp_sucp(1) manpage.
 - Minor bugfixes in caspar.mk.
 - Various improvements in caspar(7) manpage.
@@ -140,4 +149,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.27 2006-06-10 12:30:24 joostvb Exp $
+# $Id: NEWS,v 1.28 2006-06-10 14:35:22 joostvb Exp $
