@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.38 2006-06-10 13:57:01 joostvb Exp $
+\: $Id: caspar.azm,v 1.39 2006-06-10 14:22:18 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -126,9 +126,10 @@ The variables one can set in a calling Makefile are:
   {contiguous}{1}
   {w1}{7}
 }
-  \item{\tt{csp_CP}}       cp binary, just "cp" by default
-  \item{\tt{csp_SCP}}      scp binary, just "scp" by default
-  \item{\tt{csp_SUCP}}     script wrapping sudo in ssh, "csp_sucp" by default
+  \item{\tt{csp_UHOSTS}}   space separated list of user@host items, reachable
+                           using \tt{$(csp_PUSH)} (which is scp by default.)
+  \item{\tt{csp_DIR}}      directory on host, reachable using function
+                           \tt{$(csp_PUSH)}.
   \item{\tt{csp_PUSH}}     make function for pushing files to remote location.
                            Usually, this is a wrapper around a script or
                            program.  The function will be passed 4 arguments:
@@ -142,12 +143,11 @@ The variables one can set in a calling Makefile are:
                            and \tt{$(csp_sucp_FUNC)} are supported as push
                            plugins.  If \tt{csp_PUSH} is unset, the default
                            \tt{$(csp_scp_FUNC)} is used.
-  \item{\tt{csp_UHOSTS}}  space separated list of user@host items, reachable
-                           using \tt{$(csp_PUSH)}.
-  \item{\tt{csp_cp_DIR}}   directory to which we can cp(1), instead of scp
-  \item{\tt{csp_DIR}}      directory on host, reachable using function
-                           \tt{$(csp_PUSH)}.  (So, scp by default.)
   \item{\tt{csp_LOAD}}     targets which should depend on the `load' target.
+  \item{\tt{csp_BUILD}}    targets which should depend on the `build' target.
+  \item{\tt{csp_CP}}       cp binary, just "cp" by default
+  \item{\tt{csp_SCP}}      scp binary, just "scp" by default
+  \item{\tt{csp_SUCP}}     script wrapping sudo in ssh, "csp_sucp" by default
   \item{\tt{csp_EXTRAFILES}} extra files which should be installed.
     Can be used to include files starting with a dot.
   \item{\tt{csp_TABOOFILES}} files which should never be installed.  Set to
@@ -265,14 +265,24 @@ while \it{../include/install.mk} is just
       ssh $(csp_UHOST) "cd /etc; postalias aliases; postfix reload"
 }
 
-FIXME: abstract ssh
-
 while \it{../include/install.mk} is
 
 \verbatim{
   csp_UHOST = root@some.host.somewhere
   include caspar/mk/caspar.mk
 }
+
+If you don't like the explicit "ssh" in your Makefile, you might want to
+introduce a variable for that.  E.g. add \tt{my_EXEC = ssh}
+to \it{../include/install.mk}, and write
+
+\verbatim{
+  aliases-load:
+      $(my_EXEC) $(csp_UHOST) "cd /etc; postalias aliases; postfix reload"
+}
+
+in \it{etc/Makefile}.  This will make it easier to change to another push
+mechanism, once that would be needed.
 
 
 \cpar{Combining the csp_LOAD target with multiple hosts}
@@ -294,7 +304,7 @@ doing some preprocessing on the remote hosts too.
       done
 }
 
-FIXME: abstract ssh
+(You might want to use a variable like \tt{my_EXEC} for ssh, see above.)
 
 (In pre caspar 20060216 syntax, one would write this as
 
@@ -323,7 +333,7 @@ as you'd like to have it installed on the remote location.  Now, create
         ssh $(csp_UHOST) "make -C $(csp_DIR)"
 }
 
-FIXME: abstract ssh
+(You might want to use a variable like \tt{my_EXEC} for ssh, see above.)
 
 Now, \tt{make install} and \tt{make load} will do the right thing.
 
@@ -409,7 +419,7 @@ do
 
 \sec{environment}{ENVIRONMENT}
 
-For \"caspar.mk": \tt{csp_cp_DIR}, \tt{csp_CP}, \tt{csp_LOAD},
+For \"caspar.mk": \tt{csp_CP}, \tt{csp_LOAD},
 \tt{csp_SCP}, \tt{csp_UHOST}, \tt{csp_PUSH}, ...
 
 \sec{bugs}{BUGS}

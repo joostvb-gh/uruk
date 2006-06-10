@@ -1,4 +1,4 @@
-$Id: TODO,v 1.71 2006-06-10 13:57:01 joostvb Exp $
+$Id: TODO,v 1.72 2006-06-10 14:22:18 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -10,34 +10,23 @@ $Id: TODO,v 1.71 2006-06-10 13:57:01 joostvb Exp $
 
 --- install stuff ---
 
-- *_csp_* is deprecated!  It's fine to combine csp_DIR with
-
-  load:
-   ssh
-
- (or, beter
-
-  my_PUSH = ssh
-  load:
-   $(my_PUSH) foo bar
-
-  ).
-
-  Adjust manpage accordingly: Fix the FIXME's.  NB: users are invited to extend the interface.
+- Suggest (or offer) a more generic interface than my_EXEC for the load
+  target.  Users are invited to extend the interface.
   They can add extra variables to their push mechanisms.  So we might be
-  able to abstract LOAD one day.
+  able to abstract LOAD one day.  Perhaps something like
 
-- Once we've figured out how to make "load" pluggable, we can get rid of the
-  csp_scp_* variables (and of one RULE in caspar.mk).  (It's ugly to specify
-  "ssh $(csp_UHOST) foo".)
+    $(foreach uh,$(csp_UHOSTS),$(call csp_EXEC,$(uh),$(csp_DIR),$(csp_XARG));)
+
+  could work.  If a user's exec wrapper needs more arguments, these can get
+  introduced as implicit variables, outside $1, $2, ...
+
+- Get rid of csp_SUHDIRS and other obsolete variable.  Get rid or SCP and CP
+  RULEs in caspar.mk.
 
 - Add a real-life complete example to manpage: multiple directories, multiple
   hosts, groups of hosts.
 
 - Supply a preset loop over hosts, for load target.
-
-- Decide on a plan for phasing out all variables marked as obsolete in
-  caspar(7) (including csp_SUHDIRS).
 
 - Don't do
    csp_scp_FUNC  = $(csp_SCP) $(csp_CPFLAGS) $(1) $(2):$(3)
@@ -57,7 +46,6 @@ $Id: TODO,v 1.71 2006-06-10 13:57:01 joostvb Exp $
   a _trailing_ '-install' from the maketarget.
 
 - load stuff:
-  - Add a better hook for the -load target: more generic please.
   - Create a ``load-recursive'' target.
   - supply daemons.mk: csp_SSHDEBIANLOAD csp_URUKREDHATLOAD , etc, to use
     in load targets
