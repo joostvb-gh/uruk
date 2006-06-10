@@ -1,9 +1,10 @@
-\: $Id: include.zmm,v 1.4 2006-05-31 15:50:44 joostvb Exp $
+\: $Id: include.zmm,v 1.5 2006-06-10 13:54:09 joostvb Exp $
 
 \: This file is free software; you can distribute it and/or modify it
 \: under the terms of the GNU GPL.  See the file COPYING.
 \:
-\: Copyright (C) 2003 Joost van Baal, Copyright (C) 2002, 2003 Stijn van Dongen
+\: Copyright (C) 2003, 2004, 2005, 2006 Joost van Baal,
+\: Copyright (C) 2002, 2003 Stijn van Dongen
 
 \setx{"man::year"}{\zinsert{../stamp.year}}
 \setx{"man::month"}{\zinsert{../stamp.month}}

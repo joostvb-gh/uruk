@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.35 2006-06-10 13:40:20 joostvb Exp $
+# $Id: caspar.mk,v 1.36 2006-06-10 13:54:09 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -18,21 +18,21 @@ csp_UHOSTS     ?= $(csp_UHOST)
 # backward compatibility
 ifneq ($(csp_SCPDIR),)
 ifneq ($(csp_SUHS),)
-csp_SUHDIRS  ?= $(patsubst %,%:$(csp_SCPDIR),$(csp_SUHS))
+csp_SUHDIRS    ?= $(patsubst %,%:$(csp_SCPDIR),$(csp_SUHS))
 endif
 ifneq ($(csp_SUH),)
-csp_SUHDIRS  ?= $(csp_SUH):$(csp_SCPDIR)
+csp_SUHDIRS    ?= $(csp_SUH):$(csp_SCPDIR)
 endif
 endif
 
 # possibility to choose own cp(1) and scp(1)
-csp_CP       ?= cp
-csp_SCP      ?= scp
-csp_SUCP     ?= csp_sucp
+csp_CP         ?= cp
+csp_SCP        ?= scp
+csp_SUCP       ?= csp_sucp
 
 # extra arguments for cp(1) and scp(1)
-csp_CPFLAGS  ?=
-csp_SCPFLAGS ?=
+csp_CPFLAGS    ?=
+csp_SCPFLAGS   ?=
 
 csp_EXTRAFILES ?=
 
@@ -43,15 +43,15 @@ csp_TABOODIRS_DEFAULT ?= CVS .svn
 csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
 
 # wrap csp_SCP and other puch mechanisms in make function template
-csp_scp_FUNC  = $(csp_SCP) $(csp_SCPFLAGS) $(1) $(2):$(3)
-csp_cp_FUNC   = $(csp_CP) $(csp_CPFLAGS) $(1) $(3)
-csp_sucp_FUNC = $(csp_SUCP) $(1) $(2) $(3) $(4)
+csp_scp_FUNC    = $(csp_SCP) $(csp_SCPFLAGS) $(1) $(2):$(3)
+csp_cp_FUNC     = $(csp_CP) $(csp_CPFLAGS) $(1) $(3)
+csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3) $(4)
 
-csp_PUSH     ?= $(csp_scp_FUNC)
+csp_PUSH       ?= $(csp_scp_FUNC)
 
 # ideally, we'd just have one rule here:
 ## RULES = $(foreach dir,$(csp_SUHDIRS),$(call csp_scp_FUNC,"$(subst -install,,$@)",$(dir);)
-# however, since we'd like to talk about e.g. csp_scp_UHOSTS when calling ssh in a load rule,
+# however, since we might like to talk about e.g. csp_scp_UHOSTS when calling ssh in a load rule,
 # we stick with these 3 rules for now.
 #
 RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \

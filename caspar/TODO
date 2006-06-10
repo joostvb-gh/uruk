@@ -1,4 +1,4 @@
-$Id: TODO,v 1.69 2006-06-10 13:40:20 joostvb Exp $
+$Id: TODO,v 1.70 2006-06-10 13:54:09 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -27,16 +27,14 @@ $Id: TODO,v 1.69 2006-06-10 13:40:20 joostvb Exp $
   They can add extra variables to their push mechanisms.  So we might be
   able to abstract LOAD one day.
 
+- Once we've figured out how to make "load" pluggable, we can get rid of the
+  csp_scp_* variables (and of one RULE in caspar.mk).  (It's ugly to specify
+  "ssh $(csp_UHOST) foo".)
+
 - Add a real-life complete example to manpage: multiple directories, multiple
   hosts, groups of hosts.
 
 - Supply a preset loop over hosts, for load target.
-
-- Update copyright year: 2006 (in debian package too).
-
-- Once we've figured out how to make "load" pluggable, we can get rid of the
-  csp_scp_* variables (and of one RULE in caspar.mk).  (It's ugly to specify
-  "ssh $(csp_UHOST) foo".)
 
 - Decide on a plan for phasing out all variables marked as obsolete in
   caspar(7) (including csp_SUHDIRS).

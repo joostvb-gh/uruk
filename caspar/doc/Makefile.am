@@ -1,10 +1,11 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.6 2006-03-19 20:57:23 joostvb Exp $
+## $Id: Makefile.am,v 1.7 2006-06-10 13:54:09 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
 
-## Copyright (C) 2003 Joost van Baal, based upon work by Stijn van Dongen
+## Copyright (C) 2003, 2004, 2005, 2006 Joost van Baal
+## based upon work by Stijn van Dongen
 
 TROFF = groff
 
