@@ -1,4 +1,4 @@
-$Id: TODO,v 1.72 2006-06-10 14:22:18 joostvb Exp $
+$Id: TODO,v 1.73 2006-06-12 19:17:10 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -19,6 +19,17 @@ $Id: TODO,v 1.72 2006-06-10 14:22:18 joostvb Exp $
 
   could work.  If a user's exec wrapper needs more arguments, these can get
   introduced as implicit variables, outside $1, $2, ...
+
+- Add to caspar(7):
+
+ csp_PUSH = $(csp_sucp_FUNC)
+ csp_UHOST = foobar.example.com
+ csp_DIR = /etc/uruk/
+
+ csp_LOAD = rc-load
+
+ rc-load:
+        ssh $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
 
 - Get rid of csp_SUHDIRS and other obsolete variable.  Get rid or SCP and CP
   RULEs in caspar.mk.
