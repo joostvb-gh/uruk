@@ -1,6 +1,9 @@
 caspar (20060618-1) unstable; urgency=low
 
-  * New upstream. (missed: snapshots 20060216, 20060531, 20060608, 20060610)
+  * New upstream (missed: snapshots 20060216, 20060531, 20060608, 20060610).
+  * Beware: change in caspar.mk user interface.  See the 20060216 entry in
+    /usr/share/doc/caspar/NEWS.gz and caspar(7), as installed with the
+    caspar-doc package.  For now, backwards compatibility is supplied.
   * debian/{caspar-doc.install,caspar-doc.doc-base.csp_sucp,rules}: install
     and register csp_sucp(1) documentation.
   * debian/control: bumped Standards-Version: from 3.6.2.0 to 3.7.2.0 (no
