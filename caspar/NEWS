@@ -1,11 +1,16 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20060618
+
+- Various improvements in caspar(7) manpage.
+
+
 caspar version 20060610
 
-- The variables csp_scp_DIR, csp_scp_UHOSTS, csp_scp_UHOST and csp_cp_DIR, which
-  were introduced in snapshot version 20060216, are no longer supported.  These
-  variable were redundant.  (Very likely, you'll need csp_UHOST[S], csp_DIR,
-  and maybe csp_PUSH and csp_LOAD only.)
+- The variables csp_scp_DIR, csp_scp_UHOSTS, csp_scp_UHOST and csp_cp_DIR,
+  which were introduced in snapshot version 20060216, are no longer supported.
+  These variable were redundant.  (Very likely, you'll need csp_UHOST[S],
+  csp_DIR, and maybe csp_PUSH and csp_LOAD only.)
 
 
 caspar version 20060608
@@ -18,10 +23,9 @@ caspar version 20060608
 
 caspar version 20060531
 
-- Beware!  Yet another unstable bleeding edge snapshot release.  Test results
-  are again welcomed.
-- Typo in caspar.mk which lead to "invalid syntax in conditional" error
-  is fixed.
+- Yet another unstable bleeding edge snapshot release.
+- Typo in caspar.mk which lead to "invalid syntax in conditional" error is
+  fixed.
 - Added csp_sucp(1) manpage.  This script now gets installed.
 - Minor improvements on other manpages.
 
@@ -149,4 +153,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.28 2006-06-10 14:35:22 joostvb Exp $
+# $Id: NEWS,v 1.29 2006-06-18 18:13:37 joostvb Exp $
