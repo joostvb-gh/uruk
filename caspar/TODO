@@ -1,4 +1,4 @@
-$Id: TODO,v 1.74 2006-06-18 17:28:13 joostvb Exp $
+$Id: TODO,v 1.75 2006-06-18 18:12:48 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -24,7 +24,9 @@ $Id: TODO,v 1.74 2006-06-18 17:28:13 joostvb Exp $
   RULEs in caspar.mk.
 
 - Add a real-life complete example to manpage: multiple directories, multiple
-  hosts, groups of hosts.
+  hosts, groups of hosts.  Explain why it's good practice to do
+    include ../../include/install.mk
+  .
 
 - Supply a preset loop over hosts, for load target.
 
