@@ -1,4 +1,4 @@
-$Id: TODO,v 1.75 2006-06-18 18:12:48 joostvb Exp $
+$Id: TODO,v 1.76 2006-08-31 13:29:00 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -66,7 +66,16 @@ $Id: TODO,v 1.75 2006-06-18 18:12:48 joostvb Exp $
   Test wether "make load" won't load if "check" fails (it should).
   Document how to use csp_BUILD.
 
-- install-recursive should call mkdir if appropriate
+- install-recursive should call mkdir if appropriate.  install should, too.
+
+ Thu 31 15:16 < Fruit> kan ik 'm ook vertellen dat-ie voordat gaat kopiëren ff 
+                       mkdir -p op de smurfer doet?
+ Thu 31 15:19 < joostvb> een eigen csp_PUSH schrijven
+ Thu 31 15:20 < joostvb> csp_PUSH krijgt zowel filenaam als directory mee als 
+                         argument
+ Thu 31 15:20 < joostvb> dus das kei makkelijk
+ Thu 31 15:20 < Fruit> csp_OLD_PUSH := $(csp_PUSH)
+ Thu 31 15:20 < Fruit> csp_PUSH := ssh $iets mkdir $dir; $(csp_OLD_PUSH)
 
 - The scp invocation is inefficient:
 
