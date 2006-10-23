@@ -1,4 +1,4 @@
-$Id: TODO,v 1.77 2006-10-23 15:58:26 joostvb Exp $
+$Id: TODO,v 1.78 2006-10-23 16:09:59 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -89,11 +89,14 @@ $Id: TODO,v 1.77 2006-10-23 15:58:26 joostvb Exp $
 
   $@ vs $? might be helpful.
 
-- Implement csp_SUHS_SUBSET: only deal with this subset of csp_SUHS.  Just
-  process the intersection (doorsnede) of csp_SUHS_SUBSET and csp_SUHS.
+- Implement csp_UHOSTS_SUBSET: only deal with this subset of csp_UHOSTS.  Just
+  process the intersection (doorsnede) of csp_UHOSTS_SUBSET and csp_UHOSTS.
   Requested by Wessel Dankers (and the author).  It'll work nice in cases
   where you have lots of subdirectories holding information for lots of groups
   of hosts when you want to install just for a small group (or 1) hosts.
 
+  It also protects one from no longer current overrides of csp_UHOSTS in the
+  environment: one now can use csp_UHOSTS_SUBSET for temporal overrides.
 
+  Test this, and document this.
 
