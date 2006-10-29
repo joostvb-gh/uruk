@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.37 2006-10-23 16:10:00 joostvb Exp $
+# $Id: caspar.mk,v 1.38 2006-10-29 12:57:36 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -14,7 +14,9 @@
 csp_CPDIRS     ?= $(csp_CPDIR)
 csp_UHOSTS     ?= $(csp_UHOST)
 
+ifneq ($(csp_UHOSTS_SUBSET),)
 csp_UHOSTS     := $(filter $(csp_UHOSTS_SUBSET),$(csp_UHOSTS))
+endif
 
 # backward compatibility
 ifneq ($(csp_SCPDIR),)
