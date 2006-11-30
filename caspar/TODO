@@ -1,4 +1,4 @@
-$Id: TODO,v 1.78 2006-10-23 16:09:59 joostvb Exp $
+$Id: TODO,v 1.79 2006-11-30 11:45:52 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -51,6 +51,24 @@ $Id: TODO,v 1.78 2006-10-23 16:09:59 joostvb Exp $
   - Create a ``load-recursive'' target.
   - supply daemons.mk: csp_SSHDEBIANLOAD csp_URUKREDHATLOAD , etc, to use
     in load targets
+
+- document this:
+
+ dirs = $(patsubst %/Makefile,%,$(shell find * -mindepth 1 -name Makefile))
+
+ all:
+   for i in $(dirs);do make -C $$i;done
+
+ install
+   for i in $(dirs);do make -C $$i install; done
+
+ load
+   for i in $(dirs);do make -C $$i load; done
+
+ 
+ This allows a toplevel makefile; _without_ the need to install makefiles in
+ all non-leaf directories too.  Thanks Wessel.
+
 
 - document this: we have a csp_BUILD too.  If you want to do some syntax check
   on remote host too (and have a "make check" thing), do
