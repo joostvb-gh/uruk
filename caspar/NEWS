@@ -1,5 +1,10 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version NNNNNNNN
+
+- Fix bug in csp_sucp(1) when using fourth argument (e.g. via CSP_XARG).
+
+
 caspar version 20060618
 
 - Various improvements in caspar(7) manpage.
@@ -153,4 +158,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.29 2006-06-18 18:13:37 joostvb Exp $
+# $Id: NEWS,v 1.30 2006-12-12 09:32:10 joostvb Exp $
