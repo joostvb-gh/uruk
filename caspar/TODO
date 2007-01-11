@@ -1,4 +1,4 @@
-$Id: TODO,v 1.80 2007-01-11 11:51:04 joostvb Exp $
+$Id: TODO,v 1.81 2007-01-11 12:00:04 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -119,5 +119,11 @@ $Id: TODO,v 1.80 2007-01-11 11:51:04 joostvb Exp $
   Test this, and document this.
 
 - test wether file is up to date before scp-ing it.  use rsync?  use
-  ControlMaster ssh_config(5) to reuse one ssh conection?
+  ControlMaster ssh_config(5) to reuse one ssh conection?  Perhaps this:
+
+   ControlMaster auto
+   ControlPath ~/.ssh/control/%r@%h:%p
+
+  in your ~/.ssh/config fixes all "troubles". (This option is not available
+  on Debian sarge.)
 
