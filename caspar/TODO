@@ -1,4 +1,4 @@
-$Id: TODO,v 1.79 2006-11-30 11:45:52 joostvb Exp $
+$Id: TODO,v 1.80 2007-01-11 11:51:04 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -117,4 +117,7 @@ $Id: TODO,v 1.79 2006-11-30 11:45:52 joostvb Exp $
   environment: one now can use csp_UHOSTS_SUBSET for temporal overrides.
 
   Test this, and document this.
+
+- test wether file is up to date before scp-ing it.  use rsync?  use
+  ControlMaster ssh_config(5) to reuse one ssh conection?
 
