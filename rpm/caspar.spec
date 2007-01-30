@@ -1,4 +1,4 @@
-# $Id: caspar.spec,v 1.3 2007-01-30 13:14:11 joostvb Exp $
+# $Id: caspar.spec,v 1.4 2007-01-30 13:41:18 joostvb Exp $
 
 # Copyright (C) 2004, 2007 Tilburg University http://www.uvt.nl/
 #
@@ -39,35 +39,27 @@ Prefix:         %{_prefix}
 
 %build
 %configure
+# --docdir=/usr/share/doc/caspar-%{version}  : caspar is buggy
 make
 
 %install
 rm -fr %{buildroot}
 make DESTDIR=%{buildroot} install
+rm -rf %{buildroot}/usr/share/doc/caspar
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog ChangeLog.2002 NEWS.gz README THANKS TODO caspar-typesetting.azm caspar-typesetting.html caspar-typesetting.ps.gz caspar-typesetting.txt caspar.azm.gz caspar.html caspar.ps.gz caspar.txt
+%doc AUTHORS ChangeLog doc/ChangeLog.2002 NEWS README THANKS TODO doc/caspar-typesetting.azm doc/caspar-typesetting.html doc/caspar-typesetting.ps doc/caspar-typesetting.txt doc/caspar.azm doc/caspar.html doc/caspar.ps doc/caspar.txt
 %{_bindir}/csp_sucp
 %{_mandir}/man*/*
+%{_datadir}/caspar/*
+%{_datadir}/sgml/caspar/*
+%{_includedir}/caspar/mk/*
 
-# %{_datadir}
-# %{_libdir}
-
-# /usr/share/caspar/mk/caspar.mk
-# /usr/share/caspar/mk/docbook.mk
-# /usr/share/caspar/mk/pod.mk
-#
-# /usr/share/sgml/caspar/print.dsl
-# /usr/share/sgml/caspar/html.dsl
-#
-# /usr/include/caspar/mk/caspar.mk
-# /usr/include/caspar/mk/docbook.mk
-# /usr/include/caspar/mk/pod.mk
-
+# see also:
 # Sep  8  2005 nagios-plugins/package/redhat/nagios-plugins.spec
 # Nov 15  2005 nrpe/package/redhat/redhat/nrpe.spec
 # Feb 17  2006 subversion/package/redhat/subversion.spec
