@@ -1,4 +1,4 @@
-$Id: TODO,v 1.81 2007-01-11 12:00:04 joostvb Exp $
+$Id: TODO,v 1.82 2007-02-05 11:51:32 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -126,4 +126,15 @@ $Id: TODO,v 1.81 2007-01-11 12:00:04 joostvb Exp $
 
   in your ~/.ssh/config fixes all "troubles". (This option is not available
   on Debian sarge.)
+
+- document this: including an included Makefile:
+
+    here := $(dir $(lastword $(MAKEFILE_LIST)))
+    include $(here)../../foo/bar/install.mk
+
+  Thanks Wessel.
+
+  Alternative: /usr/local/foo, as used in svn/its-unix
+
+- refer to Dutch versiecontrole en packaging document.
 
