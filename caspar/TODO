@@ -1,4 +1,4 @@
-$Id: TODO,v 1.82 2007-02-05 11:51:32 joostvb Exp $
+$Id: TODO,v 1.83 2007-02-06 09:55:54 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -137,4 +137,10 @@ $Id: TODO,v 1.82 2007-02-05 11:51:32 joostvb Exp $
   Alternative: /usr/local/foo, as used in svn/its-unix
 
 - refer to Dutch versiecontrole en packaging document.
+
+joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done 
+
+joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
+
+
 
