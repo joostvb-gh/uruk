@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.44 2006-07-09 21:23:04 joostvb Exp $
+\: $Id: caspar.azm,v 1.45 2007-02-09 14:59:38 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -255,6 +255,13 @@ while \it{../include/install.mk} is just
   include caspar/mk/caspar.mk
 }
 .
+
+Setting \tt{csp_PUSH} to \tt{$(csp_cp_FUNC)} causes cp(1) to get executed
+by "make install" (not scp(1)).
+
+Setting \tt{csp_LOAD} causes "make load" to execute the crontab command.  Just
+running "make" is OK too, since "make" calls both "make install" and "make
+load".
 
 \cpar{Using csp_DIR and csp_LOAD}
 
