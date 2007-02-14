@@ -1,4 +1,4 @@
-$Id: TODO,v 1.83 2007-02-06 09:55:54 joostvb Exp $
+$Id: TODO,v 1.84 2007-02-14 09:07:22 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -142,5 +142,47 @@ joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name Makefile | w
 
 joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
 
+
+- if one really wants, one can overrule caspar's default target:
+
+---------
+
+csp_SCPDIR = /etc/ssl/chains/
+csp_TABOOFILES_ADD = %.asc
+
+all: install
+install: check makedir
+
+include ../../../include/install.mk
+
+check:
+        for cert in *.pem; do \
+                echo "$$cert:"; \
+                gpg --verify $$cert.asc $$cert; \
+        done
+
+makedir:
+        for suh in $(csp_SUHS); do \
+          ssh $$suh mkdir -p /etc/ssl/chains; \
+        done
+
+.PHONY: check makedir
+
+---------
+
+ very likely, one could better use the "build" target for this.
+
+- it's not necessary to have Makefile in all directories of a tree, provided
+caspar is fixed:
+
+replace
+
+ DIRS := $(shell for d in *; do test -d $$d && echo $$d; done)
+
+by
+
+ DIRS :=  $(patsubst %/Makefile,%,$(shell find * -mindepth 1 -name Makefile))
+
+thanks Wessel.
 
 
