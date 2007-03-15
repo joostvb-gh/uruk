@@ -1,4 +1,4 @@
-$Id: TODO,v 1.84 2007-02-14 09:07:22 joostvb Exp $
+$Id: TODO,v 1.85 2007-03-15 15:17:12 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -9,6 +9,25 @@ $Id: TODO,v 1.84 2007-02-14 09:07:22 joostvb Exp $
 - add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
 
 --- install stuff ---
+
+- caspar chokes on spaces in filenames:
+
+ Makefile:
+
+ csp_CPDIR = /var/php/public/jccpmanu/https
+ include caspar/mk/caspar.mk
+
+ joostvb@scriptix:~/sv...k/sources/jccpmanu/https% ls
+ JCCP logo.jpg  Makefile    index.html      logo.html
+ JCCPlogo.jpg   empty.html  loginform.html  php3
+ joostvb@scriptix:~/sv...k/sources/jccpmanu/https% make -n
+ /bin/sh: line 1: test: JCCP: binary operator expected
+ /bin/sh: line 1: test: JCCP: binary operator expected
+ cp  "JCCPlogo.jpg" /var/php/public/jccpmanu/https; 
+ cp  "empty.html" /var/php/public/jccpmanu/https; 
+ cp  "index.html" /var/php/public/jccpmanu/https; 
+ cp  "loginform.html" /var/php/public/jccpmanu/https; 
+ cp  "logo.html" /var/php/public/jccpmanu/https; 
 
 - Suggest (or offer) a more generic interface than my_EXEC for the load
   target.  Users are invited to extend the interface.
