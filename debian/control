@@ -8,7 +8,7 @@ Standards-Version: 3.7.2.0
 Package: caspar
 Architecture: all
 Depends: make
-Suggests: jade, jadetex, tetex-bin, w3m, gs-common, psutils, lpr, gv | postscript-viewer, man-db, docbook-dsssl, caspar-doc
+Suggests: jade, jadetex, tetex-bin, w3m, gs-common, psutils, lpr, gv | postscript-viewer, man-db, docbook-dsssl, perl, caspar-doc
 Description: Makefile snippets for common tasks
  Caspar offers Makefile snippets for tasks like installing files you maintain
  using a version control system, or typesetting documents in some markup
@@ -20,8 +20,9 @@ Description: Makefile snippets for common tasks
  .
  If you write documents in a markup language like LaTeX, DocBook
  XML, DocBook SGML or POD, and want to automate the typesetting, you'll
- like caspar.  Of course, you'll need at least jade, jadetex and tetex-bin
- from the suggested packages if you want to do any DocBook typesetting.
+ like caspar.  Install all suggested packages if you'd like to use this
+ typesetting funcationality (or pick the suitable ones from the list of
+ suggested packages).
  .
  It's not strictly necessary to know how to write Makefiles when using caspar.
  .

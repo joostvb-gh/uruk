@@ -1,3 +1,10 @@
+caspar (XXXXX) UNRELEASED; urgency=low
+
+  * debian/control: add perl to suggests, for pod2{html,man} as called
+    in pod.mk.  Improve package description.
+
+ -- Joost van Baal <joostvb@debian.org>  Wed, 18 Apr 2007 09:59:07 +0200
+
 caspar (20060618-1) unstable; urgency=low
 
   * New upstream (missed: snapshots 20060216, 20060531, 20060608, 20060610).
