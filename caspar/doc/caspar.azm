@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.45 2007-02-09 14:59:38 joostvb Exp $
+\: $Id: caspar.azm,v 1.46 2007-05-12 12:18:43 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -541,6 +541,10 @@ quite usable for handling configuration file management (without a separate
 install mechanism like caspar).  See also
 \aref{http://lists.debian.org/debian-devel/2005/02/thrd2.html#00495}{this
 discussion on the Debian development list}.
+  \par
+On the \httpref{http://www.infrastructures.org/} website on automated (Unix)
+system administration, you can find some thoughts on managing configuration
+files using a version control system.
 
 \"man::postamble"
 
