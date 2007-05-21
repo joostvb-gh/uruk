@@ -3,6 +3,8 @@ Refer to ChangeLog for detailed per-file info.
 caspar version NNNNNNNN
 
 - Fix bug in csp_sucp(1) when using fourth argument (e.g. via CSP_XARG).
+  This bug caused sudo to die with error "sudo: the `-u' and '-v' options may
+  not be used together".
 
 
 caspar version 20060618
@@ -158,4 +160,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.30 2006-12-12 09:32:10 joostvb Exp $
+# $Id: NEWS,v 1.31 2007-05-21 06:10:29 joostvb Exp $
