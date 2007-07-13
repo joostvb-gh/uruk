@@ -1,4 +1,4 @@
-$Id: TODO,v 1.85 2007-03-15 15:17:12 joostvb Exp $
+$Id: TODO,v 1.86 2007-07-13 09:03:48 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -23,11 +23,11 @@ $Id: TODO,v 1.85 2007-03-15 15:17:12 joostvb Exp $
  joostvb@scriptix:~/sv...k/sources/jccpmanu/https% make -n
  /bin/sh: line 1: test: JCCP: binary operator expected
  /bin/sh: line 1: test: JCCP: binary operator expected
- cp  "JCCPlogo.jpg" /var/php/public/jccpmanu/https; 
- cp  "empty.html" /var/php/public/jccpmanu/https; 
- cp  "index.html" /var/php/public/jccpmanu/https; 
- cp  "loginform.html" /var/php/public/jccpmanu/https; 
- cp  "logo.html" /var/php/public/jccpmanu/https; 
+ cp  "JCCPlogo.jpg" /var/php/public/jccpmanu/https;
+ cp  "empty.html" /var/php/public/jccpmanu/https;
+ cp  "index.html" /var/php/public/jccpmanu/https;
+ cp  "loginform.html" /var/php/public/jccpmanu/https;
+ cp  "logo.html" /var/php/public/jccpmanu/https;
 
 - Suggest (or offer) a more generic interface than my_EXEC for the load
   target.  Users are invited to extend the interface.
@@ -84,7 +84,7 @@ $Id: TODO,v 1.85 2007-03-15 15:17:12 joostvb Exp $
  load
    for i in $(dirs);do make -C $$i load; done
 
- 
+
  This allows a toplevel makefile; _without_ the need to install makefiles in
  all non-leaf directories too.  Thanks Wessel.
 
@@ -105,10 +105,10 @@ $Id: TODO,v 1.85 2007-03-15 15:17:12 joostvb Exp $
 
 - install-recursive should call mkdir if appropriate.  install should, too.
 
- Thu 31 15:16 < Fruit> kan ik 'm ook vertellen dat-ie voordat gaat kopiëren ff 
+ Thu 31 15:16 < Fruit> kan ik 'm ook vertellen dat-ie voordat gaat kopiëren ff
                        mkdir -p op de smurfer doet?
  Thu 31 15:19 < joostvb> een eigen csp_PUSH schrijven
- Thu 31 15:20 < joostvb> csp_PUSH krijgt zowel filenaam als directory mee als 
+ Thu 31 15:20 < joostvb> csp_PUSH krijgt zowel filenaam als directory mee als
                          argument
  Thu 31 15:20 < joostvb> dus das kei makkelijk
  Thu 31 15:20 < Fruit> csp_OLD_PUSH := $(csp_PUSH)
@@ -157,37 +157,37 @@ $Id: TODO,v 1.85 2007-03-15 15:17:12 joostvb Exp $
 
 - refer to Dutch versiecontrole en packaging document.
 
-joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done 
+joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
 
 joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
 
 
 - if one really wants, one can overrule caspar's default target:
 
----------
+ ---------
 
-csp_SCPDIR = /etc/ssl/chains/
-csp_TABOOFILES_ADD = %.asc
+ csp_SCPDIR = /etc/ssl/chains/
+ csp_TABOOFILES_ADD = %.asc
 
-all: install
-install: check makedir
+ all: install
+ install: check makedir
 
-include ../../../include/install.mk
+ include ../../../include/install.mk
 
-check:
+ check:
         for cert in *.pem; do \
                 echo "$$cert:"; \
                 gpg --verify $$cert.asc $$cert; \
         done
 
-makedir:
+ makedir:
         for suh in $(csp_SUHS); do \
           ssh $$suh mkdir -p /etc/ssl/chains; \
         done
 
-.PHONY: check makedir
+ .PHONY: check makedir
 
----------
+ ---------
 
  very likely, one could better use the "build" target for this.
 
@@ -202,6 +202,33 @@ by
 
  DIRS :=  $(patsubst %/Makefile,%,$(shell find * -mindepth 1 -name Makefile))
 
-thanks Wessel.
+thanks Wessel. (See also above)
+
+-
+> >>> Stel: user Hans pusht met Caspar een bestand foo.bar naar isar.
+> >>> dit bestand is dan van user Hans en group Hans.
+> >>> Nu wil user Ko iets aanpassen, maar Ko mag dat niet pushen want het
+> >>> bestand is van Hans.
+> zetten van chmod g+s op de dir helpt om de group te zetten. Dus dat is
+> geregeld.
+
+
+ Zorg dat op alle desktops het scriptje "csp_install_origal_mode" ergens
+in het $PATH van de gebruikers staat, met inhoud:
+
+ #!/bin/sh
+ ssh $2 't=`mktemp $3/$1` && cat >$t && mv $t $3/$1' < $1
+
+Voorzie de include/install.mk verder van:
+
+ csp_install_origal_mode_FUNC = csp_install_origal_mode $(1) $(2) $(3)
+ csp_PUSH = $(csp_install_origal_mode_FUNC)
+
+.
+
+- "install" moet dependen op "load"
+("make" doet zowel "install" als "load" nu; geen "build")
+
+en/of: Eigenlijk zou caspar support voor "make build-recursive" moeten hebben
 
 
