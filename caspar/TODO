@@ -1,4 +1,4 @@
-$Id: TODO,v 1.87 2007-07-28 19:35:16 joostvb Exp $
+$Id: TODO,v 1.88 2007-07-28 19:50:36 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -9,6 +9,18 @@ $Id: TODO,v 1.87 2007-07-28 19:35:16 joostvb Exp $
 - add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
 
 --- install stuff ---
+
+- First prio!
+  Implement csp_UHOSTS_SUBSET: only deal with this subset of csp_UHOSTS.  Just
+  process the intersection (doorsnede) of csp_UHOSTS_SUBSET and csp_UHOSTS.
+  Requested by Wessel Dankers (and the author).  It'll work nice in cases
+  where you have lots of subdirectories holding information for lots of groups
+  of hosts when you want to install just for a small group (or 1) hosts.
+
+  It also protects one from no longer current overrides of csp_UHOSTS in the
+  environment: one now can use csp_UHOSTS_SUBSET for temporal overrides.
+
+  Test this, and document this.
 
 - caspar chokes on spaces in filenames:
 
@@ -101,6 +113,21 @@ $Id: TODO,v 1.87 2007-07-28 19:35:16 joostvb Exp $
  Thu 31 15:20 < Fruit> csp_OLD_PUSH := $(csp_PUSH)
  Thu 31 15:20 < Fruit> csp_PUSH := ssh $iets mkdir $dir; $(csp_OLD_PUSH)
 
+alternatively:
+
+~/bin/csp_mkdircp
+
+----
+#!/bin/sh
+mkdir -p $2
+exec cp $1 $2
+----
+
+and:
+
+  csp_mkdircp_FUNC = csp_mkdir $(1) $(2)
+  csp_PUSH = $(csp_mkdircp_FUNC)
+
 - The scp invocation is inefficient:
 
    % make -n README.txt-install net.txt-install
@@ -113,25 +140,14 @@ $Id: TODO,v 1.87 2007-07-28 19:35:16 joostvb Exp $
 
   $@ vs $? might be helpful.
 
-- Implement csp_UHOSTS_SUBSET: only deal with this subset of csp_UHOSTS.  Just
-  process the intersection (doorsnede) of csp_UHOSTS_SUBSET and csp_UHOSTS.
-  Requested by Wessel Dankers (and the author).  It'll work nice in cases
-  where you have lots of subdirectories holding information for lots of groups
-  of hosts when you want to install just for a small group (or 1) hosts.
-
-  It also protects one from no longer current overrides of csp_UHOSTS in the
-  environment: one now can use csp_UHOSTS_SUBSET for temporal overrides.
-
-  Test this, and document this.
-
 - test wether file is up to date before scp-ing it.  use rsync?  use
   ControlMaster ssh_config(5) to reuse one ssh conection?  Perhaps this:
 
    ControlMaster auto
    ControlPath ~/.ssh/control/%r@%h:%p
 
-  in your ~/.ssh/config fixes all "troubles". (This option is not available
-  on Debian sarge.)
+  in your ~/.ssh/config (and having an ssh connection open to all relevant
+  hosts) fixes all "troubles". (This option is not available on Debian sarge.)
 
 - document this: including an included Makefile:
 
