@@ -1,4 +1,4 @@
-$Id: TODO,v 1.86 2007-07-13 09:03:48 joostvb Exp $
+$Id: TODO,v 1.87 2007-07-28 19:35:16 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -42,6 +42,11 @@ $Id: TODO,v 1.86 2007-07-13 09:03:48 joostvb Exp $
 - Get rid of csp_SUHDIRS and other obsolete variable.  Get rid or SCP and CP
   RULEs in caspar.mk.
 
+- when dropping support for csp_SUH(S), mention this trick:
+
+   % svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
+  % svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
+
 - Add a real-life complete example to manpage: multiple directories, multiple
   hosts, groups of hosts.  Explain why it's good practice to do
     include ../../include/install.mk
@@ -70,24 +75,6 @@ $Id: TODO,v 1.86 2007-07-13 09:03:48 joostvb Exp $
   - Create a ``load-recursive'' target.
   - supply daemons.mk: csp_SSHDEBIANLOAD csp_URUKREDHATLOAD , etc, to use
     in load targets
-
-- document this:
-
- dirs = $(patsubst %/Makefile,%,$(shell find * -mindepth 1 -name Makefile))
-
- all:
-   for i in $(dirs);do make -C $$i;done
-
- install
-   for i in $(dirs);do make -C $$i install; done
-
- load
-   for i in $(dirs);do make -C $$i load; done
-
-
- This allows a toplevel makefile; _without_ the need to install makefiles in
- all non-leaf directories too.  Thanks Wessel.
-
 
 - document this: we have a csp_BUILD too.  If you want to do some syntax check
   on remote host too (and have a "make check" thing), do
@@ -157,11 +144,6 @@ $Id: TODO,v 1.86 2007-07-13 09:03:48 joostvb Exp $
 
 - refer to Dutch versiecontrole en packaging document.
 
-joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
-
-joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
-
-
 - if one really wants, one can overrule caspar's default target:
 
  ---------
@@ -191,6 +173,23 @@ joostvb@kovalevskaya:~/sv...vc.uvt.nl/its-unix/group% svnfind -name install.mk |
 
  very likely, one could better use the "build" target for this.
 
+- document this:
+
+ dirs = $(patsubst %/Makefile,%,$(shell find * -mindepth 1 -name Makefile))
+
+ all:
+   for i in $(dirs);do make -C $$i;done
+
+ install
+   for i in $(dirs);do make -C $$i install; done
+
+ load
+   for i in $(dirs);do make -C $$i load; done
+
+
+ This allows a toplevel makefile; _without_ the need to install makefiles in
+ all non-leaf directories too.  Thanks Wessel.
+
 - it's not necessary to have Makefile in all directories of a tree, provided
 caspar is fixed:
 
@@ -204,16 +203,15 @@ by
 
 thanks Wessel. (See also above)
 
--
-> >>> Stel: user Hans pusht met Caspar een bestand foo.bar naar isar.
-> >>> dit bestand is dan van user Hans en group Hans.
-> >>> Nu wil user Ko iets aanpassen, maar Ko mag dat niet pushen want het
-> >>> bestand is van Hans.
-> zetten van chmod g+s op de dir helpt om de group te zetten. Dus dat is
-> geregeld.
+-  Document this:
+user joe pushed file bar to host murphy, in directory /foo/. on murphy,
+/foo/bar is owned by joe:joe.  Now, ann wants to change murphy:/foo/bar.  She
+however lacks permissions.  Using a new group "hackers", and performing chmod
+g+s on murphy:/foo/ fixes this partially: the files now belong to the right
+group "hackers".  However, a mode g+w on a file is generally _not_ preserved
+when scp-ing a new version of the file.
 
-
- Zorg dat op alle desktops het scriptje "csp_install_origal_mode" ergens
+Zorg dat op alle desktops het scriptje "csp_install_origal_mode" ergens
 in het $PATH van de gebruikers staat, met inhoud:
 
  #!/bin/sh
@@ -226,9 +224,9 @@ Voorzie de include/install.mk verder van:
 
 .
 
-- "install" moet dependen op "load"
-("make" doet zowel "install" als "load" nu; geen "build")
+- "install" should depend upon "load". ("make" currently does both "install"
+and "load"; it does not do "build").  and/or: caspar should support "make
+build-recursive"
 
-en/of: Eigenlijk zou caspar support voor "make build-recursive" moeten hebben
 
 
