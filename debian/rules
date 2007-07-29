@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-# $Id: rules,v 1.10 2006-05-31 16:00:51 joostvb Exp $
+# $Id: rules,v 1.11 2007-07-29 12:39:01 joostvb Exp $
 
 # Based upon sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
@@ -9,7 +9,6 @@
 # export DH_VERBOSE=1
 
 # This is the debhelper compatibility version to use.
-export DH_COMPAT=4
 
 # allow bashism's in commandlines
 SHELL = /bin/bash
