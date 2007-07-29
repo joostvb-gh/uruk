@@ -1,4 +1,4 @@
-$Id: TODO,v 1.88 2007-07-28 19:50:36 joostvb Exp $
+$Id: TODO,v 1.89 2007-07-29 05:22:53 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -9,18 +9,6 @@ $Id: TODO,v 1.88 2007-07-28 19:50:36 joostvb Exp $
 - add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
 
 --- install stuff ---
-
-- First prio!
-  Implement csp_UHOSTS_SUBSET: only deal with this subset of csp_UHOSTS.  Just
-  process the intersection (doorsnede) of csp_UHOSTS_SUBSET and csp_UHOSTS.
-  Requested by Wessel Dankers (and the author).  It'll work nice in cases
-  where you have lots of subdirectories holding information for lots of groups
-  of hosts when you want to install just for a small group (or 1) hosts.
-
-  It also protects one from no longer current overrides of csp_UHOSTS in the
-  environment: one now can use csp_UHOSTS_SUBSET for temporal overrides.
-
-  Test this, and document this.
 
 - caspar chokes on spaces in filenames:
 
@@ -189,23 +177,6 @@ and:
 
  very likely, one could better use the "build" target for this.
 
-- document this:
-
- dirs = $(patsubst %/Makefile,%,$(shell find * -mindepth 1 -name Makefile))
-
- all:
-   for i in $(dirs);do make -C $$i;done
-
- install
-   for i in $(dirs);do make -C $$i install; done
-
- load
-   for i in $(dirs);do make -C $$i load; done
-
-
- This allows a toplevel makefile; _without_ the need to install makefiles in
- all non-leaf directories too.  Thanks Wessel.
-
 - it's not necessary to have Makefile in all directories of a tree, provided
 caspar is fixed:
 
@@ -217,7 +188,9 @@ by
 
  DIRS :=  $(patsubst %/Makefile,%,$(shell find * -mindepth 1 -name Makefile))
 
-thanks Wessel. (See also above)
+thanks Wessel. (This might break for trees combining GNUmakefile with
+Makefile.) Once this fix is implemented, get rid of the example toplevel
+Makefile in caspar(7).
 
 -  Document this:
 user joe pushed file bar to host murphy, in directory /foo/. on murphy,
@@ -239,6 +212,8 @@ Voorzie de include/install.mk verder van:
  csp_PUSH = $(csp_install_origal_mode_FUNC)
 
 .
+
+Even better: use rsync as csp_PUSH.
 
 - "install" should depend upon "load". ("make" currently does both "install"
 and "load"; it does not do "build").  and/or: caspar should support "make
