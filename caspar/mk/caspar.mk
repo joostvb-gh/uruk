@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.38 2006-10-29 12:57:36 joostvb Exp $
+# $Id: caspar.mk,v 1.39 2007-07-29 09:21:00 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
