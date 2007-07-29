@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.48 2007-07-29 05:17:49 joostvb Exp $
+\: $Id: caspar.azm,v 1.49 2007-07-29 05:53:12 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -581,7 +581,11 @@ my homegrown scripts.
   \par
 The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
   \par
-
+The document
+\aref{http://non-gnu.uvt.nl/pub/uvt-unix-doc/packaging/}{"Versiebeheer en
+software-packages: Waarom en Hoe"} (in Dutch) describes some of the reasons why
+people might want to use tools like caspar.
+  \par
 Lots of tools overlap (partly) with caspar in their functionality.  Here's a
 list.  A big part of it was collected by Ray Miller
 (\httpref{http://users.ox.ac.uk/~raym/}) of Oxford University, and published in
