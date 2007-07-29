@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-# $Id: rules,v 1.11 2007-07-29 12:39:01 joostvb Exp $
+# $Id: rules,v 1.12 2007-07-29 12:41:08 joostvb Exp $
 
 # Based upon sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
@@ -48,7 +48,7 @@ clean:
 	rm -f build-stamp
 
 #	# commands to clean up after the build process.
-	-$(MAKE) distclean
+	test ! -f Makefile || $(MAKE) distclean
 
 #	# no need to copy config.sub or config.guess here.  architecture
 #	# doesn't interest us: we don't compile anything, we just install
