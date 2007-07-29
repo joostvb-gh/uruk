@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.50 2007-07-29 09:05:11 joostvb Exp $
+\: $Id: caspar.azm,v 1.51 2007-07-29 09:15:47 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -337,6 +337,30 @@ If you'd like to use csp_sucp and want a `load' target, do something like:
  rc-load:
      ssh $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
 }
+
+
+\cpar{Adding a "check" target}
+
+If you want to do some syntax check on the remote host, before loading the just
+installed configuration file (and have a "make check" thing), do
+
+\verbatim{
+  csp_UHOST = foobar.example.com
+  csp_DIR = /etc/
+  csp_LOAD = check my-load
+
+  include caspar/mk/caspar.mk
+
+  check:
+      ssh $(csp_UHOST) do-check-stuff
+
+  my-load:
+      ssh $(csp_UHOST) do-load-stuff
+}
+
+This way, "make load" won't cause the file to load if the check fails (which is
+probably what you want).  Running "make" will perform "install", "check" and
+"load".
 
 
 \cpar{Combining the csp_LOAD target with multiple hosts; building files remotely}
