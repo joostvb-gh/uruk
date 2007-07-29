@@ -4,7 +4,8 @@ caspar (20070729-1) UNRELEASED; urgency=low
   * debian/control: add perl to suggests, for pod2{html,man} as called
     in pod.mk.  Remove "Conflicts: caspar (<< 20040531-1)" from caspar-doc: even
     oldstable doesn't ship such old versions.  Improve package description.
-  * Move DH_COMPAT from debian/rules to debian/compat. Thanks lintian.
+  * Move DH_COMPAT from debian/rules to debian/compat, and move from 4 to 5. Thanks
+    lintian.
   * debian/rules: don't ignore all errors from "make distclean".  Thanks again
     lintian.
 
