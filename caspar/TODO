@@ -1,4 +1,4 @@
-$Id: TODO,v 1.92 2007-07-29 12:55:50 joostvb Exp $
+$Id: TODO,v 1.93 2007-07-29 13:13:42 joostvb Exp $
 
 
 - GPL v3?
@@ -122,6 +122,8 @@ and:
   csp_mkdircp_FUNC = csp_mkdir $(1) $(2)
   csp_PUSH = $(csp_mkdircp_FUNC)
 
+Or could "mkdir ; cp" be implemented directly as a make function? Use $(shell ...)?
+
 - The scp invocation is inefficient:
 
    % make -n README.txt-install net.txt-install
@@ -218,7 +220,4 @@ Voorzie de include/install.mk verder van:
 .
 
 Even better: use rsync as csp_PUSH.
-
-
-
 
