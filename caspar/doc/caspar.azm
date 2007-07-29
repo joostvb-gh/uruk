@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.49 2007-07-29 05:53:12 joostvb Exp $
+\: $Id: caspar.azm,v 1.50 2007-07-29 09:05:11 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -299,6 +299,29 @@ in \it{etc/Makefile}.  This will make it easier to change to another push
 mechanism, once that would be needed.
 
 
+\cpar{Using csp_BUILD: building files locally}
+
+If you'd like to build some files locally from local sources, before installing
+the just build files, do e.g.
+
+\verbatim{
+ csp_UHOST = root@some.host.somewhere
+ csp_DIR = /etc/
+ csp_TABOOFILES_ADD = sshd_config.m4
+ csp_BUILD = my-build
+
+ include caspar/mk/caspar.mk
+
+ my-build: sshd_config
+
+ sshd_config: sshd_config.m4
+     m4 $< > $@
+}
+
+List all source files in csp_TABOOFILES_ADD: this way, they won't get installed
+on the csp_UHOST.
+
+
 \cpar{Using csp_sucp_FUNC and csp_LOAD}
 
 If you'd like to use csp_sucp and want a `load' target, do something like:
@@ -312,11 +335,11 @@ If you'd like to use csp_sucp and want a `load' target, do something like:
  include caspar/mk/caspar.mk
 
  rc-load:
-        ssh $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
+     ssh $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
 }
 
 
-\cpar{Combining the csp_LOAD target with multiple hosts}
+\cpar{Combining the csp_LOAD target with multiple hosts; building files remotely}
 
 You'll have to loop over csp_SUHS to execute load-command.  Here's an example
 doing some preprocessing on the remote hosts too.
@@ -346,7 +369,7 @@ doing some preprocessing on the remote hosts too.
   [...]
 })
 
-\cpar{Using the csp_TABOOFILES_{ADD,SKIP} variables}
+\cpar{Using the csp_TABOOFILES_{ADD,SKIP} variables; another way to perform remote builds}
 
 Using the csp_TABOOFILES_{ADD,SKIP} variables is handy if you want to
 \it{install} a \it{Makefile}, instead of using it:  Create \it{Makefile} just
