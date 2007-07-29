@@ -1,3 +1,6 @@
-# $Id: compat,v 1.2 2007-07-29 12:42:53 joostvb Exp $
-# This is the debhelper compatibility version to use; see debhelper(7).
 5
+# $Id: compat,v 1.3 2007-07-29 12:49:04 joostvb Exp $
+# This is the debhelper compatibility version to use; see debhelper(7).
+#
+# It seems the _first_ line of this file should NOT be a comment-line.
+# Bug in debhelper (5.0.52)?
