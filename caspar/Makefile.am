@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.15 2006-06-10 15:38:21 joostvb Exp $
+## $Id: Makefile.am,v 1.16 2007-07-29 09:41:21 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -29,7 +29,7 @@ docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS
 
 ## local targets
-MY_RDIR = topaz:www/mdcc.cx/pub/caspar/
+MY_RDIR = opal:www/mdcc.cx/pub/caspar/
 
 sign:
 	for i in $(DIST_ARCHIVES); do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
