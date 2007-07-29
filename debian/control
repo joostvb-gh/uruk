@@ -21,7 +21,7 @@ Description: Makefile snippets for common tasks
  If you write documents in a markup language like LaTeX, DocBook
  XML, DocBook SGML or POD, and want to automate the typesetting, you'll
  like caspar.  Install all suggested packages if you'd like to use this
- typesetting funcationality (or pick the suitable ones from the list of
+ typesetting functionality (or pick the suitable ones from the list of
  suggested packages).
  .
  It's not strictly necessary to know how to write Makefiles when using caspar.
@@ -37,4 +37,4 @@ Description: documentation for caspar
  Caspar offers Makefile snippets for common tasks, like installing (system
  configuration) files or typesetting documentation.
  .
- This is the caspar manpages and other documentation.
+ This package contains the caspar manpages and other documentation.
