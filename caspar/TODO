@@ -1,4 +1,4 @@
-$Id: TODO,v 1.90 2007-07-29 05:53:12 joostvb Exp $
+$Id: TODO,v 1.91 2007-07-29 09:20:55 joostvb Exp $
 
 --- typesetting stuff ---
 
@@ -10,23 +10,18 @@ $Id: TODO,v 1.90 2007-07-29 05:53:12 joostvb Exp $
 
 --- install stuff ---
 
-- document this: we have a csp_BUILD too.  If you want to do some syntax check
-  on remote host too (and have a "make check" thing), do
+- Should happen Real Soon Now (early 2008?): Get rid of csp_SUHDIRS and other
+  obsolete variables.  Get rid of SCP and CP RULEs in caspar.mk.
 
-    csp_LOAD = check my-load
+- "install" should depend upon "load".  (should it?) ("make" currently does
+  both "install" and "load"; it does not do "build".  (really!?)).  and/or:
+  caspar should support "make build-recursive".
 
-    my-load:
-      ssh $(csp_scp_UHOST) do load stuff
-
-    check:
-      ssh $(csp_scp_UHOST) do check stuff
-
-  Test wether "make load" won't load if "check" fails (it should).
-  Document how to use csp_BUILD.
-
-- "install" should depend upon "load". ("make" currently does both "install"
-and "load"; it does not do "build").  and/or: caspar should support "make
-build-recursive"
+- csp_BUILD is buggy.  On a fresh checkout, when builded files are not yet
+  there, "make install" skips the yet-to-build files.  csp_EXTRAFILES won't help:
+  "target `sshd_config-install' given more than once in the same rule." shows
+  up once the file _is_ present.  To be fixed by having "install" depend upon
+  "build"?
 
 - caspar chokes on spaces in filenames:
 
@@ -56,9 +51,6 @@ build-recursive"
 
   could work.  If a user's exec wrapper needs more arguments, these can get
   introduced as implicit variables, outside $1, $2, ...
-
-- Should happen Real Soon Now (early 2008?): Get rid of csp_SUHDIRS and other
-  obsolete variable.  Get rid of SCP and CP RULEs in caspar.mk.
 
 - Should happen _before_ the release of Debian lenny (late 2008?): Drop support for
   csp_SUHS, csp_SUH, csp_SCPDIR, csp_CPDIRS:
