@@ -1,4 +1,4 @@
-$Id: TODO,v 1.93 2007-07-29 13:13:42 joostvb Exp $
+$Id: TODO,v 1.94 2007-07-31 09:13:21 joostvb Exp $
 
 
 - GPL v3?
@@ -136,14 +136,25 @@ Or could "mkdir ; cp" be implemented directly as a make function? Use $(shell ..
 
   $@ vs $? might be helpful.
 
-- test wether file is up to date before scp-ing it.  use rsync?  use
-  ControlMaster ssh_config(5) to reuse one ssh conection?  Perhaps this:
+- test wether file is up to date before scp-ing it, in order to prevent us from
+  doing useless (and expensive) installs.  use rsync?  use ControlMaster
+  ssh_config(5) to reuse one ssh conection?  Perhaps this:
 
    ControlMaster auto
    ControlPath ~/.ssh/control/%r@%h:%p
 
   in your ~/.ssh/config (and having an ssh connection open to all relevant
   hosts) fixes all "troubles". (This option is not available on Debian sarge.)
+
+- Ideas insprired by a discussion with Fred Vos: test wether file on server is
+  in sync with (e.g.) SVN before scp-ing it.  this
+  prevents overwrites of "illegal" (but possibly useful) edits on the server.
+  (Lots of users have asked for such a feature.)
+  a "make diff" might be usefull: show the diff of prodcucition with working copy.
+  a "make check" could be usefull: test wether previous svn version is on server
+  before scp-ing.  Perhaps a note on how to use commit-hooks could be added to
+  documentation.  Perhaps a note on ssh forced commands could be added.  Perhaps
+  a note on a "make commit" could be added.
 
 - document this: including an included Makefile:
 
