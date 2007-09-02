@@ -1,7 +1,10 @@
-$Id: TODO,v 1.94 2007-07-31 09:13:21 joostvb Exp $
+$Id: TODO,v 1.95 2007-09-02 18:21:42 joostvb Exp $
 
 
 - GPL v3?
+
+- convert to tla (or svn)?
+
 
 --- typesetting stuff ---
 
@@ -10,6 +13,7 @@ $Id: TODO,v 1.94 2007-07-31 09:13:21 joostvb Exp $
 - license should be printed, see rh vs deb doc.
 
 - add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
+
 
 --- install stuff ---
 
