@@ -68,9 +68,11 @@ SUFFIXES = .5 .8 .html .azm .ps .txt
 ## .html.txt:
 ## 	$(W3M) -dump $< > $@
 
+## -Tlatin1 causes col to choke
+## use -Tuft8 if you really need non-ascii characters
 .5.txt:
-	$(TROFF) -t -e -mandoc -Tlatin1 $< | $(COL) -bxp > $@
+	$(TROFF) -t -e -mandoc -Tascii $< | $(COL) -bxp > $@
 
 .8.txt:
-	$(TROFF) -t -e -mandoc -Tlatin1 $< | $(COL) -bxp > $@
+	$(TROFF) -t -e -mandoc -Tascii $< | $(COL) -bxp > $@
 

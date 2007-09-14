@@ -2,6 +2,23 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-09-14 10:55:53 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-95
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-95
+
+    no longer try to support non-ascii characters in .txt manpages.
+    col, as shipped with bsdutils 1:2.13-2 Debian packages chokes on
+    output of groff, as shipped with 1.18.1.1-12 Debian package.
+    See also Debian bug Bug#441659.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/man/Makefile.am
+
+
 2006-03-11 09:51:42 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-94
 
     Summary:
