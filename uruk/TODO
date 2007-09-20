@@ -1,4 +1,6 @@
-- First prio: Add support for unprotecting an interface:
+- First prio: GPLv3
+
+- Second prio: Add support for unprotecting an interface:
 Tue 10 16:24 < Fruit> hoe zei ik ook alweer at uruk interface foo compleet met 
                       rust moet laten en daarop gewoon alles moet doorlaten?
 Tue 10 16:38 < joostvb> daar is geen echt nette manier voor
@@ -8,8 +10,10 @@ Tue 10 16:40  * joostvb zet dat ff in de manpage erbij
 Tue 10 16:50 < Fruit> je zou een passepartout(sp?) variabele kunnen maken
 Tue 10 16:50 < Fruit> waar by default alleen lo in zit
 Once done, rip workaround example from uruk-rc manpage.
-
-- Second prio: idea from Wessel Dankers:
+interfaces_unprotect=lo
+interfaces_unprotect="lo sit0 eth3"
+.
+related idea from Wessel Dankers:
 > Misschien handig om de regels:
 >
 > #
@@ -25,6 +29,24 @@ Once done, rip workaround example from uruk-rc manpage.
 > ...wat hogerop te plaatsen: deze test is vrij goedkoop en 't is fijn als de
 > pakketjes voor localhost niet al te erg vertraagd worden door de
 > byzantijnse regels voor de andere interfaces.
+
+- /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
+force-reload breaks when these tables are in use.  See comment near initd_flush.
+Fix this, and accept the introduced cruft.   Tnx Wessel.
+
+- Make uruk init-script LSB compliant.
+http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
+Supply arguments like "status" in init script, see
+http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.html
+Use example from /u/s/d/lsb-core/examples/init-skeleton.gz .
+
+- Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
+obsolete syntax
+
+
+----------------- end of candidates for upcoming release ------------------
+----------------- stuff which just might happen one day -------------------
+
 
 - Thu 20 23:13 < fvos> joostvb: ik zou de huidige rc graag gesplitst zien in 
                      meerdere losse bestanden, bijvoorbeeld 'networks', 
@@ -45,10 +67,6 @@ all networktraffic (except for traffic on loopbackinterface).  Only later,
 networkinterfaces are configured, /etc/init.d/uruk is run and networkservices
 are started.  (N.B.: so even with the current setup we _do_ protect our
 services).
-
-- /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
-force-reload breaks when these tables are in use.  See comment near initd_flush.
-Document workaround.  Tnx Wessel.
 
 - In uruk-rc manpage, include example rc-file verbatim.  Include license text.
 
@@ -75,12 +93,6 @@ format.  Use logic from iptables-save.c.
 fully build by doing just one iptables call.  This would allow truly atomical
 loading of new rulesets.
 
-- Make uruk init-script LSB compliant.
-http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
-Supply arguments like "status" in init script, see
-http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.html
-Use example from /u/s/d/lsb-core/examples/init-skeleton.gz .
-
 - Is it sane to allow all traffic in default inactive rule?
 
 - Check save_counters support in init script.  It's likely broken.
@@ -99,8 +111,5 @@ something like "--dest !(ip1 or ip2 or ip3)".)
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
 - Finish IPv6 support.  Change to enabled-by-default.  Document it.
-
-- Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
-obsolete syntax
 
 # this file maintained using arch at http://arch.gna.org/uruk/
