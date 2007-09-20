@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-09-20 21:43:19 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-96
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-96
+
+    added wishlist bug reported by Fred Vos.
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2007-09-14 10:55:53 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-95
 
     Summary:

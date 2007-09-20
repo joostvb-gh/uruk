@@ -1,22 +1,4 @@
-Debian package: S40uruk could better be S41uruk: explicitly start after
-networking (which is S40networking).
-
-We setup firewall rules only _after_ the network interfaces are configured.
-This is dumb: we are vulnerable for bugs in the kernel's IP stack.  One
-solution for this: Create an /etc/init.d/uruk-pre script, which is run as early
-as possible, and _before_ network interfaces are configured.  It should disable
-all networktraffic (except for traffic on loopbackinterface).  Only later,
-networkinterfaces are configured, /etc/init.d/uruk is run and networkservices
-are started.  (N.B.: so even with the current setup we _do_ protect our
-services).
-
-/etc/init.d/uruk flush does not flush nat nor mangle table.  This means
-force-reload breaks when these tables are in use.  See comment near initd_flush.
-Document workaround.  Tnx Wessel.
-
-In uruk-rc manpage, include example rc-file verbatim.  Include license text.
-
-Add support for unprotecting an interface:
+- First prio: Add support for unprotecting an interface:
 Tue 10 16:24 < Fruit> hoe zei ik ook alweer at uruk interface foo compleet met 
                       rust moet laten en daarop gewoon alles moet doorlaten?
 Tue 10 16:38 < joostvb> daar is geen echt nette manier voor
@@ -27,9 +9,7 @@ Tue 10 16:50 < Fruit> je zou een passepartout(sp?) variabele kunnen maken
 Tue 10 16:50 < Fruit> waar by default alleen lo in zit
 Once done, rip workaround example from uruk-rc manpage.
 
-Create "upload" target in /Makefile.am
-
-idea from Wessel Dankers:
+- Second prio: idea from Wessel Dankers:
 > Misschien handig om de regels:
 >
 > #
@@ -46,38 +26,66 @@ idea from Wessel Dankers:
 > pakketjes voor localhost niet al te erg vertraagd worden door de
 > byzantijnse regels voor de andere interfaces.
 
-Improve examples in documentation:
+- Thu 20 23:13 < fvos> joostvb: ik zou de huidige rc graag gesplitst zien in 
+                     meerdere losse bestanden, bijvoorbeeld 'networks', 
+                     'sources' en zo. Daardoor kunnen de entries in die 
+                     bestanden ook eenvoudiger namen hebben en is misschien 
+                     kwaliteitscontrole op missende verwijzingen ook 
+                     eenvoudiger. Misschien maak ik voor mezelf nog wel een 
+                     keer een xml config die ik met een xsl omzet in een 'rc'
+
+- Debian package: S40uruk could better be S41uruk: explicitly start after
+networking (which is S40networking).
+
+- We setup firewall rules only _after_ the network interfaces are configured.
+This is dumb: we are vulnerable for bugs in the kernel's IP stack.  One
+solution for this: Create an /etc/init.d/uruk-pre script, which is run as early
+as possible, and _before_ network interfaces are configured.  It should disable
+all networktraffic (except for traffic on loopbackinterface).  Only later,
+networkinterfaces are configured, /etc/init.d/uruk is run and networkservices
+are started.  (N.B.: so even with the current setup we _do_ protect our
+services).
+
+- /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
+force-reload breaks when these tables are in use.  See comment near initd_flush.
+Document workaround.  Tnx Wessel.
+
+- In uruk-rc manpage, include example rc-file verbatim.  Include license text.
+
+- Create "upload" target in /Makefile.am
+
+- Improve examples in documentation:
 <Fruit> joostvb: ik geloof dat #:# een leuke shorthand is voor #alle poorten#
 
-Fix bugs in uruk script: (force-)reload should do something sane when
+- Fix bugs in uruk script: (force-)reload should do something sane when
 uruk not running.
 
-Check documentation: uruk-rc manpage needs more stuff.
+- Check documentation: uruk-rc manpage needs more stuff.
 
-Perhaps we need an uruk-init manpage, for the init script.
+- Perhaps we need an uruk-init manpage, for the init script.
 
-Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
+- Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
 can use the same rc file format.
 
-Reimplement uruk-save: make it more robust.  See
+- Reimplement uruk-save: make it more robust.  See
 http://www.faqs.org/docs/iptables/iptables-save.html for example of file
 format.  Use logic from iptables-save.c.
 
-Think about alternative for uruk-save: create a chain, and enable it once it's
+- Think about alternative for uruk-save: create a chain, and enable it once it's
 fully build by doing just one iptables call.  This would allow truly atomical
 loading of new rulesets.
 
-Make uruk init-script LSB compliant.
+- Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
 Supply arguments like "status" in init script, see
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.html
 Use example from /u/s/d/lsb-core/examples/init-skeleton.gz .
 
-Is it sane to allow all traffic in default inactive rule?
+- Is it sane to allow all traffic in default inactive rule?
 
-Check save_counters support in init script.  It's likely broken.
+- Check save_counters support in init script.  It's likely broken.
 
-Date: Wed, 9 Feb 2005 15:09:16 +0100
+- Date: Wed, 9 Feb 2005 15:09:16 +0100
 Message-ID: <20050209140916.GZ1487@trogdor.uvt.nl>
 Herken broadcasts (misschien aan destination MAC-adres?) en log ze niet.
 .
@@ -90,9 +98,9 @@ something like "--dest !(ip1 or ip2 or ip3)".)
 .
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
 
-Finish IPv6 support.  Change to enabled-by-default.  Document it.
+- Finish IPv6 support.  Change to enabled-by-default.  Document it.
 
-Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
+- Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
 obsolete syntax
 
 ( GNU Arch peeksheet:
