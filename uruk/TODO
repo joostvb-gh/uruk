@@ -55,6 +55,11 @@ obsolete syntax
                      kwaliteitscontrole op missende verwijzingen ook 
                      eenvoudiger. Misschien maak ik voor mezelf nog wel een 
                      keer een xml config die ik met een xsl omzet in een 'rc'
+Fri 21 05:37 < joostvb> fvos: een syntax-checker zou inderdaad wel handig zijn 
+                        ja
+Fri 21 05:41 < joostvb> fvos: een xsl om xml naar rc te converteren is heel 
+                        welkom. als je die maakt ship ik m met de komende 
+                        release.
 
 - Debian package: S40uruk could better be S41uruk: explicitly start after
 networking (which is S40networking).
