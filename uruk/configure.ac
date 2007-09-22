@@ -2,8 +2,15 @@
 # This file maintained using arch at http://arch.gna.org/uruk/
 # Process this file with autoconf to produce a configure script.
 
-# This script is free software; you can distribute it and/or modify it
-# under the terms of the GNU GPL.  See the file COPYING.
+# This script is free software; you can distribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This script is distributed WITHOUT ANY WARRANTY.
+#
+# You should have received a copy of the GNU GPL along with this script
+# (e.g. in the file COPYING). If not, see <http://www.gnu.org/licenses/>.
 
 # We have to use m4_include here: autoconf doesn't do includes natively
 # we can't use aclocal.m4 / acinclude.m4 (which is added to aclocal.m4 by

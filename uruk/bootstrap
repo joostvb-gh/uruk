@@ -41,6 +41,14 @@ EOT
    fi
 }
 
+
+# Override automake 1.9 default: automake1.9 version 1.9.6+nogfdl-3
+# creates symlink to /usr/share/automake-1.9/COPYING which is GPL v2.
+# We want v3.
+test -f COPYING || {
+    ln -s /usr/share/common-licenses/GPL-3 COPYING
+}
+
 AUTOMAKE=automake-1.9 ACLOCAL=aclocal-1.9 autoreconf --install \
       --symlink --make
 

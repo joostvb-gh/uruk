@@ -2,6 +2,22 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-09-22 04:06:03 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-100
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-100
+
+    Uruk is now licensed under GPLv3 (or any later version).
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/bootstrap uruk/configure.ac
+     uruk/doc/rc uruk/init/uruk.in uruk/man/uruk-rc.azm
+     uruk/man/uruk-save.azm uruk/man/uruk.azm uruk/script/uruk.in
+
+
 2007-09-21 03:43:15 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-99
 
     Summary:

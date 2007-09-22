@@ -11,7 +11,16 @@
 # Copyright (C) 2003, 2004, 2005 Joost van Baal
 #
 # This file is free software; you can redistribute it and/or modify it under
-# the terms of the GNU General Public License.
+# the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option)
+# any later version.
+#
+# This file is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+#
+# You should have received a copy of the GNU GPL along with this file, see
+# e.g. the file named COPYING.  If not, see <http://www.gnu.org/licenses/>.
 
 # Based upon /etc/init.d/iptables as shipped with the Debian iptables
 # package by Laurence J. Lane
