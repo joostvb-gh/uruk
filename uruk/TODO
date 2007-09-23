@@ -1,5 +1,4 @@
-
-For now, you'll have to study the uruk source: nope, uruk(8)
+old interface in uruk(8) "gory details"
 
 - First prio: Add support for unprotecting an interface:
 Tue 10 16:24 < Fruit> hoe zei ik ook alweer at uruk interface foo compleet met 

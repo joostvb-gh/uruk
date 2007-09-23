@@ -145,9 +145,9 @@ from any source address.
 
 \par
 
-For now, you'll have to study the \uruk source to find out which hook (there
-are hooks rc_a, rc_b, ... , rc_i) to use.
-
+See the section "THE GORY DETAILS: uruk INTERNALS" in \sibref{uruk}{uruk(8)}
+(or the \uruk source) to find out which hook (there are hooks rc_a, rc_b, ... ,
+rc_i) to use.
 
 \sec{Network interfaces with multiple IP addresses}{NETWORK INTERFACES WITH MULTIPLE IP ADDRESSES}
 
