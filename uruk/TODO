@@ -1,4 +1,4 @@
-- Second prio: Add support for unprotecting an interface:
+- First prio: Add support for unprotecting an interface:
 Tue 10 16:24 < Fruit> hoe zei ik ook alweer at uruk interface foo compleet met 
                       rust moet laten en daarop gewoon alles moet doorlaten?
 Tue 10 16:38 < joostvb> daar is geen echt nette manier voor
@@ -32,7 +32,7 @@ related idea from Wessel Dankers:
 force-reload breaks when these tables are in use.  See comment near initd_flush.
 Fix this, and accept the introduced cruft.   Tnx Wessel.
 
-- Make uruk init-script LSB compliant.
+- Second prio: Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/initscrcomconv.html
 Supply arguments like "status" in init script, see
 http://refspecs.freestandards.org/LSB_3.0.0/LSB-generic/LSB-generic/iniscrptact.html
@@ -41,6 +41,11 @@ Use example from /u/s/d/lsb-core/examples/init-skeleton.gz .
 - Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
 obsolete syntax
 
+- Thu 20 23:13 < fvos> Misschien maak ik voor mezelf nog wel een 
+                     keer een xml config die ik met een xsl omzet in een 'rc'
+Fri 21 05:41 < joostvb> fvos: een xsl om xml naar rc te converteren is heel 
+                        welkom. als je die maakt ship ik m met de komende 
+                        release.
 
 ----------------- end of candidates for upcoming release ------------------
 ----------------- stuff which just might happen one day -------------------
@@ -51,13 +56,9 @@ obsolete syntax
                      'sources' en zo. Daardoor kunnen de entries in die 
                      bestanden ook eenvoudiger namen hebben en is misschien 
                      kwaliteitscontrole op missende verwijzingen ook 
-                     eenvoudiger. Misschien maak ik voor mezelf nog wel een 
-                     keer een xml config die ik met een xsl omzet in een 'rc'
+                     eenvoudiger.
 Fri 21 05:37 < joostvb> fvos: een syntax-checker zou inderdaad wel handig zijn 
                         ja
-Fri 21 05:41 < joostvb> fvos: een xsl om xml naar rc te converteren is heel 
-                        welkom. als je die maakt ship ik m met de komende 
-                        release.
 
 - Debian package: S40uruk could better be S41uruk: explicitly start after
 networking (which is S40networking).
