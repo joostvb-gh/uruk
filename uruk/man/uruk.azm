@@ -150,6 +150,69 @@ Do
 While executing \ttinitpath force-reload, your box is open during a short
 while.  If you don't like this, read below about \uruk_save.
 
+\sec{the gory details uruk internals}{THE GORY DETAILS: uruk INTERNALS}
+
+The \uruk script works like this:
+
+FIXME: this is the "old" working!
+
+\begin{itemize}{
+    {contiguous}{1}
+    {compact}{1}
+    {type}{arabic}
+}
+  \item \rc is sourced as a shell script
+  \item $rc_a is sourced as a shell script
+  \item ESTABLISHED and RELATED packets are ACCEPT-ed:
+    \verbatim{\
+ $iptables -A INPUT -m state --state ESTABLISHED,RELATED \\
+  -j ACCEPT}
+  \item $rc_b is sourced
+  \item $interfaces gets protected against spoofing: we
+     don't allow anyone to spoof non-routeable addresses.  We block outgoing packets
+     that don't have our address as source: they are either spoofed or something
+     is misconfigured (NAT disabled, for instance). We want to be nice and don't send out garbage.
+    \verbatim{\
+ $iptables -A INPUT -i $iface --source $no_route_ip \\
+  -j DROP}
+     We drop all incoming packets which don't have us as destination:
+    \verbatim{\
+ $iptables -A OUTPUT -o $iface --source ! "$ip" \\
+  -j DROP}
+     And we always allow outgoing connections:
+    \verbatim{\
+ $iptables -A OUTPUT -m state --state NEW -o $iface \\
+  -j ACCEPT}
+  \item $rc_c is sourced
+  \item Allow traffic to offered services, from trusted sources:
+    \verbatim{\
+ $iptables -A INPUT -m state --state NEW \\
+  -i $iface --protocol $proto --source "$source" \\
+  --destination "$ip" --destination-port "$port" \\
+  -j ACCEPT}
+  \item $rc_d is sourced
+  \item Traffic on lo is trusted:
+    \verbatim{\
+ $iptables -A INPUT  -i lo -j ACCEPT}
+  \item $rc_e is sourced
+  \item Don't answer broadcast and multicast packets:
+    \verbatim{\
+ $iptables -A INPUT -i $iface --destination "$bcast" \\
+  -j DROP}
+  \item $rc_f is sourced
+  \item FIXME
+    \verbatim{\
+ $iptables -A INPUT --protocol icmp --icmp-type $type \\
+  -j ACCEPT}
+  \item $rc_g is sourced
+  \item uruk_log
+  \item $rc_h is sourced
+  \item FIXME
+    \verbatim{\
+ $iptables -A INPUT -j REJECT}
+  \item $rc_i is sourced
+\end{itemize}
+
 
 \sec{using uruk-save as the initscript backend}{USING uruk-save AS THE INITSCRIPT BACKEND}
 

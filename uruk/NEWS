@@ -7,34 +7,14 @@ uruk version YYYYMMDD
 - We ACCEPT traffic on lo earlier in the uruk ruleset.
   Uruk <= 20051129 built it's rule like:
 
-. $config
-. "$rc_a"
-$iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-. "$rc_b"
-$iptables -A INPUT -i $iface --source $no_route_ip -j DROP
-$iptables -A OUTPUT -o $iface --source ! "$ip" -j DROP
-$iptables -A OUTPUT -m state --state NEW -o $iface -j ACCEPT
-. "$rc_c"
-$iptables -A INPUT -m state --state NEW -i $iface --protocol $proto \
-                                  --source "$source" --destination "$ip" \
-                                  --destination-port "$port" -j ACCEPT
-. rc_d
-$iptables -A INPUT  -i lo -j ACCEPT
-. rc_e
-$iptables -A INPUT -i $iface --destination "$bcast" -j DROP
-. rc_f
-$iptables -A INPUT --protocol icmp --icmp-type $type -j ACCEPT
-. "$rc_g"
-uruk_log
-rc_h
-$iptables -A INPUT -j REJECT
-rc_i
+FIXME
 
   Uruk >= builds it's rule as:
 
 
 FIXME
 
+see uruk(5)
 
   If you've done tricks with lo in any of the rc_ hook scripts, you
   risk being hit by incompatibilities.  Study the uruk source to find out
