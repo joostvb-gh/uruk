@@ -2,6 +2,23 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version YYYYMMDD
+
+- Uruk is now licensed under GPLv3 (or any later version).
+- man/Makefile.am: no longer try to support non-ascii characters in .txt
+  manpages.  col, as shipped with the bsdutils 1:2.13-2 Debian package
+  chokes on output of groff, as shipped with the 1.18.1.1-12 Debian
+  package.  See also Debian bug Bug#441659.
+- TODO: added some more received wishlist bugs (thanks Wessel Dankers and Fred
+  Vos)
+- Minor fixes in uruk(8) manpage.
+- uruk-rc(5): documented improved way to unprotect an interface, thanks Wessel
+  Dankers
+- TODO, init/uruk.in: found and documented bug: /etc/init.d/uruk force-reload
+  breaks when nat or mangle table are used.  Thanks Wessel Dankers for
+  spotting this.
+
+
 uruk version 20051129
 
 - On Red Hat, run start uruk initscript _after_ network interfaces are
@@ -11,6 +28,7 @@ uruk version 20051129
   such usage was not possible.  See TODO for notes on pending issues related
   to this.
 - Build-depend upon zoem >= 05-328.
+
 
 uruk version 20051027
 
