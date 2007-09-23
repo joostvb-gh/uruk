@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-09-23 10:51:09 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-103
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-103
+
+    started documenting the rescheduling of handling lo traffic
+    
+
+    modified files:
+     uruk/ChangeLog uruk/NEWS
+
+
 2007-09-23 10:41:11 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-102
 
     Summary:
