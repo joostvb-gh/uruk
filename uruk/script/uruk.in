@@ -4,7 +4,7 @@
 
 # Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
 # Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
-# Copyright (C) 2003, 2004 Joost van Baal
+# Copyright (C) 2003, 2004, 2007 Joost van Baal
 #
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -79,6 +79,16 @@ uruk_log () {
 
 # 40 < 60 (         50) medium:  log denied non-broadcasts  (default)
 test -z "$loglevel" && loglevel=50
+
+#
+# traffic on lo is trusted
+#
+
+$iptables -A INPUT  -i lo -j ACCEPT
+$iptables -A OUTPUT -o lo -j ACCEPT
+
+$ip6tables -A INPUT -i lo -j ACCEPT
+$ip6tables -A OUTPUT -o lo -j ACCEPT
 
 test -r "$rc_a" && . "$rc_a"
 
@@ -235,15 +245,8 @@ done
 test -r "$rc_d" && . "$rc_d"
 
 #
-# traffic on lo is trusted
+# rc_e: backwards compatibility.  should be removed one day.
 #
-
-$iptables -A INPUT  -i lo -j ACCEPT
-$iptables -A OUTPUT -o lo -j ACCEPT
-
-$ip6tables -A INPUT -i lo -j ACCEPT
-$ip6tables -A OUTPUT -o lo -j ACCEPT
-
 test -r "$rc_e" && . "$rc_e"
 
 #
