@@ -1,4 +1,4 @@
-old interface in uruk(8) "gory details"
+- Fix $version in doc/rc
 
 - First prio: Add support for unprotecting an interface:
 Tue 10 16:24 < Fruit> hoe zei ik ook alweer at uruk interface foo compleet met 
@@ -12,23 +12,6 @@ Tue 10 16:50 < Fruit> waar by default alleen lo in zit
 Once done, rip workaround example from uruk-rc manpage.
 interfaces_unprotect=lo
 interfaces_unprotect="lo sit0 eth3"
-.
-related idea from Wessel Dankers:
-> Misschien handig om de regels:
->
-> #
-> # traffic on lo is trusted
-> #
->
-> $iptables -A INPUT  -i lo -j ACCEPT
-> $iptables -A OUTPUT -o lo -j ACCEPT
->
-> $ip6tables -A INPUT -i lo -j ACCEPT
-> $ip6tables -A OUTPUT -o lo -j ACCEPT
->
-> ...wat hogerop te plaatsen: deze test is vrij goedkoop en 't is fijn als de
-> pakketjes voor localhost niet al te erg vertraagd worden door de
-> byzantijnse regels voor de andere interfaces.
 
 - /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
 force-reload breaks when these tables are in use.  See comment near initd_flush.
@@ -61,6 +44,8 @@ Fri 21 05:41 < joostvb> fvos: een xsl om xml naar rc te converteren is heel
                      eenvoudiger.
 Fri 21 05:37 < joostvb> fvos: een syntax-checker zou inderdaad wel handig zijn 
                         ja
+
+- Phase out support for rc_e
 
 - Debian package: S40uruk could better be S41uruk: explicitly start after
 networking (which is S40networking).

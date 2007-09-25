@@ -163,6 +163,9 @@ FIXME: this is the "old" working!
     {type}{arabic}
 }
   \item \rc is sourced as a shell script
+  \item Traffic on lo is trusted:
+    \verbatim{\
+ $iptables -A INPUT  -i lo -j ACCEPT}
   \item $rc_a is sourced as a shell script
   \item ESTABLISHED and RELATED packets are ACCEPT-ed:
     \verbatim{\
@@ -193,10 +196,6 @@ FIXME: this is the "old" working!
   --destination "$ip" --destination-port "$port" \\
   -j ACCEPT}
   \item $rc_d is sourced
-  \item Traffic on lo is trusted:
-    \verbatim{\
- $iptables -A INPUT  -i lo -j ACCEPT}
-  \item $rc_e is sourced
   \item Don't answer broadcast and multicast packets:
     \verbatim{\
  $iptables -A INPUT -i $iface --destination "$bcast" \\
