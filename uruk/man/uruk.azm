@@ -155,17 +155,16 @@ while.  If you don't like this, read below about \uruk_save.
 The \uruk script works like (and looks like) the list of statements below.  Of
 course, take a look at \tt{\sbinpath/uruk} for the final word on the workings.
 
-FIXME: this is the "old" working!
-
 \begin{itemize}{
     {contiguous}{1}
     {compact}{1}
     {type}{arabic}
 }
   \item \rc is sourced as a shell script
-  \item Traffic on lo is trusted:
+  \item Traffic on $interfaces_unprotect (just lo per default)
+ is trusted:
     \verbatim{\
- $iptables -A INPUT  -i lo -j ACCEPT}
+ $iptables -A INPUT  -i $iface -j ACCEPT}
   \item $rc_a is sourced as a shell script
   \item ESTABLISHED and RELATED packets are ACCEPT-ed:
     \verbatim{\
@@ -259,7 +258,8 @@ the local host can act as a client for any remote service.
 
 \par
 
-By default, \uruk drops all ICMP packets with type other than
+By default, \uruk drops all ICMP packets (except those for interfaces in
+$interfaces_unprotect) with type other than
 
 \begin{itemize}{
     {contiguous}{1}
@@ -322,10 +322,10 @@ You can override some defaults in the shell before executing the uruk script.
  \tt{/sbin/iptables} by default.  Overrides \it{iptables}.
 \item "URUK_IP6TABLES" Full pathname of ip6tables executable, for experimental
  IPv6 support.  Overrides \it{ip6tables}.
+\item "URUK_INTERFACES_UNPROTECT" Default list of unprotected interfaces.
+ Overrides \it{interfaces_unprotect}.  The default default is \v{lo}.
 
 \end{itemize}
-
-
 
 \sec{see also}{SEE ALSO}
 

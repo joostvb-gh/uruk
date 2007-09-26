@@ -127,21 +127,10 @@ you're safe.  Using the init-script with it's default settings is safe too.
 In \rc there is:
 
 \verbatim{\
- rc_a=${etcdir}/allow}
+ interfaces_unprotect="lo eth2"}
 
-while the file \tt{allow} reads
-
-\verbatim{\
-  $iptables -A INPUT -i eth2 -j ACCEPT
-  $iptables -A OUTPUT -i eth2 -j ACCEPT}
-
-and while \rc features
-
-\verbatim{\
-  interfaces="eth0 eth1"}
-
-.  This allows any traffic on \tt{eth2}, including any ICMP packets and packets
-from any source address.
+This allows any traffic on \tt{eth2} (and on \tt{lo}, the default), including
+any ICMP packets and packets from any source address.
 
 \par
 
@@ -313,25 +302,9 @@ example \rc file in \ttexpath for more details.
 
 \par
 
-See \sibref{uruk}{uruk(8)} for notes on environment variables.
-
-
 \sec{environment variables}{ENVIRONMENT VARIABLES}
 
-You can override some defaults in the shell before executing the uruk script.
-The following variables are honored:
-
-\begin{itemize}{
-    {contiguous}{1}
-    {compact}{1}
-    {type}{mark}
-}
-
-\item "URUK_CONFIG" Full pathname of \rc file
-\item "URUK_IPTABLES" Full pathname of iptables executable.  Overrides \it{iptables}.
-\item "URUK_IP6TABLES" Full pathname of ip6tables executable.  Overrides \it{ip6tables}.
-
-\end{itemize}
+See \sibref{uruk}{uruk(8)} for a list of honored environment variables.
 
 \sec{files}{FILES}
 
