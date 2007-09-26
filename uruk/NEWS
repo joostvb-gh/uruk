@@ -4,6 +4,8 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version YYYYMMDD
 
+- Introduced new variables interfaces_unprotect and URUK_INTERFACES_UNPROTECT.
+
 - We ACCEPT traffic on lo earlier in the uruk ruleset: that's more efficient.
   Traffic on lo will no longer be delayed by our ruleset.
 

@@ -24,10 +24,15 @@ version=20051026
 # blocked broadcasts.
 loglevel=30
 
-# List of network interfaces.  lo should not be in this list. For every
-# interface <if>, variables ip_<if>, bcast_<if> and net_<if> should be
+# List of network interfaces.  lo should not be in this list (see below). For
+# every interface <if>, variables ip_<if>, bcast_<if> and net_<if> should be
 # defined.
 interfaces="eth0 eth1"
+
+# List of network interfaces we want uruk to leave alone: all traffic on these
+# interfaces will be trusted and accepted.  By default, interfaces_unprotect=lo
+#
+interfaces_unprotect="lo sit0 eth3"
 
 # For each interface <if> in interfaces, ip_<if> and net_<if> should be
 # defined

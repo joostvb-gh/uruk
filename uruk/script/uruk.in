@@ -45,6 +45,7 @@ ip6tables=${URUK_IP6TABLES:-":"}
 #
 # New variables used: ip6_<...>, sources6_<...>, ip6tables.
 
+interfaces_unprotect=${URUK_INTERFACES_UNPROTECT:-lo}
 
 etcdir="@SYSCONF_PATH@/@PACKAGE_TARNAME@"
 
@@ -82,13 +83,15 @@ test -z "$loglevel" && loglevel=50
 
 #
 # traffic on lo is trusted
-#
+# lo
+for iface in ${interfaces_unprotect}
+do
+    $iptables -A INPUT  -i $iface -j ACCEPT
+    $iptables -A OUTPUT -o $iface -j ACCEPT
 
-$iptables -A INPUT  -i lo -j ACCEPT
-$iptables -A OUTPUT -o lo -j ACCEPT
-
-$ip6tables -A INPUT -i lo -j ACCEPT
-$ip6tables -A OUTPUT -o lo -j ACCEPT
+    $ip6tables -A INPUT -i $iface -j ACCEPT
+    $ip6tables -A OUTPUT -o $iface -j ACCEPT
+done
 
 test -r "$rc_a" && . "$rc_a"
 

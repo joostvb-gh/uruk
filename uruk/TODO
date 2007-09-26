@@ -1,6 +1,6 @@
 - Fix $version in doc/rc
 
-- First prio: Add support for unprotecting an interface:
+- First prio: Document support for unprotecting an interface:
 Tue 10 16:24 < Fruit> hoe zei ik ook alweer at uruk interface foo compleet met 
                       rust moet laten en daarop gewoon alles moet doorlaten?
 Tue 10 16:38 < joostvb> daar is geen echt nette manier voor
@@ -9,9 +9,7 @@ Tue 10 16:39 < joostvb> in $rc_a kun je zeggen dat je alles op zo'n interface
 Tue 10 16:40  * joostvb zet dat ff in de manpage erbij
 Tue 10 16:50 < Fruit> je zou een passepartout(sp?) variabele kunnen maken
 Tue 10 16:50 < Fruit> waar by default alleen lo in zit
-Once done, rip workaround example from uruk-rc manpage.
-interfaces_unprotect=lo
-interfaces_unprotect="lo sit0 eth3"
+rip workaround example from uruk-rc manpage.
 
 - /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
 force-reload breaks when these tables are in use.  See comment near initd_flush.
