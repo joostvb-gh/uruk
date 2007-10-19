@@ -9,7 +9,7 @@ Fix this, and accept the introduced cruft.   Tnx Wessel.
 - Second prio: Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/initscrcomconv.html
 
-Supply arguments like "status" in init script, see
+Finish support for Supply arguments like "status" in init script, see
 http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/iniscrptact.html
 
 If the status action is requested, the init script will return the following exit status codes.
@@ -19,10 +19,6 @@ If the status action is requested, the init script will return the following exi
 2       program is dead and /var/lock lock file exists
 3       program is not running
 4       program or service status is unknown
-5-99    reserved for future LSB use
-100-149 reserved for distribution use
-150-199 reserved for application use
-200-254 reserved
 
 Error and status messages should be printed with the logging functions (see
 Init Script Functions) log_success_msg(), log_failure_msg() and
