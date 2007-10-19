@@ -111,7 +111,7 @@ initd_have_a_cow_man () {
   for i in $@; do
     if ! command -v "$i" >/dev/null 2>&1; then
       initd_abort initd "no $i executable"
-      exit 0
+      exit 5
     fi
   done
 }
@@ -153,6 +153,7 @@ initd_load () {
     if ! test "${ruleset#${libdir}/}" = active -o inactive; then
       usage
     fi
+    # FIXME : is this LSB-compliant?
     exit 0
   fi
   if test "${ruleset#${libdir}/}" = inactive; then
@@ -162,6 +163,7 @@ initd_load () {
   ruleset="$libdir/$@"
   echo -n "Loading ${iptables_command} ruleset: load \"$@\""
   $iptables_restore < "$ruleset"
+  STATUS=$?
   echo "."
 }
 
@@ -199,10 +201,12 @@ initd_active_uruk_save () {
   if test $iptables_command = ip6tables; then
     echo -n "Saving IPv6 uruk rules as active ruleset"
     uruk-save -6 > "${libdir}/active"
+    STATUS=$?
     echo "."
   else
     echo -n "Saving IPv4 uruk rules as active ruleset"
     uruk-save > "${libdir}/active"
+    STATUS=$?
     echo "."
   fi
   initd_load active
@@ -217,11 +221,13 @@ initd_active () {
       echo -n "Loading IPv6 uruk rules"
       # skip all iptables commands in uruk
       URUK_IPTABLES=':' uruk
+      STATUS=$?
       echo "."
     else
       echo -n "Loading IPv4 uruk rules"
       # skip all ip6tables commands in uruk
       URUK_IP6TABLES=':' uruk
+      STATUS=$?
       echo "."
     fi
     initd_save active
@@ -293,17 +299,17 @@ initd_main () {
     start)
       initd_start
       if test "$STATUS" = 0; then
-        log_success_msg "Starting uruk"
+        log_success_msg "Starting uruk ($iptables_command)"
       else
-        log_failure_msg "Starting uruk"
+        log_failure_msg "Starting uruk ($iptables_command)"
       fi
       ;;
     stop)
       initd_stop
       if test "$STATUS" = 0; then
-        log_success_msg "Shutting down uruk"
+        log_success_msg "Shutting down uruk ($iptables_command)"
       else
-        log_failure_msg "Shutting down uruk"
+        log_failure_msg "Shutting down uruk ($iptables_command)"
       fi
       ;;
     restart)
@@ -315,17 +321,24 @@ initd_main () {
       # FIXME does not behave sane when uruk not running!
       initd_active
       if test "$STATUS" = 0; then
-        log_success_msg "Reloading uruk"
+        log_success_msg "Reloading uruk ($iptables_command)"
       else
-        log_failure_msg "Reloading uruk"
+        log_failure_msg "Reloading uruk ($iptables_command)"
       fi
       ;;
     status)
-      # FIXME do something
+      # FIXME do something like
+      #  iptables-save -c | sed '/^:/s@\[[0-9]\{1,\}:[0-9]\{1,\}\]@[0:0]@g' | \
+      #   diff -u - /var/lib/uruk/iptables/active
+      # or, houtjes-touwtjes:
+      #  iptables-save | grep -c INPUT
+      #  grep -c INPUT /var/lib/uruk/iptables/active
+      #  grep -c OUTPUT /var/lib/uruk/iptables/active
+
       if test "$STATUS" = 0; then
-        log_success_msg "Checking uruk"
+        log_success_msg "Checking uruk ($iptables_command)"
       else
-        log_warning_msg "Checking uruk: No active uruk rules loaded"
+        log_warning_msg "Checking uruk: No active $iptables_command uruk rules loaded"
       fi
       ;;
     # end of LSB required init arguments
@@ -429,12 +442,12 @@ check_uruk() {
   # check for existence of uruk rc file.
   if ! test -r $uruk_config; then
     echo "No file $uruk_config present."
-    exit 1
+    exit 6
   fi
   # check for sanity of uruk rc file.
   if grep -q URUK_IS_UNCONFIGURED $uruk_config; then
     echo "Uruk is unconfigured.  Please create a sane file $uruk_config.  See uruk(8)."
-    exit 0
+    exit 6
   fi
 }
 
