@@ -1,14 +1,26 @@
 #!/bin/sh
 #
 # Uruk init script.
-#
+
 # chkconfig: 2345 11 89
 # description: starts, stops and saves iptables state, as created by uruk
 # beware! above two lines are parsed by chkconfig(8), as commonly found on RPM
 # based systems
 
+# for LSB's install_initd and remove_initd, see
+# http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/initscrcomconv.html
+### BEGIN INIT INFO
+# Provides:          uruk
+# Required-Start:    $network
+# Required-Stop:     $network
+# Default-Start:     2 3 5
+# Default-Stop:      0 6
+# Description: Starts uruk firewall configuration
+# short-description: uruk firewall configuration
+### END INIT INFO
+
 # Copyright (C) 2002, 2003 Laurence J. Lane
-# Copyright (C) 2003, 2004, 2005 Joost van Baal
+# Copyright (C) 2003, 2004, 2005, 2007 Joost van Baal
 #
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -51,6 +63,9 @@ enable_save_counters=true
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
+# exit code
+STATUS=0
+
 # @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ can overrule
 # enable_uruk_check, enable_ipv6, enable_autosave, enable_save_counters and PATH
 # On Debian systems, configuration for init scripts is in /etc/default/
@@ -58,7 +73,6 @@ test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PA
 # On Red Hat systems, configuration for init scripts is in /etc/sysconfig/
 test -f @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@
 
-#
 #                        /lib/lsb/init-functions
 # Red Hat EL AS rel 2.1        No
 # Red Hat EL AS rel 3          Yes
@@ -68,6 +82,21 @@ test -f @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/sysconfig
 # See /usr/share/doc/lsb-core/examples/init-skeleton.gz for sample lsb init
 # script.  If we wanna be compliant with Red Hat EL AS rel 2.1, we'd need to
 # implement our own log_success_msg, log_failure_msg and log_warning_msg.
+#
+# include lsb functions
+lsb_init_functions=/lib/lsb/init-functions
+if test -f $lsb_init_functions; then
+  . $lsb_init_functions
+else
+  cat << END
+The file $lsb_init_functions is missing from your system.  If you'd like to run
+Uruk on a system not conforming to the Linux Standard Base, you're on your own.
+Perhaps you can find a file $lsb_init_functions somewhere, or perhaps you could
+use uruk without using this init script.
+END
+  exit 1
+fi
+
 
 initd="$0"
 
@@ -197,6 +226,7 @@ initd_active () {
     fi
     initd_save active
   fi
+# FIXME: should set STATUS
 }
 
 initd_start () {
@@ -207,6 +237,7 @@ initd_start () {
   if test ${enable_autosave-false} = true; then
     touch $autosave
   fi
+# FIXME: should set STATUS
 }
 
 initd_stop () {
@@ -242,6 +273,8 @@ $initd options:
      Load the "inactive" ruleset.
   restart
      Perform stop-actions followed by start-actions.
+  status
+     FIXME
   clear
      Remove all rules and user-defined chains, set default policy to ACCEPT.
   halt
@@ -259,18 +292,43 @@ initd_main () {
   case "$1" in
     start)
       initd_start
+      if test "$STATUS" = 0; then
+        log_success_msg "Starting uruk"
+      else
+        log_failure_msg "Starting uruk"
+      fi
       ;;
     stop)
       initd_stop
+      if test "$STATUS" = 0; then
+        log_success_msg "Shutting down uruk"
+      else
+        log_failure_msg "Shutting down uruk"
+      fi
+      ;;
+    restart)
+      # Restart service (if running) or start service
+      $initd stop
+      $initd start
       ;;
     force-reload)
       # FIXME does not behave sane when uruk not running!
       initd_active
+      if test "$STATUS" = 0; then
+        log_success_msg "Reloading uruk"
+      else
+        log_failure_msg "Reloading uruk"
+      fi
       ;;
-    restart)
-      initd_stop
-      initd_start
+    status)
+      # FIXME do something
+      if test "$STATUS" = 0; then
+        log_success_msg "Checking uruk"
+      else
+        log_warning_msg "Checking uruk: No active uruk rules loaded"
+      fi
       ;;
+    # end of LSB required init arguments
     reload)
       if test $enable_uruk_save = true; then
         # FIXME does not behave sane when uruk not running!
@@ -401,5 +459,5 @@ if test $enable_ipv6 = true; then
   iptables_command=ip6tables initd_preload $*
 fi
 
-exit 0
+exit $STATUS
 

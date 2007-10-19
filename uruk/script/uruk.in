@@ -82,8 +82,7 @@ uruk_log () {
 test -z "$loglevel" && loglevel=50
 
 #
-# traffic on lo is trusted
-# lo
+# traffic on interfaces_unprotect (lo, per default) is trusted
 for iface in ${interfaces_unprotect}
 do
     $iptables -A INPUT  -i $iface -j ACCEPT
