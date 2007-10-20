@@ -213,7 +213,7 @@ initd_active_uruk_save () {
   fi
   initd_load active
   dummy=$?
-  test STATUS = 0 && STATUS=$dummy
+  test "$STATUS" = 0 && STATUS=$dummy
 }
 
 initd_active () {
@@ -236,7 +236,7 @@ initd_active () {
     fi
     initd_save active
     dummy=$?
-    test STATUS = 0 && STATUS=$dummy
+    test "$STATUS" = 0 && STATUS=$dummy
   fi
 }
 
@@ -333,7 +333,8 @@ initd_main () {
       ;;
     status)
       tmpdir=`mktemp -d /tmp/uruk.$iptables_command.XXXXXXXXXX`
-      $iptables_save | grep '^-' > $tmpdir/kernel
+      $iptables_save | grep '^-' >$tmpdir/kernel
+      # FIXME: script seems to exit here in case no rules are loaded.
       for rule in active inactive; do
         sed -n 's/^\[[0-9]\{1,\}:[0-9]\{1,\}\] //p' $libdir/$rule \
             >$tmpdir/ruleset

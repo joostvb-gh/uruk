@@ -1,3 +1,5 @@
+- Fix bug: /etc/init.d/uruk stop ; /etc/init.d/uruk status  fails.
+
 - Fix $version in doc/rc
 
 - Ship xml stuff by Fred Vos
