@@ -34,6 +34,20 @@ force-reload   cause the configuration to be reloaded if the service supports
         this, otherwise restart the service if it is running
 status  print the current status of the service
 
+
+In case of an error while processing any init-script action except for status,
+the init script shall print an error message and exit with a non-zero status
+code:
+
+1       generic or unspecified error (current practice)
+2       invalid or excess argument(s)
+3       unimplemented feature (for example, "reload")
+4       user had insufficient privilege
+5       program is not installed
+6       program is not configured
+7       program is not running
+
+
 Use example from /u/s/d/lsb-core/examples/init-skeleton.gz .
 
 check firehol, shorewall, ferm (see nagy:/usr/local/src/debian/)

@@ -100,17 +100,17 @@ fi
 
 initd="$0"
 
-initd_abort () {
+initd_abort_wrong_arg () {
   cmd=$1
   shift
-  echo "Aborting iptables $cmd: $@."
-  exit 0
+  log_failure_msg "Aborting uruk $cmd: wrong argument: $@"
+  exit 2
 }
 
 initd_have_a_cow_man () {
   for i in $@; do
     if ! command -v "$i" >/dev/null 2>&1; then
-      initd_abort initd "no $i executable"
+      log_failure_msg "Aborting uruk initd: missing executable $i"
       exit 5
     fi
   done
@@ -149,7 +149,7 @@ initd_load () {
   ruleset="$libdir/$@"
   if ! test -f "$ruleset"; then
     echo "Can't load ruleset \"$@\": file $ruleset is not present"
-    initd_abort load "unknown ruleset \"$@\""
+    initd_abort_wrong_arg load "unknown ruleset \"$@\""
     if ! test "${ruleset#${libdir}/}" = active -o inactive; then
       usage
     fi
@@ -185,6 +185,7 @@ initd_save () {
   echo -n "Saving ${iptables_command} ruleset: save \"$@\""
   initd_counters
   echo "."
+# FIXME: should set STATUS
 }
 
 initd_autosave () {
@@ -210,6 +211,7 @@ initd_active_uruk_save () {
     echo "."
   fi
   initd_load active
+# FIXME: should set STATUS
 }
 
 initd_active () {
@@ -243,7 +245,6 @@ initd_start () {
   if test ${enable_autosave-false} = true; then
     touch $autosave
   fi
-# FIXME: should set STATUS
 }
 
 initd_stop () {
@@ -254,6 +255,7 @@ initd_stop () {
     rm $ruleset
   else
     echo "Uruk not running (no inactive file found)"
+    # FIXME: set STATUS here?
   fi
 }
 
@@ -367,7 +369,7 @@ END
     save)
       shift
       if test -z "$*"; then
-        initd_abort save "no ruleset name given"
+        initd_abort_wrong_arg save "no ruleset name given"
       else
         initd_save "$*"
       fi
@@ -408,18 +410,14 @@ END
     load)
       shift
       if test -z "$*"; then
-        initd_abort load "no ruleset name given"
+        initd_abort_wrong_arg load "no ruleset name given"
       else
         initd_load "$*"
       fi
       ;;
     *)
-      if test "$iptables_command" = "iptables"; then
-        if test -n "$*"; then
-          echo "Unknown command: \"$*\""
-        fi
-        usage
-      fi
+      usage
+      initd_abort_wrong_arg "$*"
       ;;
   esac
 }
