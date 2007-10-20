@@ -181,7 +181,7 @@ initd_counters () {
 
 initd_save () {
   rm -f $autosave
-  ruleset="${libdir}/$@"
+  ruleset="$libdir/$@"
   echo -n "Saving ${iptables_command} ruleset: save \"$@\""
   initd_counters
   echo "."
@@ -190,7 +190,7 @@ initd_save () {
 
 initd_autosave () {
   if test -f $autosave -a ${enable_autosave-false} = true; then
-    ruleset="${libdir}/active"
+    ruleset="$libdir/active"
     echo -n "Autosaving ${iptables_command} ruleset: save \"active\""
     initd_counters
     echo "."
@@ -201,12 +201,12 @@ initd_active_uruk_save () {
   warn_uruk_save
   if test $iptables_command = ip6tables; then
     echo -n "Saving IPv6 uruk rules as active ruleset"
-    uruk-save -6 > "${libdir}/active"
+    uruk-save -6 > "$libdir/active"
     STATUS=$?
     echo "."
   else
     echo -n "Saving IPv4 uruk rules as active ruleset"
-    uruk-save > "${libdir}/active"
+    uruk-save > "$libdir/active"
     STATUS=$?
     echo "."
   fi
@@ -238,7 +238,7 @@ initd_active () {
 }
 
 initd_start () {
-  if ! test -s "${libdir}/inactive"; then
+  if ! test -s "$libdir/inactive"; then
     initd_save inactive
   fi
   initd_active
@@ -249,7 +249,7 @@ initd_start () {
 
 initd_stop () {
   # act sane if inactive state file missing
-  ruleset="${libdir}/inactive"
+  ruleset="$libdir/inactive"
   if test -s $ruleset; then
     initd_load inactive
     rm $ruleset
@@ -329,24 +329,25 @@ initd_main () {
       fi
       ;;
     status)
-      # FIXME do something like
-      #  iptables-save -c | sed '/^:/s@\[[0-9]\{1,\}:[0-9]\{1,\}\]@[0:0]@g' | \
-      #   diff -u - /var/lib/uruk/iptables/active
-      # or, houtjes-touwtjes:
-      #  iptables-save | grep -c INPUT
-      #  grep -c INPUT /var/lib/uruk/iptables/active
-      #  grep -c OUTPUT /var/lib/uruk/iptables/active
-
-#  compare
-# sed 's/^\[[0-9]\{1,\}:[0-9]\{1,\}\] //' /var/lib/uruk/iptables/active
-#  with
-# iptables-save
+      tmpdir=`mktemp -d /tmp/uruk.$iptables_command.XXXXXXXXXX`
+      $iptables_save | grep '^-' > $tmpdir/kernel
+      for rule in active inactive; do
+        sed -n 's/^\[[0-9]\{1,\}:[0-9]\{1,\}\] //p' $libdir/$rule \
+            >$tmpdir/ruleset
+        if diff $tmpdir/ruleset $tmpdir/kernel >/dev/null; then
+          STATUS=$rule
+        fi
+      done
+      rm -r $tmpdir
 
       if test "$STATUS" = 0; then
-        log_success_msg "Checking uruk ($iptables_command): active $iptables_command uruk rules loaded"
+        log_warning_msg "Checking uruk ($iptables_command): No active or inactive uruk rules loaded"
       else
-        log_warning_msg "Checking uruk: No active $iptables_command uruk rules loaded"
+        log_success_msg "Checking uruk ($iptables_command): $STATUS uruk rules loaded"
       fi
+
+      # FIXME tweak STATUS
+
       ;;
     # end of LSB required init arguments
     reload)
@@ -387,11 +388,11 @@ END
             warn_uruk_save
             if test $iptables_command = ip6tables; then
               echo -n "Saving IPv6 uruk rules as active ruleset"
-              uruk-save -6 > "${libdir}/active"
+              uruk-save -6 > "$libdir/active"
               echo "."
             else
               echo -n "Saving IPv4 uruk rules as active ruleset"
-              uruk-save > "${libdir}/active"
+              uruk-save > "$libdir/active"
               echo "."
             fi
           else
