@@ -30,44 +30,44 @@ uruk version YYYYMMDD
 
   see uruk(5)
 
-  If you've done tricks with lo in any of the rc_ hook scripts, you
-  risk being hit by incompatibilities.  Study the uruk source to find out
-  how to fix your hook.  If you're not using any hook scripts, you are
-  save: your uruk configuration will still work fine.   If you're using hook
-  scripts, but don't do anything specific with lo in your scripts, you are
-  likely save: your configuration will likely still work.
+  If you've done tricks with lo in any of the rc_ hook scripts, you risk being
+  hit by incompatibilities.  Study the uruk source to find out how to fix your
+  hook.  If you're not using any hook scripts, you are save: your uruk
+  configuration will still work fine.   If you're using hook scripts, but don't
+  do anything specific with lo in your scripts, you are likely save: your
+  configuration will likely still work.
 
-  If you were using rc_a to add rules to the absolute beginning of the
-  ruleset, you might have to move these to the rc-file: traffic on lo is now
-  accepted _before_ rc_a is sourced.
+  If you were using rc_a to add rules to the absolute beginning of the ruleset,
+  you might have to move these to the rc-file: traffic on lo is now accepted
+  _before_ rc_a is sourced.
 
   If you rely on traffic on lo to be logged, and your loglevel was "fascist",
-  you should craft some hack: this traffic will no longer be logged by
-  default with this loglevel.
+  you should craft some hack: this traffic will no longer be logged by default
+  with this loglevel.
 
-  rc_e is now obsolete.  You should move your rc_e stuff to rc_d.  (rc_e
-  for now will still work, though.)
+  rc_e is now obsolete.  You should move your rc_e stuff to rc_d.  (rc_e for
+  now will still work, though.)
 
-- The uruk init script now is Linux Standards Base v 3.1.0 compliant.  Added
-  extra supported argument "status".  The script now _requires_ the file
-  /lib/lsb/init-functions to be present, and to define the shell functions
-  log_success_msg, log_failure_msg and log_warning_msg.  LSB compliant systems
-  (recent releases of Debian GNU/Linux, Red Hat Enterprise Linux, Ubuntu Linux,
-  a.o.) supply this.
+- The uruk init script now is (should be) Linux Standards Base v 3.1.0
+  compliant.  Added extra supported argument "status".  The script now
+  _requires_ the file /lib/lsb/init-functions to be present, and to define the
+  shell functions log_success_msg, log_failure_msg and log_warning_msg.  LSB
+  compliant systems (recent releases of Debian GNU/Linux, Red Hat Enterprise
+  Linux, Ubuntu Linux, a.o.) supply this.
 - Introduced new variables interfaces_unprotect and URUK_INTERFACES_UNPROTECT.
 - Uruk is now licensed under GPLv3 (or any later version).
 - man/Makefile.am: no longer try to support non-ascii characters in .txt
-  manpages.  col, as shipped with the bsdutils 1:2.13-2 Debian package
-  chokes on output of groff, as shipped with the 1.18.1.1-12 Debian
-  package.  See also Debian bug Bug#441659.
+  manpages.  col, as shipped with the bsdutils 1:2.13-2 Debian package chokes
+  on output of groff, as shipped with the 1.18.1.1-12 Debian package.  See also
+  Debian bug Bug#441659.
 - TODO: added some more received wishlist bugs (thanks Wessel Dankers and Fred
   Vos)
 - Minor fixes in uruk(8) manpage.
 - uruk-rc(5): documented improved way to unprotect an interface, thanks Wessel
   Dankers.
 - TODO, init/uruk.in: found and documented bug: /etc/init.d/uruk force-reload
-  breaks when nat or mangle table are used.  Thanks Wessel Dankers for
-  spotting this.
+  breaks when nat or mangle table are used.  Thanks Wessel Dankers for spotting
+  this.
 
 
 uruk version 20051129
