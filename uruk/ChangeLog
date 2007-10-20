@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-10-20 15:06:11 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-117
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-117
+
+    exit with LSB-compliant status code in case "status" was requested
+
+    modified files:
+     uruk/ChangeLog uruk/init/uruk.in
+
+
 2007-10-20 09:20:08 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-116
 
     Summary:

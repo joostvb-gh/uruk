@@ -174,8 +174,10 @@ initd_counters () {
   if test "${enable_save_counters:-false}" = true; then
     echo -n " with counters"
     $iptables_save -c > "$ruleset"
+    STATUS=$?
   else
     $iptables_save | sed '/^:/s@\[[0-9]\{1,\}:[0-9]\{1,\}\]@[0:0]@g' > "$ruleset"
+    STATUS=$?
   fi
 }
 
@@ -185,7 +187,6 @@ initd_save () {
   echo -n "Saving ${iptables_command} ruleset: save \"$@\""
   initd_counters
   echo "."
-# FIXME: should set STATUS
 }
 
 initd_autosave () {
@@ -211,7 +212,8 @@ initd_active_uruk_save () {
     echo "."
   fi
   initd_load active
-# FIXME: should set STATUS
+  dummy=$?
+  test STATUS = 0 && STATUS=$dummy
 }
 
 initd_active () {
@@ -233,8 +235,9 @@ initd_active () {
       echo "."
     fi
     initd_save active
+    dummy=$?
+    test STATUS = 0 && STATUS=$dummy
   fi
-# FIXME: should set STATUS
 }
 
 initd_start () {
@@ -342,12 +345,18 @@ initd_main () {
 
       if test "$STATUS" = 0; then
         log_warning_msg "Checking uruk ($iptables_command): No active or inactive uruk rules loaded"
+        # 4       program or service status is unknown
+        STATUS=4
       else
         log_success_msg "Checking uruk ($iptables_command): $STATUS uruk rules loaded"
+        if test "$STATUS" = active; then
+          # 0       program is running or service is OK
+          STATUS=0
+        else
+          # 3       program is not running
+          STATUS=3
+        fi
       fi
-
-      # FIXME tweak STATUS
-
       ;;
     # end of LSB required init arguments
     reload)
