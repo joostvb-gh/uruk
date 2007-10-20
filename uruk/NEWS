@@ -4,8 +4,6 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version YYYYMMDD
 
-- Introduced new variables interfaces_unprotect and URUK_INTERFACES_UNPROTECT.
-
 - We ACCEPT traffic on lo earlier in the uruk ruleset: that's more efficient.
   Traffic on lo will no longer be delayed by our ruleset.
 
@@ -50,6 +48,13 @@ uruk version YYYYMMDD
   rc_e is now obsolete.  You should move your rc_e stuff to rc_d.  (rc_e
   for now will still work, though.)
 
+- The uruk init script now is Linux Standards Base v 3.1.0 compliant.  Added
+  extra supported argument "status".  The script now _requires_ the file
+  /lib/lsb/init-functions to be present, and to define the shell functions
+  log_success_msg, log_failure_msg and log_warning_msg.  LSB compliant systems
+  (recent releases of Debian GNU/Linux, Red Hat Enterprise Linux, Ubuntu Linux,
+  a.o.) supply this.
+- Introduced new variables interfaces_unprotect and URUK_INTERFACES_UNPROTECT.
 - Uruk is now licensed under GPLv3 (or any later version).
 - man/Makefile.am: no longer try to support non-ascii characters in .txt
   manpages.  col, as shipped with the bsdutils 1:2.13-2 Debian package
@@ -59,7 +64,7 @@ uruk version YYYYMMDD
   Vos)
 - Minor fixes in uruk(8) manpage.
 - uruk-rc(5): documented improved way to unprotect an interface, thanks Wessel
-  Dankers
+  Dankers.
 - TODO, init/uruk.in: found and documented bug: /etc/init.d/uruk force-reload
   breaks when nat or mangle table are used.  Thanks Wessel Dankers for
   spotting this.

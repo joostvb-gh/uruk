@@ -1,10 +1,8 @@
 - Fix $version in doc/rc
 
-- First prio: check Documentation for support for unprotecting an interface:
+- Ship xml stuff by Fred Vos
 
-- /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
-force-reload breaks when these tables are in use.  See comment near initd_flush.
-Fix this, and accept the introduced cruft.   Tnx Wessel.
+- First prio: check Documentation for support for unprotecting an interface:
 
 - Second prio: Make uruk init-script LSB compliant.
 http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/initscrcomconv.html
@@ -51,6 +49,10 @@ code:
 Use example from /u/s/d/lsb-core/examples/init-skeleton.gz .
 
 check firehol, shorewall, ferm (see nagy:/usr/local/src/debian/)
+
+- /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
+force-reload breaks when these tables are in use.  See comment near initd_flush.
+Fix this, and accept the introduced cruft.   Tnx Wessel.
 
 - Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
 obsolete syntax
