@@ -262,6 +262,39 @@ initd_stop () {
   fi
 }
 
+initd_status() {
+  # FIXME trap rm tmpdir
+  tmpdir=`mktemp -d /tmp/uruk.$iptables_command.XXXXXXXXXX`
+  # grep possibly matches nothing, force succesfull exit
+  $iptables_save | grep '^-' >$tmpdir/kernel || true
+  for rule in active inactive; do
+    if test -s $libdir/$rule; then
+      sed -n 's/^\[[0-9]\{1,\}:[0-9]\{1,\}\] //p' $libdir/$rule >$tmpdir/ruleset
+      if diff $tmpdir/ruleset $tmpdir/kernel >/dev/null; then
+         echo "Checking uruk ($iptables_command): $rule uruk rules loaded"
+         eval status_$rule=1
+      fi
+      eval found_$rule=1
+    fi
+  done
+  rm -r $tmpdir
+
+  # running, active loaded: exists: active inactive
+  # "not running", inactive loaded: active
+  if test "$found_active"; then
+    if test "$found_inactive"; then
+      # uruk is running, STATUS=0
+      STATUS=0
+    else
+      # uruk is not running
+      STATUS=3
+    fi
+  else
+    # uruk not running, unconfigured: "unknown"
+    STATUS=4
+  fi
+}
+
 usage () {
 cat << END
 $initd options:
@@ -332,31 +365,19 @@ initd_main () {
       fi
       ;;
     status)
-      tmpdir=`mktemp -d /tmp/uruk.$iptables_command.XXXXXXXXXX`
-      $iptables_save | grep '^-' >$tmpdir/kernel
-      # FIXME: script seems to exit here in case no rules are loaded.
-      for rule in active inactive; do
-        sed -n 's/^\[[0-9]\{1,\}:[0-9]\{1,\}\] //p' $libdir/$rule \
-            >$tmpdir/ruleset
-        if diff $tmpdir/ruleset $tmpdir/kernel >/dev/null; then
-          STATUS=$rule
-        fi
-      done
-      rm -r $tmpdir
-
+      initd_status
       if test "$STATUS" = 0; then
-        log_warning_msg "Checking uruk ($iptables_command): No active or inactive uruk rules loaded"
-        # 4       program or service status is unknown
-        STATUS=4
-      else
-        log_success_msg "Checking uruk ($iptables_command): $STATUS uruk rules loaded"
-        if test "$STATUS" = active; then
-          # 0       program is running or service is OK
-          STATUS=0
+        if test "$status_active"; then
+          log_success_msg "Checking uruk ($iptables_command): uruk running"
         else
-          # 3       program is not running
-          STATUS=3
+          log_failure_msg "Checking uruk ($iptables_command): both active and inactive rulesets present, but active ruleset not loaded"
+          STATUS=4
         fi
+      elif test "$STATUS" = 3; then
+        log_success_msg "Checking uruk ($iptables_command): uruk not running"
+      else
+        # STATUS=4 no active file present
+        log_failure_msg "Checking uruk ($iptables_command): active ruleset not present"
       fi
       ;;
     # end of LSB required init arguments
