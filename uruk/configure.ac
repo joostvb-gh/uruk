@@ -68,6 +68,7 @@ fi
 
 
 AC_CONFIG_FILES([Makefile
+                 contrib/Makefile
                  doc/Makefile
                  init/Makefile
                  init/uruk

@@ -2,6 +2,22 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-10-30 22:05:46 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-123
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-123
+
+    make sure stuff in contrib/ gets distributed and installed
+
+    new files:
+     uruk/contrib/.arch-ids/Makefile.am.id uruk/contrib/Makefile.am
+
+    modified files:
+     uruk/ChangeLog uruk/Makefile.am uruk/configure.ac
+
+
 2007-10-30 21:57:37 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-122
 
     Summary:

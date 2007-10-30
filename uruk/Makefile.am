@@ -17,7 +17,7 @@ CONFIGURE_DEPENDENCIES = VERSION.m4
 VERSION = @PACKAGE_VERSION@
 PACKAGE = @PACKAGE_TARNAME@
 
-SUBDIRS = script man doc init
+SUBDIRS = script man doc contrib init
 
 docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog ChangeLog.2003 README THANKS TODO
