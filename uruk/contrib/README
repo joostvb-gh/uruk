@@ -1,5 +1,9 @@
 
-This README is in Dutch.  Translations welcome.
+The files here include an XML configuration schema for a firewall and software
+to transform this XML configuration into an Uruk configuration file.  See
+http://www.mokolo.org/fwxml/introduction.html for more details.
+
+The rest of this README is in Dutch.
 
 
 

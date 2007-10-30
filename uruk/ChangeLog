@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-10-30 23:01:24 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-125
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-125
+
+    Refer to Fred Vos's website on his Uruk XML stuff.
+
+    modified files:
+     uruk/ChangeLog uruk/contrib/README
+
+
 2007-10-30 22:44:08 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-124
 
     Summary:
