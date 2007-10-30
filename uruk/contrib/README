@@ -1,0 +1,49 @@
+
+This README is in Dutch.  Translations welcome.
+
+
+
+Date: Sun, 30 Sep 2007 20:05:01 +0200
+From: Fred Vos <fred.vos@uvt.nl>
+To: Joost van Baal <joostvb@mdcc.cx>
+Subject: Re: XML voor uruk
+Message-ID: <20070930180501.GD6032@africa.uvt.nl>
+
+[...]
+
+sample.xml is een voorbeeld van een firewall beschrijving. Deze bevat
+alles behalve de uruk specifieke zaken. Zie daarvoor verderop.
+
+De *.xsd files kun je gebruiken om een firewall.xml file (bijvoorbeeld
+sample.xml) te testen op validiteit. Ze komen van mijn site, maar een
+'gebruiker' kan ze het beste lokaal hebben. Probeer bijvoorbeeld
+xmllint of een andere tool voor dat doel. Voor xmllint:
+
+% xmllint --schema /path/to/fw_firewall_2007-10.xsd /path/to/firewall.xml
+
+xmllint zit dacht ik in package libxml2-utils.
+
+Bestand fw_2007-10.xsd wordt geinclude door fw_firewall_2007-10.xsd en
+dient in dezelfde directory te staan.
+
+fw2urukrc.xsl is een conversiescript dat het firewall specifieke deel
+van de rc maakt. Converteer de firewall met een xslt processor,
+bijvoorbeeld xsltproc. Voor xsltproc:
+
+% xsltproc /path/to/fw2urukrc.xsl /path/to/firewall.xml
+
+Dit stuurt de tekst naar stdout. Te redirecten naar een bestand, uiteraard.
+
+xsltproc zit in een package met dezelfde naam.
+
+Maken van een rc file:
+
+Ik denk aan het volgende: Zet de uruk specifieke dingen in 'uruk.conf'
+en de firewall in 'firewall.xml'. Dan iets als:
+
+% cp uruk.conf rc
+% echo >> rc
+% xsltproc /path/to/fw2urukrc.xsl firewall.xml >> rc
+
+[...]
+

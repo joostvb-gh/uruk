@@ -2,6 +2,33 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-10-30 21:57:37 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-122
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-122
+
+    Add XML stuff contributed by Fred Vos, including some preliminary documentation
+    (in Dutch).  Could be used to transform an XML-file describing uruk rules to
+    an uruk rc file.
+
+    new files:
+     uruk/contrib/.arch-ids/=id uruk/contrib/.arch-ids/README.id
+     uruk/contrib/.arch-ids/fw2urukrc.xsl.id
+     uruk/contrib/.arch-ids/fw_2007-10.xsd.id
+     uruk/contrib/.arch-ids/fw_firewall_2007-10.xsd.id
+     uruk/contrib/.arch-ids/sample.xml.id uruk/contrib/README
+     uruk/contrib/fw2urukrc.xsl uruk/contrib/fw_2007-10.xsd
+     uruk/contrib/fw_firewall_2007-10.xsd uruk/contrib/sample.xml
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+    new directories:
+     uruk/contrib uruk/contrib/.arch-ids
+
+
 2007-10-21 11:07:08 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-121
 
     Summary:

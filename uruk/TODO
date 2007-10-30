@@ -2,8 +2,6 @@
 
 - Fix $version in doc/rc
 
-- Ship xml stuff by Fred Vos
-
 - First prio: check Documentation for support for unprotecting an interface:
 
 - Second prio: Make uruk init-script LSB compliant.
@@ -34,7 +32,6 @@ force-reload   cause the configuration to be reloaded if the service supports
         this, otherwise restart the service if it is running
 status  print the current status of the service
 
-
 In case of an error while processing any init-script action except for status,
 the init script shall print an error message and exit with a non-zero status
 code:
@@ -46,7 +43,6 @@ code:
 5       program is not installed
 6       program is not configured
 7       program is not running
-
 
 Use example from /u/s/d/lsb-core/examples/init-skeleton.gz .
 
@@ -67,7 +63,6 @@ Fri 21 05:41 < joostvb> fvos: een xsl om xml naar rc te converteren is heel
 
 ----------------- end of candidates for upcoming release ------------------
 ----------------- stuff which just might happen one day -------------------
-
 
 - Thu 20 23:13 < fvos> joostvb: ik zou de huidige rc graag gesplitst zien in 
                      meerdere losse bestanden, bijvoorbeeld 'networks', 

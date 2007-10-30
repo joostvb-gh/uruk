@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--+
+    | MIT Licence
+    | 
+    | Copyright (c) 2007 Fred Vos - Mokolo.org
+    | 
+    | Permission is hereby granted, free of charge, to any person obtaining a
+    | copy of this software and associated documentation files (the "Software"),
+    | to deal in the Software without restriction, including without limitation
+    | the rights to use, copy, modify, merge, publish, distribute, sublicense,
+    | and/or sell copies of the Software, and to permit persons to whom the
+    | Software is furnished to do so, subject to the following conditions:
+    |
+    | The above copyright notice and this permission notice shall be included
+    | in all copies or substantial portions of the Software.
+    |
+    | THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    | OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    | FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    | AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    | LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    | FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    | DEALINGS IN THE SOFTWARE.
+    +-->
+<xs:schema
+  targetNamespace="http://www.mokolo.org/fwxml"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.mokolo.org/fwxml"
+  elementFormDefault="qualified">
+
+  <!--+
+      | Types are ordered alphabetically. A datatype that is used only for
+      | one specific type, like most attribute groups, is declared just above
+      | the type that is using it.
+      |
+      | To find a type, referenced by another type, first check the types
+      | above, until the comment with the type name, then check the comments.
+      | The comments are in alphabetical order.
+      |
+      +-->
+  
+  <!-- firewallType: -->
+  
+  <xs:complexType name="firewallType">
+    <xs:sequence>
+      <xs:element name="interfaces" type="interfacesType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="sources" type="sourcesType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="networks" type="networksType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="services" type="servicesType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- grantType: -->
+  
+  <xs:attributeGroup name="grantAttributeGroup">
+    <xs:attribute name="service-ref" type="nameType" use="required"/>
+    <xs:attribute name="source-ref" type="nameType" use="required"/>
+  </xs:attributeGroup>
+  
+  <xs:complexType name="grantType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Allows a named source access to a named service.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="grantAttributeGroup"/>
+  </xs:complexType>
+  
+  <!-- grantsType: -->
+  
+  <xs:complexType name="grantsType">
+    <xs:sequence>
+      <xs:element name="grant" type="grantType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- interfaceType: -->
+  
+  <xs:attributeGroup name="interfaceAttributeGroup">
+    <xs:attribute name="name" type="nameType" use="required"/>
+    <xs:attribute name="ip" type="ipNumberType" use="required"/>
+    <xs:attribute name="network" type="ipRangeType" use="required"/>
+    <xs:attribute name="broadcast" type="ipNumberType" use="required"/>
+  </xs:attributeGroup>
+  
+  <xs:complexType name="interfaceType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">An external interface. The name is the real name of the interface.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="grants-tcp" type="grantsType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="grants-udp" type="grantsType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="interfaceAttributeGroup"/>
+  </xs:complexType>
+  
+  <!-- interfacesType: -->
+  
+  <xs:complexType name="interfacesType">
+    <xs:sequence>
+      <xs:element name="interface" type="interfaceType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- ipNumberType: -->
+  
+  <xs:simpleType name="ipNumberType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- ipRangeType: -->
+  
+  <xs:simpleType name="ipRangeType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*[0-9\/]*"/> <!-- Not quite perfect yet -->
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- nameType: -->
+  
+  <xs:simpleType name="nameType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z][a-zA-Z0-9_]*"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- nameOrNumberType: -->
+  
+  <xs:simpleType name="nameOrNumberType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_]*"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- networkRefType: -->
+  
+  <xs:attributeGroup name="networkRefAttributeGroup">
+    <xs:attribute name="name" type="nameType" use="required"/>
+  </xs:attributeGroup>
+  
+  <xs:complexType name="networkRefType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A reference to a named network.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="networkRefAttributeGroup"/>
+  </xs:complexType>
+  
+  <!-- networkRefsType: -->
+  
+  <xs:complexType name="networkRefsType">
+    <xs:sequence>
+      <xs:element name="network-ref" type="networkRefType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- networkType: -->
+  
+  <xs:attributeGroup name="networkAttributeGroup">
+    <xs:attribute name="name" type="nameType" use="required"/>
+    <xs:attribute name="ip-range" type="ipRangeType" use="required"/>
+  </xs:attributeGroup>
+  
+  <xs:complexType name="networkType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A network is a named ip-address or ip-range.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="networkAttributeGroup"/>
+  </xs:complexType>
+
+  <!-- networksType: -->
+  
+  <xs:complexType name="networksType">
+    <xs:sequence>
+      <xs:element name="network" type="networkType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- portType: -->
+  
+  <xs:attributeGroup name="portAttributeGroup">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A port number can either be a positive integer, like '22' for ssh or '80' for www, but also a name of a service, like 'ssh' or 'sunrpc'. If a service name is used, the system must be able to translate the string into a positive integer.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="nr" type="nameOrNumberType" use="required"/>
+  </xs:attributeGroup>
+  
+  <xs:complexType name="portType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">See http://en.wikipedia.org/wiki/TCP_and_UDP_port for information on ports.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="portAttributeGroup"/>
+  </xs:complexType>
+
+  <!-- portsType: -->
+  
+  <xs:complexType name="portsType">
+    <xs:sequence>
+      <xs:element name="port" type="portType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- serviceType: -->
+  
+  <xs:attributeGroup name="serviceAttributeGroup">
+    <xs:attribute name="name" type="nameType" use="required"/>
+  </xs:attributeGroup>
+  
+  <xs:complexType name="serviceType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A service is a named collection of ports, related to a service. A port can, for this setup, be a member in more than one service, but usually this is not the case. Usually there's one port associated with a single service. To distinguish this named service from services as used to represent ports, please start the name with an upper case character, for instance 'WWW' for the service and 'www' for the port or 'Telnet' for the service and 'telnet' for port 23. For service 'WWW' you could associate both ports 80 ('www') and 443 ('https').</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ports" type="portsType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="serviceAttributeGroup"/>
+  </xs:complexType>
+  
+  <!-- servicesType: -->
+  
+  <xs:complexType name="servicesType">
+    <xs:sequence>
+      <xs:element name="service" type="serviceType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- sourceType: -->
+  
+  <xs:attributeGroup name="sourceAttributeGroup">
+    <xs:attribute name="name" type="nameType" use="required"/>
+  </xs:attributeGroup>
+  
+  <xs:complexType name="sourceType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A named collection of networks.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="network-refs" type="networkRefsType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="sourceAttributeGroup"/>
+  </xs:complexType>
+  
+  <!-- sourcesType: -->
+  
+  <xs:complexType name="sourcesType">
+    <xs:sequence>
+      <xs:element name="source" type="sourceType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+
+</xs:schema>
