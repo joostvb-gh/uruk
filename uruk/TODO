@@ -1,7 +1,5 @@
 - Fix bug: /etc/init.d/uruk stop ; /etc/init.d/uruk status  fails.
 
-- Fix $version in doc/rc
-
 - First prio: check Documentation for support for unprotecting an interface:
 
 - Second prio: Make uruk init-script LSB compliant.
@@ -54,12 +52,6 @@ Fix this, and accept the introduced cruft.   Tnx Wessel.
 
 - Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
 obsolete syntax
-
-- Thu 20 23:13 < fvos> Misschien maak ik voor mezelf nog wel een 
-                     keer een xml config die ik met een xsl omzet in een 'rc'
-Fri 21 05:41 < joostvb> fvos: een xsl om xml naar rc te converteren is heel 
-                        welkom. als je die maakt ship ik m met de komende 
-                        release.
 
 ----------------- end of candidates for upcoming release ------------------
 ----------------- stuff which just might happen one day -------------------

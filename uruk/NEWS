@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version YYYYMMDD
+uruk version 20071030
 
 - We ACCEPT traffic on lo earlier in the uruk ruleset: that's more efficient.
   Traffic on lo will no longer be delayed by our ruleset.
@@ -55,6 +55,9 @@ uruk version YYYYMMDD
   compliant systems (recent releases of Debian GNU/Linux, Red Hat Enterprise
   Linux, Ubuntu Linux, a.o.) supply this.
 - Introduced new variables interfaces_unprotect and URUK_INTERFACES_UNPROTECT.
+- Add XML stuff contributed by Fred Vos, including some preliminary documentation
+  (in Dutch).  Could be used to transform an XML-file describing uruk rules to
+  an uruk rc file.  Shipped in contrib/, installed in .../doc/uruk/contrib/.
 - Uruk is now licensed under GPLv3 (or any later version).
 - man/Makefile.am: no longer try to support non-ascii characters in .txt
   manpages.  col, as shipped with the bsdutils 1:2.13-2 Debian package chokes

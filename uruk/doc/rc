@@ -18,7 +18,7 @@
 # e.g. the file named COPYING.  If not, see <http://www.gnu.org/licenses/>.
 
 # Uruk version compatibility of this rc file
-version=20051026
+version=20071030
 
 # Log denied packets, which are targetted at one of our IPs.  Do not log
 # blocked broadcasts.
