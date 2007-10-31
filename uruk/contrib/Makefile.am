@@ -7,7 +7,8 @@
 ## under the terms of the GNU GPL.  See the file COPYING.
 
 contribdir = $(datadir)/doc/@PACKAGE_TARNAME@/contrib
-contrib_DATA = fw_2007-10.xsd fw2urukrc.xsl fw_firewall_2007-10.xsd  README  sample.xml
+contrib_DATA = fw_2007-10.xsd fw2dot.xsl fw2urukrc.xsl \
+ fw_firewall_2007-10.xsd  README  sample.xml
 
 EXTRA_DIST = $(contrib_DATA)
 
