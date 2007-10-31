@@ -1,4 +1,4 @@
-- Fix bug: /etc/init.d/uruk stop ; /etc/init.d/uruk status  fails.
+- Fix bug: /etc/init.d/uruk stop ; /etc/init.d/uruk status  fails.  fix other FIXME's in init script.
 
 - First prio: check Documentation for support for unprotecting an interface:
 
