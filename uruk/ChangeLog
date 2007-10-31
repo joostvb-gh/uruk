@@ -2,6 +2,23 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-10-31 22:01:35 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-126
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-126
+
+    Added another contribution from Fred Vos: fw2dot.xsl: generating a dot file
+    (for graphiz) from an XML-ed uruk rc file.
+
+    new files:
+     uruk/contrib/.arch-ids/fw2dot.xsl.id uruk/contrib/fw2dot.xsl
+
+    modified files:
+     uruk/ChangeLog uruk/contrib/README
+
+
 2007-10-30 23:01:24 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-125
 
     Summary:

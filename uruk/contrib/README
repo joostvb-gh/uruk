@@ -5,11 +5,24 @@ http://www.mokolo.org/fwxml/introduction.html for more details.
 
 The rest of this README is in Dutch.
 
+Fred wrote me:
 
+ Date: Fri, 21 Sep 2007 16:19:39 +0200
+ From: Fred Vos
+ To: Joost van Baal
+ Subject: XML voor uruk
+ Message-ID: <20070921141939.GQ29157@africa.uvt.nl>
+
+ % xsltproc uruk2dot.xsl uruk.xml > firewall.dot
+ % dot -Tpng -o firewall.png firewall.dot
+
+ dot is shipped with graphviz.
+
+and:
 
 Date: Sun, 30 Sep 2007 20:05:01 +0200
-From: Fred Vos <fred.vos@uvt.nl>
-To: Joost van Baal <joostvb@mdcc.cx>
+From: Fred Vos
+To: Joost van Baal
 Subject: Re: XML voor uruk
 Message-ID: <20070930180501.GD6032@africa.uvt.nl>
 
