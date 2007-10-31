@@ -304,10 +304,10 @@ $initd options:
   save <ruleset>
      Save the current iptables status in given ruleset.
   create <active|inactive>
-     create an "active" or "inactive" ruleset with sane defaults: "active"
+     Create an "active" or "inactive" ruleset with sane defaults: "active"
      will be based upon the uruk rc file.  "inactive" will allow all traffic.
   load <ruleset>
-     load a saved ruleset
+     Load a saved ruleset
   reload
      (Re)build and load the "active" ruleset, without temporarily clearing the
      current iptables status.
@@ -318,7 +318,8 @@ $initd options:
   restart
      Perform stop-actions followed by start-actions.
   status
-     FIXME
+     Print the current status of the service: show which ruleset is loaded, and
+     wether uruk is "running".
   clear
      Remove all rules and user-defined chains, set default policy to ACCEPT.
   halt
