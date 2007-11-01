@@ -307,8 +307,9 @@ initd_stop () {
 }
 
 initd_status() {
-  # FIXME trap rm tmpdir
   tmpdir=`mktemp -d /tmp/uruk.$iptables_command.XXXXXXXXXX`
+  trap 'rm -rf $tmpdir' 0
+
   # grep possibly matches nothing, force succesfull exit
   $iptables_save | grep '^-' >$tmpdir/kernel || true
   for rule in active inactive; do

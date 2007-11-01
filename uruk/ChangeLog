@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-11-01 05:50:33 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-135
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-135
+
+    always clean up tmpfiles: use trap
+
+    modified files:
+     uruk/ChangeLog uruk/init/uruk.in
+
+
 2007-11-01 05:46:09 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-134
 
     Summary:
