@@ -12,6 +12,12 @@ obsolete syntax
 ----------------- end of candidates for upcoming release ------------------
 ----------------- stuff which just might happen one day -------------------
 
+- use functions
+   log_daemon_msg
+   log_end_msg
+   log_action_msg
+in init-script, see e.g. firehol init script
+
 - Thu 20 23:13 < fvos> joostvb: ik zou de huidige rc graag gesplitst zien in 
                      meerdere losse bestanden, bijvoorbeeld 'networks', 
                      'sources' en zo. Daardoor kunnen de entries in die 

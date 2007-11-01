@@ -303,6 +303,8 @@ initd_status() {
   # grep possibly matches nothing, force succesfull exit
   $iptables_save | grep '^-' >$tmpdir/kernel || true
   for rule in active inactive; do
+    eval status_$rule=
+    eval found_$rule=
     if test -s $libdir/$rule; then
       sed -n 's/^\[[0-9]\{1,\}:[0-9]\{1,\}\] //p' $libdir/$rule >$tmpdir/ruleset
       if diff $tmpdir/ruleset $tmpdir/kernel >/dev/null; then
@@ -314,8 +316,8 @@ initd_status() {
   done
   rm -r $tmpdir
 
-  # running, active loaded: exists: active inactive
-  # "not running", inactive loaded: active
+  # if running, active loaded; then rulesets existing as file: active inactive
+  # if "not running", inactive loaded; then active
   if test "$found_active"; then
     if test "$found_inactive"; then
       # uruk is running, STATUS=0
@@ -392,13 +394,24 @@ initd_main () {
       $initd start
       ;;
     force-reload)
-      # FIXME does not behave sane when uruk not running!
-      initd_active
-      if test "$STATUS" = 0; then
-        log_success_msg "Reloading uruk ($iptables_command)"
+      for rule in active inactive; do
+        eval found_$rule=
+        if test -s $libdir/$rule; then
+          eval found_$rule=1
+      if test "$found_active" -a test "$found_inactive"; then
+        # uruk is running
+        initd_active
+        if test "$STATUS" = 0; then
+          log_success_msg "Reloading uruk ($iptables_command)"
+        else
+          log_failure_msg "Reloading uruk ($iptables_command)"
+        fi
       else
-        log_failure_msg "Reloading uruk ($iptables_command)"
+        echo "Uruk is not running"
+        log_success_msg "Nothing to do for reloading uruk ($iptables_command)"
+        STATUS=0
       fi
+
       ;;
     status)
       # If the status action is requested, the init script will

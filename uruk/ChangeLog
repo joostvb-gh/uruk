@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-11-01 05:21:24 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-132
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-132
+
+    made force-reload a no-op in case uruk not running
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/init/uruk.in
+
+
 2007-11-01 04:55:40 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-131
 
     Summary:
