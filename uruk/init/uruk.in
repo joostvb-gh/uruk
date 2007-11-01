@@ -451,17 +451,34 @@ initd_main () {
       ;;
     # end of LSB required init arguments
     reload)
-      if test $enable_uruk_save = true; then
-        # FIXME does not behave sane when uruk not running!
-        initd_active_uruk_save
-      else
-        cat <<END
+      for rule in active inactive; do
+        eval found_$rule=
+        if test -s $libdir/$rule; then
+          eval found_$rule=1
+        fi
+      done
+      if test "$found_active" -a "$found_inactive"; then
+        if test $enable_uruk_save = true; then
+          initd_active_uruk_save
+          if test "$STATUS" = 0; then
+            log_success_msg "Reloading uruk ($iptables_command)"
+          else
+            log_failure_msg "Reloading uruk ($iptables_command)"
+          fi
+        else
+          cat <<END
  Either set enable_uruk_save to true in
  @SYSCONF_PATH@/{default,sysconfig}/@PACKAGE_TARNAME@ or call this script with
  the \"force-reload\" option: cannot reload active file without touching your live
  rules if using uruk-save is disallowed."
 END
+        fi
+      else
+        echo "Uruk is not running"
+        log_success_msg "Nothing to do for reloading uruk ($iptables_command)"
+        STATUS=0
       fi
+
       ;;
     clear)
       initd_clear

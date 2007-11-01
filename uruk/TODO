@@ -1,4 +1,8 @@
-- fix FIXME's in init script.
+- fix FIXME in init script.
+
+- get rid of duplicated code in init-script:
+      if test "$found_active" -a "$found_inactive"; then
+      eval found_$rule=1
 
 - First prio: check Documentation for support for unprotecting an interface:
 
