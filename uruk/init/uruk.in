@@ -470,8 +470,8 @@ initd_main () {
           cat <<END
  Either set enable_uruk_save to true in
  @SYSCONF_PATH@/{default,sysconfig}/@PACKAGE_TARNAME@ or call this script with
- the \"force-reload\" option: cannot reload active file without touching your live
- rules if using uruk-save is disallowed."
+ the "force-reload" option: cannot reload active file without touching your live
+ rules if using uruk-save is disallowed.
 END
         fi
       else
@@ -517,8 +517,8 @@ END
             cat <<END
  Either set enable_uruk_save to true in
  @SYSCONF_PATH@/{default,sysconfig}/@PACKAGE_TARNAME@ or call this script with
- the \"start\" option: cannot create active file without touching your live
- rules if using uruk-save is disallowed."
+ the "start" option: cannot create active file without touching your live
+ rules if using uruk-save is disallowed.
 END
           fi
           ;;

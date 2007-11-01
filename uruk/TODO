@@ -1,5 +1,3 @@
-- fix FIXME in init script.
-
 - get rid of duplicated code in init-script:
       if test "$found_active" -a "$found_inactive"; then
       eval found_$rule=1
@@ -60,7 +58,8 @@ uruk not running.
 - Perhaps we need an uruk-init manpage, for the init script.
 
 - Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
-can use the same rc file format.
+can use the same rc file format.  We'd also have to make sure init-script
+works on non-LSB-systems, then.
 
 - Reimplement uruk-save: make it more robust.  See
 http://www.faqs.org/docs/iptables/iptables-save.html for example of file
