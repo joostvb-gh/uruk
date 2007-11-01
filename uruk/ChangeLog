@@ -2,6 +2,30 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-11-01 04:44:25 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-130
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-130
+
+    Found out this:
+    
+     root@nagy:~# invoke-rc.d uruk stop
+     Autosaving iptables ruleset: save "active" with counters.
+     Loading iptables ruleset: load "inactive".
+     Shutting down uruk (iptables)
+     root@nagy:~# invoke-rc.d uruk status; echo $?
+     Checking uruk (iptables): uruk not running
+     invoke-rc.d: initscript uruk, action "status" failed.
+     3
+    
+    is LSB-compliant behaviour.
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/init/uruk.in
+
+
 2007-10-31 23:04:33 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-129
 
     Summary:
