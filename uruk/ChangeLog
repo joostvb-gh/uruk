@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-11-01 05:34:23 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-133
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-133
+
+    LSB compliancy: consider stopping a stopped uruk as success.
+
+    modified files:
+     uruk/ChangeLog uruk/init/uruk.in
+
+
 2007-11-01 05:21:24 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-132
 
     Summary:

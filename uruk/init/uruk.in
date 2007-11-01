@@ -108,6 +108,15 @@ test -f @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/sysconfig
 # 6   program is not configured
 # 7   program is not running
 #
+#
+# Note that those situation shall also be regarded as success:
+# * restarting a service (instead of reloading it)
+#   with the "force-reload" argument
+# * running "start" on a service already running
+# * running "stop" on a service already stopped or not running
+# * running "restart" on a service already stopped or not running
+# * running "try-restart" on a service already stopped or not running
+#
 ###############################################################################
 
 
@@ -293,7 +302,7 @@ initd_stop () {
     rm $ruleset
   else
     echo "Uruk not running (no inactive file found)"
-    STATUS=6
+    STATUS=0
   fi
 }
 
@@ -349,7 +358,7 @@ $initd options:
      (Re)build and load the "active" ruleset, without temporarily clearing the
      current iptables status.
   force-reload
-     (Re)build and load the "active" ruleset.
+     (Re)build and load the "active" ruleset, in case uruk is running.
   stop
      Load the "inactive" ruleset.
   restart
@@ -398,7 +407,9 @@ initd_main () {
         eval found_$rule=
         if test -s $libdir/$rule; then
           eval found_$rule=1
-      if test "$found_active" -a test "$found_inactive"; then
+        fi
+      done
+      if test "$found_active" -a "$found_inactive"; then
         # uruk is running
         initd_active
         if test "$STATUS" = 0; then
