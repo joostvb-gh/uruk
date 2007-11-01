@@ -73,6 +73,45 @@ test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PA
 # On Red Hat systems, configuration for init scripts is in /etc/sysconfig/
 test -f @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@
 
+###############################################################################
+#
+# This script should be LSB 3.1.0 compliant.  In particular,
+# http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/initscrcomconv.html
+# and
+# http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/iniscrptact.html
+# should be adhered to:
+# 
+# Error and status messages should be printed with the logging functions (see
+# Init Script Functions) log_success_msg(), log_failure_msg() and
+# log_warning_msg(). Scripts may write to standard error or standard output, but
+# implementations need not present text written to standard error/output to the
+# user or do anything else with it.
+# 
+# LSB required:
+# start   start the service
+# stop    stop the service
+# restart stop and restart the service if the service is already running,
+#         otherwise start the service
+# force-reload   cause the configuration to be reloaded if the service supports
+#         this, otherwise restart the service if it is running
+# status  print the current status of the service
+# 
+# In case of an error while processing any init-script action except for status,
+# the init script shall print an error message and exit with a non-zero status
+# code:
+# 
+# 1   generic or unspecified error (current practice)
+# 2   invalid or excess argument(s)
+# 3   unimplemented feature (for example, "reload")
+# 4   user had insufficient privilege
+# 5   program is not installed
+# 6   program is not configured
+# 7   program is not running
+#
+###############################################################################
+
+
+
 #                        /lib/lsb/init-functions
 # Red Hat EL AS rel 2.1        No
 # Red Hat EL AS rel 3          Yes
@@ -148,13 +187,9 @@ initd_flush () {
 initd_load () {
   ruleset="$libdir/$@"
   if ! test -f "$ruleset"; then
-    echo "Can't load ruleset \"$@\": file $ruleset is not present"
+    echo "Can't load ruleset \"$@\": file $ruleset is not present."
+    echo "Remember: reuleset should be named either \"active\" or \"inactive\""
     initd_abort_wrong_arg load "unknown ruleset \"$@\""
-    if ! test "${ruleset#${libdir}/}" = active -o inactive; then
-      usage
-    fi
-    # FIXME : is this LSB-compliant?
-    exit 0
   fi
   if test "${ruleset#${libdir}/}" = inactive; then
     initd_autosave
@@ -258,7 +293,7 @@ initd_stop () {
     rm $ruleset
   else
     echo "Uruk not running (no inactive file found)"
-    # FIXME: set STATUS here?
+    STATUS=6
   fi
 }
 
