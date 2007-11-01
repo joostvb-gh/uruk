@@ -2,6 +2,14 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version UNRELEASED
+
+- Added another contribution from Fred Vos to contrib/: fw2dot.xsl: generating
+  a dot file (for graphiz) from an XML-ed uruk rc file.
+- Various fixes in uruk init script.  Among others: fix behaviour of "reload"
+  and "force-reload" in case uruk not running.
+
+
 uruk version 20071030
 
 - We ACCEPT traffic on lo earlier in the uruk ruleset: that's more efficient.
