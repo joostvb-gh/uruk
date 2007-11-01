@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version UNRELEASED
+uruk version 20071101
 
 - Added another contribution from Fred Vos to contrib/: fw2dot.xsl: generating
   a dot file (for graphiz) from an XML-ed uruk rc file.
