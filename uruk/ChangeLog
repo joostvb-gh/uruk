@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-11-02 06:04:41 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-140
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-140
+
+    fix permissions in VC repo: world-readable please
+
+    modified files:
+     uruk/ChangeLog uruk/contrib/fw2urukrc.xsl
+     uruk/contrib/fw_2007-10.xsd
+     uruk/contrib/fw_firewall_2007-10.xsd uruk/contrib/sample.xml
+
+
 2007-11-02 05:26:12 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-139
 
     Summary:
