@@ -1,8 +1,35 @@
+
+----------------- local stuff ------------------------------------
+
+tests: installed prerelease on:
+
+nagy
+gelfand
+stegun
+
+to install on:
+
+kloek
+yosida
+banach
+kovalevskaya
+freitag
+
+- test a completely fresh install
+
+- check Documentation for support for unprotecting an interface:
+
+- upload .deb to non-gnu: etch; fix homepage about non-gnu
+
+- upload .deb to debian
+
+- build a .rpm
+
+----------------- candidates for upcoming release ------------------
+
 - get rid of duplicated code in init-script:
       if test "$found_active" -a "$found_inactive"; then
       eval found_$rule=1
-
-- First prio: check Documentation for support for unprotecting an interface:
 
 - /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
 force-reload breaks when these tables are in use.  See comment near initd_flush.
