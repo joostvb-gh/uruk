@@ -28,7 +28,6 @@
     <fw:interface name="eth0" ip="1.2.3.4" network="1.2.0.0/16" broadcast="1.2.255.255">
       <fw:grants-tcp>
         <fw:grant service-ref="SSH" source-ref="HomeWork"/>
-        <fw:grant service-ref="SSH" source-ref="World"/>
         <fw:grant service-ref="WWW" source-ref="World"/>
         <fw:grant service-ref="Tomcat" source-ref="HomeWork"/>
       </fw:grants-tcp>
