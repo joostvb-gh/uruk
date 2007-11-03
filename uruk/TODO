@@ -10,18 +10,24 @@ yosida
 banach
 kloek
 
-to install on:
+yet to install on:
 
 kovalevskaya
 freitag
 
-- check Documentation for support for unprotecting an interface:
+- test support for unprotecting an interface
 
 - upload .deb to non-gnu: etch; fix homepage about non-gnu
 
+- decide wether new release is needed; if not:
+
 - upload .deb to debian
 
+- ship a new upstream, with fixes for minor bugs
+
 - build a .rpm
+
+- build and upload another .deb
 
 ----------------- candidates for upcoming release ------------------
 
