@@ -6,11 +6,11 @@ tests: installed prerelease on:
 nagy
 gelfand
 stegun
+yosida
 
 to install on:
 
 kloek
-yosida
 banach
 kovalevskaya
 freitag
@@ -26,6 +26,23 @@ freitag
 - build a .rpm
 
 ----------------- candidates for upcoming release ------------------
+
+- "status" is borken in case IPv6 is enabled (found on yosida):
+
+root@yosida:~# invoke-rc.d uruk start
+Saving IPv4 uruk rules as active ruleset.
+Loading iptables ruleset: load "active".
+Starting uruk (iptables)
+Saving IPv6 uruk rules as active ruleset.
+Loading ip6tables ruleset: load "active".
+Starting uruk (ip6tables)
+
+root@yosida:~# /etc/init.d/uruk status      
+* Checking uruk (iptables): both active and inactive rulesets present, but active ruleset not loaded
+* Checking uruk (ip6tables): both active and inactive rulesets present, but active ruleset not loaded
+
+- add a "dump-status" option to init-script: dump details about status, keep
+  tmpfiles. usefull for debugging.
 
 - get rid of duplicated code in init-script:
       if test "$found_active" -a "$found_inactive"; then
