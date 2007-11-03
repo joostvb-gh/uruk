@@ -7,11 +7,11 @@ nagy
 gelfand
 stegun
 yosida
+banach
 
 to install on:
 
 kloek
-banach
 kovalevskaya
 freitag
 
@@ -40,6 +40,9 @@ Starting uruk (ip6tables)
 root@yosida:~# /etc/init.d/uruk status      
 * Checking uruk (iptables): both active and inactive rulesets present, but active ruleset not loaded
 * Checking uruk (ip6tables): both active and inactive rulesets present, but active ruleset not loaded
+
+- "start" when uruk is running flushes and reloads current active ruleset.
+  Should it do this?  Or should it rather be a no-op? check lsb.
 
 - add a "dump-status" option to init-script: dump details about status, keep
   tmpfiles. usefull for debugging.
