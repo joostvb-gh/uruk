@@ -104,8 +104,16 @@ iptables-save(8), which comes with Linux iptables.
 \cpar{Using Debian ifupdown}
 
 In case you have just one network interface which should get protected, you
-could use \bf{interfaces(5)} from the Debian ifupdown package instead
-of the init script:
+could use \bf{interfaces(5)} from the Debian ifupdown package instead of the
+init script.  Suppose you'd like to protect \tt{ppp0}, and would like not to
+interfere with traffic on eth0: your other network interface.
+
+First write an \rc file.  Be sure it features
+
+\verbatim{\
+ interfaces_unprotect="lo eth0"}
+
+Then run:
 
 \verbatim{\
  # mkdir -p \statepath/iptables
@@ -128,12 +136,6 @@ to your interfaces stanza, in your \tt{/etc/network/interfaces} .
 
 Similar tricks might be possible on GNU/Linux systems from other distributions.
 The author is interested.
-
-\par
-
-However, beware!  Uruk will fiddle with the global iptables rules: some
-default uruk rules affect \it{all} network interfaces.
-
 
 \sec{loading a new rc file}{LOADING A NEW \rc FILE}
 
