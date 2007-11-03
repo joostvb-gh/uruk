@@ -8,14 +8,12 @@ gelfand
 stegun
 yosida
 banach
+kloek
 
 to install on:
 
-kloek
 kovalevskaya
 freitag
-
-- test a completely fresh install
 
 - check Documentation for support for unprotecting an interface:
 
@@ -26,6 +24,11 @@ freitag
 - build a .rpm
 
 ----------------- candidates for upcoming release ------------------
+
+- dpkg --remove uruk does not remove symlinks in /etc/rcS.d/; init-script fails hard
+  if binary gone.
+
+- dpkg --purge uruk does not remove /var/lib/uruk/iptables/active.
 
 - "status" is borken in case IPv6 is enabled (found on yosida):
 

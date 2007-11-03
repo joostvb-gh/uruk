@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2007-11-03 05:03:47 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-144
+
+    Summary:
+      
+    Revision:
+      uruk--mainline--0.1--patch-144
+
+    did another test-install and a fresh test-install, found two more bugs
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2007-11-03 04:40:48 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-143
 
     Summary:
