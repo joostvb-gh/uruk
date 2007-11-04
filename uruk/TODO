@@ -1,9 +1,12 @@
 
 ----------------- local stuff ------------------------------------
 
-tests: installed prerelease on:
+upgraded:
 
 nagy
+
+installed prerelease on:
+
 gelfand
 stegun
 yosida
@@ -15,21 +18,21 @@ yet to install on:
 kovalevskaya
 freitag
 
-- upload to experimental?
+- test an install on a fresh non-uruk system
 
 - upload .deb to non-gnu: etch; fix homepage about non-gnu
-
-- decide wether new release is needed; if not:
-
-- upload .deb to debian
 
 - ship a new upstream, with fixes for minor bugs
 
 - build a .rpm
 
-- build and upload another .deb
+- build and upload another .deb to unstable
 
 ----------------- candidates for upcoming release ------------------
+
+- get rid of duplicated code in init-script:
+      if test "$found_active" -a "$found_inactive"; then
+      eval found_$rule=1
 
 - dpkg --remove uruk does not remove symlinks in /etc/rcS.d/; init-script fails hard
   if binary gone.
@@ -55,10 +58,6 @@ root@yosida:~# /etc/init.d/uruk status
 
 - add a "dump-status" option to init-script: dump details about status, keep
   tmpfiles. usefull for debugging.
-
-- get rid of duplicated code in init-script:
-      if test "$found_active" -a "$found_inactive"; then
-      eval found_$rule=1
 
 - /etc/init.d/uruk flush does not flush nat nor mangle table.  This means
 force-reload breaks when these tables are in use.  See comment near initd_flush.
