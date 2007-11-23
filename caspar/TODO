@@ -1,4 +1,4 @@
-$Id: TODO,v 1.95 2007-09-02 18:21:42 joostvb Exp $
+$Id: TODO,v 1.96 2007-11-23 14:52:36 joostvb Exp $
 
 
 - GPL v3?
@@ -48,6 +48,21 @@ $Id: TODO,v 1.95 2007-09-02 18:21:42 joostvb Exp $
  cp  "index.html" /var/php/public/jccpmanu/https;
  cp  "loginform.html" /var/php/public/jccpmanu/https;
  cp  "logo.html" /var/php/public/jccpmanu/https;
+
+- caspar chokes on : in filenames:
+
+ Makefile:
+
+ csp_SCPDIR = /etc/sysconfig/network-scripts/
+ csp_SUH = root@cauchy
+ include caspar/mk/caspar.mk
+
+ joostvb@kovalevskaya:~/sv...ysconfig/network-scripts% ls
+ Makefile  ifcfg-eth0  ifcfg-eth0:1
+ joostvb@kovalevskaya:~/sv...ysconfig/network-scripts% make
+ caspar/mk/caspar.mk:87: *** multiple target patterns.  Stop.
+
+ Bug found by Johan Hoeke.
 
 - Suggest (or offer) a more generic interface than my_EXEC for the load
   target.  Users are invited to extend the interface.
