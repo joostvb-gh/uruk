@@ -1,4 +1,11 @@
 
+----------------- first prio ------------------------------------
+
+RSN: write urukconfig : generate uruk rc file based upon currently
+offered network services.  all services will be available for _all_ IPs
+(or perhaps just local network?)
+Packages could run this to generate a first rc file.
+
 ----------------- local stuff ------------------------------------
 
 upgraded:
