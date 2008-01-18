@@ -37,6 +37,20 @@ freitag
 
 ----------------- candidates for upcoming release ------------------
 
+- use sane syntax for ipv6 adresses. the one in example rc is
+crappy.
+
+localhost is 0000:0000:0000:0000:0000:0000:0000:0001 aka
+Fri 18 10:36 < Fruit> ::1
+
+000:0000:0000:0000:0000:0000:0000:0000/0 is ::/0
+
+s/(^|:)(0+($|:))+/::/
+
+rijen van woorden kun je afkorten tot ::
+
+Tnx Wessel
+
 - get rid of duplicated code in init-script:
       if test "$found_active" -a "$found_inactive"; then
       eval found_$rule=1
