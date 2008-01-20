@@ -37,6 +37,27 @@ freitag
 
 ----------------- candidates for upcoming release ------------------
 
+Debian unstable 2008-01-18
+
+Fri 18 10:46 < Fruit> root@homsar:/tmp# dpkg -i uruk_20071101-2_all.deb
+Fri 18 10:46 < Fruit> (Database inlezen ... 106162 bestanden en mappen 
+                      geÃ¯nstalleerd.)
+Fri 18 10:46 < Fruit> Voorbereiden om uruk 20051129-1 te vervangen (door 
+                      uruk_20071101-2_all.deb) ...
+Fri 18 10:46 < Fruit> Uitpakken van vervangende uruk ...
+Fri 18 10:46 < Fruit> Instellen van uruk (20071101-2) ...
+Fri 18 10:46 < Fruit> Installeren van nieuwe versie van configuratiebestand 
+                      /etc/init.d/uruk ...
+Fri 18 10:46 < Fruit> Uruk is unconfigured.  Please create a sane file 
+                      /etc/uruk/rc.  See uruk(8).
+Fri 18 10:46 < Fruit> invoke-rc.d: initscript uruk, action "force-reload" 
+                      failed.
+Fri 18 10:46 < Fruit> dpkg: fout bij afhandelen van uruk (--install): subproces 
+                      post-installation script gaf een foutwaarde 6 terug
+Fri 18 10:46 < Fruit> Fouten gevonden tijdens behandelen van: uruk
+
+
+
 - use sane syntax for ipv6 adresses. the one in example rc is
 crappy.
 
