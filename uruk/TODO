@@ -1,6 +1,25 @@
 
 ----------------- first prio ------------------------------------
 
+loglevel tussen 20 en 40:
+er moet iets als
+        eval ip="\"\$ip_${iface_x}\""
+        eval ip6="\"\$ip6_${iface_x}\""
+staan bij
+            eval ip="\"\$ip_${iface_x}\""
+            uruk_log -i $iface --destination $ip
+nu wil ie doen:
+ /sbin/ip6tables -A INPUT -j LOG --log-level debug --log-prefix
+  'ip6tables: ' -i eth0 --destination 194.171.167.154
+en dat geeft:
+ ip6tables v1.3.6: host/network `194.171.167.154' not found
+uruk op frgsn heeft hier last van.
+
+
+
+
+
+
 RSN: write urukconfig : generate uruk rc file based upon currently
 offered network services.  all services will be available for _all_ IPs
 (or perhaps just local network?)
@@ -36,27 +55,6 @@ freitag
 - build and upload another .deb to unstable
 
 ----------------- candidates for upcoming release ------------------
-
-Debian unstable 2008-01-18
-
-Fri 18 10:46 < Fruit> root@homsar:/tmp# dpkg -i uruk_20071101-2_all.deb
-Fri 18 10:46 < Fruit> (Database inlezen ... 106162 bestanden en mappen 
-                      geÃ¯nstalleerd.)
-Fri 18 10:46 < Fruit> Voorbereiden om uruk 20051129-1 te vervangen (door 
-                      uruk_20071101-2_all.deb) ...
-Fri 18 10:46 < Fruit> Uitpakken van vervangende uruk ...
-Fri 18 10:46 < Fruit> Instellen van uruk (20071101-2) ...
-Fri 18 10:46 < Fruit> Installeren van nieuwe versie van configuratiebestand 
-                      /etc/init.d/uruk ...
-Fri 18 10:46 < Fruit> Uruk is unconfigured.  Please create a sane file 
-                      /etc/uruk/rc.  See uruk(8).
-Fri 18 10:46 < Fruit> invoke-rc.d: initscript uruk, action "force-reload" 
-                      failed.
-Fri 18 10:46 < Fruit> dpkg: fout bij afhandelen van uruk (--install): subproces 
-                      post-installation script gaf een foutwaarde 6 terug
-Fri 18 10:46 < Fruit> Fouten gevonden tijdens behandelen van: uruk
-
-
 
 - use sane syntax for ipv6 adresses. the one in example rc is
 crappy.

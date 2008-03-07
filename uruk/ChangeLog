@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-03-07 10:09:44 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-152
+
+    Summary:
+      one bug has been squashed earlier.  another was reported
+    Revision:
+      uruk--mainline--0.1--patch-152
+
+    one bug has been squashed earlier.  another was reported
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2008-01-20 14:52:55 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-151
 
     Summary:
