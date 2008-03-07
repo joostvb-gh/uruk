@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-03-07 10:23:53 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-153
+
+    Summary:
+      fix bug showing up when loglevel between 20 and 40 and ipv6 enabled: it caused errors like "ip6tables v1.3.6: host/network 10.1.2.3 not found".  these did NOT compromise the firewall rules, btw
+    Revision:
+      uruk--mainline--0.1--patch-153
+
+    fix bug showing up when loglevel between 20 and 40 and ipv6 enabled: it caused errors like "ip6tables v1.3.6: host/network 10.1.2.3 not found".  these did NOT compromise the firewall rules, btw
+    
+
+    modified files:
+     uruk/ChangeLog uruk/script/uruk.in
+
+
 2008-03-07 10:09:44 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-152
 
     Summary:

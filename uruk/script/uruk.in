@@ -71,6 +71,9 @@ fi
 
 uruk_log () {
     $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: ' $@
+}
+
+uruk6_log () {
     $ip6tables -A INPUT -j LOG --log-level debug --log-prefix 'ip6tables: ' $@
 }
 
@@ -98,6 +101,7 @@ if test $loglevel -ge 80
 then
     # 80 < 99 (         90) fascist: log all packets
     uruk_log
+    uruk6_log
 fi
 
 $iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
@@ -358,13 +362,16 @@ then
         for iface_x in $interfaces_x
         do
             eval ip="\"\$ip_${iface_x}\""
+            eval ip6="\"\$ip6_${iface_x}\""
             uruk_log -i $iface --destination $ip
+            uruk6_log -i $iface --destination $ip6
         done
     done
 elif test $loglevel -lt 60
 then
     # 40 < 60 (         50) medium:  log denied non-broadcasts  (default)
     uruk_log
+    uruk6_log
 fi
 
 # FIXME : yet to implement:
