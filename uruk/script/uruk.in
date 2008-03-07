@@ -77,6 +77,18 @@ uruk6_log () {
     $ip6tables -A INPUT -j LOG --log-level debug --log-prefix 'ip6tables: ' $@
 }
 
+uruk_hook () {
+    if test -d "$1"
+    then
+        for f in "$1"/*.rc
+        do
+            test -r "$f" && . "$f"
+        done
+    else
+        test -r "$1" && . "$1"
+    fi
+}
+
 #
 # bootstrap these rules
 #
@@ -95,7 +107,7 @@ do
     $ip6tables -A OUTPUT -o $iface -j ACCEPT
 done
 
-test -r "$rc_a" && . "$rc_a"
+uruk_hook "$rc_a"
 
 if test $loglevel -ge 80
 then
@@ -111,7 +123,7 @@ $ip6tables -A INPUT --protocol tcp ! --syn --destination-port 1024: -j ACCEPT
 $ip6tables -A INPUT --protocol udp --destination-port 1024: -j ACCEPT
 
 
-test -r "$rc_b" && . "$rc_b"
+uruk_hook "$rc_b"
 
 #
 # protect interfaces_public agains spoofing
@@ -185,7 +197,7 @@ do
     $iptables -A OUTPUT -m state --state NEW -o $iface -j ACCEPT
 done
 
-test -r "$rc_c" && . "$rc_c"
+uruk_hook "$rc_c"
 
 #
 # allow traffic to offered services, from trusted sources
@@ -248,12 +260,12 @@ do
     done
 done
 
-test -r "$rc_d" && . "$rc_d"
+uruk_hook "$rc_d"
 
 #
 # rc_e: backwards compatibility.  should be removed one day.
 #
-test -r "$rc_e" && . "$rc_e"
+uruk_hook "$rc_e"
 
 #
 # Don't answer broadcast and multicast packets
@@ -281,7 +293,7 @@ do
     $iptables -A INPUT -i $iface --destination 255.255.255.255 -j DROP
 done
 
-test -r "$rc_f" && . "$rc_f"
+uruk_hook "$rc_f"
 
 #
 # icmp stuff. See RFC 1122 and also RFC 792, RFC 950, RFC 1812, RFC 1349,
@@ -331,7 +343,7 @@ done
 # for now, we allow _all_ ICMPv6 packets.
 $ip6tables -A INPUT --protocol icmpv6 -j ACCEPT
 
-test -r "$rc_g" && . "$rc_g"
+uruk_hook "$rc_g"
 
 #
 # log packets which make it till here: denied packets (not denied broadcasts
@@ -377,7 +389,7 @@ fi
 # FIXME : yet to implement:
 # 60 < 80 (         70) high:    log denied packets
 
-test -r "$rc_h" && . "$rc_h"
+uruk_hook "$rc_h"
 
 #
 # reject all others
@@ -392,7 +404,7 @@ $ip6tables -A INPUT -j DROP
 #  $ip6tables -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
 # would be better but don't seem to be supported with stock linux kernel.
 
-test -r "$rc_i" && . "$rc_i"
+uruk_hook "$rc_i"
 
 # make sure we exit 0, even if last test failed
 exit 0

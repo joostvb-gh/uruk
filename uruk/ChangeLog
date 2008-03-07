@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-03-07 11:01:28 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-157
+
+    Summary:
+      implement support for multiple rc_a files
+    Revision:
+      uruk--mainline--0.1--patch-157
+
+    implement support for multiple rc_a files
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/script/uruk.in
+
+
 2008-03-07 10:51:46 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-156
 
     Summary:
