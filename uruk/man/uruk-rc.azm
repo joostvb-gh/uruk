@@ -122,7 +122,7 @@ use of hooks, this will break the \uruk_save script.  If you make sure your
 active iptables rules are wiped, and invoke \uruk manually to load new rules,
 you're safe.  Using the init-script with it's default settings is safe too.
 
-\cpar{allowing \it{any} traffic on an interface}
+\cpar{allowing any traffic on an interface}
 
 In \rc there is:
 
