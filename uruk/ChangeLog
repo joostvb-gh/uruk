@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-03-07 10:32:18 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-154
+
+    Summary:
+      another wishlist bug by Wessel Dankers: multiple rc_a's
+    Revision:
+      uruk--mainline--0.1--patch-154
+
+    another wishlist bug by Wessel Dankers: multiple rc_a's
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2008-03-07 10:23:53 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-153
 
     Summary:

@@ -17,6 +17,26 @@ uruk op frgsn heeft hier last van.
 
 
 
+> > Op Tue 18 Dec 2007 om 12:05:05 +0100 schreef Wessel Dankers:
+> >> Het zou fijn zijn om meerdere rc_a's te kunnen hebben.
+>       if [ -d "$rc_a" ]
+>       then
+>               for i in "$rc_a"/*
+>               do
+>                       test -r "$i" && . "$i"
+>               done
+>       elif
+>               test -r "$rc_a" && . "$rc_a"
+>       done
+Die is leuk.  Ikzelf zou dan niet doen:
+ for i in "$rc_a"/*
+maar
+ for i in "$rc_a"/*.rc
+, zodat foo.rc~ en foo.rc.bak (en foo.rc.19dec) excluded worden.
+.
+> Maar wat ik misschien eigenlijk wil zeggen is dat ik denk dat het zinvol is
+> om dit in uruk op te nemen, en niet de gebruiker telkens codeduplicatie te
+> laten doen door te cut&pasten uit de manpage.
 
 
 
