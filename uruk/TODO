@@ -1,6 +1,8 @@
 
 ----------------- first prio ------------------------------------
 
+check if this is fixed:
+
 loglevel tussen 20 en 40:
 er moet iets als
         eval ip="\"\$ip_${iface_x}\""
@@ -35,12 +37,12 @@ gelfand
 stegun
 yosida
 banach
-kloek
 
 yet to install on:
 
 kovalevskaya
 freitag
+frgsn + ipv6-hosts
 
 - test an install on a fresh non-uruk system
 

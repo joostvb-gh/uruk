@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-03-07 13:18:49 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-158
+
+    Summary:
+      release 20080307: this is a prerelease
+    Revision:
+      uruk--mainline--0.1--patch-158
+
+    release 20080307: this is a prerelease
+    
+
+    modified files:
+     uruk/ChangeLog uruk/NEWS uruk/TODO
+
+
 2008-03-07 11:01:28 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-157
 
     Summary:

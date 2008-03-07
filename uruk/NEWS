@@ -2,6 +2,16 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 20080307
+
+- Fix a bug showing up when uruk loglevel is set between 20 and 40 and IPv6
+  is enabled: it caused errors like "ip6tables v1.3.6: host/network 10.1.2.3
+  not found".  These errors these did NOT compromise the firewall rules, btw.
+- Added support for multiple hook files (like rc_a) working at one entry
+  point.  See uruk-rc(5) and uruk(8).  Thanks Wessel Dankers for the
+  suggestion and for a first implementation.
+
+
 uruk version 20071101
 
 - Added another contribution from Fred Vos to contrib/: fw2dot.xsl: generating
