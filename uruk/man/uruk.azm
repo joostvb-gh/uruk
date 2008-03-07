@@ -167,7 +167,8 @@ course, take a look at \tt{\sbinpath/uruk} for the final word on the workings.
  is trusted:
     \verbatim{\
  $iptables -A INPUT  -i $iface -j ACCEPT}
-  \item $rc_a is sourced as a shell script
+  \item $rc_a is sourced as a shell script, or, in case $rc_a is a directory, all
+    files matching $rc_a/*.rc are sourced as shell scripts
   \item ESTABLISHED and RELATED packets are ACCEPT-ed:
     \verbatim{\
  $iptables -A INPUT -m state --state ESTABLISHED,RELATED \\

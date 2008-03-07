@@ -132,6 +132,13 @@ In \rc there is:
 This allows any traffic on \tt{eth2} (and on \tt{lo}, the default), including
 any ICMP packets and packets from any source address.
 
+\cpar{using multiple hooks at one entry point in the main uruk process}
+
+In case rc_a, rc_b, ... , or rc_i does not have a file as its value, but a
+directory, all files matching "$rc_x"/*.rc will get sourced.  This helps
+configuration management in complex situations involving lots of uruk
+configuration files for lots of hosts.
+
 \par
 
 See the section "THE GORY DETAILS: uruk INTERNALS" in \sibref{uruk}{uruk(8)}
