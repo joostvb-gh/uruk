@@ -31,26 +31,19 @@ upgraded:
 
 nagy
 
-installed prerelease on:
+yet to install on:
 
 gelfand
 stegun
 yosida
 banach
-
-yet to install on:
-
 kovalevskaya
 freitag
 frgsn + ipv6-hosts
 
 - test an install on a fresh non-uruk system
 
-- upload .deb to non-gnu: etch; fix homepage about non-gnu
-
-- ship a new upstream, with fixes for minor bugs
-
-- build a .rpm
+( - upload .deb to non-gnu: etch; fix homepage about non-gnu)
 
 - build and upload another .deb to unstable
 
