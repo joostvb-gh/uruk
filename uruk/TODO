@@ -30,16 +30,20 @@ Packages could run this to generate a first rc file.
 upgraded:
 
 nagy
+gelfand
+stegun (ipv6)
 
 yet to install on:
 
-gelfand
-stegun
 yosida
 banach
 kovalevskaya
 freitag
 frgsn + ipv6-hosts
+
+- test with enable-uruk-save
+
+- test remove & purge
 
 - test an install on a fresh non-uruk system
 
