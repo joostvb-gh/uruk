@@ -2,6 +2,27 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-03-28 15:56:27 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-161
+
+    Summary:
+      bugfix
+    Revision:
+      uruk--mainline--0.1--patch-161
+
+    Be very sure we _never_ trigger
+    
+     ip6tables v1.3.6: Unknown arg `--destination'
+     Try `ip6tables -h' or 'ip6tables --help' for more information.
+    
+    by running
+     /sbin/ip6tables -A INPUT -j LOG --log-level debug --log-prefix 'ip6tables: ' -i eth0 --destination
+    .
+    
+
+    modified files:
+     uruk/ChangeLog uruk/script/uruk.in
+
+
 2008-03-08 09:43:24 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-160
 
     Summary:

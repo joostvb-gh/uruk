@@ -375,8 +375,8 @@ then
         do
             eval ip="\"\$ip_${iface_x}\""
             eval ip6="\"\$ip6_${iface_x}\""
-            uruk_log -i $iface --destination $ip
-            uruk6_log -i $iface --destination $ip6
+            test -n "$ip" && uruk_log -i $iface --destination $ip
+            test -n "$ip6" && uruk6_log -i $iface --destination $ip6
         done
     done
 elif test $loglevel -lt 60
