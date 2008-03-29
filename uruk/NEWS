@@ -2,6 +2,21 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version UNRELEASED
+
+- Make behaviour more robust when uruk loglevel is set between 20 and 40 and
+  IPv6 is enabled.  In case not all IPv6 adresses were explicitly specified,
+  uruk would give an error:
+     ip6tables v1.3.6: Unknown arg `--destination'
+     Try `ip6tables -h' or 'ip6tables --help' for more information.
+  (it would try to run
+     /sbin/ip6tables -A INPUT -j LOG --log-level debug --log-prefix
+     'ip6tables: ' -i eth0 --destination
+  in this situation.)   These errors these did NOT compromise the firewall
+  rules, btw.  When adresses are missing, uruk does no longer try to log the
+  traffic.
+
+
 uruk version 20080307
 
 - Fix a bug showing up when uruk loglevel is set between 20 and 40 and IPv6
