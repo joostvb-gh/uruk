@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-03-30 13:19:34 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-163
+
+    Summary:
+      release 20080330
+    Revision:
+      uruk--mainline--0.1--patch-163
+
+    release 20080330
+    
+
+    modified files:
+     uruk/ChangeLog uruk/NEWS
+
+
 2008-03-29 09:56:00 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-162
 
     Summary:

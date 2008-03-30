@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version UNRELEASED
+uruk version 20080330
 
 - Make behaviour more robust when uruk loglevel is set between 20 and 40 and
   IPv6 is enabled.  In case not all IPv6 adresses were explicitly specified,
