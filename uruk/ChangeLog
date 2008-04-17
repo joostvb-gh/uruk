@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-04-17 13:54:00 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-164
+
+    Summary:
+      found another design bug :(
+    Revision:
+      uruk--mainline--0.1--patch-164
+
+    found another design bug :(
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2008-03-30 13:19:34 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-163
 
     Summary:

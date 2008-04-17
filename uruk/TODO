@@ -87,6 +87,10 @@ obsolete syntax
 ----------------- end of candidates for upcoming release ------------------
 ----------------- stuff which just might happen one day -------------------
 
+- using names of interfaces in names of variables is dumb.  the characters
+  @ : . occur in interface names, but are not allowed in variable names.
+  E.g. eth0.54@eth0 and vif6.0 and eth0:3 
+
 - use functions
    log_daemon_msg
    log_end_msg
