@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.51 2007-07-29 09:15:47 joostvb Exp $
+\: $Id: caspar.azm,v 1.52 2008-04-28 05:17:31 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -211,7 +211,7 @@ This is the simplest way to use caspar.  \it{Makefile} is
 Now, running "make" will scp all files in the current directory to
 \tt{root@some.host.somewhere:/etc/}.
 
-\cpar{More hosts, not scp but sudo}
+\cpar{More hosts, not scp but sudo via ssh}
 
 \it{Makefile} is
 
@@ -559,7 +559,25 @@ your shell's environment): if the intersection of the original csp_UHOSTS and
 your new csp_UHOSTS is empty, chances are big you've just forgotten to clean
 your environment.
 
-\par
+\cpar{Using sudo locally for installing files}
+
+If you'd like to install files like
+
+\verbatim{
+  sudo cp foo.rc /etc/foobar/
+}
+
+you could set up your \it{Makefile} as
+
+\verbatim{
+ csp_DIR = /etc/foobar/
+ csp_UHOST = dummy
+ csp_PUSH = sudo cp $(1) $(3)
+ include caspar/mk/caspar.mk
+}
+
+This is like csp_sucp, but without the ssh wrapping: it works on localhost
+only.
 
 \cpar{Plugging your own install script in caspar}
 
