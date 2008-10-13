@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-10-13 07:14:24 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-165
+
+    Summary:
+      tnx Fruit for tips on if-up.d usage
+    Revision:
+      uruk--mainline--0.1--patch-165
+
+    tnx Fruit for tips on if-up.d usage
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO
+
+
 2008-04-17 13:54:00 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-164
 
     Summary:
