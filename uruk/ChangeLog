@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2008-11-24 05:46:27 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-166
+
+    Summary:
+      fix typo: its vs it's
+    Revision:
+      uruk--mainline--0.1--patch-166
+
+    fix typo: its vs it's
+    
+
+    modified files:
+     uruk/ChangeLog uruk/man/uruk-rc.azm
+
+
 2008-10-13 07:14:24 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-165
 
     Summary:

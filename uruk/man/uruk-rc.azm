@@ -80,7 +80,7 @@ while the file \tt{bootp} reads
 .
 
 This enables one to add rules for packets with broadcast addresses in their
-destination.  (Uruk has no support for this in it's regular \rc.)
+destination.  (Uruk has no support for this in its regular \rc.)
 
 \cpar{allowing non-matching returntraffic}
 
@@ -101,7 +101,7 @@ while the file \tt{dns} reads
   done}
 
 This allows one to allow (return)traffic, disregarding the state.  (Uruk has no
-support for this in it's regular \rc.)
+support for this in its regular \rc.)
 
 \cpar{allowing NAT}
 
