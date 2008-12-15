@@ -2,7 +2,7 @@
 <!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA DSSSL>
 ]>
 
-<!-- $Id: print.dsl,v 1.3 2005-07-24 09:01:41 joostvb Exp $ -->
+<!-- $Id: print.dsl,v 1.4 2008-12-15 07:38:16 joostvb Exp $ -->
 
 <style-sheet>
   <style-specification use="docbook">
@@ -123,7 +123,7 @@
     layer: 1
     line-thickness: 0.4pt))
 
-;; make sure <systemitem/> gets typesetted in typewriter font
+;; make sure systemitem gets typesetted in typewriter font
 (element systemitem ($mono-seq$))
 
 (mode footer-copyright-mode
