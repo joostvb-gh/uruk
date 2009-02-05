@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.39 2007-07-29 09:21:00 joostvb Exp $
+# $Id: caspar.mk,v 1.40 2009-02-05 14:03:57 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -57,9 +57,9 @@ csp_PUSH       ?= $(csp_scp_FUNC)
 # however, since we might like to talk about e.g. csp_scp_UHOSTS when calling ssh in a load rule,
 # we stick with these 3 rules for now.
 #
-RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(subst -install,,$@)" $(dir);) \
-	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(subst -install,,$@)" $(dir);) \
-	$(foreach uh,$(csp_UHOSTS),$(call csp_PUSH,"$(subst -install,,$@)",$(uh),$(csp_DIR),$(csp_XARG));)
+RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(@:-install=)" $(dir);) \
+	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(@:-install=)" $(dir);) \
+	$(foreach uh,$(csp_UHOSTS),$(call csp_PUSH,"$(@:-install=)",$(uh),$(csp_DIR),$(csp_XARG));)
 
 # files, not directories
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
