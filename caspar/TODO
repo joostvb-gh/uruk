@@ -1,4 +1,4 @@
-$Id: TODO,v 1.98 2009-02-05 14:05:37 joostvb Exp $
+$Id: TODO,v 1.99 2009-03-14 19:51:38 joostvb Exp $
 
 
 - GPL v3?
@@ -16,6 +16,10 @@ $Id: TODO,v 1.98 2009-02-05 14:05:37 joostvb Exp $
 
 
 --- install stuff ---
+
+- Supply a preset loop over hosts, for load target.
+  za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
+                     dat wil je ook voor -install
 
 - add standard target: "make print-hosts"
 
@@ -92,8 +96,6 @@ $Id: TODO,v 1.98 2009-02-05 14:05:37 joostvb Exp $
 - Explain why it's good practice to do
     include ../../include/install.mk
   in manpage example.
-
-- Supply a preset loop over hosts, for load target.
 
 - Don't do
    csp_scp_FUNC  = $(csp_SCP) $(csp_CPFLAGS) $(1) $(2):$(3)
