@@ -1,9 +1,27 @@
-$Id: TODO,v 1.99 2009-03-14 19:51:38 joostvb Exp $
+$Id: TODO,v 1.100 2009-03-14 19:54:14 joostvb Exp $
 
+--- release critical ----
 
 - GPL v3?
 
 - convert to tla (or svn)?
+
+- Supply a preset loop over hosts, for load target.
+  za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
+                     dat wil je ook voor -install
+
+- Should happen _before_ the release of Debian lenny (late 2008?): Drop support for
+  csp_SUHS, csp_SUH, csp_SCPDIR, csp_CPDIRS:
+
+   for csp_SUHS   now use csp_UHOSTS
+   for csp_SUH    now use csp_UHOST
+   for csp_SCPDIR now use csp_DIR
+       csp_CPDIRS
+
+   suggest to run
+
+   % svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
+  % svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
 
 
 --- typesetting stuff ---
@@ -16,10 +34,6 @@ $Id: TODO,v 1.99 2009-03-14 19:51:38 joostvb Exp $
 
 
 --- install stuff ---
-
-- Supply a preset loop over hosts, for load target.
-  za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
-                     dat wil je ook voor -install
 
 - add standard target: "make print-hosts"
 
@@ -79,19 +93,6 @@ $Id: TODO,v 1.99 2009-03-14 19:51:38 joostvb Exp $
 
   could work.  If a user's exec wrapper needs more arguments, these can get
   introduced as implicit variables, outside $1, $2, ...
-
-- Should happen _before_ the release of Debian lenny (late 2008?): Drop support for
-  csp_SUHS, csp_SUH, csp_SCPDIR, csp_CPDIRS:
-
-   for csp_SUHS   now use csp_UHOSTS
-   for csp_SUH    now use csp_UHOST
-   for csp_SCPDIR now use csp_DIR
-       csp_CPDIRS
-
-   suggest to run
-
-   % svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
-  % svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
 
 - Explain why it's good practice to do
     include ../../include/install.mk
