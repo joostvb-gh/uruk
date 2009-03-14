@@ -1,4 +1,4 @@
-$Id: TODO,v 1.100 2009-03-14 19:54:14 joostvb Exp $
+$Id: TODO,v 1.101 2009-03-14 20:31:12 joostvb Exp $
 
 --- release critical ----
 
@@ -23,6 +23,19 @@ $Id: TODO,v 1.100 2009-03-14 19:54:14 joostvb Exp $
    % svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
   % svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
 
+- Ideas insprired by a discussion with Fred Vos: test wether file on server is
+  in sync with (e.g.) SVN before scp-ing it.  this
+  prevents overwrites of "illegal" (but possibly useful) edits on the server.
+  (Lots of users have asked for such a feature.)
+  a "make diff" might be usefull: show the diff of production with working copy.
+  a "make check" could be usefull: test wether previous svn version is on server
+  before scp-ing.
+za 14 21:28  * hoppie gaat slapen maar een diff target is wel fijn.
+za 14 21:29 < hoppie> Dat moet zo te zien zowel met ssh als lokaal gewoon 
+                      lukken.
+za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je 
+                      eventueel dat linken aan install, zodat alleen waar dat 
+                      nodig is geïnstalleerd wordt. Maar da's echt optioneel.
 
 --- typesetting stuff ---
 
@@ -166,13 +179,8 @@ Or could "mkdir ; cp" be implemented directly as a make function? Use $(shell ..
   in your ~/.ssh/config (and having an ssh connection open to all relevant
   hosts) fixes all "troubles". (This option is not available on Debian sarge.)
 
-- Ideas insprired by a discussion with Fred Vos: test wether file on server is
-  in sync with (e.g.) SVN before scp-ing it.  this
-  prevents overwrites of "illegal" (but possibly useful) edits on the server.
-  (Lots of users have asked for such a feature.)
-  a "make diff" might be usefull: show the diff of prodcucition with working copy.
-  a "make check" could be usefull: test wether previous svn version is on server
-  before scp-ing.  Perhaps a note on how to use commit-hooks could be added to
+- Ideas insprired by a discussion with Fred Vos:
+  Perhaps a note on how to use commit-hooks could be added to
   documentation.  Perhaps a note on ssh forced commands could be added.  Perhaps
   a note on a "make commit" could be added.
 
