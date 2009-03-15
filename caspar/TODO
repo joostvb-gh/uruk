@@ -1,4 +1,4 @@
-$Id: TODO,v 1.101 2009-03-14 20:31:12 joostvb Exp $
+$Id: TODO,v 1.102 2009-03-15 04:08:15 joostvb Exp $
 
 --- release critical ----
 
@@ -233,9 +233,10 @@ by
 
  DIRS :=  $(patsubst %/Makefile,%,$(shell find * -mindepth 1 -name Makefile))
 
-thanks Wessel. (This might break for trees combining GNUmakefile with
-Makefile.) Once this fix is implemented, get rid of the example toplevel
-Makefile in caspar(7).
+thanks Wessel. (This might break for trees combining GNUmakefile with Makefile
+[za 14 22:29 <Fruit> dat breekt niet voor dat soort directories, ga maar na!
+;)] .) Once this fix is implemented, get rid of the example toplevel Makefile
+in caspar(7).
 
 -  Document this:
 user joe pushed file bar to host murphy, in directory /foo/. on murphy,
