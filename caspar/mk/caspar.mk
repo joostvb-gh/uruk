@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.40 2009-02-05 14:03:57 joostvb Exp $
+# $Id: caspar.mk,v 1.41 2009-03-15 22:05:43 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -16,16 +16,6 @@ csp_UHOSTS     ?= $(csp_UHOST)
 
 ifneq ($(csp_UHOSTS_SUBSET),)
 csp_UHOSTS     := $(filter $(csp_UHOSTS_SUBSET),$(csp_UHOSTS))
-endif
-
-# backward compatibility
-ifneq ($(csp_SCPDIR),)
-ifneq ($(csp_SUHS),)
-csp_SUHDIRS    ?= $(patsubst %,%:$(csp_SCPDIR),$(csp_SUHS))
-endif
-ifneq ($(csp_SUH),)
-csp_SUHDIRS    ?= $(csp_SUH):$(csp_SCPDIR)
-endif
 endif
 
 # possibility to choose own cp(1) and scp(1)
@@ -53,12 +43,9 @@ csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3) $(4)
 csp_PUSH       ?= $(csp_scp_FUNC)
 
 # ideally, we'd just have one rule here:
-## RULES = $(foreach dir,$(csp_SUHDIRS),$(call csp_scp_FUNC,"$(subst -install,,$@)",$(dir);)
-# however, since we might like to talk about e.g. csp_scp_UHOSTS when calling ssh in a load rule,
-# we stick with these 3 rules for now.
+## RULES = $(foreach dir,$(csp_foobar DIRS),$(call csp_ foobar FUNC,"$(subst -install,,$@)",$(dir);)
 #
-RULES = $(foreach dir,$(csp_SUHDIRS),$(csp_SCP) $(csp_SCPFLAGS) "$(@:-install=)" $(dir);) \
-	$(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(@:-install=)" $(dir);) \
+RULES = $(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(@:-install=)" $(dir);) \
 	$(foreach uh,$(csp_UHOSTS),$(call csp_PUSH,"$(@:-install=)",$(uh),$(csp_DIR),$(csp_XARG));)
 
 # files, not directories

@@ -1,17 +1,17 @@
-$Id: TODO,v 1.102 2009-03-15 04:08:15 joostvb Exp $
+$Id: TODO,v 1.103 2009-03-15 22:05:43 joostvb Exp $
 
 --- release critical ----
 
 - GPL v3?
 
-- convert to tla (or svn)?
+- convert to git (or svn?)
 
 - Supply a preset loop over hosts, for load target.
   za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
                      dat wil je ook voor -install
 
-- Should happen _before_ the release of Debian lenny (late 2008?): Drop support for
-  csp_SUHS, csp_SUH, csp_SCPDIR, csp_CPDIRS:
+- Should happen _before_ the release of Debian lenny (late 2008?): Drop
+  support for csp_SUHS, csp_SUH, csp_SCPDIR, csp_CPDIRS:
 
    for csp_SUHS   now use csp_UHOSTS
    for csp_SUH    now use csp_UHOST
@@ -22,6 +22,16 @@ $Id: TODO,v 1.102 2009-03-15 04:08:15 joostvb Exp $
 
    % svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
   % svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
+
+
+woody: none
+20040721-1 first upload
+sarge (oldoldstable) 20050302-1:
+etch (oldstable) 20060618-1: 
+lenny (stable) 20070729-1: all 
+squeeze (testing)
+
+
 
 - Ideas insprired by a discussion with Fred Vos: test wether file on server is
   in sync with (e.g.) SVN before scp-ing it.  this

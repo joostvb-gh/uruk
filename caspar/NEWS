@@ -2,7 +2,9 @@ Refer to ChangeLog for detailed per-file info.
 
 caspar version UNRELEASED
 
--
+- FIXME
+- BEWARE! Backwards INcompatible change in user interface!
+  Support for csp_SUH, csp_SUHS, csp_SUHDIRS and csp_SCPDIR is dropped.
 
 
 caspar version 20070729
@@ -176,4 +178,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.35 2007-07-29 09:41:27 joostvb Exp $
+# $Id: NEWS,v 1.36 2009-03-15 22:05:43 joostvb Exp $
