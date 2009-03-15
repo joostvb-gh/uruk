@@ -5,6 +5,14 @@ caspar version UNRELEASED
 - FIXME
 - BEWARE! Backwards INcompatible change in user interface!
   Support for csp_SUH, csp_SUHS, csp_SUHDIRS and csp_SCPDIR is dropped.
+- Various improvements in caspar(7) manpage:
+  + add another example: sudo without ssh
+- Bugfix in sgml/print.dsl as used by docbook.mk.  The error
+  `jade:/usr/share/sgml/caspar/print.dsl:126:24:E: element "SYSTEMITEM"
+  undefined' will no longer show up.
+- Bugfix in caspar.mk: deal sane with files named like
+  "debian-lenny-install.txt": files which had "-install" in their name
+  never got installed.
 
 
 caspar version 20070729
@@ -178,4 +186,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.36 2009-03-15 22:05:43 joostvb Exp $
+# $Id: NEWS,v 1.37 2009-03-15 22:12:49 joostvb Exp $
