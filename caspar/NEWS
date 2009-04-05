@@ -6,7 +6,7 @@ caspar version UNRELEASED
 - BEWARE! Backwards INcompatible change in user interface!  mk/caspar.mk does
   no longer supply backward compatibility with caspar <= 20060216: Support for
   csp_SUH, csp_SUHS, csp_SUHDIRS and csp_SCPDIR is dropped.  If you use
-  old-style Makefiles, you'll have to fix these now: 
+  old-style Makefiles, you'll have to fix these now:
 
    for csp_SUHS   now use csp_UHOSTS
    for csp_SUH    now use csp_UHOST
@@ -24,6 +24,19 @@ caspar version UNRELEASED
   This kinda worked for me.  YMMV.  (Please mail the author if you need help
   converting your Makefiles and you've explicitly used the variable
   csp_SUHDIRS.)
+- Added preliminary support for "make diff" and "make <filename>-diff": this
+  shows diff between filename in current directory and filename at remote
+  location.  One can use this to test wether file on server is in sync with
+  (e.g.) previous SVN version before scp-ing it.  This prevents overwrites of
+  "illegal" (i.e. without having used SVN (but possibly useful)) edits
+  directly on the remote server.  New variables introduced:
+
+   csp_DIFFXARG (default: -u)
+   csp_COMP (default: csp_diff_FUNC; overwrite this if you want to tweak the
+              way the diff is computed)
+
+  as well as csp_SSH, csp_CAT, csp_DIFF and csp_diff_FUNC.  Thanks Fred Vos
+  and Jeroen Hoppenbrouwers for joining the discussion about this feature.
 - Caspar is now licensed under the GNU GPL version 3 or later (no longer v2 or
   later).
 - Various improvements in caspar(7) manpage:
@@ -34,6 +47,7 @@ caspar version UNRELEASED
 - Bugfix in caspar.mk: deal sane with files named like
   "debian-lenny-install.txt": files which had "-install" in their name
   never got installed.
+- Now uses automake 1.10 for building (was 1.9).
 
 
 caspar version 20070729
@@ -207,4 +221,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.39 2009-04-05 11:51:59 joostvb Exp $
+# $Id: NEWS,v 1.40 2009-04-05 12:28:47 joostvb Exp $

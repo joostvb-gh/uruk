@@ -1,4 +1,4 @@
-$Id: TODO,v 1.105 2009-04-05 11:51:59 joostvb Exp $
+$Id: TODO,v 1.106 2009-04-05 12:28:47 joostvb Exp $
 
 --- release critical ----
 
@@ -19,12 +19,8 @@ lenny (stable) 20070729-1: all
 squeeze (testing)
 
 
-
-- Ideas insprired by a discussion with Fred Vos: test wether file on server is
-  in sync with (e.g.) SVN before scp-ing it.  this
-  prevents overwrites of "illegal" (but possibly useful) edits on the server.
+- Ideas insprired by a discussion with Fred Vos:
   (Lots of users have asked for such a feature.)
-  a "make diff" might be usefull: show the diff of production with working copy.
   a "make check" could be usefull: test wether previous svn version is on server
   before scp-ing.
 za 14 21:28  * hoppie gaat slapen maar een diff target is wel fijn.
@@ -33,6 +29,14 @@ za 14 21:29 < hoppie> Dat moet zo te zien zowel met ssh als lokaal gewoon
 za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je 
                       eventueel dat linken aan install, zodat alleen waar dat 
                       nodig is geïnstalleerd wordt. Maar da's echt optioneel.
+  Preliminary support added; Document this!
+
+  Nice trick:
+
+   make diff || make install
+   make foobar-diff || make foobar-install
+
+  test how this works out when cp-ing files.
 
 --- typesetting stuff ---
 
