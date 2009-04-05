@@ -1,10 +1,10 @@
-# $Id: docbook.mk,v 1.12 2006-06-10 13:54:09 joostvb Exp $
+# $Id: docbook.mk,v 1.13 2009-04-05 11:14:33 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #  
 # This file is part of caspar.  Caspar is free software; you can redistribute
 # it and/or modify it under the terms of the GNU General Public License as
-# published by the Free Software Foundation; either version 2 of the License,
+# published by the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.  You should have received a copy of
 # the GNU General Public License along with this file (see COPYING).
 

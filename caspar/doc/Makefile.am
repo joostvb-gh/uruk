@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.7 2006-06-10 13:54:09 joostvb Exp $
+## $Id: Makefile.am,v 1.8 2009-04-05 11:14:33 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
