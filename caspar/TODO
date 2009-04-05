@@ -1,8 +1,6 @@
-$Id: TODO,v 1.103 2009-03-15 22:05:43 joostvb Exp $
+$Id: TODO,v 1.104 2009-04-05 11:39:36 joostvb Exp $
 
 --- release critical ----
-
-- GPL v3?
 
 - convert to git (or svn?)
 
@@ -16,7 +14,8 @@ $Id: TODO,v 1.103 2009-03-15 22:05:43 joostvb Exp $
    for csp_SUHS   now use csp_UHOSTS
    for csp_SUH    now use csp_UHOST
    for csp_SCPDIR now use csp_DIR
-       csp_CPDIRS
+
+  ( csp_CPDIRS is still supported )
 
    suggest to run
 
