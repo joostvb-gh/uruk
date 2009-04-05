@@ -3,10 +3,29 @@ Refer to ChangeLog for detailed per-file info.
 caspar version UNRELEASED
 
 - FIXME
-- BEWARE! Backwards INcompatible change in user interface!
-  Support for csp_SUH, csp_SUHS, csp_SUHDIRS and csp_SCPDIR is dropped.
-- Caspar is now licensed under the GNU GPL version 3 or later (no longer
-  v2 or later).
+- BEWARE! Backwards INcompatible change in user interface!  mk/caspar.mk does
+  no longer supply backward compatibility with caspar <= 20060216: Support for
+  csp_SUH, csp_SUHS, csp_SUHDIRS and csp_SCPDIR is dropped.  If you use
+  old-style Makefiles, you'll have to fix these now: 
+
+   for csp_SUHS   now use csp_UHOSTS
+   for csp_SUH    now use csp_UHOST
+   for csp_SCPDIR now use csp_DIR
+
+  (There is no replacement variable for csp_SUHDIRS; csp_CPDIRS for now is
+  still supported.) See the 20060216 NEWS item for more details.  A crude way
+  to update your Makefiles would be to run something along the lines of:
+
+   % find . -name Makefile -o -name install.mk | while read f; do
+      sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g;
+       s/csp_SCPDIR/csp_DIR/g' $f;
+     done
+
+  This kinda worked for me.  YMMV.  (Please mail the author if you need help
+  converting your Makefiles and you've explicitly used the variable
+  csp_SUHDIRS.)
+- Caspar is now licensed under the GNU GPL version 3 or later (no longer v2 or
+  later).
 - Various improvements in caspar(7) manpage:
   + add another example: sudo without ssh
 - Bugfix in sgml/print.dsl as used by docbook.mk.  The error
@@ -115,7 +134,7 @@ caspar version 20050302
 
 caspar version 20050301
 
-- BEWARE!  BACKWARDS INCOMPATIBILITY!  mk/caspar.mk is no longer supply backward
+- BEWARE!  BACKWARDS INCOMPATIBILITY!  mk/caspar.mk does no longer supply backward
   compatibility with caspar <= 20030825.  If you use old-style Makefiles, you'll
   have to fix these now.  See the 20040531 NEWS item for details.
 
@@ -188,4 +207,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.38 2009-04-05 11:39:36 joostvb Exp $
+# $Id: NEWS,v 1.39 2009-04-05 11:51:59 joostvb Exp $

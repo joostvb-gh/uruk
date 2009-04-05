@@ -1,4 +1,4 @@
-$Id: TODO,v 1.104 2009-04-05 11:39:36 joostvb Exp $
+$Id: TODO,v 1.105 2009-04-05 11:51:59 joostvb Exp $
 
 --- release critical ----
 
@@ -10,18 +10,6 @@ $Id: TODO,v 1.104 2009-04-05 11:39:36 joostvb Exp $
 
 - Should happen _before_ the release of Debian lenny (late 2008?): Drop
   support for csp_SUHS, csp_SUH, csp_SCPDIR, csp_CPDIRS:
-
-   for csp_SUHS   now use csp_UHOSTS
-   for csp_SUH    now use csp_UHOST
-   for csp_SCPDIR now use csp_DIR
-
-  ( csp_CPDIRS is still supported )
-
-   suggest to run
-
-   % svnfind -name Makefile | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
-  % svnfind -name install.mk | while read f; do sed -i 's/csp_SUHS/csp_UHOSTS/g; s/csp_SUH/csp_UHOST/g; s/csp_SCPDIR/csp_DIR/g' $f; done
-
 
 woody: none
 20040721-1 first upload
