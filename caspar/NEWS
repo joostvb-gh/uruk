@@ -1,8 +1,9 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version UNRELEASED
+caspar version 20090406
 
-- FIXME
+- Unstable bleeding edge snapshot release.
+
 - BEWARE! Backwards INcompatible change in user interface!  mk/caspar.mk does
   no longer supply backward compatibility with caspar <= 20060216: Support for
   csp_SUH, csp_SUHS, csp_SUHDIRS and csp_SCPDIR is dropped.  If you use
@@ -40,6 +41,7 @@ caspar version UNRELEASED
 
   [1] caspar version 20040721-1 was the first one uploaded to the Debian
   archives.)
+
 - Added preliminary support for "make diff" and "make <filename>-diff": this
   shows the diff between filename in current directory and filename at remote
   location.  One can use this to test wether the file on the server is in
@@ -63,6 +65,7 @@ caspar version UNRELEASED
   the feature: out of the box support for all push mechanisms is planned.
   Thanks Fred Vos and Jeroen Hoppenbrouwers for joining the discussion about
   this feature.
+
 - Added preliminary support for using rsync(1) as push mechanism.  Use it by
   setting
 
@@ -75,16 +78,21 @@ caspar version UNRELEASED
    csp_RSYNCFLAGS (default: -zPt --chmod=ugo=rwX).
 
   Thanks Ko van der Sloot for suggesting this feature.
+
 - Caspar is now licensed under the GNU GPL version 3 or later (no longer v2 or
   later).
-- Various improvements in caspar(7) manpage:
-  + add another example: sudo without ssh
+
+- Various improvements in caspar(7) manpage.  E.g. example added about
+  using sudo without ssh.
+
 - Bugfix in sgml/print.dsl as used by docbook.mk.  The error
   `jade:/usr/share/sgml/caspar/print.dsl:126:24:E: element "SYSTEMITEM"
   undefined' will no longer show up.
+
 - Bugfix in caspar.mk: deal sane with files named like
   "debian-lenny-install.txt": files which had "-install" in their name
   never got installed.
+
 - Now uses automake 1.10 for building (was 1.9).
 
 
@@ -259,4 +267,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.43 2009-04-06 20:38:39 joostvb Exp $
+# $Id: NEWS,v 1.44 2009-04-06 20:44:28 joostvb Exp $
