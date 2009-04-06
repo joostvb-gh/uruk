@@ -51,6 +51,8 @@ caspar version UNRELEASED
    csp_COMP (default: csp_diff_FUNC; overwrite this if you want to tweak the
               way the diff is computed)
 
+FIXME: csp_DIFF (and csp_Diff = diff)
+
   as well as csp_SSH, csp_CAT, csp_DIFF and csp_diff_FUNC.  For now, this
   feature works out of the box in case csp_PUSH is $(csp_scp_FUNC) (the
   default scp-based install mechanism) and in case csp_PUSH is
@@ -63,6 +65,18 @@ caspar version UNRELEASED
   the feature: out of the box support for all push mechanisms is planned.
   Thanks Fred Vos and Jeroen Hoppenbrouwers for joining the discussion about
   this feature.
+- Added preliminary support for using rsync(1) as push mechanism.  Use it by
+  setting
+
+   csp_PUSH = $(csp_rsync_FUNC)
+
+  Use csp_rsyncssh_FUNC instead of csp_rsync_FUNC if you don't want to use
+  the rsync daemon, but ssh (or rsh).
+  Other new variables introduced:
+
+   csp_RSYNC      (default: rsync),
+   csp_RSYNCFLAGS (default: -zPt --chmod=ugo=rwX).
+
 - Caspar is now licensed under the GNU GPL version 3 or later (no longer v2 or
   later).
 - Various improvements in caspar(7) manpage:
@@ -247,4 +261,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.41 2009-04-06 05:48:37 joostvb Exp $
+# $Id: NEWS,v 1.42 2009-04-06 20:25:17 joostvb Exp $

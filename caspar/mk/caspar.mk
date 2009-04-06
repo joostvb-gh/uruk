@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.43 2009-04-05 12:28:47 joostvb Exp $
+# $Id: caspar.mk,v 1.44 2009-04-06 20:25:17 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006, 2009 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -25,10 +25,12 @@ csp_SUCP       ?= csp_sucp
 csp_SSH        ?= ssh
 csp_CAT        ?= cat
 csp_DIFF       ?= diff
+csp_RSYNC      ?= rsync
 
 # extra arguments for cp(1) and scp(1)
 csp_CPFLAGS    ?=
 csp_SCPFLAGS   ?=
+csp_RSYNCFLAGS ?= -zPt --chmod=ugo=rwX
 csp_DIFFXARG   ?= -u
 
 csp_EXTRAFILES ?=
@@ -43,6 +45,8 @@ csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) 
 csp_scp_FUNC    = $(csp_SCP) $(csp_SCPFLAGS) $(1) $(2):$(3)
 csp_cp_FUNC     = $(csp_CP) $(csp_CPFLAGS) $(1) $(3)
 csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3) $(4)
+csp_rsync_FUNC  = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2)::$(3)
+csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2):$(3)
 
 # joostvb@lebesgue:~/sv...unix/systems/freitag/etc% ssh root@freitag cat /etc/fstab | diff -u - fstab || echo fout
 csp_diff_FUNC   = $(csp_SSH) $(2) $(csp_CAT) $(3)/$(1) | $(csp_DIFF) $(4) - $(1)

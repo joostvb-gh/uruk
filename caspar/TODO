@@ -1,4 +1,4 @@
-$Id: TODO,v 1.107 2009-04-06 05:48:37 joostvb Exp $
+$Id: TODO,v 1.108 2009-04-06 20:25:17 joostvb Exp $
 
 --- release critical ----
 
@@ -7,6 +7,8 @@ $Id: TODO,v 1.107 2009-04-06 05:48:37 joostvb Exp $
 - Supply a preset loop over hosts, for load target.
   za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
                      dat wil je ook voor -install
+
+- test & document rsync support.
 
 - Ideas insprired by a discussion with Fred Vos:
   (Lots of users have asked for such a feature.)
@@ -105,10 +107,6 @@ za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
   and use $(csp_CPFLAGS) for csp_XARGS.
   _Do_ test this!
 
-- this whole thing could probably better use rsync, or, alternatively, perhaps
-  caspar is redundant: there is cfengine.  Perhaps people would be better of
-  with a get-started-quick cfengine document. See caspar(7).
-
 - add support for install(1).
 
 - load stuff:
@@ -157,7 +155,7 @@ Or could "mkdir ; cp" be implemented directly as a make function? Use $(shell ..
   $@ vs $? might be helpful.
 
 - test wether file is up to date before scp-ing it, in order to prevent us from
-  doing useless (and expensive) installs.  use rsync?  use ControlMaster
+  doing useless (and expensive) installs.   use ControlMaster
   ssh_config(5) to reuse one ssh conection?  Perhaps this:
 
    ControlMaster auto
@@ -246,5 +244,6 @@ Voorzie de include/install.mk verder van:
 
 .
 
-Even better: use rsync as csp_PUSH.
+(Or use rsync as csp_PUSH?)
+
 
