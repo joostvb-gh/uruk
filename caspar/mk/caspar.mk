@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.44 2009-04-06 20:25:17 joostvb Exp $
+# $Id: caspar.mk,v 1.45 2009-04-06 20:38:39 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006, 2009 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -24,7 +24,7 @@ csp_SCP        ?= scp
 csp_SUCP       ?= csp_sucp
 csp_SSH        ?= ssh
 csp_CAT        ?= cat
-csp_DIFF       ?= diff
+csp_Diff       ?= diff     # csp_DIFF is reserved for the user interface...
 csp_RSYNC      ?= rsync
 
 # extra arguments for cp(1) and scp(1)
@@ -47,14 +47,11 @@ csp_cp_FUNC     = $(csp_CP) $(csp_CPFLAGS) $(1) $(3)
 csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3) $(4)
 csp_rsync_FUNC  = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2)::$(3)
 csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2):$(3)
-
-# joostvb@lebesgue:~/sv...unix/systems/freitag/etc% ssh root@freitag cat /etc/fstab | diff -u - fstab || echo fout
-csp_diff_FUNC   = $(csp_SSH) $(2) $(csp_CAT) $(3)/$(1) | $(csp_DIFF) $(4) - $(1)
-
+csp_diff_FUNC   = $(csp_SSH) $(2) $(csp_CAT) $(3)/$(1) | $(csp_Diff) $(4) - $(1)
 
 
 csp_PUSH       ?= $(csp_scp_FUNC)
-csp_COMP       ?= $(csp_diff_FUNC)
+csp_DIFF       ?= $(csp_diff_FUNC)
 
 # ideally, we'd just have one rule here:
 ## RULES = $(foreach dir,$(csp_foobar DIRS),$(call csp_ foobar FUNC,"$(subst -install,,$@)",$(dir);)
@@ -62,7 +59,7 @@ csp_COMP       ?= $(csp_diff_FUNC)
 RULES = $(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(@:-install=)" $(dir);) \
 	$(foreach uh,$(csp_UHOSTS),$(call csp_PUSH,"$(@:-install=)",$(uh),$(csp_DIR),$(csp_XARG));)
 
-DIFFRULES = $(foreach uh,$(csp_UHOSTS),$(call csp_COMP,"$(@:-diff=)",$(uh),$(csp_DIR),$(csp_DIFFXARG));)
+DIFFRULES = $(foreach uh,$(csp_UHOSTS),$(call csp_DIFF,"$(@:-diff=)",$(uh),$(csp_DIR),$(csp_DIFFXARG));)
 
 # files, not directories
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
