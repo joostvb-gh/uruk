@@ -24,6 +24,22 @@ caspar version UNRELEASED
   This kinda worked for me.  YMMV.  (Please mail the author if you need help
   converting your Makefiles and you've explicitly used the variable
   csp_SUHDIRS.)
+
+  (No other incompatible change will get introduced during the Debian "squeeze"
+  nor during the "squeeze + 1" release cycle: caspar in squeeze + 1 will be
+  backwards compatible with this caspar version.  History of incompatible
+  changes and Debian GNU/Linux releases:
+
+   Debian release            caspar version        incompatible?
+   --------------            --------------        -------------
+   woody   (oldoldoldstable) none                  -
+   sarge   (oldoldstable)    20050302-1            YES
+   etch    (oldstable)       20060618-1            -
+   lenny   (stable)          20070729-1            -
+   squeeze (testing)         > 20070729-1          YES
+
+  [1] caspar version 20040721-1 was the first one uploaded to the Debian
+  archives.)
 - Added preliminary support for "make diff" and "make <filename>-diff": this
   shows diff between filename in current directory and filename at remote
   location.  One can use this to test wether file on server is in sync with
@@ -35,8 +51,18 @@ caspar version UNRELEASED
    csp_COMP (default: csp_diff_FUNC; overwrite this if you want to tweak the
               way the diff is computed)
 
-  as well as csp_SSH, csp_CAT, csp_DIFF and csp_diff_FUNC.  Thanks Fred Vos
-  and Jeroen Hoppenbrouwers for joining the discussion about this feature.
+  as well as csp_SSH, csp_CAT, csp_DIFF and csp_diff_FUNC.  For now, this
+  feature works out of the box in case csp_PUSH is $(csp_scp_FUNC) (the
+  default scp-based install mechanism) and in case csp_PUSH is
+  $(csp_sucp_FUNC).  If you use cp(1) to install, and have set csp_PUSH to
+  $(csp_cp_FUNC), for now do set
+
+   csp_COMP = $(csp_DIFF) $(4) $(3)/$(1) $(1)
+
+  to get this feature working.  Very likely, this will no longer be needed in
+  the feature: out of the box support for all push mechanisms is planned.
+  Thanks Fred Vos and Jeroen Hoppenbrouwers for joining the discussion about
+  this feature.
 - Caspar is now licensed under the GNU GPL version 3 or later (no longer v2 or
   later).
 - Various improvements in caspar(7) manpage:
@@ -221,4 +247,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.40 2009-04-05 12:28:47 joostvb Exp $
+# $Id: NEWS,v 1.41 2009-04-06 05:48:37 joostvb Exp $

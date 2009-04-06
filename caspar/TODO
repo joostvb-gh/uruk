@@ -1,4 +1,4 @@
-$Id: TODO,v 1.106 2009-04-05 12:28:47 joostvb Exp $
+$Id: TODO,v 1.107 2009-04-06 05:48:37 joostvb Exp $
 
 --- release critical ----
 
@@ -8,35 +8,21 @@ $Id: TODO,v 1.106 2009-04-05 12:28:47 joostvb Exp $
   za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
                      dat wil je ook voor -install
 
-- Should happen _before_ the release of Debian lenny (late 2008?): Drop
-  support for csp_SUHS, csp_SUH, csp_SCPDIR, csp_CPDIRS:
-
-woody: none
-20040721-1 first upload
-sarge (oldoldstable) 20050302-1:
-etch (oldstable) 20060618-1: 
-lenny (stable) 20070729-1: all 
-squeeze (testing)
-
-
 - Ideas insprired by a discussion with Fred Vos:
   (Lots of users have asked for such a feature.)
   a "make check" could be usefull: test wether previous svn version is on server
   before scp-ing.
-za 14 21:28  * hoppie gaat slapen maar een diff target is wel fijn.
-za 14 21:29 < hoppie> Dat moet zo te zien zowel met ssh als lokaal gewoon 
-                      lukken.
 za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je 
                       eventueel dat linken aan install, zodat alleen waar dat 
                       nodig is geïnstalleerd wordt. Maar da's echt optioneel.
-  Preliminary support added; Document this!
-
-  Nice trick:
+  Preliminary support added; Document this!  Nice trick:
 
    make diff || make install
    make foobar-diff || make foobar-install
 
-  test how this works out when cp-ing files.
+  Make this work out of the box for all push mechanisms: add generic csp_REXEC
+  next to csp_PUSH.
+
 
 --- typesetting stuff ---
 
