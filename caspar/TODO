@@ -1,12 +1,38 @@
-$Id: TODO,v 1.108 2009-04-06 20:25:17 joostvb Exp $
+$Id: TODO,v 1.109 2009-04-07 08:49:41 joostvb Exp $
 
 --- release critical ----
 
 - convert to git (or svn?)
 
+- deze:
+Op Mon  1 Dec 2008 om 02:49:40 +0100 schreef Wessel Dankers:
+> oi,
+>
+> Bij veel opdrachten van caspar wordt een for-lusje uitgevoerd met wat
+> commando's. Standaard gedrag van make is te falen als een commando non-0
+> exitstatus heeft maar caspar propageert die foutcodes niet. Eenvoudige
+> oplossing: daar waar een for-lusje staat, bijvoorbeeld:
+>
+>       for d in $(dirs); do \
+>               ...;\
+>       done
+>
+> dit er van maken:
+>
+>       set -e; for d in $(dirs); do \
+>               ...;\
+>       done
+>
+> HTH, HAND, etc,
+>
+of de for van make zelf gebruiken, en dan veel targets maken.
+shells' for exit-code is exit code laatste commando.
+
+
 - Supply a preset loop over hosts, for load target.
   za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
                      dat wil je ook voor -install
+  gaat niet lukken op korte termijn: moeilijk
 
 - test & document rsync support.
 
@@ -14,8 +40,8 @@ $Id: TODO,v 1.108 2009-04-06 20:25:17 joostvb Exp $
   (Lots of users have asked for such a feature.)
   a "make check" could be usefull: test wether previous svn version is on server
   before scp-ing.
-za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je 
-                      eventueel dat linken aan install, zodat alleen waar dat 
+za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
+                      eventueel dat linken aan install, zodat alleen waar dat
                       nodig is geïnstalleerd wordt. Maar da's echt optioneel.
   Preliminary support added; Document this!  Nice trick:
 
@@ -70,6 +96,8 @@ za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
  cp  "index.html" /var/php/public/jccpmanu/https;
  cp  "loginform.html" /var/php/public/jccpmanu/https;
  cp  "logo.html" /var/php/public/jccpmanu/https;
+
+  make does not support arrays, but space-separated strings, so: tag won't fix.
 
 - caspar chokes on : in filenames:
 
@@ -246,4 +274,6 @@ Voorzie de include/install.mk verder van:
 
 (Or use rsync as csp_PUSH?)
 
+- have one target for each host, both in "install" and "load" targets.
+  this would allow "make -j10" for parallel scp's.
 
