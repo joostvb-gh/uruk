@@ -1,10 +1,12 @@
-caspar (20090406-1) unstable; urgency=low
+caspar (20090406-1) UNRELEASED; urgency=low
 
+  * UNRELEASED.
   * New upstream unstable snapshot release.
   * Backwards incompatible.  FIXME: Add NEWS.Debian.
   * debian/control: use new Homepage field.
   * debian/control: no longer suggest obsolete package tetex-bin, but its
     successor.
+  * debian/copyright: upstream changed license, adjust. FIXME
 
  -- Joost van Baal <joostvb@debian.org>  Tue, 07 Apr 2009 07:22:39 +0200
 
