@@ -1,3 +1,13 @@
+caspar (20090406-1) unstable; urgency=low
+
+  * New upstream unstable snapshot release.
+  * Backwards incompatible.  FIXME: Add NEWS.Debian.
+  * debian/control: use new Homepage field.
+  * debian/control: no longer suggest obsolete package tetex-bin, but its
+    successor.
+
+ -- Joost van Baal <joostvb@debian.org>  Tue, 07 Apr 2009 07:22:39 +0200
+
 caspar (20070729-1) unstable; urgency=low
 
   * New upstream (missed: 20070713).
