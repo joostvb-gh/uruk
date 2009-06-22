@@ -1,4 +1,4 @@
-$Id: TODO,v 1.109 2009-04-07 08:49:41 joostvb Exp $
+$Id: TODO,v 1.110 2009-06-22 05:54:04 joostvb Exp $
 
 --- release critical ----
 
@@ -65,8 +65,8 @@ za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
 
 - add standard target: "make print-hosts"
 
-- Should happen Real Soon Now (early 2008?): Get rid of csp_SUHDIRS and other
-  obsolete variables.  Get rid of SCP and CP RULEs in caspar.mk.
+- Should happen Real Soon Now (early 2008?): Get rid of
+  obsolete variables.  Get rid of CP RULEs in caspar.mk.
 
 - "install" should depend upon "load".  (should it?) ("make" currently does
   both "install" and "load"; it does not do "build".  (really!?)).  and/or:
