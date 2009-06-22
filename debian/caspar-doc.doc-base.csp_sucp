@@ -1,8 +1,8 @@
-Document: csp_sucp
+Document: csp-sucp
 Title: csp_sucp - Mix ssh with sudo, to allow for remote copy
 Author: Joost van Baal
 Abstract: The manual describes the csp_sucp tool as shipped with caspar
-Section: Apps/Devel
+Section: Network/File Transfer
 
 Format: postscript
 Files: /usr/share/doc/caspar/csp_sucp.ps.gz

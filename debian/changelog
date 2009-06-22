@@ -1,4 +1,4 @@
-caspar (20090406-1) UNRELEASED; urgency=low
+caspar (20090406-1) unstable; urgency=low
 
   * New upstream release; backwards incompatible with caspar <= 20060216.
     See upstream NEWS file.
@@ -8,6 +8,7 @@ caspar (20090406-1) UNRELEASED; urgency=low
     changes needed).
   * debian/control: no longer suggest obsolete package tetex-bin, but its
     successor.
+  * debian/caspar-doc.doc-base.*: use new doc-base sections.
   * debian/copyright: upstream changed license to GPL v3, adjusted.
 
  -- Joost van Baal <joostvb@debian.org>  Fri, 19 Jun 2009 22:55:32 +0200
