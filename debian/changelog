@@ -1,3 +1,10 @@
+caspar (20090406-2) UNRELEASED; urgency=low
+
+  * FIXME
+  * debian/copyright: update year, explicitly state GPL v3 or later.
+
+ -- Joost van Baal <joostvb@debian.org>  Mon, 22 Jun 2009 21:49:03 +0200
+
 caspar (20090406-1) unstable; urgency=low
 
   * New upstream release; backwards incompatible with caspar <= 20060216.
