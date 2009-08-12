@@ -1,0 +1,108 @@
+#!/bin/bash
+# Creates a directory in working directory named like the last path
+# element of the parameter, and creates a Makefile in the new directory
+# containing standard caspar(7) setup that refers to the parameter path.
+# If relevant, also copies the original config file into the new dir.
+# Is reasonably picky about path names, tries to avoid common errors.
+#
+# V1.3 2009-07-25 Jeroen Hoppenbrouwers <hoppie@hoppie.nl>
+
+# Abort on first error.
+set -e
+
+if [ -z "$1" ]; then
+  echo "Usage:"
+  echo "  caspar /path/to/config/dir"
+  echo "    Creates dir in working directory and"
+  echo "    sets up caspar(7) Makefile in it."
+  echo "  caspar /path/to/config/dir/file"
+  echo "    Creates dir in working directory and"
+  echo "    sets up caspar(7) Makefile in it,"
+  echo "    then copies the config file into it."
+  echo ""
+  echo "Typical example:"
+  echo "  \$ cd <svn>/etc"
+  echo "  \$ caspar /etc/postfix/main.cf"
+  echo ""
+  echo "Will never overwrite anything that already exists."
+  exit 1
+fi
+
+# Complain if config path is not absolute.
+if [ "${1:0:1}" != "/" ]; then
+  echo "ERROR: config path must be absolute".
+  exit 1
+fi
+
+# If given config path is a file, split it off and continue with just the
+# config directory (until at the end where the file comes in).
+if [ -d "$1" ]; then
+  # Target is a directory; just continue.
+  conffile=""
+  confdir=$1
+else
+  # Target is a file; split off.
+  conffile=`basename $1`
+  confdir=`dirname $1`
+fi
+
+# Two options are covered:
+# 1. New directory required, create in working directory.
+# 2. New dir and file required, create dir in working directory and file
+#    in the newly created directory.
+# What is NOT covered is "create file in working directory" because we
+# assume that it is rare to not have the working directory set up with a
+# Makefile. But it could be done.
+
+# Complain if working directory basename is not equal to one-but-last
+# element of the given config directory path. This catches most "oops"
+# cases.
+here=`pwd`
+here=`basename $here`
+target=`dirname $confdir`
+target=`basename $target`
+if [ "$here" != "$target" ]; then
+  echo "ERROR: Check config directory versus working directory."
+  exit 1
+fi
+
+# Find the include/install.mk file by looking up the tree from working dir.
+scandir=`pwd`
+uplevels=""
+until [ -a "${uplevels}include/install.mk" ]; do
+  scandir=`dirname $scandir`
+  if [ "$scandir" = "/" ]; then
+    echo "ERROR: could not find include/install.mk anywhere up the path."
+    exit 1
+  fi
+  uplevels+="../"
+done
+
+# Directory to be created in working directory.
+base=`basename $confdir`
+
+# If the directory to be created already exists, don't complain.
+# It may be that caspar(1) is used to create the Makefile only.
+mkdir -pv $base
+
+if [ -e "${base}/Makefile" ]; then
+  # Complain if the Makefile already exists.
+  echo "WARNING: $base/Makefile already exists; not overwriting."
+else
+  # Create the Makefile.
+  echo "csp_DIR = $confdir" > ${base}/Makefile
+  echo "include ${uplevels}../include/install.mk" >> ${base}/Makefile
+  echo "caspar: created file \`$base/Makefile'"
+fi
+
+# If required, create the configuration file as well (copy over).
+if [ -n "${conffile}" ]; then
+  if [ -e "${base}/${conffile}" ]; then
+    echo "WARNING: ${base}/${conffile} already exists; not overwriting."
+  else
+    cp ${confdir}/${conffile} $base
+    echo "caspar: created file \`${base}/${conffile}'"
+  fi
+fi
+
+exit 0

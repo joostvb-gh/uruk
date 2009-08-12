@@ -1,0 +1,79 @@
+\: vim:syntax=tex
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
+
+\def{"man::synstyle"}{long}
+\def{"man::defstyle"}{long}
+\import{man.zmm}
+
+\import{./include.zmm}
+
+\set{"man::name"}{caspar}
+\set{"man::html-title"}{caspar}
+\set{"man::section"}{1}
+
+\"man::preamble"
+\${html}{\"man::maketoc"}
+
+\def{caspar}{\bf{caspar}}
+
+\sec{name}{NAME}
+\NAME{caspar}{Set up caspar(7) Makefile in a new directory}
+
+\sec{synopsis}{SYNOPSIS}
+\par{
+  \caspar
+    \synreqopt{/path/to/config/dir}
+}
+\par{
+  \caspar
+    \synreqopt{/path/to/config/dir/file}
+}
+
+\sec{description}{DESCRIPTION}
+
+\caspar creates a new configuration working directory in your current
+working directory, sets up a Makefile for caspar(7) in this new directory,
+and optionally copies an original configuration file from its original
+system place to the newly created configuration working directory.
+
+\sec{usage}{USAGE}
+
+You typically use caspar(1) when you already have created the root
+configuration working directory with its include directory and install.mk
+Caspar include file. By analysing your current working directory and the
+configuration directory path you give on the command line, caspar(1) can
+deduce the contents of the Makefile in the newly created configuration
+working directory. It creates the new directory, creates the correct
+Makefile, and optionally copies the given configuration file in the new
+directory, ready for its first version commit.
+
+\sec{examples}{EXAMPLES}
+
+A typical example:
+
+\verbatim{
+  $ cd <svn>/etc
+  $ caspar /etc/postfix/main.cf}
+
+creates the directory <svn>/etc/postfix, creates <svn>/etc/postfix/Makefile
+including the proper content, and copies /etc/postfix/main.cf into
+<svn>/etc/postfix/main.cf. You can now directly add and commit the new
+directory.
+
+\sec{bugs}{BUGS}
+
+Non known at this moment.
+
+\sec{author}{AUTHOR}
+
+Jeroen Hoppenbrouwers
+
+\sec{seealso}{SEE ALSO}
+
+\sibref{caspar}{caspar(7)}
+  \par
+The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
+
+\"man::postamble"
+
+
