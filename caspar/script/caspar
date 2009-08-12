@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# $Id: caspar,v 1.3 2009-08-12 16:21:22 joostvb Exp $
+# $Source: /cvsroot/caspar/caspar/caspar/script/Attic/caspar,v $
+
 # caspar - create Makefile-populated directories
 # Copyright (C) 2009  Jeroen Hoppenbrouwers <hoppie@hoppie.nl>
 #

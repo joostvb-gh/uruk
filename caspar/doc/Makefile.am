@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.8 2009-04-05 11:14:33 joostvb Exp $
+## $Id: Makefile.am,v 1.9 2009-08-12 16:21:22 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -26,17 +26,22 @@ W3M = w3m
 PACKAGE = @PACKAGE_TARNAME@
 docdir = $(datadir)/doc/$(PACKAGE)
 
-azms = csp_sucp.azm caspar.azm caspar-typesetting.azm
-typetargets = csp_sucp.html csp_sucp.ps csp_sucp.txt caspar.html caspar.ps \
+azms = caspar1.azm csp_sucp.azm caspar.azm caspar-typesetting.azm
+typetargets = caspar1.html caspar1.ps caspar1.txt csp_sucp.html \
+  csp_sucp.ps csp_sucp.txt caspar.html caspar.ps \
   caspar.txt caspar-typesetting.html caspar-typesetting.ps \
   caspar-typesetting.txt
 
 doc_DATA = $(typetargets) $(azms) ChangeLog.2002
-man_MANS = csp_sucp.1 caspar.7 caspar-typesetting.7
+man_MANS = caspar.1 csp_sucp.1 caspar.7 caspar-typesetting.7
 
 EXTRA_DIST = $(doc_DATA) $(man_MANS)
 
 SUFFIXES = .1 .7 .azm .html .ps .txt
+
+caspar.1: caspar1.azm
+	$(ZOEM) -d roff -i $< -o $@
+	$(ZOEM) -d roff -i $< -o $@
 
 .azm.1:
 	$(ZOEM) -d roff -i $< -o $@

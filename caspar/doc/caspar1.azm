@@ -1,6 +1,9 @@
 \: vim:syntax=tex
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
+\: $Id: caspar1.azm,v 1.3 2009-08-12 16:21:22 joostvb Exp $
+\: $Source: /cvsroot/caspar/caspar/caspar/doc/Attic/caspar1.azm,v $
+
 \:  caspar script manpage
 \:  Copyright (C) 2009  Jeroen Hoppenbrouwers
 \:
