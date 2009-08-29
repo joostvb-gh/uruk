@@ -3,6 +3,19 @@
 
 convert repo to git
 
+za 29 15:16 < fvos> joostvb: misschien kan het al, maar op de eee wil ik dat 
+                    het ook kan werken als er per verbinding een ander ip-adres 
+                    is
+za 29 15:18 < fvos> checking van de rc-file is er niet, zoals je zelf aangeeft, 
+                    maar met de xml+xsl-aanvulling van mij kun je de 
+                    instelling-documenten valideren tegen een xsd en het 
+                    bestand opdelen in logische bestanden die je met xinclude 
+                    samenvoegt
+za 29 19:29 < joostvb> fvos: valideren tegen een xsd: patches welkom :)
+za 29 19:29 < joostvb> fvos: maar ik denk niet dat ik dat de default ga maken, 
+                       dat ie dat doet
+
+
 ----------------- first prio ------------------------------------
 
 RSN: write urukconfig : generate uruk rc file based upon currently
