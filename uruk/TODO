@@ -79,6 +79,15 @@ vr 04 15:55 < joostvb> ?
 vr 04 15:55 < Fruit> wikni
 vr 04 15:55 < joostvb> damn
 
+http://www.faqs.org/rfcs/rfc3330.html
+
+gebruik voor net_foo strings als
+
+privnet-10
+privnet-0
+privnet-172
+
+fix de FIXME's
 
 
 
