@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2009-09-04 14:07:42 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-171
+
+    Summary:
+      first shot at using abbreviated notation for IP addresses
+    Revision:
+      uruk--mainline--0.1--patch-171
+
+    first shot at using abbreviated notation for IP addresses
+    
+
+    modified files:
+     uruk/ChangeLog uruk/TODO uruk/doc/rc uruk/script/uruk.in
+
+
 2009-08-29 17:36:15 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-170
 
     Summary:

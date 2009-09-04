@@ -150,6 +150,7 @@ do
     for iface_x in $interfaces_x
     do
         eval net="\"\$net_${iface_x}\""
+        # 127.1/8 10./8 172.16./12 192.168./16  FIXME : allow for short names?
         for no_route_ip in 127.0.0.1/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16
         do
             if test $no_route_ip != "$net"

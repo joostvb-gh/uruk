@@ -65,6 +65,23 @@ rijen van woorden kun je afkorten tot ::
 
 Tnx Wessel
 
+vr 04 15:53 < joostvb> is 10.0.0.0/8 ook te schrijven als 10/8 ?
+vr 04 15:53 < Fruit> wel als 10./8
+vr 04 15:53 < Fruit> 10/8 is 0.0.0.10/8
+vr 04 15:54 < Fruit> 10.1/8 = 10.0.0.1/8
+vr 04 15:54 < joostvb> 0.0.0.0/0 (aka 0/0) <- klopt?
+vr 04 15:54 < Fruit> ja.
+vr 04 15:54 < joostvb> 172.16.0.0/12 (aka 172.16./12)
+vr 04 15:55 < Fruit> yepyep
+vr 04 15:55 < Fruit> overigens parsen sommige applicaties het verkeerd
+vr 04 15:55 < joostvb> iptables is 1 van die applicaties
+vr 04 15:55 < joostvb> ?
+vr 04 15:55 < Fruit> wikni
+vr 04 15:55 < joostvb> damn
+
+
+
+
 - get rid of duplicated code in init-script:
       if test "$found_active" -a "$found_inactive"; then
       eval found_$rule=1

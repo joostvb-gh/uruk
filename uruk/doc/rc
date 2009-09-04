@@ -42,10 +42,11 @@ ip_eth0=10.56.0.201
 ip_eth1=192.168.0.4
 
 # To which network does this interface belong?  Should be one of
-# 0.0.0.0/0 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16. Used to decide wether a
+# 0.0.0.0/0 (aka 0/0) 10.0.0.0/8 (aka 10./8) 172.16.0.0/12 (aka 172.16./12)
+# 192.168.0.0/16 (aka 192.168./16) . Used to decide wether a
 # packet for this interface is spoofed, and therefore should get dropped.
-net_eth0=0.0.0.0/0
-net_eth1=192.168.0.0/16
+net_eth0=0/0          # FIXME only allow full names here?
+net_eth1=192.168./16
 
 # Subset of interfaces, which should drop broadcast and multicast packets
 interfaces_nocast="eth0"
@@ -55,8 +56,8 @@ bcast_eth0=10.56.255.255
 
 
 # You can define any shell variable, and reference it later on
-localnet="10.56.0.0/16"
-all=0.0.0.0/0
+localnet="10.56./16"
+all=0/0
 
 # For each interface, and for both tcp and udp, symbolic names of (sets of)
 # services could be defined, in variables services_<if>_{tcp,udp}.
@@ -67,15 +68,15 @@ services_eth0_tcp="mail local public"
 # sources_<if>_{tcp,udp}_<s> .  Furthermore a list of ports should be defined
 # in a variable ports_<if>_{tcp,udp}_<s> .
 
-# A valid source is 192.168.6.26, another valid source is 192.168.6.0/24.
+# A valid source is 192.168.6.26, another valid source is 192.168.6./24.
 # One can add DNS domainnames like gandalf.example.com too: iptables will
 # perform a DNS lookup
-sources_eth0_tcp_mail="10.0.0.0/24 10.56.38.0/24 192.168.6.26"
+sources_eth0_tcp_mail="10./24 10.56.38./24 192.168.6.26" # FIXME: does iptables
+                                                         # know how to parse this?
 sources_eth0_tcp_local="$localnet gandalf.example.com"
 sources_eth0_tcp_public=$all
 # If you have enabled IPv6 support, supply IPv6 addresses like this:
-# sources6_eth0_tcp_public="0000:0000:0000:0000:0000:0000:0000:0000/0"
-
+# sources6_eth0_tcp_public="0000:0000:0000:0000:0000:0000:0000:0000/0" # (aka ::/0)
 
 # Symbolic port names are fine.
 ports_eth0_tcp_mail=smtp
