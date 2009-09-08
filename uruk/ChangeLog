@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2009-09-08 07:52:44 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-174
+
+    Summary:
+      tnx Fruit
+    Revision:
+      uruk--mainline--0.1--patch-174
+
+    tnx Fruit
+    
+
+    modified files:
+     uruk/ChangeLog
+
+
 2009-09-04 14:33:07 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-173
 
     Summary:
