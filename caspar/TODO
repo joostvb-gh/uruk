@@ -1,4 +1,4 @@
-$Id: TODO,v 1.112 2009-09-01 09:19:45 joostvb Exp $
+$Id: TODO,v 1.113 2009-09-09 13:37:19 joostvb Exp $
 
 --- release critical ----
 
@@ -27,6 +27,13 @@ Op Mon  1 Dec 2008 om 02:49:40 +0100 schreef Wessel Dankers:
 >
 of de for van make zelf gebruiken, en dan veel targets maken.
 shells' for exit-code is exit code laatste commando.
+
+- wo 09 11:57 < thijs> joostvb: re caspar, als je een commando op veel systemen 
+                     uitvoert met 1 make zie je soms een hele lijst met ergens 
+                     middenin een foutmelding
+wo 09 11:58 < thijs> zou het mogelijk zijn om caspar zo te fixen dat hij steeds 
+                     output bij welk systeem hij bezig is?
+wo 09 12:31 < Fruit> gewoon make SHELL='/bin/sh -ex'
 
 
 - Supply a preset loop over hosts, for load target.
