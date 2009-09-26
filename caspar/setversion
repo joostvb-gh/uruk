@@ -1,4 +1,4 @@
-# $Id: setversion,v 1.5 2009-06-22 05:54:04 joostvb Exp $
+# $Id: setversion,v 1.6 2009-09-26 02:20:55 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -9,7 +9,7 @@ then
     date=$( echo -n $(cat stamp.year); echo -n $(cat stamp.month); echo -n $(cat stamp.day) )
     echo $date >VERSION
     echo 'm4_define([CASPAR_VERSION], ['$date'])' > VERSION.m4
-else 
+else
     echo 'm4_define([CASPAR_VERSION], ['`date +%Y%m%d`'])' > VERSION.m4
     # compatibility with other mdcc.cx/ad1810 packages
     date +%Y%m%d > VERSION
