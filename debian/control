@@ -1,11 +1,11 @@
-# $Id: control,v 1.16 2009-06-22 05:56:04 joostvb Exp $
+# $Id: control,v 1.17 2009-09-26 07:28:26 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/debian/control,v $
 Source: caspar
 Section: devel
 Priority: optional
 Maintainer: Joost van Baal <joostvb@debian.org>
 Build-Depends: debhelper (>= 5)
-Standards-Version: 3.8.1
+Standards-Version: 3.8.3
 Homepage: http://mdcc.cx/caspar
 
 Package: caspar

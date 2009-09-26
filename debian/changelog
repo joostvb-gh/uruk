@@ -1,6 +1,8 @@
-caspar (20090406-2) UNRELEASED; urgency=low
+caspar (20090926-1) UNRELEASED; urgency=low
 
   * FIXME
+  * debian/control: bumped Standards-Version: from 3.8.1 to 3.8.3 (no
+    changes needed).
   * debian/copyright: update year, explicitly state GPL v3 or later.
 
  -- Joost van Baal <joostvb@debian.org>  Mon, 22 Jun 2009 21:49:03 +0200
