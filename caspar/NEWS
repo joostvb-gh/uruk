@@ -5,6 +5,8 @@ caspar version 20090926
 - Unstable bleeding edge snapshot release.
 - Added (not yet documented) new scripts csp_install and csp_scp_keep_mode,
   allowing for more robust installs.
+- Add script caspar(1), for generating caspar-style Makefiles, contributed
+  by Jeroen Hoppenbrouwers.
 - setversion: allow for user override of version of caspar release.
 - TODO: updated
 
@@ -274,4 +276,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.47 2009-09-26 02:06:25 joostvb Exp $
+# $Id: NEWS,v 1.48 2009-09-26 02:25:14 joostvb Exp $
