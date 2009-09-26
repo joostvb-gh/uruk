@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# $Id: csp_scp_keep_mode,v 1.1 2009-09-26 01:53:25 joostvb Exp $
+# $Source: /cvsroot/caspar/caspar/caspar/script/csp_scp_keep_mode,v $
+
+# user joe pushed file bar to host murphy, in directory /foo/. on murphy,
+# /foo/bar is owned by joe:joe.  Now, ann wants to change murphy:/foo/bar.  She
+# however lacks permissions.  Using a new group "hackers", and performing chmod
+# g+s on murphy:/foo/ fixes this partially: the files now belong to the right
+# group "hackers".  However, a mode g+w on a file is generally _not_ preserved
+# when scp-ing a new version of the file.
+#
+# Zorg dat op alle desktops het scriptje "csp_install_origal_mode" ergens
+# in het $PATH van de gebruikers staat.
+# Voorzie de include/install.mk verder van:
+#
+#  csp_scp_keep_mode_FUNC = csp_scp_keep_mode $(1) $(2) $(3)
+#  csp_PUSH = $(csp_scp_keep_mode_FUNC)
+#
+
+: ${csp_SSH:=ssh}
+exec $csp_SSH $2 't=`mktemp` && cat >$t && mv $t $3/$1' < $1

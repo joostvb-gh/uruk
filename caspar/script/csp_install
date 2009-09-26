@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# $Id: csp_install,v 1.1 2009-09-26 01:53:25 joostvb Exp $
+# $Source: /cvsroot/caspar/caspar/caspar/script/csp_install,v $
+
+# honors optionally set environment variable csp_INSTALL_OPTIONS.
+# use e.g.
+#  export csp_INSTALL_OPTIONS='--owner=www-data --group=www-data'
+
+
+# alternative, using cp:
+#
+# csp_UHOST = dummy
+# csp_PUSH = mkdir -p $(3) && $(csp_CP) $(1) $(3)/
+
+: ${csp_INSTALL_MODE:=u=rw,go=r}
+install --directory $2
+exec install --backup=off --preserve-timestamps --mode=$csp_INSTALL_MODE --no-target-directory $csp_INSTALL_OPTIONS $1 $2/$1
+
