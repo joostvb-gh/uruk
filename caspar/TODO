@@ -1,6 +1,10 @@
-$Id: TODO,v 1.114 2009-09-26 01:53:24 joostvb Exp $
+$Id: TODO,v 1.115 2009-09-26 02:06:25 joostvb Exp $
 
 --- release critical ----
+
+- test & document csp_install and csp_scp_keep_mode
+
+- test & document rsync support
 
 - convert to git (or svn?)
 
@@ -41,7 +45,6 @@ wo 09 12:31 < Fruit> gewoon make SHELL='/bin/sh -ex'
                      dat wil je ook voor -install
   gaat niet lukken op korte termijn: moeilijk
 
-- test & document rsync support.
 
 - Ideas insprired by a discussion with Fred Vos:
   (Lots of users have asked for such a feature.)

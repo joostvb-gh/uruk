@@ -1,15 +1,15 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2009MMDD
-
-- Added (not yet documented) new scripts csp_install and csp_scp_keep_mode,
-  allowing for more robust installs.
-- setversion: allow for user override of version
-- TODO: updated
-
-caspar version 20090406
+caspar version 20090926
 
 - Unstable bleeding edge snapshot release.
+- Added (not yet documented) new scripts csp_install and csp_scp_keep_mode,
+  allowing for more robust installs.
+- setversion: allow for user override of version of caspar release.
+- TODO: updated
+
+
+caspar version 20090406
 
 - BEWARE! Backwards INcompatible change in user interface!  mk/caspar.mk does
   no longer supply backward compatibility with caspar <= 20060216: Support for
@@ -274,4 +274,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.46 2009-09-26 01:53:24 joostvb Exp $
+# $Id: NEWS,v 1.47 2009-09-26 02:06:25 joostvb Exp $
