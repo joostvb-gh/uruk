@@ -1,17 +1,29 @@
 #!/bin/sh
 
-# $Id: csp_install,v 1.1 2009-09-26 01:53:25 joostvb Exp $
+# $Id: csp_install,v 1.2 2009-09-29 09:13:07 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/caspar/script/csp_install,v $
 
+# csp_install - wrapper for install(1), to be used in caspar-ized Makefiles
+#
+#  usage: csp_install <file> <directory>
+#
 # honors optionally set environment variable csp_INSTALL_OPTIONS.
 # use e.g.
 #  export csp_INSTALL_OPTIONS='--owner=www-data --group=www-data'
-
-
+#
+# Generally, this script is to be used by stating e.g.
+#
+#   csp_UHOST = dummy
+#   csp_PUSH = $(csp_install_FUNC)
+#   csp_DIR = /etc/
+#   include caspar/mk/caspar.mk
+#
+# in a Makefile
+#
 # alternative, using cp:
 #
-# csp_UHOST = dummy
-# csp_PUSH = mkdir -p $(3) && $(csp_CP) $(1) $(3)/
+#  csp_UHOST = dummy
+#  csp_PUSH = mkdir -p $(3) && $(csp_CP) $(1) $(3)/
 
 : ${csp_INSTALL_MODE:=u=rw,go=r}
 install --directory $2

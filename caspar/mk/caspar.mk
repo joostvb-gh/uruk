@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.45 2009-04-06 20:38:39 joostvb Exp $
+# $Id: caspar.mk,v 1.46 2009-09-29 09:13:07 joostvb Exp $
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006, 2009 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
@@ -26,6 +26,8 @@ csp_SSH        ?= ssh
 csp_CAT        ?= cat
 csp_Diff       ?= diff     # csp_DIFF is reserved for the user interface...
 csp_RSYNC      ?= rsync
+csp_INSTALL    ?= csp_install
+csp_SCP_KEEP_MODE ?= csp_scp_keep_mode
 
 # extra arguments for cp(1) and scp(1)
 csp_CPFLAGS    ?=
@@ -48,7 +50,8 @@ csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3) $(4)
 csp_rsync_FUNC  = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2)::$(3)
 csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2):$(3)
 csp_diff_FUNC   = $(csp_SSH) $(2) $(csp_CAT) $(3)/$(1) | $(csp_Diff) $(4) - $(1)
-
+csp_install_FUNC = $(csp_INSTALL) $(1) $(3)
+csp_scp_keep_mode_FUNC = $(csp_SCP_KEEP_MODE) $(1) $(2) $(3)
 
 csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
