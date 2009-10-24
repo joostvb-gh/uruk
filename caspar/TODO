@@ -1,4 +1,4 @@
-$Id: TODO,v 1.115 2009-09-26 02:06:25 joostvb Exp $
+$Id: TODO,v 1.116 2009-10-24 11:22:54 joostvb Exp $
 
 --- release critical ----
 
@@ -97,6 +97,21 @@ za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
   "target `sshd_config-install' given more than once in the same rule." shows
   up once the file _is_ present.  To be fixed by having "install" depend upon
   "build"?
+
+za 24 11:59 < Fruit> joostvb: ik dacht trouwens dat ik een oplossinkje had 
+                     gemaakt voor build-targets die dubbel opgenomen worden 
+                     omdat ze ook al op het filesystem staan, maar caspar zeurt 
+                     er nog steeds over
+za 24 12:23 < Fruit> mijn opmerking ging over het tweede stuk van dat todo-item
+za 24 12:27 < Fruit> ik denk trouwens dat install moet dependen op de inhoud 
+                     van csp_BUILD, niet op build
+
+To: joostvb-caspar@mdcc.cx
+Subject: [PATCH] geen gezeur over dubbele files meer
+Message-Id: <20091024104540.D7BBE28021C@strongbad.uvt.nl>
+Date: Sat, 24 Oct 2009 12:45:40 +0200 (CEST)
+From: Wessel Dankers
+
 
 - caspar chokes on spaces in filenames:
 
