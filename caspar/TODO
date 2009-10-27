@@ -1,12 +1,14 @@
-$Id: TODO,v 1.116 2009-10-24 11:22:54 joostvb Exp $
+$Id: TODO,v 1.117 2009-10-27 11:31:07 joostvb Exp $
+
+- convert to git!!
+
+- apply Fruit patches
 
 --- release critical ----
 
 - test & document csp_install and csp_scp_keep_mode
 
 - test & document rsync support
-
-- convert to git (or svn?)
 
 - deze:
 Op Mon  1 Dec 2008 om 02:49:40 +0100 schreef Wessel Dankers:
