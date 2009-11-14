@@ -3,6 +3,9 @@ caspar (20091115-1) UNRELEASED; urgency=low
   * FIXME
   * New upstream release (missed: 20090926, 20091114).
   * Renamed caspar-doc.doc-base.csp_sucp to caspar-doc.doc-base.csp_helper.
+  * Upstream README and NEWS, as well as caspar(7) and caspar-typesetting(7)
+    manpages now shipped with caspar; no longer with caspar-doc.  Therefore,
+    adjusted extended description of caspar-doc in debian/control.
   * debian/control: bumped Standards-Version: from 3.8.1 to 3.8.3 (no
     changes needed).
   * debian/copyright: update year, explicitly state GPL v3 or later.

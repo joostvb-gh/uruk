@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-# $Id: rules,v 1.13 2009-11-14 07:56:18 joostvb Exp $
+# $Id: rules,v 1.14 2009-11-14 08:09:55 joostvb Exp $
 
 # Based upon sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
@@ -78,10 +78,8 @@ install: build
 	dh_installdocs
 
 #	# clean up files copied to caspar-doc
-	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/{AUTHORS,THANKS,README,TODO,NEWS,ChangeLog.2002}
-	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/{caspar-typesetting,caspar,csp_*}.{ps,html,txt}
-	rm $(CURDIR)/debian/caspar/usr/share/man/man7/caspar*.7
-	rmdir $(CURDIR)/debian/caspar/usr/share/man/man7
+	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/{AUTHORS,THANKS,TODO,ChangeLog.2002}
+	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/{caspar*,csp_*}.{ps,html,txt}
 
 #	# get rid of COPYING (we use the debian/copyright file)
 	rm $(CURDIR)/debian/caspar/usr/share/doc/caspar/COPYING
@@ -109,4 +107,4 @@ binary-arch: build install
 # we are architecture-independent
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build clean binary-indep binary-arch binary install

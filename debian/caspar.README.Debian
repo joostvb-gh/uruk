@@ -1,3 +1,0 @@
-The upstream caspar NEWS file and manpages are shipped with the caspar-doc
-package.  The caspar package Suggests: caspar-doc.
-                                                     --JvB

@@ -1,4 +1,4 @@
-# $Id: control,v 1.17 2009-09-26 07:28:26 joostvb Exp $
+# $Id: control,v 1.18 2009-11-14 08:09:55 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/debian/control,v $
 Source: caspar
 Section: devel
@@ -37,4 +37,5 @@ Description: documentation for caspar
  Caspar offers Makefile snippets for common tasks, like installing (system
  configuration) files or typesetting documentation.
  .
- This package contains the caspar manpages and other documentation.
+ This package contains the caspar manpages in HTML and PostScript format as
+ well as some other documentation.
