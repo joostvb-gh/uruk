@@ -1,10 +1,10 @@
 \: vim:syntax=tex
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
-\: $Id: casparize.azm,v 1.1 2009-11-14 07:01:51 joostvb Exp $
+\: $Id: casparize.azm,v 1.2 2009-11-14 07:14:07 joostvb Exp $
 \: $Source: /cvsroot/caspar/caspar/caspar/doc/casparize.azm,v $
 
-\:  caspar script manpage
+\:  casparize script manpage
 \:  Copyright (C) 2009  Jeroen Hoppenbrouwers
 \:
 \:  This program is free software: you can redistribute it and/or modify
@@ -27,41 +27,42 @@
 
 \import{./include.zmm}
 
-\set{"man::name"}{caspar}
-\set{"man::html-title"}{caspar}
+\set{"man::name"}{casparize}
+\set{"man::html-title"}{casparize}
 \set{"man::section"}{1}
 
 \"man::preamble"
 \${html}{\"man::maketoc"}
 
 \def{caspar}{\bf{caspar}}
+\def{casparize}{\bf{casparize}}
 
 \sec{name}{NAME}
-\NAME{caspar}{Set up caspar(7) Makefile in a new directory}
+\NAME{casparize}{Set up caspar Makefile in a new directory}
 
 \sec{synopsis}{SYNOPSIS}
 \par{
-  \caspar
+  \casparize
     \synreqopt{dir}{/path/to/config/dir}
 }
 \par{
-  \caspar
+  \casparize
     \synreqopt{file}{/path/to/config/dir/file}
 }
 
 \sec{description}{DESCRIPTION}
 
-\caspar creates a new configuration working directory in your current
+\casparize creates a new configuration working directory in your current
 working directory, sets up a Makefile for caspar(7) in this new directory,
 and optionally copies an original configuration file from its original
 system place to the newly created configuration working directory.
 
 \sec{usage}{USAGE}
 
-You typically use caspar(1) when you already have created the root
+You typically use \casparize when you already have created the root
 configuration working directory with its include directory and install.mk
 Caspar include file. By analysing your current working directory and the
-configuration directory path you give on the command line, caspar(1) can
+configuration directory path you give on the command line, casparize can
 deduce the contents of the Makefile in the newly created configuration
 working directory. It creates the new directory, creates the correct
 Makefile, and optionally copies the given configuration file in the new
@@ -73,7 +74,7 @@ A typical example:
 
 \verbatim{
   $ cd <svn>/etc
-  $ caspar /etc/postfix/main.cf}
+  $ casparize /etc/postfix/main.cf}
 
 creates the directory <svn>/etc/postfix, creates <svn>/etc/postfix/Makefile
 including the proper content, and copies /etc/postfix/main.cf into
