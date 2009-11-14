@@ -1,0 +1,16 @@
+Document: csp-helper
+Title: csp_helper - A collection of caspar helper scripts
+Author: Joost van Baal
+Abstract: The manual describes the various csp_* helper tools as shipped with caspar
+Section: Network/File Transfer
+
+Format: postscript
+Files: /usr/share/doc/caspar/csp_helper.ps.gz
+
+Format: HTML
+Index: /usr/share/doc/caspar/csp_helper.html
+Files: /usr/share/doc/caspar/csp_helper.html
+
+Format: text
+Files: /usr/share/doc/caspar/csp_helper.txt
+

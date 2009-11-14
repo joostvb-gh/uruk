@@ -1,11 +1,13 @@
-caspar (20090926-1) UNRELEASED; urgency=low
+caspar (20091115-1) UNRELEASED; urgency=low
 
   * FIXME
+  * New upstream release (missed: 20090926, 20091114).
+  * Renamed caspar-doc.doc-base.csp_sucp to caspar-doc.doc-base.csp_helper.
   * debian/control: bumped Standards-Version: from 3.8.1 to 3.8.3 (no
     changes needed).
   * debian/copyright: update year, explicitly state GPL v3 or later.
 
- -- Joost van Baal <joostvb@debian.org>  Sat, 26 Sep 2009 09:29:40 +0200
+ -- Joost van Baal <joostvb@debian.org>  Sat, 14 Nov 2009 08:43:20 +0100
 
 caspar (20090406-1) unstable; urgency=low
 
