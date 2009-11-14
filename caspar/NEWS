@@ -1,5 +1,14 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20091114
+
+- Preliminary manpage csp_helper(1) added, documenting helper scripts
+  csp_install, csp_scp_keep_mode and csp_sucp.  (The separate csp_sucp manpage
+  is gone.)
+- Adjusted caspar.mk so that it's actually possible to hook csp_install
+  and csp_scp_keep_mode into caspar.
+
+
 caspar version 20090926
 
 - Unstable bleeding edge snapshot release.
@@ -276,4 +285,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.48 2009-09-26 02:25:14 joostvb Exp $
+# $Id: NEWS,v 1.49 2009-11-14 05:56:44 joostvb Exp $

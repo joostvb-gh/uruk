@@ -1,4 +1,4 @@
-$Id: TODO,v 1.117 2009-10-27 11:31:07 joostvb Exp $
+$Id: TODO,v 1.118 2009-11-14 05:56:44 joostvb Exp $
 
 - convert to git!!
 
@@ -6,7 +6,9 @@ $Id: TODO,v 1.117 2009-10-27 11:31:07 joostvb Exp $
 
 --- release critical ----
 
-- test & document csp_install and csp_scp_keep_mode
+- deal with csp_helper.azm FIXME's.
+
+- test csp_install and csp_scp_keep_mode
 
 - test & document rsync support
 
