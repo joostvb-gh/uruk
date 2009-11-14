@@ -1,0 +1,122 @@
+\: vim:syntax=tex
+\: $Id: csp_helper.azm,v 1.1 2009-11-14 05:38:49 joostvb Exp $
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
+
+\def{"man::synstyle"}{long}
+\def{"man::defstyle"}{long}
+\import{man.zmm}
+
+\import{./include.zmm}
+
+\set{"man::name"}{csp_helper}
+\set{"man::html-title"}{csp_helper}
+\set{"man::section"}{1}
+
+\"man::preamble"
+\${html}{\"man::maketoc"}
+
+\def{csp_install}{\bf{csp_install}}
+\def{csp_scp_keep_mode}{\bf{csp_scp_keep_mode}}
+\def{csp_sucp}{\bf{csp_sucp}}
+
+\sec{name}{NAME}
+\NAME{csp_helper}{A collection of caspar helper scripts}
+
+\sec{synopsis}{SYNOPSIS}
+\par{
+
+  \csp_install \synreqopt{file}{file} \synreqopt{dir}{directory}
+
+\par
+
+  \csp_scp_keep_mode \synreqopt{file}{file} \synreqopt{h}{[user@]host} \synreqopt{dir}{directory}
+
+\par
+
+  \csp_sucp
+    \synreqopt{file}{file}
+    \synreqopt{h}{[user@]host}
+    \synreqopt{dir}{directory}
+    \synoptopt{s}{su-user}
+}
+
+\sec{description}{DESCRIPTION}
+
+The scripts \csp_install, \csp_scp_keep_mode and \csp_sucp are helpers for
+caspar(7).  These scripts typically are not invoked directly, but via a
+Makefile which uses caspar(7).  See caspar(7) for information on how to
+link \csp_install, \csp_scp_keep_mode and \csp_sucp to caspar (FIXME).
+
+\sec{install description}{install DESCRIPTION}
+
+\csp_install creates the required directory (if needed) and installs the file,
+preserving timestamps.  It uses install(1).
+
+\sec{install examples}{install EXAMPLES}
+
+\verbatim{
+ csp_INSTALL_OPTIONS='--owner=www-data --group=www-data' \\
+  csp_INSTALL_MODE=ugo=r \\
+  csp_install index.html /srv/www}
+
+\verbatim{
+ csp_INSTALL_MODE=u=rwx,go= mkpasswd /usr/local/sbin}
+
+\sec{install environment}{install ENVIRONMENT}
+
+\csp_install honors csp_INSTALL_OPTIONS and csp_INSTALL_MODE (default is
+u=rw,go=r).
+
+\sec{scp_keep_mode description}{scp_keep_mode DESCRIPTION}
+
+\csp_scp_keep_mode uses ssh to copy a file to a remote host, keeping its file
+permission mode.  The trick used is a combination of mktemp(1) and mv(1).
+(FIXME: add rationale).
+
+\sec{scp_keep_mode examples}{scp_keep_mode EXAMPLES}
+
+FIXME
+
+\sec{scp_keep_mode environment}{scp_keep_mode ENVIRONMENT}
+
+\csp_scp_keep_mode honors csp_SSH ("ssh" by default).
+
+\sec{sucp description}{sucp DESCRIPTION}
+
+\csp_sucp calls cat(1) from within sudo(1) from within ssh(1).  This allows one
+to copy files to accounts on hosts one can only reach by calling sudo(1) on the
+ssh-reachable remote host.
+  \par
+Typically, one wants to install a root-owned file, but one does not want to
+allow access to the root-account directly from ssh.  Typically sudo is used as
+an extra line of defense.
+
+\sec{sucp examples}{sucp EXAMPLES}
+
+Some examples:
+
+\verbatim{
+  csp_sucp fstab rms@bilbo /etc}
+
+\verbatim{
+  csp_sucp trailer.txt monty-python commit/ list}
+
+\sec{sucp bugs}{sucp BUGS}
+
+If NOPASSWD is not set in the sudoers(5) file, and one's timestamp is expired,
+\csp_sucp will forward the sudo password prompt. The given password \tt{will}
+be echoed on the console!
+
+\sec{author}{AUTHOR}
+
+\"man::author"
+
+\sec{seealso}{SEE ALSO}
+
+\sibref{caspar}{caspar(7)}
+  \par
+The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
+
+\"man::postamble"
+
+
