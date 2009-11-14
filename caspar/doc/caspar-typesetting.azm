@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar-typesetting.azm,v 1.7 2006-05-31 15:50:43 joostvb Exp $
+\: $Id: caspar-typesetting.azm,v 1.8 2009-11-14 07:21:15 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -24,7 +24,7 @@
 
 \sec{synopsis}{SYNOPSIS}
 
-In a Makefile, do
+In a Makefile, write
 
 \verbatim{
   include caspar/mk/docbook.mk

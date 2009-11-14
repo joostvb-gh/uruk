@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.54 2009-03-15 22:05:43 joostvb Exp $
+\: $Id: caspar.azm,v 1.55 2009-11-14 07:21:19 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -27,7 +27,7 @@
 
 \sec{synopsis}{SYNOPSIS}
 
-In a Makefile, do either
+In a Makefile, write either
 
 \verbatim{
   include caspar/mk/caspar.mk
@@ -625,7 +625,7 @@ my homegrown scripts.
 \sec{seealso}{SEE ALSO}
 
 \sibref{caspar-typesetting}{caspar-typesetting(7)}
-\sibref{csp_sucp}{csp_sucp(1)}
+\sibref{csp_helper}{csp_helper(1)}
   \par
 The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
   \par

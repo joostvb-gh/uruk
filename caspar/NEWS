@@ -3,6 +3,7 @@ Refer to ChangeLog for detailed per-file info.
 caspar version 200911DD
 
 - Renamed caspar(1) to casparize(1).
+- Some tweaking on manpages.
 - FIXME
 
 
@@ -291,4 +292,4 @@ caspar version 20030803
 
 - See doc/ChangeLog.2002 for news about caspar 20030803 and earlier
 
-# $Id: NEWS,v 1.50 2009-11-14 07:01:46 joostvb Exp $
+# $Id: NEWS,v 1.51 2009-11-14 07:21:06 joostvb Exp $

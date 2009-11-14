@@ -1,7 +1,7 @@
 \: vim:syntax=tex
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
-\: $Id: casparize.azm,v 1.2 2009-11-14 07:14:07 joostvb Exp $
+\: $Id: casparize.azm,v 1.3 2009-11-14 07:21:22 joostvb Exp $
 \: $Source: /cvsroot/caspar/caspar/caspar/doc/casparize.azm,v $
 
 \:  casparize script manpage
@@ -38,7 +38,7 @@
 \def{casparize}{\bf{casparize}}
 
 \sec{name}{NAME}
-\NAME{casparize}{Set up caspar Makefile in a new directory}
+\NAME{casparize}{Set up \caspar Makefile in a new directory}
 
 \sec{synopsis}{SYNOPSIS}
 \par{
@@ -53,7 +53,8 @@
 \sec{description}{DESCRIPTION}
 
 \casparize creates a new configuration working directory in your current
-working directory, sets up a Makefile for caspar(7) in this new directory,
+working directory, sets up a Makefile for \sibref{caspar{caspar(7)} in
+this new directory,
 and optionally copies an original configuration file from its original
 system place to the newly created configuration working directory.
 

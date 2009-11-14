@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: csp_helper.azm,v 1.2 2009-11-14 06:07:27 joostvb Exp $
+\: $Id: csp_helper.azm,v 1.3 2009-11-14 07:21:26 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -15,6 +15,7 @@
 \"man::preamble"
 \${html}{\"man::maketoc"}
 
+\def{caspar}{\bf{caspar}}
 \def{csp_install}{\bf{csp_install}}
 \def{csp_scp_keep_mode}{\bf{csp_scp_keep_mode}}
 \def{csp_sucp}{\bf{csp_sucp}}
@@ -43,9 +44,10 @@
 \sec{description}{DESCRIPTION}
 
 The scripts \csp_install, \csp_scp_keep_mode and \csp_sucp are helpers for
-caspar(7).  These scripts typically are not invoked directly, but via a
-Makefile which uses caspar(7).  See caspar(7) for information on how to
-link \csp_install, \csp_scp_keep_mode and \csp_sucp to caspar (FIXME).
+\sibref{caspar}{caspar(7)}.  These scripts typically are not invoked directly,
+but via a Makefile which uses \caspar.  See \sibref{caspar}{caspar(7)} for
+information on how to link \csp_install, \csp_scp_keep_mode and \csp_sucp to
+\caspar (FIXME).
 
 \sec{install description}{install DESCRIPTION}
 
@@ -84,7 +86,7 @@ FIXME
 \sec{sucp description}{sucp DESCRIPTION}
 
 \csp_sucp calls cat(1) from within sudo(1) from within ssh(1).  This allows one
-to copy files to accounts on hosts one can only reach by calling sudo(1) on the
+to copy files to accounts on hosts one can only reach by calling sudo on the
 ssh-reachable remote host.
   \par
 Typically, one wants to install a root-owned file, but one does not want to
