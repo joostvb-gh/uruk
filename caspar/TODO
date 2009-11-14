@@ -1,10 +1,12 @@
-$Id: TODO,v 1.118 2009-11-14 05:56:44 joostvb Exp $
+$Id: TODO,v 1.119 2009-11-14 06:23:23 joostvb Exp $
 
 - convert to git!!
 
 - apply Fruit patches
 
 --- release critical ----
+
+- rename /usr/bin/caspar to casparize(1)
 
 - deal with csp_helper.azm FIXME's.
 
