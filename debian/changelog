@@ -1,6 +1,5 @@
-caspar (20091115-1) UNRELEASED; urgency=low
+caspar (20091115-1) unstable; urgency=low
 
-  * FIXME
   * New upstream release (missed: 20090926, 20091114).
   * Renamed caspar-doc.doc-base.csp_sucp to caspar-doc.doc-base.csp_helper.
   * Upstream README and NEWS, as well as caspar(7) and caspar-typesetting(7)
