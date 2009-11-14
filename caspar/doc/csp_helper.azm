@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: csp_helper.azm,v 1.1 2009-11-14 05:38:49 joostvb Exp $
+\: $Id: csp_helper.azm,v 1.2 2009-11-14 06:07:27 joostvb Exp $
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}
@@ -60,7 +60,7 @@ preserving timestamps.  It uses install(1).
   csp_install index.html /srv/www}
 
 \verbatim{
- csp_INSTALL_MODE=u=rwx,go= mkpasswd /usr/local/sbin}
+ csp_INSTALL_MODE=u=rwx,go= csp_install mkpasswd /usr/local/sbin}
 
 \sec{install environment}{install ENVIRONMENT}
 
