@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# $Id: caspar,v 1.3 2009-08-12 16:21:22 joostvb Exp $
-# $Source: /cvsroot/caspar/caspar/caspar/script/Attic/caspar,v $
+# $Id: casparize,v 1.1 2009-11-14 07:01:54 joostvb Exp $
+# $Source: /cvsroot/caspar/caspar/caspar/script/casparize,v $
 
-# caspar - create Makefile-populated directories
+# casparize - create Makefile-populated directories
 # Copyright (C) 2009  Jeroen Hoppenbrouwers <hoppie@hoppie.nl>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -32,17 +32,17 @@ set -e
 
 if [ -z "$1" ]; then
   echo "Usage:"
-  echo "  caspar /path/to/config/dir"
+  echo "  casparize /path/to/config/dir"
   echo "    Creates dir in working directory and"
   echo "    sets up caspar(7) Makefile in it."
-  echo "  caspar /path/to/config/dir/file"
+  echo "  casparize /path/to/config/dir/file"
   echo "    Creates dir in working directory and"
   echo "    sets up caspar(7) Makefile in it,"
   echo "    then copies the config file into it."
   echo ""
   echo "Typical example:"
   echo "  \$ cd <svn>/etc"
-  echo "  \$ caspar /etc/postfix/main.cf"
+  echo "  \$ casparize /etc/postfix/main.cf"
   echo ""
   echo "Will never overwrite anything that already exists."
   exit 1
@@ -112,7 +112,7 @@ else
   # Create the Makefile.
   echo "csp_DIR = $confdir" > ${base}/Makefile
   echo "include ${uplevels}../include/install.mk" >> ${base}/Makefile
-  echo "caspar: created file \`$base/Makefile'"
+  echo "casparize: created file \`$base/Makefile'"
 fi
 
 # If required, create the configuration file as well (copy over).
@@ -121,7 +121,7 @@ if [ -n "${conffile}" ]; then
     echo "WARNING: ${base}/${conffile} already exists; not overwriting."
   else
     cp ${confdir}/${conffile} $base
-    echo "caspar: created file \`${base}/${conffile}'"
+    echo "casparize: created file \`${base}/${conffile}'"
   fi
 fi
 

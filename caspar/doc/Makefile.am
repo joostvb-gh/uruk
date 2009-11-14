@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.10 2009-11-14 05:43:18 joostvb Exp $
+## $Id: Makefile.am,v 1.11 2009-11-14 07:01:48 joostvb Exp $
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
@@ -26,23 +26,19 @@ W3M = w3m
 PACKAGE = @PACKAGE_TARNAME@
 docdir = $(datadir)/doc/$(PACKAGE)
 
-azms = caspar1.azm csp_helper.azm caspar.azm caspar-typesetting.azm
-typetargets = caspar1.html caspar1.ps caspar1.txt csp_helper.html \
+azms = casparize.azm csp_helper.azm caspar.azm caspar-typesetting.azm
+typetargets = casparize.html casparize.ps casparize.txt csp_helper.html \
   csp_helper.ps csp_helper.txt caspar.html caspar.ps \
   caspar.txt caspar-typesetting.html caspar-typesetting.ps \
   caspar-typesetting.txt
 
 doc_DATA = $(typetargets) $(azms) ChangeLog.2002
-man_MANS = caspar.1 csp_helper.1 csp_install.1 csp_scp_keep_mode.1 \
+man_MANS = casparize.1 csp_helper.1 csp_install.1 csp_scp_keep_mode.1 \
   csp_sucp.1 caspar.7 caspar-typesetting.7
 
 EXTRA_DIST = $(doc_DATA) $(man_MANS)
 
 SUFFIXES = .1 .7 .azm .html .ps .txt
-
-caspar.1: caspar1.azm
-	$(ZOEM) -d roff -i $< -o $@
-	$(ZOEM) -d roff -i $< -o $@
 
 .azm.1:
 	$(ZOEM) -d roff -i $< -o $@

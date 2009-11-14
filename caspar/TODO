@@ -1,4 +1,4 @@
-$Id: TODO,v 1.119 2009-11-14 06:23:23 joostvb Exp $
+$Id: TODO,v 1.120 2009-11-14 07:01:47 joostvb Exp $
 
 - convert to git!!
 
@@ -6,7 +6,7 @@ $Id: TODO,v 1.119 2009-11-14 06:23:23 joostvb Exp $
 
 --- release critical ----
 
-- rename /usr/bin/caspar to casparize(1)
+- check manpage crosslinking (did rename /usr/bin/caspar to casparize(1))
 
 - deal with csp_helper.azm FIXME's.
 
