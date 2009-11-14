@@ -1,4 +1,4 @@
-# $Id: control,v 1.18 2009-11-14 08:09:55 joostvb Exp $
+# $Id: control,v 1.19 2009-11-14 08:27:55 joostvb Exp $
 # $Source: /cvsroot/caspar/caspar/debian/control,v $
 Source: caspar
 Section: devel
@@ -10,6 +10,7 @@ Homepage: http://mdcc.cx/caspar
 
 Package: caspar
 Architecture: all
+Conflicts: caspar-doc (< 20091115-1)
 Depends: make
 Suggests: jade, jadetex, texlive-latex-base, texlive-base-bin, w3m, gs-common, psutils, lpr, gv | postscript-viewer, man-db, docbook-dsssl, perl, caspar-doc
 Description: Makefile snippets for common tasks
