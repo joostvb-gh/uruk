@@ -58,12 +58,12 @@ and copy caspar.mk to the just created directory caspar/mk/ .
 
 - hacking on caspar - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Thanks to the volunteer admins of http://alioth.debian.org/ , anonymous CVS
-access to the caspar sources is available.  See
-http://alioth.debian.org/projects/caspar/ for more information.
+See http://alioth.debian.org/projects/caspar/ for more information.
 
-CVS commits messages are being emailed, using syncmail.  Contact the author if
-you'd like to get these messages in your mailbox.
+FIXME CVS commits messages are being emailed, using syncmail.  Contact the
+author if you'd like to get these messages in your mailbox.
+
+FIXME: since 2009-12 on http://git.mdcc.cx/caspar.git
 
 
 - some thoughts on include path - - - - - - - - - - - - - - - - - - - - - - - -

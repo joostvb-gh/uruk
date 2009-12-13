@@ -2,6 +2,7 @@ $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
 
 - convert to git: announce on webpage, create public repo
   get rid of $ Id $ and cvs2cl and CVS/ and what have you
+  update README, see FIXME's.  set up commit list.
 
 - apply Fruit patches
 
