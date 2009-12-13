@@ -1,5 +1,11 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20YYMMDD
+
+- FIXME
+- Converted from CVS to git.
+
+
 caspar version 20091115
 
 - Renamed caspar(1) to casparize(1).
