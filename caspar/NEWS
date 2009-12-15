@@ -4,6 +4,8 @@ caspar version 20YYMMDD
 
 - FIXME
 - Converted from CVS to git.
+- Fixed "target given more than once in the same rule" errors.
+- caspar now shows each command as it is run, and aborts on errors.
 
 
 caspar version 20091115

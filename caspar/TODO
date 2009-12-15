@@ -14,42 +14,12 @@ $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
 
 - test & document rsync support
 
-- deze:
-Op Mon  1 Dec 2008 om 02:49:40 +0100 schreef Wessel Dankers:
-> oi,
->
-> Bij veel opdrachten van caspar wordt een for-lusje uitgevoerd met wat
-> commando's. Standaard gedrag van make is te falen als een commando non-0
-> exitstatus heeft maar caspar propageert die foutcodes niet. Eenvoudige
-> oplossing: daar waar een for-lusje staat, bijvoorbeeld:
->
->       for d in $(dirs); do \
->               ...;\
->       done
->
-> dit er van maken:
->
->       set -e; for d in $(dirs); do \
->               ...;\
->       done
->
-> HTH, HAND, etc,
->
-of de for van make zelf gebruiken, en dan veel targets maken.
-shells' for exit-code is exit code laatste commando.
-
-- wo 09 11:57 < thijs> joostvb: re caspar, als je een commando op veel systemen 
-                     uitvoert met 1 make zie je soms een hele lijst met ergens 
-                     middenin een foutmelding
-wo 09 11:58 < thijs> zou het mogelijk zijn om caspar zo te fixen dat hij steeds 
-                     output bij welk systeem hij bezig is?
-wo 09 12:31 < Fruit> gewoon make SHELL='/bin/sh -ex'
-
-
 - Supply a preset loop over hosts, for load target.
   za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
                      dat wil je ook voor -install
   gaat niet lukken op korte termijn: moeilijk
+
+  already exists for -install
 
 
 - Ideas insprired by a discussion with Fred Vos:
@@ -98,26 +68,11 @@ za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
   both "install" and "load"; it does not do "build".  (really!?)).  and/or:
   caspar should support "make build-recursive".
 
-- csp_BUILD is buggy.  On a fresh checkout, when builded files are not yet
-  there, "make install" skips the yet-to-build files.  csp_EXTRAFILES won't help:
-  "target `sshd_config-install' given more than once in the same rule." shows
-  up once the file _is_ present.  To be fixed by having "install" depend upon
-  "build"?
+- csp_BUILD is a broken concept.
 
-za 24 11:59 < Fruit> joostvb: ik dacht trouwens dat ik een oplossinkje had 
-                     gemaakt voor build-targets die dubbel opgenomen worden 
-                     omdat ze ook al op het filesystem staan, maar caspar zeurt 
-                     er nog steeds over
-za 24 12:23 < Fruit> mijn opmerking ging over het tweede stuk van dat todo-item
-za 24 12:27 < Fruit> ik denk trouwens dat install moet dependen op de inhoud 
-                     van csp_BUILD, niet op build
-
-To: joostvb-caspar@mdcc.cx
-Subject: [PATCH] geen gezeur over dubbele files meer
-Message-Id: <20091024104540.D7BBE28021C@strongbad.uvt.nl>
-Date: Sat, 24 Oct 2009 12:45:40 +0200 (CEST)
-From: Wessel Dankers
-
+Users are better off declaring csp_EXTRAFILES and creating rules for each
+file that needs to be built.
+csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
 
 - caspar chokes on spaces in filenames:
 

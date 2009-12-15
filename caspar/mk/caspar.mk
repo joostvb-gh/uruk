@@ -56,19 +56,47 @@ csp_scp_keep_mode_FUNC = $(csp_SCP_KEEP_MODE) $(1) $(2) $(3)
 csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
 
-# ideally, we'd just have one rule here:
-## RULES = $(foreach dir,$(csp_foobar DIRS),$(call csp_ foobar FUNC,"$(subst -install,,$@)",$(dir);)
-#
-RULES = $(foreach dir,$(csp_CPDIRS),$(csp_CP) $(csp_CPFLAGS) "$(@:-install=)" $(dir);) \
-	$(foreach uh,$(csp_UHOSTS),$(call csp_PUSH,"$(@:-install=)",$(uh),$(csp_DIR),$(csp_XARG));)
-
-DIFFRULES = $(foreach uh,$(csp_UHOSTS),$(call csp_DIFF,"$(@:-diff=)",$(uh),$(csp_DIR),$(csp_DIFFXARG));)
-
 # files, not directories
 FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
 
 # exclude editor backup files and other stuff
-FILES   := $(filter-out $(csp_TABOOFILES), $(FILES)) $(csp_EXTRAFILES)
+FILES   := $(filter-out $(csp_TABOOFILES),$(FILES))
+
+# user specified files
+FILES   += $(filter-out $(FILES),$(csp_EXTRAFILES))
+
+# built files
+FILES   += $(filter-out $(FILES),$(csp_BUILD))
+
+all:
+	$(MAKE) build
+	$(MAKE) install
+	$(MAKE) load
+
+define filetargets
+$1-install: $(foreach dir,$(csp_CPDIRS),$1--$(dir)--cp) $(foreach host,$(csp_UHOSTS),$1--$(host)--push)
+$1-diff: $(foreach host,$(csp_UHOSTS),$1--$(host)--diff)
+endef
+
+define localtargets
+$1--$2--cp: $1
+	$$(csp_CP) $$(csp_CPFLAGS) $1 $2
+endef
+
+define remotetargets
+$1--$2--push: $1
+	$$(call csp_PUSH,$1,$2,$$(csp_DIR),$$(csp_XARG))
+
+$1--$2--diff: $1
+	$$(call csp_DIFF,$1,$2,$$(csp_DIR),$$(csp_DIFFXARG))
+endef
+
+$(foreach file,$(FILES),\
+	$(eval $(call filetargets,$(file)))\
+	$(foreach dir,$(csp_CPDIRS),\
+		$(eval $(call localtargets,$(file),$(dir))))\
+	$(foreach host,$(csp_UHOSTS),\
+		$(eval $(call remotetargets,$(file),$(host)))))
 
 TARGETS := $(patsubst %,%-install,$(FILES))
 TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
@@ -79,13 +107,11 @@ DIRS    := $(shell for d in *; do test -d $$d && echo $$d; done)
 DIRS    := $(filter-out $(csp_TABOODIRS), $(DIRS))
 
 define do-recursive
-for subdir in $(DIRS); \
-do \
-    (cd $$subdir && $(MAKE) -$(MAKEFLAGS) install-recursive); \
-done
+$1--install-recursive:
+	$(MAKE) -C $1 install-recursive
 endef
 
-all: build install load
+$(foreach dir,$(DIRS),$(eval $(call do-recursive,$(dir))))
 
 build: $(csp_BUILD)
 
@@ -95,14 +121,6 @@ install: $(TARGETS)
 
 load: $(csp_LOAD)
 
-$(TARGETS):
-	$(RULES)
+install-recursive: install $(patsubst %,%--install-recursive,$(DIRS))
 
-$(DIFFTARGETS):
-	$(DIFFRULES)
-
-install-recursive: install
-	$(do-recursive)
-
-.PHONY: $(csp_BUILD) $(TARGETS) $(DIFFTARGETS) $(csp_LOAD) build install load
-
+.PHONY: $(csp_BUILD) $(TARGETS) $(BULKTARGETS) $(LOADTARGETS) $(DIFFTARGETS) $(csp_LOAD) build install load
