@@ -1,20 +1,20 @@
 $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
 
-- convert to git: announce on webpage, create public repo
+1.1) convert to git: announce on webpage, create public repo
   get rid of $ Id $ and cvs2cl and CVS/ and what have you
   update README, see FIXME's.  set up commit list.
 
-- apply Fruit patches
+1.2) apply Fruit patches
 
 --- release critical ----
 
-- deal with csp_helper.azm FIXME's.
+2.1) deal with csp_helper.azm FIXME's.
 
-- test csp_install and csp_scp_keep_mode
+2.2) test csp_install and csp_scp_keep_mode
 
-- test & document rsync support
+2.3) test & document rsync support
 
-- Supply a preset loop over hosts, for load target.
+2.4) Supply a preset loop over hosts, for load target.
   za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
                      dat wil je ook voor -install
   gaat niet lukken op korte termijn: moeilijk
@@ -22,7 +22,7 @@ $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
   already exists for -install
 
 
-- Ideas insprired by a discussion with Fred Vos:
+2.5) Ideas insprired by a discussion with Fred Vos:
   (Lots of users have asked for such a feature.)
   a "make check" could be usefull: test wether previous svn version is on server
   before scp-ing.
@@ -40,16 +40,16 @@ za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
 
 --- typesetting stuff ---
 
-- get toc printed in html mode. even while using nochunks mode.
+3.1) get toc printed in html mode. even while using nochunks mode.
 
-- license should be printed, see rh vs deb doc.
+3.2) license should be printed, see rh vs deb doc.
 
-- add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
+3.3) add zoem.mk, for zoem ( http://micans.org/zoem ) typesetting.
 
 
 --- install stuff ---
 
-- ma 13 14:07 < arvid> joostvb, ik heb een feature request voor caspar :p
+4.1) ma 13 14:07 < arvid> joostvb, ik heb een feature request voor caspar :p
   ma 13 14:13 < arvid> joostvb, een exclude host mogelijkheid
   ma 13 14:13 < arvid> je bijv. een heleboel host en je wilt alleen 1 host 
                      uitsluiten
@@ -59,22 +59,22 @@ za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
    [14:18] [joostvb(+i)] [13:meuknet/#root(+ips)] 
   2009-07 Arvid Gibas
 
-- add standard target: "make print-hosts"
+4.2) add standard target: "make print-hosts"
 
-- Should happen Real Soon Now (early 2008?): Get rid of
+4.3) Should happen Real Soon Now (early 2008?): Get rid of
   obsolete variables.  Get rid of CP RULEs in caspar.mk.
 
-- "install" should depend upon "load".  (should it?) ("make" currently does
+4.4) "install" should depend upon "load".  (should it?) ("make" currently does
   both "install" and "load"; it does not do "build".  (really!?)).  and/or:
   caspar should support "make build-recursive".
 
-- csp_BUILD is a broken concept.
+4.5) csp_BUILD is a broken concept.
 
 Users are better off declaring csp_EXTRAFILES and creating rules for each
 file that needs to be built.
 csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
 
-- caspar chokes on spaces in filenames:
+4.6) caspar chokes on spaces in filenames:
 
  Makefile:
 
@@ -95,7 +95,7 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
 
   make does not support arrays, but space-separated strings, so: tag won't fix.
 
-- caspar chokes on : in filenames:
+4.7) caspar chokes on : in filenames:
 
  Makefile:
 
@@ -110,7 +110,7 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
 
  Bug found by Johan Hoeke.
 
-- Suggest (or offer) a more generic interface than my_EXEC for the load
+4.8) Suggest (or offer) a more generic interface than my_EXEC for the load
   target.  Users are invited to extend the interface.
   They can add extra variables to their push mechanisms.  So we might be
   able to abstract LOAD one day.  Perhaps something like
@@ -120,23 +120,23 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
   could work.  If a user's exec wrapper needs more arguments, these can get
   introduced as implicit variables, outside $1, $2, ...
 
-- Explain why it's good practice to do
+4.9) Explain why it's good practice to do
     include ../../include/install.mk
   in manpage example.
 
-- Don't do
+4.10) Don't do
    csp_scp_FUNC  = $(csp_SCP) $(csp_CPFLAGS) $(1) $(2):$(3)
   but do
    csp_scp_FUNC  = $(csp_SCP) $(4) $(1) $(2):$(3)
   and use $(csp_CPFLAGS) for csp_XARGS.
   _Do_ test this!
 
-- load stuff:
+4.11) load stuff:
   - Create a ``load-recursive'' target.
   - supply daemons.mk: csp_SSHDEBIANLOAD csp_URUKREDHATLOAD , etc, to use
     in load targets
 
-- install-recursive should call mkdir if appropriate.  install should, too.
+4.12) install-recursive should call mkdir if appropriate.  install should, too.
 
  Thu 31 15:16 < Fruit> kan ik 'm ook vertellen dat-ie voordat gaat kopiëren ff
                        mkdir -p op de smurfer doet?
@@ -147,7 +147,7 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
  Thu 31 15:20 < Fruit> csp_OLD_PUSH := $(csp_PUSH)
  Thu 31 15:20 < Fruit> csp_PUSH := ssh $iets mkdir $dir; $(csp_OLD_PUSH)
 
-- The scp invocation is inefficient:
+4.13) The scp invocation is inefficient:
 
    % make -n README.txt-install net.txt-install
    scp "README.txt" pong:/data/www/doc/doc/;
@@ -159,7 +159,7 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
 
   $@ vs $? might be helpful.
 
-- test wether file is up to date before scp-ing it, in order to prevent us from
+4.14) test wether file is up to date before scp-ing it, in order to prevent us from
   doing useless (and expensive) installs.   use ControlMaster
   ssh_config(5) to reuse one ssh conection?  Perhaps this:
 
@@ -169,12 +169,12 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
   in your ~/.ssh/config (and having an ssh connection open to all relevant
   hosts) fixes all "troubles". (This option is not available on Debian sarge.)
 
-- Ideas insprired by a discussion with Fred Vos:
+4.15) Ideas insprired by a discussion with Fred Vos:
   Perhaps a note on how to use commit-hooks could be added to
   documentation.  Perhaps a note on ssh forced commands could be added.  Perhaps
   a note on a "make commit" could be added.
 
-- document this: including an included Makefile:
+4.16) document this: including an included Makefile:
 
     here := $(dir $(lastword $(MAKEFILE_LIST)))
     include $(here)../../foo/bar/install.mk
@@ -183,7 +183,7 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
 
   Alternative: /usr/local/foo, as used in svn/its-unix
 
-- if one really wants, one can overrule caspar's default target:
+4.17) if one really wants, one can overrule caspar's default target:
 
  ---------
 
@@ -212,7 +212,7 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
 
  very likely, one could better use the "build" target for this.
 
-- it's not necessary to have Makefile in all directories of a tree, provided
+4.18) it's not necessary to have Makefile in all directories of a tree, provided
 caspar is fixed:
 
 replace
@@ -228,6 +228,6 @@ thanks Wessel. (This might break for trees combining GNUmakefile with Makefile
 ;)] .) Once this fix is implemented, get rid of the example toplevel Makefile
 in caspar(7).
 
-- have one target for each host, both in "install" and "load" targets.
+4.19) have one target for each host, both in "install" and "load" targets.
   this would allow "make -j10" for parallel scp's.
 
