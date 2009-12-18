@@ -14,14 +14,6 @@ $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
 
 2.3) test & document rsync support
 
-2.4) Supply a preset loop over hosts, for load target.
-  za 14 20:43 < Fruit> door explosie op cartesisch produkt van file en target,
-                     dat wil je ook voor -install
-  gaat niet lukken op korte termijn: moeilijk
-
-  already exists for -install
-
-
 2.5) Ideas insprired by a discussion with Fred Vos:
   (Lots of users have asked for such a feature.)
   a "make check" could be usefull: test wether previous svn version is on server
@@ -227,7 +219,3 @@ thanks Wessel. (This might break for trees combining GNUmakefile with Makefile
 [za 14 22:29 <Fruit> dat breekt niet voor dat soort directories, ga maar na!
 ;)] .) Once this fix is implemented, get rid of the example toplevel Makefile
 in caspar(7).
-
-4.19) have one target for each host, both in "install" and "load" targets.
-  this would allow "make -j10" for parallel scp's.
-

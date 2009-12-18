@@ -98,6 +98,20 @@ $(foreach file,$(FILES),\
 	$(foreach host,$(csp_UHOSTS),\
 		$(eval $(call remotetargets,$(file),$(host)))))
 
+define loadtarget
+$1: $(patsubst %,$1--%--load,$(csp_UHOSTS))
+endef
+
+define loadtargets
+$1--$2--load:
+	$(call $1,$2)
+endef
+
+$(foreach load,$(csp_LOAD),\
+	$(eval $(call loadtarget,$(load)))\
+	$(foreach host,$(csp_UHOSTS),\
+	$(eval $(call loadtargets,$(load),$(host)))))
+
 TARGETS := $(patsubst %,%-install,$(FILES))
 TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
 

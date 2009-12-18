@@ -8,6 +8,8 @@ caspar version 20YYMMDD
 [Wessel Dankers]
 - Fixed "target given more than once in the same rule" errors.
 - Caspar now shows each command as it is run, and aborts on errors.
+- csp_LOAD values are now defined as variables with $1 being the host
+  they push to.
 
 
 caspar version 20091115
