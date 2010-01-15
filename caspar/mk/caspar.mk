@@ -57,7 +57,7 @@ csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
 
 # files, not directories
-FILES   := $(shell for f in *; do test -f $$f && echo $$f; done)
+FILES   := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
 
 # exclude editor backup files and other stuff
 FILES   := $(filter-out $(csp_TABOOFILES),$(FILES))
@@ -117,7 +117,7 @@ TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
 
 DIFFTARGETS := $(patsubst %,%-diff,$(FILES))
 
-DIRS    := $(shell for d in *; do test -d $$d && echo $$d; done)
+DIRS    := $(shell for d in *; do test -d "$$d" && echo "$$d"; done)
 DIRS    := $(filter-out $(csp_TABOODIRS), $(DIRS))
 
 define do-recursive
