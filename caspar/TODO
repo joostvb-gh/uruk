@@ -8,6 +8,34 @@ $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
 
 1.2) wait for and apply Fruit patches
 
+1.3) documenteer de loadtarget hack: run "make load" with:
+
+oud:
+
+ csp_UHOSTS = foo@bar quux@xyzzy
+ csp_LOAD = lolwut
+ lolwut:
+        for h in $(csp_UHOSTS);do echo ssh $$h DFHKSJDHFJKSDHJK;done
+ include caspar/mk/caspar.mk
+
+nieuw:
+
+ csp_UHOSTS = foo@bar quux@xyzzy
+ csp_LOAD = lolwut
+ lolwut = echo ssh $1 DFHKSJDHFJKSDHJK
+ include caspar/mk/caspar.mk
+
+combining is usefull too:
+
+ csp_LOAD = lolwut
+ lolwut = echo ssh $1 DFHKSJDHFJKSDHJK
+ lolwut:
+        for h in $(csp_UHOSTS);do echo ssh $$h DFHKSJDHFJKSDHJK;done
+
+use case: /etc/nsd/zones/ , first push to auth servers, then ssh to al caches
+for a forced flush of cache.
+
+
 --- release critical ----
 
 2.1) deal with csp_helper.azm FIXME's.
