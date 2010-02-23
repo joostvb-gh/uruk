@@ -68,3 +68,4 @@ SUFFIXES = .1 .7 .azm .html .ps .txt
 
 MAINTAINERCLEANFILES = $(man_MANS) $(typetargets)
 
+DISTCLEANFILES = $(typetargets)
