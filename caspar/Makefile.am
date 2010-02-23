@@ -6,10 +6,10 @@
 
 ## Copyright (C) 2003, 2004, 2005, 2006 Joost van Baal
 
-## you need cvs2cl for this to work.  get it from
-## http://www.red-bean.com/cvs2cl/ .
+##   cvs2cl --accum --prune
+## see booststrap for git2cl
 ChangeLog: NEWS
-	cvs2cl --accum --prune
+	git log --pretty --numstat --summary | sed 's/<[^>][^>]*>//g' | git2cl >ChangeLog
 
 VERSION.m4 VERSION stamp.year stamp.month stamp.day: ChangeLog
 	./setversion

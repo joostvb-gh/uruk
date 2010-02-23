@@ -1,10 +1,10 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 20YYMMDD
+caspar version 20100223
 
-- FIXME
 [Joost van Baal]
 - Converted from CVS to git.
+  + use git2cl (no longer cvs2cl)
 [Wessel Dankers]
 - Fixed "target given more than once in the same rule" errors.
 - Caspar now shows each command as it is run, and aborts on errors.

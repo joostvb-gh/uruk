@@ -26,7 +26,11 @@
 set -x
 
 test -f ChangeLog || {
-    touch ChangeLog && cvs2cl --prune
+    # http://josefsson.org/git2cl/
+    # we want no unprotected emailadresses in the cl
+    git log --pretty --numstat --summary | sed 's/<[^>][^>]*>//g' | \
+      git2cl > ChangeLog
+    # touch ChangeLog && cvs2cl --prune
 }
 
 test -f VERSION.m4 || ./setversion
