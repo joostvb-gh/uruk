@@ -6,13 +6,15 @@ $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
   get rid of $ Id $ (find alternative!) and what have you
   update README on git status (see FIXME's).  set up commit list.
 
-1.2) apply Fruit patches
+1.2) wait for and apply Fruit patches
 
 --- release critical ----
 
 2.1) deal with csp_helper.azm FIXME's.
 
 2.2) test csp_install and csp_scp_keep_mode
+
+--- ook best wel belangrijk ---
 
 2.3) test & document rsync support
 
