@@ -5,6 +5,7 @@ caspar version 20100223
 [Joost van Baal]
 - Converted from CVS to git.
   + use git2cl (no longer cvs2cl)
+- Add (.so request) manpages for csp_install, csp_scp_keep_mode and csp_sucp.
 [Wessel Dankers]
 - Fixed "target given more than once in the same rule" errors.
 - Caspar now shows each command as it is run, and aborts on errors.
