@@ -4,9 +4,8 @@
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
 
-## Copyright (C) 2003, 2004, 2005, 2006 Joost van Baal
+## Copyright (C) 2003, 2004, 2005, 2006, 2010 Joost van Baal
 
-##   cvs2cl --accum --prune
 ## see booststrap for git2cl
 ChangeLog: NEWS
 	git log --pretty --numstat --summary | sed 's/<[^>][^>]*>//g' | git2cl >ChangeLog
