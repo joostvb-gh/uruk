@@ -12,7 +12,7 @@ $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
 
 oud:
 
- csp_UHOSTS = foo@bar quux@xyzzy
+ CSP_uhosTS = foo@bar quux@xyzzy
  csp_LOAD = lolwut
  lolwut:
         for h in $(csp_UHOSTS);do echo ssh $$h DFHKSJDHFJKSDHJK;done
@@ -133,6 +133,13 @@ csp_BUILD is an alias to csp_EXTRAFILES for backwards compatibility.
  caspar/mk/caspar.mk:87: *** multiple target patterns.  Stop.
 
  Bug found by Johan Hoeke.
+
+4.29) caspar chokes on files named ";anything"
+
+ joostvb@bruhat:~% touch ';q'
+ joostvb@bruhat:~% make -n
+ caspar/mk/caspar.mk:94: *** missing rule before commands.  Stop.
+
 
 4.8) Suggest (or offer) a more generic interface than my_EXEC for the load
   target.  Users are invited to extend the interface.
