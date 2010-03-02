@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--joostvb-arch@mdcc.cx--2004-uruk/uruk--mainline--0.1
 #
 
+2010-03-02 16:35:45 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-176
+
+    Summary:
+      use IPv6 connection tracking if available. patch contributed by Casper Gielen in Message-ID: <4B8D3D30.50201@uvt.nl>
+    Revision:
+      uruk--mainline--0.1--patch-176
+
+    use IPv6 connection tracking if available. patch contributed by Casper Gielen in Message-ID: <4B8D3D30.50201@uvt.nl>
+    
+
+    modified files:
+     uruk/ChangeLog
+
+
 2010-03-02 16:35:17 GMT	Joost van Baal <joostvb-arch@mdcc.cx>	patch-175
 
     Summary:
