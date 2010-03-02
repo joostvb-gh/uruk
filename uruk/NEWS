@@ -2,6 +2,13 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version YYYYMMDD
+
+- FIXME
+- use IPv6 connection tracking if supported by kernel. patch contributed by
+  Casper Gielen.
+
+
 uruk version 20080330
 
 - Make behaviour more robust when uruk loglevel is set between 20 and 40 and
