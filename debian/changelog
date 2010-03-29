@@ -5,7 +5,6 @@ caspar (20100223-1) unstable; urgency=low
     + Add Vcs-Git, now that upstream (and debian/) migrated from CVS to git.
     + Update obsolete < to << (thanks lintian)
     + Add missing ${misc:Depends} (thanks lintian)
-  * FIXME
 
  -- Joost van Baal <joostvb@debian.org>  Tue, 23 Feb 2010 17:28:43 +0100
 
