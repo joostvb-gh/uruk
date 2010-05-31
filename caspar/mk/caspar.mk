@@ -104,7 +104,7 @@ endef
 
 define loadtargets
 $1--$2--load:
-	$(call $1,$2)
+	$$(call $1,$2)
 endef
 
 $(foreach load,$(csp_LOAD),\
