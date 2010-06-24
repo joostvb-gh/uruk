@@ -1,5 +1,13 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20100624
+
+- Bugfix release
+[Wessel Dankers]
+- caspar/mk/caspar.mk: fix load-target-as-a-variable didn't work
+  because $(call ...) was expanded too early
+
+
 caspar version 20100223
 
 [Joost van Baal]
