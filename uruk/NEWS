@@ -2,11 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version YYYYMMDD
+uruk version 20100717
 
-- FIXME
-- use IPv6 connection tracking if supported by kernel. patch contributed by
-  Casper Gielen.
+- The uruk code is no longer maintained using GNU Arch, but using the git
+  version control system.
+- Use IPv6 connection tracking if supported by kernel. Patch contributed by
+  Casper Gielen in Message-ID: <4B8D3D30.50201@uvt.nl>.
 
 
 uruk version 20080330
@@ -289,4 +290,3 @@ ad1810-firewall version v20030426
 
 - First public alpha release.  Untested!
 
-# this file maintained using arch at http://arch.gna.org/uruk/
