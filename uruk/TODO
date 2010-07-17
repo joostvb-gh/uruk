@@ -1,11 +1,54 @@
 
 --------------- first first prio -----------------------------------
 
-enable ipv6-filtering by default.
+- enable ipv6-filtering by default.
 
-ask casper for updated patch
+- ask casper for updated patch
 
-convert repo to git: remove arch tags, fix homepage
+- convert repo to git: remove arch tags, fix homepage
+
+- check init-script: likely doesn't honor debian boot policy
+
+- use sane syntax for ipv6 adresses. the one in example rc is
+crappy.
+
+localhost is 0000:0000:0000:0000:0000:0000:0000:0001 aka
+Fri 18 10:36 < Fruit> ::1
+
+000:0000:0000:0000:0000:0000:0000:0000/0 is ::/0
+
+s/(^|:)(0+($|:))+/::/
+
+rijen van woorden kun je afkorten tot ::
+
+Tnx Wessel
+
+vr 04 15:53 < joostvb> is 10.0.0.0/8 ook te schrijven als 10/8 ?
+vr 04 15:53 < Fruit> wel als 10./8
+vr 04 15:53 < Fruit> 10/8 is 0.0.0.10/8
+vr 04 15:54 < Fruit> 10.1/8 = 10.0.0.1/8
+vr 04 15:54 < joostvb> 0.0.0.0/0 (aka 0/0) <- klopt?
+vr 04 15:54 < Fruit> ja.
+vr 04 15:54 < joostvb> 172.16.0.0/12 (aka 172.16./12)
+vr 04 15:55 < Fruit> yepyep
+vr 04 15:55 < Fruit> overigens parsen sommige applicaties het verkeerd
+vr 04 15:55 < joostvb> iptables is 1 van die applicaties
+vr 04 15:55 < joostvb> ?
+vr 04 15:55 < Fruit> wikni
+vr 04 15:55 < joostvb> damn
+
+http://www.faqs.org/rfcs/rfc3330.html
+
+gebruik voor net_foo strings als
+
+privnet-10
+privnet-0
+privnet-172
+
+fix de FIXME's in uruk.in and doc/rc.
+
+
+-
 
 za 29 15:16 < fvos> joostvb: misschien kan het al, maar op de eee wil ik dat 
                     het ook kan werken als er per verbinding een ander ip-adres 
@@ -51,46 +94,6 @@ freitag
 - build and upload another .deb to unstable
 
 ----------------- candidates for upcoming release ------------------
-
-- use sane syntax for ipv6 adresses. the one in example rc is
-crappy.
-
-localhost is 0000:0000:0000:0000:0000:0000:0000:0001 aka
-Fri 18 10:36 < Fruit> ::1
-
-000:0000:0000:0000:0000:0000:0000:0000/0 is ::/0
-
-s/(^|:)(0+($|:))+/::/
-
-rijen van woorden kun je afkorten tot ::
-
-Tnx Wessel
-
-vr 04 15:53 < joostvb> is 10.0.0.0/8 ook te schrijven als 10/8 ?
-vr 04 15:53 < Fruit> wel als 10./8
-vr 04 15:53 < Fruit> 10/8 is 0.0.0.10/8
-vr 04 15:54 < Fruit> 10.1/8 = 10.0.0.1/8
-vr 04 15:54 < joostvb> 0.0.0.0/0 (aka 0/0) <- klopt?
-vr 04 15:54 < Fruit> ja.
-vr 04 15:54 < joostvb> 172.16.0.0/12 (aka 172.16./12)
-vr 04 15:55 < Fruit> yepyep
-vr 04 15:55 < Fruit> overigens parsen sommige applicaties het verkeerd
-vr 04 15:55 < joostvb> iptables is 1 van die applicaties
-vr 04 15:55 < joostvb> ?
-vr 04 15:55 < Fruit> wikni
-vr 04 15:55 < joostvb> damn
-
-http://www.faqs.org/rfcs/rfc3330.html
-
-gebruik voor net_foo strings als
-
-privnet-10
-privnet-0
-privnet-172
-
-fix de FIXME's
-
-
 
 - get rid of duplicated code in init-script:
       if test "$found_active" -a "$found_inactive"; then
