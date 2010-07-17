@@ -1,6 +1,8 @@
 
 --------------- first first prio -----------------------------------
 
+enable ipv6-filtering by default.
+
 ask casper for updated patch
 
 convert repo to git: remove arch tags, fix homepage
