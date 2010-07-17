@@ -1,7 +1,9 @@
 
 --------------- first first prio -----------------------------------
 
-convert repo to git
+ask casper for updated patch
+
+convert repo to git: remove arch tags, fix homepage
 
 za 29 15:16 < fvos> joostvb: misschien kan het al, maar op de eee wil ik dat 
                     het ook kan werken als er per verbinding een ander ip-adres 
@@ -25,19 +27,16 @@ Packages could run this to generate a first rc file.
 
 ----------------- local stuff / testing procedure -----------------
 
-upgraded:
+- testhosts
 
 nagy
-gelfand
 stegun (ipv6)
-
-yet to install on:
-
-yosida
-banach
+rolle (ipv6)
+bruhat (ipv6)
+dijkstra
+lebesgue
 kovalevskaya
 freitag
-frgsn + ipv6-hosts
 
 - test with enable-uruk-save
 
