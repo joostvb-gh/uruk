@@ -118,9 +118,18 @@ fi
 
 $iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-# ip6tables has no connection tracking support.
-$ip6tables -A INPUT --protocol tcp ! --syn --destination-port 1024: -j ACCEPT
-$ip6tables -A INPUT --protocol udp --destination-port 1024: -j ACCEPT
+kver=$(uname -r | cut -d '-' -f 1)
+major=${kver%.*} 	# 2.6
+minor=${kver##*.}	# 32
+
+# ip6tables has no connection tracking support prior to kernel 2.6.26
+if [ "$major" = "2.6" -a $minor -lt 26 ] || [ "$major" = "2.2" -o "$major" = "2.4" ];
+then
+	$ip6tables -A INPUT --protocol tcp ! --syn --destination-port 1024: -j ACCEPT
+	$ip6tables -A INPUT --protocol udp --destination-port 1024: -j ACCEPT
+else
+	$ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+fi
 
 
 uruk_hook "$rc_b"
