@@ -18,12 +18,14 @@
 # requirements:
 #  GNU autoconf, from e.g. ftp.gnu.org:/pub/gnu/autoconf/autoconf-2.50.tar.gz
 #  GNU automake, from e.g. ftp.cygnus.com:/pub/tromey
-#  GNU arch, from e.g. http://regexps.srparish.net/www/
+#  git2cl, from e.g. http://josefsson.org/git2cl/, and git
 
 set -x
 
 test -f ChangeLog || {
-    tla changelog > ChangeLog
+    # we want no unprotected emailadresses in the cl
+    git log --pretty --numstat --summary | sed 's/<[^>][^>]*>//g' | \
+      git2cl >ChangeLog
 }
 
 test -f VERSION.m4 || ./setversion

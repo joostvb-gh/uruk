@@ -8,6 +8,10 @@
 ## Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
 ## Copyright (C) 2003, 2004, 2005 Joost van Baal
 
+## see booststrap for git2cl
+ChangeLog: NEWS
+	git log --pretty --numstat --summary | sed 's/<[^>][^>]*>//g' | git2cl >ChangeLog
+
 VERSION.m4 VERSION stamp.year stamp.month stamp.day: ChangeLog
 	./setversion
 
