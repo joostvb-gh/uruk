@@ -2,6 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version YYYYMMDD
+
+- Makefile.am, bootstrap: some tweaking of buildsystem.
+
+
 uruk version 20100717
 
 - The uruk code is no longer maintained using GNU Arch, but using the git
