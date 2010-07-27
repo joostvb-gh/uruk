@@ -5,7 +5,7 @@
 
 - ask casper for updated patch
 
-- convert repo to git: remove arch tags, fix homepage
+- convert repo to git: remove arch tags
 
 - check init-script: likely doesn't honor debian boot policy
   see also http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=581659
