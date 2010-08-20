@@ -186,10 +186,16 @@ do
             :
         else
             eval ip="\"\$ip_${iface_x}\""
-            $iptables -A OUTPUT -o $iface --source ! "$ip" -j DROP
+            eval ip6="\"\$ip6_${iface_x}\""
+
+           # drop all outgoing packets which don't have us as a source
+            $iptables  -A OUTPUT -o $iface --source ! "$ip"  -j DROP
+            $ip6tables -A OUTPUT -o $iface --source ! "$ip6" -j DROP
 
             # drop all incoming packets which don't have us as destination
-            $iptables -A INPUT -i $iface --destination ! "$ip" -j DROP
+            $iptables  -A INPUT -i $iface --destination ! "$ip"  -j DROP
+            $ip6tables -A INPUT -i $iface --destination ! "$ip6" -j DROP
+
             # NOTE: this is stricter than above no_route_ip rule.  If this
             # rule is used, above rule ``$iptables -A INPUT -i $iface
             # --destination $no_route_ip -j DROP'' could get disabled. See
