@@ -5,6 +5,9 @@ Refer to ChangeLog for detailed per-file info.
 uruk version YYYYMMDD
 
 - Makefile.am, bootstrap: some tweaking of buildsystem.
+- init/uruk.in: we want to start early in boot sequence (on entering runlevel
+  S).  LSB init.d header however had "Default-Start: 2 3 5". Fix this to S.
+  Thanks Petter Reinholdtsen for the patch in http://bugs.debian.org/581659.
 
 
 uruk version 20100717

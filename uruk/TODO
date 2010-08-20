@@ -7,9 +7,6 @@
 
 - convert repo to git: remove arch tags
 
-- check init-script: likely doesn't honor debian boot policy
-  see also http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=581659
-
 - use sane syntax for ipv6 adresses. the one in example rc is
 crappy.
 
