@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version XXXX 20100820
+uruk version 20100820
 
 - Enable support for IPv6 packet filtering (full IPv6 support
   is a goal for the upcoming Debian "Squeeze" release)
@@ -11,6 +11,8 @@ uruk version XXXX 20100820
     to add "enable_ipv6=true" to /etc/default/uruk to fully enable it.
   + man/uruk*.azm, doc/rc: manpages and example rc file updated to reflect
     IPv6-support is no longer considered experimental.
+  + script/uruk.in: Drop unroutable IPv6 traffic. Patch supplied by Casper
+    Gielen.
 - init/uruk.in: Fix bugs in support for dependency based boot sequencing
   (which is the default in Debian's "Squeeze" release).
   + We want to start early in boot sequence (on entering runlevel S).  LSB
