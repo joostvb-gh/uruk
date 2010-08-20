@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version YYYYMMDD
+uruk version XXXX 20100820
 
 - script/uruk.in: ip6tables is now enabled in the uruk script by default.
   However, if you interact with uruk using the init script, you still have to
@@ -12,6 +12,8 @@ uruk version YYYYMMDD
 - init/uruk.in: we want to start early in boot sequence (on entering runlevel
   S).  LSB init.d header however had "Default-Start: 2 3 5". Fix this to S.
   Thanks Petter Reinholdtsen for the patch in http://bugs.debian.org/581659.
+  Furthermore, change Default-Stop: "0 6" to "0 1 6": no need to special case
+  runlevel 1 (thanks Debian's lintian).
 - Makefile.am, bootstrap: some tweaking of buildsystem.
 
 

@@ -5,22 +5,6 @@
 
 - more init lsb hassle:
 
-W: uruk: init.d-script-possible-missing-stop /etc/init.d/uruk 1
-N: 
-N:    The given /etc/init.d script indicates it should be stopped at one of
-N:    the runlevels 0, 1, or 6 but not at all of them. This is usually a
-N:    mistake. Normally, facilities that need to be stopped at any of those
-N:    runlevels need to be stopped at all of them.
-N:    
-N:    For example, if it is safe for the facility provided by this init script
-N:    to be stopped by sendsigs at runlevels 0 and 6, there should be no
-N:    reason to special case runlevel 1, where killprocs would stop it. If the
-N:    facility needs special shutdown handling when rebooting the system
-N:    (runlevel 6), it probably needs the same handling when halting the
-N:    system (runlevel 0) or switching to single-user mode (runlevel 1).
-N:    
-N:    Severity: normal, Certainty: possible
-N: 
 E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-start
 N: 
 N:    The given init script seems to refer to /usr, possibly using a file or
