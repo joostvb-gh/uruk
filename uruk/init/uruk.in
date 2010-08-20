@@ -20,7 +20,7 @@
 ### END INIT INFO
 
 # Copyright (C) 2002, 2003 Laurence J. Lane
-# Copyright (C) 2003, 2004, 2005, 2007 Joost van Baal
+# Copyright (C) 2003, 2004, 2005, 2007, 2010 Joost van Baal
 #
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -37,7 +37,7 @@
 # Based upon /etc/init.d/iptables as shipped with the Debian iptables
 # package by Laurence J. Lane
 
-# this file maintained using arch at http://arch.gna.org/uruk/
+# this file maintained at http://git.mdcc.cx/uruk.git
 
 set -e
 
@@ -122,14 +122,12 @@ test -f @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/sysconfig
 
 
 #                        /lib/lsb/init-functions
-# Red Hat EL AS rel 2.1        No
 # Red Hat EL AS rel 3          Yes
 #
-# Debian GNU/Linux Sarge       Yes, in lsb-base package
+# Debian GNU/Linux >= Sarge    Yes, in lsb-base package
 #
 # See /usr/share/doc/lsb-core/examples/init-skeleton.gz for sample lsb init
-# script.  If we wanna be compliant with Red Hat EL AS rel 2.1, we'd need to
-# implement our own log_success_msg, log_failure_msg and log_warning_msg.
+# script.
 #
 # include lsb functions
 lsb_init_functions=/lib/lsb/init-functions
