@@ -3,6 +3,44 @@
 
 - ask casper for updated patch
 
+- more init lsb hassle:
+
+W: uruk: init.d-script-possible-missing-stop /etc/init.d/uruk 1
+N: 
+N:    The given /etc/init.d script indicates it should be stopped at one of
+N:    the runlevels 0, 1, or 6 but not at all of them. This is usually a
+N:    mistake. Normally, facilities that need to be stopped at any of those
+N:    runlevels need to be stopped at all of them.
+N:    
+N:    For example, if it is safe for the facility provided by this init script
+N:    to be stopped by sendsigs at runlevels 0 and 6, there should be no
+N:    reason to special case runlevel 1, where killprocs would stop it. If the
+N:    facility needs special shutdown handling when rebooting the system
+N:    (runlevel 6), it probably needs the same handling when halting the
+N:    system (runlevel 0) or switching to single-user mode (runlevel 1).
+N:    
+N:    Severity: normal, Certainty: possible
+N: 
+E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-start
+N: 
+N:    The given init script seems to refer to /usr, possibly using a file or
+N:    binary from there. Without a dependency on $remote_fs in Required-Start
+N:    or Required-Stop, as appropriate, the init script might be run before
+N:    /usr is mounted or after it's unmounted.
+N:    
+N:    Using Should-Start or Should-Stop to declare the dependency is
+N:    conceptually incorrect since the $remote_fs facility is always
+N:    available. Required-Start or Required-Stop should be used instead. Also,
+N:    please note that $all should not be used in Required-Stop, only
+N:    Required-Start.
+N:    
+N:    Refer to http://wiki.debian.org/LSBInitScripts for details.
+N:    
+N:    Severity: important, Certainty: possible
+N: 
+E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-stop
+
+
 - use sane syntax for ipv6 adresses. the one in example rc is
 crappy.
 
