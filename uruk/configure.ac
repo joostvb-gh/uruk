@@ -1,5 +1,5 @@
 # Based upon autoscan(1) output.
-# This file maintained using arch at http://arch.gna.org/uruk/
+# this file maintained at http://git.mdcc.cx/uruk.git
 # Process this file with autoconf to produce a configure script.
 
 # This script is free software; you can distribute it and/or modify

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## this file maintained using arch at http://arch.gna.org/uruk/
+## this file maintained at http://git.mdcc.cx/uruk.git
 
 ## Copyright (C) 2003, 2004 Joost van Baal
 

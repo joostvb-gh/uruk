@@ -3,7 +3,7 @@
 
 - ask casper for updated patch
 
-- convert repo to git: remove arch tags
+- convert repo to git: update README file with git instructions, not arch
 
 - use sane syntax for ipv6 adresses. the one in example rc is
 crappy.
@@ -231,4 +231,4 @@ yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug
 
 - Finish IPv6 support.  Change to enabled-by-default.  Document it.
 
-# this file maintained using arch at http://arch.gna.org/uruk/
+# this file maintained at http://git.mdcc.cx/uruk.git

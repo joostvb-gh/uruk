@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## This file maintained using arch at http://arch.gna.org/uruk/
+## this file maintained at http://git.mdcc.cx/uruk.git
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
