@@ -11,8 +11,8 @@ uruk version 20100820
     to add "enable_ipv6=true" to /etc/default/uruk to fully enable it.
   + man/uruk*.azm, doc/rc: manpages and example rc file updated to reflect
     IPv6-support is no longer considered experimental.
-  + script/uruk.in: Drop unroutable IPv6 traffic. Patch supplied by Casper
-    Gielen.
+  + script/uruk.in: Drop unroutable IPv6 traffic.  Use connection tracking
+    for IPv6.  Patch supplied by Casper Gielen.
 - init/uruk.in: Fix bugs in support for dependency based boot sequencing
   (which is the default in Debian's "Squeeze" release).
   + We want to start early in boot sequence (on entering runlevel S).  LSB

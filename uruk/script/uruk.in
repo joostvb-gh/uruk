@@ -127,12 +127,14 @@ major=${kver%.*} 	# 2.6
 minor=${kver##*.}	# 32
 
 # ip6tables has no connection tracking support prior to kernel 2.6.26
-if [ "$major" = "2.6" -a $minor -lt 26 ] || [ "$major" = "2.2" -o "$major" = "2.4" ];
+if test \( "$major" = "2.6" -a $minor -lt 26 \) -o "$major" = 2.2" -o "$major" = "2.4"
 then
-	$ip6tables -A INPUT --protocol tcp ! --syn --destination-port 1024: -j ACCEPT
-	$ip6tables -A INPUT --protocol udp --destination-port 1024: -j ACCEPT
+    HAS_CONNTRACK6=false
+    $ip6tables -A INPUT --protocol tcp ! --syn --destination-port 1024: -j ACCEPT
+    $ip6tables -A INPUT --protocol udp --destination-port 1024: -j ACCEPT
 else
-	$ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    HAS_CONNTRACK6=true
+    $ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 fi
 
 
@@ -284,10 +286,18 @@ do
                             done
                             for source6 in $sources6
                             do
-                                $ip6tables -A INPUT \
-                                  -i $iface --protocol $proto \
-                                  --source "$source6" --destination "$ip6" \
-                                  --destination-port "$port" -j ACCEPT
+                                if $HAS_CONNTRACK6
+                                then
+                                    $ip6tables -A INPUT -m state --state NEW \
+                                        -i $iface --protocol $proto \
+                                        --source "$source6" --destination "$ip6" \
+                                        --destination-port "$port" -j ACCEPT
+                                else
+                                    $ip6tables -A INPUT \
+                                        -i $iface --protocol $proto \
+                                        --source "$source6" --destination "$ip6" \
+                                        --destination-port "$port" -j ACCEPT
+                                fi
                             done
                         done
                     fi
