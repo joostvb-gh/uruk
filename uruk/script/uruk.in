@@ -45,6 +45,16 @@ etcdir="@SYSCONF_PATH@/@PACKAGE_TARNAME@"
 
 config=${URUK_CONFIG:-${etcdir}/rc}
 
+# IPv4 ranges that should not send or receive packets
+# 127.1/8 10./8 172.16./12 192.168./16  FIXME : allow for short names?
+ip4_noroute_ranges='127.0.0.1/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16'
+
+# IPv6 ranges that should not send or receive packets
+# see http://www.iana.org/assignments/ipv6-address-space/
+# and http://www.iana.org/assignments/ipv6-unicast-address-assignments/
+ip6_noroute_ranges='::1/128 ffff:0:0::/96 fc00::/7 fec0::/10 0200::/7 2001:0db8::/32'
+
+
 test -r $config || {
     echo >&2 "No readable rc file $config found.  Please create one." && exit 1
 }
@@ -153,8 +163,7 @@ do
     for iface_x in $interfaces_x
     do
         eval net="\"\$net_${iface_x}\""
-        # 127.1/8 10./8 172.16./12 192.168./16  FIXME : allow for short names?
-        for no_route_ip in 127.0.0.1/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16
+	for no_route_ip in $ip4_noroute_ranges
         do
             if test $no_route_ip != "$net"
             then
@@ -169,6 +178,24 @@ do
                   -j DROP
             fi
         done
+        eval net6="\"\$net6_${iface_x}\""
+	for no_route_ip in $ip6_noroute_ranges
+	do
+	    if test $no_route_ip != "$net6"    # rather unlikely for IPv6, borderline useless, left in for consistency with IPv4
+	    then
+	        # TODO: this behaves odd in multiple-IP cases.  Furthermore,
+	        # excluding one private network from being dropped works ugly.
+	        $ip6tables -A INPUT -i $iface --source $no_route_ip -j DROP
+	        $ip6tables -A INPUT -i $iface --destination $no_route_ip \
+		 -j DROP
+	
+	         $ip6tables -A OUTPUT -o $iface --source $no_route_ip -j DROP
+	         $ip6tables -A OUTPUT -o $iface --destination $no_route_ip \
+		  -j DROP
+	        fi
+        done
+	
+
 
         # block outgoing packets that don't have our address as source,
         # they are either spoofed or something is misconfigured (NAT disabled,
