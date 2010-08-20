@@ -3,8 +3,6 @@
 
 - ask casper for updated patch
 
-- convert repo to git: update README file with git instructions, not arch
-
 - use sane syntax for ipv6 adresses. the one in example rc is
 crappy.
 

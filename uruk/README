@@ -140,20 +140,12 @@ See the uruk(8) manpage for quick setup instructions.
 
 HACKING
 
-Uruk version control is handled using git, on http://git.mdcc.cx/uruk.git
+Uruk version control is handled using git.  You can get a fresh copy by running
 
-You can get a fresh copy by running FIXME
+ git clone http://git.mdcc.cx/uruk.git
 
-Until june 2010, it was maintained using GNU Arch.
-
-FIXME
- tla register-archive my@address.org--2004-uruk \
-        http://arch.gna.org/uruk/archive-2004
- tla get my@address.org--2004-uruk/uruk--mainline--0.1 uruk
-
-FIXME
-See http://wiki.gnuarch.org/ and
-http://regexps.srparish.net/tutorial-tla/arch.html for information about arch.
+See http://git-scm.com/ for information about git.  (Until june 2010, the
+uruk code was maintained using GNU Arch.)
 
 
 MORE INFORMATION, SIMILAR TOOLS
