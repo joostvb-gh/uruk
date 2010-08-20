@@ -75,9 +75,6 @@ mode (i.e. it features \tt{iptables='echo iptables'}), \uruk_save fails.
 \sec{see also}{SEE ALSO}
 
 \sibref{uruk}{uruk(8)}, \sibref{uruk-rc}{uruk-rc(5)} .
- \par
-\bf{iptables(8)}, \bf{iptables-save(8)},
-\bf{iptables-restore(8)}, \httpref{http://www.netfilter.org/}
 
 \sec{copyright}{COPYRIGHT}
 

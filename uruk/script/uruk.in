@@ -29,21 +29,15 @@
 
 iptables=${URUK_IPTABLES:-/sbin/iptables}
 
-# By default, we don't do any /sbin/ip6tables calls.  This will change
-# once Uruk's IPv6 support is blessed mature.
-ip6tables=${URUK_IP6TABLES:-":"}
+ip6tables=${URUK_IP6TABLES:-/sbin/ip6tables}
 #
 # Add
 #
-#  ip6tables=${URUK_IP6TABLES:-/sbin/ip6tables}
-#
-# to your rc file and
-#
 #  "enable_ipv6=true"
 #
-# to /etc/default/uruk if you'd like to play with IPv6 support in Uruk
+# to /etc/default/uruk if you'd like to enable IPv6 support in Uruk
 #
-# New variables used: ip6_<...>, sources6_<...>, ip6tables.
+# Variables used: ip6_<...>, sources6_<...>, ip6tables.
 
 interfaces_unprotect=${URUK_INTERFACES_UNPROTECT:-lo}
 

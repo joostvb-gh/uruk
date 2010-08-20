@@ -61,7 +61,8 @@ do this.  Once this file is created and installed (this script looks in
 After editing \rc, load your rules like this.  First flush your current rules:
 
 \verbatim{\
- # iptables -F}
+ # iptables -F
+ # ip6tables -F}
 
 Then enable your \rc rules
 
@@ -71,7 +72,8 @@ Then enable your \rc rules
 . Inspect the rules by doing:
 
 \verbatim{\
- # iptables -L}
+ # iptables -L
+ # ip6tables -L}
 
 .
 
@@ -166,7 +168,7 @@ course, take a look at \tt{\sbinpath/uruk} for the final word on the workings.
   \item Traffic on $interfaces_unprotect (just lo per default)
  is trusted:
     \verbatim{\
- $iptables -A INPUT  -i $iface -j ACCEPT}
+ $iptables -A INPUT -i $iface -j ACCEPT}
   \item $rc_a is sourced as a shell script, or, in case $rc_a is a directory, all
     files matching $rc_a/*.rc are sourced as shell scripts
   \item ESTABLISHED and RELATED packets are ACCEPT-ed:
@@ -323,7 +325,7 @@ You can override some defaults in the shell before executing the uruk script.
 \item "URUK_CONFIG" Full pathname of \rc file; \ttrcpath by default.
 \item "URUK_IPTABLES" Full pathname of iptables executable.
  \tt{/sbin/iptables} by default.  Overrides \it{iptables}.
-\item "URUK_IP6TABLES" Full pathname of ip6tables executable, for experimental
+\item "URUK_IP6TABLES" Full pathname of ip6tables executable, for
  IPv6 support.  Overrides \it{ip6tables}.
 \item "URUK_INTERFACES_UNPROTECT" Default list of unprotected interfaces.
  Overrides \it{interfaces_unprotect}.  The default default is \v{lo}.
@@ -336,7 +338,9 @@ You can override some defaults in the shell before executing the uruk script.
 \httpref{http://mdcc.cx/uruk/} .
  \par
 \bf{iptables(8)}, \bf{iptables-save(8)},
-\bf{iptables-restore(8)}, \httpref{http://www.netfilter.org/}
+\bf{iptables-restore(8)},
+\bf{ip6tables(8)}, \bf{ip6tables-save(8)},
+\bf{ip6tables-restore(8)}, \httpref{http://www.netfilter.org/}
 \: (no manpage online :( )
  \par
 \bf{interfaces(5)}, \httpref{http://packages.debian.org/ifupdown}.
@@ -345,7 +349,7 @@ You can override some defaults in the shell before executing the uruk script.
 
 Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
 Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
-Copyright (C) 2003, 2004, 2005 Joost van Baal
+Copyright (C) 2003, 2004, 2005, 2010 Joost van Baal
 
 \par
 

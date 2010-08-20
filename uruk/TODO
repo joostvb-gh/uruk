@@ -1,8 +1,6 @@
 
 --------------- first first prio -----------------------------------
 
-- enable ipv6-filtering by default.
-
 - ask casper for updated patch
 
 - convert repo to git: remove arch tags
@@ -60,6 +58,12 @@ za 29 19:29 < joostvb> fvos: valideren tegen een xsd: patches welkom :)
 za 29 19:29 < joostvb> fvos: maar ik denk niet dat ik dat de default ga maken, 
                        dat ie dat doet
 
+
+- add a full IPv6 example to uruk-rc manpage (we now only have the example
+  rc-file).
+
+- enable IPv6 by default in init-script: adjust comment "enable_ipv6=true" in
+  /etc/default/uruk and hack init-script.
 
 ----------------- first prio ------------------------------------
 

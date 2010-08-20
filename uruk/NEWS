@@ -4,10 +4,15 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version YYYYMMDD
 
-- Makefile.am, bootstrap: some tweaking of buildsystem.
+- script/uruk.in: ip6tables is now enabled in the uruk script by default.
+  However, if you interact with uruk using the init script, you still have to
+  add "enable_ipv6=true" to /etc/default/uruk to fully enable it.
+- man/uruk*.azm, doc/rc: manpages and example rc file updated to reflect
+  IPv6-support is no longer considered experimental.
 - init/uruk.in: we want to start early in boot sequence (on entering runlevel
   S).  LSB init.d header however had "Default-Start: 2 3 5". Fix this to S.
   Thanks Petter Reinholdtsen for the patch in http://bugs.debian.org/581659.
+- Makefile.am, bootstrap: some tweaking of buildsystem.
 
 
 uruk version 20100717

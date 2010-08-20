@@ -3,7 +3,7 @@
 
 # Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
 # Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
-# Copyright (C) 2003, 2004, 2005 Joost van Baal
+# Copyright (C) 2003, 2004, 2005, 2010 Joost van Baal
 #
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -37,8 +37,9 @@ interfaces_unprotect="lo sit0 eth3"
 # For each interface <if> in interfaces, ip_<if> and net_<if> should be
 # defined
 ip_eth0=10.56.0.201
-# If you have enabled IPv6 support, supply IPv6 addresses like this:
-# ip6_eth0=2006:488:1a9b:0:4a54:e8ff:fe2b:f25c
+# Supply IPv6 addresses like this:
+ip6_eth0=2006:488:1a9b:0:4a54:e8ff:fe2b:f25c
+
 ip_eth1=192.168.0.4
 
 # To which network does this interface belong?  Should be one of
@@ -62,6 +63,8 @@ all=0/0
 # For each interface, and for both tcp and udp, symbolic names of (sets of)
 # services could be defined, in variables services_<if>_{tcp,udp}.
 services_eth0_tcp="mail local public"
+# services6_eth0_tcp="$services_eth0_tcp irc"
+services6_eth0_tcp="irc"
 
 # For every servicesetname <s>, every interface <if>, and tcp and/or udp, a
 # list of allowed source addresses should be defined in a variable
@@ -75,14 +78,15 @@ sources_eth0_tcp_mail="10./24 10.56.38./24 192.168.6.26" # FIXME: does iptables
                                                          # know how to parse this?
 sources_eth0_tcp_local="$localnet gandalf.example.com"
 sources_eth0_tcp_public=$all
-# If you have enabled IPv6 support, supply IPv6 addresses like this:
-# sources6_eth0_tcp_public="0000:0000:0000:0000:0000:0000:0000:0000/0" # (aka ::/0)
+# Supply IPv6 addresses like this:
+sources6_eth0_tcp_irc="0000:0000:0000:0000:0000:0000:0000:0000/0" # (aka ::/0)
 
 # Symbolic port names are fine.
 ports_eth0_tcp_mail=smtp
 ports_eth0_tcp_local="ssh ftp"
-ports_eth0_tcp_public="www"
+ports_eth0_tcp_public=www
 
+ports_eth0_tcp_irc=6667
 
 services_eth0_udp="syslog local"
 

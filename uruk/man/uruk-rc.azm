@@ -53,7 +53,7 @@ services_eth0_udp=local
 ports_eth0_udp_local="0:65535"
 sources_eth0_udp_local="0.0.0.0/0"}
 
-This \rc file allows all UDP and TCP traffic from publicly routable IPs to
+This \rc file allows all IPv4 UDP and TCP traffic from publicly routable IPs to
 eth0's IP.
 
 For a more reasonable \rc file, look at the well-commented example \rc file in
@@ -260,15 +260,10 @@ If you'd rather prefer not to execute, but just watch what would've been done,
 invoke uruk as
 
 \verbatim{\
- URUK_IPTABLES='echo iptables' uruk}
+ URUK_IPTABLES='echo iptables' URUK_IP6TABLES='echo ip6tables' uruk}
 
 (Like an uruk '-n' option.)  If you have this statement set, you can run \uruk
-under a non-priviliged user account.  Alternatively, add a
-
-\verbatim{\
-  iptables='echo iptables'}
-
-to your \rc file.
+under a non-priviliged user account.
 
 \par
 
@@ -329,7 +324,7 @@ A well-commented example \rc file is in \ttexpath.
 
 Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
 Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
-Copyright (C) 2003, 2004, 2005 Joost van Baal
+Copyright (C) 2003, 2004, 2005, 2010 Joost van Baal
 
 \par
 
