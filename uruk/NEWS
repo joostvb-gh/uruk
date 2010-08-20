@@ -4,16 +4,23 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version XXXX 20100820
 
-- script/uruk.in: ip6tables is now enabled in the uruk script by default.
-  However, if you interact with uruk using the init script, you still have to
-  add "enable_ipv6=true" to /etc/default/uruk to fully enable it.
-- man/uruk*.azm, doc/rc: manpages and example rc file updated to reflect
-  IPv6-support is no longer considered experimental.
-- init/uruk.in: we want to start early in boot sequence (on entering runlevel
-  S).  LSB init.d header however had "Default-Start: 2 3 5". Fix this to S.
-  Thanks Petter Reinholdtsen for the patch in http://bugs.debian.org/581659.
-  Furthermore, change Default-Stop: "0 6" to "0 1 6": no need to special case
-  runlevel 1 (thanks Debian's lintian).
+- Enable support for IPv6 packet filtering (full IPv6 support
+  is a goal for the upcoming Debian "Squeeze" release)
+  + script/uruk.in: ip6tables is now enabled in the uruk script by default.
+    However, if you interact with uruk using the init script, you still have
+    to add "enable_ipv6=true" to /etc/default/uruk to fully enable it.
+  + man/uruk*.azm, doc/rc: manpages and example rc file updated to reflect
+    IPv6-support is no longer considered experimental.
+- init/uruk.in: Fix bugs in support for dependency based boot sequencing
+  (which is the default in Debian's "Squeeze" release).
+  + We want to start early in boot sequence (on entering runlevel S).  LSB
+    init.d header however had "Default-Start: 2 3 5". Fix this to S.  Thanks
+    Petter Reinholdtsen for the patch in http://bugs.debian.org/581659.
+  + Furthermore, change Default-Stop: "0 6" to "0 1 6": no need to special
+    case runlevel 1 (thanks Debian's lintian).
+  + Finally, added "$remote_fs" to Required-Start: and Required-Stop: since
+    obviously we need /usr/sbin/uruk to be available (thanks again Debian's
+    lintian).
 - Makefile.am, bootstrap: some tweaking of buildsystem.
 
 
