@@ -3,28 +3,6 @@
 
 - ask casper for updated patch
 
-- more init lsb hassle:
-
-E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-start
-N: 
-N:    The given init script seems to refer to /usr, possibly using a file or
-N:    binary from there. Without a dependency on $remote_fs in Required-Start
-N:    or Required-Stop, as appropriate, the init script might be run before
-N:    /usr is mounted or after it's unmounted.
-N:    
-N:    Using Should-Start or Should-Stop to declare the dependency is
-N:    conceptually incorrect since the $remote_fs facility is always
-N:    available. Required-Start or Required-Stop should be used instead. Also,
-N:    please note that $all should not be used in Required-Stop, only
-N:    Required-Start.
-N:    
-N:    Refer to http://wiki.debian.org/LSBInitScripts for details.
-N:    
-N:    Severity: important, Certainty: possible
-N: 
-E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-stop
-
-
 - use sane syntax for ipv6 adresses. the one in example rc is
 crappy.
 
