@@ -402,11 +402,10 @@ uruk_hook "$rc_h"
 $iptables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
 $iptables -A INPUT -j REJECT
 
-$ip6tables -A INPUT -j DROP
-# FIXME : these:
-#  $ip6tables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
-#  $ip6tables -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
-# would be better but don't seem to be supported with stock linux kernel.
+#$ip6tables -A INPUT -j DROP
+# These are supported since 2.4.5; this shouldn't be a problem anymore
+$ip6tables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
+$ip6tables -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
 
 uruk_hook "$rc_i"
 
