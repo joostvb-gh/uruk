@@ -122,12 +122,12 @@ fi
 
 $iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-kver=$(uname -r | cut -d '-' -f 1)
-major=${kver%.*} 	# 2.6
-minor=${kver##*.}	# 32
+kver=$(uname -r | cut -d '-' -f 1)   # 2.6.32
+major=${kver%.*}                     # 2.6
+minor=${kver##*.}                    # 32
 
 # ip6tables has no connection tracking support prior to kernel 2.6.26
-if test \( "$major" = "2.6" -a $minor -lt 26 \) -o "$major" = 2.2" -o "$major" = "2.4"
+if test \( "$major" = 2.6 -a $minor -lt 26 \) -o "$major" = 2.2 -o "$major" = 2.4
 then
     HAS_CONNTRACK6=false
     $ip6tables -A INPUT --protocol tcp ! --syn --destination-port 1024: -j ACCEPT

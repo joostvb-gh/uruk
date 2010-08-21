@@ -2,6 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version FIXME 20100821
+
+- script/uruk.in: fix bug introduced in version 20100820: uruk: 391: Syntax
+  error: Unterminated quoted string
+
+
 uruk version 20100820
 
 - Enable support for IPv6 packet filtering (full IPv6 support
