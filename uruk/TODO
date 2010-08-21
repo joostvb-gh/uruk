@@ -61,6 +61,14 @@ za 29 19:29 < joostvb> fvos: maar ik denk niet dat ik dat de default ga maken,
 - enable IPv6 by default in init-script: adjust comment "enable_ipv6=true" in
   /etc/default/uruk and hack init-script.
 
+- Suggested by Casper Gielen: enable broadcast/multicast filtering for IPv6
+ Carefull, this part is very different from IPv4. IPv6 does not support
+ broadcast (at all) while support for multicast is mandatory. Do not block
+ without a proper understanding of what you are blocking.
+ Very likely needs to get implemented in script/uruk.in near "# Don't answer
+ broadcast and multicast packets"
+
+
 ----------------- first prio ------------------------------------
 
 RSN: write urukconfig : generate uruk rc file based upon currently
