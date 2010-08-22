@@ -7,13 +7,12 @@ use specific network services.
 
 REQUIREMENTS
 
-Uruk is useful only on GNU/Linux systems.  However, the rc file (see
-uruk-rc(5)) could be used by other packet filtering engine wrappers
-too.
+Uruk is useful only on Linux systems.  However, the rc file (see uruk-rc(5))
+could be used by other packet filtering engine wrappers too.
 
 For this script to work, your Linux kernel needs stuff from the
-netfilter/iptables project ( http://www.netfilter.org/ ).  The specific
-needed settings are
+netfilter/iptables project ( http://www.netfilter.org/ ).  The specific needed
+settings are
 
  .config variable           module name   description in ``make config''
 
@@ -46,20 +45,21 @@ script, in init/uruk, gets installed in /usr/local/etc/init.d/ by default.
 Symlinks are _not_ created.  You'll have to create them yourself, after running
 'make install'.  E.g. do:
 
- root@nagy:/etc/init.d# ln -s /usr/local/etc/init.d/uruk
- root@nagy:~# update-rc.d uruk defaults
+ # cd /etc/init.d && ln -s /usr/local/etc/init.d/uruk
+ # update-rc.d uruk defaults
 
 .
 
 (If you lack update-rc.d, do something like
 
- root@kubl01:/etc# ln -s ../init.d/uruk rc0.d/K92uruk
- root@kubl01:/etc# ln -s ../init.d/uruk rc1.d/K92uruk
- root@kubl01:/etc# ln -s ../init.d/uruk rc2.d/S20uruk
- root@kubl01:/etc# ln -s ../init.d/uruk rc3.d/S20uruk
- root@kubl01:/etc# ln -s ../init.d/uruk rc4.d/S20uruk
- root@kubl01:/etc# ln -s ../init.d/uruk rc5.d/S08uruk
- root@kubl01:/etc# ln -s ../init.d/uruk rc6.d/K92uruk
+ # cd /etc/
+ # ln -s ../init.d/uruk rc0.d/K92uruk
+ # ln -s ../init.d/uruk rc1.d/K92uruk
+ # ln -s ../init.d/uruk rc2.d/S20uruk
+ # ln -s ../init.d/uruk rc3.d/S20uruk
+ # ln -s ../init.d/uruk rc4.d/S20uruk
+ # ln -s ../init.d/uruk rc5.d/S08uruk
+ # ln -s ../init.d/uruk rc6.d/K92uruk
 
 )
 
@@ -68,6 +68,33 @@ UPGRADE
 
 For upgrades from any version: run /etc/init.d/uruk force-reload after
 installation.  Read the NEWS file.
+
+
+* upgrading from uruk <= 20100820
+
+IPv6 support is now blessed mature.  It is enabled by default in the uruk
+script.
+
+If you'd like to start using IPv6 filtering now, and you interact with uruk
+using the init script, you have to add "enable_ipv6=true" to /etc/default/uruk
+to enable IPv6 filtering.  If you run /usr/sbin/uruk directly, you don't have
+to edit any special configuration file.  In both cases, if you want to
+block/allow specific IPv6 traffic, you'll have to adjust the uruk rc file of
+course.  See /usr/share/doc/uruk/examples/rc for hints on how to do that.
+
+If you don't want to use any IPv6 filtering, and you interact with uruk using
+the init script, you're safe.  If you run /usr/sbin/uruk directly, add
+URUK_IP6TABLES=':' to the top of your uruk rc file.
+
+If you have been using IPv6 filtering, and want to continue to do so, you don't
+have to change anything.  You might however like to do some janitoring on your
+configuration files.  In the rc file a statement like
+
+ ip6tables=${URUK_IP6TABLES:-/sbin/ip6tables}
+
+is no longer needed: you no longer need to override the $ip6tables variable.
+Furthermore, the statement "enable_ipv6=true" in /etc/default/uruk is no longer
+needed.
 
 
 * upgrading from uruk <= 20050718
