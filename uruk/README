@@ -70,7 +70,7 @@ For upgrades from any version: run /etc/init.d/uruk force-reload after
 installation.  Read the NEWS file.
 
 
-* upgrading from uruk <= 20100820
+* upgrading from uruk <= 20100717
 
 IPv6 support is now blessed mature.  It is enabled by default in the uruk
 script.
@@ -88,13 +88,12 @@ URUK_IP6TABLES=':' to the top of your uruk rc file.
 
 If you have been using IPv6 filtering, and want to continue to do so, you don't
 have to change anything.  You might however like to do some janitoring on your
-configuration files.  In the rc file a statement like
+rc file: a statement like
 
  ip6tables=${URUK_IP6TABLES:-/sbin/ip6tables}
 
 is no longer needed: you no longer need to override the $ip6tables variable.
-Furthermore, the statement "enable_ipv6=true" in /etc/default/uruk is no longer
-needed.
+(The statement "enable_ipv6=true" in /etc/default/uruk is still needed.)
 
 
 * upgrading from uruk <= 20050718

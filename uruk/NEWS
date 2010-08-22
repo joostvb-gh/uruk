@@ -2,6 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 20100823
+
+- README: added upgrade instructions for releases <= 20100717.
+
+
 uruk version 20100821
 
 - script/uruk.in: fix bug introduced in version 20100820: uruk: 391: Syntax
@@ -10,8 +15,8 @@ uruk version 20100821
 
 uruk version 20100820
 
-- Enable support for IPv6 packet filtering (full IPv6 support
-  is a goal for the upcoming Debian "Squeeze" release)
+- Enable support for IPv6 packet filtering.  See the README file for
+  upgrade instructions.
   + script/uruk.in: ip6tables is now enabled in the uruk script by default.
     However, if you interact with uruk using the init script, you still have
     to add "enable_ipv6=true" to /etc/default/uruk to fully enable it.
@@ -20,7 +25,6 @@ uruk version 20100820
   + script/uruk.in: Drop unroutable IPv6 traffic.  Use connection tracking
     for IPv6.  Patch supplied by Casper Gielen.
 - init/uruk.in: Fix bugs in support for dependency based boot sequencing
-  (which is the default in Debian's "Squeeze" release).
   + We want to start early in boot sequence (on entering runlevel S).  LSB
     init.d header however had "Default-Start: 2 3 5". Fix this to S.  Thanks
     Petter Reinholdtsen for the patch in http://bugs.debian.org/581659.
