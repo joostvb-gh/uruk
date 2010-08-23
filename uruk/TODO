@@ -1,6 +1,10 @@
 
 --------------- first first prio -----------------------------------
 
+Loading iptables ruleset: load "active"Using intrapositioned negation (`--option ! this`) is deprecated in favor of extrapositioned (`! --option this`).
+Using intrapositioned negation (`--option ! this`) is deprecated in favor of extrapositioned (`! --option this`).
+
+
 - use sane syntax for ipv6 adresses. the one in example rc is
 crappy.
 
