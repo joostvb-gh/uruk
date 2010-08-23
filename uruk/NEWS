@@ -5,6 +5,9 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 20100823
 
 - README: added upgrade instructions for releases <= 20100717.
+- script/uruk.in: Update to new iptables syntax: Get rid of warning
+  "Using intrapositioned negation (`--option ! this`) is deprecated in
+  favor of extrapositioned (`! --option this`)."
 
 
 uruk version 20100821
