@@ -7,7 +7,6 @@ uruk version 20100831
 - Fix example rc file: found out /sbin/ip6tables (as shipped with e.g. iptables
   1.4.8-2) understands both full and abbreviated IPv6 names, while the shipped
   /sbin/iptables understands full names only.  Thanks ﻢﻫﺪﻳ ﺎﻟﺩڤﻱ.
-- FIXME
 
 
 uruk version 20100823
