@@ -1,37 +1,7 @@
 
 --------------- first first prio -----------------------------------
 
-- use sane syntax for ipv6 adresses. the one in example rc is
-crappy.
-
-localhost is 0000:0000:0000:0000:0000:0000:0000:0001 aka
-Fri 18 10:36 < Fruit> ::1
-
-000:0000:0000:0000:0000:0000:0000:0000/0 is ::/0
-
-s/(^|:)(0+($|:))+/::/
-
-rijen van woorden kun je afkorten tot ::
-
-Tnx Wessel
-
-vr 04 15:53 < joostvb> is 10.0.0.0/8 ook te schrijven als 10/8 ?
-vr 04 15:53 < Fruit> wel als 10./8
-vr 04 15:53 < Fruit> 10/8 is 0.0.0.10/8
-vr 04 15:54 < Fruit> 10.1/8 = 10.0.0.1/8
-vr 04 15:54 < joostvb> 0.0.0.0/0 (aka 0/0) <- klopt?
-vr 04 15:54 < Fruit> ja.
-vr 04 15:54 < joostvb> 172.16.0.0/12 (aka 172.16./12)
-vr 04 15:55 < Fruit> yepyep
-vr 04 15:55 < Fruit> overigens parsen sommige applicaties het verkeerd
-vr 04 15:55 < joostvb> iptables is 1 van die applicaties
-vr 04 15:55 < joostvb> ?
-vr 04 15:55 < Fruit> wikni
-vr 04 15:55 < joostvb> damn
-
-http://www.faqs.org/rfcs/rfc3330.html
-
-gebruik voor net_foo strings als
+- gebruik voor net_foo strings als
 
 privnet-10
 privnet-0
@@ -57,6 +27,13 @@ za 29 19:29 < joostvb> fvos: maar ik denk niet dat ik dat de default ga maken,
 
 - add a full IPv6 example to uruk-rc manpage (we now only have the example
   rc-file).
+localhost is 0000:0000:0000:0000:0000:0000:0000:0001 aka
+Fri 18 10:36 < Fruit> ::1
+000:0000:0000:0000:0000:0000:0000:0000/0 is ::/0
+s/(^|:)(0+($|:))+/::/
+rijen van woorden kun je afkorten tot ::
+Tnx Wessel
+http://www.faqs.org/rfcs/rfc3330.html
 
 - enable IPv6 by default in init-script: adjust comment "enable_ipv6=true" in
   /etc/default/uruk and hack init-script.

@@ -40,12 +40,14 @@ etcdir="@SYSCONF_PATH@/@PACKAGE_TARNAME@"
 config=${URUK_CONFIG:-${etcdir}/rc}
 
 # IPv4 ranges that should not send or receive packets
-# 127.1/8 10./8 172.16./12 192.168./16  FIXME : allow for short names?
+# 127.1/8 10./8 172.16./12 192.168./16
 ip4_noroute_ranges='127.0.0.1/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16'
 
 # IPv6 ranges that should not send or receive packets
 # see http://www.iana.org/assignments/ipv6-address-space/
 # and http://www.iana.org/assignments/ipv6-unicast-address-assignments/
+# (abbreviated IP v6 addresses are allowed, abbreviated IP v4 addresses are _not_
+# allowed (checked using iptables 1.4.8-2).)
 ip6_noroute_ranges='::1/128 ffff:0:0::/96 fc00::/7 fec0::/10 0200::/7 2001:0db8::/32'
 
 test -r $config || {

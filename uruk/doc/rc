@@ -38,7 +38,9 @@ interfaces_unprotect="lo sit0 eth3"
 # defined
 ip_eth0=10.56.0.201
 # Supply IPv6 addresses like this:
-ip6_eth0=2006:488:1a9b:0:4a54:e8ff:fe2b:f25c
+ip6_eth0=2006:488:1a9b::4a54:e8ff:fe2b:f25c # (aka 2006:488:1a9b:0:4a54:e8ff:fe2b:f25c)
+# NB: /sbin/ip6tables (as shipped with e.g. iptables 1.4.8-2) understands
+# both full and abbreviated IPv6 names.
 
 ip_eth1=192.168.0.4
 
@@ -46,8 +48,10 @@ ip_eth1=192.168.0.4
 # 0.0.0.0/0 (aka 0/0) 10.0.0.0/8 (aka 10./8) 172.16.0.0/12 (aka 172.16./12)
 # 192.168.0.0/16 (aka 192.168./16) . Used to decide wether a
 # packet for this interface is spoofed, and therefore should get dropped.
-net_eth0=0/0          # FIXME only allow full names here?
-net_eth1=192.168./16
+# NB: /sbin/iptables (as shipped with e.g. iptables 1.4.8-2) understands
+# full names only.
+net_eth0=0.0.0.0/0
+net_eth1=192.168.0.0/16
 
 # Subset of interfaces, which should drop broadcast and multicast packets
 interfaces_nocast="eth0"
@@ -57,8 +61,8 @@ bcast_eth0=10.56.255.255
 
 
 # You can define any shell variable, and reference it later on
-localnet="10.56./16"
-all=0/0
+localnet="10.56.0.0/16"
+all=0.0.0.0/0
 
 # For each interface, and for both tcp and udp, symbolic names of (sets of)
 # services could be defined, in variables services_<if>_{tcp,udp}.
@@ -71,15 +75,14 @@ services6_eth0_tcp="irc"
 # sources_<if>_{tcp,udp}_<s> .  Furthermore a list of ports should be defined
 # in a variable ports_<if>_{tcp,udp}_<s> .
 
-# A valid source is 192.168.6.26, another valid source is 192.168.6./24.
+# A valid source is 192.168.6.26, another valid source is 192.168.6.0/24.
 # One can add DNS domainnames like gandalf.example.com too: iptables will
 # perform a DNS lookup
-sources_eth0_tcp_mail="10./24 10.56.38./24 192.168.6.26" # FIXME: does iptables
-                                                         # know how to parse this?
+sources_eth0_tcp_mail="10.0.0.0/24 192.0.32.0/24 192.168.6.26"
 sources_eth0_tcp_local="$localnet gandalf.example.com"
 sources_eth0_tcp_public=$all
 # Supply IPv6 addresses like this:
-sources6_eth0_tcp_irc="0000:0000:0000:0000:0000:0000:0000:0000/0" # (aka ::/0)
+sources6_eth0_tcp_irc="::/0" # aka 0000:0000:0000:0000:0000:0000:0000:0000/0
 
 # Symbolic port names are fine.
 ports_eth0_tcp_mail=smtp
