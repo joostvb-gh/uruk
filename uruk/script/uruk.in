@@ -116,21 +116,7 @@ then
 fi
 
 $iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-kver=$(uname -r | cut -d '-' -f 1)   # 2.6.32
-major=${kver%.*}                     # 2.6
-minor=${kver##*.}                    # 32
-
-# ip6tables has no connection tracking support prior to kernel 2.6.26
-if test \( "$major" = 2.6 -a $minor -lt 26 \) -o "$major" = 2.4
-then
-    HAS_CONNTRACK6=false
-    $ip6tables -A INPUT --protocol tcp ! --syn --destination-port 1024: -j ACCEPT
-    $ip6tables -A INPUT --protocol udp --destination-port 1024: -j ACCEPT
-else
-    HAS_CONNTRACK6=true
-    $ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-fi
+$ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 uruk_hook "$rc_b"
 
@@ -277,18 +263,10 @@ do
                             done
                             for source6 in $sources6
                             do
-                                if $HAS_CONNTRACK6
-                                then
-                                    $ip6tables -A INPUT -m state --state NEW \
-                                        -i $iface --protocol $proto \
-                                        --source "$source6" --destination "$ip6" \
-                                        --destination-port "$port" -j ACCEPT
-                                else
-                                    $ip6tables -A INPUT \
-                                        -i $iface --protocol $proto \
-                                        --source "$source6" --destination "$ip6" \
-                                        --destination-port "$port" -j ACCEPT
-                                fi
+                                $ip6tables -A INPUT -m state --state NEW \
+                                  -i $iface --protocol $proto \
+                                  --source "$source6" --destination "$ip6" \
+                                  --destination-port "$port" -j ACCEPT
                             done
                         done
                     fi
