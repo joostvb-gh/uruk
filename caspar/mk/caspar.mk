@@ -18,6 +18,9 @@ ifneq ($(csp_UHOSTS_SUBSET),)
 csp_UHOSTS     := $(filter $(csp_UHOSTS_SUBSET),$(csp_UHOSTS))
 endif
 
+# uhosts that should be excluded for whatever reason
+csp_UHOSTS     := $(filter-out $(csp_UHOSTS_SKIP),$(csp_UHOSTS))
+
 # possibility to choose own cp(1) and scp(1)
 csp_CP         ?= cp
 csp_SCP        ?= scp
