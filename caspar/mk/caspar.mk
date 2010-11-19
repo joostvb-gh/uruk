@@ -62,11 +62,8 @@ FILES   := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
 # exclude editor backup files and other stuff
 FILES   := $(filter-out $(csp_TABOOFILES),$(FILES))
 
-# user specified files
-FILES   += $(filter-out $(FILES),$(csp_EXTRAFILES))
-
-# built files
-FILES   += $(filter-out $(FILES),$(csp_BUILD))
+# user specified files and built files
+FILES   := $(sort $(FILES) $(csp_EXTRAFILES) $(csp_BUILD))
 
 all:
 	$(MAKE) build
