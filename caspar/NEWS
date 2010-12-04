@@ -1,5 +1,12 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20101204
+
+[Wessel Dankers]
+- caspar/mk/caspar.mk: add $(csp_UHOSTS_SKIP) feature: exclude hosts
+- caspar/mk/caspar.mk: combine file lists less clumsily
+
+
 caspar version 20100624
 
 - Bugfix release
