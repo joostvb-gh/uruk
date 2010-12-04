@@ -35,7 +35,7 @@ sign:
 
 publish:
 	for i in $(DIST_ARCHIVES); do echo "scp $$i $$i.asc $(MY_RDIR)"; scp $$i $$i.asc $(MY_RDIR); done
-	@echo now run update-tar-symlinks caspar
+	@echo now run ssh opal update-tar-symlinks caspar
 
 ## Only files from the current directory or from subdirectory which
 ## don't have their own Makefile.am should be listed here.
