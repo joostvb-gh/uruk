@@ -1,5 +1,7 @@
 $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
 
+n.m) first prio: document csp_UHOSTS_SKIP
+
 1.1) finish convert to git: announce on webpage, create public repo
   ( http://git.fruit.je/caspar , http://git.mdcc.cx/ ,
   ssh://git/~joostvb/git/caspar.git )
