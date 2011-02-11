@@ -1,5 +1,4 @@
-# $Id: control,v 1.19 2009-11-14 08:27:55 joostvb Exp $
-# $Source: /cvsroot/caspar/caspar/debian/control,v $
+# debian/control
 Source: caspar
 Section: devel
 Priority: optional

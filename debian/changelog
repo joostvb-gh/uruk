@@ -2,6 +2,7 @@ caspar (20101204-1) UNRELEASED; urgency=low
 
   * UNRELEASED.
   * New upstream release.
+  * Remove obsolete CVS tags.
 
  -- Joost van Baal <joostvb@debian.org>  Thu, 20 Jan 2011 10:58:40 +0100
 
