@@ -48,7 +48,7 @@ clean:
 	rm -f build-stamp
 
 #	# commands to clean up after the build process.
-	test ! -f Makefile || $(MAKE) distclean
+	dh_auto_clean
 
 #	# no need to copy config.sub or config.guess here.  architecture
 #	# doesn't interest us: we don't compile anything, we just install
@@ -64,7 +64,7 @@ clean:
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 	dh_installdirs
 
 #	# commands to install the package into debian/caspar.

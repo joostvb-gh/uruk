@@ -6,6 +6,8 @@ caspar (20101204-1) UNRELEASED; urgency=low
   * debian/control: bumped Standards-Version: from 3.8.3 to 3.9.1 (no
     changes needed).
   * debian/{control,compat}: Bump debhelper from 5 to 7.
+  * debian/rules: update debhelper usage: replace "$(MAKE) distclean" with
+    dh_auto_clean, replace "dh_clean -k" with dh_prep.
 
  -- Joost van Baal <joostvb@debian.org>  Thu, 20 Jan 2011 10:58:40 +0100
 
