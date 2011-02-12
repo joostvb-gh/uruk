@@ -24,7 +24,7 @@ Description: Makefile snippets for centralized configuration management and type
  It is comparable with other tools for Unix system administrators like
  puppet and cfengine.  Main difference: the caspar code consists of less than
  100 lines of GNU Make, so if puppet and cfengine are overkill for your needs,
- you'll probable like caspar.
+ you'll probably like the small and simple caspar tool.
  .
  If you write documents in a markup language like LaTeX, DocBook
  XML, DocBook SGML or POD, and want to automate the typesetting, you'll
