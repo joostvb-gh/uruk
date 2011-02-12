@@ -12,7 +12,7 @@ Package: caspar
 Architecture: all
 Conflicts: caspar-doc (<< 20091115-1)
 Depends: make, ${misc:Depends}
-Suggests: jade, jadetex, texlive-latex-base, texlive-base-bin, w3m, gs-common, psutils, lpr, gv | postscript-viewer, man-db, docbook-dsssl, perl, caspar-doc
+Suggests: jade, jadetex, texlive-latex-base, texlive-base-bin, w3m, ghostscript, psutils, lpr, man-db, docbook-dsssl, perl, caspar-doc
 Description: Makefile snippets for common tasks
  Caspar offers Makefile snippets for tasks like installing files you maintain
  using a version control system, or typesetting documents in some markup

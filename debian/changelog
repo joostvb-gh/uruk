@@ -1,6 +1,5 @@
-caspar (20101204-1) UNRELEASED; urgency=low
+caspar (20101204-1) unstable; urgency=low
 
-  * UNRELEASED.
   * New upstream release.
   * Remove obsolete CVS tags.
   * debian/control: bumped Standards-Version: from 3.8.3 to 3.9.1 (no
@@ -8,8 +7,11 @@ caspar (20101204-1) UNRELEASED; urgency=low
   * debian/{control,compat}: Bump debhelper from 5 to 7.
   * debian/rules: update debhelper usage: replace "$(MAKE) distclean" with
     dh_auto_clean, replace "dh_clean -k" with dh_prep.
+  * debian/control: update Suggests to current packagenames: remove
+    "gv | postscript-viewer" (since provided by ghostscript), replace now
+    obsolete gs-common with ghostscript.
 
- -- Joost van Baal <joostvb@debian.org>  Thu, 20 Jan 2011 10:58:40 +0100
+ -- Joost van Baal <joostvb@debian.org>  Sat, 12 Feb 2011 01:21:45 +0100
 
 caspar (20100624-1) unstable; urgency=low
 
