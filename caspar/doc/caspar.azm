@@ -218,7 +218,7 @@ Now, running "make" will scp all files in the current directory to
   include caspar/mk/caspar.mk
 }
 
-Now, running "make" will use csp_sucp to install all files in the current
+Now, running "make" will use csp_sucp(1) to install all files in the current
 directory to both root@some.host.somewhere:/etc/ and
 root@some.other.host:/etc/.  If a file named \tt{fstab} is present in the
 current directory, running "make fstab-install" will just install that one
@@ -264,6 +264,10 @@ load".
 
 \cpar{Using csp_DIR and csp_LOAD}
 
+FIXME: example without explicit ssh, more hosts
+
+\cpar{Using csp_DIR and csp_LOAD, take 2}
+
 \it{etc/Makefile} is
 
 \verbatim{
@@ -292,7 +296,7 @@ to \it{../include/install.mk}, and write
 }
 
 in \it{etc/Makefile}.  This will make it easier to change to another push
-mechanism, once that would be needed.
+mechanism, once that would be needed.  FIXME add explicit example.
 
 
 \cpar{Using csp_BUILD: building files locally}
@@ -334,6 +338,8 @@ If you'd like to use csp_sucp and want a `load' target, do something like:
      ssh $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
 }
 
+FIXME: no explicit ssh
+
 
 \cpar{Adding a "check" target}
 
@@ -358,6 +364,8 @@ This way, "make load" won't cause the file to load if the check fails (which is
 probably what you want).  Running "make" will perform "install", "check" and
 "load".
 
+FIXME: no explicit ssh
+
 
 \cpar{Combining the csp_LOAD target with multiple hosts; building files remotely}
 
@@ -380,6 +388,8 @@ doing some preprocessing on the remote hosts too.
 
 (You might want to use a variable like \tt{my_EXEC} for ssh, see above.)
 
+FIXME: no explicit ssh
+
 \cpar{Using the csp_TABOOFILES_{ADD,SKIP} variables; another way to perform remote builds}
 
 Using the csp_TABOOFILES_{ADD,SKIP} variables is handy if you want to
@@ -400,6 +410,7 @@ as you'd like to have it installed on the remote location.  Now, create
 }
 
 (You might want to use a variable like \tt{my_EXEC} for ssh, see above.)
+FIXME: no explicit ssh
 
 Now, \tt{make install} and \tt{make load} will do the right thing.
 
@@ -450,6 +461,8 @@ to install on \tt{foo@bar}.
 
 \cpar{Overriding csp_UHOSTS in a smart way: csp_UHOSTS_SUBSET.  Using multiple
 groups of hosts.  Recursive make made easy.}
+
+FIXME: move this nontrivial example to top of manpage.
 
 If you have lots of subdirectories holding information for lots of groups of
 hosts, while this run you just want to install for a small group (or 1) hosts,
@@ -613,6 +626,8 @@ For \"caspar.mk": \tt{csp_CP}, \tt{csp_LOAD},
 Very likely, GNU Make is not the best tool for doing the stuff \"caspar.mk" is
 doing.
 
+For the list of reported bugs, see \httpref{http://bugs.debian.org/src:caspar}.
+
 See also TODO, distributed with the caspar package.  (And online at
 \httpref{http://mdcc.cx/pub/caspar/caspar-latest/TODO}.)
 
@@ -647,7 +662,7 @@ list.  A big part of it was collected by Ray Miller
 (\httpref{http://users.ox.ac.uk/~raym/}) of Oxford University, and published in
 the article "Configuration Management with Subversion, YAML and Perl Template
 Toolkit" in the SANE 2006 (\httpref{http://www.sane.nl/sane2006/}) conference
-proceedings.
+proceedings.  FIXME: Check urls, update
 
   \par
 
