@@ -31,10 +31,11 @@ typetargets = casparize.html casparize.ps casparize.txt csp_helper.html \
   csp_helper.ps csp_helper.txt caspar.html caspar.ps \
   caspar.txt caspar-typesetting.html caspar-typesetting.ps \
   caspar-typesetting.txt
+man1s = csp_install.1 csp_scp_keep_mode.1 csp_sucp.1
+manazms = casparize.1 csp_helper.1 caspar.7 caspar-typesetting.7
 
 doc_DATA = $(typetargets) $(azms) ChangeLog.2002
-man_MANS = casparize.1 csp_helper.1 csp_install.1 csp_scp_keep_mode.1 \
-  csp_sucp.1 caspar.7 caspar-typesetting.7
+man_MANS = $(man1s) $(manazms)
 
 EXTRA_DIST = $(doc_DATA) $(man_MANS)
 
@@ -66,6 +67,6 @@ SUFFIXES = .1 .7 .azm .html .ps .txt
 .html.txt:
 	$(W3M) -dump $< > $@
 
-MAINTAINERCLEANFILES = $(man_MANS) $(typetargets)
+MAINTAINERCLEANFILES = $(manazms) $(typetargets)
 
 DISTCLEANFILES = $(typetargets)
