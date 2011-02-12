@@ -13,7 +13,7 @@ Architecture: all
 Conflicts: caspar-doc (<< 20091115-1)
 Depends: make, ${misc:Depends}
 Suggests: jade, jadetex, texlive-latex-base, texlive-base-bin, w3m, ghostscript, psutils, lpr, man-db, docbook-dsssl, perl, caspar-doc
-Description: Makefile snippets for common tasks
+Description: Makefile snippets for centralized configuration management and typesetting
  Caspar offers Makefile snippets for tasks like installing files you maintain
  using a version control system, or typesetting documents in some markup
  language.
@@ -21,6 +21,10 @@ Description: Makefile snippets for common tasks
  If you need to maintain and distribute lots of files (system configuration
  files for Unix hosts using a version control system, e.g.), caspar is likely
  useful for you.
+ It is comparable with other tools for Unix system administrators like
+ puppet and cfengine.  Main difference: the caspar code consists of less than
+ 100 lines of GNU Make, so if puppet and cfengine are overkill for your needs,
+ you'll probable like caspar.
  .
  If you write documents in a markup language like LaTeX, DocBook
  XML, DocBook SGML or POD, and want to automate the typesetting, you'll

@@ -11,6 +11,8 @@ caspar (20101204-1) unstable; urgency=low
     "gv | postscript-viewer" (since provided by ghostscript), replace now
     obsolete gs-common with ghostscript.
 
+  * debian/control: enhance description, mention puppet and cfengine.
+
  -- Joost van Baal <joostvb@debian.org>  Sat, 12 Feb 2011 01:21:45 +0100
 
 caspar (20100624-1) unstable; urgency=low

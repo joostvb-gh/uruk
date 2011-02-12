@@ -58,7 +58,7 @@ This is documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
 The installing-stuff functionality is delivered by \"caspar.mk".
 (That's what the rest of the manual will talk about.)  It enables one to run
 'make install' from within a tree which typically holds configuration files,
-managed using CVS (or Subversion or any other version control system, for that
+managed using Subversion (or git or any other version control system, for that
 matter).
   \par
 It is useful in cases like this: all configuration files of some host are under
@@ -67,6 +67,10 @@ easily install the new configuration file on the host.
   \par
 With \caspar, all you have to do is specify the hostname in one place, and
 specify the name of the target directory in each CVS directory.
+  \par
+It is comparable with other tools for Unix system administrators like
+puppet and cfengine.  Main difference: the caspar code consists of less than
+100 lines of GNU Make.
   \par
 
 \sec{usage}{USAGE}
