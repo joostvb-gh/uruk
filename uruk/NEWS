@@ -2,6 +2,16 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 2011MMDD
+
+- init/uruk.in: Support for IPv6 packet filtering has been enabled by
+  default.  It is no longer required to edit /etc/default/uruk to enable
+  it: if you'd like to use IPv6 packet filtering, you now can remove any
+  setting of enable_ipv6 in /etc/default/uruk.  If you'd prefer NOT to
+  use IPv6 packet filtering, be sure your /etc/default/uruk has
+  "enable_ipv6=false".
+
+
 uruk version 20100831
 
 - Fix example rc file: found out /sbin/ip6tables (as shipped with e.g. iptables

@@ -45,7 +45,7 @@ set -e
 enable_uruk_check=true
 
 # enable ipv6 support
-enable_ipv6=false
+enable_ipv6=true
 
 # enable calling the unstable uruk-save script
 enable_uruk_save=false
