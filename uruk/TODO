@@ -1,4 +1,15 @@
 
+vr 28 14:11 < joostvb> ip6_noroute_ranges='::1/128 ffff:0:0::/96 fc00::/7 
+                       fec0::/10 0200::/7 2001:0db8::/32'
+vr 28 14:14 < Fruit> joostvb: overigens kun je in IPv6 veel beter over 
+                     *routable* spreken dan unroutable
+vr 28 14:14 < Fruit> 2000::/3 is gewoon de enige die routeerbaar is, de rest is 
+                     lokaal
+vr 28 14:26 < Fruit> 2001:0DB8::/32 has been assigned as a NON-ROUTABLE range 
+                     to be used for documentation purpose [RFC3849].
+vr 28 14:26 < Fruit> daar gaat de mooie 2000::/3 regel :(
+
+
 --------------- first first prio -----------------------------------
 
 - gebruik voor net_foo strings als
