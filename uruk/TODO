@@ -1,5 +1,7 @@
 
-vr 28 14:11 < joostvb> ip6_noroute_ranges='::1/128 ffff:0:0::/96 fc00::/7 
+- check debian NMU's
+
+-  28 14:11 < joostvb> ip6_noroute_ranges='::1/128 ffff:0:0::/96 fc00::/7 
                        fec0::/10 0200::/7 2001:0db8::/32'
 vr 28 14:14 < Fruit> joostvb: overigens kun je in IPv6 veel beter over 
                      *routable* spreken dan unroutable
@@ -38,7 +40,8 @@ za 29 19:29 < joostvb> fvos: maar ik denk niet dat ik dat de default ga maken,
 
 - add a full IPv6 example to uruk-rc manpage (we now only have the example
   rc-file).
-localhost is 0000:0000:0000:0000:0000:0000:0000:0001 aka
+
+- localhost is 0000:0000:0000:0000:0000:0000:0000:0001 aka
 Fri 18 10:36 < Fruit> ::1
 000:0000:0000:0000:0000:0000:0000:0000/0 is ::/0
 s/(^|:)(0+($|:))+/::/
@@ -60,29 +63,6 @@ RSN: write urukconfig : generate uruk rc file based upon currently
 offered network services.  all services will be available for _all_ IPs
 (or perhaps just local network?)
 Packages could run this to generate a first rc file.
-
------------------ local stuff / testing procedure -----------------
-
-- testhosts
-
-nagy
-stegun (ipv6)
-rolle (ipv6)
-bruhat (ipv6)
-dijkstra
-lebesgue
-kovalevskaya
-freitag
-
-- test with enable-uruk-save
-
-- test remove & purge
-
-- test an install on a fresh non-uruk system
-
-( - upload .deb to non-gnu: etch; fix homepage about non-gnu)
-
-- build and upload another .deb to unstable
 
 ----------------- candidates for upcoming release ------------------
 
@@ -217,7 +197,5 @@ Do DROP stuff just before log, would that work?  (No, we really can't do
 something like "--dest !(ip1 or ip2 or ip3)".)
 .
 yet to implement: loglevel "high".  Document multiple ip per nic logspamming bug.
-
-- Finish IPv6 support.  Change to enabled-by-default.  Document it.
 
 # this file maintained at http://git.mdcc.cx/uruk.git
