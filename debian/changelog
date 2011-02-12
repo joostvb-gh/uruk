@@ -9,8 +9,8 @@ caspar (20101204-1) unstable; urgency=low
     dh_auto_clean, replace "dh_clean -k" with dh_prep.
   * debian/control: update Suggests to current packagenames: remove
     "gv | postscript-viewer" (since provided by ghostscript), replace now
-    obsolete gs-common with ghostscript.
-
+    obsolete gs-common with ghostscript, replace texlive-base-bin by
+    texlive-binaries.
   * debian/control: enhance description, mention puppet and cfengine.
 
  -- Joost van Baal <joostvb@debian.org>  Sat, 12 Feb 2011 01:21:45 +0100
