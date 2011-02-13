@@ -1,5 +1,5 @@
-
-- check debian NMU's
+- add a full IPv6 example to uruk-rc manpage (we now only have the example
+  rc-file).
 
 -  28 14:11 < joostvb> ip6_noroute_ranges='::1/128 ffff:0:0::/96 fc00::/7 
                        fec0::/10 0200::/7 2001:0db8::/32'
@@ -20,12 +20,7 @@ privnet-10
 privnet-0
 privnet-172
 
-fix de FIXME's in uruk.in and doc/rc.
-
-
--
-
-za 29 15:16 < fvos> joostvb: misschien kan het al, maar op de eee wil ik dat 
+-  29 15:16 < fvos> joostvb: misschien kan het al, maar op de eee wil ik dat 
                     het ook kan werken als er per verbinding een ander ip-adres 
                     is
 za 29 15:18 < fvos> checking van de rc-file is er niet, zoals je zelf aangeeft, 
@@ -36,10 +31,6 @@ za 29 15:18 < fvos> checking van de rc-file is er niet, zoals je zelf aangeeft,
 za 29 19:29 < joostvb> fvos: valideren tegen een xsd: patches welkom :)
 za 29 19:29 < joostvb> fvos: maar ik denk niet dat ik dat de default ga maken, 
                        dat ie dat doet
-
-
-- add a full IPv6 example to uruk-rc manpage (we now only have the example
-  rc-file).
 
 - localhost is 0000:0000:0000:0000:0000:0000:0000:0001 aka
 Fri 18 10:36 < Fruit> ::1

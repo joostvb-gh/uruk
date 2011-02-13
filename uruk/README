@@ -70,6 +70,31 @@ For upgrades from any version: run /etc/init.d/uruk force-reload after
 installation.  Read the NEWS file.
 
 
+* upgrading from uruk <= 20100831
+
+Support for IPv6 packet filtering has been enabled by default in the uruk init
+script.
+
+If you'd like to start using IPv6 filtering now, and you interact with uruk
+using the init script, you don't have to change anything.  You might however
+like to do some janitoring on your file /etc/default/uruk: you now can remove
+any setting of enable_ipv6 in this file.  If you run /usr/sbin/uruk directly,
+you don't have to edit any special configuration file.  In both cases, if you
+want to block/allow specific IPv6 traffic, you'll have to adjust the uruk rc
+file of course.  See /usr/share/doc/uruk/examples/rc for hints on how to do
+that.
+
+If you don't want to use any IPv6 filtering, and you interact with uruk using
+the init script, be sure your /etc/default/uruk has "enable_ipv6=false".  If
+you run /usr/sbin/uruk directly, add URUK_IP6TABLES=':' to the top of your uruk
+rc file.
+
+If you have been using IPv6 filtering, and want to continue to do so, you don't
+have to change anything.  You might however like to do some janitoring on your
+file /etc/default/uruk: you now can remove any setting of enable_ipv6 in this
+file.
+
+
 * upgrading from uruk <= 20100717
 
 IPv6 support is now blessed mature.  It is enabled by default in the uruk
