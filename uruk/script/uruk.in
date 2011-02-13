@@ -27,12 +27,8 @@
 #
 
 iptables=${URUK_IPTABLES:-/sbin/iptables}
+
 ip6tables=${URUK_IP6TABLES:-/sbin/ip6tables}
-# Add
-#
-#  "enable_ipv6=true"
-#
-# to /etc/default/uruk if you'd like to enable IPv6 support in Uruk
 # Variables used: ip6_<...>, sources6_<...>, ip6tables.
 
 interfaces_unprotect=${URUK_INTERFACES_UNPROTECT:-lo}
