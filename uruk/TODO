@@ -14,6 +14,17 @@ vr 28 14:26 < Fruit> daar gaat de mooie 2000::/3 regel :(
 
 --------------- first first prio -----------------------------------
 
+- improve flush:
+Subject: Re: uruk Re: iptables leegflikkeren: lelijk maar robuust Wessel
+ Dankers <wsl@uvt.nl>
+In-Reply-To: <20110114092236.GA14988@dijkstra.uvt.nl>
+> Op Fri 14 Jan 2011 om 10:17:10 +0100 schreef Wessel Dankers:
+> > iptables-save |
+> >   sed -rn 's/^:([A-Z]+) [A-Z]+ \[[0-9]+:[0-9]+\]$/:\1 ACCEPT [0:0]/p; /^(\*|COMMIT$)/p' |
+> >   iptables-restore
+
+
+
 - gebruik voor net_foo strings als
 
 privnet-10
