@@ -1,5 +1,12 @@
 $Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
 
+0.0.0) add to documentation:
+
+vr 25 16:37 < casper> bah, maar het werkt wel, de reverse cowboy:   make diff | 
+                      patch -R -p0
+ [16:43] [joostvb(+i)] [3:#root(+ips)] irc.uvt.nl
+
+
 0.0) fix FIXME's in doc/caspar.azm
 
 0) remove CVS Id tags
