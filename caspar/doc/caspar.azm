@@ -264,7 +264,7 @@ load".
 
 \cpar{Using csp_DIR and csp_LOAD}
 
-FIXME: example without explicit ssh, more hosts
+FIXME: example without explicit ssh, more hosts with loopavoiding trick
 
 \cpar{Using csp_DIR and csp_LOAD, take 2}
 
@@ -276,7 +276,7 @@ FIXME: example without explicit ssh, more hosts
   include ../include/install.mk
 
   aliases-load:
-      ssh $(csp_UHOST) "cd /etc; postalias aliases; postfix reload"
+      $(csp_SSH) $(csp_UHOST) "cd /etc; postalias aliases; postfix reload"
 }
 
 while \it{../include/install.mk} is
@@ -285,18 +285,6 @@ while \it{../include/install.mk} is
   csp_UHOST = root@some.host.somewhere
   include caspar/mk/caspar.mk
 }
-
-If you don't like the explicit "ssh" in your Makefile, you might want to
-introduce a variable for that.  E.g. add \tt{my_EXEC = ssh}
-to \it{../include/install.mk}, and write
-
-\verbatim{
-  aliases-load:
-      $(my_EXEC) $(csp_UHOST) "cd /etc; postalias aliases; postfix reload"
-}
-
-in \it{etc/Makefile}.  This will make it easier to change to another push
-mechanism, once that would be needed.  FIXME add explicit example.
 
 
 \cpar{Using csp_BUILD: building files locally}
@@ -335,10 +323,8 @@ If you'd like to use csp_sucp and want a `load' target, do something like:
  include caspar/mk/caspar.mk
 
  rc-load:
-     ssh $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
+     $(csp_SSH) $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
 }
-
-FIXME: no explicit ssh
 
 
 \cpar{Adding a "check" target}
@@ -354,17 +340,15 @@ installed configuration file (and have a "make check" thing), do
   include caspar/mk/caspar.mk
 
   check:
-      ssh $(csp_UHOST) do-check-stuff
+      $(csp_SSH) $(csp_UHOST) do-check-stuff
 
   my-load:
-      ssh $(csp_UHOST) do-load-stuff
+      $(csp_SSH) $(csp_UHOST) do-load-stuff
 }
 
 This way, "make load" won't cause the file to load if the check fails (which is
 probably what you want).  Running "make" will perform "install", "check" and
 "load".
-
-FIXME: no explicit ssh
 
 
 \cpar{Combining the csp_LOAD target with multiple hosts; building files remotely}
@@ -388,7 +372,7 @@ doing some preprocessing on the remote hosts too.
 
 (You might want to use a variable like \tt{my_EXEC} for ssh, see above.)
 
-FIXME: no explicit ssh
+FIXME: no explicit ssh, use loopavoiding trick
 
 \cpar{Using the csp_TABOOFILES_{ADD,SKIP} variables; another way to perform remote builds}
 
@@ -406,11 +390,8 @@ as you'd like to have it installed on the remote location.  Now, create
   include caspar/mk/caspar.mk
 
   load:
-        ssh $(csp_UHOST) "make -C $(csp_DIR)"
+        $(csp_SSH) $(csp_UHOST) "make -C $(csp_DIR)"
 }
-
-(You might want to use a variable like \tt{my_EXEC} for ssh, see above.)
-FIXME: no explicit ssh
 
 Now, \tt{make install} and \tt{make load} will do the right thing.
 

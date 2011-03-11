@@ -9,6 +9,8 @@ vr 25 16:37 < casper> bah, maar het werkt wel, de reverse cowboy:   make diff |
 
 0.0) fix FIXME's in doc/caspar.azm
 
+0.-1) document "make diff" and "make <file>-diff", see NEWS.
+
 0) remove CVS Id tags
 
 n.m) first prio: document csp_UHOSTS_SKIP
