@@ -2,6 +2,14 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 201105DD
+
+- FIXME UNRELEASED
+- uruk/man/Makefile.am, uruk/man/uruk-rc.azm, uruk/man/uruk-save.azm,
+  uruk/man/uruk.azm: converted manpages to zoem >= 10-265-1 + aephea >=
+  10.008-1 format.
+
+
 uruk version 20110213
 
 - init/uruk.in: Support for IPv6 packet filtering has been enabled by
