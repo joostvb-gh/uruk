@@ -51,7 +51,7 @@ test -f COPYING || {
     ln -s /usr/share/common-licenses/GPL-3 COPYING
 }
 
-AUTOMAKE=automake-1.9 ACLOCAL=aclocal-1.9 autoreconf --install \
+AUTOMAKE=automake-1.11 ACLOCAL=aclocal-1.11 autoreconf --install \
       --symlink --make
 
 # aclocal \

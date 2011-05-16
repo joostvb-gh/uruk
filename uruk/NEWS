@@ -5,6 +5,7 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 201105DD
 
 - FIXME UNRELEASED
+- bootstap: now builds with automake 1.11 (no longer 1.9)
 - uruk/man/Makefile.am, uruk/man/uruk-rc.azm, uruk/man/uruk-save.azm,
   uruk/man/uruk.azm: converted manpages to zoem >= 10-265-1 + aephea >=
   10.008-1 format.
