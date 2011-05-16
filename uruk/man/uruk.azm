@@ -2,11 +2,11 @@
 \: this file maintained at http://git.mdcc.cx/uruk.git
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
-\import{man.zmm}
+\import{pud/man.zmm}
 
 \begin{pud::man}{
  {name}{uruk}
- {html-title}{uruk}
+ {html_title}{uruk}
  {section}{8}
  {defstyle}{long}
  {synstyle}{long}
@@ -20,8 +20,8 @@
 \NAME{uruk}{wrapper for Linux iptables, for managing firewall rules}
 
 \sec{synopsis}{SYNOPSIS}
-  \par
-  \uruk
+
+\uruk
 
 \sec{description}{DESCRIPTION}
 
@@ -50,14 +50,16 @@ For those of you who don't like reading lots of documentation:
 Once the \uruk script is installed, you want to go use it, of course.  We'll
 give a detailed description of what to do here.
 
-\par
+\par{
 
 First, create an \rc file.  See \sibref{uruk-rc}{uruk-rc(5)} for info on how to
 do this.  Once this file is created and installed (this script looks in
 \ttrcpath by default), you're ready to run \uruk.  You might want to test your
 \rc file by running \uruk in debug mode, see \sibref{uruk-rc}{uruk-rc(5)}.
 
-\cpar{Vanilla iptables}
+}
+
+\cpar{Vanilla iptables}{
 
 After editing \rc, load your rules like this.  First flush your current rules:
 
@@ -83,7 +85,9 @@ shipped with this package.   If you'd rather write your own init script, the
 \bf{iptables-restore(8)} and \bf{iptables-save(8)} commands from the iptables
 package might be helpful.
 
-\cpar{Using the Uruk init script}
+}
+
+\cpar{Using the Uruk init script}{
 
 Assumed is the Uruk init script is installed as explained in the README file.
 Optionally, install \tt{/etc/default/uruk} (or \tt{/etc/sysconfig/uruk}) and
@@ -97,14 +101,17 @@ Now your pre-uruk iptables rules (if any) are saved as the "inactive" ruleset.
 While executing \tt{\initpath start}, your box is open during a short while.
 If you don't like this, read below about \uruk_save.
 
-\par
+}
+
+\par{
 
 When rebooting, everything will be fine: \ttinitpath stores
 state in \tt{\statepath/iptables}, using
 iptables-save(8), which comes with Linux iptables.
 
+}
 
-\cpar{Using Debian ifupdown}
+\cpar{Using Debian ifupdown}{
 
 In case you have just one network interface which should get protected, you
 could use \bf{interfaces(5)} from the Debian ifupdown package instead of the
@@ -135,16 +142,20 @@ Add
 
 to your interfaces stanza, in your \tt{/etc/network/interfaces} .
 
-\par
+}
+
+\par{
 
 Similar tricks might be possible on GNU/Linux systems from other distributions.
 The author is interested.
+
+}
 
 \sec{loading a new rc file}{LOADING A NEW \rc FILE}
 
 Need to change your rules?
 
-\cpar{Using the Uruk init script}
+\cpar{Using the Uruk init script}{
 
 Do
 
@@ -154,6 +165,8 @@ Do
 
 While executing \ttinitpath force-reload, your box is open during a short
 while.  If you don't like this, read below about \uruk_save.
+
+}
 
 \sec{the gory details uruk internals}{THE GORY DETAILS: uruk INTERNALS}
 
@@ -232,7 +245,7 @@ your box won't be open while loading new rules.  But beware: \uruk_save is not
 as robust as using \uruk itself.  However, if you don't use any hooks in your
 \rc file, you're save.
 
-\par
+\par{
 
 The init script will use \uruk_save only if asked to do so in
 \tt{/etc/default/uruk} (or \tt{/etc/sysconfig/uruk}).  If this file features
@@ -248,21 +261,23 @@ called.
 
 See \sibref{uruk-save}{uruk-save(8)} for more details.
 
+}
+
 \sec{policy}{DEFAULT POLICY}
 
 By default, \uruk drops packets which have unknown RFC 1918 private network
 addresses in their source or destination.
 
-\par
+\par{
 
 It rejects packets with source nor destination for one of our IPs.
 
-\par
+} \par{
 
 Packets belonging to locally initiated sessions are allowed: we match state;
 the local host can act as a client for any remote service.
 
-\par
+} \par{
 
 By default, \uruk drops all ICMP packets (except those for interfaces in
 $interfaces_unprotect) with type other than
@@ -284,7 +299,7 @@ $interfaces_unprotect) with type other than
   \item ttl-zero-during-reassembly
 \end{itemize}
 
-\par
+} \par{
 
 By default, the FORWARD chain is left untouched, so has policy ACCEPT.  (This
 won't do much harm, since packet forwarding is disabled by default in the Linux
@@ -295,15 +310,17 @@ kernel.  However, if you don't mind being paranoid, you might want to add a
 
 to your $rc_a uruk hook.  See \sibref{uruk-rc}{uruk-rc(5)}.)
 
-\par
+} \par{
 
 By default, \uruk logs all UDP and TCP packets which are blocked by the user
 defined policies.  Loglevel is debug, logprefix is "iptables:".  See
 also the notes on \it{loglevel} in \sibref{uruk-rc}{uruk-rc(5)}.
 
-\par
+} \par{
 
 Blocked TCP packets are answered with a tcp-reset.
+
+}
 
 \sec{warning}{WARNING}
 
@@ -337,14 +354,17 @@ You can override some defaults in the shell before executing the uruk script.
 
 \sibref{uruk-rc}{uruk-rc(5)}, \sibref{uruk-save}{uruk-save(8)}. The Uruk homepage is at
 \httpref{http://mdcc.cx/uruk/} .
- \par
+
+\par{
 \bf{iptables(8)}, \bf{iptables-save(8)},
 \bf{iptables-restore(8)},
 \bf{ip6tables(8)}, \bf{ip6tables-save(8)},
 \bf{ip6tables-restore(8)}, \httpref{http://www.netfilter.org/}
 \: (no manpage online :( )
- \par
+
+} \par{
 \bf{interfaces(5)}, \httpref{http://packages.debian.org/ifupdown}.
+}
 
 \sec{copyright}{COPYRIGHT}
 
@@ -352,28 +372,30 @@ Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
 Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
 Copyright (C) 2003, 2004, 2005, 2010 Joost van Baal
 
-\par
+\par{
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-\par
+} \par{
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
-\par
+} \par{
 
 You should have received a copy of the GNU General Public License along 
 with this program.  If not, see \httpref{http://www.gnu.org/licenses/}.
+
+}
 
 \sec{author}{AUTHOR}
 
 \"man::author"
 
-\"man::postamble"
+\end{pud::man}
 

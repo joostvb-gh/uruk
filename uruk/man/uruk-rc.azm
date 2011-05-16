@@ -3,33 +3,31 @@
 
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
-\def{"man::synstyle"}{long}
-\def{"man::defstyle"}{long}
-\import{man.zmm}
+\import{pud/man.zmm}
 
 \import{./include.zmm}
 
-\set{"man::name"}{uruk-rc}
-\set{"man::html-title"}{Uruk rc file}
-\set{"man::section"}{5}
+\begin{pud::man}{
+  {name}{uruk-rc}
+  {html_title}{Uruk rc file}
+  {section}{5}
+  {synstyle}{long}
+  {defstyle}{long}
+}
 
-\"man::preamble"
-\${html}{\"man::maketoc"}
+\: \${html}{\"man::maketoc"}
 
 \sec{name}{NAME}
 \NAME{uruk-rc}{uruk resource file, defining access policy}
 
 \sec{synopsis}{SYNOPSIS}
-  \par
-  \tt{\rcpath}
+  \par{\tt{\rcpath}}
 
 \sec{description}{DESCRIPTION}
 
 \rc is a shell script snippet, sourced in \uruk by /bin/sh.
 
-\par
-
-\rc lists IP addresses, allowed to use services.
+\par{\rc lists IP addresses, allowed to use services.}
 
 \sec{examples}{EXAMPLES}
 
@@ -64,7 +62,7 @@ For a more reasonable \rc file, look at the well-commented example \rc file in
 Uruk offers hooks for inserting your own code between iptables invocations.
 Examples will show the usefulness of these hooks.
 
-\cpar{allowing broadcasts}
+\cpar{allowing broadcasts}{
 
 In \rc, there is:
 
@@ -82,7 +80,9 @@ while the file \tt{bootp} reads
 This enables one to add rules for packets with broadcast addresses in their
 destination.  (Uruk has no support for this in its regular \rc.)
 
-\cpar{allowing non-matching returntraffic}
+}
+
+\cpar{allowing non-matching returntraffic}{
 
 In \rc there is:
 
@@ -103,7 +103,9 @@ while the file \tt{dns} reads
 This allows one to allow (return)traffic, disregarding the state.  (Uruk has no
 support for this in its regular \rc.)
 
-\cpar{allowing NAT}
+}
+
+\cpar{allowing NAT}{
 
 In \rc there is:
 
@@ -122,7 +124,9 @@ use of hooks, this will break the \uruk_save script.  If you make sure your
 active iptables rules are wiped, and invoke \uruk manually to load new rules,
 you're safe.  Using the init-script with it's default settings is safe too.
 
-\cpar{allowing any traffic on an interface}
+}
+
+\cpar{allowing any traffic on an interface}{
 
 In \rc there is:
 
@@ -132,18 +136,24 @@ In \rc there is:
 This allows any traffic on \tt{eth2} (and on \tt{lo}, the default), including
 any ICMP packets and packets from any source address.
 
-\cpar{using multiple hooks at one entry point in the main uruk process}
+}
+
+\cpar{using multiple hooks at one entry point in the main uruk process}{
 
 In case rc_a, rc_b, ... , or rc_i does not have a file as its value, but a
 directory, all files matching "$rc_x"/*.rc will get sourced.  This helps
 configuration management in complex situations involving lots of uruk
 configuration files for lots of hosts.
 
-\par
+}
+
+\par{
 
 See the section "THE GORY DETAILS: uruk INTERNALS" in \sibref{uruk}{uruk(8)}
 (or the \uruk source) to find out which hook (there are hooks rc_a, rc_b, ... ,
 rc_i) to use.
+
+}
 
 \sec{Network interfaces with multiple IP addresses}{NETWORK INTERFACES WITH MULTIPLE IP ADDRESSES}
 
@@ -151,7 +161,7 @@ Uruk supports situations where a network interface has more than one IP address
 attached.  Variables \v{ips_}\it{nic} and \v{bcasts_}\it{nic} are used for
 this.
 
-\par
+\par{
 
 If \v{ips_}\it{nic} is set, e.g. like
 
@@ -161,7 +171,9 @@ If \v{ips_}\it{nic} is set, e.g. like
 we assume multiple (three in this example) IPs are assigned to \v{eth0}.  If
 this variable is not set only one IP is supported on \v{eth0}.
 
-\par
+}
+
+\par{
 
 In multiple-IP mode, IP addresses are listed as e.g.
 
@@ -194,13 +206,14 @@ Furthermore, for dropping broadcast packets, specify e.g.
 The \it{interfaces_nocast} variable holds things like \v{eth0} and \v{eth1},
 like in single-IP-per-nic mode.
 
+}
 
 \sec{logging and debugging}{LOGGING AND DEBUGGING}
 
 Uruk has support for logging network packets, and for debugging the uruk
 script.
 
-\cpar{Logging}
+\cpar{Logging}{
 
 By default, uruk logs denied packets.  This is adjustable using the
 \it{loglevel} variable.  The settings are:
@@ -243,8 +256,9 @@ By default, uruk logs denied packets.  This is adjustable using the
 \:         60 < 80 (         70) high:    log denied packets
 \:         80 < 99 (         90) fascist: log all packets
 
+}
 
-\cpar{Debugging}
+\cpar{Debugging}{
 
 To debug the \uruk script, invoke uruk as
 
@@ -254,7 +268,9 @@ To debug the \uruk script, invoke uruk as
 this shows what is done, along with executing it.  (Like an uruk '-v' option.)
 (Alternatively, add "set -x" to your \rc file.)
 
-\par
+}
+
+\par{
 
 If you'd rather prefer not to execute, but just watch what would've been done,
 invoke uruk as
@@ -265,7 +281,9 @@ invoke uruk as
 (Like an uruk '-n' option.)  If you have this statement set, you can run \uruk
 under a non-priviliged user account.
 
-\par
+}
+
+\par{
 
 If you'd like to test a new \rc file before installing it, run something like:
 
@@ -273,9 +291,13 @@ If you'd like to test a new \rc file before installing it, run something like:
 
   URUK_CONFIG=/path/to/new/uruk/rc/file uruk}
 
-\par
+}
+
+\par{
 
 Of course, all these tweaks can be combined.
+
+}
 
 \sec{variables}{VARIABLES}
 
@@ -302,8 +324,6 @@ The uruk script honors the following variables in \rc files:
 More variables are available.  For now, you'll have to take a look at the
 example \rc file in \ttexpath for more details.
 
-\par
-
 \sec{environment variables}{ENVIRONMENT VARIABLES}
 
 See \sibref{uruk}{uruk(8)} for a list of honored environment variables.
@@ -315,10 +335,7 @@ See \sibref{uruk}{uruk(8)} for a list of honored environment variables.
 \sec{see also}{SEE ALSO}
 
 A well-commented example \rc file is in \ttexpath.
-
-\par
-
-\sibref{uruk}{uruk(8)}, \sibref{uruk-save}{uruk-save(8)}
+And see \sibref{uruk}{uruk(8)}, \sibref{uruk-save}{uruk-save(8)}.
 
 \sec{copyright}{COPYRIGHT}
 
@@ -326,28 +343,30 @@ Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
 Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
 Copyright (C) 2003, 2004, 2005, 2010 Joost van Baal
 
-\par
+\par{
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-\par
+} \par{
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
-\par
+} \par{
 
 You should have received a copy of the GNU General Public License along
 with this program.  If not, see \httpref{http://www.gnu.org/licenses/}.
+
+}
 
 \sec{author}{AUTHOR}
 
 \"man::author"
 
-\"man::postamble"
+\end{pud::man}
 

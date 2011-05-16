@@ -3,15 +3,17 @@
 
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
-\def{"man::synstyle"}{short}
-\def{"man::defstyle"}{short}
-\import{man.zmm}
+\import{pud/man.zmm}
 
 \import{./include.zmm}
 
-\set{"man::name"}{uruk-save}
-\set{"man::html-title"}{uruk-save}
-\set{"man::section"}{8}
+\begin{pud::man}{
+  {name}{uruk-save}
+  {html_title}{uruk-save}
+  {section}{8}
+  {synstyle}{short}
+  {defstyle}{short}
+}
 
 \"man::preamble"
 \${html}{\"man::maketoc"}
@@ -103,5 +105,5 @@ with this program.  If not, see \httpref{http://www.gnu.org/licenses/}.
 
 \"man::author"
 
-\"man::postamble"
+\end{pud::man}
 
