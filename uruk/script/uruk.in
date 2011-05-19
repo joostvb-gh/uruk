@@ -242,21 +242,35 @@ do
                 do
                     # service is a servicegroupname, e.g. "local"
                     eval sources="\"\$sources_${iface_x}_${proto}_${service}\""
+                    case ${sources-UNDEF} in UNDEF)
+                        echo >&2 "WARNING: sources_${iface_x}_${proto}_${service} is undefined.
+ (Processing uruk rc file nevertheless.)"
+                    esac          
+
                     eval sources6="\"\$sources6_${iface_x}_${proto}_${service}\""
+                    case ${sources-UNDEF} in UNDEF)
+                        echo >&2 "INFO: sources6_${iface_x}_${proto}_${service} is undefined.
+ (Processing uruk rc file nevertheless.)"
+
                     eval ports="\"\$ports_${iface_x}_${proto}_${service}\""
                     if test -n "$ports"
                     then
                         for port in $ports
                         do
                             # port is e.g. www or 1023
-                            for source in $sources
-                            do
-                                # source is e.g. 10.56.0.10/32
-                                $iptables -A INPUT -m state --state NEW \
-                                  -i $iface --protocol $proto \
-                                  --source "$source" --destination "$ip" \
-                                  --destination-port "$port" -j ACCEPT
-                            done
+                            if test -n "$sources"
+                            then
+                                for source in $sources
+                                do
+                                    # source is e.g. 10.56.0.10/32
+                                    $iptables -A INPUT -m state --state NEW \
+                                      -i $iface --protocol $proto \
+                                      --source "$source" --destination "$ip" \
+                                      --destination-port "$port" -j ACCEPT
+                                done
+                            else
+                                echo >&2 "WARNING: ports_${iface_x}_${proto}_${service} is undefined.
+ (Processing uruk rc file nevertheless.)"
                             for source6 in $sources6
                             do
                                 $ip6tables -A INPUT -m state --state NEW \
@@ -265,6 +279,8 @@ do
                                   --destination-port "$port" -j ACCEPT
                             done
                         done
+                    else
+                        echo >&2 "WARNING: ports_${iface_x}_${proto}_${service} is undefined.  (Processing uruk rc file nevertheless.)"
                     fi
                 done
             fi

@@ -9,6 +9,12 @@ uruk version 201105DD
 - uruk/man/Makefile.am, uruk/man/uruk-rc.azm, uruk/man/uruk-save.azm,
   uruk/man/uruk.azm: converted manpages to zoem >= 10-265-1 + aephea >=
   10.008-1 format.
+- FIXME Be less anal on borken rc file:
+za 29 09:12 < Fruit> warnings als een variabele ongedefinieerd is
+za 29 09:13 < Fruit> services_tcp_eth0="foo"
+za 29 09:13 < Fruit> warning: ports_foo_eth0 is undefined
+za 29 09:16 < Fruit> case ${ports_foo_eth0-UNDEF} in UNDEF) warn; esac
+
 
 
 uruk version 20110213
