@@ -251,6 +251,7 @@ do
                     case ${sources-UNDEF} in UNDEF)
                         echo >&2 "INFO: sources6_${iface_x}_${proto}_${service} is undefined.
  (Processing uruk rc file nevertheless.)"
+                    esac
 
                     eval ports="\"\$ports_${iface_x}_${proto}_${service}\""
                     if test -n "$ports"
@@ -268,9 +269,7 @@ do
                                       --source "$source" --destination "$ip" \
                                       --destination-port "$port" -j ACCEPT
                                 done
-                            else
-                                echo >&2 "WARNING: ports_${iface_x}_${proto}_${service} is undefined.
- (Processing uruk rc file nevertheless.)"
+                            fi
                             for source6 in $sources6
                             do
                                 $ip6tables -A INPUT -m state --state NEW \
