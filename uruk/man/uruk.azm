@@ -3,16 +3,14 @@
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \import{pud/man.zmm}
+\import{./include.zmm}
 
 \begin{pud::man}{
  {name}{uruk}
  {html_title}{uruk}
  {section}{8}
- {defstyle}{long}
- {synstyle}{long}
+ \man_share
 }
-
-\import{./include.zmm}
 
 \${html}{\"pud::man::maketoc"}
 
@@ -370,7 +368,7 @@ You can override some defaults in the shell before executing the uruk script.
 
 Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
 Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
-Copyright (C) 2003, 2004, 2005, 2010 Joost van Baal
+Copyright (C) 2003, 2004, 2005, 2010 \"man::author"
 
 \par{
 

@@ -3,8 +3,10 @@
 \: This file is free software; you can distribute it and/or modify it
 \: under the terms of the GNU GPL.  See the file COPYING.
 \:
-\: based upon mac/zoem.zmm in the zoem sources.
-\: Copyright (C) 2003, 2004, 2005 Joost van Baal, Copyright (C) 2002, 2003 Stijn van Dongen
+\: based upon mac/zoem.zmm in the zoem sources and man/include.zmm.in in the
+\: draai sources.
+\: Copyright (C) 2003, 2004, 2005 Joost van Baal,
+\: Copyright (C) 2002, 2003, 2011 Stijn van Dongen
 
 \setx{"man::year"}{\zinsert{@top_srcdir@/stamp.year}}
 \setx{"man::month"}{\zinsert{@top_srcdir@/stamp.month}}
@@ -17,6 +19,16 @@
 \setx{"man::tag"}{\tr{{delete}{[:space:]}}{\"man::tag"}}
 
 \set{"man::author"}{Joost van Baal <joostvb-uruk@mdcc.cx>}
+
+\setx{man_share}{
+ {year}  {\"man::year"}
+ {month} {\"man::month"}
+ {day}   {\"man::day"}
+ {tag}   {\"man::tag"}
+ {author} {\"man::author"}
+ {synstyle}{long}
+ {defstyle}{long}
+}
 
 \def{uruk}{\bf{uruk}}
 \def{uruk_save}{\bf{uruk-save}}

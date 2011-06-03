@@ -4,18 +4,16 @@
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \import{pud/man.zmm}
-
 \import{./include.zmm}
 
 \begin{pud::man}{
   {name}{uruk-rc}
   {html_title}{Uruk rc file}
   {section}{5}
-  {synstyle}{long}
-  {defstyle}{long}
+  \man_share
 }
 
-\: \${html}{\"man::maketoc"}
+\${html}{\"pud::man::maketoc"}
 
 \sec{name}{NAME}
 \NAME{uruk-rc}{uruk resource file, defining access policy}
@@ -341,7 +339,7 @@ And see \sibref{uruk}{uruk(8)}, \sibref{uruk-save}{uruk-save(8)}.
 
 Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
 Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
-Copyright (C) 2003, 2004, 2005, 2010 Joost van Baal
+Copyright (C) 2003, 2004, 2005, 2010 \"man::author"
 
 \par{
 

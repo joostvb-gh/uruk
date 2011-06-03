@@ -2,6 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 201106DD
+
+- Fix some more zoem >= 10-265-1 (cosmetic) issues.
+
+
 uruk version 20110602
 
 - bootstap: now builds with automake 1.11 (no longer 1.9)
