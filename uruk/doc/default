@@ -10,21 +10,21 @@
 # enable_uruk_check - wether to check for existence and sanity of uruk rc
 # file; set to false if you don't like this, e.g. when using the uruk initscript
 # for managing saved rulesets only (i.e. not for calling uruk or uruk-save)
-## enable_uruk_check=true
+## enable_uruk_check=false
 #
-# enable_ipv6 - wether to enable IPv6 support.
-## enable_ipv6=true
+# enable_ipv6 - set to false to disable IPv6 support.
+## enable_ipv6=false
 #
 # enable calling the unstable uruk-save script
-## enable_uruk_save=false
+## enable_uruk_save=true
 #
-# display a warning before each uruk-save call
-## enable_uruk_save_warning=true
+# uncomment to disable displaying a warning before each uruk-save call
+## enable_uruk_save_warning=false
 #
-# set enable_autosave to "true" to autosave the active ruleset
+# set enable_autosave to "false" to disable autosaving the active ruleset
 # when going from start to stop
-## enable_autosave=true
+## enable_autosave=false
 #
-# set enable_save_counters to "true" to save table counters with
+# set enable_save_counters to "false" to disable saving table counters with
 # rulesets
-## enable_save_counters=true
+## enable_save_counters=false
