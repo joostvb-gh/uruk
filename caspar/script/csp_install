@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# $Id: csp_install,v 1.2 2009-09-29 09:13:07 joostvb Exp $
-# $Source: /cvsroot/caspar/caspar/caspar/script/csp_install,v $
+# This file is maintained at http://git.mdcc.cx/caspar
 
 # csp_install - wrapper for install(1), to be used in caspar-ized Makefiles
 #

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.11 2005-03-01 20:56:08 joostvb Exp $
+## This file is maintained at http://git.mdcc.cx/caspar
 
 PACKAGE = @PACKAGE_TARNAME@
 

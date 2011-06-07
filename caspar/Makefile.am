@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-## $Id: Makefile.am,v 1.16 2007-07-29 09:41:21 joostvb Exp $
+## This file is maintained at http://git.mdcc.cx/caspar
 
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.

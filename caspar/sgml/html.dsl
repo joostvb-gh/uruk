@@ -2,7 +2,7 @@
 <!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN" CDATA DSSSL>
 ]>
 
-<!-- $Id: html.dsl,v 1.2 2003-04-27 10:20:29 joostvb Exp $ -->
+<!-- This file is maintained at http://git.mdcc.cx/caspar -->
 
 <style-sheet>
 <style-specification use="docbook">

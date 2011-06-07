@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# $Id: casparize,v 1.1 2009-11-14 07:01:54 joostvb Exp $
-# $Source: /cvsroot/caspar/caspar/caspar/script/casparize,v $
+# This file is maintained at http://git.mdcc.cx/caspar
 
 # casparize - create Makefile-populated directories
 # Copyright (C) 2009  Jeroen Hoppenbrouwers <hoppie@hoppie.nl>

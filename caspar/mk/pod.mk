@@ -1,3 +1,5 @@
+# This file is maintained at http://git.mdcc.cx/caspar
+#
 # pod.mk - typeset documentation from .pod files .  See perlpod(1) for
 # information on Perl's pod, Plain Old Documention .
 #
@@ -12,8 +14,6 @@
 # published by the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.  You should have received a copy of
 # the GNU General Public License along with this file (see COPYING).
-
-# $Id: pod.mk,v 1.5 2009-04-05 11:14:33 joostvb Exp $
 
 PODS := $(shell for f in *.pod; do test -f $$f && echo -n $$f " "; done)
 BASES       := $(basename $(PODS))

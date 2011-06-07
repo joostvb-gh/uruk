@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# $Id: csp_scp_keep_mode,v 1.2 2009-09-26 02:06:25 joostvb Exp $
-# $Source: /cvsroot/caspar/caspar/caspar/script/csp_scp_keep_mode,v $
+# This file is maintained at http://git.mdcc.cx/caspar
 
 # csp_scp_keep_mode - use ssh to copy a file, keeping its file permission mode
 
