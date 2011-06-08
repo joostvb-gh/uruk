@@ -2,9 +2,13 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201106DD
+uruk version 20110608
 
+- The IPv6 Day release!  (Today is ISOC's World IPv6 Day, see
+  http://www.worldipv6day.org/)
 - Fix some more zoem >= 10-265-1 (cosmetic) issues.
+- doc/default: examples now more useful: just uncomment the line to
+  change behaviour. tnx Thijs Kinkhorst for sharing ideas.
 
 
 uruk version 20110602
