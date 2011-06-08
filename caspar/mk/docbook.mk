@@ -1,4 +1,4 @@
-# $Id: docbook.mk,v 1.13 2009-04-05 11:14:33 joostvb Exp $
+# This file is maintained at http://git.mdcc.cx/caspar
 
 # Copyright (C) 2002, 2003, 2004 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #  

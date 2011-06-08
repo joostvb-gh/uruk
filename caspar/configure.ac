@@ -1,5 +1,5 @@
 dnl
-dnl $Id: configure.ac,v 1.6 2009-04-05 11:14:33 joostvb Exp $
+dnl This file is maintained at http://git.mdcc.cx/caspar
 dnl
 dnl After editing this file, run automake to regenerate Makefile.in's.
 dnl Process this file with autoconf to produce a configure script.

@@ -1,4 +1,4 @@
-$Id: TODO,v 1.121 2009-11-14 07:21:09 joostvb Exp $
+# This file is maintained at http://git.mdcc.cx/caspar
 
 0.0.0) add to documentation:
 
@@ -11,14 +11,11 @@ vr 25 16:37 < casper> bah, maar het werkt wel, de reverse cowboy:   make diff |
 
 0.-1) document "make diff" and "make <file>-diff", see NEWS.
 
-0) remove CVS Id tags
-
 n.m) first prio: document csp_UHOSTS_SKIP
 
 1.1) finish convert to git: announce on webpage, create public repo
   ( http://git.fruit.je/caspar , http://git.mdcc.cx/ ,
   ssh://git/~joostvb/git/caspar.git )
-  get rid of $ Id $ (find alternative!) and what have you
   update README on git status (see FIXME's).  set up commit list.
 
 1.2) wait for and apply Fruit patches

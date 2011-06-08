@@ -1,5 +1,5 @@
 \: vim:syntax=tex
-\: $Id: caspar.azm,v 1.55 2009-11-14 07:21:19 joostvb Exp $
+\: This file is maintained at http://git.mdcc.cx/caspar
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
 \def{"man::synstyle"}{long}

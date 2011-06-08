@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# $Id: bootstrap,v 1.12 2009-09-26 02:20:55 joostvb Exp $
+# This file is maintained at http://git.mdcc.cx/caspar
 
 # bootstrap - script to bootstrap the distribution rolling engine
 

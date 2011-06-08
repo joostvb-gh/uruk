@@ -1,4 +1,4 @@
-# $Id: caspar.mk,v 1.46 2009-09-29 09:13:07 joostvb Exp $
+# This file is maintained at http://git.mdcc.cx/caspar
 
 # Copyright (C) 2002, 2003, 2004, 2005, 2006, 2009, 2010 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
