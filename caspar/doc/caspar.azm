@@ -262,9 +262,24 @@ Setting \tt{csp_LOAD} causes "make load" to execute the crontab command.  Just
 running "make" is OK too, since "make" calls both "make install" and "make
 load".
 
-\cpar{Using csp_DIR and csp_LOAD}
+\cpar{Using csp_DIR, csp_LOAD and install(1)}
 
-FIXME: example without explicit ssh, more hosts with loopavoiding trick
+To install a file on the local host, create e.g. a file \it{etc/uruk/Makefile}
+like:
+
+\verbatim{
+  csp_UHOST = dummy
+  csp_DIR = /etc/uruk/
+  csp_PUSH = $(csp_install_FUNC)
+  csp_LOAD = uruk-load
+
+  include caspar/mk/caspar.mk
+
+  uruk-load:
+    sudo invoke-rc.d uruk force-reload
+}
+
+FIXME: example with more hosts with loopavoiding trick
 
 \cpar{Using csp_DIR and csp_LOAD, take 2}
 
