@@ -45,9 +45,9 @@
 
 The scripts \csp_install, \csp_scp_keep_mode and \csp_sucp are helpers for
 \sibref{caspar}{caspar(7)}.  These scripts typically are not invoked directly,
-but via a Makefile which uses \caspar.  See \sibref{caspar}{caspar(7)} for
-information on how to link \csp_install, \csp_scp_keep_mode and \csp_sucp to
-\caspar (FIXME).
+but via a Makefile which uses \caspar.  See the notes on csp_PUSH in
+\sibref{caspar}{caspar(7)} for information on how to link \csp_install,
+\csp_scp_keep_mode and \csp_sucp to \caspar.
 
 \sec{install description}{install DESCRIPTION}
 
@@ -73,11 +73,14 @@ u=rw,go=r).
 
 \csp_scp_keep_mode uses ssh to copy a file to a remote host, keeping its file
 permission mode.  The trick used is a combination of mktemp(1) and mv(1).
-(FIXME: add rationale).
+Useful if you'd like to be sure a file gets installed e.g. group writable,
+without fiddling with permission bits on the remote host.
 
-\sec{scp_keep_mode examples}{scp_keep_mode EXAMPLES}
+\sec{scp_keep_mode examples}{scp_keep_mode EXAMPLE}
 
-FIXME
+\verbatim{
+  chmod g+w rc
+  csp_scp_keep_mode rc root@gandalf /etc/uruk}
 
 \sec{scp_keep_mode environment}{scp_keep_mode ENVIRONMENT}
 

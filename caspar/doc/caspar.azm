@@ -207,7 +207,7 @@ This is the simplest way to use caspar.  \it{Makefile} is
 Now, running "make" will scp all files in the current directory to
 \tt{root@some.host.somewhere:/etc/}.
 
-\cpar{More hosts, not scp but sudo via ssh}
+\cpar{More hosts, not scp but sudo via ssh: using csp_PUSH}
 
 \it{Makefile} is
 
