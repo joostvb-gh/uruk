@@ -2,9 +2,8 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201108DD
+uruk version 20110831
 
-- UNRELEASED
 - uruk/man/Makefile.am: assume zoem knows where to find aephea;
   get rid of hardcoded ZOEMSEARCHPATH=/usr/share/aephea.  You
   need zoem >= 11-166 to build this uruk.
