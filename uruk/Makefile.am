@@ -30,14 +30,14 @@ docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog ChangeLog.2003 README THANKS TODO
 
 ## local targets
-MY_RDIR = opal:www/mdcc.cx/pub/uruk/
+MY_RDIR = beskar:www/mdcc.cx/pub/uruk/
 
 sign:
 	for i in $(DIST_ARCHIVES); do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
 
 publish:
 	for i in $(DIST_ARCHIVES); do echo "scp $$i $$i.asc $(MY_RDIR)"; scp $$i $$i.asc $(MY_RDIR); done
-	@echo now run: ssh opal update-tar-symlinks uruk
+	@echo now run: ssh beskar update-tar-symlinks uruk
 
 EXTRA_DIST = bootstrap ChangeLog.2003 setversion stamp.month stamp.year \
   stamp.day VERSION.m4 VERSION
