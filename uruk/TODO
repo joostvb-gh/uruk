@@ -2,9 +2,6 @@
 - test on dijkstra, rolle, bruhat, freitag
    root@janacopoulos:/tmp# wget http://mdcc.cx/tmp/uruk/uruk_20110602-1_all.deb && dpkg -i uruk_20110602-1_all.deb
 
-
-- get rid of hardcoded ZOEMSEARCHPATH in man/Makefile.am once zoem is fixed.
-
 -------------
 
 - add a full IPv6 example to uruk-rc manpage (we now only have the example

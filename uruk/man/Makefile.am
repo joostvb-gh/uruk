@@ -16,7 +16,7 @@ COL = col
 ## Zoem is a an interpretive macro language, for creating mark-up languages, by
 ## Stijn van Dongen. Information about zoem can be found on the zoem webpage at
 ## http://micans.org/zoem/ .
-ZOEM = ZOEMSEARCHPATH=/usr/share/aephea zoem
+ZOEM = zoem
 
 ## tidy is a HTML syntax checker and reformatter, available from
 ## http://www.w3.org/People/Raggett/tidy/ , by Dave Raggett <dsr@w3.org>
