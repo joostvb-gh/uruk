@@ -233,6 +233,21 @@ If you need to sudo(1) to another user on the remote host, add something like
 .  (If such a username is not supplied, sudo (and csp_sucp) use the default:
 root.)
 
+\cpar{Creating remote directories if needed}
+
+\it{Makefile} is
+
+\verbatim{
+  csp_DIR = /some/dir/ectory/
+  csp_scpmkdir_FUNC = $(csp_SSH) $(2) mkdir -p $(3) && $(csp_scp_FUNC)
+  csp_PUSH = $(csp_scpmkdir_FUNC)
+  csp_UHOST = root@some.host.somewhere
+  include caspar/mk/caspar.mk
+}
+
+Now, before calling scp, caspar will run 'mkdir -p' to create any missing
+remote directories.
+
 \cpar{Using csp_CP and csp_LOAD}
 
 \it{username/etc/Makefile} is
