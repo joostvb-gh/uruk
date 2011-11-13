@@ -1,21 +1,22 @@
 # This file is maintained at http://git.mdcc.cx/caspar
 
-0.0.0.0)
+--- release critical ----
+
+0.-4)
 
 csp_scpmkdir_FUNC : ship it, don't just document it.
 
-0.0.0) add to documentation:
+0.-3) add to documentation:
 
 vr 25 16:37 < casper> bah, maar het werkt wel, de reverse cowboy:   make diff | 
                       patch -R -p0
  [16:43] [joostvb(+i)] [3:#root(+ips)] irc.uvt.nl
 
-
-0.0) fix FIXME's in doc/caspar.azm
+0.-2) fix FIXME's in doc/caspar.azm
 
 0.-1) document "make diff" and "make <file>-diff", see NEWS.
 
-n.m) first prio: document csp_UHOSTS_SKIP
+0.0) first prio: document csp_UHOSTS_SKIP
 
 1.1) finish convert to git: announce on webpage, create public repo
   ( http://git.fruit.je/caspar , http://git.mdcc.cx/ ,
@@ -50,13 +51,6 @@ combining is usefull too:
 
 use case: /etc/nsd/zones/ , first push to auth servers, then ssh to al caches
 for a forced flush of cache.
-
-
---- release critical ----
-
-2.1) deal with caspar.azm FIXME's.
-
-2.2) test csp_install and csp_scp_keep_mode
 
 --- ook best wel belangrijk ---
 
