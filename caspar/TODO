@@ -2,6 +2,66 @@
 
 --- release critical ----
 
+zo 13 17:34 < Fruit> die tooltjes die meegeleverd worden
+zo 13 17:35 < Fruit> die hebben typisch een destination directory en een stel 
+                     bestanden als argumenten
+zo 13 17:35 < Fruit> het zou handig zijn voor de shellscripter als die 
+                     destination directory het eerste argument was
+zo 13 17:36 < Fruit> dan kun je dat ding shift-en
+zo 13 17:36 < Fruit> en de rest als "$@" behandelen
+zo 13 17:38 < Fruit> dit zou de weg vrij kunnen maken naar efficiëntere 
+                     implementaties van push
+zo 13 17:38 < Fruit> (een veelgehoorde wens van mensen)
+zo 13 17:38 < joostvb> das natuurlijk totaal backwards incompatible met alles
+zo 13 17:38 < Fruit> valt wel mee
+zo 13 17:38 < joostvb> maar iig wel n goed idee
+zo 13 17:38 < Fruit> cp -t destdir file1 file2
+zo 13 17:38 < joostvb> -t , die doet t m
+zo 13 17:38 < Fruit> ik weet niet of scp dat kent
+zo 13 17:39 < joostvb> nou ja, als 1ste arg van csp_PUSH -t is, dan
+zo 13 17:39 < Fruit> magoe dat maakt ook niet zoveel uit
+zo 13 17:39 < joostvb> implementeren volgens nieuw interface
+zo 13 17:39 < Fruit> want bij csp_PUSH kun je toch de volgorde van de 
+                     argumenten zelf bepalen
+zo 13 17:39 < Fruit> hm hacken op -t lijkt me een heel lelijk en slecht idee
+zo 13 17:40 < Fruit> je hoeft echt alleen maar die tooltjes aan te passen, en 
+                     de plaatsen in caspar zelf waar precies en alleen díe 
+                     tooltjes aangeroepen worden
+zo 13 17:40 < Fruit> er hoeft geen caspar api-wijziging 
+zo 13 17:40 < joostvb> en als mensen hun eigen tooltjes geschreven hebben?
+zo 13 17:40 < joostvb> hun eigen csp_PUSH gebouwd?
+zo 13 17:41 < Fruit> dan hebben ze de aanroep daarvan zelf onder controle
+zo 13 17:41 < Fruit> misschien nieuwe set tooltjes introduceren met andere namen
+zo 13 17:41 < Fruit> op dit moment accepteert elk van die tooltjes 1 file en 1 
+                     dir
+zo 13 17:41 < Fruit> da's jammer.
+zo 13 17:42 < Fruit> omdat shellscripts een beetje beperkt zijn, is n files 
+                     gevolgd door 1 dir moeilijk te implementeren
+zo 13 17:42 < joostvb> csp_install dir file [file]
+zo 13 17:42 < Fruit> dat idee
+zo 13 17:43 < Fruit> csp_mkdirscpomgwtfbbqrofl dir file1 [file2 ...]
+zo 13 17:43 < joostvb> ok, dan kan ik maken:
+zo 13 17:43 < joostvb> csp_install -t dir file [file]
+zo 13 17:43 < joostvb> naast:
+zo 13 17:43 < joostvb> csp_install file dir
+zo 13 17:43 < joostvb> das backwards compatible
+zo 13 17:43 < Fruit> true
+zo 13 17:44 < joostvb> en over 5 jaar wordt "-t" optioneel
+zo 13 17:44 < Fruit> en je kunt geen files meer installeren die ‘-t’ heten.
+zo 13 17:44 < joostvb> klopt
+zo 13 17:44 < joostvb> fuk die mensen
+zo 13 17:44 < joostvb> :)
+zo 13 17:44 < Fruit> maar robuust gedrag met spaties en andere tekens in 
+                     bestandsnamen is nooit een sterk punt van caspar geweest.
+zo 13 17:44 < joostvb> pcies
+zo 13 17:44 < joostvb> van make ook niet
+zo 13 17:45 < Fruit> ja! fuk die mensen. alle bestanden moeten gewoon foo.txt 
+                     heten. en die hippies met hun bar.txt kunnen de boom in
+zo 13 17:45 < joostvb> zo is t maar net
+
+
+
+
 0.-4)
 
 csp_scpmkdir_FUNC : ship it, don't just document it.
