@@ -1,5 +1,12 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version YYYYmmdd
+
+[Joost van Baal]
+- caspar/doc/caspar.azm, caspar/doc/csp_helper.azm: various improvements
+  in manpages.
+
+
 caspar version 20101204
 
 [Wessel Dankers]
