@@ -233,6 +233,108 @@ If you need to sudo(1) to another user on the remote host, add something like
 .  (If such a username is not supplied, sudo (and csp_sucp) use the default:
 root.)
 
+
+
+\cpar{Overriding csp_UHOSTS in a smart way: csp_UHOSTS_SUBSET.  Using multiple
+groups of hosts.  Recursive make made easy.}
+
+If you have lots of subdirectories holding information for lots of groups of
+hosts, while this run you just want to install for a small group (or 1) hosts,
+csp_UHOSTS_SUBSET is useful.
+
+Suppose your casparized tree looks like
+
+\verbatim{
+ Makefile
+
+ apache/include/install.mk
+ apache/etc/apache2/Makefile
+ apache/etc/apache2/envvars
+
+ php/include/install.mk
+ php/etc/php4/apache/Makefile
+ php/etc/php4/apache/php.ini
+
+ grub/include/install.mk
+ grub/boot/grub/Makefile
+ grub/boot/grub/menu.lst
+ logrotate/include/install.mk
+ logrotate/etc/Makefile
+ logrotate/etc/logrotate.conf
+
+ nrpe/include/install.mk
+ nrpe/debian/etc/default/Makefile
+ nrpe/debian/etc/default/nagios-nrpe-server
+}
+
+The file \it{apache/etc/apache2/Makefile} is:
+
+\verbatim{
+ csp_DIR = /etc/apache2/
+ include ../../include/install.mk
+}
+
+(all other \it{Makefile}s are similar).
+
+The file \it{apache/include/install.mk} is
+
+\verbatim{
+ csp_UHOSTS = root@a root@b
+ include caspar/mk/caspar.mk
+}
+
+The file \it{php/include/install.mk} is the same.  The files
+\it{grub/include/install.mk} and \it{logrotate/include/install.mk} are
+
+\verbatim{
+ csp_UHOSTS = root@d root@e root@f root@g
+ include caspar/mk/caspar.mk
+}
+
+The file \it{nrpe/include/install.mk} is
+
+\verbatim{
+ csp_UHOSTS = root@d root@e root@f root@n
+ include caspar/mk/caspar.mk
+}
+
+The toplevel \it{Makefile} is
+
+\verbatim{
+ dirs = $(patsubst %/Makefile,%,$(shell find * -mindepth 1
+  -name Makefile))
+
+ all:
+     for i in $(dirs); do $(MAKE) -$(MAKEFLAGS) -C $$i; done
+
+ install
+     for i in $(dirs); do $(MAKE) -$(MAKEFLAGS) -C $$i install; done
+
+ load
+     for i in $(dirs); do $(MAKE) -$(MAKEFLAGS) -C $$i load; done
+}
+
+(we don't feel like sticking a \it{Makefile} in all non-leaf nodes of our tree).
+
+\par
+
+Now, when running "\tt{csp_UHOSTS_SUBSET='root@e root@f root@m root@n' make}"
+in the toplevel, caspar just takes the intersection of csp_UHOSTS_SUBSET and
+csp_UHOSTS for each csp_UHOSTS list. So, caspar will not push anything for
+\it{apache/} and \it{php/}. The files \it{grub/boot/grub/menu.lst} and
+\it{logrotate/etc/logrotate.conf} will get pushed to \tt{root@e} and
+\tt{root@f} only.  The file \it{nrpe/debian/etc/default/nagios-nrpe-server}
+will get pushed to \tt{root@e}, \tt{root@f} and \tt{root@n}.
+
+\par
+
+This is often better than just overriding csp_UHOSTS on the commandline (or in
+your shell's environment): if the intersection of the original csp_UHOSTS and
+your new csp_UHOSTS is empty, chances are big you've just forgotten to clean
+your environment.
+
+
+
 \cpar{Creating remote directories if needed}
 
 \it{Makefile} is
@@ -470,105 +572,6 @@ This allows it to run
 to install on \tt{foo@bar}.
 
 
-\cpar{Overriding csp_UHOSTS in a smart way: csp_UHOSTS_SUBSET.  Using multiple
-groups of hosts.  Recursive make made easy.}
-
-FIXME: move this nontrivial example to top of manpage.
-
-If you have lots of subdirectories holding information for lots of groups of
-hosts, while this run you just want to install for a small group (or 1) hosts,
-csp_UHOSTS_SUBSET is useful.
-
-Suppose your casparized tree looks like
-
-\verbatim{
- Makefile
-
- apache/include/install.mk
- apache/etc/apache2/Makefile
- apache/etc/apache2/envvars
-
- php/include/install.mk
- php/etc/php4/apache/Makefile
- php/etc/php4/apache/php.ini
-
- grub/include/install.mk
- grub/boot/grub/Makefile
- grub/boot/grub/menu.lst
- logrotate/include/install.mk
- logrotate/etc/Makefile
- logrotate/etc/logrotate.conf
-
- nrpe/include/install.mk
- nrpe/debian/etc/default/Makefile
- nrpe/debian/etc/default/nagios-nrpe-server
-}
-
-The file \it{apache/etc/apache2/Makefile} is:
-
-\verbatim{
- csp_DIR = /etc/apache2/
- include ../../include/install.mk
-}
-
-(all other \it{Makefile}s are similar).
-
-The file \it{apache/include/install.mk} is
-
-\verbatim{
- csp_UHOSTS = root@a root@b
- include caspar/mk/caspar.mk
-}
-
-The file \it{php/include/install.mk} is the same.  The files
-\it{grub/include/install.mk} and \it{logrotate/include/install.mk} are
-
-\verbatim{
- csp_UHOSTS = root@d root@e root@f root@g
- include caspar/mk/caspar.mk
-}
-
-The file \it{nrpe/include/install.mk} is
-
-\verbatim{
- csp_UHOSTS = root@d root@e root@f root@n
- include caspar/mk/caspar.mk
-}
-
-The toplevel \it{Makefile} is
-
-\verbatim{
- dirs = $(patsubst %/Makefile,%,$(shell find * -mindepth 1
-  -name Makefile))
-
- all:
-     for i in $(dirs); do $(MAKE) -$(MAKEFLAGS) -C $$i; done
-
- install
-     for i in $(dirs); do $(MAKE) -$(MAKEFLAGS) -C $$i install; done
-
- load
-     for i in $(dirs); do $(MAKE) -$(MAKEFLAGS) -C $$i load; done
-}
-
-(we don't feel like sticking a \it{Makefile} in all non-leaf nodes of our tree).
-
-\par
-
-Now, when running "\tt{csp_UHOSTS_SUBSET='root@e root@f root@m root@n' make}"
-in the toplevel, caspar just takes the intersection of csp_UHOSTS_SUBSET and
-csp_UHOSTS for each csp_UHOSTS list. So, caspar will not push anything for
-\it{apache/} and \it{php/}. The files \it{grub/boot/grub/menu.lst} and
-\it{logrotate/etc/logrotate.conf} will get pushed to \tt{root@e} and
-\tt{root@f} only.  The file \it{nrpe/debian/etc/default/nagios-nrpe-server}
-will get pushed to \tt{root@e}, \tt{root@f} and \tt{root@n}.
-
-\par
-
-This is often better than just overriding csp_UHOSTS on the commandline (or in
-your shell's environment): if the intersection of the original csp_UHOSTS and
-your new csp_UHOSTS is empty, chances are big you've just forgotten to clean
-your environment.
 
 \cpar{Using sudo locally for installing files}
 

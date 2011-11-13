@@ -54,7 +54,7 @@ for a forced flush of cache.
 
 --- release critical ----
 
-2.1) deal with csp_helper.azm FIXME's.
+2.1) deal with caspar.azm FIXME's.
 
 2.2) test csp_install and csp_scp_keep_mode
 
