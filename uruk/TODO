@@ -123,6 +123,7 @@ obsolete syntax
                      gebruikt
  ma 13 09:10 < Fruit> okee, networkmanager voert die scripts dus wél uit.
  ma 13 09:11 < Fruit> fvos: wellicht een hashbang erbij en een execbitje.
+  status: semi-implemented in debian package.
 
 - using names of interfaces in names of variables is dumb.  the characters
   @ : . occur in interface names, but are not allowed in variable names.
