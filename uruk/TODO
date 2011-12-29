@@ -1,3 +1,6 @@
+- decide: fork this package, get new name, don't bother about migration scenario,
+  use dedicated named chains and tables.
+
 - ship example icmp v6 script from rfc 4890, appendix B, p. 30 - 37.  by Suresh
   Krishnan.  It is available under a BSD-style license.  (up to now in private
   communication.)  Also: Use (parts of) this script.
@@ -79,6 +82,8 @@ offered network services.  all services will be available for _all_ IPs
 Packages could run this to generate a first rc file.
 
 ----------------- candidates for upcoming release ------------------
+
+- use ip{,6}tables-apply by Martin Krafft: safe testing of new rules on remote host.
 
 - get rid of duplicated code in init-script:
       if test "$found_active" -a "$found_inactive"; then
