@@ -1,3 +1,7 @@
+- ship example icmp v6 script from rfc 4890, appendix B, p. 30 - 37.  by Suresh
+  Krishnan.  It is available under a BSD-style license.  (up to now in private
+  communication.)  Also: Use (parts of) this script.
+
 - major overhaul: use different chains, optimise behaviour when dealing with ipv6.
   we deal with private ip ranges in a braindead way; improve that.
 
