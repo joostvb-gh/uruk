@@ -9,7 +9,7 @@
 # under the terms of the GNU GPL.  See the file COPYING.
 
 exampledir = $(datadir)/doc/@PACKAGE_TARNAME@/examples
-example_DATA = rc default
+example_DATA = rc default rfc4890-icmpv6-firewall.sh
 
 EXTRA_DIST = $(example_DATA)
 
