@@ -367,10 +367,43 @@ do
     $iptables -A INPUT --protocol icmp --icmp-type $type -j ACCEPT
 done
 
-# for now, we allow _all_ ICMPv6 packets.
-$ip6tables -A INPUT --protocol icmpv6 -j ACCEPT
+# Drop echo replies which have a multicast address as a
+# destination.  See rfc4890-icmpv6-firewall.sh.
+$ip6tables -A INPUT --protocol icmpv6 -d ff00::/8 \
+        --icmpv6-type echo-reply -j DROP
+
+for type in \
+  echo-request \
+  echo-reply \
+  destination-unreachable \
+  packet-too-big \
+  ttl-zero-during-transit \
+  ttl-zero-during-reassembly \
+  unknown-header-type \
+  unknown-option \
+  bad-header \
+  144 \
+  145 \
+  146 \
+  147
+do
+    $ip6tables -A INPUT --protocol icmpv6 --icmpv6-type $type -j ACCEPT
+done
+
+# We DROP, a.o.:
+# Redirect messages: redirect
+# Multicast Listener queries (MLDv1 and MLDv2): 130
+# Multicast Listener reports (MLDv1): 131
+# Multicast Listener Done messages (MLDv1): 132
+# Multicast Listener reports (MLDv2): 143
+# Router renumbering messages: 138
+# Node information queries (139) and replies (140): 139 140
+#
+$ip6tables -A INPUT --protocol icmpv6 -j DROP
 
 uruk_hook "$rc_g"
+
+
 
 #
 # log packets which make it till here: denied packets (not denied broadcasts
