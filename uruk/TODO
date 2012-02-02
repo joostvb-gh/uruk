@@ -1,3 +1,8 @@
+- does not build from vcs: autoconf-archive >= 20111221-1 (and possible also
+  older ones) no longer ships ac_define_dir.  from changelog:
+   2011-09-16  Reuben Thomas  <rrt@sc3d.org>
+        AX_DEFINE_DIR: Obsolete: it doesn't comply with the GCS.
+
 - decide: fork this package, get new name, don't bother about migration scenario,
   use dedicated named chains and tables.
 
