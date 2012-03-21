@@ -234,6 +234,23 @@ If you need to sudo(1) to another user on the remote host, add something like
 root.)
 
 
+\cpar{Overriding csp_UHOSTS: csp_UHOSTS_SKIP}
+
+If one or some of your hosts are temporarily unavailable, and you'd like to
+push your files to the hosts which are alive, you can temporarily override your
+csp_UHOSTS.  E.g., when some.other.host is not available:
+
+\verbatim{
+ % cat Makefile 
+ csp_UHOSTS = root@some.host.somewhere root@some.other.host
+ csp_DIR = /etc/
+ include caspar/mk/caspar.mk
+
+ % make install csp_UHOSTS_SKIP=root@some.other.host
+ scp hosts root@some.host.somewhere:/etc/
+ scp fstab root@some.host.somewhere:/etc/
+}
+
 
 \cpar{Overriding csp_UHOSTS in a smart way: csp_UHOSTS_SUBSET.  Using multiple
 groups of hosts.  Recursive make made easy.}
