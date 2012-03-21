@@ -1,6 +1,6 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version YYYYmmdd
+caspar version 20120321
 
 [Joost van Baal]
 - caspar/mk/caspar.mk: backwards INCOMPATIBLE change: csp_CPDIRS and csp_CPDIR
@@ -19,10 +19,10 @@ caspar version YYYYmmdd
 - caspar/doc/caspar.azm: document csp_UHOSTS_SKIP.
 - caspar/doc/caspar.azm: document more advanced way of using csp_LOAD: refer
   to $1 in definition of load target, keep loop over hosts implicit.
+- caspar/doc/*.azm, caspar/doc/include*: converting syntax to
+  aephea >= 10.008-1, zoem >= 11-166-1.
 - caspar/doc/caspar.azm, caspar/doc/csp_helper.azm: various improvements
   in manpages.
-
-
 
 
 caspar version 20101204
