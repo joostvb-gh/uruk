@@ -7,6 +7,8 @@ caspar version YYYYmmdd
   csp_scpmkdir_FUNC (and variable csp_MKDIRP): no longer need to define this
   function in Makefile.
 - caspar/doc/caspar.azm: document csp_UHOSTS_SKIP.
+- caspar/doc/caspar.azm: document more advanced way of using csp_LOAD: refer
+  to $1 in definition of load target, keep loop over hosts implicit.
 - caspar/doc/caspar.azm, caspar/doc/csp_helper.azm: various improvements
   in manpages.
 

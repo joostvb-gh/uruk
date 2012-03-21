@@ -508,8 +508,17 @@ doing some preprocessing on the remote hosts too.
   csp_DIR = /etc/ssh/
   csp_UHOSTS = root@some.host.somewhere root@some.other.host
   csp_LOAD = sshd_config-load
+  sshd_config-load = ssh $1 "cd $(csp_DIR); \\
+         m4 sshd_config.m4 >sshd_config && \\
+         PATH=$$PATH:/sbin /etc/init.d/ssh restart"
   include caspar/mk/caspar.mk
+}
 
+
+(Alternatively, you could explicitly specify the loop over the hosts:
+
+\verbatim{
+  csp_DIR = /etc/ssh/
   sshd_config-load:
       for suh in $(csp_UHOSTS); do \\
         ssh $$suh "cd $(csp_DIR); \\
@@ -518,9 +527,8 @@ doing some preprocessing on the remote hosts too.
       done
 }
 
-(You might want to use a variable like \tt{my_EXEC} for ssh, see above.)
+).
 
-FIXME: no explicit ssh, use loopavoiding trick
 
 \cpar{Using the csp_TABOOFILES_{ADD,SKIP} variables; another way to perform remote builds}
 

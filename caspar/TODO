@@ -79,24 +79,8 @@ vr 25 16:37 < casper> bah, maar het werkt wel, de reverse cowboy:   make diff |
 
 1.2) wait for and apply Fruit patches
 
-1.3) documenteer de loadtarget hack: run "make load" with:
-
-oud:
-
- CSP_uhosTS = foo@bar quux@xyzzy
- csp_LOAD = lolwut
- lolwut:
-        for h in $(csp_UHOSTS);do echo ssh $$h DFHKSJDHFJKSDHJK;done
- include caspar/mk/caspar.mk
-
-nieuw:
-
- csp_UHOSTS = foo@bar quux@xyzzy
- csp_LOAD = lolwut
- lolwut = echo ssh $1 DFHKSJDHFJKSDHJK
- include caspar/mk/caspar.mk
-
-combining is usefull too:
+1.3) documenteer de new style loadtarget hack even better: run "make load"
+with: combining new load-style is usefull too:
 
  csp_LOAD = lolwut
  lolwut = echo ssh $1 DFHKSJDHFJKSDHJK
