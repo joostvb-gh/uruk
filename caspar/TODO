@@ -133,9 +133,6 @@ za 14 21:29 < hoppie> en als je dan helemaal over the top wilt, kun je
 
 4.2) add standard target: "make print-hosts"
 
-4.3) Should happen Real Soon Now (early 2008?): Get rid of
-  obsolete variables.  Get rid of CP RULEs in caspar.mk.
-
 4.4) "install" should depend upon "load".  (should it?) ("make" currently does
   both "install" and "load"; it does not do "build".  (really!?)).  and/or:
   caspar should support "make build-recursive".

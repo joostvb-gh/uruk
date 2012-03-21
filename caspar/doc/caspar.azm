@@ -184,10 +184,6 @@ The following variables might get phased out or removed soonish:
     default
   \item{\tt{csp_SCPFLAGS}} extra arguments to pass to scp invocation, e.g.
     '\tt{-i .ssh/id_rsa-root}'
-  \item{\tt{csp_CPDIR}}    directory to which we can cp(1), instead of scp
-    (CoPy DIRectory)
-  \item{\tt{csp_CPDIRS}}   space separated list of directories to which we can
-    copy (CoPy DIRectorieS)
 \end{itemize}
 
 \sec{examples}{EXAMPLES}

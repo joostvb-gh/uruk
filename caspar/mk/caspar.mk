@@ -11,7 +11,6 @@
 # see caspar(7) for usage
 
 # we use plurals only
-csp_CPDIRS     ?= $(csp_CPDIR)
 csp_UHOSTS     ?= $(csp_UHOST)
 
 ifneq ($(csp_UHOSTS_SUBSET),)
@@ -76,13 +75,8 @@ all:
 	$(MAKE) load
 
 define filetargets
-$1-install: $(foreach dir,$(csp_CPDIRS),$1--$(dir)--cp) $(foreach host,$(csp_UHOSTS),$1--$(host)--push)
+$1-install: $(foreach host,$(csp_UHOSTS),$1--$(host)--push)
 $1-diff: $(foreach host,$(csp_UHOSTS),$1--$(host)--diff)
-endef
-
-define localtargets
-$1--$2--cp: $1
-	$$(csp_CP) $$(csp_CPFLAGS) $1 $2
 endef
 
 define remotetargets
@@ -95,8 +89,6 @@ endef
 
 $(foreach file,$(FILES),\
 	$(eval $(call filetargets,$(file)))\
-	$(foreach dir,$(csp_CPDIRS),\
-		$(eval $(call localtargets,$(file),$(dir))))\
 	$(foreach host,$(csp_UHOSTS),\
 		$(eval $(call remotetargets,$(file),$(host)))))
 

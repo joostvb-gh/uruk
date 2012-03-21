@@ -3,6 +3,16 @@ Refer to ChangeLog for detailed per-file info.
 caspar version YYYYmmdd
 
 [Joost van Baal]
+- caspar/mk/caspar.mk: backwards INCOMPATIBLE change: csp_CPDIRS and csp_CPDIR
+  (and 'localtargets') are no longer honored.  If you'd like to use cp(1) to
+  install to csp_CPDIR, define
+
+   csp_UHOST = dummy
+   csp_PUSH = $(csp_cp_FUNC)
+
+  and set csp_DIR accordingly.  Support for installing in multiple different
+  directories using cp(1) is dropped.  (Likely it's possible to implement it
+  via some dirty hack.)
 - caspar/doc/caspar.azm, caspar/mk/caspar.mk: implement function
   csp_scpmkdir_FUNC (and variable csp_MKDIRP): no longer need to define this
   function in Makefile.
@@ -11,6 +21,7 @@ caspar version YYYYmmdd
   to $1 in definition of load target, keep loop over hosts implicit.
 - caspar/doc/caspar.azm, caspar/doc/csp_helper.azm: various improvements
   in manpages.
+
 
 
 
