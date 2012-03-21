@@ -2,17 +2,16 @@
 \: This file is maintained at http://git.mdcc.cx/caspar
 \: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
 
-\def{"man::synstyle"}{long}
-\def{"man::defstyle"}{long}
-\import{man.zmm}
-
+\import{pud/man.zmm}
 \import{./include.zmm}
 
-\set{"man::name"}{caspar}
-\set{"man::html-title"}{caspar}
-\set{"man::section"}{7}
+\begin{pud::man}{
+ {name}{caspar}
+ {html_title}{caspar}
+ {section}{7}
+ \man_share
+}
 
-\"man::preamble"
 \${html}{\"man::maketoc"}
 
 \def{"docbook.mk"}{\it{docbook.mk}}

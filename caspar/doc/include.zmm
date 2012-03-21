@@ -10,8 +10,18 @@
 \setx{"man::month"}{\zinsert{../stamp.month}}
 \setx{"man::day"}{\zinsert{../stamp.day}}
 
-\set{"man::author"}{Joost van Baal}
 \set{"man::tag"}{\zinsert{../VERSION}}
+\set{"man::author"}{Joost van Baal}
+
+\setx{man_share}{
+ {year}  {\"man::year"}
+ {month} {\"man::month"}
+ {day}   {\"man::day"}
+ {tag}   {\"man::tag"}
+ {author} {\"man::author"}
+ {synstyle}{long}
+ {defstyle}{long}
+}
 
 \: \setx{"man::tag"}{\tr{}{\012}{}{\"man::tag"}}
 
