@@ -341,7 +341,6 @@ your environment.
 
 \verbatim{
   csp_DIR = /some/dir/ectory/
-  csp_scpmkdir_FUNC = $(csp_SSH) $(2) mkdir -p $(3) && $(csp_scp_FUNC)
   csp_PUSH = $(csp_scpmkdir_FUNC)
   csp_UHOST = root@some.host.somewhere
   include caspar/mk/caspar.mk

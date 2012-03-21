@@ -29,6 +29,7 @@ csp_SSH        ?= ssh
 csp_CAT        ?= cat
 csp_Diff       ?= diff     # csp_DIFF is reserved for the user interface...
 csp_RSYNC      ?= rsync
+csp_MKDIRP     ?= mkdir -p
 csp_INSTALL    ?= csp_install
 csp_SCP_KEEP_MODE ?= csp_scp_keep_mode
 
@@ -55,6 +56,7 @@ csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2):$(3)
 csp_diff_FUNC   = $(csp_SSH) $(2) $(csp_CAT) $(3)/$(1) | $(csp_Diff) $(4) - $(1)
 csp_install_FUNC = $(csp_INSTALL) $(1) $(3)
 csp_scp_keep_mode_FUNC = $(csp_SCP_KEEP_MODE) $(1) $(2) $(3)
+csp_scpmkdir_FUNC = $(csp_SSH) $(2) $(csp_MKDIRP) $(3) && $(csp_scp_FUNC)
 
 csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
