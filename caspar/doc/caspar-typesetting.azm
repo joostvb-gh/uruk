@@ -64,11 +64,11 @@ In a directory where you maintain .dbx (Docbook XML) or .tex (LaTeX) files, do
 
 Other targets: \tt{filename.ps}, \tt{filename.pdf}, \tt{filename.2ps}, \tt{filename.html},
 \tt{filename.printbig}, \tt{filename.dvi}.
-  \par
+  \par{
 Variables you might like to set in your Makefile: \tt{XMLDCL} (default is
 \tt{/usr/share/sgml/declaration/xml.dcl}; if you're not on a Debian GNU/Linux
 system, you'll likely have to adjust this), \tt{HTML_DSL}, \tt{PRINT_DSL}.
-  \par
+  } \par{
 In a directory where you maintain .pod files, do
 
 \verbatim{
@@ -83,6 +83,8 @@ In a directory where you maintain .pod files, do
 
 Other targets: \tt{filename.ps}, \tt{filename.html}, \tt{filename.txt}, ...
 (Similar to the ones supplied by \"docbook.mk").
+
+  }
 
 \sec{examples}{EXAMPLES}
 

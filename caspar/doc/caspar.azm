@@ -780,6 +780,7 @@ discussion on the Debian development list}.
 On the \httpref{http://www.infrastructures.org/} website on automated (Unix)
 system administration, you can find some thoughts on managing configuration
 files using a version control system.
+  }
 
 \end{pud::man}
 
