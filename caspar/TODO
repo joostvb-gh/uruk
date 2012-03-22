@@ -2,9 +2,18 @@
 
 --- release critical ----
 
-- fix manpage typesetting
+- fix manpage typesetting: install tidy @ buildhost
 
-- 
+- ``make dist'' succeeds, but ``make distcheck'' fails with:
+
+make[1]: Entering directory `/home/joostvb/git/caspar/caspar/caspar-20120322/_build'
+CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/joostvb/git/caspar/caspar/caspar-20120322/missing --run aclocal-1.11 
+autom4te: cannot create autom4te.cache: No such file or directory
+aclocal-1.11: autom4te failed with exit status: 1
+make[1]: *** [../aclocal.m4] Error 1
+make[1]: Leaving directory `/home/joostvb/git/caspar/caspar/caspar-20120322/_build'
+
+
 
 zo 13 17:34 < Fruit> die tooltjes die meegeleverd worden
 zo 13 17:35 < Fruit> die hebben typisch een destination directory en een stel 
