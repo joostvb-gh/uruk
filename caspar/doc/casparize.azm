@@ -89,9 +89,8 @@ Jeroen Hoppenbrouwers
 \sec{seealso}{SEE ALSO}
 
 \sibref{caspar}{caspar(7)}
-  \par
+
 The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
 
-\"man::postamble"
-
+\end{pud::man}
 
