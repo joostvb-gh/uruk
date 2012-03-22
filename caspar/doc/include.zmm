@@ -10,9 +10,15 @@
 \setx{"man::year"}{\zinsert{../stamp.year}}
 \setx{"man::month"}{\zinsert{../stamp.month}}
 \setx{"man::day"}{\zinsert{../stamp.day}}
+\setx{"man::tag"}{\zinsert{../VERSION}}
 
-\set{"man::tag"}{\zinsert{../VERSION}}
+\setx{"man::year"}{\tr{{delete}{[:space:]}}{\"man::year"}}
+\setx{"man::month"}{\tr{{delete}{[:space:]}}{\"man::month"}}
+\setx{"man::day"}{\tr{{delete}{[:space:]}}{\"man::day"}}
+\setx{"man::tag"}{\tr{{delete}{[:space:]}}{\"man::tag"}}
+
 \set{"man::author"}{Joost van Baal-Ilić}
+\set{"man::cat"}{Caspar}
 
 \setx{man_share}{
  {year}  {\"man::year"}
@@ -23,15 +29,4 @@
  {synstyle}{long}
  {defstyle}{long}
 }
-
-\: \setx{"man::tag"}{\tr{}{\012}{}{\"man::tag"}}
-
-\setx{"man::tag"}{\tr{{delete}{[:space:]}}{\"man::tag"}}
-
-\: could better use @PACKAGE_NAME@, and have a include.zmm.in
-\set{"man::cat"}{Caspar}
-
-\setx{"man::year"}{\tr{{delete}{[:space:]}}{\"man::year"}}
-\setx{"man::month"}{\tr{{delete}{[:space:]}}{\"man::month"}}
-\setx{"man::day"}{\tr{{delete}{[:space:]}}{\"man::day"}}
 
