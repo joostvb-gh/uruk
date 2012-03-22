@@ -1,8 +1,8 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 20120321
+caspar version 20120322
 
-[Joost van Baal]
+[Joost van Baal-Ilić]
 - caspar/mk/caspar.mk: backwards INCOMPATIBLE change: csp_CPDIRS and csp_CPDIR
   (and 'localtargets') are no longer honored.  If you'd like to use cp(1) to
   install to csp_CPDIR, define

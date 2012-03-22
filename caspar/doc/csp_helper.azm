@@ -12,7 +12,7 @@
  \man_share
 }
 
-\${html}{\"man::maketoc"}
+\${html}{\"pud::man::maketoc"}
 
 \def{caspar}{\bf{caspar}}
 \def{csp_install}{\bf{csp_install}}
@@ -23,15 +23,13 @@
 \NAME{csp_helper}{A collection of caspar helper scripts}
 
 \sec{synopsis}{SYNOPSIS}
-\par{
-
   \csp_install \synreqopt{file}{file} \synreqopt{dir}{directory}
 
-\par
+\par{
 
   \csp_scp_keep_mode \synreqopt{file}{file} \synreqopt{h}{[user@]host} \synreqopt{dir}{directory}
 
-\par
+} \par{
 
   \csp_sucp
     \synreqopt{file}{file}
@@ -90,10 +88,11 @@ without fiddling with permission bits on the remote host.
 \csp_sucp calls cat(1) from within sudo(1) from within ssh(1).  This allows one
 to copy files to accounts on hosts one can only reach by calling sudo on the
 ssh-reachable remote host.
-  \par
+  \par{
 Typically, one wants to install a root-owned file, but one does not want to
 allow access to the root-account directly from ssh.  Typically sudo is used as
 an extra line of defense.
+}
 
 \sec{sucp examples}{sucp EXAMPLES}
 
@@ -118,9 +117,8 @@ be echoed on the console!
 \sec{seealso}{SEE ALSO}
 
 \sibref{caspar}{caspar(7)}
-  \par
+
 The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
 
-\"man::postamble"
-
+\end{pud::man}
 

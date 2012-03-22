@@ -28,7 +28,7 @@
  \man_share
 }
 
-\${html}{\"man::maketoc"}
+\${html}{\"pud::man::maketoc"}
 
 \def{caspar}{\bf{caspar}}
 \def{casparize}{\bf{casparize}}

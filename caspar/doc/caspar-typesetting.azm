@@ -12,13 +12,12 @@
  \man_share
 }
 
-\${html}{\"man::maketoc"}
+\${html}{\"pud::man::maketoc"}
 
 \def{"docbook.mk"}{\it{docbook.mk}}
 \def{"pod.mk"}{\it{pod.mk}}
 
 \sec{name}{NAME}
-  \par
   caspar-typesetting - Makefile snippets for common typesetting tasks
 
 \sec{synopsis}{SYNOPSIS}
@@ -107,8 +106,7 @@ Overriding the standard html-to-text convertor:
 
 \sec{files}{FILES}
 
-\par
- \it{caspar/mk/docbook.mk}, \it{caspar/mk/pod.mk}
+\it{caspar/mk/docbook.mk}, \it{caspar/mk/pod.mk}
 
 \sec{environment}{ENVIRONMENT}
 
@@ -117,8 +115,9 @@ utilities: \tt{JADE}, \tt{PDFJADETEX}, \tt{PDFLATEX}, \tt{JADETEX}, \tt{LATEX},
 \tt{W3M}, \tt{DVIPS}, \tt{PSNUP}, \tt{LPR}, \tt{GV}; settings:
 \tt{JADE_MAXERRORS}.  These variables can get adjusted in Makefile, as well as
 in the shell environment.
-  \par
+  \par{
 \"pod.mk" Uses no environment variables.
+}
 
 \sec{author}{AUTHOR}
 
@@ -128,19 +127,19 @@ in the shell environment.
 
 \sibref{caspar}{caspar(7)}
 
- \par
 \reference{pod}
 perlpod(1) about Perl's Plain Old Documentation format
- \par
+ \par{
 \reference{dbx}
 \it{DocBook: The Definitive Guide} on \httpref{http://docbook.org/},
- \par
+ } \par{
 \reference{latex}
 The LaTeX Project Homepage on \httpref{http://www.latex-project.org/}.
- \par
+ } \par{
 Some comments on advanced usage are in the files \"docbook.mk" and \"pod.mk"
 itself.
+ }
 
-\"man::postamble"
+\end{pud::man}
 
 

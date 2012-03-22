@@ -12,7 +12,7 @@
  \man_share
 }
 
-\${html}{\"man::maketoc"}
+\${html}{\"pud::man::maketoc"}
 
 \def{"docbook.mk"}{\it{docbook.mk}}
 \def{"pod.mk"}{\it{pod.mk}}
@@ -21,7 +21,6 @@
 \def{"install.mk"}{\it{install.mk}}
 
 \sec{name}{NAME}
-  \par
   caspar - Makefile snippets for common tasks
 
 \sec{synopsis}{SYNOPSIS}
@@ -50,27 +49,27 @@ or
 Caspar offers Makefile snippets for common tasks, like installing
 (configuration) files, or typesetting LaTeX, DocBook XML and DocBook SGML
 documents.
-  \par
+  \par{
 The typesetting functionality is delivered by \"docbook.mk" and \"pod.mk".
 This is documented in \sibref{caspar-typesetting}{caspar-typesetting(7)}.
-  \par
+  } \par{
 The installing-stuff functionality is delivered by \"caspar.mk".
 (That's what the rest of the manual will talk about.)  It enables one to run
 'make install' from within a tree which typically holds configuration files,
 managed using Subversion (or git or any other version control system, for that
 matter).
-  \par
+  } \par{
 It is useful in cases like this: all configuration files of some host are under
 version control, and, after commiting a change to CVS, you want to be able to
 easily install the new configuration file on the host.
-  \par
+  } \par{
 With \caspar, all you have to do is specify the hostname in one place, and
 specify the name of the target directory in each CVS directory.
-  \par
+  } \par{
 It is comparable with other tools for Unix system administrators like
 puppet and cfengine.  Main difference: the caspar code consists of less than
 100 lines of GNU Make.
-  \par
+  }
 
 \sec{usage}{USAGE}
 
@@ -113,13 +112,15 @@ Calling \tt{make install} (or \tt{make}) now will scp all files in the current
 directory to the remote location.  The \it{install-recursive} target descends
 down the tree, and calls \tt{make install} in each subdirectory.
 
-\par
+\par{
 
 Of course, you'll have to be able to ssh directly as root to the remote host to
 get this working (if you'd like to use \tt{csp_UHOST =
 root@some.host.somewhere}).  If you don't like this, and would like to have a
 \tt{PermitRootLogin no} in your \tt{/etc/ssh/sshd_config}, you can use
 csp_sucp(1).  See below.
+
+}
 
 \sec{variables}{VARIABLES}
 
@@ -171,7 +172,7 @@ The variables one can set in a calling Makefile are:
     csp_UHOSTS.
 \end{itemize}
 
-\par
+\par{
 
 The following variables might get phased out or removed soonish:
 
@@ -185,11 +186,13 @@ The following variables might get phased out or removed soonish:
     '\tt{-i .ssh/id_rsa-root}'
 \end{itemize}
 
+}
+
 \sec{examples}{EXAMPLES}
 
 Some examples:
 
-\cpar{Using csp_UHOST}
+\cpar{Using csp_UHOST}{
 
 This is the simplest way to use caspar.  \it{Makefile} is
 
@@ -202,7 +205,9 @@ This is the simplest way to use caspar.  \it{Makefile} is
 Now, running "make" will scp all files in the current directory to
 \tt{root@some.host.somewhere:/etc/}.
 
-\cpar{More hosts, not scp but sudo via ssh: using csp_PUSH}
+}
+
+\cpar{More hosts, not scp but sudo via ssh: using csp_PUSH}{
 
 \it{Makefile} is
 
@@ -228,8 +233,9 @@ If you need to sudo(1) to another user on the remote host, add something like
 .  (If such a username is not supplied, sudo (and csp_sucp) use the default:
 root.)
 
+}
 
-\cpar{Overriding csp_UHOSTS: csp_UHOSTS_SKIP}
+\cpar{Overriding csp_UHOSTS: csp_UHOSTS_SKIP}{
 
 If one or some of your hosts are temporarily unavailable, and you'd like to
 push your files to the hosts which are alive, you can temporarily override your
@@ -246,9 +252,10 @@ csp_UHOSTS.  E.g., when some.other.host is not available:
  scp fstab root@some.host.somewhere:/etc/
 }
 
+}
 
 \cpar{Overriding csp_UHOSTS in a smart way: csp_UHOSTS_SUBSET.  Using multiple
-groups of hosts.  Recursive make made easy.}
+groups of hosts.  Recursive make made easy.}{
 
 If you have lots of subdirectories holding information for lots of groups of
 hosts, while this run you just want to install for a small group (or 1) hosts,
@@ -328,7 +335,7 @@ The toplevel \it{Makefile} is
 
 (we don't feel like sticking a \it{Makefile} in all non-leaf nodes of our tree).
 
-\par
+} \par{
 
 Now, when running "\tt{csp_UHOSTS_SUBSET='root@e root@f root@m root@n' make}"
 in the toplevel, caspar just takes the intersection of csp_UHOSTS_SUBSET and
@@ -338,16 +345,16 @@ csp_UHOSTS for each csp_UHOSTS list. So, caspar will not push anything for
 \tt{root@f} only.  The file \it{nrpe/debian/etc/default/nagios-nrpe-server}
 will get pushed to \tt{root@e}, \tt{root@f} and \tt{root@n}.
 
-\par
+} \par{
 
 This is often better than just overriding csp_UHOSTS on the commandline (or in
 your shell's environment): if the intersection of the original csp_UHOSTS and
 your new csp_UHOSTS is empty, chances are big you've just forgotten to clean
 your environment.
 
+}
 
-
-\cpar{Creating remote directories if needed}
+\cpar{Creating remote directories if needed}{
 
 \it{Makefile} is
 
@@ -361,7 +368,9 @@ your environment.
 Now, before calling scp, caspar will run 'mkdir -p' to create any missing
 remote directories.
 
-\cpar{Using csp_CP and csp_LOAD}
+}
+
+\cpar{Using csp_CP and csp_LOAD}{
 
 \it{username/etc/Makefile} is
 
@@ -390,7 +399,9 @@ Setting \tt{csp_LOAD} causes "make load" to execute the crontab command.  Just
 running "make" is OK too, since "make" calls both "make install" and "make
 load".
 
-\cpar{Using csp_DIR, csp_LOAD and install(1)}
+}
+
+\cpar{Using csp_DIR, csp_LOAD and install(1)}{
 
 To install a file on the local host, create e.g. a file \it{etc/uruk/Makefile}
 like:
@@ -407,9 +418,9 @@ like:
     sudo invoke-rc.d uruk force-reload
 }
 
-FIXME: example with more hosts with loopavoiding trick
+}
 
-\cpar{Using csp_DIR and csp_LOAD, take 2}
+\cpar{Using csp_DIR and csp_LOAD, take 2}{
 
 \it{etc/Makefile} is
 
@@ -429,8 +440,9 @@ while \it{../include/install.mk} is
   include caspar/mk/caspar.mk
 }
 
+}
 
-\cpar{Using csp_BUILD: building files locally}
+\cpar{Using csp_BUILD: building files locally}{
 
 If you'd like to build some files locally from local sources, before installing
 the just build files, do e.g.
@@ -452,8 +464,9 @@ the just build files, do e.g.
 List all source files in csp_TABOOFILES_ADD: this way, they won't get installed
 on the csp_UHOST.
 
+}
 
-\cpar{Using csp_sucp_FUNC and csp_LOAD}
+\cpar{Using csp_sucp_FUNC and csp_LOAD}{
 
 If you'd like to use csp_sucp and want a `load' target, do something like:
 
@@ -469,8 +482,9 @@ If you'd like to use csp_sucp and want a `load' target, do something like:
      $(csp_SSH) $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
 }
 
+}
 
-\cpar{Adding a "check" target}
+\cpar{Adding a "check" target}{
 
 If you want to do some syntax check on the remote host, before loading the just
 installed configuration file (and have a "make check" thing), do
@@ -493,8 +507,9 @@ This way, "make load" won't cause the file to load if the check fails (which is
 probably what you want).  Running "make" will perform "install", "check" and
 "load".
 
+}
 
-\cpar{Combining the csp_LOAD target with multiple hosts; building files remotely}
+\cpar{Combining the csp_LOAD target with multiple hosts; building files remotely}{
 
 You'll have to loop over csp_UHOSTS to execute load-command.  Here's an example
 doing some preprocessing on the remote hosts too.
@@ -524,8 +539,9 @@ doing some preprocessing on the remote hosts too.
 
 ).
 
+}
 
-\cpar{Using the csp_TABOOFILES_{ADD,SKIP} variables; another way to perform remote builds}
+\cpar{Using the csp_TABOOFILES_{ADD,SKIP} variables; another way to perform remote builds}{
 
 Using the csp_TABOOFILES_{ADD,SKIP} variables is handy if you want to
 \it{install} a \it{Makefile}, instead of using it:  Create \it{Makefile} just
@@ -546,7 +562,9 @@ as you'd like to have it installed on the remote location.  Now, create
 
 Now, \tt{make install} and \tt{make load} will do the right thing.
 
-\cpar{Using the csp_EXTRAFILES variable}
+}
+
+\cpar{Using the csp_EXTRAFILES variable}{
 
 Using the csp_EXTRAFILES variable is handy if you want to install files
 with a leading dot.   E.g.:
@@ -558,7 +576,9 @@ with a leading dot.   E.g.:
   include caspar/mk/caspar.mk
 }
 
-\cpar{Overriding csp_UHOSTS}
+}
+
+\cpar{Overriding csp_UHOSTS}{
 
 Supply e.g.
 
@@ -590,9 +610,9 @@ This allows it to run
 
 to install on \tt{foo@bar}.
 
+}
 
-
-\cpar{Using sudo locally for installing files}
+\cpar{Using sudo locally for installing files}{
 
 If you'd like to install files like
 
@@ -612,7 +632,9 @@ you could set up your \it{Makefile} as
 This is like csp_sucp, but without the ssh wrapping: it works on localhost
 only.
 
-\cpar{Plugging your own install script in caspar}
+}
+
+\cpar{Plugging your own install script in caspar}{
 
 If your script \tt{foobar} should be called as e.g.
 
@@ -632,8 +654,9 @@ then make sure your \it{Makefile} features something like
 
 You can now use \tt{csp_UHOST} and \tt{csp_DIR} just as you're used to.
 
+}
 
-\cpar{More advanced tricks}
+\cpar{More advanced tricks}{
 
 When you don't want to ssh to \tt{root@some.host.somewhere} directly, you could
 do
@@ -644,10 +667,11 @@ do
 
 on some.host.somewhere (e.g. from cron).
 
+}
+
 \sec{files}{FILES}
 
-\par
- \it{caspar/mk/caspar.mk}, \it{caspar/mk/docbook.mk}, \it{caspar/mk/pod.mk}
+\it{caspar/mk/caspar.mk}, \it{caspar/mk/docbook.mk}, \it{caspar/mk/pod.mk}
 
 \sec{environment}{ENVIRONMENT}
 
@@ -677,27 +701,27 @@ my homegrown scripts.
 \sec{seealso}{SEE ALSO}
 
 \sibref{caspar-typesetting}{caspar-typesetting(7)}
+
 \sibref{csp_helper}{csp_helper(1)}
-  \par
+  \par{
 The caspar homepage is at \httpref{http://mdcc.cx/caspar/} .
-  \par
+  } \par{
 The document
 \aref{http://non-gnu.uvt.nl/pub/uvt-unix-doc/packaging/}{"Versiebeheer en
 software-packages: Waarom en Hoe"} (in Dutch) describes some of the reasons why
 people might want to use tools like caspar.
-  \par
+  } \par{
 Jeroen Hoppenbrouwers blogs about the way he uses caspar, in
 \aref{http://www.hoppie.nl/pub/node/79}{"Using Subversion and Caspar to
 maintain a Linux host"}.
-  \par
+  } \par{
 Lots of tools overlap (partly) with caspar in their functionality.  Here's a
 list.  A big part of it was collected by Ray Miller
 (\httpref{http://users.ox.ac.uk/~raym/}) of Oxford University, and published in
 the article "Configuration Management with Subversion, YAML and Perl Template
 Toolkit" in the SANE 2006 (\httpref{http://www.sane.nl/sane2006/}) conference
 proceedings.  FIXME: Check urls, update
-
-  \par
+  } \par{
 
 \: The `cvs-conf' package (\httpref{http://project.tuxfamily.org/cvs-conf},
 \: \httpref{http://packages.debian.org/stable/utils/cvs-conf.html}) probably
@@ -707,56 +731,56 @@ proceedings.  FIXME: Check urls, update
 
 docbookmk, by Michael Wiedmann (\httpref{http://www.miwie.org/docbkmake/})
 offers probably a superset of Caspar's \"docbook.mk" functionality.
-  \par
+  } \par{
 latex-make by the LaTeX Utils project on
 \httpref{http://gforge.inria.fr/projects/latex-utils/} seems to provide similar
 functionality as \"docbook.mk" for LaTeX documents.
-  \par
+  } \par{
 Latexmk by John Collins e.a. on
 \httpref{http://www.phys.psu.edu/~collins/software/latexmk-jcc/} is another
 implementation of this idea.
-  \par
+  } \par{
 SUP, the Software Upgrade Protocol and it's implementation by Carnegie Mellon
 University offers another way to distribute (configuration)files.  Beware
 though: between Nov 1996 and June 2004, no new release has been published.  The
 Debian (\httpref{ftp://ftp.debian.org/debian/pool/main/s/sup/}) and NetBSD
 packages are likely still maintained, though.
-  \par
+  } \par{
 cfengine (\httpref{http://www.cfengine.org/}), by Mark Burgess e.a., builds
 expert systems to administrate and configure large computer networks: it
 delivers a very big superset of caspar's installation mechanism.
-  \par
+  } \par{
 PIKT (\httpref{http://www.pikt.org/}) is intended primarily for system
 monitoring, but does do configuration management too.
-  \par
+  } \par{
 LCFG (\httpref{http://www.lcfg.org/}) is another configuration management
 system.
-  \par
+  } \par{
 The Arusha Project (ARK, at \httpref{http://ark.sf.net/}) provides a framework
 for collaborative system administration.
-  \par
+  } \par{
 Puppet (\httpref{http://reductivelabs.com/projects/puppet}), also something
 like a configuration management system.
-  \par
+  } \par{
 Bcfg2 (\httpref{http://trac.mcs.anl.gov/projects/bcfg2/}) is yet another
 configuration management system.
-  \par
+  } \par{
 quattor (\httpref{http://quattor.web.cern.ch/}) is a system administration
 toolkit for installation, configuration and management of Unix systems.
-  \par
+  } \par{
 rb3 and friends, as written and used by Ray Miller e.a. at Oxford University,
 (\httpref{http://users.ox.ac.uk/~raym/software/configuration-management/}).
-  \par
+  } \par{
 The \aref{http://svk.elixus.org/}{svk} version control system is said to be
 quite usable for handling configuration file management (without a separate
 install mechanism like caspar).  See also
 \aref{http://lists.debian.org/debian-devel/2005/02/thrd2.html#00495}{this
 discussion on the Debian development list}.
-  \par
+  } \par{
 On the \httpref{http://www.infrastructures.org/} website on automated (Unix)
 system administration, you can find some thoughts on managing configuration
 files using a version control system.
 
-\"man::postamble"
+\end{pud::man}
 
 
