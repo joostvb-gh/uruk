@@ -1,5 +1,6 @@
 # This file is maintained at http://git.mdcc.cx/caspar
 
+# Copyright (C) 2012 Joost van Baal-Ilić <joostvb-caspar-c-12@mdcc.cx>
 # Copyright (C) 2002, 2003, 2004, 2005, 2006, 2009, 2010 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
 #
 # This file is part of caspar.  Caspar is free software; you can redistribute

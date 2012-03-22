@@ -3,6 +3,7 @@
 \: This file is free software; you can distribute it and/or modify it
 \: under the terms of the GNU GPL.  See the file COPYING.
 \:
+\: Copyright (C) 2011, 2012 Joost van Baal-Ilić,
 \: Copyright (C) 2003, 2004, 2005, 2006 Joost van Baal,
 \: Copyright (C) 2002, 2003 Stijn van Dongen
 
@@ -11,7 +12,7 @@
 \setx{"man::day"}{\zinsert{../stamp.day}}
 
 \set{"man::tag"}{\zinsert{../VERSION}}
-\set{"man::author"}{Joost van Baal}
+\set{"man::author"}{Joost van Baal-Ilić}
 
 \setx{man_share}{
  {year}  {\"man::year"}
