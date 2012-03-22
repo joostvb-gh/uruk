@@ -3,7 +3,7 @@
 --- release critical ----
 
 - fix manpage typesetting: install tidy @ buildhost, head of e.g. casparize.1
-  looks crappy
+  looks crappy, my name in caspar.ps looks like crap
 
 - ``make dist'' succeeds, but ``make distcheck'' fails with:
 
