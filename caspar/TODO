@@ -2,7 +2,8 @@
 
 --- release critical ----
 
-- fix manpage typesetting: install tidy @ buildhost
+- fix manpage typesetting: install tidy @ buildhost, head of e.g. casparize.1
+  looks crappy
 
 - ``make dist'' succeeds, but ``make distcheck'' fails with:
 
