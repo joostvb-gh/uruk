@@ -2,6 +2,10 @@
 
 --- release critical ----
 
+- fix manpage typesetting
+
+- 
+
 zo 13 17:34 < Fruit> die tooltjes die meegeleverd worden
 zo 13 17:35 < Fruit> die hebben typisch een destination directory en een stel 
                      bestanden als argumenten
