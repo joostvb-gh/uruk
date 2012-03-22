@@ -28,7 +28,7 @@ docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS
 
 ## local targets
-MY_RDIR = opal:www/mdcc.cx/pub/caspar/
+MY_RDIR = beskar:www/mdcc.cx/pub/caspar/
 
 sign:
 	for i in $(DIST_ARCHIVES); do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
