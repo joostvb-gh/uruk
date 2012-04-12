@@ -8,8 +8,6 @@
 # This is to turn on verbose mode.
 # export DH_VERBOSE=1
 
-# This is the debhelper compatibility version to use.
-
 # allow bashism's in commandlines
 SHELL = /bin/bash
 
@@ -18,13 +16,6 @@ SHELL = /bin/bash
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
-
-ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -g
-endif
-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-	INSTALL_PROGRAM += -s
-endif
 
 config.status: configure
 	dh_testdir
@@ -49,12 +40,6 @@ clean:
 
 #	# commands to clean up after the build process.
 	dh_auto_clean
-
-#	# no need to copy config.sub or config.guess here.  architecture
-#	# doesn't interest us: we don't compile anything, we just install
-#	# plain ascii files.  the config.* stuff would just make the diff
-#	# bigger.
-
 	dh_clean
 
 #
@@ -107,4 +92,5 @@ binary-arch: build install
 # we are architecture-independent
 
 binary: binary-indep binary-arch
+
 .PHONY: build clean binary-indep binary-arch binary install
