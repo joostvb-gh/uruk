@@ -1,7 +1,9 @@
 caspar (20120322-1) UNRELEASED; urgency=low
 
-  * New upstream release; backwards incompatible with caspar <= 20101204:
-    csp_CPDIRS and csp_CPDIR are no longer honored. 
+  * New upstream release: 
+    - backwards incompatible with caspar <= 20101204: csp_CPDIRS and
+      csp_CPDIR are no longer honored, see /usr/share/doc/caspar/NEWS.gz.
+    - debian/copyright: updated.
   * debian/rules: no longer inspect DEB_BUILD_OPTIONS for "debug" or
     "nostrip": we are arch independent
 
