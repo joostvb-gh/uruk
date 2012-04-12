@@ -1,3 +1,9 @@
+caspar (20101204-1) unRELEASED  unstable; urgency=low
+
+  * debian/rules: no longer inspect DEB_BUILD_OPTIONS for debug or nostrip: we are arch independent
+
+ -- Joost van Baal <joostvb@debian.org>  Sat, 12 Feb 2011 01:21:45 +0100
+
 caspar (20101204-1) unstable; urgency=low
 
   * New upstream release.
