@@ -4,7 +4,7 @@ Section: devel
 Priority: optional
 Maintainer: Joost van Baal-Ilić <joostvb@debian.org>
 Build-Depends: debhelper (>= 7)
-Standards-Version: 3.9.1
+Standards-Version: 3.9.3
 Homepage: http://mdcc.cx/caspar
 Vcs-Git: http://git.mdcc.cx/caspar
 
