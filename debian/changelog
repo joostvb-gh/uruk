@@ -9,6 +9,7 @@ caspar (20120322-1) UNRELEASED; urgency=low
   * debian/control: update my name.
   * debian/caspar-doc.doc-base.caspar-typesetting: fix spelling error
     (thanks lintian).
+  * debian/rules: add build-arch and build-indep targets (thanks lintian).
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Thu, 12 Apr 2012 23:44:44 +0200
 

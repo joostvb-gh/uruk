@@ -22,10 +22,13 @@ config.status: configure
 #	# commands to configure the package.
 	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info
 
+build: build-arch build-indep
 
-build: build-stamp
+build-arch:
 
-build-stamp:  config.status
+build-indep: build-stamp
+
+build-stamp: config.status
 	dh_testdir
 
 #	# commands to compile the package.
