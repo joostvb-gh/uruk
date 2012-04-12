@@ -7,6 +7,8 @@ caspar (20120322-1) UNRELEASED; urgency=low
   * debian/rules: no longer inspect DEB_BUILD_OPTIONS for "debug" or
     "nostrip": we are arch independent
   * debian/control: update my name.
+  * debian/caspar-doc.doc-base.caspar-typesetting: fix spelling error
+    (thanks lintian).
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Thu, 12 Apr 2012 23:44:44 +0200
 
