@@ -1,8 +1,11 @@
-caspar (20101204-1) unRELEASED  unstable; urgency=low
+caspar (20120322-1) UNRELEASED; urgency=low
 
-  * debian/rules: no longer inspect DEB_BUILD_OPTIONS for debug or nostrip: we are arch independent
+  * New upstream release; backwards incompatible with caspar <= 20101204:
+    csp_CPDIRS and csp_CPDIR are no longer honored. 
+  * debian/rules: no longer inspect DEB_BUILD_OPTIONS for "debug" or
+    "nostrip": we are arch independent
 
- -- Joost van Baal <joostvb@debian.org>  Sat, 12 Feb 2011 01:21:45 +0100
+ -- Joost van Baal-Ilić <joostvb@debian.org>  Thu, 12 Apr 2012 23:44:44 +0200
 
 caspar (20101204-1) unstable; urgency=low
 
