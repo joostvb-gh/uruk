@@ -14,7 +14,7 @@ aclocal-1.11: autom4te failed with exit status: 1
 make[1]: *** [../aclocal.m4] Error 1
 make[1]: Leaving directory `/home/joostvb/git/caspar/caspar/caspar-20120322/_build'
 
-
+- The "csp_install -t dir file [file]" issue
 
 zo 13 17:34 < Fruit> die tooltjes die meegeleverd worden
 zo 13 17:35 < Fruit> die hebben typisch een destination directory en een stel 
