@@ -4,7 +4,7 @@
 
 # csp_install - wrapper for install(1), to be used in caspar-ized Makefiles
 #
-#  usage: csp_install <file> <directory>
+#  usage: csp_install <directory> <file>
 #
 # honors optionally set environment variable csp_INSTALL_OPTIONS.
 # use e.g.
@@ -22,9 +22,9 @@
 # alternative, using cp:
 #
 #  csp_UHOST = dummy
-#  csp_PUSH = mkdir -p $(3) && $(csp_CP) $(1) $(3)/
+#  csp_PUSH = mkdir -p $(2) && $(csp_CP) $(3) $(2)/
 
 : ${csp_INSTALL_MODE:=u=rw,go=r}
-install --directory $2
-exec install --backup=off --preserve-timestamps --mode=$csp_INSTALL_MODE --no-target-directory $csp_INSTALL_OPTIONS $1 $2/$1
+install --directory $1
+exec install --backup=off --preserve-timestamps --mode=$csp_INSTALL_MODE --no-target-directory $csp_INSTALL_OPTIONS $2 $1/$2
 
