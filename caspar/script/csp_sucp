@@ -6,11 +6,11 @@
 # csp_sucp - mix scp with sudo
 #
 # usage:
-#  csp_sucp file [user@]host dir [su-user]
+#  csp_sucp [user@]host dir file
 #
 # examples:
-#  csp_sucp fstab rms@bilbo /etc
-#  csp_sucp trailer.txt monty-python commit/trailer.txt list
+#  csp_sucp rms@bilbo /etc file
+#  csp_sucp monty-python trailer.txt commit
 #
 # warning:
 #  csp_sucp won't prevent the given password from being echoed!
@@ -18,17 +18,16 @@
 
 if test -z "$3"
 then
-    echo "usage: csp_sucp file [user@]host dir [su-user]"
+    echo "usage: csp_sucp [user@]host dir file"
     exit 1
 fi
 
 # command line argument overrules environment variable
 test -n "$CSP_SUCP_USER" && opt_u="$CSP_SUCP_USER"
-test -n "$4" && opt_u="-u $4"
 
 # first make sure our sudo-timestamp is fresh
-ssh -T $2 sudo -v
+ssh -T $1 sudo -v
 # now run sudo: we won't be prompted for a password; and
 # can use stdin for our data
-exec ssh $2 "sudo $opt_u sh -c \"cat - > $3/$1\"" < $1
+exec ssh $1 "sudo $opt_u sh -c \"cat - > $2/$3\"" < $3
 
