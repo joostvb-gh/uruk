@@ -23,7 +23,7 @@ then
 fi
 
 # command line argument overrules environment variable
-test -n "$CSP_SUCP_USER" && opt_u="$CSP_SUCP_USER"
+test -n "$CSP_SUCP_USER" && opt_u="-u $CSP_SUCP_USER"
 
 # first make sure our sudo-timestamp is fresh
 ssh -T $1 sudo -v
