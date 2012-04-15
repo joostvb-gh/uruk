@@ -50,13 +50,13 @@ csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) 
 # wrap csp_SCP and other puch mechanisms in make function template
 csp_scp_FUNC    = $(csp_SCP) $(csp_SCPFLAGS) $(1) $(2):$(3)
 csp_cp_FUNC     = $(csp_CP) $(csp_CPFLAGS) $(1) $(3)
-csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3) $(4)
+csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3)
 csp_rsync_FUNC  = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2)::$(3)
 csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2):$(3)
-csp_diff_FUNC   = $(csp_SSH) $(2) $(csp_CAT) $(3)/$(1) | $(csp_Diff) $(4) - $(1)
-csp_install_FUNC = $(csp_INSTALL) $(1) $(3)
+csp_diff_FUNC   = $(csp_SSH) $(1) $(csp_CAT) $(2)/$(3) | $(csp_Diff) $(FIXME) - $(3)
+csp_install_FUNC = $(csp_INSTALL) $(2) $(3)
 csp_scp_keep_mode_FUNC = $(csp_SCP_KEEP_MODE) $(1) $(2) $(3)
-csp_scpmkdir_FUNC = $(csp_SSH) $(2) $(csp_MKDIRP) $(3) && $(csp_scp_FUNC)
+csp_scpmkdir_FUNC = $(csp_SSH) $(1) $(csp_MKDIRP) $(2) && $(csp_scp_FUNC)
 
 csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
@@ -82,10 +82,10 @@ endef
 
 define remotetargets
 $1--$2--push: $1
-	$$(call csp_PUSH,$1,$2,$$(csp_DIR),$$(csp_XARG))
+	$$(call csp_PUSH,$2,$$(csp_DIR),$1)
 
 $1--$2--diff: $1
-	$$(call csp_DIFF,$1,$2,$$(csp_DIR),$$(csp_DIFFXARG))
+	$$(call csp_DIFF,$2,$$(csp_DIR),$1,$$(csp_DIFFXARG))
 endef
 
 $(foreach file,$(FILES),\
