@@ -23,19 +23,18 @@
 \NAME{csp_helper}{A collection of caspar helper scripts}
 
 \sec{synopsis}{SYNOPSIS}
-  \csp_install \synreqopt{file}{file} \synreqopt{dir}{directory}
+  \csp_install \synreqopt{dir}{directory} \synreqopt{file}{file}
 
 \par{
 
-  \csp_scp_keep_mode \synreqopt{file}{file} \synreqopt{h}{[user@]host} \synreqopt{dir}{directory}
+  \csp_scp_keep_mode \synreqopt{h}{[user@]host} \synreqopt{dir}{directory} \synreqopt{file}{file}
 
 } \par{
 
   \csp_sucp
-    \synreqopt{file}{file}
     \synreqopt{h}{[user@]host}
     \synreqopt{dir}{directory}
-    \synoptopt{s}{su-user}
+    \synreqopt{file}{file}
 }
 
 \sec{description}{DESCRIPTION}
@@ -56,16 +55,15 @@ preserving timestamps.  It uses install(1).
 \verbatim{
  csp_INSTALL_OPTIONS='--owner=www-data --group=www-data' \\
   csp_INSTALL_MODE=ugo=r \\
-  csp_install index.html /srv/www}
+  csp_install /srv/www index.html}
 
 \verbatim{
- csp_INSTALL_MODE=u=rwx,go= csp_install mkpasswd /usr/local/sbin}
+ csp_INSTALL_MODE=u=rwx,go= csp_install /usr/local/sbin mkpasswd}
 
 \sec{install environment}{install ENVIRONMENT}
 
 \csp_install honors csp_INSTALL_OPTIONS and csp_INSTALL_MODE (default is
-u=rw,go=r).
-
+u=rw,go=r).  
 \sec{scp_keep_mode description}{scp_keep_mode DESCRIPTION}
 
 \csp_scp_keep_mode uses ssh to copy a file to a remote host, keeping its file
@@ -77,7 +75,7 @@ without fiddling with permission bits on the remote host.
 
 \verbatim{
   chmod g+w rc
-  csp_scp_keep_mode rc root@gandalf /etc/uruk}
+  csp_scp_keep_mode root@gandalf /etc/uruk rc}
 
 \sec{scp_keep_mode environment}{scp_keep_mode ENVIRONMENT}
 
@@ -99,10 +97,10 @@ an extra line of defense.
 Some examples:
 
 \verbatim{
-  csp_sucp fstab rms@bilbo /etc}
+  csp_sucp rms@bilbo /etc fstab}
 
 \verbatim{
-  csp_sucp trailer.txt monty-python commit/ list}
+  csp_sucp monty-python commit/ trailer.txt}
 
 \sec{sucp bugs}{sucp BUGS}
 
