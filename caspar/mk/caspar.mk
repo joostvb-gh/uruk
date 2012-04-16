@@ -48,11 +48,11 @@ csp_TABOODIRS_DEFAULT ?= CVS .svn
 csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
 
 # wrap csp_SCP and other puch mechanisms in make function template
-csp_scp_FUNC    = $(csp_SCP) $(csp_SCPFLAGS) $(1) $(2):$(3)
-csp_cp_FUNC     = $(csp_CP) $(csp_CPFLAGS) $(1) $(3)
+csp_scp_FUNC    = $(csp_SCP) $(csp_SCPFLAGS) $(3) $(1):$(2)
+csp_cp_FUNC     = $(csp_CP) -t $(csp_CPFLAGS) $(2) $(3)
 csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3)
-csp_rsync_FUNC  = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2)::$(3)
-csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(1) $(2):$(3)
+csp_rsync_FUNC  = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(3) $(1)::$(2)
+csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(3) $(1):$(2)
 csp_diff_FUNC   = $(csp_SSH) $(1) $(csp_CAT) $(2)/$(3) | $(csp_Diff) $(FIXME) - $(3)
 csp_install_FUNC = $(csp_INSTALL) $(2) $(3)
 csp_scp_keep_mode_FUNC = $(csp_SCP_KEEP_MODE) $(1) $(2) $(3)
@@ -61,8 +61,7 @@ csp_scpmkdir_FUNC = $(csp_SSH) $(1) $(csp_MKDIRP) $(2) && $(csp_scp_FUNC)
 csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
 
-# files, not directories
-FILES   := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
+# files, not directories FILES   := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
 
 # exclude editor backup files and other stuff
 FILES   := $(filter-out $(csp_TABOOFILES),$(FILES))
