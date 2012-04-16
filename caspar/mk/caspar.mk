@@ -16,8 +16,7 @@ csp_UHOSTS     ?= $(csp_UHOST)
 
 ifneq ($(csp_UHOSTS_SUBSET),)
 csp_UHOSTS     := $(filter $(csp_UHOSTS_SUBSET),$(csp_UHOSTS))
-endif
-
+endif 
 # uhosts that should be excluded for whatever reason
 csp_UHOSTS     := $(filter-out $(csp_UHOSTS_SKIP),$(csp_UHOSTS))
 
@@ -49,11 +48,11 @@ csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) 
 
 # wrap csp_SCP and other puch mechanisms in make function template
 csp_scp_FUNC    = $(csp_SCP) $(csp_SCPFLAGS) $(3) $(1):$(2)
-csp_cp_FUNC     = $(csp_CP) -t $(csp_CPFLAGS) $(2) $(3)
+csp_cp_FUNC     = $(csp_CP) $(csp_CPFLAGS) -t $(2) $(3)
 csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3)
 csp_rsync_FUNC  = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(3) $(1)::$(2)
 csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(3) $(1):$(2)
-csp_diff_FUNC   = $(csp_SSH) $(1) $(csp_CAT) $(2)/$(3) | $(csp_Diff) $(FIXME) - $(3)
+csp_diff_FUNC   = $(csp_SSH) $(1) $(csp_CAT) $(2)/$(3) | $(csp_Diff) - $(3)
 csp_install_FUNC = $(csp_INSTALL) $(2) $(3)
 csp_scp_keep_mode_FUNC = $(csp_SCP_KEEP_MODE) $(1) $(2) $(3)
 csp_scpmkdir_FUNC = $(csp_SSH) $(1) $(csp_MKDIRP) $(2) && $(csp_scp_FUNC)
@@ -84,7 +83,7 @@ $1--$2--push: $1
 	$$(call csp_PUSH,$2,$$(csp_DIR),$1)
 
 $1--$2--diff: $1
-	$$(call csp_DIFF,$2,$$(csp_DIR),$1,$$(csp_DIFFXARG))
+	$$(call csp_DIFF,$2,$$(csp_DIR),$1)
 endef
 
 $(foreach file,$(FILES),\
