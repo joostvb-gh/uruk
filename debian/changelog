@@ -1,3 +1,9 @@
+caspar (20120417-1) UNRELEASED; urgency=low
+
+  * New experimental upstream release.
+
+ -- Joost van Baal-Ilić <joostvb@debian.org>  Tue, 17 Apr 2012 06:56:17 +0200
+
 caspar (20120322-1) UNRELEASED; urgency=low
 
   * New upstream release: 

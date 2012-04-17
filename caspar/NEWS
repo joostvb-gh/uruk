@@ -1,7 +1,8 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2012MMDD
+caspar version 20120417
 
+- FIXME
 - We now support installing multiple local files in one scp call.
   parallel make ....
 - user interface for caspar helpers csp_* changed in INCOMPATIBLE way.
