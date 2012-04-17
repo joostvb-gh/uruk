@@ -60,7 +60,8 @@ csp_scpmkdir_FUNC = $(csp_SSH) $(1) $(csp_MKDIRP) $(2) && $(csp_scp_FUNC)
 csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
 
-# files, not directories FILES   := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
+# files, not directories
+FILES   := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
 
 # exclude editor backup files and other stuff
 FILES   := $(filter-out $(csp_TABOOFILES),$(FILES))
@@ -129,5 +130,8 @@ install: $(TARGETS)
 load: $(csp_LOAD)
 
 install-recursive: install $(patsubst %,%--install-recursive,$(DIRS))
+
+debug:
+	@echo TARGETS $(TARGETS) FILES $(FILES) csp_UHOSTS $(csp_UHOSTS) csp_PUSH $(csp_PUSH)
 
 .PHONY: $(csp_BUILD) $(TARGETS) $(BULKTARGETS) $(LOADTARGETS) $(DIFFTARGETS) $(csp_LOAD) build install load
