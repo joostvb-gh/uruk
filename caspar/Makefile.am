@@ -8,7 +8,7 @@
 
 ## see booststrap for git2cl
 ChangeLog: NEWS
-	git log --pretty --numstat --summary | sed 's/<[^>][^>]*>//g' | git2cl >ChangeLog
+	git log --pretty --numstat --summary | sed 's/<joostvb[^>][^>]*>//g; s/<wsl[^>][^>]*>//g' | git2cl >ChangeLog
 
 VERSION.m4 VERSION stamp.year stamp.month stamp.day: ChangeLog
 	./setversion
