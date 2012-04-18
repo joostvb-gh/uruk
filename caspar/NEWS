@@ -4,6 +4,7 @@ caspar version 2012MMDD - The Lamprais Release
 
 - FIXME
 
+
 caspar version 20120417 - The Kokki Release
 
 - FIXME
@@ -11,7 +12,14 @@ caspar version 20120417 - The Kokki Release
   parallel make ....
 - user interface for caspar helpers csp_* changed in INCOMPATIBLE way.
 - if you've written your own csp_PUSH implementation, update it. arguments
-  now are ...  (was ...)
+  now are <[user@]host> <dir> <file>.
+  + caspar/script/csp_sucp, caspar/script/csp_scp_keep_mode: swap
+    arguments: now csp_* <[user@]host> <dir> <file> (was:
+    <file> <[user@]host> <dir> [su-user])
+  + caspar/script/csp_install: swap arguments: now
+    csp_install <dir> <file>
+- csp_DIFFXARG support reimplemented (in a slightly less flexible way)
+
 
 caspar version 20120322 - The Kothu Roti Release
 
