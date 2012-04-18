@@ -19,6 +19,7 @@ caspar version 20120417 - The Kokki Release
   + caspar/script/csp_install: swap arguments: now
     csp_install <dir> <file>
 - csp_DIFFXARG support reimplemented (in a slightly less flexible way)
+- caspar/script/csp_sucp: fix bug in $CSP_SUCP_USER processing.
 
 
 caspar version 20120322 - The Kothu Roti Release

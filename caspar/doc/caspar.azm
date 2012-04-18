@@ -134,17 +134,16 @@ The variables one can set in a calling Makefile are:
                            is scp by default)
   \item{\tt{csp_UHOSTS}}   space separated list of user@host items, reachable
                            using \tt{$(csp_PUSH)}
-  \item{\tt{csp_DIR}}      directory on host, reachable using function
+  \item{\tt{csp_DIR}}      directory on host, reachable using function 
                            \tt{$(csp_PUSH)}
   \item{\tt{csp_PUSH}}     make function for pushing files to remote location.
                            Usually, this is a wrapper around a script or
                            program.  The function will be passed 4 arguments:
-                           local \it{filename}, \it{[user@]host}, remote
-                           \it{directory} and (a possibly empty) extra argument.
+			   \it{[user@]host}, remote \it{directory} and local
+                           \it{filename}.
                            \it{[user@]host} will be set
                            to all elements of \tt{$(csp_UHOSTS)};
-                           \it{directory} will be set to \tt{$(csp_DIR)}.  The
-                           fourth argument will be set to \tt{$(csp_XARG)}.
+                           \it{directory} will be set to \tt{$(csp_DIR)}.
                            Currently, \tt{$(csp_scp_FUNC)}, \tt{$(csp_cp_FUNC)}
                            and \tt{$(csp_sucp_FUNC)} are supported as push
                            plugins.  If \tt{csp_PUSH} is unset, the default
