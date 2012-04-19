@@ -2,9 +2,8 @@
 
 --- release critical ----
 
-- caspar.mk is completely borken, first example in manpage fails:
-   joostvb@hille:/tmp/p% make install              
-   make: Nothing to be done for `install'.
+- caspar.mk is not completely tested yet, first and second example in manpage
+  succeed, test 3rd and later.
 
 - fix manpage typesetting: install tidy @ buildhost, my name in caspar.ps
   looks like crap

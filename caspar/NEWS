@@ -1,6 +1,6 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2012MMDD - The Lamprais Release
+caspar version 2012MMDD - The Lamprais Release, for Danishka 2a61e529
 
 - FIXME
 
@@ -10,9 +10,19 @@ caspar version 20120417 - The Kokki Release
 - FIXME
 - We now support installing multiple local files in one scp call.
   parallel make ....
+
+zo 13 17:35 < Fruit> het zou handig zijn voor de shellscripter als die
+                     destination directory het eerste argument was
+zo 13 17:36 < Fruit> dan kun je dat ding shift-en
+zo 13 17:36 < Fruit> en de rest als "$@" behandelen
+zo 13 17:38 < Fruit> dit zou de weg vrij kunnen maken naar efficiëntere
+                     implementaties van push
+zo 13 17:38 < Fruit> (een veelgehoorde wens van mensen)
+
 - user interface for caspar helpers csp_* changed in INCOMPATIBLE way.
 - if you've written your own csp_PUSH implementation, update it. arguments
-  now are <[user@]host> <dir> <file>.
+  now are <[user@]host> <dir> <file> (was:
+  <file> <[user@]host> <dir> [<xarg>])
   + caspar/script/csp_sucp, caspar/script/csp_scp_keep_mode: swap
     arguments: now csp_* <[user@]host> <dir> <file> (was:
     <file> <[user@]host> <dir> [su-user])
