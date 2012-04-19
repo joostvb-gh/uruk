@@ -24,11 +24,6 @@ zo 13 17:35 < Fruit> die hebben typisch een destination directory en een stel
                      bestanden als argumenten
 zo 13 17:35 < Fruit> het zou handig zijn voor de shellscripter als die 
                      destination directory het eerste argument was
-zo 13 17:36 < Fruit> dan kun je dat ding shift-en
-zo 13 17:36 < Fruit> en de rest als "$@" behandelen
-zo 13 17:38 < Fruit> dit zou de weg vrij kunnen maken naar efficiëntere 
-                     implementaties van push
-zo 13 17:38 < Fruit> (een veelgehoorde wens van mensen)
 zo 13 17:38 < joostvb> das natuurlijk totaal backwards incompatible met alles
 zo 13 17:38 < Fruit> valt wel mee
 zo 13 17:38 < joostvb> maar iig wel n goed idee
