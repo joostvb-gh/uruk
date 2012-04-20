@@ -29,5 +29,7 @@ test -n "$CSP_SUCP_USER" && opt_u="-u $CSP_SUCP_USER"
 ssh -T $1 sudo -v
 # now run sudo: we won't be prompted for a password; and
 # can use stdin for our data
+test -n "$CSP_DEBUG" && echo $1 $opt_u $2 $3
+
 exec ssh $1 "sudo $opt_u sh -c \"cat - > $2/$3\"" < $3
 
