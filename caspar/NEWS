@@ -1,12 +1,19 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2012MMDD - The Lamprais Release, for Danishka 2a61e529
+caspar version 20120420 - The Lamprais Release, for Danishka 2a61e529
 
+[Joost van Baal-Ilić]
 - FIXME
+- caspar/script/csp_sucp: csp_sucp now honors CSP_DEBUG
+- caspar/NEWS, caspar/doc/caspar.azm: document new csp_PUSH
+  interface, support for csp_XARG is dropped
+- caspar/mk/caspar.mk: add (undocumented) target "debug". fix bug,
+  caspar now somewhat usable again.
 
 
 caspar version 20120417 - The Kokki Release
 
+[Joost van Baal-Ilić]
 - FIXME
 - We now support installing multiple local files in one scp call.
   parallel make ....
