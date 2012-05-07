@@ -10,7 +10,8 @@
 - fix manpage typesetting: install tidy @ buildhost, my name in caspar.ps
   looks like crap
 
-- ``make dist'' succeeds, but ``make distcheck'' fails with:
+- ``make dist'' succeeds, but ``make distcheck'' (on hille, not on dijkstra)
+  fails with:
 
 make[1]: Entering directory `/home/joostvb/git/caspar/caspar/caspar-20120322/_build'
 CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/joostvb/git/caspar/caspar/caspar-20120322/missing --run aclocal-1.11 

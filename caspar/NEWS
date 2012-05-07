@@ -3,7 +3,6 @@ Refer to ChangeLog for detailed per-file info.
 caspar version 20120420 - The Lamprais Release, for Danishka Navin
 
 [Joost van Baal-Ilić]
-- FIXME
 - caspar/script/csp_sucp: csp_sucp now honors CSP_DEBUG
 - caspar/NEWS, caspar/doc/caspar.azm: document new csp_PUSH
   interface, support for csp_XARG is dropped
