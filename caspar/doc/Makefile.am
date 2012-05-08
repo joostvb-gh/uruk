@@ -61,7 +61,7 @@ SUFFIXES = .1 .7 .azm .html .ps .txt
 .azm.html:
 	$(ZOEM) -d html -i $< -o $@
 	$(ZOEM) -d html -i $< -o $@
-	- $(TIDY) -e $@
+	$(TIDY) -utf8 -e $@
 
 ## alternative, one could call something like
 ## groff -man -Tascii $< > $@
