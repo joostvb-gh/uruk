@@ -88,6 +88,8 @@ Other targets: \tt{filename.ps}, \tt{filename.html}, \tt{filename.txt}, ...
 
 \sec{examples}{EXAMPLES}
 
+\par{
+
 Some examples:  Overriding the caspar-supplied DSSSL files:  Create your own
 print.dls and html.dsl, in the same directory as your Docbook XML files.  Your
 Makefile should read:
@@ -105,6 +107,8 @@ Overriding the standard html-to-text convertor:
 }
 
 .
+
+}
 
 \sec{files}{FILES}
 

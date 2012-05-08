@@ -124,6 +124,8 @@ csp_sucp(1).  See below.
 
 \sec{variables}{VARIABLES}
 
+\par{
+
 The variables one can set in a calling Makefile are:
 
 \begin{itemize}{
@@ -171,6 +173,8 @@ The variables one can set in a calling Makefile are:
     csp_UHOSTS.
 \end{itemize}
 
+}
+
 \par{
 
 The following variables might get phased out or removed soonish:
@@ -189,7 +193,11 @@ The following variables might get phased out or removed soonish:
 
 \sec{examples}{EXAMPLES}
 
+\par{
+
 Some examples:
+
+}
 
 \cpar{Using csp_UHOST}{
 
