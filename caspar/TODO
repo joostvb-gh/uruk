@@ -1,7 +1,5 @@
 # This file is maintained at http://git.mdcc.cx/caspar
 
-- next release : Sint Katelijne Release
-
 --- release critical ----
 
 - caspar.mk is not completely tested yet, first and second example in manpage
