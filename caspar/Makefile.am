@@ -28,14 +28,15 @@ docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog README THANKS TODO NEWS
 
 ## local targets
-MY_RDIR = beskar:www/mdcc.cx/pub/caspar/
+MY_RHOST = beskar.mdcc.cx
+MY_RDIR = $(MY_RHOST):www/mdcc.cx/pub/caspar/
 
 sign:
 	for i in $(DIST_ARCHIVES); do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
 
 publish:
 	for i in $(DIST_ARCHIVES); do echo "scp $$i $$i.asc $(MY_RDIR)"; scp $$i $$i.asc $(MY_RDIR); done
-	@echo now run ssh opal update-tar-symlinks caspar
+	@echo now run ssh $(MY_RHOST) update-tar-symlinks caspar
 
 ## Only files from the current directory or from subdirectory which
 ## don't have their own Makefile.am should be listed here.
