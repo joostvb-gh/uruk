@@ -1,6 +1,6 @@
-caspar (20120420-1) UNRELEASED; urgency=low
+caspar (20120508-1) UNRELEASED; urgency=low
 
-  * New experimental upstream release.
+  * New experimental upstream release (missed 20120420).
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Tue, 08 May 2012 10:35:23 +0200
 
