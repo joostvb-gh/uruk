@@ -58,10 +58,12 @@ SUFFIXES = .1 .7 .azm .html .ps .txt
 .1.ps:
 	$(TROFF) -man $< > $@
 
+## FIXME do NOT ignore errors from tidy.  if you do, building on a
+## host which lacks tidy will fail terribly _and_ silently!
 .azm.html:
 	$(ZOEM) -d html -i $< -o $@
 	$(ZOEM) -d html -i $< -o $@
-	$(TIDY) -utf8 -e $@
+	-$(TIDY) -utf8 -e $@
 
 ## alternative, one could call something like
 ## groff -man -Tascii $< > $@

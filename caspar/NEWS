@@ -3,7 +3,9 @@ Refer to ChangeLog for detailed per-file info.
 caspar version 20120508 - The Sint Katelijne Release
 
 [Joost van Baal-Ilić]
-- FIXME 
+- caspar/doc/Makefile.am: assume html is in utf8; this fixes a bug
+  introduced in version 20120420: manpages were empty.
+
 
 caspar version 20120420 - The Lamprais Release, for Danishka Navin
 
@@ -18,9 +20,7 @@ caspar version 20120420 - The Lamprais Release, for Danishka Navin
 caspar version 20120417 - The Kokki Release
 
 [Joost van Baal-Ilić]
-- FIXME
 - We now support installing multiple local files in one scp call.
-  parallel make .... FIXME .
   The destination directory of a push script is now passed as the first
   argument. Therefore, one can now implement one's own push mechanism in a
   more efficient way.  The arguments of a push implementation can get shifted,

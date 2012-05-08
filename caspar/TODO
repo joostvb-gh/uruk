@@ -2,6 +2,8 @@
 
 --- release critical ----
 
+- doc/Makefile.am: do NOT ignore errors from tidy
+
 - caspar.mk is not completely tested yet, first and second example in manpage
   succeed, test 3rd and later.
 
