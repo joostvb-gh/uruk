@@ -1,11 +1,16 @@
-# This file is maintained at http://git.mdcc.cx/caspar
+# This file is maintained at http://git.mdcc.cx/caspar 
 
---- release critical ----
+--- release critical ---- 
 
 - doc/Makefile.am: do NOT ignore errors from tidy
 
 - caspar.mk is not completely tested yet, first and second example in manpage
   succeed, test 3rd and later.
+
+   $ CSP_DEBUG=yes CSP_SUCP_USER=jantje csp_sucp joe@bilbo   /etc/ inittab
+
+works fine.
+
 
 - fix manpage typesetting: install tidy @ buildhost, my name in caspar.ps
   looks like crap
