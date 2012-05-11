@@ -79,6 +79,14 @@ $1-install: $(foreach host,$(csp_UHOSTS),$1--$(host)--push)
 $1-diff: $(foreach host,$(csp_UHOSTS),$1--$(host)--diff)
 endef
 
+define bulktargets
+$2--bulk-push: $1
+	$$(call csp_PUSH,$2,$$(csp_DIR),$1)
+endef
+
+$(foreach host,$(csp_UHOSTS),\
+	$(eval $(call bulktargets,$(FILES),$(host))))
+
 define remotetargets
 $1--$2--push: $1
 	$$(call csp_PUSH,$2,$$(csp_DIR),$1)
@@ -107,7 +115,8 @@ $(foreach load,$(csp_LOAD),\
 	$(eval $(call loadtargets,$(load),$(host)))))
 
 TARGETS := $(patsubst %,%-install,$(FILES))
-TARGETS := $(filter-out $(csp_LOAD), $(TARGETS))
+
+BULKTARGETS := $(patsubst %,%--bulk-push,$(csp_UHOSTS))
 
 DIFFTARGETS := $(patsubst %,%-diff,$(FILES))
 
@@ -125,13 +134,13 @@ build: $(csp_BUILD)
 
 diff: $(DIFFTARGETS)
 
-install: $(TARGETS)
+install: $(BULKTARGETS)
 
 load: $(csp_LOAD)
 
 install-recursive: install $(patsubst %,%--install-recursive,$(DIRS))
 
 debug:
-	@echo TARGETS $(TARGETS) FILES $(FILES) csp_UHOSTS $(csp_UHOSTS) csp_PUSH $(csp_PUSH)
+	@echo TARGETS $(TARGETS) BULKTARGETS $(BULKTARGETS) FILES $(FILES) csp_UHOSTS $(csp_UHOSTS) csp_PUSH $(csp_PUSH)
 
 .PHONY: $(csp_BUILD) $(TARGETS) $(BULKTARGETS) $(LOADTARGETS) $(DIFFTARGETS) $(csp_LOAD) build install load
