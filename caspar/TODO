@@ -13,7 +13,16 @@
    $ CSP_DEBUG=yes CSP_SUCP_USER=jantje csp_sucp joe@bilbo   /etc/ inittab
 
   works fine.  "export CSP_SUCP_USER=joe; make" works fine too.
+  "make CSP_SUCP_USER=joe" works fine too. 
 
+   csp_SUCP_USER = joe
+   csp_PUSH = $( csp_sucp_FUNC)
+
+  make
+
+  works too.
+
+ 
 
 - fix manpage typesetting: install tidy @ buildhost, my name in caspar.ps
   looks like crap

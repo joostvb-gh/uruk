@@ -49,7 +49,7 @@ csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) 
 # wrap csp_SCP and other puch mechanisms in make function template
 csp_scp_FUNC    = $(csp_SCP) $(csp_SCPFLAGS) $(3) $(1):$(2)
 csp_cp_FUNC     = $(csp_CP) $(csp_CPFLAGS) -t $(2) $(3)
-csp_sucp_FUNC   = $(csp_SUCP) $(1) $(2) $(3)
+csp_sucp_FUNC   = CSP_SUCP_USER=$(csp_SUCP_USER) $(csp_SUCP) $(1) $(2) $(3)
 csp_rsync_FUNC  = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(3) $(1)::$(2)
 csp_rsyncssh_FUNC = $(csp_RSYNC) $(csp_RSYNCFLAGS) $(3) $(1):$(2)
 csp_diff_FUNC   = $(csp_SSH) $(1) $(csp_CAT) $(2)/$(3) | $(csp_Diff) $(csp_DIFFXARG) - $(3)
