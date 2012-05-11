@@ -4,12 +4,11 @@ caspar version 201205DD - The Железничка Release
 
 [Joost van Baal-Ilić]
 
-
 - FIXME 
 
 [Wessel]
 
-Introduce "bulktargets" in caspar.mk
+- caspar/mk/caspar.mk: Introduce "bulktargets" in caspar.mk
 
 caspar version 20120508 - The Sint Katelijne Release
 

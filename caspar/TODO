@@ -2,6 +2,9 @@
 
 --- release critical ---- 
 
+- "make install" fails when csp_PUSH is set to function without multi-support.
+  e.g. csp sucp.  fix SUCP: tar $1 | ssh $2 sudo tar xC $3
+
 - announce http://git.fruit.je/caspar?a=shortlog;h=refs/heads/joostvb at
   http://mdcc.cx/caspar/#devel
 
