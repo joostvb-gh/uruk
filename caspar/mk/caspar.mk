@@ -41,10 +41,10 @@ csp_DIFFXARG   ?= -u
 csp_EXTRAFILES ?=
 
 csp_TABOOFILES_DEFAULT ?= Makefile .%.swp %~ \#%\# pod2htmd.tmp pod2htmi.tmp
-csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_SKIP), $(csp_TABOOFILES_DEFAULT)) $(csp_TABOOFILES_ADD)
+csp_TABOOFILES ?= $(filter-out $(csp_TABOOFILES_SKIP),$(csp_TABOOFILES_DEFAULT)) $(csp_TABOOFILES_ADD)
 
 csp_TABOODIRS_DEFAULT ?= CVS .svn
-csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP), $(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
+csp_TABOODIRS  ?= $(filter-out $(csp_TABOODIRS_SKIP),$(csp_TABOODIRS_DEFAULT)) $(csp_TABOODIRS_ADD)
 
 # wrap csp_SCP and other puch mechanisms in make function template
 csp_scp_FUNC    = $(csp_SCP) $(csp_SCPFLAGS) $(3) $(1):$(2)
@@ -121,7 +121,7 @@ BULKTARGETS := $(patsubst %,%--bulk-push,$(csp_UHOSTS))
 DIFFTARGETS := $(patsubst %,%-diff,$(FILES))
 
 DIRS    := $(shell for d in *; do test -d "$$d" && echo "$$d"; done)
-DIRS    := $(filter-out $(csp_TABOODIRS), $(DIRS))
+DIRS    := $(filter-out $(csp_TABOODIRS),$(DIRS))
 
 define do-recursive
 $1--install-recursive:
