@@ -2,6 +2,8 @@
 
 --- release critical ---- 
 
+- document csp_mkdircp
+
 - decide upon scp keep_mode: purge, and suggest scp -p ?  it currently
   lacks multisupport.
 

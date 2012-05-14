@@ -31,6 +31,7 @@ csp_RSYNC      ?= rsync
 csp_MKDIRP     ?= mkdir -p
 csp_INSTALL    ?= csp_install
 csp_SCP_KEEP_MODE ?= csp_scp_keep_mode
+csp_MKDIRCP    ?= csp_mkdircp
 
 # extra arguments for cp(1) and scp(1)
 csp_CPFLAGS    ?=
@@ -56,6 +57,7 @@ csp_diff_FUNC   = $(csp_SSH) $(1) $(csp_CAT) $(2)/$(3) | $(csp_Diff) $(csp_DIFFX
 csp_install_FUNC = $(csp_INSTALL) $(2) $(3)
 csp_scp_keep_mode_FUNC = $(csp_SCP_KEEP_MODE) $(1) $(2) $(3)
 csp_scpmkdir_FUNC = $(csp_SSH) $(1) $(csp_MKDIRP) $(2) && $(csp_scp_FUNC)
+csp_mkdircp_FUNC = $(csp_MKDIRCP) $(2) $(3)
 
 csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
