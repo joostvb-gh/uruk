@@ -5,11 +5,18 @@ caspar version 201205DD - The Железничка Release
 [Joost van Baal-Ilić]
 
 - FIXME 
-- csp_sucp is reimplemented: now with "multisupport".
+- caspar/script/csp_sucp: csp_sucp is reimplemented: now with "multisupport"
+  for "bulktargets", it no longer uses cat, but tar.
+- caspar/mk/caspar.mk: csp_SUCP now again supports setting csp_SUCP_USER from
+  within Makefile: interface restored to the one in caspar <= 20101204.
 
-[Wessel]
 
-- caspar/mk/caspar.mk: Introduce "bulktargets" in caspar.mk
+[Wessel Dankers]
+- caspar/mk/caspar.mk: Introduce "bulktargets" in caspar.mk.  Running "make" or
+  "make install" now installs all files in current directory in just one
+  csp_PUSH call.  In case csp_PUSH is set to default "scp", scp is called
+  just once; this makes caspar much more efficient.
+
 
 caspar version 20120508 - The Sint Katelijne Release
 
@@ -35,10 +42,9 @@ caspar version 20120417 - The Kokki Release
   The destination directory of a push script is now passed as the first
   argument. Therefore, one can now implement one's own push mechanism in a
   more efficient way.  The arguments of a push implementation can get shifted,
-  one can treat remaining args as "$@". E.g.:
-  FIXME
-- user interface for caspar helpers csp_* changed in INCOMPATIBLE way.
-- if you've written your own csp_PUSH implementation, update it. arguments
+  one can treat remaining args as "$@".
+- User interface for caspar helpers csp_* changed in INCOMPATIBLE way.
+- If you've written your own csp_PUSH implementation, update it. arguments
   now are <[user@]host> <dir> <file> (was:
   <file> <[user@]host> <dir> [<xarg>])
   + caspar/script/csp_sucp, caspar/script/csp_scp_keep_mode: swap

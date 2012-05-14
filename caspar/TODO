@@ -27,19 +27,17 @@
   "make CSP_SUCP_USER=joe" works fine too. 
 
    csp_SUCP_USER = joe
-   csp_PUSH = $( csp_sucp_FUNC)
+   csp_PUSH = $(csp_sucp_FUNC)
 
   make
 
-  works too.
-
- 
+  works too.  at least, it did in release 20120508....
 
 - fix manpage typesetting: install tidy @ buildhost, my name in caspar.ps
   looks like crap
 
-- ``make dist'' succeeds, but ``make distcheck'' (on hille, not on dijkstra)
-  fails with:
+- ``make dist'' succeeds, but ``make distcheck'' (on hille and dijkstra,
+  not after fresh checkout) fails with:
 
 make[1]: Entering directory `/home/joostvb/git/caspar/caspar/caspar-20120322/_build'
 CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/joostvb/git/caspar/caspar/caspar-20120322/missing --run aclocal-1.11 
