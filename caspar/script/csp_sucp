@@ -18,7 +18,7 @@
 
 if test -z "$3"
 then
-    echo "usage: csp_sucp [user@]host dir file"
+    echo "usage: csp_sucp [user@]host dir file [file ...]"
     exit 1
 fi
 
@@ -31,5 +31,6 @@ ssh -T $1 sudo -v
 # can use stdin for our data
 test -n "$CSP_DEBUG" && echo $1 $opt_u $2 $3
 
-exec ssh $1 "sudo $opt_u sh -c \"cat - > $2/$3\"" < $3
+#exec ssh $1 "sudo $opt_u sh -c \"cat - > $2/$3\"" < $3
+exec tar $3 | ssh $1 sudo $opt_u tar xC $2
 

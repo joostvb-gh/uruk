@@ -2,6 +2,10 @@
 
 --- release critical ---- 
 
+- test new csp_sucp
+
+- document new csp_sucp: needs tar, other sudo permissions: not cat but tar
+
 - "make install" fails when csp_PUSH is set to function without multi-support.
   e.g. csp sucp.  fix SUCP: tar $1 | ssh $2 sudo tar xC $3
 

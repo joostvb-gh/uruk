@@ -5,6 +5,7 @@ caspar version 201205DD - The Железничка Release
 [Joost van Baal-Ilić]
 
 - FIXME 
+- csp_sucp is reimplemented: now with "multisupport".
 
 [Wessel]
 
