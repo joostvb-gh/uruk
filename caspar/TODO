@@ -2,12 +2,16 @@
 
 --- release critical ---- 
 
+- decide upon scp keep_mode: purge, and suggest scp -p ?  it currently
+  lacks multisupport.
+
+- "make install" fails when csp_PUSH is set to function without multi-support.  
+  fix csp_install: add multisupport (also: keep_mode, sucp. rest might just
+  work)
+
 - test new csp_sucp
 
 - document new csp_sucp: needs tar, other sudo permissions: not cat but tar
-
-- "make install" fails when csp_PUSH is set to function without multi-support.
-  e.g. csp sucp.  fix SUCP: tar $1 | ssh $2 sudo tar xC $3
 
 - announce http://git.fruit.je/caspar?a=shortlog;h=refs/heads/joostvb at
   http://mdcc.cx/caspar/#devel
