@@ -118,7 +118,7 @@ $(foreach load,$(csp_LOAD),\
 
 TARGETS := $(patsubst %,%-install,$(FILES))
 
-BULKTARGETS := $(patsubst %,%--bulk-push,$(csp_UHOSTS))
+BULKTARGETS := $(if $(FILES),$(patsubst %,%--bulk-push,$(csp_UHOSTS)))
 
 DIFFTARGETS := $(patsubst %,%-diff,$(FILES))
 
