@@ -1,16 +1,12 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 201205DD - The Железничка Release
+caspar version 20120514 - The Железничка Release
 
 [Joost van Baal-Ilić]
-
-- FIXME 
 - caspar/script/csp_sucp: csp_sucp is reimplemented: now with "multisupport"
   for "bulktargets", it no longer uses cat, but tar.
 - caspar/mk/caspar.mk: csp_SUCP now again supports setting csp_SUCP_USER from
   within Makefile: interface restored to the one in caspar <= 20101204.
-
-
 [Wessel Dankers]
 - caspar/mk/caspar.mk: Introduce "bulktargets" in caspar.mk.  Running "make" or
   "make install" now installs all files in current directory in just one
