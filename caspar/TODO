@@ -13,9 +13,6 @@
 
 - document new csp_sucp: needs tar, other sudo permissions: not cat but tar
 
-- announce http://git.fruit.je/caspar?a=shortlog;h=refs/heads/joostvb at
-  http://mdcc.cx/caspar/#devel
-
 - doc/Makefile.am: do NOT ignore errors from tidy
 
 - caspar.mk is not completely tested yet, first and second example in manpage
