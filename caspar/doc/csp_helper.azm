@@ -16,6 +16,7 @@
 
 \def{caspar}{\bf{caspar}}
 \def{csp_install}{\bf{csp_install}}
+\def{csp_mkdircp}{\bf{csp_mkdircp}}
 \def{csp_scp_keep_mode}{\bf{csp_scp_keep_mode}}
 \def{csp_sucp}{\bf{csp_sucp}}
 
@@ -26,6 +27,10 @@
   \csp_install \synreqopt{dir}{directory} \synreqopt{file}{file}
 
 \par{
+
+  \csp_mkdircp \synreqopt{dir}{directory} \synreqopt{file}{file}
+
+} \par{
 
   \csp_scp_keep_mode \synreqopt{h}{[user@]host} \synreqopt{dir}{directory} \synreqopt{file}{file}
 
@@ -39,7 +44,7 @@
 
 \sec{description}{DESCRIPTION}
 
-The scripts \csp_install, \csp_scp_keep_mode and \csp_sucp are helpers for
+The scripts \csp_install, \csp_mkdircp, \csp_scp_keep_mode and \csp_sucp are helpers for
 \sibref{caspar}{caspar(7)}.  These scripts typically are not invoked directly,
 but via a Makefile which uses \caspar.  See the notes on csp_PUSH in
 \sibref{caspar}{caspar(7)} for information on how to link \csp_install,
@@ -64,6 +69,13 @@ preserving timestamps.  It uses install(1).
 
 \csp_install honors csp_INSTALL_OPTIONS and csp_INSTALL_MODE (default is
 u=rw,go=r).  
+
+\sec{mkdircp_description}{mkdircp DESCRIPTION}
+
+\csp_mkdircp calls mkdir(1) and cp(1).
+
+
+
 \sec{scp_keep_mode_description}{scp_keep_mode DESCRIPTION}
 
 \csp_scp_keep_mode uses ssh to copy a file to a remote host, keeping its file

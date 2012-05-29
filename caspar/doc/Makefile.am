@@ -31,7 +31,7 @@ typetargets = casparize.html casparize.ps casparize.txt csp_helper.html \
   csp_helper.ps csp_helper.txt caspar.html caspar.ps \
   caspar.txt caspar-typesetting.html caspar-typesetting.ps \
   caspar-typesetting.txt
-man1s = csp_install.1 csp_scp_keep_mode.1 csp_sucp.1
+man1s = csp_install.1 csp_mkdircp.1 csp_scp_keep_mode.1 csp_sucp.1
 manazms = casparize.1 csp_helper.1 caspar.7 caspar-typesetting.7
 tmpfiles = casparize.zmr casparize.zmt caspar-typesetting.zmr \
   caspar-typesetting.zmt caspar.zmr caspar.zmt csp_helper.zmr csp_helper.zmt
