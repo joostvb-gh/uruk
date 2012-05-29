@@ -18,11 +18,6 @@
 #   include caspar/mk/caspar.mk
 #
 # in a Makefile
-#
-# alternative, using cp:
-#
-#  csp_UHOST = dummy
-#  csp_PUSH = mkdir -p $(2) && $(csp_CP) $(3) $(2)/
 
 : ${csp_INSTALL_MODE:=u=rw,go=r}
 install --directory $1
