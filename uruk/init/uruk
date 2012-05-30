@@ -66,7 +66,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # exit code
 STATUS=0
 
-# @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ can overrule
+# /etc/default/uruk can overrule
 # enable_uruk_check, enable_ipv6, enable_autosave, enable_save_counters and PATH
 # On Debian systems, configuration for init scripts is in /etc/default/
 test -f /etc/default/uruk && . /etc/default/uruk
@@ -372,8 +372,7 @@ $initd options:
   flush
      Flush all rules from the current iptables status.
 
-Saved ruleset locations: @LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/iptables/ and
-@LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/ip6tables/ .
+Saved ruleset locations: /var/lib/uruk/iptables/ and /var/lib/uruk/ip6tables/ .
 
 END
 }
@@ -467,7 +466,7 @@ initd_main () {
         else
           cat <<END
  Either set enable_uruk_save to true in
- @SYSCONF_PATH@/{default,sysconfig}/@PACKAGE_TARNAME@ or call this script with
+ /etc/{default,sysconfig}/uruk or call this script with
  the "force-reload" option: cannot reload active file without touching your live
  rules if using uruk-save is disallowed.
 END
@@ -513,10 +512,9 @@ END
             fi
           else
             cat <<END
- Either set enable_uruk_save to true in
- @SYSCONF_PATH@/{default,sysconfig}/@PACKAGE_TARNAME@ or call this script with
- the "start" option: cannot create active file without touching your live
- rules if using uruk-save is disallowed.
+ Either set enable_uruk_save to true in /etc/{default,sysconfig}/uruk
+ or call this script with the "start" option: cannot create active file
+ without touching your live rules if using uruk-save is disallowed.
 END
           fi
           ;;
@@ -548,8 +546,8 @@ initd_preload() {
   iptables="/sbin/${iptables_command}"
   iptables_save="${iptables}-save"
   iptables_restore="${iptables}-restore"
-  uruk_config="@SYSCONF_PATH@/@PACKAGE_TARNAME@/rc"
-  libdir="@LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@/${iptables_command}"
+  uruk_config="/etc/uruk/rc"
+  libdir="/var/lib/uruk/${iptables_command}"
   autosave="${libdir}/autosave"
   initd_have_a_cow_man "$iptables_save" "$iptables_restore"
   ${iptables_command} -nL >/dev/null
@@ -558,7 +556,7 @@ initd_preload() {
 
 check_uruk() {
   initd_have_a_cow_man uruk >/dev/null
-  uruk_config="@SYSCONF_PATH@/@PACKAGE_TARNAME@/rc"
+  uruk_config="/etc/uruk/rc"
   # check for existence of uruk rc file.
   if ! test -r $uruk_config; then
     echo "No file $uruk_config present."
