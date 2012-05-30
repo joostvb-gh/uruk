@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201205DD
+uruk version 20120530
 
 - uruk/script/uruk.in: icmpv6: DROP some.  Based upon suggestions found in
   rfc4890-icmpv6-firewall.sh
