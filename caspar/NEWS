@@ -1,5 +1,15 @@
 Refer to ChangeLog for detailed per-file info.
 
+
+caspar version 20120530 - The Miekoekse Release
+
+[Wessel Dankers]
+- caspar/NEWS, caspar/mk/caspar.mk: caspar/mk/caspar.mk: do not run
+  bulktargets if no files are available
+[Joost van Baal-Ilić]
+- caspar/script/csp_mkdircp: add yet another caspar helper
+
+
 caspar version 20120514 - The Железничка Release
 
 [Joost van Baal-Ilić]
