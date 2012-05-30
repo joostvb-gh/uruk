@@ -30,20 +30,6 @@ test -f ChangeLog || {
 
 test -f VERSION.m4 || ./setversion
 
-test -f acinclude.m4 || {
-    if test -f /usr/share/aclocal/ac_define_dir.m4
-    then
-        ln -s /usr/share/aclocal/ac_define_dir.m4 acinclude.m4
-    else
-        cat <<EOT
-You need the autoconf-archive Debian package, version >= 20031029-1.
-Alternatively, you could install the GNU Autoconf Macro Archive's
-http://autoconf-archive.cryp.to/ac_define_dir.m4 as acinclude.m4.
-EOT
-   fi
-}
-
-
 # Override automake 1.9 default: automake1.9 version 1.9.6+nogfdl-3
 # creates symlink to /usr/share/automake-1.9/COPYING which is GPL v2.
 # We want v3.

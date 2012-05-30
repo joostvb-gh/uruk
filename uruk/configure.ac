@@ -41,13 +41,6 @@ Copyright (C) 2003, 2004, 2005 Joost van Baal
 
 AC_REVISION([AD1_VERSION])
 
-# AC_DEFINE_DIR is defined in acinclude.m4
-AC_DEFINE_DIR(BIN_PATH, bindir)
-AC_DEFINE_DIR(SBIN_PATH, sbindir)
-AC_DEFINE_DIR(DATA_PATH, datadir)
-AC_DEFINE_DIR(SYSCONF_PATH, sysconfdir)
-AC_DEFINE_DIR(LOCALSTATE_PATH, localstatedir)
-
 AC_CHECK_PROG(HASZOEM, zoem, yes, no)
 if test "xno" = "x$HASZOEM"
 then
