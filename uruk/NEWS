@@ -2,6 +2,25 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 201205DD
+
+- uruk/script/uruk.in: icmpv6: DROP some.  Based upon suggestions found in
+  rfc4890-icmpv6-firewall.sh
+- uruk/doc/rfc4890-icmpv6-firewall.sh, uruk/doc/rfc4890.license.msg: ship
+  example ICMP v6 script from RFC 4890, by Suresh Krishnan.  It is available
+  under a BSD-style license.
+- zoem no longer needed to build from this tarball: pretypeset documentation
+  is shipped.
+- we no longer rely upon expansion of BIN_PATH SBIN_PATH DATA_PATH SYSCONF_PATH
+  LOCALSTATE_PATH using AC_DEFINE_DIR, as defined in GNU Autoconf Macro
+  Archive's ac_define_dir.m4.  These are now hardcoded to /usr/bin, /usr/sbin,
+  /var, /etc and /usr/share.  (Package autoconf-archive >= 20111221-1 (and
+  possible also older ones) no longer ships ac_define_dir.  From changelog:
+  2011-09-16 "AX_DEFINE_DIR: Obsolete: it doesn't comply with the GCS." See
+  http://lists.gnu.org/archive/html/bug-autoconf/2011-09/msg00013.html for
+  discussion.)
+
+
 uruk version 20110831
 
 - uruk/man/Makefile.am: assume zoem knows where to find aephea;

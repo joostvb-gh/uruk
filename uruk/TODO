@@ -1,21 +1,6 @@
-- does not build from vcs: autoconf-archive >= 20111221-1 (and possible also
-  older ones) no longer ships ac_define_dir.  from changelog:
-   2011-09-16  Reuben Thomas  <rrt@sc3d.org>
-        AX_DEFINE_DIR: Obsolete: it doesn't comply with the GCS.
-  See http://lists.gnu.org/archive/html/bug-autoconf/2011-09/msg00013.html
-  for discussion and see
-  http://www.gnu.org/software/autoconf/manual/autoconf.html#Defining-Directories
-  around "20.5 How Do I #define Installation Directories?" and
-  http://www.gnu.org/software/autoconf/manual/autoconf.html#Installation-Directory-Variables
-  around "It is deliberate that the directory output variables keep them
-  unexpanded" for background.
 
 - decide: fork this package, get new name, don't bother about migration scenario,
   use dedicated named chains and tables.
-
-- ship example icmp v6 script from rfc 4890, appendix B, p. 30 - 37.  by Suresh
-  Krishnan.  It is available under a BSD-style license.  (up to now in private
-  communication.)  Also: Use (parts of) this script.
 
 - major overhaul: use different chains, optimise behaviour when dealing with ipv6.
   we deal with private ip ranges in a braindead way; improve that.
