@@ -73,8 +73,6 @@ AC_CONFIG_FILES([Makefile
                  init/Makefile
                  man/Makefile
                  man/include.zmm
-                 script/Makefile
-                 script/uruk
-                 script/uruk-save])
+                 script/Makefile])
 AC_OUTPUT
 
