@@ -34,14 +34,14 @@
 \def{uruk_save}{\bf{uruk-save}}
 \def{rc}{\it{rc}}
 
-\def{sbinpath}{@SBIN_PATH@}
-\def{sysconfpath}{@SYSCONF_PATH@}
+\def{sbinpath}{/usr/sbin}
+\def{sysconfpath}{/etc}
 
-\def{rcpath}{@SYSCONF_PATH@/@PACKAGE_TARNAME@/rc}
-\def{statepath}{@LOCALSTATE_PATH@/lib/@PACKAGE_TARNAME@}
-\def{initpath}{@SYSCONF_PATH@/init.d/uruk}
-\def{expath}{@DATA_PATH@/doc/@PACKAGE_TARNAME@/examples/rc}
-\def{defpath}{@DATA_PATH@/doc/@PACKAGE_TARNAME@/examples/default}
+\def{rcpath}{/etc/uruk/rc}
+\def{statepath}{/var/lib/uruk}
+\def{initpath}{/etc/init.d/uruk}
+\def{expath}{/usr/share/doc/uruk/examples/rc}
+\def{defpath}{/usr/share/doc/uruk/examples/default}
 
 \def{ttrcpath}{\tt{\rcpath}}
 \def{ttinitpath}{\tt{\initpath}}
