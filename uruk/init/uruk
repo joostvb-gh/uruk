@@ -69,9 +69,9 @@ STATUS=0
 # @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ can overrule
 # enable_uruk_check, enable_ipv6, enable_autosave, enable_save_counters and PATH
 # On Debian systems, configuration for init scripts is in /etc/default/
-test -f @SYSCONF_PATH@/default/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/default/@PACKAGE_TARNAME@
+test -f /etc/default/uruk && . /etc/default/uruk
 # On Red Hat systems, configuration for init scripts is in /etc/sysconfig/
-test -f @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@ && . @SYSCONF_PATH@/sysconfig/@PACKAGE_TARNAME@
+test -f /etc/sysconfig/uruk && . /etc/sysconfig/uruk
 
 ###############################################################################
 #

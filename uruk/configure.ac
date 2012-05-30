@@ -71,7 +71,6 @@ AC_CONFIG_FILES([Makefile
                  contrib/Makefile
                  doc/Makefile
                  init/Makefile
-                 init/uruk
                  man/Makefile
                  man/include.zmm
                  script/Makefile
