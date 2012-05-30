@@ -30,7 +30,7 @@ docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog ChangeLog.2003 README THANKS TODO
 
 ## local targets
-MY_RDIR = beskar:www/mdcc.cx/pub/uruk/
+MY_RDIR = beskar.mdcc.cx:www/mdcc.cx/pub/uruk/
 
 sign:
 	for i in $(DIST_ARCHIVES); do echo "gpg --armor --detach-sign $$i"; gpg --armor --detach-sign $$i; done
