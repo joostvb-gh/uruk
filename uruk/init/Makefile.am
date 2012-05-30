@@ -8,3 +8,4 @@
 
 initdir = $(sysconfdir)/init.d
 init_SCRIPTS = uruk
+EXTRA_DIST = $(init_SCRIPTS)

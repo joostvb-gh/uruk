@@ -36,8 +36,8 @@ tmpfiles = uruk-rc.zmt uruk-rc.zmr uruk-save.zmt uruk-save.zmr \
 doc_DATA = $(typetargets) $(azms)
 man_MANS = uruk.8 uruk-rc.5 uruk-save.8
 
-EXTRA_DIST = $(azms)
-DISTCLEANFILES = $(man_MANS) $(typetargets) $(tmpfiles)
+EXTRA_DIST = $(doc_DATA) $(man_MANS)
+## DISTCLEANFILES = $(man_MANS) $(typetargets) $(tmpfiles)
 
 VERSION = @PACKAGE_VERSION@
 PACKAGE = @PACKAGE_TARNAME@
