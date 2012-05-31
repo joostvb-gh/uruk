@@ -1,8 +1,14 @@
 caspar (20120530-1) unstable; urgency=low
 
-  * New upstream release (missed 20120514).
+  * New upstream release.
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Wed, 30 May 2012 14:17:00 +0200
+
+caspar (20120514-1) unstable; urgency=low
+
+   * New experimental upstream release.
+
+ -- Joost van Baal-Ilić <joostvb@debian.org>  Wed, 16 May 2012 14:18:50 +0200
 
 caspar (20120508-1) unstable; urgency=low
 
