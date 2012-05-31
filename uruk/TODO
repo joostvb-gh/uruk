@@ -122,16 +122,7 @@ obsolete syntax
 ----------------- end of candidates for upcoming release ------------------
 ----------------- stuff which just might happen one day -------------------
 
-- improve documentation on usage with non-fixed IPs.
- ma 13 09:01 < joostvb> fvos: uruk werkt trouwens ook een beetje met dynamische ip, 
-                       zie de docs.  met ifup/ifdown ipv met init-script. er staan 
-                       wat tips in de documentatie
- ma 13 09:07 < Fruit> fvos: echo 'invoke-rc.d uruk restart' >/etc/network/if-up.d/uruk
- ma 13 09:08 < Fruit> ik zit me alleen af te vragen of networkmanager dat spul ook 
-                     gebruikt
- ma 13 09:10 < Fruit> okee, networkmanager voert die scripts dus wél uit.
- ma 13 09:11 < Fruit> fvos: wellicht een hashbang erbij en een execbitje.
-  status: semi-implemented in debian package.
+- improve documentation on usage with non-fixed IPs, refer to /etc/network/if-up.d/uruk.
 
 - using names of interfaces in names of variables is dumb.  the characters
   @ : . occur in interface names, but are not allowed in variable names.
