@@ -2,9 +2,10 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version UNRELEASED
+uruk version 20120605 - The Pickensteeg Release
 
-- FIXME
+- configure.ac: no longer die if programs zoem, col and/or groff are not
+  found.
 
 
 uruk version 20120530
