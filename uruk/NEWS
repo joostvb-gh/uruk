@@ -10,7 +10,12 @@ uruk version UNRELEASED
 uruk version 20120530
 
 - uruk/script/uruk.in: icmpv6: DROP some.  Based upon suggestions found in
-  rfc4890-icmpv6-firewall.sh
+  rfc4890-icmpv6-firewall.sh.  A.o., the following ICMPv6 packets are now
+  dropped by default: Redirect messages: redirect; Multicast Listener queries
+  (MLDv1 and MLDv2): 130; Multicast Listener reports (MLDv1): 131; Multicast
+  Listener Done messages (MLDv1): 132; Multicast Listener reports (MLDv2):
+  143; Router renumbering messages: 138; and Node information queries (139)
+  and replies (140): 139 140.
 - uruk/doc/rfc4890-icmpv6-firewall.sh, uruk/doc/rfc4890.license.msg: ship
   example ICMP v6 script from RFC 4890, by Suresh Krishnan.  It is available
   under a BSD-style license.
