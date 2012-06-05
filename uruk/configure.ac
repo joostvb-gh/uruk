@@ -29,7 +29,7 @@ AC_INIT([Uruk],
        [joostvb-uruk@mdcc.cx],
        [uruk])
 
-AC_PREREQ(2.53)
+AC_PREREQ(2.67)
 
 AM_INIT_AUTOMAKE
 
@@ -41,24 +41,13 @@ Copyright (C) 2003, 2004, 2005 Joost van Baal
 
 AC_REVISION([AD1_VERSION])
 
-AC_CHECK_PROG(HASZOEM, zoem, yes, no)
-if test "xno" = "x$HASZOEM"
-then
- AC_MSG_ERROR([cannot find zoem ( http://micans.org/zoem ) in your PATH ])
-fi
-
-AC_CHECK_PROG(HASGROFF, groff, yes, no)
-if test "xno" = "x$HASGROFF"
-then
- AC_MSG_ERROR([cannot find groff in your PATH])
-fi
-
-AC_CHECK_PROG(HASGROFF, col, yes, no)
-if test "xno" = "x$HASCOL"
-then
- AC_MSG_ERROR([cannot find col in your PATH])
-fi
-
+## AC_CHECK_PROG(HASZOEM, zoem, yes, no)
+## if test "xno" = "x$HASZOEM"
+## then
+##  AC_MSG_ERROR([cannot find zoem ( http://micans.org/zoem ) in your PATH ])
+## fi
+## AC_CHECK_PROG(HASGROFF, groff, yes, no)
+## AC_CHECK_PROG(HASGROFF, col, yes, no)
 
 AC_CONFIG_FILES([Makefile
                  contrib/Makefile
