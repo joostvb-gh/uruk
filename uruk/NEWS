@@ -2,6 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 2012MMDD - The
+
+- FIXME
+
+
 uruk version 20120608 - The Hooidonk Release
 
 - uruk/script/uruk: No longer block, but allow ICMPv6 type 137 Redirect Message
