@@ -1,3 +1,10 @@
+- uruk version 20120608 - The Hooidonk Release : init script is borked (was: ok-ish).  now, lintian complains:
+
+W: uruk: init.d-script-possible-missing-stop /etc/init.d/uruk 1
+E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-start
+E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-stop
+
+
 - ipv6 is borked. autoconfiguration fails.
 
 vr 08 12:50 < joostvb> http://www.faqs.org/rfcs/rfc4862.html
