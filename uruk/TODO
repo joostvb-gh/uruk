@@ -1,3 +1,24 @@
+- ipv6 is borked. autoconfiguration fails.
+
+vr 08 12:50 < joostvb> http://www.faqs.org/rfcs/rfc4862.html
+vr 08 12:52 < joostvb> wat was dat ook alweer met protocol 42 oid?
+vr 08 12:52 < joostvb> ging dat alleen over ipv6 tunneling door v4?
+vr 08 12:54 < casper> je hebt zeker wel icmpv6 nodig, je moet namelijk 
+                      Duplicate Address Detection doen voor je een adres mag 
+                      gaan gebruiken
+vr 08 12:54 < casper> en daar heb je icmpv6 voor nodig
+vr 08 12:54 < casper> protocol 42 is voor tunnels
+vr 08 12:54 < joostvb> en dat hoeven we hier niet, wel?
+vr 08 12:54 < casper> nee, hoeft niet
+vr 08 12:55 < joostvb> misschien toch maar default doorlaten in uruk, is wel zo 
+                       handig
+vr 08 12:55 < joostvb> voor die miljoenen niet-uvt-uruk-gebruikers :)
+vr 08 12:55 < casper> is wel iets voor te zeggen, maar ook wel iets tegen :)
+vr 08 12:55 < casper> documentatie is koning :)
+vr 08 12:55 < thijs> configurable
+
+
+
 
 - decide: fork this package, get new name, don't bother about migration scenario,
   use dedicated named chains and tables.
