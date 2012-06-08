@@ -18,8 +18,6 @@ vr 08 12:55 < casper> documentatie is koning :)
 vr 08 12:55 < thijs> configurable
 
 
-
-
 - decide: fork this package, get new name, don't bother about migration scenario,
   use dedicated named chains and tables.
 

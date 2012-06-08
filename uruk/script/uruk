@@ -372,6 +372,8 @@ done
 $ip6tables -A INPUT --protocol icmpv6 -d ff00::/8 \
         --icmpv6-type echo-reply -j DROP
 
+# See http://www.iana.org/assignments/icmpv6-parameters for ICMPv6 types
+# Or run # ip6tables -p ipv6-icmp -h
 for type in \
   echo-request \
   echo-reply \
@@ -382,6 +384,7 @@ for type in \
   unknown-header-type \
   unknown-option \
   bad-header \
+  redirect \
   144 \
   145 \
   146 \
@@ -391,7 +394,6 @@ do
 done
 
 # We DROP, a.o.:
-# Redirect messages: redirect
 # Multicast Listener queries (MLDv1 and MLDv2): 130
 # Multicast Listener reports (MLDv1): 131
 # Multicast Listener Done messages (MLDv1): 132
