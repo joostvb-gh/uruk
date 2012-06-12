@@ -63,7 +63,7 @@ enable_autosave=true
 # rulesets
 enable_save_counters=true
 
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+PATH=/sbin:/bin
 
 # exit code
 STATUS=0

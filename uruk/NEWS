@@ -4,7 +4,11 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version 2012MMDD - The
 
-- FIXME
+- uruk/init/uruk: init script should now work without /usr being mounted.
+  It no longer sets PATH to include /usr{,/local}/{,s}bin.  This init script
+  should work on systems using our Debian package, as well as on systems
+  using our RPM package.  If you run uruk on another system you likely have
+  to write your own init script.
 
 
 uruk version 20120608 - The Hooidonk Release
