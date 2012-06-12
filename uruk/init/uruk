@@ -11,10 +11,12 @@
 # http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/initscrcomconv.html
 ### BEGIN INIT INFO
 # Provides:          uruk
-# Required-Start:    $network $remote_fs
-# Required-Stop:     $network $remote_fs
+# Required-Start:    mountkernfs $local_fs
+# Required-Stop:
 # Default-Start:     S
-# Default-Stop:      0 1 6
+# Default-Stop:      0 6
+# X-Start-Before: networking
+# X-Stop-Before:
 # Description: Starts uruk firewall configuration
 # short-description: uruk firewall configuration
 ### END INIT INFO

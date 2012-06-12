@@ -2,9 +2,33 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2012MMDD
+uruk version 2012MMDD - The
 
 - FIXME
+
+
+uruk version 20120608 - The Hooidonk Release
+
+- uruk/script/uruk: No longer block, but allow ICMPv6 type 137 Redirect Message
+  [RFC4861].  These are needed for Duplicate Address Detection in IPv6
+  autoconfiguration: RFC 4429 says: "the router should [...] provide the ON
+  with an ICMP Redirect, which may include a Target Link-Layer Address Option
+  (TLLAO)."  Thanks Casper Gielen.
+- uruk/init/uruk: Apply patch for uruk init script, in order to make sure
+  uruk starts early enough in boot sequence:
+
+   -# Required-Start:    $network $remote_fs
+   -# Required-Stop:     $network $remote_fs
+   +# Required-Start:    mountkernfs $local_fs
+   +# Required-Stop:
+
+   -# Default-Stop:      0 1 6
+   +# Default-Stop:      0 6
+
+   +# X-Start-Before: networking
+   +# X-Stop-Before:
+
+  contributed by Wessel Dankers.  Thanks!
 
 
 uruk version 20120605 - The Pickensteeg Release
