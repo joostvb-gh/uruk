@@ -28,8 +28,6 @@ op redhat-lsb.
 
 op RHEL 5 niet die ellende
 
-monozu.uvt.nl
-
 root@monozu.uvt.nl:~# rpm -q -f /lib/lsb/init-functions
 redhat-lsb-4.0-3.el6.x86_64
 
