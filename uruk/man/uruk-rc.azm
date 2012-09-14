@@ -138,6 +138,8 @@ while the file \tt{proto_41} reads
 
 This allows IP protocol 41, typically used for this kind of tunneling.
 
+}
+
 \cpar{allowing any traffic on an interface}{
 
 In \rc there is:
