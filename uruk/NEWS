@@ -10,15 +10,15 @@ uruk version 20120914 - The Sankt Goar Release
   Debian package, as well as on systems using our RPM package.  If you run uruk
   on another system you likely have to make sure /usr/sbin and/or
   /usr/local/sbin are in your PATH when executing the init script.
+- uruk/init/uruk: stop uruk when switching to single-user mode (runlevel 1),
+  not just when rebooting the system (runlevel 6) or halting the system
+  (runlevel 0).
 - Linux kernel behaves in ways which makes iptables incorrectly block final
   FIN-ACK packets.  Workaround implemented.  Uruk now explicitly allows these,
   and no longer logs them.  See http://bugs.debian.org/687621.  Thanks Wessel
   Dankers.
 - uruk/man/uruk-rc.azm: document how to allow IPv6 tunneling by ACCEPTing
   IP protocol 41.
-- uruk/init/uruk: stop uruk when switching to single-user mode (runlevel 1),
-  not just when rebooting the system (runlevel 6) or halting the system
-  (runlevel 0).
 
 
 uruk version 20120608 - The Hooidonk Release

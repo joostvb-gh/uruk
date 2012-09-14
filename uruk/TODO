@@ -1,4 +1,4 @@
-- uruk version 20120608 - The Hooidonk Release : init script is borked (was: ok-ish).  now, lintian complains:
+- init script is borked. lintian complains:
 
 E: uruk: init.d-script-missing-dependency-on-local_fs etc/init.d/uruk: required-stop
 N: 
