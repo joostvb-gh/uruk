@@ -63,8 +63,6 @@ enable_autosave=true
 # rulesets
 enable_save_counters=true
 
-PATH=/sbin:/bin
-
 # exit code
 STATUS=0
 

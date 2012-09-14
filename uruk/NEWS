@@ -5,10 +5,11 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 2012MMDD - The Sankt Goar Release
 
 - uruk/init/uruk: init script should now work without /usr being mounted.
-  It no longer sets PATH to include /usr{,/local}/{,s}bin.  This init script
-  should work on systems using our Debian package, as well as on systems
-  using our RPM package.  If you run uruk on another system you likely have
-  to write your own init script.
+  It no longer sets PATH.  (It used to set it to include
+  /usr{,/local}/{,s}bin.)  This init script should work on systems using our
+  Debian package, as well as on systems using our RPM package.  If you run uruk
+  on another system you likely have to make sure /usr/sbin and/or
+  /usr/local/sbin are in your PATH when executing the init script.
 - Linux kernel behaves in ways which makes iptables incorrectly block final
   FIN-ACK packets.  Workaround implemented.  Uruk now explicitly allows these,
   and no longer logs them.  See http://bugs.debian.org/687621.  Thanks Wessel
