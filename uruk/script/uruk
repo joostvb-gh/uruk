@@ -5,6 +5,7 @@
 # Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
 # Copyright (C) 2003, 2004, 2010 Tilburg University http://www.uvt.nl/
 # Copyright (C) 2003, 2004, 2005, 2007, 2010 Joost van Baal
+# Copyright (C) 2012 Joost van Baal-Ilić
 #
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -113,6 +114,15 @@ fi
 
 $iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 $ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# workaround bug(?) in linux kernel, see also
+# http://serverfault.com/questions/309691/why-is-our-firewall-ubuntu-8-04-rejecting-the-final-packet-fin-ack-psh-wit
+
+# first argument is the flags which we should examine, the second argument is
+# the flags which must be set
+$iptables -A INPUT --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
+$ip6tables -A INPUT --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
+
 
 uruk_hook "$rc_b"
 
