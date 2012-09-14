@@ -15,6 +15,15 @@ redhat-lsb-4.0-3.el6.x86_64
 
 root@monozu.uvt.nl:~# rpm -qilR redhat-lsb | less         
 
+ redhat-lsb-graphics  
+ redhat-lsb-printing  
+
+ libpam.so.0()(64bit)  
+ libssl3.so()(64bit)  
+
+ usr/bin/make
+
+
 /etc/init.d/ssh :
 
 . /etc/rc.d/init.d/functions wordt geleverd door "initscripts"
