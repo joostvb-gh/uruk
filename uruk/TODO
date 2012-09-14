@@ -1,4 +1,24 @@
-- init script heeft lsb nodig op RHEL 6 (das current).  70 mb aan dependencies
+- init script
+
+*** /var issue
+
+2 init scripts
+
+eentje doet deny alles
+tweede doet stuff
+
+alternatief:
+
+ifupdown /etc/network/interfaces  en vooral /etc/init.d/networking
+
+
+*** rh issue
+
+preferred omlossing: copy-n-paste stuff
+
+/lib/uruk/init-functions
+
+ heeft lsb nodig op RHEL 6 (das current).  70 mb aan dependencies
 
 Om op RHEL6 de lsb-init-functies te krijgen moet je redhat-lsb installeren dat
 72 MB aan extra dependency's binnentrekt. Aan jou als uruk-upstream de vraag
