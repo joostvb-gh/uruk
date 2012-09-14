@@ -1,4 +1,43 @@
-- init script is borked. lintian complains:
+- init script heeft lsb nodig op RHEL 6 (das current).  70 mb aan dependencies
+
+Om op RHEL6 de lsb-init-functies te krijgen moet je redhat-lsb installeren dat
+72 MB aan extra dependency's binnentrekt. Aan jou als uruk-upstream de vraag
+of je denkt dat hier iets aan te doen is en/of dat het niet erg is om die 72
+MB binnen te halen. In dat laatste geval wil je misschien de rpm doen dependen
+op redhat-lsb.
+
+op RHEL 5 niet die ellende
+
+monozu.uvt.nl
+
+root@monozu.uvt.nl:~# rpm -q -f /lib/lsb/init-functions
+redhat-lsb-4.0-3.el6.x86_64
+
+root@monozu.uvt.nl:~# rpm -qilR redhat-lsb | less         
+
+/etc/init.d/ssh :
+
+. /etc/rc.d/init.d/functions wordt geleverd door "initscripts"
+
+heeft geen log_success_msg log_failure_msg ...
+
+ Date: Fri, 23 Mar 2012 11:00:06 +0100
+ From: Thijs Kinkhorst
+ Subject: uruk init-script dependency's zijn 72 MB
+ Message-Id: <201203231100.09625@incagijs.uvt.nl>
+ 
+ Om op RHEL6 de lsb-init-functies te krijgen moet je redhat-lsb installeren dat
+ 72 MB aan extra dependency's binnentrekt. Aan jou als uruk-upstream de vraag
+ of je denkt dat hier iets aan te doen is en/of dat het niet erg is om die 72
+ MB binnen te halen. In dat laatste geval wil je misschien de rpm doen dependen
+ op redhat-lsb.
+
+пет 14 16:42 < joostvb> misschien dat ik zelf maar lsb moet 
+                        herimplementeren in mn package oid
+
+
+
+- init script is borked. lintian complaini:
 
 E: uruk: init.d-script-missing-dependency-on-local_fs etc/init.d/uruk: required-stop
 N: 
