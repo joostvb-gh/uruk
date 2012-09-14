@@ -38,6 +38,7 @@ sign:
 publish:
 	for i in $(DIST_ARCHIVES); do echo "scp $$i $$i.asc $(MY_RDIR)"; scp $$i $$i.asc $(MY_RDIR); done
 	@echo now run: ssh beskar update-tar-symlinks uruk
+	@echo (or: ssh beskar.mdcc.cx ./bin/update-tar-symlinks uruk )
 
 EXTRA_DIST = bootstrap ChangeLog.2003 setversion stamp.month stamp.year \
   stamp.day VERSION.m4 VERSION
