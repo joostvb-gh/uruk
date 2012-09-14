@@ -120,8 +120,8 @@ $ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 # first argument is the flags which we should examine, the second argument is
 # the flags which must be set
-$iptables -A INPUT --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
-$ip6tables -A INPUT --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
+$iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
+$ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
 
 
 uruk_hook "$rc_b"
