@@ -124,6 +124,20 @@ you're safe.  Using the init-script with it's default settings is safe too.
 
 }
 
+\cpar{allowing IPv6 tunneling}{
+
+In \rc there is:
+
+\verbatim{\
+ rc_b=${etcdir}/proto_41}
+
+while the file \tt{proto_41} reads
+
+\verbatim{\
+ $iptables -A INPUT -i ppp0 --protocol 41 --destination $ip_ppp0 -j ACCEPT}
+
+This allows IP protocol 41, typically used for this kind of tunneling.
+
 \cpar{allowing any traffic on an interface}{
 
 In \rc there is:

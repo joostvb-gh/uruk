@@ -24,6 +24,7 @@ vr 08 12:55 < casper> is wel iets voor te zeggen, maar ook wel iets tegen :)
 vr 08 12:55 < casper> documentatie is koning :)
 vr 08 12:55 < thijs> configurable
 
+This might be fixed as of пет, 14. сеп 2012.  15:47:13 CEST
 
 - decide: fork this package, get new name, don't bother about migration scenario,
   use dedicated named chains and tables.

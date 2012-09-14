@@ -403,6 +403,11 @@ do
     $ip6tables -A INPUT --protocol icmpv6 --icmpv6-type $type -j ACCEPT
 done
 
+# Type 144 - Home Agent Address Discovery [RFC3775]
+# Type 145 - Home Agent Address Discovery [RFC3775]
+# Type 146 - Mobile Prefix Solicitation [RFC3775]
+# Type 147 - Mobile Prefix Advertisement [RFC3775]
+
 # We DROP, a.o.:
 # Multicast Listener queries (MLDv1 and MLDv2): 130
 # Multicast Listener reports (MLDv1): 131
