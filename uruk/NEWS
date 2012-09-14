@@ -16,6 +16,9 @@ uruk version 20120914 - The Sankt Goar Release
   Dankers.
 - uruk/man/uruk-rc.azm: document how to allow IPv6 tunneling by ACCEPTing
   IP protocol 41.
+- uruk/init/uruk: stop uruk when switching to single-user mode (runlevel 1),
+  not just when rebooting the system (runlevel 6) or halting the system
+  (runlevel 0).
 
 
 uruk version 20120608 - The Hooidonk Release

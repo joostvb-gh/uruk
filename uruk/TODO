@@ -1,9 +1,22 @@
 - uruk version 20120608 - The Hooidonk Release : init script is borked (was: ok-ish).  now, lintian complains:
 
-W: uruk: init.d-script-possible-missing-stop /etc/init.d/uruk 1
-E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-start
-E: uruk: init.d-script-missing-dependency-on-remote_fs /etc/init.d/uruk: required-stop
-
+E: uruk: init.d-script-missing-dependency-on-local_fs etc/init.d/uruk: required-stop
+N: 
+N:    The given init script seems to refer to /var, possibly using a file from
+N:    there. Without a dependency on $local_fs in Required-Start or
+N:    Required-Stop, as appropriate, the init script might be run before /var
+N:    is mounted or after it's unmounted.
+N:    
+N:    Using Should-Start or Should-Stop to declare the dependency is
+N:    conceptually incorrect since the $local_fs facility is always available.
+N:    Required-Start or Required-Stop should be used instead.
+N:    
+N:    Refer to http://wiki.debian.org/LSBInitScripts for details.
+N:    
+N:    Severity: important, Certainty: possible
+N:    
+N:    Check: init.d, Type: binary
+N: 
 
 - ipv6 is borked. autoconfiguration fails.
 
