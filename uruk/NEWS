@@ -6,6 +6,10 @@ uruk version 2012MMDD - The
 
 - UNRELEASED
 
+ lsb/lsb_killproc, lsb/lsb_log_message, lsb/lsb_pidofproc,
+ lsb/lsb_start_daemon: added
+
+
 
 uruk version 20120914 - The Sankt Goar Release
 

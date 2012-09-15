@@ -44,7 +44,9 @@ root@monozu.uvt.nl:~# rpm -qilR redhat-lsb | less
 
 /etc/init.d/ssh :
 
-. /etc/rc.d/init.d/functions wordt geleverd door "initscripts"
+. /etc/rc.d/init.d/functions = /etc/init.d/functions wordt geleverd door rpm
+ initscripts-9.03.31-2.el6.x86_64
+
 
 heeft geen log_success_msg log_failure_msg ...
 
@@ -61,6 +63,51 @@ heeft geen log_success_msg log_failure_msg ...
 
 пет 14 16:42 < joostvb> misschien dat ik zelf maar lsb moet 
                         herimplementeren in mn package oid
+
+-------------------
+
+from package redhat-lsb-4.0-3.el6.x86_64 :
+
+joostvb@monozu.uvt.nl:~% cat /lib/lsb/init-functions
+#!/bin/sh
+
+# LSB initscript functions, as defined in the LSB Spec 1.1.0
+#
+# Lawrence Lim <llim@redhat.com> - Tue, 26 June 2007
+# Updated to the latest LSB 3.1 spec
+# http://refspecs.freestandards.org/LSB_3.1.0/LSB-Core-generic/LSB-Core-generic_lines.txt
+
+start_daemon () {
+        /etc/redhat-lsb/lsb_start_daemon "$@"
+}
+
+killproc () {
+        /etc/redhat-lsb/lsb_killproc "$@"
+}
+
+pidofproc () {
+        /etc/redhat-lsb/lsb_pidofproc "$@"
+}
+
+log_success_msg () {
+        /etc/redhat-lsb/lsb_log_message success "$@"
+}
+
+log_failure_msg () {
+        /etc/redhat-lsb/lsb_log_message failure "$@"
+}
+
+log_warning_msg () {
+        /etc/redhat-lsb/lsb_log_message warning "$@"
+}
+
+
+-------------------
+
+/etc/redhat-lsb/lsb_* geleverd door redhat-lsb-4.0-3.el6.x86_64
+
+License GPL, by Lawrence Lim e.a., 2011, for Red Hat, Inc.
+
 
 
 
