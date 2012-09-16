@@ -6,28 +6,32 @@
 # Updated to the latest LSB 3.1 spec
 # http://refspecs.freestandards.org/LSB_3.1.0/LSB-Core-generic/LSB-Core-generic_lines.txt
 
+# Modified by Joost van Baal-Ilić for uruk.
+
+PATH=$PATH:/etc/redhat-lsb:/lib/uruk/lsb
+
 start_daemon () {
-        /etc/redhat-lsb/lsb_start_daemon "$@"
+        lsb_start_daemon "$@"
 }
 
 killproc () {
-        /etc/redhat-lsb/lsb_killproc "$@"
+        lsb_killproc "$@"
 }
 
 pidofproc () {
-        /etc/redhat-lsb/lsb_pidofproc "$@"
+        lsb_pidofproc "$@"
 }
 
 log_success_msg () {
-        /etc/redhat-lsb/lsb_log_message success "$@"
+        lsb_log_message success "$@"
 }
 
 log_failure_msg () {
-        /etc/redhat-lsb/lsb_log_message failure "$@"
+        lsb_log_message failure "$@"
 }
 
 log_warning_msg () {
-        /etc/redhat-lsb/lsb_log_message warning "$@"
+        lsb_log_message warning "$@"
 }
 
 
