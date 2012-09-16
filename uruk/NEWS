@@ -6,9 +6,19 @@ uruk version 2012MMDD - The Onze-Lieve-Vrouw-Waver Release
 
 - UNRELEASED
 
- lsb/lsb_killproc, lsb/lsb_log_message, lsb/lsb_pidofproc,
- lsb/lsb_start_daemon: added
+ lsb/init-functions, lsb/lsb_killproc, lsb/lsb_log_message, lsb/lsb_pidofproc,
+ lsb/lsb_start_daemon: added.  By default installed in
+ /usr/local/libexec/uruk/lsb/.  In case we're on a non-LSB-system, try to
+ use /etc/init.d/functions, as present on Red Hat Enterprise Linux systems
+ which don't have the redhat-lsb RPM package installed (we've seen version -4.0-3.el6.x86_64
 
+FIXME
+
+init-functions
+lsb_killproc
+lsb_log_message
+lsb_pidofproc
+lsb_start_daemon
 
 
 uruk version 20120914 - The Sankt Goar Release
