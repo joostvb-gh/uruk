@@ -131,23 +131,17 @@ test -f /etc/sysconfig/uruk && . /etc/sysconfig/uruk
 #
 # include lsb functions
 lsb_init_functions=/lib/lsb/init-functions
+uruk_lsb_init_functions=/lib/uruk/lsb/init-functions
 if test -f $lsb_init_functions; then
   . $lsb_init_functions
-elif
-
-FIXME
-# FIXME
-
+elif test -f $uruk_lsb_init_functions; then
+  . $uruk_lsb_init_functions
 else
   cat << END
-The file $lsb_init_functions is missing from your system.  If you'd like to run
-Uruk on a system not conforming to the Linux Standard Base, you're on your own.
-Perhaps you can find a file $lsb_init_functions somewhere, or perhaps you could
-use uruk without using this init script.
+File $lsb_init_functions nor file $uruk_lsb_init_functions found. Exiting.
 END
   exit 1
 fi
-
 
 initd="$0"
 

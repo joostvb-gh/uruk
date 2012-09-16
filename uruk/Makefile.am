@@ -7,6 +7,7 @@
 ## Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
 ## Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/
 ## Copyright (C) 2003, 2004, 2005 Joost van Baal
+## Copyright (C) 2013 Joost van Baal-Ilić
 
 ## see booststrap for git2cl
 ChangeLog: NEWS
@@ -24,7 +25,7 @@ AUTOMAKE_OPTIONS = dist-bzip2 check-news
 VERSION = @PACKAGE_VERSION@
 PACKAGE = @PACKAGE_TARNAME@
 
-SUBDIRS = script man doc contrib init
+SUBDIRS = script man doc contrib init lsb
 
 docdir = $(datadir)/doc/$(PACKAGE)
 doc_DATA = AUTHORS COPYING ChangeLog ChangeLog.2003 README THANKS TODO
