@@ -108,7 +108,7 @@ log_warning_msg () {
 
 License GPL, by Lawrence Lim e.a., 2011, for Red Hat, Inc.
 
-
+install helpers in /lib/uruk/lsb/*
 
 
 - init script is borked. lintian complaini:
