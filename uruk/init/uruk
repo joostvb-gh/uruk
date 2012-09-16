@@ -133,6 +133,11 @@ test -f /etc/sysconfig/uruk && . /etc/sysconfig/uruk
 lsb_init_functions=/lib/lsb/init-functions
 if test -f $lsb_init_functions; then
   . $lsb_init_functions
+elif
+
+FIXME
+# FIXME
+
 else
   cat << END
 The file $lsb_init_functions is missing from your system.  If you'd like to run

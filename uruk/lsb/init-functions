@@ -10,6 +10,22 @@
 
 PATH=$PATH:/etc/redhat-lsb:/lib/uruk/lsb
 
+# both Red Hat's and our implementation of lsb_start_daemon e.a.
+# rely on file /etc/init.d/functions
+if ! test -f /etc/init.d/functions ; then
+  cat <<END
+The file /etc/init.d/functions, as supplied by e.g. RPM
+initscripts-9.03.31-2.el6.x86_64 is missing from your system.  Uruk should run
+fine on any system conforming to the Linux Standard Base, as well as on any Red
+Hat Enterprise Linux, CentOS, or Fedora system.  If you'd like to run Uruk on
+another system you're basically on your own.  Perhaps you can find a file
+/lib/lsb/init-functions or /etc/init.d/functions somewhere, or perhaps you
+could use uruk without using this init script.
+END
+  exit 1
+fi
+
+
 start_daemon () {
         lsb_start_daemon "$@"
 }
