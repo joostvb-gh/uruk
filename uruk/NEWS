@@ -15,8 +15,9 @@ uruk version 2012MMDD - The Onze-Lieve-Vrouw-Waver Release
   Rationale for shipping /lib/uruk/lsb/: In order to supply a RHEL 6 system
   with the LSB init interface, one has to install the redhat-lsb RPM package
   (e.g. version 4.0-3.el6.x86_64).  This package pulls in massive amounts of
-  dependencies.  (70 MBs, we've been told.)  Using the initscripts RPM package
-  and /lib/uruk/lsb/ keeps the system small and lean.
+  dependencies.  (70 MBs, we've been told, thanks Thijs Kinkhorst for reporting
+  this issue.)  Using the initscripts RPM package and /lib/uruk/lsb/ keeps the
+  system small and lean.
 
 
 uruk version 20120914 - The Sankt Goar Release
