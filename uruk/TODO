@@ -11,6 +11,9 @@ alternatief:
 
 ifupdown /etc/network/interfaces  en vooral /etc/init.d/networking
 
+/run is cleared during reboot.  we'd prefer to be able to load from saved state during
+boot.  therefore, first block everything.  later, when /var etc. are available,
+run uruk.  what to do before halt?
 
 *** rh issue
 
