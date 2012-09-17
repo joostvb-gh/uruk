@@ -55,6 +55,7 @@ AC_CONFIG_FILES([Makefile
                  init/Makefile
                  man/Makefile
                  man/include.zmm
-                 script/Makefile])
+                 script/Makefile
+                 lsb/Makefile])
 AC_OUTPUT
 
