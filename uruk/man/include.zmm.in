@@ -18,7 +18,7 @@
 \setx{"man::day"}{\tr{{delete}{[:space:]}}{\"man::day"}}
 \setx{"man::tag"}{\tr{{delete}{[:space:]}}{\"man::tag"}}
 
-\set{"man::author"}{Joost van Baal <joostvb-uruk@mdcc.cx>}
+\set{"man::author"}{Joost van Baal-Ilić <joostvb-uruk@mdcc.cx>}
 
 \setx{man_share}{
  {year}  {\"man::year"}
@@ -34,7 +34,7 @@
 \def{uruk_save}{\bf{uruk-save}}
 \def{rc}{\it{rc}}
 
-\def{sbinpath}{/usr/sbin}
+\def{sbinpath}{/sbin}
 \def{sysconfpath}{/etc}
 
 \def{rcpath}{/etc/uruk/rc}
