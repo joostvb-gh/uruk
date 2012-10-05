@@ -4,8 +4,6 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version 20121005 - The Onze-Lieve-Vrouw-Waver Release
 
-- UNRELEASED
-
 - lsb/init-functions, lsb/lsb_killproc, lsb/lsb_log_message, lsb/lsb_pidofproc,
   lsb/lsb_start_daemon: added.  By default installed in
   /usr/local/libexec/uruk/lsb/; RPM packages should install these in
