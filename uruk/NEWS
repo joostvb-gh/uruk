@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20120917 - The Onze-Lieve-Vrouw-Waver Release
+uruk version 201210dd - The Onze-Lieve-Vrouw-Waver Release
 
 - UNRELEASED
 
@@ -18,15 +18,16 @@ uruk version 20120917 - The Onze-Lieve-Vrouw-Waver Release
   dependencies.  (70 MBs, we've been told, thanks Thijs Kinkhorst for reporting
   this issue.)  Using the initscripts RPM package and /lib/uruk/lsb/ keeps the
   system small and lean.
+- uruk/init/uruk: add missing $local_fs (for /var) to Required-Stop LSB header.
 
 
 uruk version 20120914 - The Sankt Goar Release
 
-- uruk/init/uruk: init script should now work without /usr being mounted.
-  It no longer sets PATH.  (It used to set it to include
-  /usr{,/local}/{,s}bin.)  This init script should work on systems using our
-  Debian package, as well as on systems using our RPM package.  If you run uruk
-  on another system you likely have to make sure /usr/sbin and/or
+- uruk/init/uruk: init script should now work without /usr being mounted.  (It
+  still needs /var though.)  It no longer sets PATH.  (It used to set it to
+  include /usr{,/local}/{,s}bin.)  This init script should work on systems
+  using our Debian package, as well as on systems using our RPM package.  If
+  you run uruk on another system you likely have to make sure /usr/sbin and/or
   /usr/local/sbin are in your PATH when executing the init script.
 - uruk/init/uruk: stop uruk when switching to single-user mode (runlevel 1),
   not just when rebooting the system (runlevel 6) or halting the system
