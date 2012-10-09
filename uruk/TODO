@@ -17,29 +17,6 @@ run uruk.  what to do before halt?
 
 *** rh issue
 
-TESTed, ready for release
-
-heeft lsb nodig op RHEL 6 (das current).
-op RHEL 5 niet die ellende
-
-root@monozu.uvt.nl:~# rpm -q -f /lib/lsb/init-functions
-redhat-lsb-4.0-3.el6.x86_64
-
-root@monozu.uvt.nl:~# rpm -qilR redhat-lsb | less         
-
- redhat-lsb-graphics  
- redhat-lsb-printing  
-
- libpam.so.0()(64bit)  
- libssl3.so()(64bit)  
-
- usr/bin/make
-
-. /etc/rc.d/init.d/functions = /etc/init.d/functions wordt geleverd door rpm
- initscripts-9.03.31-2.el6.x86_64
-
-heeft geen log_success_msg log_failure_msg ...
-
 /etc/redhat-lsb/lsb_* geleverd door redhat-lsb-4.0-3.el6.x86_64
 
 License GPL, by Lawrence Lim e.a., 2011, for Red Hat, Inc.
