@@ -398,7 +398,22 @@ for type in \
   144 \
   145 \
   146 \
-  147
+  147 \
+  router-solicitation \
+  router-advertisement \
+  neighbour-solicitation \
+  neighbour-advertisement \
+  141 \
+  142 \
+  130 \
+  131 \
+  132 \
+  143 \
+  148 \
+  149 \
+  151 \
+  152 \
+  153
 do
     $ip6tables -A INPUT --protocol icmpv6 --icmpv6-type $type -j ACCEPT
 done
@@ -409,10 +424,6 @@ done
 # Type 147 - Mobile Prefix Advertisement [RFC3775]
 
 # We DROP, a.o.:
-# Multicast Listener queries (MLDv1 and MLDv2): 130
-# Multicast Listener reports (MLDv1): 131
-# Multicast Listener Done messages (MLDv1): 132
-# Multicast Listener reports (MLDv2): 143
 # Router renumbering messages: 138
 # Node information queries (139) and replies (140): 139 140
 #
