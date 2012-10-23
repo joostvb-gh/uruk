@@ -1,4 +1,9 @@
 
+enable ip-not-yet-known. for roaming users, for fast-chagnging ipv6 adresses,for
+interfaces for which ip is not yet known.  optionally: allow specifying range as
+local adress.  tnx Wessel for reporting issue.
+
+
 manpages: fix pathname of uruk, fix my name.
 
 
