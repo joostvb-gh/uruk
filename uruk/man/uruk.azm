@@ -241,7 +241,7 @@ By default, \uruk_save is not used by the uruk init script.  You might want to
 use it, though.  The \uruk_save script is faster and when using \uruk_save,
 your box won't be open while loading new rules.  But beware: \uruk_save is not
 as robust as using \uruk itself.  However, if you don't use any hooks in your
-\rc file, you're save.
+\rc file, you're safe.
 
 \par{
 
