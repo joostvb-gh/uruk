@@ -2,9 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2012MMDD - The .... Release
-
-- UNRELEASED
+uruk version 20121023 - The Grafwegen Release
 
 - uruk/script/uruk: Fix IPv6 firewalling in case uruk is used on a host (not
   transit) firewall by applying patch contributed by Thijs Kinkhorst: "Uruk
