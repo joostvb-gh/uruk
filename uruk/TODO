@@ -1,4 +1,10 @@
 
+di 23 15:50 < Fruit> joostvb: Saving iptables ruleset: save "inactive".
+di 23 15:50 < Fruit> joostvb: dat probeer ik te voorkomen, met enable_autosave=false en 
+                     enable_save_counters=false
+di 23 15:51 < Fruit> joostvb: maar dat blijft-ie doen
+
+
 enable ip-not-yet-known. for roaming users, for fast-chagnging ipv6 adresses,for
 interfaces for which ip is not yet known.  optionally: allow specifying range as
 local adress.  tnx Wessel for reporting issue.
