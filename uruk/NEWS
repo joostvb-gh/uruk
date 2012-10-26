@@ -2,6 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 20YYMMDD - 
+
+- FIXME
+
+
 uruk version 20121023 - The Grafwegen Release
 
 - uruk/script/uruk: Fix IPv6 firewalling in case uruk is used on a host (not
@@ -9,7 +14,7 @@ uruk version 20121023 - The Grafwegen Release
   implemented RFC 4890 section 4.3: Recommendations for ICMPv6 Transit
   Traffic. However uruk is used in some (many?) cases not as a transit firewall
   but as a host firewall for destination entities. Therefore, also the
-  recommentations from section 4.4: Recommendations for ICMPv6 Local
+  recommendations from section 4.4: Recommendations for ICMPv6 Local
   Configuration Traffic need to be added."
 
 
