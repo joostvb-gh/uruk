@@ -273,10 +273,10 @@ do
                     case ${sources-UNDEF} in UNDEF)
                         echo >&2 "WARNING: sources_${iface_x}_${proto}_${service} is undefined.
  (Processing uruk rc file nevertheless.)"
-                    esac          
+                    esac
 
                     eval sources6="\"\$sources6_${iface_x}_${proto}_${service}\""
-                    case ${sources-UNDEF} in UNDEF)
+                    case ${sources6-UNDEF} in UNDEF)
                         echo >&2 "INFO: sources6_${iface_x}_${proto}_${service} is undefined.
  (Processing uruk rc file nevertheless.)"
                     esac
