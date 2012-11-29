@@ -5,6 +5,22 @@ stick this somewhere.  run eval `uruk-ipnetdefault` in /etc/uruk/rc.
 
 from group/uruk/etc/uruk/rc-experimental by Wessel Dankers, 2012:
 
+-------------------
+
+# Copyright Wessel Dankers 2012
+
+# This file is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option)
+# any later version.
+#
+# This file is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+#
+# You should have received a copy of the GNU GPL along with this file, see
+# e.g. the file named COPYING.  If not, see <http://www.gnu.org/licenses/>.
+
 ###############################################
 # assign IPs and networks to network interfaces
 ###############################################
@@ -71,6 +87,7 @@ then
         . $etcdir/ip
 fi
 
+-------------------
 
 
 di 23 15:50 < Fruit> joostvb: Saving iptables ruleset: save "inactive".
