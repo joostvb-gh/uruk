@@ -21,6 +21,12 @@ from group/uruk/etc/uruk/rc-experimental by Wessel Dankers, 2012:
 # You should have received a copy of the GNU GPL along with this file, see
 # e.g. the file named COPYING.  If not, see <http://www.gnu.org/licenses/>.
 
+# Usage: make sure your /etc/uruk/rc has leading line
+# ". /usr/share/uruk/autodetect-ips", e.g. by running
+#
+#  sed -i '1i. /usr/share/uruk/autodetect-ips' /etc/uruk/rc
+#
+
 ###############################################
 # assign IPs and networks to network interfaces
 ###############################################
@@ -80,6 +86,8 @@ then
                 done </etc/network/interfaces
         )"
 fi
+
+# FIXME: weg hiermee
 
 # Third, allow the operator to override anything
 if test -r $etcdir/ip
