@@ -1,0 +1,29 @@
+# to be used in /etc/default/uruk as
+#
+#   eval `uruk-ipv6`
+
+# based upon "group/uruk/etc/default" by Wessel Dankers, 2012
+
+
+enable_ipv6=false
+
+for f in /etc/sysconfig/network-scripts/ifcfg-*
+do
+   test -f "$f" || continue
+   case $(unset IPV6INIT; . $f && echo $IPV6INIT) in yes)
+      enable_ipv6=true
+   esac
+done
+
+if [ -f /etc/network/interfaces ]
+then
+   while read -r verb iface family mode
+   do
+      case $verb,$family in iface,inet6)
+         enable_ipv6=true
+      esac
+   done </etc/network/interfaces
+fi
+
+echo enable_ipv6=$enable_ipv6
+
