@@ -85,6 +85,24 @@ uruk_hook () {
     fi
 }
 
+uruk_save () {
+    table=filter
+    case $1 in -t)
+        shift
+        table=$1
+        shift
+    esac
+    case " $* " in *" -t "*)
+        echo "Warning: -t must be the first argument or it will be ignored" >&2
+    esac
+    if test -f $uruk_save_dir/$table
+    then
+        echo "$*" >>$uruk_save_dir/$table
+    else
+        echo "Unknown table '$table'; skipping rule '" -t $table $* "'" >&2
+    fi
+}
+
 #
 # bootstrap these rules
 #
