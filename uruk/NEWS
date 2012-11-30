@@ -2,8 +2,9 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20YYMMDD - The Вршац Release
+uruk version 20121130 - The Вршац Release
 
+- experimental release.
 - init/autodetect-ips, init/enable-ipv6: Added new helpers for uruk rc and
   for uruk/default, contributed by Wessel Dankers.
 - script/uruk, script/uruk-save: Apply patch contributed by Wessel Dankers

@@ -1,3 +1,7 @@
+document 2 init helpers
+
+--------------
+
 init/uruk : test conditions in a sane way.  we now have:
 
   if test "${enable_save_counters:-false}" = true; then
