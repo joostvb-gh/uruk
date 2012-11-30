@@ -2,9 +2,13 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20YYMMDD - 
+uruk version 20YYMMDD - The Вршац Release
 
-- FIXME
+- init/autodetect-ips, init/enable-ipv6: Added new helpers for uruk rc and
+  for uruk/default, contributed by Wessel Dankers.
+- script/uruk, script/uruk-save: Apply patch contributed by Wessel Dankers
+  in <1354116979-10246-1-git-send-email-wsl@fruit.je>: "allow access to
+  different tables (nat, mangle, raw) in uruk-save".
 
 
 uruk version 20121023 - The Grafwegen Release
