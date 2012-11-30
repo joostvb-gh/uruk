@@ -2,19 +2,20 @@
 #
 # configuration for /etc/init.d/uruk.  Install in /etc/default/uruk (Debian) or
 # /etc/sysconfig/uruk (Red Hat)
-#
-# If you wanna do really wacky stuff, you might want to overrule
-# PATH here
-## PATH=$PATH:/usr/local/bin
-#
+
+# Some helpers are installed in /lib/uruk/init
+PATH=/lib/uruk/init:$PATH
+
 # enable_uruk_check - wether to check for existence and sanity of uruk rc
 # file; set to false if you don't like this, e.g. when using the uruk initscript
 # for managing saved rulesets only (i.e. not for calling uruk or uruk-save)
 ## enable_uruk_check=false
-#
+
 # enable_ipv6 - set to false to disable IPv6 support.
 ## enable_ipv6=false
-#
+# we dynamically decide wether we'd like to filter IPv6 traffic
+enable_ipv6=$(enable-ipv6)
+
 # enable calling the unstable uruk-save script
 ## enable_uruk_save=true
 #
