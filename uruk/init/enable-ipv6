@@ -1,9 +1,16 @@
-# to be used in /etc/default/uruk as
+# this file maintained at http://git.mdcc.cx/uruk.git
+
+# uruk/init/enable-ipv6 - should uruk run ip6tables too?
+
+# Copyright © 2012 Wessel Dankers
+# Copyright © 2012 Joost van Baal-Ilić
+
+# usage: in /etc/default/uruk, write:
 #
-#   eval `uruk-ipv6`
+#   enable_ipv6=$(enable-ipv6)
+#   if $enable_ipv6; then dostuff; fi
 
 # based upon "group/uruk/etc/default" by Wessel Dankers, 2012
-
 
 enable_ipv6=false
 
@@ -25,5 +32,5 @@ then
    done </etc/network/interfaces
 fi
 
-echo enable_ipv6=$enable_ipv6
+echo $enable_ipv6
 

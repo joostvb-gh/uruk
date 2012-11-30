@@ -1,4 +1,9 @@
-# Copyright © Wessel Dankers 2012
+# this file maintained at http://git.mdcc.cx/uruk.git
+
+# uruk/init/autodetect-ips - set variables ip{,6}_<interface>_default and
+#   net{,6}_<interface>_default
+
+# Copyright © 2012 Wessel Dankers
 
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -13,9 +18,9 @@
 # e.g. the file named COPYING.  If not, see <http://www.gnu.org/licenses/>.
 
 # Usage: make sure your /etc/uruk/rc has leading line
-# ". /usr/share/uruk/autodetect-ips", e.g. by running
+# ". /usr/share/uruk/init/autodetect-ips", e.g. by running
 #
-#  sed -i '1i. /usr/share/uruk/autodetect-ips' /etc/uruk/rc
+#  sed -i '1i. /usr/share/uruk/init/autodetect-ips' /etc/uruk/rc
 #
 
 ###############################################
