@@ -32,54 +32,55 @@
 # First try Red Hat's init scripts
 for f in /etc/sysconfig/network-scripts/ifcfg-*
 do
-        test -e $f || continue
-        i=${f#/etc/sysconfig/network-scripts/ifcfg-}
-        case $i in *[!a-zA-Z0-9_]*|[!a-zA-Z_]*) continue; esac
-        eval "$(
-                . $f
-                echo ip_${i}_default=$IPADDR
-                echo net_${i}_default=$IPADDR/$NETMASK
-                echo ip6_${i}_default=${IPV6ADDR%/*}
-                echo net6_${i}_default=$IPV6ADDR
-        )"
+    test -e $f || continue
+    i=${f#/etc/sysconfig/network-scripts/ifcfg-}
+    case $i in *[!a-zA-Z0-9_]*|[!a-zA-Z_]*)
+        continue
+    esac
+    eval "$(
+        . $f
+        echo ip_${i}_default=$IPADDR
+        echo net_${i}_default=$IPADDR/$NETMASK
+        echo ip6_${i}_default=${IPV6ADDR%/*}
+        echo net6_${i}_default=$IPV6ADDR
+    )"
 done
 
 # Second, Debian's init scripts
-if [ -f /etc/network/interfaces ]
+if test -f /etc/network/interfaces
 then
-        eval "$(
-                while read -r key val val1 rest
-                do
-                        case $key in iface)
-                                case $i in *[!a-zA-Z0-9_]*|[!a-zA-Z_]*)
-                                        iface=
-                                        type=
-                                ;; *)
-                                        iface=$val
-                                        type=$val1
-                                esac
-                                address=
-                                netmask=
-                        ;; address)
-                                address=$val
-                        ;; netmask)
-                                netmask=$val
-                        esac
-                        case $iface,$address,$netmask in ?*,?*,?*)
-                                case $type in inet)
-                                        echo ip_${iface}_default=$address
-                                        echo net_${iface}_default=$address/$netmask
-                                ;; inet6)
-                                        echo ip6_${iface}_default=$address
-                                        echo net6_${iface}_default=$address/$netmask
-                                esac
-                                iface=
-                                type=
-                                address=
-                                netmask=
-                        esac
-
-                done </etc/network/interfaces
-        )"
+    eval "$(
+        while read -r key val val1 rest
+        do
+            case $key in iface)
+                case $i in *[!a-zA-Z0-9_]*|[!a-zA-Z_]*)
+                        iface=
+                        type=
+                ;; *)
+                        iface=$val
+                        type=$val1
+                esac
+                address=
+                netmask=
+            ;; address)
+                    address=$val
+            ;; netmask)
+                    netmask=$val
+            esac
+            case $iface,$address,$netmask in ?*,?*,?*)
+                case $type in inet)
+                    echo ip_${iface}_default=$address
+                    echo net_${iface}_default=$address/$netmask
+                ;; inet6)
+                    echo ip6_${iface}_default=$address
+                    echo net6_${iface}_default=$address/$netmask
+                esac
+                iface=
+                type=
+                address=
+                netmask=
+            esac
+        done </etc/network/interfaces
+    )"
 fi
 

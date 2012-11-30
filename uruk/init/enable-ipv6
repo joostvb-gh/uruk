@@ -22,7 +22,7 @@ do
    esac
 done
 
-if [ -f /etc/network/interfaces ]
+if test -f /etc/network/interfaces
 then
    while read -r verb iface family mode
    do
@@ -33,4 +33,3 @@ then
 fi
 
 echo $enable_ipv6
-
