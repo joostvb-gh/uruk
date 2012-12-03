@@ -2,6 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 201212dd -
+
+- UNRELEASED
+- init/autodetect-ips init/enable-ipv6: add missing #!/bin/sh.
+
+
 uruk version 20121130 - The Вршац Release
 
 - experimental release.

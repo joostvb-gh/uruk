@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # this file maintained at http://git.mdcc.cx/uruk.git
 
 # /lib/uruk/init/autodetect-ips - set variables ip{,6}_<interface>_default and

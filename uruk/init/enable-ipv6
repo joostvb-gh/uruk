@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # this file maintained at http://git.mdcc.cx/uruk.git
 
 # uruk/init/enable-ipv6 - should uruk run ip6tables too?
