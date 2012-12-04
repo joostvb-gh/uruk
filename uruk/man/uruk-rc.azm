@@ -52,6 +52,20 @@ sources_eth0_udp_local="0.0.0.0/0"}
 This \rc file allows all IPv4 UDP and TCP traffic from publicly routable IPs to
 eth0's IP.
 
+If you'd like to block FIXME and allow FIXME
+
+\verbatim{\
+interfaces= FIXME
+
+autodetect-ips
+FIXME
+
+}
+
+autodetect-ips
+
+
+
 For a more reasonable \rc file, look at the well-commented example \rc file in
 \ttexpath.
 
