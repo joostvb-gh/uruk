@@ -2,26 +2,11 @@
 later: reimplement uruk-save in perl, be sure to run it only when /usr is
 mounted, not in init-script during boot.
 
-----
-
-document additions 2012-11-29
-
-stick this somewhere.  run eval `uruk-ipnetdefault` in /etc/uruk/rc.
+document uruk-save additions 2012-11-29
 
 from group/uruk/etc/uruk/rc-experimental by Wessel Dankers, 2012:
 
 -------------------
-
-# add note in urur/rc
-
-# Third, allow the operator to override anything
-if test -r $etcdir/ip
-then
-        . $etcdir/ip
-fi
-
--------------------
-
 
 di 23 15:50 < Fruit> joostvb: Saving iptables ruleset: save "inactive".
 di 23 15:50 < Fruit> joostvb: dat probeer ik te voorkomen, met enable_autosave=false en 
