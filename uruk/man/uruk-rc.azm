@@ -36,24 +36,26 @@ behaviour.
 The simplest \rc file which does allow traffic to our services looks like e.g.:
 
 \verbatim{\
-interfaces=eth0
+ interfaces=eth0
 
-ip_eth0=192.168.26.27
-net_eth0=192.168.0.0/16
+ ip_eth0=192.168.26.27
+ net_eth0=192.168.0.0/16
 
-services_eth0_tcp=local
-ports_eth0_tcp_local="0:65535"
-sources_eth0_tcp_local="0.0.0.0/0"
+ services_eth0_tcp=local
+ ports_eth0_tcp_local="0:65535"
+ sources_eth0_tcp_local="0.0.0.0/0"
 
-services_eth0_udp=local
-ports_eth0_udp_local="0:65535"
-sources_eth0_udp_local="0.0.0.0/0"}
+ services_eth0_udp=local
+ ports_eth0_udp_local="0:65535"
+ sources_eth0_udp_local="0.0.0.0/0"}
 
 This \rc file allows all IPv4 UDP and TCP traffic from publicly routable IPs to
 eth0's IP.
 
+\par{
 If you'd like to block traffic on wlan0 and allow traffic to ssh on your
 wired interface, and don't like to explicitly set your IPs in \rc:
+}
 
 \verbatim{\
  # list of interfaces you'd like uruk to protect
@@ -89,11 +91,13 @@ address and network, sets variables \v{ip_}\it{nic}\v{_default},
 \v{ip6_}\it{nic}\v{_default}, \v{net_}\it{nic}\v{_default} and
 \v{net6_}\it{nic}\v{_default} .
 
+\par{
 The script autodetect-ips is useful if you'd like to share your \rc file among
 different hosts.
-
+} \par{
 For a even more reasonable \rc file, look at the well-commented example \rc
 file in \ttexpath.
+}
 
 \sec{Hooks}{HOOKS}
 
