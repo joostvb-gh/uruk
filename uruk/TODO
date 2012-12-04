@@ -1,33 +1,3 @@
---------------
-
-init/uruk : test conditions in a sane way.  we now have:
-
-  if test "$found_active"; then
-  if test "$found_inactive"; then
-  if test "$STATUS" = 0; then
-  if test "$found_active" -a "$found_inactive"; then
-  if test "$status_active"; then
-
-change this to be:
-
- if $enable_ipv6
- then
-    dostuff
- fi
-
-this allows for
-
- PATH=/usr/share/uruk:$PATH
- enable_ipv6=$(uruk-ipv6_autodetect)
-
-and /usr/share/uruk/uruk-ipv6_autodetect :
-
- #!/bin/sh
- echo true
-
-. (do NOT use exit code, that one should be used for errors in execution.)
-
----
 
 later: reimplement uruk-save in perl, be sure to run it only when /usr is
 mounted, not in init-script during boot.
