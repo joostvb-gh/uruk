@@ -1,21 +1,12 @@
-document 2 init helpers
-
 --------------
 
 init/uruk : test conditions in a sane way.  we now have:
 
-  if test "${enable_save_counters:-false}" = true; then
-  if test -f $autosave -a ${enable_autosave-false} = true; then
-  if test $enable_uruk_save = true; then
-  if test ${enable_autosave-false} = true; then
   if test "$found_active"; then
   if test "$found_inactive"; then
   if test "$STATUS" = 0; then
   if test "$found_active" -a "$found_inactive"; then
   if test "$status_active"; then
-  if test $enable_uruk_save_warning = true; then
-  if test $enable_uruk_check = true; then
-  if test $enable_ipv6 = true; then
 
 change this to be:
 

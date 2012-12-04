@@ -212,7 +212,7 @@ initd_counters () {
   if ! test -d "$libdir"; then
     mkdir -p "$libdir"
   fi
-  if test "${enable_save_counters:-false}" = true; then
+  if $enable_save_counters; then
     echo -n " with counters"
     $iptables_save -c > "$ruleset"
     STATUS=$?
@@ -231,7 +231,7 @@ initd_save () {
 }
 
 initd_autosave () {
-  if test -f $autosave -a ${enable_autosave-false} = true; then
+  if $enable_autosave && test -f $autosave; then
     ruleset="$libdir/active"
     echo -n "Autosaving ${iptables_command} ruleset: save \"active\""
     initd_counters
@@ -258,7 +258,7 @@ initd_active_uruk_save () {
 }
 
 initd_active () {
-  if test $enable_uruk_save = true; then
+  if $enable_uruk_save; then
     initd_active_uruk_save
   else
     initd_flush
@@ -286,7 +286,7 @@ initd_start () {
     initd_save inactive
   fi
   initd_active
-  if test ${enable_autosave-false} = true; then
+  if $enable_autosave; then
     touch $autosave
   fi
 }
@@ -455,7 +455,7 @@ initd_main () {
         fi
       done
       if test "$found_active" -a "$found_inactive"; then
-        if test $enable_uruk_save = true; then
+        if $enable_uruk_save; then
           initd_active_uruk_save
           if test "$STATUS" = 0; then
             log_success_msg "Reloading uruk ($iptables_command)"
@@ -498,7 +498,7 @@ END
       shift
       case "$*" in
         active)
-          if test $enable_uruk_save = true; then
+          if $enable_uruk_save; then
             warn_uruk_save
             if test $iptables_command = ip6tables; then
               echo -n "Saving IPv6 uruk rules as active ruleset"
@@ -569,7 +569,7 @@ check_uruk() {
 }
 
 warn_uruk_save() {
-  if test $enable_uruk_save_warning = true; then
+  if $enable_uruk_save_warning; then
     cat <<END
  About to call the uruk-save script.  You should have read the uruk-rc(5)
  manpage.  Your $uruk_config should be sane.  You should NOT be using any hooks
@@ -580,12 +580,12 @@ END
   fi
 }
 
-if test $enable_uruk_check = true; then
+if $enable_uruk_check; then
   check_uruk
 fi
 
 iptables_command=iptables initd_preload $*
-if test $enable_ipv6 = true; then
+if $enable_ipv6; then
   iptables_command=ip6tables initd_preload $*
 fi
 
