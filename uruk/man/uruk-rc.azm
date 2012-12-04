@@ -56,38 +56,37 @@ If you'd like to block traffic on wlan0 and allow traffic to ssh on your
 wired interface, and don't like to explicitly set your IPs in \rc:
 
 \verbatim{\
-# list of interfaces you'd like uruk to protect
-interfaces=eth0 wlan0
+ # list of interfaces you'd like uruk to protect
+ interfaces=eth0 wlan0
 
-. /lib/uruk/init/autodetect-ips
+ . /lib/uruk/init/autodetect-ips
 
-FIXME
-ips_eth0="default dhcp"
+ # names for eth0's 2 IPv4 addresses
+ ips_eth0="default dhcp"
 
-# allow access to our sshd on eth0's primary IP on tcp port 443 from anywhere
-services_eth0_default_tcp=ssh
-ports_eth0_default_tcp_ssh=443
-sources_eth0_default_tcp_ssh="0.0.0.0/0"
+ # allow access to our sshd on eth0's primary IP on tcp port 443
+ # from anywhere
+ services_eth0_default_tcp=ssh
+ ports_eth0_default_tcp_ssh=443
+ sources_eth0_default_tcp_ssh="0.0.0.0/0"
+ 
+ # we get a static IPv4 via dhcp
+ ip_eth0_dhcp=10.0.0.3
+ net_eth0_dhcp=10./8
 
-# we get a static IPv4 via dhcp
-ip_eth0_dhcp=10.0.0.3
-net_eth0_dhcp=10./8
+ services_eth0_dhcp_tcp=http
+ ports_eth0_dhcp_tcp_http=http
+ sources_eth0_dhcp_tcp_http=$net_eth0_dhcp
 
-services_eth0_dhcp_tcp=http
-ports_eth0_dhcp_tcp_http=http
-sources_eth0_dhcp_tcp_http=$net_eth0_dhcp
-
-# we leave services_wlan0_default_{tcp,udp} unset: don't allow any
-# incoming connections on wlan0's default IP
-
-}
+ # we leave services_wlan0_default_{tcp,udp} unset: don't allow any
+ # incoming connections on wlan0's default IP }
 
 The script autodetect-ips looks for files
 /etc/sysconfig/network-scripts/ifcfg-* (commonly found at e.g. Red Hat and
 Fedora systems) and /etc/network/interfaces (as found at e.g. Debian and Ubuntu
 systems), and, for each interface \it{nic}, and each found IPv4 and IPv6
 address and network, sets variables \v{ip_}\it{nic}\v{_default},
-\vip6_}\it{nic}\v{_default}, \v{net_}\it{nic}\v{_default} and
+\v{ip6_}\it{nic}\v{_default}, \v{net_}\it{nic}\v{_default} and
 \v{net6_}\it{nic}\v{_default} .
 
 The script autodetect-ips is useful if you'd like to share your \rc file among
