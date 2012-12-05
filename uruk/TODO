@@ -2,8 +2,6 @@
 later: reimplement uruk-save in perl, be sure to run it only when /usr is
 mounted, not in init-script during boot.
 
-document uruk-save additions 2012-11-29
-
 from group/uruk/etc/uruk/rc-experimental by Wessel Dankers, 2012:
 
 -------------------
@@ -13,14 +11,9 @@ di 23 15:50 < Fruit> joostvb: dat probeer ik te voorkomen, met enable_autosave=f
                      enable_save_counters=false
 di 23 15:51 < Fruit> joostvb: maar dat blijft-ie doen
 
-
-enable ip-not-yet-known. for roaming users, for fast-chagnging ipv6 adresses,for
+- enable ip-not-yet-known. for roaming users, for fast-chagnging ipv6 adresses,for
 interfaces for which ip is not yet known.  optionally: allow specifying range as
 local adress.  tnx Wessel for reporting issue.
-
-
-manpages: fix pathname of uruk, fix my name.
-
 
 - init script
 
@@ -42,50 +35,9 @@ run uruk.  what to do before halt?
 *** rh issue
 
 /etc/redhat-lsb/lsb_* geleverd door redhat-lsb-4.0-3.el6.x86_64
-
 License GPL, by Lawrence Lim e.a., 2011, for Red Hat, Inc.
 
-
-- init script is borked. lintian complaini:
-
-E: uruk: init.d-script-missing-dependency-on-local_fs etc/init.d/uruk: required-stop
-N: 
-N:    The given init script seems to refer to /var, possibly using a file from
-N:    there. Without a dependency on $local_fs in Required-Start or
-N:    Required-Stop, as appropriate, the init script might be run before /var
-N:    is mounted or after it's unmounted.
-N:    
-N:    Using Should-Start or Should-Stop to declare the dependency is
-N:    conceptually incorrect since the $local_fs facility is always available.
-N:    Required-Start or Required-Stop should be used instead.
-N:    
-N:    Refer to http://wiki.debian.org/LSBInitScripts for details.
-N:    
-N:    Severity: important, Certainty: possible
-N:    
-N:    Check: init.d, Type: binary
-N: 
-
-- ipv6 is borked. autoconfiguration fails.
-
-vr 08 12:50 < joostvb> http://www.faqs.org/rfcs/rfc4862.html
-vr 08 12:52 < joostvb> wat was dat ook alweer met protocol 42 oid?
-vr 08 12:52 < joostvb> ging dat alleen over ipv6 tunneling door v4?
-vr 08 12:54 < casper> je hebt zeker wel icmpv6 nodig, je moet namelijk 
-                      Duplicate Address Detection doen voor je een adres mag 
-                      gaan gebruiken
-vr 08 12:54 < casper> en daar heb je icmpv6 voor nodig
-vr 08 12:54 < casper> protocol 42 is voor tunnels
-vr 08 12:54 < joostvb> en dat hoeven we hier niet, wel?
-vr 08 12:54 < casper> nee, hoeft niet
-vr 08 12:55 < joostvb> misschien toch maar default doorlaten in uruk, is wel zo 
-                       handig
-vr 08 12:55 < joostvb> voor die miljoenen niet-uvt-uruk-gebruikers :)
-vr 08 12:55 < casper> is wel iets voor te zeggen, maar ook wel iets tegen :)
-vr 08 12:55 < casper> documentatie is koning :)
-vr 08 12:55 < thijs> configurable
-
-This might be fixed as of пет, 14. сеп 2012.  15:47:13 CEST
+--------------
 
 - decide: fork this package, get new name, don't bother about migration scenario,
   use dedicated named chains and tables.

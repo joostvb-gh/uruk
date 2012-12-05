@@ -32,10 +32,11 @@ ip6tables rules, for IPv6 filtering.
 
 \sec{description}{DESCRIPTION}
 
-\uruk_save saves the IPv4 rules in \ttrcpath in \bf{iptables-save(5)}-style
-format, without invoking \bf{iptables(8)}.  If the \bf{-6} option is given, the
-IPv6 rules (if any) in \ttrcpath are saved, in \bf{ip6tables-save(5)}-style
-format.  It prints output to stdout; suggested invocation therefore is
+\uruk_save saves the IPv4 rules (for all of the filter, raw, mangle and nat
+tables) in \ttrcpath in \bf{iptables-save(5)}-style format, without invoking
+\bf{iptables(8)}.  If the \bf{-6} option is given, the IPv6 rules (if any) in
+\ttrcpath are saved, in \bf{ip6tables-save(5)}-style format.  It prints output
+to stdout; suggested invocation therefore is
 
 \verbatim{\
  # uruk-save > \statepath/iptables/active}
@@ -60,12 +61,7 @@ stuff, \uruk_save will very likely behave in unexpected ways.  Caveat emptor.
 
 \par{
 
-Things will likely break if you do fancy stuff in an \rc hook file.  For
-instance, \uruk_save saves the filter table only.  If you define mangle or nat
-tables, things will break.
-
-} \par{
-
+Things will likely break if you do very fancy stuff in an \rc hook file.
 If your \rc file is in verbose mode (i.e. it features \tt{set -x}) or in no-act
 mode (i.e. it features \tt{iptables='echo iptables'}), \uruk_save fails.
 
