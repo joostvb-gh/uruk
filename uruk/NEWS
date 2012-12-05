@@ -2,6 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 201212dd - The
+
+- UNRELEASED
+
+
 uruk version 20121205 - The Zes Blokskes Release
 
 - init/autodetect-ips init/enable-ipv6: add missing #!/bin/sh.
