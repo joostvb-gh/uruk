@@ -114,8 +114,8 @@ In \rc, there is:
 while the file \tt{bootp} reads
 
 \verbatim{\
- iptables -A INPUT -m state --state NEW -i eth0 \\
-   --protocol udp --destination-port bootps -j ACCEPT
+ iptables \-A INPUT \-m state \-\-state NEW \-i eth0 \\
+   \-\-protocol udp \-\-destination-port bootps \-j ACCEPT
 }
 .
 
