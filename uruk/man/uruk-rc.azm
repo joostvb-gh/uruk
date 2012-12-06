@@ -284,7 +284,7 @@ By default, uruk logs denied packets.  This is adjustable using the
 
 \item "zero": be silent; do not log any packet.  \rc file features \v{loglevel=10}.
 
-\item "low": log denied packets, which are targetted at one of our IPs.
+\item "low": log denied packets, which are targeted at one of our IPs.
   \rc file features \v{loglevel=30}.
 
 \item "medium": log denied non-broadcast packets.  This is the default:
@@ -297,7 +297,7 @@ By default, uruk logs denied packets.  This is adjustable using the
 \: \item "zero": be silent; do not log any packet.  \it{loglevel} is greater than
 \:  -1 and less than 20.
 \:
-\: \item "low": log denied packets, which are targetted at one of our IPs.
+\: \item "low": log denied packets, which are targeted at one of our IPs.
 \:  \it{loglevel} is greater than 19 and less than 40.
 \:
 \: \item "medium": log denied non-broadcast packets.  This is the default:
@@ -309,7 +309,7 @@ By default, uruk logs denied packets.  This is adjustable using the
 \: \item "fascist": log all packets. \it{loglevel} is greater than 80 and less than 99.
 \:
 \: loglevel= 0 < 20 (suggest: 10) zero:    be silent
-\:         20 < 40 (suggest: 30) low:     log denied packets, targetted at our IPs  (wsl-mode)
+\:         20 < 40 (suggest: 30) low:     log denied packets, targeted at our IPs  (wsl-mode)
 \:         40 < 60 (         50) medium:  log denied non-broadcasts                 (default)
 \:         60 < 80 (         70) high:    log denied packets
 \:         80 < 99 (         90) fascist: log all packets
