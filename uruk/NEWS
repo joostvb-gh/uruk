@@ -5,6 +5,9 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 201212dd - The
 
 - UNRELEASED
+- init/autodetect-ips: Apply patch contributed by Wessel Dankers,
+  2013-02-15: "typo in autodetect-ips breekt situaties met eth0:0"
+- man/uruk-rc.azm: cosmetic fixes.
 
 
 uruk version 20121205 - The Zes Blokskes Release
