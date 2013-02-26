@@ -2,9 +2,8 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201212dd - The
+uruk version 20130226 - The Vlist Release
 
-- UNRELEASED
 - init/autodetect-ips: Apply patch contributed by Wessel Dankers,
   2013-02-15: "typo in autodetect-ips breekt situaties met eth0:0"
 - man/uruk-rc.azm: cosmetic fixes.
