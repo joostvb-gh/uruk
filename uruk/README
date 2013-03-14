@@ -18,11 +18,7 @@ settings are
 
  CONFIG_IP_NF_IPTABLES      ip_tables.o   (``IP tables support'')
  CONFIG_IP_NF_TARGET_LOG    ipt_LOG.o     (``LOG target support'')
- CONFIG_IP_NF_MATCH_STATE   ipt_state.o   (``Connection state match support'')
  CONFIG_IP_NF_TARGET_REJECT ipt_REJECT.o  (``REJECT target support'')
-
-for CONFIG_IP_NF_MATCH_STATE, you need
-
  CONFIG_IP_NF_CONNTRACK                   (``Connection tracking'')
 
 .  Furthermore, you need the iptables(8) command, as shipped with the iptables

@@ -5,7 +5,19 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 2013mmdd - The FIXME Release
 
 - UNRELEASED
+- README, man/uruk.azm, script/uruk: apply patch contributed by Thijs
+  Kinkhorst, 1 Mar 2013, in <1362140354-7012-1-git-send-email-thijs@uvt.nl>:
+  "Replace obsolete 'state' module usage with 'conntrack'.":
 
+   The iptables 'state' module has been obsoleted and produces warnings in
+   current Debian sid. The modern form to express this is with the 'conntrack'
+   module. Change uruk's iptables commands to make use of the newer syntax.
+
+   As according to the README uruk already depended on the conntrack module
+   being present, this introduces no higher minimum iptables version. The
+   change has been tested against Debian Lenny, Squeeze, Wheezy and Sid.
+
+  Thanks Thijs!
 
 uruk version 20130226 - The Vlist Release
 

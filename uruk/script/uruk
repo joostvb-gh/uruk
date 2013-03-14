@@ -130,8 +130,8 @@ then
     uruk6_log
 fi
 
-$iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-$ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+$iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+$ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 # workaround bug(?) in linux kernel, see also
 # http://serverfault.com/questions/309691/why-is-our-firewall-ubuntu-8-04-rejecting-the-final-packet-fin-ack-psh-wit
@@ -235,7 +235,7 @@ do
     done
 
     # Always allow outgoing connections
-    $iptables -A OUTPUT -m state --state NEW -o $iface -j ACCEPT
+    $iptables -A OUTPUT -m conntrack --ctstate NEW -o $iface -j ACCEPT
 done
 
 uruk_hook "$rc_c"
@@ -292,7 +292,7 @@ do
                                 for source in $sources
                                 do
                                     # source is e.g. 10.56.0.10/32
-                                    $iptables -A INPUT -m state --state NEW \
+                                    $iptables -A INPUT -m conntrack --ctstate NEW \
                                       -i $iface --protocol $proto \
                                       --source "$source" --destination "$ip" \
                                       --destination-port "$port" -j ACCEPT
@@ -300,7 +300,7 @@ do
                             fi
                             for source6 in $sources6
                             do
-                                $ip6tables -A INPUT -m state --state NEW \
+                                $ip6tables -A INPUT -m conntrack --ctstate NEW \
                                   -i $iface --protocol $proto \
                                   --source "$source6" --destination "$ip6" \
                                   --destination-port "$port" -j ACCEPT

@@ -185,7 +185,7 @@ course, take a look at \tt{\sbinpath/uruk} for the final word on the workings.
     files matching $rc_a/*.rc are sourced as shell scripts
   \item ESTABLISHED and RELATED packets are ACCEPT-ed:
     \verbatim{\
- $iptables -A INPUT -m state --state ESTABLISHED,RELATED \\
+ $iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED \\
   -j ACCEPT}
   \item $rc_b is sourced
   \item $interfaces gets protected against spoofing: we don't allow anyone to
@@ -202,12 +202,12 @@ course, take a look at \tt{\sbinpath/uruk} for the final word on the workings.
   -j DROP}
      And we always allow outgoing connections:
     \verbatim{\
- $iptables -A OUTPUT -m state --state NEW -o $iface \\
+ $iptables -A OUTPUT -m conntrack --ctstate NEW -o $iface \\
   -j ACCEPT}
   \item $rc_c is sourced
   \item Allow traffic to offered services, from trusted sources:
     \verbatim{\
- $iptables -A INPUT -m state --state NEW \\
+ $iptables -A INPUT -m conntrack --ctstate NEW \\
   -i $iface --protocol $proto --source "$source" \\
   --destination "$ip" --destination-port "$port" \\
   -j ACCEPT}
