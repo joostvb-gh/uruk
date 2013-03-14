@@ -17,7 +17,8 @@ uruk version 2013mmdd - The FIXME Release
    being present, this introduces no higher minimum iptables version. The
    change has been tested against Debian Lenny, Squeeze, Wheezy and Sid.
 
-  Thanks Thijs!
+  Thanks Thijs!  This closes bug http://bugs.debian.org/702064 .
+
 
 uruk version 20130226 - The Vlist Release
 
