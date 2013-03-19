@@ -65,11 +65,11 @@ csp_DIFF       ?= $(csp_diff_FUNC)
 # files, not directories
 FILES   := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
 
-# exclude editor backup files and other stuff
-FILES   := $(filter-out $(csp_TABOOFILES),$(FILES))
+# add built files, exclude editor backup files and other stuff
+FILES   := $(filter-out $(csp_TABOOFILES), $(FILES) $(csp_BUILD))
 
-# user specified files and built files
-FILES   := $(sort $(FILES) $(csp_EXTRAFILES) $(csp_BUILD))
+# user specified files
+FILES   := $(sort $(FILES) $(csp_EXTRAFILES))
 
 all:
 	$(MAKE) build
