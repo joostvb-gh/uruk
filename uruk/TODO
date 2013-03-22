@@ -13,7 +13,48 @@ vr 22 10:22 < joostvb> ja, graag zo'n autistische ruleset voor ipv6
  ## enable_uruk_save=true
  : no longer tag this feeature as experimental, tag this feature as supported (but not yet enabled by default)
 
+<quote>
 
+Date: Fri, 22 Mar 2013 11:00:13 +0100
+From: Wessel Dankers
+To: Joost
+Subject: autistische IPv6-rulebase
+Message-ID: <20130322100013.GN2849@homsar.uvt.nl>
+
+Om te voeren aan ip6tables-restore:
+
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT DROP [0:0]
+COMMIT
+
+*raw
+:PREROUTING DROP [0:0]
+:OUTPUT DROP [0:0]
+COMMIT
+
+*mangle
+:PREROUTING DROP [0:0]
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT DROP [0:0]
+:POSTROUTING DROP [0:0]
+COMMIT
+
+
+
+Zonder ip6tables-restore:
+
+ip6tables -F
+ip6tables -t raw -F
+ip6tables -t mangle -F
+
+</quote>
+
+
+
+-----------
 
 later: reimplement uruk-save in perl, be sure to run it only when /usr is
 mounted, not in init-script during boot.
