@@ -52,8 +52,9 @@ enable_ipv6=true
 # enable calling the unstable uruk-save script
 enable_uruk_save=false
 
-# display a warning before each uruk-save call
-enable_uruk_save_warning=true
+# The variable enable_uruk_save_warning is no longer supported (since 2013-04-10).
+## display a warning before each uruk-save call
+## enable_uruk_save_warning=true
 
 # set enable_autosave to "true" to autosave the active ruleset
 # when going from start to stop
@@ -569,13 +570,13 @@ check_uruk() {
 }
 
 warn_uruk_save() {
+  # FIXME remove the warn_uruk_save() function at about 2013-10-01.  enable_uruk_save_warning
+  # is unsupported since 2013-04-10
   if $enable_uruk_save_warning; then
     cat <<END
- About to call the uruk-save script.  You should have read the uruk-rc(5)
- manpage.  Your $uruk_config should be sane.  You should NOT be using any hooks
- in your rc file, see uruk-save(8)!  If you don't like all this, read the "Using
- the Uruk init script" part in the GETTING STARTED section of the uruk(8)
- manpage.
+ The enable_uruk_save_warning variable is no longer supported.  Please remove
+ it from the file /etc/default/uruk (or /etc/sysconfig/uruk).
+ (Proceeding anyway.)
 END
   fi
 }

@@ -19,9 +19,6 @@ enable_ipv6=$(enable-ipv6)
 # enable calling the unstable uruk-save script
 ## enable_uruk_save=true
 #
-# uncomment to disable displaying a warning before each uruk-save call
-## enable_uruk_save_warning=false
-#
 # set enable_autosave to "false" to disable autosaving the active ruleset
 # when going from start to stop
 ## enable_autosave=false

@@ -240,8 +240,7 @@ traffic later.)
 By default, \uruk_save is not used by the uruk init script.  You might want to
 use it, though.  The \uruk_save script is faster and when using \uruk_save,
 your box won't be open while loading new rules.  But beware: \uruk_save is not
-as robust as using \uruk itself.  However, if you don't use any hooks in your
-\rc file, you're safe.
+as robust as using \uruk itself.
 
 \par{
 
@@ -250,12 +249,9 @@ The init script will use \uruk_save only if asked to do so in
 
 \verbatim{\
 
- enable_uruk_save=true
- enable_uruk_save_warning=false}
+ enable_uruk_save=true}
 
-\uruk_save is used whenever appropriate.  The \tt{enable_uruk_save_warning}
-variable controls whether a warning should get displayed whenever \uruk_save is
-called.
+\uruk_save is used whenever appropriate.
 
 See \sibref{uruk-save}{uruk-save(8)} for more details.
 
