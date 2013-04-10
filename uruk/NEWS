@@ -2,14 +2,14 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2013mmdd - The Sy Release
+uruk version 201304dd - The Sy Release   The Het De Sip...pad Release
 
 - UNRELEASED
 
-- Currently, setting enable_ipv6=false in /etc/{default, }/uruk means: uruk
-  should never call ip6tables, i.e. uruk won't change or set any ip6tables rule.
-  In an upcoming uruk release (not this one), setting enable_ipv6=false will
-  mean: block all IPv6 traffic.
+- Currently, setting enable_ipv6=false in /etc/{default,sysconfig}/uruk means:
+  uruk should never call ip6tables, i.e. uruk won't change or set any
+  ip6tables rule.  In an upcoming uruk release (not this one), setting
+  enable_ipv6=false will mean: block all IPv6 traffic.
 
   So, if you don't use any IPv6 networking functionality, you're advised
   to now make sure you have set enable_ipv6=false.
@@ -21,8 +21,9 @@ uruk version 2013mmdd - The Sy Release
 
   In all other cases, things will just continue to work.
 
-- uruk-save is now no longer considered experimental, but fully supported.
-  It is still disabled by default, though.
+- The uruk-save script (managed by setting enable_uruk_save in
+  /etc/{default,sysconfig}/uruk) is now no longer considered experimental,
+  but fully supported.  It is still disabled by default, though.
 
 - README, man/uruk.azm, script/uruk: apply patch contributed by Thijs
   Kinkhorst, 1 Mar 2013, in <1362140354-7012-1-git-send-email-thijs@uvt.nl>:
