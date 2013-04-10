@@ -5,6 +5,8 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 2013mmdd - The Sy Release
 
 - UNRELEASED
+- uruk-save is now no longer considered experimental, but fully supported.
+  It is still disabled by default, though.
 - README, man/uruk.azm, script/uruk: apply patch contributed by Thijs
   Kinkhorst, 1 Mar 2013, in <1362140354-7012-1-git-send-email-thijs@uvt.nl>:
   "Replace obsolete 'state' module usage with 'conntrack'.":

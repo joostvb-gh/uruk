@@ -7,12 +7,6 @@ vr 22 10:17 <@Fruit> alle tables wissen en de policy op DROP zetten?
 vr 22 10:17 <@Fruit> ik kan wel ff een mooie autistische ruleset in elkaar zetten
 vr 22 10:22 < joostvb> ja, graag zo'n autistische ruleset voor ipv6
 
-
-
- # enable calling the unstable uruk-save script
- ## enable_uruk_save=true
- : no longer tag this feeature as experimental, tag this feature as supported (but not yet enabled by default)
-
 <quote>
 
 Date: Fri, 22 Mar 2013 11:00:13 +0100
@@ -67,10 +61,7 @@ Dit gaat er trouwens wel vanuit dat je in uruk de policies op ACCEPT
 instelt, iets wat sowieso zou moeten gebeuren (anders kun je niet robuust
 een ruleset laden).
 
-
 </quote>
-
-
 
 -----------
 
