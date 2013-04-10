@@ -1,6 +1,6 @@
 
 init/enable-ipv6 doc/default : currently enable_ipv6=false means: do not call
-ip6tables.  it should mean: block all ipv6 traffic.
+ip6tables.  it should mean: block all ipv6 traffic.  see NEWS.
 
 vr 22 10:16 <@Fruit> joostvb: als IPv6 disabled is in uruk, misschien gewoon alle IPv6-verkeer blokkeren?
 vr 22 10:17 <@Fruit> alle tables wissen en de policy op DROP zetten?
