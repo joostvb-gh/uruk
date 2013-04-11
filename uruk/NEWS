@@ -2,9 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201304dd - The Sy Release   The Het De Sip...pad Release
+uruk version 20130426 - The Sy Release   The Het De Sip...pad Release
 
 - UNRELEASED
+
+- 10th anniversary release \o/
 
 - Currently, setting enable_ipv6=false in /etc/{default,sysconfig}/uruk means:
   uruk should never call ip6tables, i.e. uruk won't change or set any
@@ -38,6 +40,10 @@ uruk version 201304dd - The Sy Release   The Het De Sip...pad Release
    change has been tested against Debian Lenny, Squeeze, Wheezy and Sid.
 
   Thanks Thijs!  This closes bug http://bugs.debian.org/702064 .
+
+- script/uruk: apply patch contibuted by Casper Gielen, fixing typo in
+  the ip6_noroute_ranges value.  Thanks Casper!  This closes bug
+  http://bugs.debian.org/705202 .
 
 
 uruk version 20130226 - The Vlist Release
