@@ -104,6 +104,16 @@ allow access to the root-account directly from ssh.  Typically sudo is used as
 an extra line of defense.
 }
 
+   \par{NB: if your sudo prompts for a password, be sure to have line
+
+\verbatim{
+  Defaults !tty_tickets}
+
+in your sudoers file: we first call sudo -v, than we call sudo to write the
+data. Since we use ssh to get to the host, we'll use a different tty for both
+sudo calls.
+}
+
 \sec{sucp_examples}{sucp EXAMPLES}
 
 Some examples:
