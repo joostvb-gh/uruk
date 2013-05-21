@@ -32,5 +32,5 @@ ssh -t $1 sudo -v
 test -n "$CSP_DEBUG" && echo $1 $opt_u $2 $3
 
 #exec ssh $1 "sudo $opt_u sh -c \"cat - > $2/$3\"" < $3
-exec tar $3 | ssh $1 sudo $opt_u tar xC $2
+exec tar c $3 | ssh $1 sudo $opt_u tar xC $2
 
