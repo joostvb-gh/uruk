@@ -95,7 +95,7 @@ without fiddling with permission bits on the remote host.
 
 \sec{sucp_description}{sucp DESCRIPTION}
 
-\csp_sucp calls cat(1) from within sudo(1) from within ssh(1).  This allows one
+\csp_sucp calls tar(1) from within sudo(1) from within ssh(1).  This allows one
 to copy files to accounts on hosts one can only reach by calling sudo on the
 ssh-reachable remote host.
   \par{
@@ -123,12 +123,6 @@ Some examples:
 
 \verbatim{
   csp_sucp monty-python commit/ trailer.txt}
-
-\sec{sucp_bugs}{sucp BUGS}
-
-If NOPASSWD is not set in the sudoers(5) file, and one's timestamp is expired,
-\csp_sucp will forward the sudo password prompt. The given password \tt{will}
-be echoed on the console!
 
 \sec{author}{AUTHOR}
 
