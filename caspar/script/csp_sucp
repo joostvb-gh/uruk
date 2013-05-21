@@ -26,7 +26,7 @@ fi
 test -n "$CSP_SUCP_USER" && opt_u="-u $CSP_SUCP_USER"
 
 # first make sure our sudo-timestamp is fresh
-ssh -T $1 sudo -v
+ssh -t $1 sudo -v
 # now run sudo: we won't be prompted for a password; and
 # can use stdin for our data
 test -n "$CSP_DEBUG" && echo $1 $opt_u $2 $3
