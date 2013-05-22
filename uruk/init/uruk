@@ -36,6 +36,15 @@ wo 22 10:53 < Fruit> rsyslog:[ -x "$RSYSLOGD_BIN" ] || exit 0
 wo 22 10:53 < Fruit> rsync:test -x $DAEMON || exit 0
 wo 22 10:53 < joostvb> ja ja
 
+als je n /e/d/uruk hebt met enable-ipv6 call, en je doet dpkg --remove uruk:
+
+wo 22 16:40 <Fruit> /etc/init.d/uruk: 17: /etc/default/uruk: 
+                    enable-ipv6: not found
+
+en als je n /e/d/uruk hebt zionder enable-ipv6 call:
+wo 22 16:41 <Fruit> root@bender:~# facedin
+wo 22 16:41 <Fruit> service uruk force-reload exited with status 5
+
 
 
 ### BEGIN INIT INFO
