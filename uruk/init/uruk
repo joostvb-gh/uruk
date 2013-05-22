@@ -9,6 +9,35 @@
 
 # for LSB's install_initd and remove_initd, see
 # http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/initscrcomconv.html
+
+http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/iniscrptact.html
+
+
+In case of an error while processing any init-script action except for status, the init script shall print an error message and exit with a non-zero status code: 
+5       program is not installed
+
+plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
+wel een configfile is, en dan is dit oude script geen debian config file meer.
+
+wo 22 10:51 < joostvb> Fruit:       log_failure_msg "Aborting uruk 
+                       initd: missing executable $i"
+wo 22 10:52 < Fruit> service uruk start
+wo 22 10:52 < Fruit> exit 0
+wo 22 10:52 < joostvb>       exit 5
+wo 22 10:52 < joostvb> das fout?
+wo 22 10:52 < joostvb> hrm
+wo 22 10:52 < joostvb> hrm
+wo 22 10:52 < Fruit> root@fry:~# facedin
+wo 22 10:52 < Fruit> service uruk force-reload exited with status 5
+wo 22 10:53 < Fruit> udev:[ -x /sbin/udevd ] || exit 0
+wo 22 10:53 < Fruit> urandom:[ -c /dev/urandom ] || exit 0
+wo 22 10:53 < Fruit> snmpd:test -x /usr/sbin/snmpd || exit 0
+wo 22 10:53 < Fruit> rsyslog:[ -x "$RSYSLOGD_BIN" ] || exit 0
+wo 22 10:53 < Fruit> rsync:test -x $DAEMON || exit 0
+wo 22 10:53 < joostvb> ja ja
+
+
+
 ### BEGIN INIT INFO
 # Provides:          uruk
 # Required-Start:    $local_fs
