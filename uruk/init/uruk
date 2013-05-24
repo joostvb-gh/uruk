@@ -8,13 +8,12 @@
 # based systems
 
 # for LSB's install_initd and remove_initd, see
-# http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/initscrcomconv.html
+# http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/iniscrcomconv.html
 
-http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/iniscrptact.html
-
-
-In case of an error while processing any init-script action except for status, the init script shall print an error message and exit with a non-zero status code: 
-5       program is not installed
+#
+# for LSB, see
+# http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/iniscrptact.html
+#
 
 plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
 wel een configfile is, en dan is dit oude script geen debian config file meer.
@@ -114,7 +113,7 @@ test -f /etc/sysconfig/uruk && . /etc/sysconfig/uruk
 
 ###############################################################################
 #
-# This script should be LSB 3.1.0 compliant.  In particular,
+# This script should be LSB >= 3.1.0 compliant.  In particular,
 # http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/initscrcomconv.html
 # and
 # http://refspecs.freestandards.org/LSB_3.1.0/LSB-generic/LSB-generic/iniscrptact.html
@@ -165,8 +164,8 @@ test -f /etc/sysconfig/uruk && . /etc/sysconfig/uruk
 #
 # Debian GNU/Linux >= Sarge    Yes, in lsb-base package
 #
-# See /usr/share/doc/lsb-core/examples/init-skeleton.gz for sample lsb init
-# script.
+# See debian-system:/usr/share/doc/lsb-core/examples/init-skeleton.gz for
+# sample lsb init script.
 #
 # include lsb functions
 lsb_init_functions=/lib/lsb/init-functions
@@ -629,4 +628,3 @@ if $enable_ipv6; then
 fi
 
 exit $STATUS
-
