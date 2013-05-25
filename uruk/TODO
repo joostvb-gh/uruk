@@ -1,4 +1,35 @@
 
+plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
+wel een configfile is, en dan is dit oude script geen debian config file meer.
+
+wo 22 10:51 < joostvb> Fruit:       log_failure_msg "Aborting uruk 
+                       initd: missing executable $i"
+wo 22 10:52 < Fruit> service uruk start
+wo 22 10:52 < Fruit> exit 0
+wo 22 10:52 < joostvb>       exit 5
+wo 22 10:52 < joostvb> das fout?
+wo 22 10:52 < joostvb> hrm
+wo 22 10:52 < joostvb> hrm
+wo 22 10:52 < Fruit> root@fry:~# facedin
+wo 22 10:52 < Fruit> service uruk force-reload exited with status 5
+wo 22 10:53 < Fruit> udev:[ -x /sbin/udevd ] || exit 0
+wo 22 10:53 < Fruit> urandom:[ -c /dev/urandom ] || exit 0
+wo 22 10:53 < Fruit> snmpd:test -x /usr/sbin/snmpd || exit 0
+wo 22 10:53 < Fruit> rsyslog:[ -x "$RSYSLOGD_BIN" ] || exit 0
+wo 22 10:53 < Fruit> rsync:test -x $DAEMON || exit 0
+wo 22 10:53 < joostvb> ja ja
+
+als je n /e/d/uruk hebt met enable-ipv6 call, en je doet dpkg --remove uruk:
+
+wo 22 16:40 <Fruit> /etc/init.d/uruk: 17: /etc/default/uruk:
+                    enable-ipv6: not found
+
+en als je n /e/d/uruk hebt zionder enable-ipv6 call:
+wo 22 16:41 <Fruit> root@bender:~# facedin
+wo 22 16:41 <Fruit> service uruk force-reload exited with status 5
+
+-------------
+
 init/enable-ipv6 doc/default : currently enable_ipv6=false means: do not call
 ip6tables.  it should mean: block all ipv6 traffic.  see NEWS.
 

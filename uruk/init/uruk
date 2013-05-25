@@ -1,49 +1,13 @@
 #!/bin/sh
 #
+# this file maintained at http://git.mdcc.cx/uruk.git
+#
 # Uruk init script.
 
 # chkconfig: 2345 11 89
 # description: starts, stops and saves iptables state, as created by uruk
-# beware! above two lines are parsed by chkconfig(8), as commonly found on RPM
-# based systems
-
-# for LSB's install_initd and remove_initd, see
-# http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/iniscrcomconv.html
-
-#
-# for LSB, see
-# http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/iniscrptact.html
-#
-
-plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
-wel een configfile is, en dan is dit oude script geen debian config file meer.
-
-wo 22 10:51 < joostvb> Fruit:       log_failure_msg "Aborting uruk 
-                       initd: missing executable $i"
-wo 22 10:52 < Fruit> service uruk start
-wo 22 10:52 < Fruit> exit 0
-wo 22 10:52 < joostvb>       exit 5
-wo 22 10:52 < joostvb> das fout?
-wo 22 10:52 < joostvb> hrm
-wo 22 10:52 < joostvb> hrm
-wo 22 10:52 < Fruit> root@fry:~# facedin
-wo 22 10:52 < Fruit> service uruk force-reload exited with status 5
-wo 22 10:53 < Fruit> udev:[ -x /sbin/udevd ] || exit 0
-wo 22 10:53 < Fruit> urandom:[ -c /dev/urandom ] || exit 0
-wo 22 10:53 < Fruit> snmpd:test -x /usr/sbin/snmpd || exit 0
-wo 22 10:53 < Fruit> rsyslog:[ -x "$RSYSLOGD_BIN" ] || exit 0
-wo 22 10:53 < Fruit> rsync:test -x $DAEMON || exit 0
-wo 22 10:53 < joostvb> ja ja
-
-als je n /e/d/uruk hebt met enable-ipv6 call, en je doet dpkg --remove uruk:
-
-wo 22 16:40 <Fruit> /etc/init.d/uruk: 17: /etc/default/uruk: 
-                    enable-ipv6: not found
-
-en als je n /e/d/uruk hebt zionder enable-ipv6 call:
-wo 22 16:41 <Fruit> root@bender:~# facedin
-wo 22 16:41 <Fruit> service uruk force-reload exited with status 5
-
+# beware! above two lines are parsed by chkconfig(8), as commonly found on
+# (old?  << 2013 ?) RPM based systems
 
 
 ### BEGIN INIT INFO
@@ -59,7 +23,7 @@ wo 22 16:41 <Fruit> service uruk force-reload exited with status 5
 ### END INIT INFO
 
 # Copyright (C) 2002, 2003 Laurence J. Lane
-# Copyright (C) 2003, 2004, 2005, 2007, 2010 Joost van Baal
+# Copyright (C) 2003, 2004, 2005, 2007, 2010, 2013 Joost van Baal
 #
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -75,8 +39,6 @@ wo 22 16:41 <Fruit> service uruk force-reload exited with status 5
 
 # Based upon /etc/init.d/iptables as shipped with the Debian iptables
 # package by Laurence J. Lane
-
-# this file maintained at http://git.mdcc.cx/uruk.git
 
 set -e
 
@@ -157,7 +119,13 @@ test -f /etc/sysconfig/uruk && . /etc/sysconfig/uruk
 #
 ###############################################################################
 
+# for LSB's install_initd and remove_initd, see
+# http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/iniscrcomconv.html
 
+#
+# for LSB, see
+# http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/iniscrptact.html
+#
 
 #                        /lib/lsb/init-functions
 # Red Hat EL AS rel 3          Yes
