@@ -27,14 +27,15 @@ TIDY = tidy -quiet
 ## which typesets HTML into plain text.
 W3M = w3m
 
-azms = uruk-rc.azm uruk-save.azm uruk.azm
+azms = uruk-rc.azm uruk-save.azm uruk.azm urukctl.azm
 typetargets = uruk-rc.html uruk-rc.ps uruk-rc.txt \
-  uruk-save.html uruk-save.ps uruk-save.txt uruk.html uruk.ps uruk.txt
+  uruk-save.html uruk-save.ps uruk-save.txt uruk.html uruk.ps uruk.txt \
+  urukctl.html urukctl.ps urukctl.txt
 tmpfiles = uruk-rc.zmt uruk-rc.zmr uruk-save.zmt uruk-save.zmr \
-  uruk.zmt uruk.zmr
+  uruk.zmt uruk.zmr urukctl.zmt urukctl.zmr
 
 doc_DATA = $(typetargets) $(azms)
-man_MANS = uruk.8 uruk-rc.5 uruk-save.8
+man_MANS = uruk.8 uruk-rc.5 uruk-save.8 urukctl.8
 
 EXTRA_DIST = $(doc_DATA) $(man_MANS)
 ## DISTCLEANFILES = $(man_MANS) $(typetargets) $(tmpfiles)

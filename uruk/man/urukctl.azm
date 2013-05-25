@@ -1,0 +1,15 @@
+\: vim:syntax=tex
+\: this file maintained at http://git.mdcc.cx/uruk.git
+
+\: this is a manpage in zoem format.  see http://micans.org/zoem/ and man_zmm(7)
+
+\import{pud/man.zmm}
+\import{./include.zmm}
+
+\begin{pud::man}{
+  {name}{urukctl}
+  {html_title}{urukctl}
+  {section}{8}
+  \man_share
+}
+
