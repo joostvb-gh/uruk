@@ -8,16 +8,9 @@ wo 22 10:52 < Fruit> service uruk start
 wo 22 10:52 < Fruit> exit 0
 wo 22 10:52 < joostvb>       exit 5
 wo 22 10:52 < joostvb> das fout?
-wo 22 10:52 < joostvb> hrm
-wo 22 10:52 < joostvb> hrm
 wo 22 10:52 < Fruit> root@fry:~# facedin
 wo 22 10:52 < Fruit> service uruk force-reload exited with status 5
-wo 22 10:53 < Fruit> udev:[ -x /sbin/udevd ] || exit 0
-wo 22 10:53 < Fruit> urandom:[ -c /dev/urandom ] || exit 0
 wo 22 10:53 < Fruit> snmpd:test -x /usr/sbin/snmpd || exit 0
-wo 22 10:53 < Fruit> rsyslog:[ -x "$RSYSLOGD_BIN" ] || exit 0
-wo 22 10:53 < Fruit> rsync:test -x $DAEMON || exit 0
-wo 22 10:53 < joostvb> ja ja
 
 als je n /e/d/uruk hebt met enable-ipv6 call, en je doet dpkg --remove uruk:
 
