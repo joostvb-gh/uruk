@@ -2,6 +2,23 @@
 plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
 wel een configfile is, en dan is dit oude script geen debian config file meer.
 
+init/uruk :
+---
+
+  *)
+    usage
+    initd_abort_wrong_arg "$*"
+
+FIXME
+of iets als:
+  echo "Aborting urukctl $cmd: wrong argument: $@"
+  exit 2
+of iets als:
+  echo 'try urukctl'
+ echo 'warn deprecated'
+
+---
+
 wo 22 10:51 < joostvb> Fruit:       log_failure_msg "Aborting uruk 
                        initd: missing executable $i"
 wo 22 10:52 < Fruit> service uruk start

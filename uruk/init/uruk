@@ -199,8 +199,9 @@ case "$1" in
     fi
     ;;
   *)
-    usage
-    initd_abort_wrong_arg "$*"
+    # FIXME see TODO
+    echo FIXME
+    exit 2
     ;;
 esac
 
