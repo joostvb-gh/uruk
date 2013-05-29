@@ -9,7 +9,6 @@
 # beware! above two lines are parsed by chkconfig(8), as commonly found on
 # (old?  << 2013 ?) RPM based systems
 
-
 ### BEGIN INIT INFO
 # Provides:          uruk
 # Required-Start:    $local_fs
@@ -40,6 +39,14 @@
 
 # Based upon /etc/init.d/iptables as shipped with the Debian iptables
 # package by Laurence J. Lane
+
+NAME=uruk
+DAEMON=/usr/sbin/uruk
+SCRIPTNAME=/etc/init.d/"$NAME"
+
+# Debian-ism?  Not exit 5 but exit 0.
+test -f $DAEMON || exit 0
+
 
 # /etc/default/uruk can overrule
 # enable_uruk_check, enable_ipv6, enable_autosave, enable_save_counters and PATH
@@ -125,17 +132,17 @@ case "$1" in
   start)
     initd_start
     if test "$STATUS" = 0; then
-      log_success_msg "Starting uruk ($iptables_command)"
+      log_success_msg "Starting uruk"
     else
-      log_failure_msg "Starting uruk ($iptables_command)"
+      log_failure_msg "Starting uruk"
     fi
     ;;
   stop)
     initd_stop
     if test "$STATUS" = 0; then
-      log_success_msg "Shutting down uruk ($iptables_command)"
+      log_success_msg "Shutting down uruk"
     else
-      log_failure_msg "Shutting down uruk ($iptables_command)"
+      log_failure_msg "Shutting down uruk"
     fi
     ;;
   restart)
@@ -154,13 +161,12 @@ case "$1" in
       # uruk is running
       initd_active
       if test "$STATUS" = 0; then
-        log_success_msg "Reloading uruk ($iptables_command)"
+        log_success_msg "Reloading uruk"
       else
-        log_failure_msg "Reloading uruk ($iptables_command)"
+        log_failure_msg "Reloading uruk"
       fi
     else
-      echo "Uruk is not running"
-      log_success_msg "Nothing to do for reloading uruk ($iptables_command)"
+      log_success_msg "Nothing to do for reloading uruk: uruk is not running"
       STATUS=0
     fi
 
