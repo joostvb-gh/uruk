@@ -27,6 +27,7 @@ set -e
 
 # do sanity check on uruk environment.
 enable_uruk_check=true
+## enable_uruk_check=false
 
 # enable ipv6 support
 enable_ipv6=true
@@ -118,6 +119,10 @@ initd_counters () {
   if ! test -d "$libdir"; then
     mkdir -p "$libdir"
   fi
+
+  # needs root
+  initd_preload
+
   if $enable_save_counters; then
     echo -n " with counters"
     $iptables_save -c > "$ruleset"
@@ -210,6 +215,9 @@ initd_stop () {
 }
 
 initd_status() {
+  # needs root
+  initd_preload
+
   tmpdir=`mktemp -d /tmp/uruk.$iptables_command.XXXXXXXXXX`
   trap 'rm -rf $tmpdir' 0
 
@@ -260,7 +268,6 @@ $initd options:
   clear
   halt
   flush
-
 See the urukctl(8) manpage for details.
 END
 }
@@ -410,8 +417,10 @@ initd_preload() {
   libdir="/var/lib/uruk/${iptables_command}"
   autosave="${libdir}/autosave"
   initd_have_a_cow_man "$iptables_save" "$iptables_restore"
-  ${iptables_command} -nL >/dev/null
-  initd_main $*
+  if ! ${iptables_command} -nL >/dev/null; then
+    echo "Fails to run ${iptables_command}."
+    exit 4
+  fi
 }
 
 check_uruk() {
@@ -445,9 +454,9 @@ if $enable_uruk_check; then
   check_uruk
 fi
 
-iptables_command=iptables initd_preload $*
+iptables_command=iptables initd_main $*
 if $enable_ipv6; then
-  iptables_command=ip6tables initd_preload $*
+  iptables_command=ip6tables initd_main $*
 fi
 
 exit $STATUS
