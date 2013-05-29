@@ -1,0 +1,120 @@
+#!/bin/sh
+#
+# this file maintained at http://git.mdcc.cx/uruk.git
+#
+# Uruk init script.
+
+# chkconfig: 2345 11 89
+# description: starts, stops and saves iptables state, as created by uruk
+# beware! above two lines are parsed by chkconfig(8), as commonly found on
+# (old?  << 2013 ?) RPM based systems
+
+
+### BEGIN INIT INFO
+# Provides:          uruk
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     S
+# Default-Stop:      0 1 6
+# X-Start-Before: networking
+# X-Stop-Before:
+# Description: Starts uruk firewall configuration
+# short-description: uruk firewall configuration
+### END INIT INFO
+
+# Copyright (C) 2002, 2003 Laurence J. Lane
+# Copyright (C) 2003, 2004, 2005, 2007, 2010, 2013 Joost van Baal
+#
+# This file is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option)
+# any later version.
+#
+# This file is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+#
+# You should have received a copy of the GNU GPL along with this file, see
+# e.g. the file named COPYING.  If not, see <http://www.gnu.org/licenses/>.
+
+# Based upon /etc/init.d/iptables as shipped with the Debian iptables
+# package by Laurence J. Lane
+
+set -e
+
+
+case "$1" in
+  start)
+    initd_start
+    if test "$STATUS" = 0; then
+      log_success_msg "Starting uruk ($iptables_command)"
+    else
+      log_failure_msg "Starting uruk ($iptables_command)"
+    fi
+    ;;
+  stop)
+    initd_stop
+    if test "$STATUS" = 0; then
+      log_success_msg "Shutting down uruk ($iptables_command)"
+    else
+      log_failure_msg "Shutting down uruk ($iptables_command)"
+    fi
+    ;;
+  restart)
+    # Restart service (if running) or start service
+    $initd stop
+    $initd start
+    ;;
+  force-reload)
+    for rule in active inactive; do
+      eval found_$rule=
+      if test -s $libdir/$rule; then
+        eval found_$rule=1
+      fi
+    done
+    if test "$found_active" -a "$found_inactive"; then
+      # uruk is running
+      initd_active
+      if test "$STATUS" = 0; then
+        log_success_msg "Reloading uruk ($iptables_command)"
+      else
+        log_failure_msg "Reloading uruk ($iptables_command)"
+      fi
+    else
+      echo "Uruk is not running"
+      log_success_msg "Nothing to do for reloading uruk ($iptables_command)"
+      STATUS=0
+    fi
+
+    ;;
+  status)
+    # If the status action is requested, the init script will
+    # return the following exit status codes.
+    #
+    # 0  program is running or service is OK
+    # 1  program is dead and /var/run pid file exists
+    # 2  program is dead and /var/lock lock file exists
+    # 3  program is not running
+    # 4  program or service status is unknown
+
+    initd_status
+    if test "$STATUS" = 0; then
+      if test "$status_active"; then
+        log_success_msg "Checking uruk ($iptables_command): uruk running"
+      else
+        log_failure_msg "Checking uruk ($iptables_command): both active and inactive rulesets present, but active ruleset not loaded"
+        STATUS=4
+      fi
+    elif test "$STATUS" = 3; then
+      log_success_msg "Checking uruk ($iptables_command): uruk not running"
+    else
+      # STATUS=4 no active file present
+      log_failure_msg "Checking uruk ($iptables_command): active ruleset not present"
+    fi
+    ;;
+  *)
+    usage
+    initd_abort_wrong_arg "$*"
+    ;;
+esac
+

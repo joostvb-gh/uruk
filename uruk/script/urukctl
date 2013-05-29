@@ -285,19 +285,9 @@ initd_main () {
   case "$1" in
     start)
       initd_start
-      if test "$STATUS" = 0; then
-        log_success_msg "Starting uruk ($iptables_command)"
-      else
-        log_failure_msg "Starting uruk ($iptables_command)"
-      fi
       ;;
     stop)
       initd_stop
-      if test "$STATUS" = 0; then
-        log_success_msg "Shutting down uruk ($iptables_command)"
-      else
-        log_failure_msg "Shutting down uruk ($iptables_command)"
-      fi
       ;;
     restart)
       # Restart service (if running) or start service
@@ -314,14 +304,8 @@ initd_main () {
       if test "$found_active" -a "$found_inactive"; then
         # uruk is running
         initd_active
-        if test "$STATUS" = 0; then
-          log_success_msg "Reloading uruk ($iptables_command)"
-        else
-          log_failure_msg "Reloading uruk ($iptables_command)"
-        fi
       else
         echo "Uruk is not running"
-        log_success_msg "Nothing to do for reloading uruk ($iptables_command)"
         STATUS=0
       fi
 
@@ -339,16 +323,10 @@ initd_main () {
       initd_status
       if test "$STATUS" = 0; then
         if test "$status_active"; then
-          log_success_msg "Checking uruk ($iptables_command): uruk running"
+          :
         else
-          log_failure_msg "Checking uruk ($iptables_command): both active and inactive rulesets present, but active ruleset not loaded"
           STATUS=4
         fi
-      elif test "$STATUS" = 3; then
-        log_success_msg "Checking uruk ($iptables_command): uruk not running"
-      else
-        # STATUS=4 no active file present
-        log_failure_msg "Checking uruk ($iptables_command): active ruleset not present"
       fi
       ;;
     # end of LSB required init arguments
@@ -362,11 +340,6 @@ initd_main () {
       if test "$found_active" -a "$found_inactive"; then
         if $enable_uruk_save; then
           initd_active_uruk_save
-          if test "$STATUS" = 0; then
-            log_success_msg "Reloading uruk ($iptables_command)"
-          else
-            log_failure_msg "Reloading uruk ($iptables_command)"
-          fi
         else
           cat <<END
  Either set enable_uruk_save to true in
@@ -377,7 +350,6 @@ END
         fi
       else
         echo "Uruk is not running"
-        log_success_msg "Nothing to do for reloading uruk ($iptables_command)"
         STATUS=0
       fi
 
