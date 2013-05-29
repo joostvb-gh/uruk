@@ -249,36 +249,19 @@ usage () {
 cat << END
 $initd options:
   start
-     If not yet done, save current iptables status in "inactive" ruleset.
-     (Re)build and load the "active" ruleset.
   save <ruleset>
-     Save the current iptables status in given ruleset.
   create <active|inactive>
-     Create an "active" or "inactive" ruleset with sane defaults: "active"
-     will be based upon the uruk rc file.  "inactive" will allow all traffic.
   load <ruleset>
-     Load a saved ruleset
   reload
-     (Re)build and load the "active" ruleset, without temporarily clearing the
-     current iptables status.
   force-reload
-     (Re)build and load the "active" ruleset, in case uruk is running.
   stop
-     Load the "inactive" ruleset.
   restart
-     Perform stop-actions followed by start-actions.
   status
-     Print the current status of the service: show which ruleset is loaded, and
-     wether uruk is "running".
   clear
-     Remove all rules and user-defined chains, set default policy to ACCEPT.
   halt
-     Remove all rules and user-defined chains, set default policy to DROP.
   flush
-     Flush all rules from the current iptables status.
 
-Saved ruleset locations: /var/lib/uruk/iptables/ and /var/lib/uruk/ip6tables/ .
-
+See the urukctl(8) manpage for details.
 END
 }
 

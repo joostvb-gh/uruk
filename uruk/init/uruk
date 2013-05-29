@@ -44,6 +44,8 @@ NAME=uruk
 DAEMON=/usr/sbin/uruk
 SCRIPTNAME=/etc/init.d/"$NAME"
 
+initd="$0"
+
 # Debian-ism?  Not exit 5 but exit 0.
 test -f $DAEMON || exit 0
 
