@@ -54,14 +54,14 @@ initd="$0"
 initd_abort_wrong_arg () {
   cmd=$1
   shift
-  log_failure_msg "Aborting uruk $cmd: wrong argument: $@"
+  echo "Aborting urukctl $cmd: wrong argument: $@"
   exit 2
 }
 
 initd_have_a_cow_man () {
   for i in $@; do
     if ! command -v "$i" >/dev/null 2>&1; then
-      log_failure_msg "Aborting uruk initd: missing executable $i"
+      echo "Aborting urukctl: missing executable $i"
       exit 5
     fi
   done
@@ -468,3 +468,4 @@ if $enable_ipv6; then
 fi
 
 exit $STATUS
+
