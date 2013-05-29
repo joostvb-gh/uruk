@@ -127,6 +127,26 @@ END
   exit 1
 fi
 
+usage () {
+  cat <<END
+$initd options:
+  start
+     If not yet done, save current iptables status in "inactive" ruleset.
+     (Re)build and load the "active" ruleset.
+  force-reload
+     (Re)build and load the "active" ruleset, in case uruk is running.
+  stop
+     Load the "inactive" ruleset.
+  restart
+     Perform stop-actions followed by start-actions.
+  status
+     Print the current status of the service: show which ruleset is loaded, and
+     wether uruk is "running".
+
+Saved ruleset locations: /var/lib/uruk/iptables/ and /var/lib/uruk/ip6tables/ .
+END
+}
+
 
 set -e
 
@@ -198,9 +218,14 @@ case "$1" in
       log_failure_msg "Checking uruk ($iptables_command): active ruleset not present"
     fi
     ;;
+  save|create|load|reload|clear|halt|flush)
+    # FIXME to be phased out at 2013-12 (introduced 2013-05)
+    log_warning_msg "Passing argument $* to the uruk initscript is deprecrated.  In an upcoming release, be sure to use the new urukctl interface.  Calling urukctl for you now."
+    exec urukctl $*
+    ;;
   *)
-    # FIXME see TODO
-    echo FIXME
+    usage
+    log_failure_msg "Aborting uruk $1: unsupported argument."
     exit 2
     ;;
 esac
