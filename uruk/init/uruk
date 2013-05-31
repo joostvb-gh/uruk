@@ -152,7 +152,8 @@ set -e
 
 case "$1" in
   start)
-    initd_start
+    urukctl start
+    STATUS=$?
     if test "$STATUS" = 0; then
       log_success_msg "Starting uruk"
     else
@@ -160,7 +161,8 @@ case "$1" in
     fi
     ;;
   stop)
-    initd_stop
+    urukctl stop
+    STATUS=$?
     if test "$STATUS" = 0; then
       log_success_msg "Shutting down uruk"
     else
@@ -181,7 +183,7 @@ case "$1" in
     done
     if test "$found_active" -a "$found_inactive"; then
       # uruk is running
-      initd_active
+      initd_active # FIXME
       if test "$STATUS" = 0; then
         log_success_msg "Reloading uruk"
       else
@@ -203,7 +205,8 @@ case "$1" in
     # 3  program is not running
     # 4  program or service status is unknown
 
-    initd_status
+    urukctl status
+    STATUS=$?
     if test "$STATUS" = 0; then
       if test "$status_active"; then
         log_success_msg "Checking uruk ($iptables_command): uruk running"
