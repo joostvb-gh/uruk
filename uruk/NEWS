@@ -5,28 +5,20 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 2013mmdd - The FIXME Release
 
 - UNRELEASED
-- uruk/man/urukctl.azm, uruk/script/urukctl Now ships new script urukctl
-  with manpage urukctl(8).
+- A part of the uruk init script's functionality is now delivered by the new
+  script urukctl (with manpage urukctl(8)).  Calling the init script with
+  arguments "save", "create", "load", "reload", "clear", "halt" and "flush" is
+  deprecated (but still supported for now; the init script calls urukctl).
+  Only the arguments "start", "stop", "restart", "force-reload" are still (and
+  will continue to be) fully supported in /etc/init.d/uruk.
 
--        * uruk/TODO, uruk/init/uruk: calling initscript with arg
-        save|create|load|reload|clear|halt|flush is deprecated (but still
-        supported for now)
-
-        * uruk/script/urukctl: no longer requires root-access always
-(status? save?  FIXME
-
-add "start",
-        "stop", "restart", "force-reload" to init/uruk.
-
-"save", "create", "load", "clear",
-        "halt" and "flush" actions. the init script will call urukctl
-
-
-rationale:
-        * uruk/init/uruk: Wessel reported a bug: uruk init script behaves
+  This split was made in order to ...
+rationale: * uruk/init/uruk: Wessel reported a bug: uruk init script behaves
         weird in case uruk package is removed from debian (not purged).
         draft plan for fix
 
+-        * uruk/script/urukctl: no longer requires root-access always
+(status? save?  FIXME
 
 
 uruk version 20130426 - The Sy Release
