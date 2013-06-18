@@ -41,7 +41,7 @@
 # package by Laurence J. Lane
 
 NAME=uruk
-DAEMON=/usr/sbin/uruk
+DAEMON=/sbin/uruk
 SCRIPTNAME=/etc/init.d/"$NAME"
 
 initd="$0"
