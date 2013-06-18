@@ -1,4 +1,29 @@
 
+metagross# chmod a+x /tmp/urukctl 
+metagross# /tmp/urukctl start
+Flushing all current iptables rules.
+Loading IPv4 uruk rules.
+Saving iptables ruleset: save "active" with counters.
+Flushing all current ip6tables rules.
+Loading IPv6 uruk rulesip6tables: Protocol wrong type for socket.
+ip6tables v1.4.14: host/network `' not found
+Try `ip6tables -h' or 'ip6tables --help' for more information.
+ip6tables v1.4.14: host/network `' not found
+Try `ip6tables -h' or 'ip6tables --help' for more information.
+ip6tables v1.4.14: host/network `' not found
+Try `ip6tables -h' or 'ip6tables --help' for more information.
+ip6tables v1.4.14: host/network `' not found
+Try `ip6tables -h' or 'ip6tables --help' for more information.
+ip6tables v1.4.14: host/network `' not found
+Try `ip6tables -h' or 'ip6tables --help' for more information.
+ip6tables v1.4.14: host/network `' not found
+Try `ip6tables -h' or 'ip6tables --help' for more information.
+.
+Saving ip6tables ruleset: save "active" with counters.
+metagross# 
+
+
+
 - fix copyright in .azm: use template.
 
 - fix urukctl.azm content
