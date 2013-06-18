@@ -1,3 +1,19 @@
+Fix NEWS
+
+  The revised uruk init script now exits succesfully when the uruk program
+  is not installed, like any init script on Debian systems.  FIXME Red Hat?
+
+
+  This split was made in order to ...
+rationale: * uruk/init/uruk: Wessel reported a bug: uruk init script behaves
+        weird in case uruk package is removed from debian (not purged).
+        draft plan for fix
+
+-        * uruk/script/urukctl: no longer requires root-access always
+(status? save?  give nice error when lacking permissions
+
+
+-------------
 
 plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
 wel een configfile is, en dan is dit oude script geen debian config file meer.
