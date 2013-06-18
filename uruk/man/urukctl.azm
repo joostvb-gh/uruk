@@ -37,66 +37,66 @@ FIXME
 
 \'begin{itemize}{{interitem}{1}}
 
-\item{start}
+\item{\bf{start}}
 \car{
 If not yet done, save current iptables status in "inactive" ruleset.
 (Re)build and load the "active" ruleset.
 }
 
-\item{save <ruleset>}
+\item{\bf{save} \it{ruleset}}
 \car{
 Save the current iptables status in given ruleset.
 }
 
-\item{create <active|inactive>}
+\item{\bf{create} <\tt{active}|\tt{inactive}>}
 \car{
 Create an "active" or "inactive" ruleset with sane defaults: "active"
 will be based upon the uruk rc file.  "inactive" will allow all traffic.
 }
 
-\item{load <ruleset>}
+\item{\bf{load} \it{ruleset}}
 \car{
 Load a saved ruleset
 }
 
-\item{reload}
+\item{\bf{reload}}
 \car{
 (Re)build and load the "active" ruleset, without temporarily clearing the
 current iptables status.
 }
 
-\item{force-reload}
+\item{\bf{force-reload}}
 \car{
 (Re)build and load the "active" ruleset, in case uruk is running.
 }
 
-\item{stop}
+\item{\bf{stop}}
 \car{
 Load the "inactive" ruleset.
 }
 
-\item{restart}
+\item{\bf{restart}}
 \car{
 Perform stop-actions followed by start-actions.
 }
 
-\item{status}
+\item{\bf{status}}
 \car{
 Print the current status of the service: show which ruleset is loaded, and
 wether uruk is "running".
 }
 
-\item{clear}
+\item{\bf{clear}}
 \car{
 Remove all rules and user-defined chains, set default policy to ACCEPT.
 }
 
-\item{halt}
+\item{\bf{halt}}
 \car{
 Remove all rules and user-defined chains, set default policy to DROP.
 }
 
-\item{flush}
+\item{\bf{flush}}
 \car{
 Flush all rules from the current iptables status.
 }
