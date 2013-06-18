@@ -13,8 +13,21 @@
   \man_share
 }
 
-FIXME
+\${html}{\"pud::man::maketoc"}
 
+\sec{name}{NAME}
+\NAME{urukctl}{FIXME wrapper for Linux iptables, for managing firewall rules}
+
+\sec{synopsis}{SYNOPSIS}
+
+: \urukctl foo bar FIXME
+urukctl foo bar FIXME
+
+\sec{description}{DESCRIPTION}
+
+\par{
+
+FIXME
 
   start
      If not yet done, save current iptables status in "inactive" ruleset.
@@ -47,7 +60,55 @@ FIXME
 
 Saved ruleset locations: /var/lib/uruk/iptables/ and /var/lib/uruk/ip6tables/ .
 
+}
 
+\sec{see also}{SEE ALSO}
 
-FIXME
+\sibref{uruk-rc}{uruk-rc(5)}, \sibref{uruk-save}{uruk-save(8)}. The Uruk homepage 
+is at
+\httpref{http://mdcc.cx/uruk/} .
+
+\par{
+\bf{iptables(8)}, \bf{iptables-save(8)},
+\bf{iptables-restore(8)},
+\bf{ip6tables(8)}, \bf{ip6tables-save(8)},
+\bf{ip6tables-restore(8)}, \httpref{http://www.netfilter.org/}
+\: (no manpage online :( )
+
+} \par{
+\bf{interfaces(5)}, \httpref{http://packages.debian.org/ifupdown}.
+}
+
+\sec{copyright}{COPYRIGHT}
+
+Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org;
+Copyright (C) 2003, 2004 Tilburg University http://www.uvt.nl/;
+Copyright (C) 2003, 2004, 2005, 2010 \"man::author"
+
+\par{
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+} \par{
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+} \par{
+
+You should have received a copy of the GNU General Public License along 
+with this program.  If not, see \httpref{http://www.gnu.org/licenses/}.
+
+}
+
+\sec{author}{AUTHOR}
+
+\"man::author"
+
+\end{pud::man}
 
