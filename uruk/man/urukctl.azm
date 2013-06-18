@@ -20,16 +20,15 @@
 
 \sec{synopsis}{SYNOPSIS}
 
-\: \urukctl foo bar FIXME
-urukctl command <option>
+\urukctl \it{command} \bf{[}\it{argument}\bf{]}
 
 \sec{description}{DESCRIPTION}
 
 \par{
 
-urukctl is used to create or change saved iptables rulesets, to change the
-current loaded rulesets and to report on uruk's status.  It is the main
-user interface for the uruk system.
+\urukctl is the user interface for the uruk system.  It is used to create or
+change saved iptables rulesets, to change the current loaded rulesets and to
+report on uruk's status.
 
 uruk's init script calls urukctl, while urukctl calls uruk.
 
