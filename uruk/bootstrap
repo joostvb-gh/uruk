@@ -24,8 +24,8 @@ set -x
 
 test -f ChangeLog || {
     # we want no unprotected emailadresses in the cl
-    git log --pretty --numstat --summary | sed 's/<[^>][^>]*>//g' | \
-      git2cl >ChangeLog
+    git log --pretty --numstat --summary | git2cl | \
+      sed 's/<[jc][^>][^>]*>//g' >ChangeLog
 }
 
 test -f VERSION.m4 || ./setversion
