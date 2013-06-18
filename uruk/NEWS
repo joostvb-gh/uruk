@@ -2,6 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version
+
+bugfix: change DAEMON from /usr/sbin/uruk to /sbin/uruk'     
+
+
+
 uruk version 20130618 - The Sterreke Release
 
 - A part of the uruk init script's functionality is now delivered by the new

@@ -16,47 +16,92 @@
 \${html}{\"pud::man::maketoc"}
 
 \sec{name}{NAME}
-\NAME{urukctl}{FIXME wrapper for Linux iptables, for managing firewall rules}
+\NAME{urukctl}{uruk control script}
 
 \sec{synopsis}{SYNOPSIS}
 
 \: \urukctl foo bar FIXME
-urukctl foo bar FIXME
+urukctl command <option>
 
 \sec{description}{DESCRIPTION}
 
 \par{
 
+urukctl is used to create or change saved iptables rulesets, to change the
+current loaded rulesets and to report on uruk's status.  It is the main
+user interface for the uruk system.
+
+uruk's init script calls urukctl, while urukctl calls uruk.
+
 FIXME
 
-  start
-     If not yet done, save current iptables status in "inactive" ruleset.
-     (Re)build and load the "active" ruleset.
-  save <ruleset>
-     Save the current iptables status in given ruleset.
-  create <active|inactive>
-     Create an "active" or "inactive" ruleset with sane defaults: "active"
-     will be based upon the uruk rc file.  "inactive" will allow all traffic.
-  load <ruleset>
-     Load a saved ruleset
-  reload
-     (Re)build and load the "active" ruleset, without temporarily clearing the
-     current iptables status.
-  force-reload
-     (Re)build and load the "active" ruleset, in case uruk is running.
-  stop
-     Load the "inactive" ruleset.
-  restart
-     Perform stop-actions followed by start-actions.
-  status
-     Print the current status of the service: show which ruleset is loaded, and
-     wether uruk is "running".
-  clear
-     Remove all rules and user-defined chains, set default policy to ACCEPT.
-  halt
-     Remove all rules and user-defined chains, set default policy to DROP.
-  flush
-     Flush all rules from the current iptables status.
+\'begin{itemize}{{interitem}{1}}
+
+\item{start}
+\car{
+If not yet done, save current iptables status in "inactive" ruleset.
+(Re)build and load the "active" ruleset.
+}
+
+\item{save <ruleset>}
+\car{
+Save the current iptables status in given ruleset.
+}
+
+\item{create <active|inactive>}
+\car{
+Create an "active" or "inactive" ruleset with sane defaults: "active"
+will be based upon the uruk rc file.  "inactive" will allow all traffic.
+}
+
+\item{load <ruleset>}
+\car{
+Load a saved ruleset
+}
+
+\item{reload}
+\car{
+(Re)build and load the "active" ruleset, without temporarily clearing the
+current iptables status.
+}
+
+\item{force-reload}
+\car{
+(Re)build and load the "active" ruleset, in case uruk is running.
+}
+
+\item{stop}
+\car{
+Load the "inactive" ruleset.
+}
+
+\item{restart}
+\car{
+Perform stop-actions followed by start-actions.
+}
+
+\item{status}
+\car{
+Print the current status of the service: show which ruleset is loaded, and
+wether uruk is "running".
+}
+
+\item{clear}
+\car{
+Remove all rules and user-defined chains, set default policy to ACCEPT.
+}
+
+\item{halt}
+\car{
+Remove all rules and user-defined chains, set default policy to DROP.
+}
+
+\item{flush}
+\car{
+Flush all rules from the current iptables status.
+}
+
+\'end{itemize}
 
 Saved ruleset locations: /var/lib/uruk/iptables/ and /var/lib/uruk/ip6tables/ .
 
