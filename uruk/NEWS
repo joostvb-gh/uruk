@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2013mmdd - The FIXME Release
+uruk version 201306dd - The Sterreke Release
 
 - UNRELEASED
 - A part of the uruk init script's functionality is now delivered by the new
@@ -11,6 +11,17 @@ uruk version 2013mmdd - The FIXME Release
   deprecated (but still supported for now; the init script calls urukctl).
   Only the arguments "start", "stop", "restart", "force-reload" are still (and
   will continue to be) fully supported in /etc/init.d/uruk.
+
+  When the uruk software is removed from a system, but one chooses to keep
+  the uruk configuration files, /etc/init.d/uruk could be kept (on Debian
+  systems /etc/init.d/uruk is considered to be a configuration file).  When
+  one boots such a system, the LSB standards require the init script to exit
+  with error 5 ("program is not installed").  Such an error causes the boot
+  process to fail.
+
+  The revised uruk init script now exits succesfully when the uruk program
+  is not installed, like any init script on Debian systems.  FIXME Red Hat?
+
 
   This split was made in order to ...
 rationale: * uruk/init/uruk: Wessel reported a bug: uruk init script behaves
