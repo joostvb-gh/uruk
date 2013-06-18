@@ -8,6 +8,10 @@ Fix NEWS
 
 -------------
 
+ship a systemd and a daemontools init thingie
+
+-------------
+
 plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
 wel een configfile is, en dan is dit oude script geen debian config file meer.
 

@@ -15,10 +15,9 @@ uruk version 201306dd - The Sterreke Release
   When the uruk software is removed from a system, but one chooses to keep
   the uruk configuration files, /etc/init.d/uruk could be kept (e.g. on a Debian
   system when removing (not purging) the uruk package; /etc/init.d/uruk is
-  considered to be a configuration file on Debian).  When
-  one boots such a system, the LSB standards require the init script to exit
-  with error 5 ("program is not installed").  Such an error causes the boot
-  process to fail.
+  considered to be a configuration file on Debian).  When one boots such a
+  system, the LSB standards require the init script to exit with error 5
+  ("program is not installed").  Such an error causes the boot process to fail.
 
   The revised uruk init script now exits succesfully when the uruk program
   is not installed, like any init script on Debian systems.
