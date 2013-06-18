@@ -2,10 +2,10 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version
+uruk version 20130619 - The Het De Siptenpad Release
 
-bugfix: change DAEMON from /usr/sbin/uruk to /sbin/uruk'     
-
+- init/uruk: bugfix: change DAEMON from /usr/sbin/uruk to /sbin/uruk.
+- man/urukctl.azm: various improvements.  Still not ready for stable release.
 
 
 uruk version 20130618 - The Sterreke Release
