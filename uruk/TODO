@@ -1,10 +1,9 @@
-Fix NEWS
 
-fix copyright in .azm: use template.
+- fix copyright in .azm: use template.
 
-fix urukctl.azm syntax
+- fix urukctl.azm content
 
-  The revised uruk init script now exits succesfully when the uruk program
+- The revised uruk init script now exits succesfully when the uruk program
   is not installed, like any init script on Debian systems.  FIXME Red Hat?
 
 -        * uruk/script/urukctl: no longer requires root-access always

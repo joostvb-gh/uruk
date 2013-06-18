@@ -20,7 +20,7 @@
 
 \sec{synopsis}{SYNOPSIS}
 
-: \urukctl foo bar FIXME
+\: \urukctl foo bar FIXME
 urukctl foo bar FIXME
 
 \sec{description}{DESCRIPTION}
