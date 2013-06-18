@@ -273,6 +273,8 @@ END
 }
 
 initd_main () {
+  initd_vars
+
   case "$1" in
     start)
       initd_start
@@ -409,13 +411,16 @@ END
   esac
 }
 
-initd_preload() {
+initd_vars() {
   iptables="/sbin/${iptables_command}"
   iptables_save="${iptables}-save"
   iptables_restore="${iptables}-restore"
   uruk_config="/etc/uruk/rc"
   libdir="/var/lib/uruk/${iptables_command}"
   autosave="${libdir}/autosave"
+}
+
+initd_preload() {
   initd_have_a_cow_man "$iptables_save" "$iptables_restore"
   if ! ${iptables_command} -nL >/dev/null; then
     echo "Fails to run ${iptables_command}."
