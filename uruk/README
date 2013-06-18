@@ -36,6 +36,10 @@ you likely don't need zoem.
 
 INSTALL
 
+If you use the uruk Debian package or the uruk RPM, use your package manager to
+take care of installation; skip this section.  If you'd prefer to install using
+the uruk .tar.gz release however, do read on.
+
 See the INSTALL file for generic installation instructions.  The Uruk init
 script, in init/uruk, gets installed in /usr/local/etc/init.d/ by default.
 Symlinks are _not_ created.  You'll have to create them yourself, after running
