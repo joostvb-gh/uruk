@@ -1,9 +1,9 @@
 
+finish urukctl manpage
 
 git should do "write to tempfile;  fsync(); rename" when updating HEAD ref.
 due to powerfailure my HEAD ref file was empty.  occured with
 git 1:1.7.10.4-1+wheezy1
-
 
 
 metagross# chmod a+x /tmp/urukctl 

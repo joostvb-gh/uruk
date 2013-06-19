@@ -106,22 +106,31 @@ Saved ruleset locations: /var/lib/uruk/iptables/ and /var/lib/uruk/ip6tables/ .
 
 }
 
+\'begin{itemize}{{interitem}{1}}
 
-\item{enable_uruk_check} - wether to check for existence and sanity of uruk rc
- file; set to false if you don't like this, e.g. when using the uruk initscript
- for managing saved rulesets only (i.e. not for calling uruk or uruk-save)
+\item{enable_uruk_check}
 
-\item{enable_ipv6} - set to false to disable IPv6 support.  Set to $(enable-ipv6)
-to dynamically decide wether to filter IPv6 traffic
+\car{wether to check for existence and sanity of uruk rc file; set to false if
+you don't like this, e.g. when using the uruk initscript for managing saved
+rulesets only (i.e. not for calling uruk or uruk-save).}
 
-\item{enable_uruk_save}  enable calling the unstable uruk-save script
+\item{enable_ipv6}
+
+\car{set to false to disable IPv6 support.  Set to \tt{$(enable-ipv6)} to
+dynamically decide wether to filter IPv6 traffic.}
+
+\item{enable_uruk_save}
+
+\car{enable calling the unstable uruk-save script.}
 
 \item{enable_autosave}
-set to "false" to disable autosaving the active ruleset when going from start to stop
 
-\item{enable_save_counters} # set to "false" to disable saving table counters with rulesets
+\car{set to "false" to disable autosaving the active ruleset when going from
+start to stop.}
 
-}
+\item{enable_save_counters}
+
+\car{set to "false" to disable saving table counters with rulesets.}
 
 \'end{itemize}
 
