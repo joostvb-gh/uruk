@@ -2,20 +2,14 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20130620 - The
+uruk version 20130620 - The park in dordrecht
 
 - Previous version 20130619 was unusable.
 - script/urukctl: Fix bug in urukctl, introduced 2013-05-29: be sure to assign
   variables ($libdir e.a.) on time.  No longer fails with "mkdir: cannot create
   directory `': No such file or directory".  Thanks Casper Gielen for bugreport.
-
-- Special thanks to Wessel Dankers for recovering my git repo
-
-  fsync(); rename
-
-due to powerfailure my
-my HEAD ref was empty
-
+- Special thanks to Wessel Dankers for recovering my git repo: it didn't really
+  like a sudden powerfailure.
 
 
 
