@@ -9,6 +9,15 @@ uruk version 20130620 - The
   variables ($libdir e.a.) on time.  No longer fails with "mkdir: cannot create
   directory `': No such file or directory".  Thanks Casper Gielen for bugreport.
 
+- Special thanks to Wessel Dankers for recovering my git repo
+
+  fsync(); rename
+
+due to powerfailure my
+my HEAD ref was empty
+
+
+
 
 uruk version 20130619 - The Het De Siptenpad Release
 
