@@ -1,4 +1,126 @@
 
+Bug#712869
+
+Date: Thu, 20 Jun 2013 13:36:16 +0200
+From: Joost van Baal-Ilić <joostvb+uruk@uvt.nl>
+To: submit@bugs.debian.org
+Subject: [wsl.uvt.nl: Re: [uruk] autodetect met /sbin/ip patch]
+Message-ID: <20130620113616.GC6712@dijkstra.uvt.nl>
+
+
+Casper Gielen wrote:
+
+----
+
+hierbij een kleine patch die ip-autodetectie met behulp van /sbin/ip
+toevoegt. De code komt uit onze rc-file en is waarschijnlijk door Wessel
+geschreven. De huidige autodetectie-code werkt prima voor normale
+systemen maar niet voor onze Blackboard-systemen.
+
+De foutieve aanname is dat als /lib/uruk/init/autodetect-ips bestaat dat
+er dan ook altijd een /etc/sysconfig/network-scripts/ifcfg-eth? (of
+/etc/network/interfaces) bestaat.
+
+Dit probleem is aan het licht gekomen nu we ook Redhat-systemen
+autoconfigureren. Ik dacht hier een oplossing voor te hebben door een
+'pre' file te gebruiken. In test werkt dat prima maar in praktijk moet
+die code draaien voor dat er een schrijfbaar filesystem beschikbaar is.
+Ook dat gaat in praktijk goed zolang je die file maar van te voren
+aanmaakt en je IP niet veranderd tijdens een reboot,
+Helaas is dat precies wat er wel gebeurd wanneer je een kloon maakt.
+
+Vandaar deze patch die autodetectie doet met /sbin/ip als de andere
+methodes niet werken. Een klein nadeel is dat we huidige de code nog
+niet kunnen schrappen uit de 'rc' file zonder te controleren dat alle
+systemen een moderne uruk hebben (met autodetect-ips).
+
+--------
+
+
+There is an objection to this patch as it likely to fail in practice.
+This code assumes that the interface is up when Uruk starts. That may
+not be the case, especially on systems with a non-standard
+network-configuration.
+However, that situation is currently not supported either, so nothing
+will be broken that isn't failing already.
+
+
+My specific use-case is that the interface is configured by udev and not
+through the normal configuration files. The /sbin/ip method works fine
+but it is not used as it is not in autodetect-ips. Therefor I moved the
+/sbin/ip method to autodetect-ips.
+
+
+------
+
+diff --git a/uruk/init/autodetect-ips b/uruk/init/autodetect-ips
+index 56946aa..13b626d 100644
+--- a/uruk/init/autodetect-ips
++++ b/uruk/init/autodetect-ips
+@@ -6,6 +6,7 @@
+ #   net{,6}_<interface>_default
+
+ # Copyright © 2012 Wessel Dankers
++# Copyright © 2013 Casper Gielen
+
+ # This file is free software; you can redistribute it and/or modify it under
+ # the terms of the GNU General Public License as published by the Free
+@@ -32,6 +33,7 @@
+ # For each interface <if> in interfaces, ip_<if> should be defined.
+
+ # First try Red Hat's init scripts
++found_rhel_network_script=false
+ for f in /etc/sysconfig/network-scripts/ifcfg-*
+ do
+     test -e $f || continue
+@@ -46,11 +48,15 @@ do
+         echo ip6_${i}_default=${IPV6ADDR%/*}
+         echo net6_${i}_default=$IPV6ADDR
+     )"
++       found_rhel_network_script=true
+ done
+
+-# Second, Debian's init scripts
+-if test -f /etc/network/interfaces
++if $found_rhel_network_script
+ then
++       # nothing to do
++elif test -f /etc/network/interfaces
++then
++       # Second, Debian's init scripts
+     eval "$(
+         while read -r key val val1 rest
+         do
+@@ -84,5 +90,21 @@ then
+             esac
+         done </etc/network/interfaces
+     )"
+-fi
++elif test -x /sbin/ip
++then
++       # This may fail when using DHCP: in that case the interface address
++       # may not be configured yet when this piece of code is ran. You can
++       # hardcode the addresses in $etcdir/ip or change the boot order.
+
++       for i in $interfaces
++       do
++               autodetect_cidr=$(/sbin/ip a l $i | awk '$1 == "inet" { print $2; exit }')
++               eval ip_${i}_default=${autodetect_cidr%/*}
++
++               # inet6 fe80::250:56ff:fe31:3831/64 scope link
++               # we rely on the first match being 'scope global'.
++               # we want to set the IP even if theres only a 'scope link' one.
++               autodetect_ipv6=$(/sbin/ip a l $i | awk '$1 == "inet6" { print $2; exit }')
++               eval ip6_${i}_default=${autodetect_ipv6%/*}
++       done
++fi
+
+
+---------------------
+
+
+
+
 finish urukctl manpage
 
 git should do "write to tempfile;  fsync(); rename" when updating HEAD ref.
