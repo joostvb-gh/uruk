@@ -30,7 +30,17 @@
 change saved iptables rulesets, to change the current loaded rulesets and to
 report on uruk's status.
 
-uruk's init script calls urukctl, while urukctl calls uruk.
+The \urukctl script calls \uruk to process \urukrc.  (The uruk init script
+calls \urukctl.)
+
+These 4 rulesets exist in a system using uruk: 
+
+- the ruleset as expressed in
+the uruk configuration /etc/uruk/rc, 2)
+- the 2 saved rulesets in /var/lib/{iptables,ip6tables}/{active,inactive}
+- the ruleset as currently loaded in the running kernel
+- optional: more rulesets saved in /var/lib/{iptables,ip6tables}
+
 
 FIXME
 
