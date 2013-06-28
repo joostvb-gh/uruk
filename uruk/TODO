@@ -117,6 +117,8 @@ index 56946aa..13b626d 100644
 
 ---------------------
 
+kijk in /sys om netwerkinterfaces te vinden.  via ip(1): is niet-standaard
+op red hat.  mogelijk fijn voor niet-debian/niet-rh; bv. gentoo oid.
 
 
 
