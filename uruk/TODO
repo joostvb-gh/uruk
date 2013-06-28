@@ -3,6 +3,13 @@ Bug#712869
 
 hack init/autodetect-ips :
 
+something like
+
+ ip a | awk '/^[0-9]:/ { print $2; exit }'
+
+to construct $interfaces: needed in case ip is used
+we should depend upon awk
+
 Date: Thu, 20 Jun 2013 13:36:16 +0200
 From: Joost van Baal-Ilić <joostvb+uruk@uvt.nl>
 To: submit@bugs.debian.org
