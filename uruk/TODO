@@ -1,6 +1,8 @@
 
 Bug#712869
 
+hack init/autodetect-ips :
+
 Date: Thu, 20 Jun 2013 13:36:16 +0200
 From: Joost van Baal-Ilić <joostvb+uruk@uvt.nl>
 To: submit@bugs.debian.org
@@ -36,7 +38,6 @@ systemen een moderne uruk hebben (met autodetect-ips).
 
 --------
 
-
 There is an objection to this patch as it likely to fail in practice.
 This code assumes that the interface is up when Uruk starts. That may
 not be the case, especially on systems with a non-standard
@@ -44,12 +45,10 @@ network-configuration.
 However, that situation is currently not supported either, so nothing
 will be broken that isn't failing already.
 
-
 My specific use-case is that the interface is configured by udev and not
 through the normal configuration files. The /sbin/ip method works fine
 but it is not used as it is not in autodetect-ips. Therefor I moved the
 /sbin/ip method to autodetect-ips.
-
 
 ------
 
