@@ -12,10 +12,18 @@ hack init/autodetect-ips :
 
 something like
 
+ip a | while read -r num iface rest;do case $num in [0-9]*:) echo $iface; esac; done
+
+(beware, untested code)
+
+(or, if we want to depend upon awk:
+
  ip a | awk '/^[0-9]:/ { print $2; exit }'
 
+)
+
 to construct $interfaces: needed in case ip is used
-we should depend upon awk
+
 
 Date: Thu, 20 Jun 2013 13:36:16 +0200
 From: Joost van Baal-Ilić <joostvb+uruk@uvt.nl>
