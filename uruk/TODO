@@ -2,6 +2,7 @@
 Als lokale ip ongespecifeerd is, check verkeer dan niet op destination
 ip, maar alleen op source, port, etc.  Handig bij dhcp en dynamische
 ipv6.  Tnx Wessel voor idee.
+Bv. als ip_eth0_failover='', dan daar niet op checken.
 
 -------------------------------------------------------------------
 
