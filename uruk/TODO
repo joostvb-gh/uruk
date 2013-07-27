@@ -16,6 +16,12 @@ giving any information
 joostvb@arrr:~/git/uruk/uruk% dash -x ./init/autodetect-ips 2>&1 | grep -v '^+'
 net_eth9_default=192.168.1.1/255.255.255.0
 
+joostvb@arrr:~/git/uruk/uruk% . ./init/autodetect-ips 
+./init/autodetect-ips:38: no matches found: /etc/sysconfig/network-scripts/ifcfg-*
+joostvb@arrr:~/git/uruk/uruk% echo $net_eth9_default; echo $ip_eth9_default
+
+
+
 
 Date: Thu, 20 Jun 2013 13:36:16 +0200
 From: Joost van Baal-Ilić <joostvb+uruk@uvt.nl>

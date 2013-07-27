@@ -29,22 +29,30 @@
 # assign IPs and networks to network interfaces
 ###############################################
 
+# FIXME
+# set $interfaces dynamically too?
+
 # For each interface <if> in interfaces, ip_<if> should be defined.
 
 # First try Red Hat's init scripts
+
+# FIXME
+# dash(1)  Pathname Expansion (File Name Generation)
+# Shell Patterns
+# for f in $( ls /etc/sysconfig/network-scripts/ifcfg-* 2>/dev/null )
 for f in /etc/sysconfig/network-scripts/ifcfg-*
 do
     test -e $f || continue
-    i=${f#/etc/sysconfig/network-scripts/ifcfg-}
-    case $i in *[!a-zA-Z0-9_]*|[!a-zA-Z_]*)
+    iface=${f#/etc/sysconfig/network-scripts/ifcfg-}
+    case $iface in *[!a-zA-Z0-9_]*|[!a-zA-Z_]*)
         continue
     esac
     eval "$(
         . $f
-        echo ip_${i}_default=$IPADDR
-        echo net_${i}_default=$IPADDR/$NETMASK
-        echo ip6_${i}_default=${IPV6ADDR%/*}
-        echo net6_${i}_default=$IPV6ADDR
+        echo ip_${iface}_default=$IPADDR
+        echo net_${iface}_default=$IPADDR/$NETMASK
+        echo ip6_${iface}_default=${IPV6ADDR%/*}
+        echo net6_${iface}_default=$IPV6ADDR
     )"
 done
 
@@ -88,14 +96,13 @@ fi
 
 # FIXME
 
+# if we haven't set any variables, try this dynamic trick:
+
+# (beware, untested code)
 # ip a | while read -r num iface rest;do case $num in [0-9]*:) echo $iface; esac; done
 
-(beware, untested code)
-
-(if we want to depend upon awk:
-
- ip a | awk '/^[0-9]:/ { print $2; exit }'
-
-)
+#(if we want to depend upon awk:
+# ip a | awk '/^[0-9]:/ { print $2; exit }'
+#)
 
 
