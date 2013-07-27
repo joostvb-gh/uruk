@@ -2,7 +2,8 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20130727 - The park in dordrecht FIXME
+uruk version 20130727 - The Corbeşti Release
+ park in dordrecht FIXME
 
 - Previous version 20130619 was unusable.
 - script/urukctl: Fix bug in urukctl, introduced 2013-05-29: be sure to assign
@@ -17,7 +18,7 @@ uruk version 20130727 - The park in dordrecht FIXME
 - Special thanks to Wessel Dankers for recovering my git repo: it didn't really
   like a sudden powerfailure.  And thanks for lending me an Ubuntu EeePC to replace
   mine which died after an encounter with my bicycle's "spaken".
-
+- Thanks Jelena
 
 uruk version 20130619 - The Het De Siptenpad Release
 

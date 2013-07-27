@@ -113,7 +113,7 @@ then
 iface=
 # FIXME check names
 ip a | \
-  while read -r jeden dva tri ceteri
+  while read -r jeden dva tri četiri pauza
   do
     case $jeden in
       [0-9]*:)
