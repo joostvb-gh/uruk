@@ -10,19 +10,11 @@ Bug#712869
 
 hack init/autodetect-ips :
 
-something like
+use ip(1) to construct $interfaces: needed in case config files are not
+giving any information
 
-ip a | while read -r num iface rest;do case $num in [0-9]*:) echo $iface; esac; done
-
-(beware, untested code)
-
-(or, if we want to depend upon awk:
-
- ip a | awk '/^[0-9]:/ { print $2; exit }'
-
-)
-
-to construct $interfaces: needed in case ip is used
+joostvb@arrr:~/git/uruk/uruk% dash -x ./init/autodetect-ips 2>&1 | grep -v '^+'
+net_eth9_default=192.168.1.1/255.255.255.0
 
 
 Date: Thu, 20 Jun 2013 13:36:16 +0200

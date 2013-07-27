@@ -86,3 +86,16 @@ then
     )"
 fi
 
+# FIXME
+
+# ip a | while read -r num iface rest;do case $num in [0-9]*:) echo $iface; esac; done
+
+(beware, untested code)
+
+(if we want to depend upon awk:
+
+ ip a | awk '/^[0-9]:/ { print $2; exit }'
+
+)
+
+
