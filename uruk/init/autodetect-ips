@@ -36,10 +36,9 @@
 
 # First try Red Hat's init scripts
 
-# FIXME
-# dash(1)  Pathname Expansion (File Name Generation)
-# Shell Patterns
-# for f in $( ls /etc/sysconfig/network-scripts/ifcfg-* 2>/dev/null )
+# This works fine with dash.  (As long as you don't have a file called
+# 'ifcfg-*'.)  Other non-strict shells (zsh, e.g.) might print an error "no
+# matches found: /etc/sysconfig/network-scripts/ifcfg-*"
 for f in /etc/sysconfig/network-scripts/ifcfg-*
 do
     test -e $f || continue
@@ -94,12 +93,55 @@ then
     )"
 fi
 
-# FIXME
+# now, parse output from ip(8).  We might find more
+# interfaces and more IPs.  E.g. IPs assigned not
+# using interfaces or cfg
 
-# if we haven't set any variables, try this dynamic trick:
+# FIXME , see Bug#712869 in TODO
 
+# if we haven't set any variables, try something like this dynamic trick:
 # (beware, untested code)
-# ip a | while read -r num iface rest;do case $num in [0-9]*:) echo $iface; esac; done
+#ip a | while read -r num iface rest
+#   do
+#    case $num in [0-9]*:) echo $iface
+#    esac
+#  done
+
+if command -v ip >/dev/null 2>&1
+then
+    eval "$(
+iface=
+# FIXME check names
+ip a | \
+  while read -r jeden dva tri ceteri
+  do
+    case $jeden in
+      [0-9]*:)
+        echo $iface
+        iface=${jeden%:}
+      ;;
+      inet)
+        if ip_${iface}_default
+        then
+          ip=${dva%/*}
+          net=
+          echo ip_${iface}_default=$address
+        fi
+      ;;
+      inet6)
+        ip6=$dva
+      ;; 
+     # if ip_${iface}_default unset, assign to it
+    esac
+  done 
+
+  )"
+else
+
+warning
+
+fi
+
 
 #(if we want to depend upon awk:
 # ip a | awk '/^[0-9]:/ { print $2; exit }'
