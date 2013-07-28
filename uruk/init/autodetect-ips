@@ -6,6 +6,7 @@
 #   net{,6}_<interface>_default
 
 # Copyright © 2012 Wessel Dankers
+# Copyright © 2013 Joost van Baal-Ilić
 
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -93,9 +94,8 @@ then
     )"
 fi
 
-# now, parse output from ip(8).  We might find more
-# interfaces and more IPs.  E.g. IPs assigned not
-# using interfaces or cfg
+# now, parse output from ip(8).  We might find more interfaces and more IPs.
+# E.g. IPs assigned not using interfaces or cfg
 
 # FIXME , see Bug#712869 in TODO
 
@@ -111,7 +111,7 @@ if command -v ip >/dev/null 2>&1
 then
     eval "$(
 iface=
-# jeden dva tri četiri pauza
+# jeden dva tri četiri pet pauza
 ip a | \
   while read -r jeden dva tri cetiri pauza
   do
@@ -158,5 +158,4 @@ fi
 #(if we want to depend upon awk:
 # ip a | awk '/^[0-9]:/ { print $2; exit }'
 #)
-
 
