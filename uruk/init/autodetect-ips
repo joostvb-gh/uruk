@@ -3,7 +3,8 @@
 # this file maintained at http://git.mdcc.cx/uruk.git
 
 # /lib/uruk/init/autodetect-ips - set variables ip{,6}_<interface>_default and
-#   net{,6}_<interface>_default
+#   net{,6}_<interface>_default.  see uruk-rc(5) and the sample uruk rc file
+#   as shipped with uruk in doc/rc.
 
 # Copyright © 2012 Wessel Dankers
 # Copyright © 2013 Joost van Baal-Ilić
