@@ -89,7 +89,9 @@ Fedora systems) and /etc/network/interfaces (as found at e.g. Debian and Ubuntu
 systems), and, for each interface \it{nic}, and each found IPv4 and IPv6
 address and network, sets variables \v{ip_}\it{nic}\v{_default},
 \v{ip6_}\it{nic}\v{_default}, \v{net_}\it{nic}\v{_default} and
-\v{net6_}\it{nic}\v{_default} .
+\v{net6_}\it{nic}\v{_default} .  Then it calls ip(8) and adds any other
+found \it{nic}, \v{ip} and \v{net} triplets (for both IPv4 and IPv6).
+FIXME global vs local scope
 
 \par{
 The script autodetect-ips is useful if you'd like to share your \rc file among
