@@ -19,6 +19,7 @@ $
 $ . ./init/autodetect-ips
 $ echo $ip_eth9_default $net_eth9_default
 192.168.1.1 192.168.1.1/255.255.255.0
+$ echo $ip_lo_default $net6_lo_default
 
 
 

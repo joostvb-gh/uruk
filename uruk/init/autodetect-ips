@@ -135,13 +135,13 @@ ip a | \
         eval ip6="\"\$ip6_${iface}_default\""
         if test -z "$ip6"
         then
-           # test scope?
-               # inet6 fe80::250:56ff:fe31:3831/64 scope link
-               # inet 192.168.1.3/24 brd 192.168.1.255 scope global wlan0
+          # test scope?
+          # inet6 fe80::250:56ff:fe31:3831/64 scope link
+          # inet 192.168.1.3/24 brd 192.168.1.255 scope global wlan0
 
           address=${dva%/*}
           netmask=${dva#*/}
-          echo ip_${iface}_default=$address
+          echo ip6_${iface}_default=$address
           echo net6_${iface}_default=$address/$netmask
         fi
       ;; 
