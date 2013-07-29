@@ -5,13 +5,11 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 20130729 - The Corbeşti Release
 
 - script/urukctl: Fix bug in urukctl, introduced 2013-05-29.  (Previous uruk
-  version 20130619 was unusable.)  Be sure to assign variables ($libdir e.a.) on
-  time.  No longer fails with "mkdir: cannot create directory `': No such file
-  or directory".  Thanks Casper Gielen for bugreport.
-- init/uruk: The uruk init script now exits succesfully when the uruk program is
-  not installed, like any init script on Debian systems.  FIXME Red Hat?
-- script/urukctl: no longer requires root-access when not strictly needed.
-  (status? save?  give nice error when lacking permissions FIXME
+  versions 20130619 and 20130618 are unusable.)  Be sure to assign variables
+  ($libdir e.a.) on time.  No longer fails with "mkdir: cannot create directory
+  `': No such file or directory".  Thanks Casper Gielen for bugreport.
+- script/urukctl: no longer strictly requires root-access when called as
+  "urukctl create active".
 - man/{uruk,urukctl}.azm: Various improvements in uruk(8) and urukctl(8)
   manpages.
 - Special thanks to Wessel Dankers for recovering my git repo: it didn't really
@@ -23,7 +21,7 @@ uruk version 20130729 - The Corbeşti Release
 uruk version 20130619 - The Het De Siptenpad Release
 
 - init/uruk: bugfix: change DAEMON from /usr/sbin/uruk to /sbin/uruk.
-- man/urukctl.azm: various improvements.  Still not ready for stable release.
+- man/urukctl.azm: various improvements.
 
 
 uruk version 20130618 - The Sterreke Release
@@ -215,9 +213,9 @@ uruk version 20120530
 
 uruk version 20110831
 
-- uruk/man/Makefile.am: assume zoem knows where to find aephea;
-  get rid of hardcoded ZOEMSEARCHPATH=/usr/share/aephea.  You
-  need zoem >= 11-166 to build this uruk.
+- uruk/man/Makefile.am: assume zoem knows where to find aephea; get rid of
+  hardcoded ZOEMSEARCHPATH=/usr/share/aephea.  You need zoem >= 11-166 to build
+  this uruk.
 
 
 uruk version 20110608
@@ -225,29 +223,28 @@ uruk version 20110608
 - The IPv6 Day release!  (Today is ISOC's World IPv6 Day, see
   http://www.worldipv6day.org/)
 - Fix some more zoem >= 10-265-1 (cosmetic) issues.
-- doc/default: examples now more useful: just uncomment the line to
-  change behaviour. tnx Thijs Kinkhorst for sharing ideas.
+- doc/default: examples now more useful: just uncomment the line to change
+  behaviour. tnx Thijs Kinkhorst for sharing ideas.
 
 
 uruk version 20110602
 
 - bootstap: now builds with automake 1.11 (no longer 1.9)
 - uruk/man/Makefile.am, uruk/man/uruk-rc.azm, uruk/man/uruk-save.azm,
-  uruk/man/uruk.azm: converted manpages to zoem >= 10-265-1 + aephea >=
-  10.008-1 format.
-- script/uruk.in: behave more gracefully on suspicious rc file: issue
-  a warning in case of undefined variable.  Thanks Wessel Dankers
-  for bringing this up & supplying a first implementation.
+  uruk/man/uruk.azm: converted manpages to zoem >= 10-265-1 + aephea >= 10.008-1
+  format.
+- script/uruk.in: behave more gracefully on suspicious rc file: issue a warning
+  in case of undefined variable.  Thanks Wessel Dankers for bringing this up &
+  supplying a first implementation.
 
 
 uruk version 20110213
 
-- init/uruk.in: Support for IPv6 packet filtering has been enabled by
-  default.  It is no longer required to edit /etc/default/uruk to enable
-  it: if you'd like to use IPv6 packet filtering, you now can remove any
-  setting of enable_ipv6 in /etc/default/uruk.  If you'd prefer NOT to
-  use IPv6 packet filtering, be sure your /etc/default/uruk has
-  "enable_ipv6=false".
+- init/uruk.in: Support for IPv6 packet filtering has been enabled by default.
+  It is no longer required to edit /etc/default/uruk to enable it: if you'd
+  like to use IPv6 packet filtering, you now can remove any setting of
+  enable_ipv6 in /etc/default/uruk.  If you'd prefer NOT to use IPv6 packet
+  filtering, be sure your /etc/default/uruk has "enable_ipv6=false".
 
 
 uruk version 20100831
@@ -260,9 +257,9 @@ uruk version 20100831
 uruk version 20100823
 
 - README: added upgrade instructions for releases <= 20100717.
-- script/uruk.in: Update to new iptables syntax: Get rid of warning
-  "Using intrapositioned negation (`--option ! this`) is deprecated in
-  favor of extrapositioned (`! --option this`)."
+- script/uruk.in: Update to new iptables syntax: Get rid of warning "Using
+  intrapositioned negation (`--option ! this`) is deprecated in favor of
+  extrapositioned (`! --option this`)."
 
 
 uruk version 20100821
@@ -480,8 +477,8 @@ uruk version 20050414
 
 uruk version 20040625
 
-- Fixed bug in multiple IP per network interface mode.  Uruk was
-  unusable in such a setup.
+- Fixed bug in multiple IP per network interface mode.  Uruk was unusable in
+  such a setup.
 - Some tweaking of build system.
 
 
@@ -528,8 +525,8 @@ uruk version 20031026
 
 uruk version 20031008
 
-- Init script more robust, especially on fresh installs. (We still suffer
-  from at least one bug though, see TODO.)
+- Init script more robust, especially on fresh installs. (We still suffer from
+  at least one bug though, see TODO.)
 - Started documenting rc_<n> hooks.
 - Various minor and cosmetic cleanups in documentation.
 

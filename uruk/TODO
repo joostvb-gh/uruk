@@ -1,4 +1,10 @@
 
+urukctl: give nice error when lacking permissions.
+urukctl: document how to set up file access permissions in order to be able to
+run "urukctl create active" as non-root user.
+
+------
+
 Als lokale ip ongespecifeerd is, check verkeer dan niet op destination
 ip, maar alleen op source, port, etc.  Handig bij dhcp en dynamische
 ipv6.  Tnx Wessel voor idee.
