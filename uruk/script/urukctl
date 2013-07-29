@@ -127,7 +127,6 @@ initd_counters () {
     mkdir -p "$libdir"
   fi
 
-  # needs root
   initd_preload
 
   if $enable_save_counters; then
@@ -222,7 +221,6 @@ initd_stop () {
 }
 
 initd_status() {
-  # needs root
   initd_preload
 
   tmpdir=`mktemp -d /tmp/uruk.$iptables_command.XXXXXXXXXX`
