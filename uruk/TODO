@@ -1,4 +1,8 @@
 
+finish urukctl manpage
+
+------
+
 urukctl: give nice error when lacking permissions.
 urukctl: document how to set up file access permissions in order to be able to
 run "urukctl create active" as non-root user.
@@ -144,14 +148,13 @@ index 56946aa..13b626d 100644
 kijk in /sys om netwerkinterfaces te vinden.  via ip(1): is niet-standaard
 op red hat.  mogelijk fijn voor niet-debian/niet-rh; bv. gentoo oid.
 
-
-
-finish urukctl manpage
+-------
 
 git should do "write to tempfile;  fsync(); rename" when updating HEAD ref.
 due to powerfailure my HEAD ref file was empty.  occured with
 git 1:1.7.10.4-1+wheezy1
 
+------
 
 metagross# chmod a+x /tmp/urukctl 
 metagross# /tmp/urukctl start
@@ -176,17 +179,12 @@ Try `ip6tables -h' or 'ip6tables --help' for more information.
 Saving ip6tables ruleset: save "active" with counters.
 metagross# 
 
-
+------------
 
 - fix copyright in .azm: use template.
 
-- fix urukctl.azm content
-
 - The revised uruk init script now exits succesfully when the uruk program
   is not installed, like any init script on Debian systems.  FIXME Red Hat?
-
--        * uruk/script/urukctl: no longer requires root-access always
-(status? save?  give nice error when lacking permissions
 
 -------------
 
