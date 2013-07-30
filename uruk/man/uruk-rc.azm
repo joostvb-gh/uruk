@@ -83,6 +83,7 @@ wired interface, and don't like to explicitly set your IPs in \rc:
  # we leave services_wlan0_default_{tcp,udp} unset: don't allow any
  # incoming connections on wlan0's default IP }
 
+\par{
 The script autodetect-ips looks for files
 /etc/sysconfig/network-scripts/ifcfg-* (commonly found at e.g. Red Hat and
 Fedora systems) and /etc/network/interfaces (as found at e.g. Debian and Ubuntu
@@ -90,10 +91,9 @@ systems), and, for each interface \it{nic}, and each found IPv4 and IPv6
 address and network, sets variables \v{ip_}\it{nic}\v{_default},
 \v{ip6_}\it{nic}\v{_default}, \v{net_}\it{nic}\v{_default} and
 \v{net6_}\it{nic}\v{_default} .  Then it calls ip(8) and adds any other found
-\it{nic}, \v{ip} and \v{net} triplets (for IPv4 and, for IPv6, only addressed
+\it{nic}, \v{ip} and \v{net} triplets (for IPv4 and, for IPv6, only addresses
 in scope "global").
-
-\par{
+} \par{
 The script autodetect-ips is useful if you'd like to share your \rc file among
 different hosts.
 } \par{
