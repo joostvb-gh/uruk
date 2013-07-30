@@ -112,9 +112,9 @@ if command -v ip >/dev/null 2>&1
 then
     eval "$(
 iface=
-# jeden dva tri četiri pet pauza
+# jeden dva tri četiri pet pauza ostalo
 ip a | \
-  while read -r jeden dva tri cetiri pauza
+  while read -r jeden dva tri cetiri ostalo
   do
     case $jeden in
       [0-9]*:)
