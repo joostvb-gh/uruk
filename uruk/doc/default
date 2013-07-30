@@ -1,7 +1,7 @@
 # this file maintained at http://git.mdcc.cx/uruk.git
 #
-# configuration for /etc/init.d/uruk.  Install in /etc/default/uruk (Debian) or
-# /etc/sysconfig/uruk (Red Hat)
+# configuration for urukctl(8) as called by /etc/init.d/uruk.  Install in
+# /etc/default/uruk (Debian) or /etc/sysconfig/uruk (Red Hat)
 
 # Some helpers are installed in /lib/uruk/init
 PATH=/lib/uruk/init:$PATH

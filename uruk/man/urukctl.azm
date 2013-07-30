@@ -120,6 +120,9 @@ Saved ruleset locations: /var/lib/uruk/iptables/ and /var/lib/uruk/ip6tables/ .
 
 }
 
+
+/etc/default/uruk or /etc/sysconfig/uruk FIXME
+
 \'begin{itemize}{{interitem}{1}}
 
 \item{enable_uruk_check}
