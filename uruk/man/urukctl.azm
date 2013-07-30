@@ -30,8 +30,17 @@
 change saved iptables rulesets, to change the current loaded rulesets and to
 report on uruk's status.
 
+} \par{
+
+See \sibref{uruk}{uruk(8)} for information on how to get started with the Uruk
+system, and for a tutorial.  This manpage gives just the details on \urukctl.
+
+} \par{
+
 The \urukctl script calls \uruk to process \rcpath.  (The uruk init script
 calls \urukctl.)
+
+} \par{
 
 These 4 ruleset pairs (for both IPv4 and IPv6) exist in a system using uruk: 
 
@@ -46,7 +55,12 @@ These 4 ruleset pairs (for both IPv4 and IPv6) exist in a system using uruk:
   \item optional: more rulesets saved in \tt{/var/lib/{iptables,ip6tables}}
 \end{itemize}
 
-FIXME
+}
+
+\cpar{arguments}{
+
+\urukctl should be called as either \tt{urukctl} \it{argument} or
+\tt{urukctl} \it{argument} \it{option}. Possible values are:
 
 \'begin{itemize}{{interitem}{1}}
 
@@ -116,12 +130,14 @@ Flush all rules from the current iptables status.
 
 \'end{itemize}
 
-Saved ruleset locations: /var/lib/uruk/iptables/ and /var/lib/uruk/ip6tables/ .
-
 }
 
 
-/etc/default/uruk or /etc/sysconfig/uruk FIXME
+\cpar{configuration}{
+
+\urukctl uses the file /etc/default/uruk (on Debian, Ubuntu and related
+systems) or /etc/sysconfig/uruk (on Red Hat, Fedora and related systems) for
+configuration. Variables used in this file are:
 
 \'begin{itemize}{{interitem}{1}}
 
@@ -151,11 +167,12 @@ start to stop.}
 
 \'end{itemize}
 
+}
 
 \sec{see also}{SEE ALSO}
 
-\sibref{uruk-rc}{uruk-rc(5)}, \sibref{uruk-save}{uruk-save(8)}. The Uruk homepage 
-is at
+\sibref{uruk}{uruk(8)}, \sibref{uruk-rc}{uruk-rc(5)},
+\sibref{uruk-save}{uruk-save(8)}. The Uruk homepage is at
 \httpref{http://mdcc.cx/uruk/} .
 
 \par{
