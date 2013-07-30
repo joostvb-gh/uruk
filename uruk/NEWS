@@ -10,6 +10,9 @@ uruk version 20130729 - The Corbeşti Release
   `': No such file or directory".  Thanks Casper Gielen for bugreport.
 - script/urukctl: no longer strictly requires root-access when called as
   "urukctl create active".
+- init/autodetect-ips, man/uruk-rc.azm: detect IPs currently assigned to
+  interfaces, which are not listed in config files, by calling ip(8) if needed.
+  This closes Debian Bug#712869 (http://bugs.debian.org/712869).
 - man/{uruk,urukctl}.azm: Various improvements in uruk(8) and urukctl(8)
   manpages.
 - Special thanks to Wessel Dankers for recovering my git repo: it didn't really
