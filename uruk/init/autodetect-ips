@@ -112,7 +112,7 @@ if command -v ip >/dev/null 2>&1
 then
     eval "$(
 iface=
-# jeden dva tri četiri pet pauza ostalo
+# jeden dva tri četiri pet ostalo
 ip a | \
   while read -r jeden dva tri cetiri ostalo
   do
@@ -158,4 +158,3 @@ fi
 #(if we want to depend upon awk:
 # ip a | awk '/^[0-9]:/ { print $2; exit }'
 #)
-
