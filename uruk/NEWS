@@ -76,13 +76,13 @@ uruk version 20130426 - The Sy Release
    module. Change uruk's iptables commands to make use of the newer syntax.
 
    As according to the README uruk already depended on the conntrack module
-   being present, this introduces no higher minimum iptables version. The
-   change has been tested against Debian Lenny, Squeeze, Wheezy and Sid.
+   being present, this introduces no higher minimum iptables version. The change
+   has been tested against Debian Lenny, Squeeze, Wheezy and Sid.
 
   Thanks Thijs!  This closes bug http://bugs.debian.org/702064 .
 
-- script/uruk: apply patch contibuted by Casper Gielen, fixing typo in
-  the ip6_noroute_ranges value.  Thanks Casper!  This closes bug
+- script/uruk: apply patch contibuted by Casper Gielen, fixing typo in the
+  ip6_noroute_ranges value.  Thanks Casper!  This closes bug
   http://bugs.debian.org/705202 .
 
 
@@ -103,22 +103,22 @@ uruk version 20121205 - The Zes Blokskes Release
 uruk version 20121130 - The Вршац Release
 
 - experimental release.
-- init/autodetect-ips, init/enable-ipv6: Added new helpers for uruk rc and
-  for uruk/default, contributed by Wessel Dankers.
-- script/uruk, script/uruk-save: Apply patch contributed by Wessel Dankers
-  in <1354116979-10246-1-git-send-email-wsl@fruit.je>: "allow access to
-  different tables (nat, mangle, raw) in uruk-save".
+- init/autodetect-ips, init/enable-ipv6: Added new helpers for uruk rc and for
+  uruk/default, contributed by Wessel Dankers.
+- script/uruk, script/uruk-save: Apply patch contributed by Wessel Dankers in
+  <1354116979-10246-1-git-send-email-wsl@fruit.je>: "allow access to different
+  tables (nat, mangle, raw) in uruk-save".
 
 
 uruk version 20121023 - The Grafwegen Release
 
 - uruk/script/uruk: Fix IPv6 firewalling in case uruk is used on a host (not
   transit) firewall by applying patch contributed by Thijs Kinkhorst: "Uruk
-  implemented RFC 4890 section 4.3: Recommendations for ICMPv6 Transit
-  Traffic. However uruk is used in some (many?) cases not as a transit firewall
-  but as a host firewall for destination entities. Therefore, also the
-  recommendations from section 4.4: Recommendations for ICMPv6 Local
-  Configuration Traffic need to be added."
+  implemented RFC 4890 section 4.3: Recommendations for ICMPv6 Transit Traffic.
+  However uruk is used in some (many?) cases not as a transit firewall but as a
+  host firewall for destination entities. Therefore, also the recommendations
+  from section 4.4: Recommendations for ICMPv6 Local Configuration Traffic need
+  to be added."
 
 
 uruk version 20121005 - The Onze-Lieve-Vrouw-Waver Release
@@ -161,11 +161,11 @@ uruk version 20120608 - The Hooidonk Release
 
 - uruk/script/uruk: No longer block, but allow ICMPv6 type 137 Redirect Message
   [RFC4861].  These are needed for Duplicate Address Detection in IPv6
-  autoconfiguration: RFC 4429 says: "the router should [...] provide the ON
-  with an ICMP Redirect, which may include a Target Link-Layer Address Option
+  autoconfiguration: RFC 4429 says: "the router should [...] provide the ON with
+  an ICMP Redirect, which may include a Target Link-Layer Address Option
   (TLLAO)."  Thanks Casper Gielen.
-- uruk/init/uruk: Apply patch for uruk init script, in order to make sure
-  uruk starts early enough in boot sequence:
+- uruk/init/uruk: Apply patch for uruk init script, in order to make sure uruk
+  starts early enough in boot sequence:
 
    -# Required-Start:    $network $remote_fs
    -# Required-Stop:     $network $remote_fs
@@ -183,8 +183,7 @@ uruk version 20120608 - The Hooidonk Release
 
 uruk version 20120605 - The Pickensteeg Release
 
-- configure.ac: no longer die if programs zoem, col and/or groff are not
-  found.
+- configure.ac: no longer die if programs zoem, col and/or groff are not found.
 
 
 uruk version 20120530
@@ -199,8 +198,8 @@ uruk version 20120530
 - uruk/doc/rfc4890-icmpv6-firewall.sh, uruk/doc/rfc4890.license.msg: ship
   example ICMP v6 script from RFC 4890, by Suresh Krishnan.  It is available
   under a BSD-style license.
-- zoem no longer needed to build from this tarball: pretypeset documentation
-  is shipped.
+- zoem no longer needed to build from this tarball: pretypeset documentation is
+  shipped.
 - we no longer rely upon expansion of BIN_PATH SBIN_PATH DATA_PATH SYSCONF_PATH
   LOCALSTATE_PATH using AC_DEFINE_DIR, as defined in GNU Autoconf Macro
   Archive's ac_define_dir.m4.  These are now hardcoded to /usr/bin, /usr/sbin,
@@ -265,7 +264,7 @@ uruk version 20100823
 uruk version 20100821
 
 - script/uruk.in: fix bug introduced in version 20100820: uruk: 391: Syntax
-  error: Unterminated quoted string
+  error: Unterminated quoted string.
 
 
 uruk version 20100820
@@ -316,12 +315,12 @@ uruk version 20080330
 
 uruk version 20080307
 
-- Fix a bug showing up when uruk loglevel is set between 20 and 40 and IPv6
-  is enabled: it caused errors like "ip6tables v1.3.6: host/network 10.1.2.3
-  not found".  These errors these did NOT compromise the firewall rules, btw.
-- Added support for multiple hook files (like rc_a) working at one entry
-  point.  See uruk-rc(5) and uruk(8).  Thanks Wessel Dankers for the
-  suggestion and for a first implementation.
+- Fix a bug showing up when uruk loglevel is set between 20 and 40 and IPv6 is
+  enabled: it caused errors like "ip6tables v1.3.6: host/network 10.1.2.3 not
+  found".  These errors these did NOT compromise the firewall rules, btw.
+- Added support for multiple hook files (like rc_a) working at one entry point.
+  See uruk-rc(5) and uruk(8).  Thanks Wessel Dankers for the suggestion and for
+  a first implementation.
 
 
 uruk version 20071101
@@ -375,19 +374,19 @@ uruk version 20071030
   you should craft some hack: this traffic will no longer be logged by default
   with this loglevel.
 
-  rc_e is now obsolete.  You should move your rc_e stuff to rc_d.  (rc_e for
-  now will still work, though.)
+  rc_e is now obsolete.  You should move your rc_e stuff to rc_d.  (rc_e for now
+  will still work, though.)
 
-- The uruk init script now is (should be) Linux Standards Base v 3.1.0
-  compliant.  Added extra supported argument "status".  The script now
-  _requires_ the file /lib/lsb/init-functions to be present, and to define the
-  shell functions log_success_msg, log_failure_msg and log_warning_msg.  LSB
-  compliant systems (recent releases of Debian GNU/Linux, Red Hat Enterprise
-  Linux, Ubuntu Linux, a.o.) supply this.
+- The uruk init script now is (should be) Linux Standards Base v 3.1.0 compliant.
+  Added extra supported argument "status".  The script now _requires_ the file
+  /lib/lsb/init-functions to be present, and to define the shell functions
+  log_success_msg, log_failure_msg and log_warning_msg.  LSB compliant systems
+  (recent releases of Debian GNU/Linux, Red Hat Enterprise Linux, Ubuntu Linux,
+  a.o.) supply this.
 - Introduced new variables interfaces_unprotect and URUK_INTERFACES_UNPROTECT.
 - Add XML stuff contributed by Fred Vos, including some preliminary documentation
-  (in Dutch).  Could be used to transform an XML-file describing uruk rules to
-  an uruk rc file.  Shipped in contrib/, installed in .../doc/uruk/contrib/.
+  (in Dutch).  Could be used to transform an XML-file describing uruk rules to an
+  uruk rc file.  Shipped in contrib/, installed in .../doc/uruk/contrib/.
 - Uruk is now licensed under GPLv3 (or any later version).
 - man/Makefile.am: no longer try to support non-ascii characters in .txt
   manpages.  col, as shipped with the bsdutils 1:2.13-2 Debian package chokes
@@ -409,70 +408,66 @@ uruk version 20051129
   configured.  (We have always been doing this in the Debian package.) This is
   needed in order to support usage where the rc file queries the operating
   system to learn about current IP adresses.  With uruk 20051026 and 20051027,
-  such usage was not possible.  See TODO for notes on pending issues related
-  to this.
+  such usage was not possible.  See TODO for notes on pending issues related to
+  this.
 - Build-depend upon zoem >= 05-328.
 
 
 uruk version 20051027
 
-- Fixed bug in uruk script.  Reported to pop up when /bin/sh is bash
-  and $version is not set in /etc/uruk/rc.
+- Fixed bug in uruk script.  Reported to pop up when /bin/sh is bash and
+  $version is not set in /etc/uruk/rc.
 
 
 uruk version 20051026
 
-- More examples in uruk-rc(5) manpage.  Thanks Roland van Hout for
-  suggestion.
-- Experimental ip6tables support added to uruk(8) and uruk-save(8).
-  See comments in the uruk script.  New option "-6" for uruk-save(8).
-- The uruk init script now sources both /etc/default/uruk and
-  /etc/sysconfig/uruk (if present, of course).  An example file for
-  /etc/{default,sysconfig}/uruk is now shipped and gets installed in
-  /usr/[local/]share/doc/uruk/examples/.
-- Major overhaul of the uruk init script.  This script now is more integrated
-  in the uruk framework.
+- More examples in uruk-rc(5) manpage.  Thanks Roland van Hout for suggestion.
+- Experimental ip6tables support added to uruk(8) and uruk-save(8). See comments
+  in the uruk script.  New option "-6" for uruk-save(8).
+- The uruk init script now sources both /etc/default/uruk and /etc/sysconfig/uruk
+  (if present, of course).  An example file for /etc/{default,sysconfig}/uruk is
+  now shipped and gets installed in /usr/[local/]share/doc/uruk/examples/.
+- Major overhaul of the uruk init script.  This script now is more integrated in
+  the uruk framework.
   + The pre-uruk situation is now saved and restorable.
   + Optionally calls uruk-save (and displays a warning by default).
   + Calls uruk if applicable.
-  + Improved options: start, stop, force-reload, reload.  These now
-    behave more intuitive.
-  + The saved active and inactive rules now no longer get out of sync with
-    the uruk rc file.  (O.t.o.h.: one can no longer maintain part of the
-    firewall configuration outside the uruk rc file.)
+  + Improved options: start, stop, force-reload, reload.  These now behave more
+    intuitive.
+  + The saved active and inactive rules now no longer get out of sync with the
+    uruk rc file.  (O.t.o.h.: one can no longer maintain part of the firewall
+    configuration outside the uruk rc file.)
   + New option: create
-  See README on what the implications are if you're upgrading.  Thanks to
-  Wessel Dankers for his ideas about an improved uruk init script.
-- uruk(8) now checks for the Uruk version the rc file was created for.
-  This will allow for more sane behaviour in case of future incompatible
-  upgrades.
+  See README on what the implications are if you're upgrading.  Thanks to Wessel
+  Dankers for his ideas about an improved uruk init script.
+- uruk(8) now checks for the Uruk version the rc file was created for.  This
+  will allow for more sane behaviour in case of future incompatible upgrades.
 - Buildsystem: ./bootstrap now uses autoreconf(1).
 
 
 uruk version 20050718
 
 - This is a pre-release.
-- Added support for loglevel, see uruk-rc(5).  Some people were annoyed
-  by uruk's syslog spamming.  If you're one of these, set loglevel=30 (or
-  10) in your rc-file.
+- Added support for loglevel, see uruk-rc(5).  Some people were annoyed by uruk's
+  syslog spamming.  If you're one of these, set loglevel=30 (or 10) in your
+  rc-file.
 
 
 uruk version 20050414
 
 - This is a pre-release.
-- Uruk now is maintained using GNU Arch on http://arch.gna.org/uruk/ .
-  See README.
+- Uruk now is maintained using GNU Arch on http://arch.gna.org/uruk/ .  See
+  README.
 - ChangeLog entries from 2003 split off in ChangeLog.2003.
 - Uruk(8) now honors environment variables URUK_IPTABLES (/sbin/iptables by
   default) and URUK_CONFIG (/etc/uruk/rc by default).
 - Now ships new script uruk-save(8); which saves /etc/uruk/rc in
   iptables-{save,restore} format, without invoking iptables.  You could
   use it e.g. when loading a new rc file.  See the updated uruk(8) manpage.
-- The uruk init script now honors /etc/default/uruk.  See comments in the
-  code.
-- The uruk init script acts more sane when passed {stop,start} while no
-  saved rules files are present: it tries to generate these in such
-  circumstances.  It will warn you it's doing so.
+- The uruk init script now honors /etc/default/uruk.  See comments in the code.
+- The uruk init script acts more sane when passed {stop,start} while no saved
+  rules files are present: it tries to generate these in such circumstances.  It
+  will warn you it's doing so.
 
 
 uruk version 20040625
@@ -540,22 +535,22 @@ uruk version 20031004
   - now build-depends on zoem: documentation depends on configure-time
     settings.
 - ad1810-firewall under some circumstances was not reboot-resistent: I've
-  missed a change in the Debian iptables package behaviour.
-  The Debian iptables package >= 1.2.7-8 (7 Dec 2002) will not call
-  /etc/init.d/iptables on boot by default.  We now ship our own
-  init script to deal with this (thanks to Laurence J. Lane).
+  missed a change in the Debian iptables package behaviour.  The Debian iptables
+  package >= 1.2.7-8 (7 Dec 2002) will not call /etc/init.d/iptables on boot by
+  default.  We now ship our own init script to deal with this (thanks to
+  Laurence J. Lane).
 
 
 ad1810-firewall version 20030829
 
 - ad1810-firewall-rc manpage converted from pod to zoem
   ( http://micans.org/zoem ).
-- rc_1, rc_2, .... rc_10 feature supported by ad1810-firewall script: set
-  e.g. rc_1=/usr/local/etc/ad1810-firewall/rc_1 in your
-  ad1810-firewall-rc(5).  This file should contain shell code.  This is
-  executed early in the ad1810-firewall routine, allowing finegrained tweaking
-  of rules, for systems with special demands.  For now, see the
-  ad1810-firewall shell code for more details.  More documentation will follow.
+- rc_1, rc_2, .... rc_10 feature supported by ad1810-firewall script: set e.g.
+  rc_1=/usr/local/etc/ad1810-firewall/rc_1 in your ad1810-firewall-rc(5).  This
+  file should contain shell code.  This is executed early in the ad1810-firewall
+  routine, allowing finegrained tweaking of rules, for systems with special
+  demands.  For now, see the ad1810-firewall shell code for more details.  More
+  documentation will follow.
 
 
 ad1810-firewall version 20030512
@@ -563,10 +558,10 @@ ad1810-firewall version 20030512
 - Moving manpage format from pod to zoem.
 - Fixed automatic version numbering in build system; no more wacky vyyyymmdd
   versions.  Thanks Raja R Harinath on the autoconf list.
-- rc should no longer define e.g. sources_eth0_tcp_www, where www is a port,
-  but e.g. sources_eth0_tcp_public, where public is a symbolic name for a
-  (set of) services.  Furthermore, the new variable ports_eth0_tcp_public
-  should be defined as e.g. "www".
+- rc should no longer define e.g. sources_eth0_tcp_www, where www is a port, but
+  e.g. sources_eth0_tcp_public, where public is a symbolic name for a (set of)
+  services.  Furthermore, the new variable ports_eth0_tcp_public should be
+  defined as e.g. "www".
 
 
 ad1810-firewall version v20030427
