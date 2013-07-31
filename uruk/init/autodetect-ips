@@ -99,8 +99,6 @@ fi
 # now, parse output from ip(8).  We might find more interfaces and more IPs.
 # E.g. IPs assigned not using interfaces or cfg
 
-# FIXME , see Bug#712869 in TODO
-
 # if we haven't set any variables, try something like this dynamic trick:
 # (beware, untested code)
 #ip a | while read -r num iface rest
