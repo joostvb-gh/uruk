@@ -92,8 +92,8 @@ wired interface, and don't like to explicitly set your IPs in \rc:
  # we leave services_wlan0_default_{tcp,udp} unset: don't allow any
  # incoming connections on wlan0's default IP }
 
-\cpari{autodetect-ips}{
-The script autodetect-ips looks for files
+\cpar{autodetect-ips}{
+The script autodetect-ips --as used in the previous example-- looks for files
 /etc/sysconfig/network-scripts/ifcfg-* (commonly found at e.g. Red Hat and
 Fedora systems) and /etc/network/interfaces (as found at e.g. Debian and Ubuntu
 systems), and, for each interface \it{nic}, and each found IPv4 and IPv6
@@ -109,7 +109,7 @@ different hosts.
 
 
 \cpar{another example}{
-For a even more reasonable \rc file, look at the well-commented example \rc
+For an even more reasonable \rc file, look at the well-commented example \rc
 file in \ttexpath.
 }
 
