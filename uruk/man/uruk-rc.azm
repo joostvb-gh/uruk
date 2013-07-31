@@ -29,30 +29,39 @@
 
 \sec{examples}{EXAMPLES}
 
+\cpar{default}{
+
 The simplest valid \rc file is the empty file.  This \rc file blocks all TCP
 and UDP connection attempts to services on our host: this is the default
 behaviour.
+
+}
+
+\cpar{simplest}{
 
 The simplest \rc file which does allow traffic to our services looks like e.g.:
 
 \verbatim{\
  interfaces=eth0
 
- ip_eth0=192.168.26.27
- net_eth0=192.168.0.0/16
+ ips_eth0=default
+ ip_eth0_default=192.168.26.27
+ net_eth0_default=192.168.0.0/16
 
- services_eth0_tcp=local
- ports_eth0_tcp_local="0:65535"
- sources_eth0_tcp_local="0.0.0.0/0"
+ services_eth0_default_tcp=local
+ ports_eth0_default_tcp_local="0:65535"
+ sources_eth0_default_tcp_local="0.0.0.0/0"
 
- services_eth0_udp=local
- ports_eth0_udp_local="0:65535"
- sources_eth0_udp_local="0.0.0.0/0"}
+ services_eth0_default_udp=local
+ ports_eth0_default_udp_local="0:65535"
+ sources_eth0_default_udp_local="0.0.0.0/0"}
 
 This \rc file allows all IPv4 UDP and TCP traffic from publicly routable IPs to
 eth0's IP.
 
-\par{
+}
+
+\cpar{realistic}{
 If you'd like to block traffic on wlan0 and allow traffic to ssh on your
 wired interface, and don't like to explicitly set your IPs in \rc:
 }
@@ -83,7 +92,7 @@ wired interface, and don't like to explicitly set your IPs in \rc:
  # we leave services_wlan0_default_{tcp,udp} unset: don't allow any
  # incoming connections on wlan0's default IP }
 
-\par{
+\cpari{autodetect-ips}{
 The script autodetect-ips looks for files
 /etc/sysconfig/network-scripts/ifcfg-* (commonly found at e.g. Red Hat and
 Fedora systems) and /etc/network/interfaces (as found at e.g. Debian and Ubuntu
@@ -96,7 +105,10 @@ in scope "global").
 } \par{
 The script autodetect-ips is useful if you'd like to share your \rc file among
 different hosts.
-} \par{
+}
+
+
+\cpar{another example}{
 For a even more reasonable \rc file, look at the well-commented example \rc
 file in \ttexpath.
 }
@@ -166,7 +178,7 @@ while the file \tt{nat} reads
 This allows Network Address Translation.  However, beware!  Like all extensive
 use of hooks, this will break the \uruk_save script.  If you make sure your
 active iptables rules are wiped, and invoke \uruk manually to load new rules,
-you're safe.  Using the init-script with it's default settings is safe too.
+you're safe.  Using the init script with its default settings is safe too.
 
 }
 
@@ -323,10 +335,9 @@ By default, uruk logs denied packets.  This is adjustable using the
 To debug the \uruk script, invoke uruk as
 
 \verbatim{\
- sh -x \sbinpath/uruk}
+ sh -x /sbin/uruk}
 
 this shows what is done, along with executing it.  (Like an uruk '-v' option.)
-(Alternatively, add "set -x" to your \rc file.)
 
 }
 

@@ -56,15 +56,16 @@ interfaces_unprotect="lo sit0 eth3"
 # alternatively, explicitly list adresses manually, by setting ip_<stuff>,
 # ip6_<stuff>, net_<stuff> and net6_<stuff>, like this:
 
+ips_eth0=default
 # For each interface <if> in interfaces, ip_<if> and net_<if> should be
 # defined
-ip_eth0=10.56.0.201
+ip_eth0_default=10.56.0.201
 # Supply IPv6 addresses like this:
-ip6_eth0=2006:488:1a9b::4a54:e8ff:fe2b:f25c # (aka 2006:488:1a9b:0:4a54:e8ff:fe2b:f25c)
+ip6_eth0_default=2006:488:1a9b::4a54:e8ff:fe2b:f25c # (aka 2006:488:1a9b:0:4a54:e8ff:fe2b:f25c)
 # NB: /sbin/ip6tables (as shipped with e.g. iptables 1.4.8-2) understands
 # both full and abbreviated IPv6 names.
-
-ip_eth1=192.168.0.4
+ips_eth1=default
+ip_eth1_default=192.168.0.4
 
 # To which network does this interface belong?  Should be one of
 # 0.0.0.0/0 (aka 0/0) 10.0.0.0/8 (aka 10./8) 172.16.0.0/12 (aka 172.16./12)
@@ -72,14 +73,14 @@ ip_eth1=192.168.0.4
 # packet for this interface is spoofed, and therefore should get dropped.
 # NB: /sbin/iptables (as shipped with e.g. iptables 1.4.8-2) understands
 # full names only.
-net_eth0=0.0.0.0/0
-net_eth1=192.168.0.0/16
+net_eth0_default=0.0.0.0/0
+net_eth1_default=192.168.0.0/16
 
 # Subset of interfaces, which should drop broadcast and multicast packets
 interfaces_nocast="eth0"
 
 # For each interface <if> in interfaces_nocast, bcast_<if> should be defined
-bcast_eth0=10.56.255.255
+bcast_eth0_default=10.56.255.255
 
 
 #########################################
@@ -97,9 +98,9 @@ all=0.0.0.0/0
 
 # For each interface, and for both tcp and udp, symbolic names of (sets of)
 # services could be defined, in variables services_<if>_{tcp,udp}.
-services_eth0_tcp="mail local public"
+services_eth0_default_tcp="mail local public"
 # services6_eth0_tcp="$services_eth0_tcp irc"
-services6_eth0_tcp="irc"
+services6_eth0_default_tcp="irc"
 
 # For every servicesetname <s>, every interface <if>, and tcp and/or udp, a
 # list of allowed source addresses should be defined in a variable
@@ -109,25 +110,25 @@ services6_eth0_tcp="irc"
 # A valid source is 192.168.6.26, another valid source is 192.168.6.0/24.
 # One can add DNS domainnames like gandalf.example.com too: iptables will
 # perform a DNS lookup
-sources_eth0_tcp_mail="10.0.0.0/24 192.0.32.0/24 192.168.6.26"
-sources_eth0_tcp_local="$localnet gandalf.example.com"
-sources_eth0_tcp_public=$all
+sources_eth0_default_tcp_mail="10.0.0.0/24 192.0.32.0/24 192.168.6.26"
+sources_eth0_default_tcp_local="$localnet gandalf.example.com"
+sources_eth0_default_tcp_public=$all
 # Supply IPv6 addresses like this:
-sources6_eth0_tcp_irc="::/0" # aka 0000:0000:0000:0000:0000:0000:0000:0000/0
+sources6_eth0_default_tcp_irc="::/0" # aka 0000:0000:0000:0000:0000:0000:0000:0000/0
 
 # Symbolic port names are fine.
-ports_eth0_tcp_mail=smtp
-ports_eth0_tcp_local="ssh ftp"
-ports_eth0_tcp_public=www
+ports_eth0_default_tcp_mail=smtp
+ports_eth0_default_tcp_local="ssh ftp"
+ports_eth0_default_tcp_public=www
 
-ports_eth0_tcp_irc=6667
+ports_eth0_default_tcp_irc=6667
 
-services_eth0_udp="syslog local"
+services_eth0_default_udp="syslog local"
 
-sources_eth0_udp_syslog="10.56.0.10/32"
-sources_eth0_udp_local=$localnet
+sources_eth0_default_udp_syslog="10.56.0.10/32"
+sources_eth0_default_udp_local=$localnet
 
-ports_eth0_udp_syslog="syslog"
+ports_eth0_default_udp_syslog="syslog"
 # Port ranges are allowed too
-ports_eth0_udp_local="ntp 605:608 853:876"
+ports_eth0_default_udp_local="ntp 605:608 853:876"
 
