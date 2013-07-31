@@ -19,13 +19,13 @@
 \NAME{uruk-save}{save uruk rc configuration in iptables-save-style format}
 
 \sec{synopsis}{SYNOPSIS}
-  \par{\uruk_save \synoptopt{-6}{save ip6tables rules}}
+  \par{\uruk_save \bf{[}-6\bf{]}}
 
 \sec{options}{OPTIONS}
 
 \begin{itemize}
 
-\item{\defopt{-6}{save ip6tables rules}} Don't save iptables rules but save
+\item{-6} Don't save iptables rules but save
 ip6tables rules, for IPv6 filtering.
 
 \end{itemize}
@@ -49,7 +49,7 @@ or
 .  This script is useful if you don't like the default behaviour of the uruk
 init script, and would like it to load the current uruk rc file instead of the
 current active file.  Please note: generally you don't need to invoke this
-script manually: the init script which comes with uruk is suitable for most
+script manually: the script \urukctl which comes with uruk is suitable for most
 cases, it invokes \uruk_save if needed.
 
 \sec{warning}{WARNING}
@@ -61,9 +61,10 @@ stuff, \uruk_save will very likely behave in unexpected ways.  Caveat emptor.
 
 \par{
 
-Things will likely break if you do very fancy stuff in an \rc hook file.
-If your \rc file is in verbose mode (i.e. it features \tt{set -x}) or in no-act
-mode (i.e. it features \tt{iptables='echo iptables'}), \uruk_save fails.
+Things will likely break if you do very fancy stuff in an \rc hook file.  If
+your \rc file is in verbose mode (i.e. it features \tt{set -x}) or in no-act
+mode (i.e. it features a hardcoded \tt{iptables='echo iptables'}), \uruk_save
+fails.
 
 }
 
