@@ -54,6 +54,8 @@ First, create an \rc file.  See \sibref{uruk-rc}{uruk-rc(5)} for info on how to
 do this.  Once this file is created and installed (this script looks in
 \ttrcpath by default), you're ready to run \uruk.  You might want to test your
 \rc file by running \uruk in debug mode, see \sibref{uruk-rc}{uruk-rc(5)}.
+There are at least 3 ways to load your \rc file.  We'll first describe a low
+level one: using vanilla iptables.
 
 }
 
@@ -244,8 +246,9 @@ as robust as using \uruk itself.
 
 \par{
 
-The init script will use \uruk_save only if asked to do so in
-\tt{/etc/default/uruk} (or \tt{/etc/sysconfig/uruk}).  If this file features
+The script \urukctl (and thus the uruk init script) will use \uruk_save only if
+asked to do so in \tt{/etc/default/uruk} (or \tt{/etc/sysconfig/uruk}).  If
+this file features
 
 \verbatim{\
 
