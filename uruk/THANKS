@@ -3,6 +3,9 @@ Uruk THANKS file
 Thanks go to Tilburg University and Stichting Logreport Foundation, for
 supporting this and other Free Software.
 
+Thanks to Laurence J. Lane for creating the Debian iptables package, giving
+inspiration for the Uruk init script.
+  
 Thanks to Wessel Dankers for giving valuable feedback.
 
 Thanks to Fred Vos, Casper Gielen and Thijs Kinkhorst for contributing
