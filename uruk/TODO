@@ -480,7 +480,7 @@ networkinterfaces are configured, /etc/init.d/uruk is run and networkservices
 are started.  (N.B.: so even with the current setup we _do_ protect our
 services).
 
-- In uruk-rc manpage, include example rc-file verbatim.  Include license text.
+- In uruk-rc manpage, include example rc-file verbatim.
 
 - Create "upload" target in /Makefile.am
 
@@ -491,8 +491,6 @@ services).
 uruk not running.
 
 - Check documentation: uruk-rc manpage needs more stuff.
-
-- Perhaps we need an uruk-init manpage, for the init script.
 
 - Write a wrapper for OpenBSD's pf and FreeBSD's ipfilter, so that these tools
 can use the same rc file format.  We'd also have to make sure init-script
