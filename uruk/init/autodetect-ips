@@ -76,6 +76,10 @@ then
                 netmask=
             ;; address)
                     address=$val
+                    case $address in */*)
+                        netmask=${address##*/}
+                        address=${address%/*}
+                    esac
             ;; netmask)
                     netmask=$val
             esac
