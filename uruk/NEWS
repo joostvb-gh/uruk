@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20130731 - The Corbeşti Release
+uruk version 20130809 - The Corbeşti Release
 
 - script/urukctl: Fix bug in urukctl, introduced 2013-05-29.  (Previous uruk
   versions 20130619 and 20130618 are unusable.)  Be sure to assign variables
