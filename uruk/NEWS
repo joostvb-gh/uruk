@@ -15,8 +15,12 @@ uruk version 20130731 - The Corbeşti Release
   /etc/sysconfig/network-scripts/ifcfg-*, by calling ip(8) if needed.  Useful in
   case e.g. udev is used to assign IPs to interfaces.  This closes Debian
   Bug#712869 (http://bugs.debian.org/712869).
+- init/autodetect-ips: Apply patch contributed by Wessel Dankers: "accept
+  debian interfaces entries that include the netmask".
 - man/{uruk,urukctl}.azm: Various improvements in uruk(8) and urukctl(8)
   manpages.
+- man/include.zmm.in, man/uruk*.azm: introduce zoem macro \gplheader, update
+  copyright of all manpages
 - Special thanks to Wessel Dankers for recovering my git repo: it didn't really
   like a sudden powerfailure.  And thanks for lending me an Ubuntu EeePC to
   replace mine which died after an encounter with my bicycle's wheel spokes.
