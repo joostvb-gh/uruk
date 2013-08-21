@@ -141,6 +141,8 @@ $ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 $iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
 $ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
 
+$iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
+$ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
 
 uruk_hook "$rc_b"
 

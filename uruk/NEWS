@@ -2,6 +2,17 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+
+uruk version 2013MMDD - The .... Release
+
+- script/uruk: work around possible bug in conntrack, found when: we are client
+  and initialize outgoing tcp session.  Return traffic gets allowed since
+  matching state.  Incoming rset packet gets received, apparently kernel doesn't
+  recognize it as belonging to a tcp-session being shut down, and can't match
+  the state.  Uruk then blocks and logs it.  Now it explictly allows such RSET
+  packets.  This closes Debian Bug#720306 (http://bugs.debian.org/720306).
+
+
 uruk version 20130809 - The Corbeşti Release
 
 - script/urukctl: Fix bug in urukctl, introduced 2013-05-29.  (Previous uruk
