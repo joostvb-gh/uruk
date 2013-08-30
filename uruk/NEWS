@@ -3,7 +3,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 Refer to ChangeLog for detailed per-file info.
 
 
-uruk version 2013MMDD - The .... Release
+uruk version 2013MMDD - The Dr Syntax's Head Release
 
 - script/uruk: work around possible bug in conntrack, found when: we are client
   and initialize outgoing tcp session.  Return traffic gets allowed since
