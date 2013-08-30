@@ -168,20 +168,11 @@ case "$1" in
     $initd start
     ;;
   force-reload)
-    for rule in active inactive; do
-      eval found_$rule=
-      if test -s $libdir/$rule; then
-        eval found_$rule=1
-      fi
-    done
-    if test "$found_active" -a "$found_inactive"; then
+    urukctl status
+    STATUS=$?
+    if test "$STATUS" = 0; then
       # uruk is running
-      initd_active # FIXME
-      if test "$STATUS" = 0; then
-        log_success_msg "Reloading uruk"
-      else
-        log_failure_msg "Reloading uruk"
-      fi
+      log_success_msg "Reloading uruk"
     else
       log_success_msg "Nothing to do for reloading uruk: uruk is not running"
       STATUS=0
