@@ -14,6 +14,11 @@ stick in documentation somewhere:
 +dus aardig vol ja
 +maar conntrack_max = (ram/16384) / (arch/32) = 64336 dus verhogen heeft geen zin.
 
+уто 03 09:54 < Fruit> joostvb: je kunt het overrulen
+уто 03 09:56 < casper> joostvb: afaik heb ik die formule op tory gebruikt
+уто 03 09:56 < casper> om uit te rekenen hoe hoog ik conntrack_max kon zetten
+уто 03 09:57 < casper> ik geloof niet dat het de default is
+
 
 
 This release syntax head is BROKEN
