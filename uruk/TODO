@@ -1,4 +1,21 @@
 
+stick in documentation somewhere:
+
+уто 03 09:24 < joostvb> hrm, "conntrack_max = (ram/16384) / (arch/32)"
+уто 03 09:24 < joostvb> waarom is dat?
+уто 03 09:24 < joostvb> omdat linus t zo wil?
+уто 03 09:39 < joostvb> t zou wel mooi zijn als t nog te overrulen is
+
++Sep  2 14:04:21 tsingou kernel: [3459743.665364] nf_conntrack: table full, dropping packet.
++root@tsingou:~# cat /proc/sys/net/nf_conntrack_maxnntrack_max
++65536
++root@tsingou:~# wc -l /proc/net/ip_conntrack
++63453 /proc/net/ip_conntrack
++dus aardig vol ja
++maar conntrack_max = (ram/16384) / (arch/32) = 64336 dus verhogen heeft geen zin.
+
+
+
 This release syntax head is BROKEN
 
 root@otachi.uvt.nl:~# urukctl start
