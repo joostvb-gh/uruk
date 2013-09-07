@@ -1,4 +1,9 @@
 
+joostvb@arrr:/tmp/uruk% ./sbin/urukctl                
+joostvb@arrr:/tmp/uruk% ./sbin/urukctl --help         
+joostvb@arrr:/tmp/uruk% ./sbin/urukctl foo   
+joostvb@arrr:/tmp/uruk% 
+
 stick in documentation somewhere:
 
 уто 03 09:24 < joostvb> hrm, "conntrack_max = (ram/16384) / (arch/32)"

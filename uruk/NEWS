@@ -2,7 +2,9 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2013MMDD - The Clochán na bhFomhórach Release
+uruk version 20130907 FIXME - The Clochán na bhFomhórach Release
+
+- UNRELEASED
 
 - bootstrap: bootstrap: upgrade from automake 1.11 to 1.13
 
