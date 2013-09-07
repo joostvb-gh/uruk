@@ -4,7 +4,18 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version 2013MMDD - The Clochán na bhFomhórach Release
 
--
+- bootstrap: bootstrap: upgrade from automake 1.11 to 1.13
+
+- script/urukctl: use just initd_status to decide upon status; do not
+  inspect $status_active.  This fixes a severe bug; running
+
+    # urukctl start && service uruk force-reload
+
+  would give
+
+    Nothing to do for reloading uruk: uruk is not running [ OK ]
+
+  . Thanks Casper Gielen for reporting this issue.
 
 
 uruk version 20130830 - The Dr Syntax's Head Release
