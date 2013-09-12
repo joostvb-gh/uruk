@@ -8,8 +8,9 @@ uruk version 20130912 FIXME - The Clochán na bhFomhórach Release
 
 - bootstrap: bootstrap: upgrade from automake 1.11 to 1.13
 
-- script/urukctl: use just initd_status to decide upon status; do not
-  inspect $status_active.  This fixes a severe bug; running
+- script/urukctl: use just initd_status to decide upon status; do not inspect
+  $status_active.  This fixes a severe bug, which made the Dr Syntax's Head
+  release unusable: running
 
     # urukctl start && service uruk force-reload
 
@@ -19,9 +20,9 @@ uruk version 20130912 FIXME - The Clochán na bhFomhórach Release
 
   . Thanks Casper Gielen for reporting this issue.
 
-- doc/default, script/urukctl: default: explicitly add /sbin to PATH.
-  urukctl: check command line args earlier in execution.  Now "urukctl --help"
-  and "urukctl help" e.a. behave better when called as non-root.
+- doc/default, script/urukctl: default: explicitly add /sbin to PATH.  urukctl:
+  check command line args earlier in execution.  Now "urukctl --help" and
+  "urukctl help" e.a. behave better when called as non-root.
 
 
 uruk version 20130830 - The Dr Syntax's Head Release
