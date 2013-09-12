@@ -4,7 +4,8 @@
 # /etc/default/uruk (Debian) or /etc/sysconfig/uruk (Red Hat)
 
 # Some helpers are installed in /lib/uruk/init
-PATH=/lib/uruk/init:$PATH
+# /sbin might be lacking from PATH when running as non-root
+PATH=/lib/uruk/init:/sbin:$PATH
 
 # enable_uruk_check - wether to check for existence and sanity of uruk rc
 # file

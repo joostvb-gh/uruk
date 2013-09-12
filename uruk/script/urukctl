@@ -404,8 +404,8 @@ END
       fi
       ;;
     *)
-      usage
-      initd_abort_wrong_arg "$*"
+      # never reached
+      exit 1
       ;;
   esac
 }
@@ -453,6 +453,17 @@ warn_uruk_save() {
 END
   fi
 }
+
+# check command line args
+case "$1" in
+  start|stop|restart|force-reload|status|reload|clear|halt|flush|save|create|load)
+    # pass
+    ;;
+  *)
+    usage
+    initd_abort_wrong_arg "$*"
+    ;;
+esac
 
 if $enable_uruk_check; then
   check_uruk
