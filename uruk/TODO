@@ -1,8 +1,10 @@
 
-joostvb@arrr:/tmp/uruk% ./sbin/urukctl                
-joostvb@arrr:/tmp/uruk% ./sbin/urukctl --help         
-joostvb@arrr:/tmp/uruk% ./sbin/urukctl foo   
-joostvb@arrr:/tmp/uruk% 
+test with .deb:
+
+joostvb@arrr:/var/tmp/uruk% ./sbin/urukctl                
+joostvb@arrr:/var/tmp/uruk% ./sbin/urukctl --help         
+joostvb@arrr:/var/tmp/uruk% ./sbin/urukctl foo   
+joostvb@arrr:/var/tmp/uruk% 
 
 stick in documentation somewhere:
 
