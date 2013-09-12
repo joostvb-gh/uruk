@@ -19,26 +19,6 @@ stick in documentation somewhere:
 уто 03 09:56 < casper> om uit te rekenen hoe hoog ik conntrack_max kon zetten
 уто 03 09:57 < casper> ik geloof niet dat het de default is
 
-
-
-This release syntax head is BROKEN
-
-root@otachi.uvt.nl:~# urukctl start
-Flushing all current iptables rules.
-Loading IPv4 uruk rules.
-Saving iptables ruleset: save "active" with counters.
-Flushing all current ip6tables rules.
-Loading IPv6 uruk rules.
-Saving ip6tables ruleset: save "active" with counters.
-root@otachi.uvt.nl:~# service uruk force-reload
-Nothing to do for reloading uruk: uruk is not running      [  OK  ]
-
-libdir undefined in init/uruk (fix: use "urukctl status")
-$status_active undefined in script/urukctl
-
-Thanks Caspar Gielen for testing and reporting this issue.
-
-
 --------
 
 urukctl: give nice error when lacking permissions.
