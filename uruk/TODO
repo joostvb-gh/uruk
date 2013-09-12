@@ -1,10 +1,33 @@
 
-test with .deb:
+with .deb:
 
-joostvb@arrr:/var/tmp/uruk% ./sbin/urukctl                
-joostvb@arrr:/var/tmp/uruk% ./sbin/urukctl --help         
-joostvb@arrr:/var/tmp/uruk% ./sbin/urukctl foo   
-joostvb@arrr:/var/tmp/uruk% 
+joostvb@arrr:~% /sbin/urukctl                
+joostvb@arrr:~% /sbin/urukctl --help         
+joostvb@arrr:~% /sbin/urukctl foo   
+joostvb@arrr:~% 
+
+joostvb@arrr:/usr...k/20130912/uruk-20130912% sh -x /sbin/urukctl 
++ set -e
++ enable_uruk_check=true
++ enable_ipv6=true
++ enable_uruk_save=false
++ enable_autosave=true
++ enable_save_counters=true
++ test -f /etc/default/uruk
++ . /etc/default/uruk
++ PATH=/lib/uruk/init:/home/joostvb/bin:/home/joostvb/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
++ enable-ipv6
++ enable_ipv6=false
++ test -f /etc/sysconfig/uruk
++ STATUS=0
++ initd=/sbin/urukctl
++ true
++ check_uruk
++ initd_have_a_cow_man uruk
++ command -v uruk
++ echo Aborting urukctl: missing executable uruk
++ exit 5
+
 
 stick in documentation somewhere:
 
