@@ -25,6 +25,11 @@ urukctl: give nice error when lacking permissions.
 urukctl: document how to set up file access permissions in order to be able to
 run "urukctl create active" as non-root user.
 
+joostvb@arrr:/usr...k/20130912/uruk-20130912% urukctl save active
+Saving iptables ruleset: save "active"iptables v1.4.20: can't initialize iptables table `filter': Permission denied (you must be root)
+
+it should not try to run modprobe!
+
 ------
 
 Als lokale ip ongespecifeerd is, check verkeer dan niet op destination
