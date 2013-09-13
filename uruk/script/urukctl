@@ -127,7 +127,8 @@ initd_counters () {
     mkdir -p "$libdir"
   fi
 
-  initd_preload
+  # don't try to run iptables_command : we might only want to run uruk-save
+  initd_have_a_cow_man "$iptables_save"
 
   if $enable_save_counters; then
     echo -n " with counters"

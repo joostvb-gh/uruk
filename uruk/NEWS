@@ -24,6 +24,9 @@ uruk version 20130912 FIXME - The Clochán na bhFomhórach Release
   check command line args earlier in execution.  Now "urukctl --help" and
   "urukctl help" e.a. behave better when called as non-root.
 
+- script/urukctl: don't test running iptables when called with argument "save",
+  enable running "urukctl save active" as non-root, using uruk-save.
+
 
 uruk version 20130830 - The Dr Syntax's Head Release
 
