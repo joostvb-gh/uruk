@@ -2,30 +2,19 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20130912 FIXME - The Clochán na bhFomhórach Release
-
-- UNRELEASED
-
-- bootstrap: bootstrap: upgrade from automake 1.11 to 1.13
+uruk version 20130913 - The Clochán na bhFomhórach Release
 
 - script/urukctl: use just initd_status to decide upon status; do not inspect
   $status_active.  This fixes a severe bug, which made the Dr Syntax's Head
-  release unusable: running
-
-    # urukctl start && service uruk force-reload
-
-  would give
-
-    Nothing to do for reloading uruk: uruk is not running [ OK ]
-
-  . Thanks Casper Gielen for reporting this issue.
-
+  release unusable: running "# urukctl start && service uruk force-reload"
+  would give "Nothing to do for reloading uruk: uruk is not running [ OK ]".
+  Thanks Casper Gielen for reporting this issue.
 - doc/default, script/urukctl: default: explicitly add /sbin to PATH.  urukctl:
   check command line args earlier in execution.  Now "urukctl --help" and
   "urukctl help" e.a. behave better when called as non-root.
-
 - script/urukctl: don't test running iptables when called with argument "save",
   enable running "urukctl save active" as non-root, using uruk-save.
+- bootstrap: bootstrap: upgrade from automake 1.11 to 1.13
 
 
 uruk version 20130830 - The Dr Syntax's Head Release
@@ -78,15 +67,15 @@ uruk version 20130618 - The Sterreke Release
   Only the arguments "start", "stop", "restart", "force-reload" are still (and
   will continue to be) fully supported in /etc/init.d/uruk.
 
-  When the uruk software is removed from a system, but one chooses to keep
-  the uruk configuration files, /etc/init.d/uruk could be kept (e.g. on a Debian
+  When the uruk software is removed from a system, but one chooses to keep the
+  uruk configuration files, /etc/init.d/uruk could be kept (e.g. on a Debian
   system when removing (not purging) the uruk package; /etc/init.d/uruk is
   considered to be a configuration file on Debian).  When one boots such a
   system, the LSB standards require the init script to exit with error 5
   ("program is not installed").  Such an error causes the boot process to fail.
 
-  The revised uruk init script now exits succesfully when the uruk program
-  is not installed, like any init script on Debian systems.
+  The revised uruk init script now exits succesfully when the uruk program is
+  not installed, like any init script on Debian systems.
 
 
 uruk version 20130426 - The Sy Release

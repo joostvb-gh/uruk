@@ -1,4 +1,10 @@
 
+during postinst:
+invoke-rc.d uruk force-reload gives exit 4?  (seen on arrr)
+makes upgrade fail.
+
+------
+
 stick in documentation somewhere:
 
 уто 03 09:24 < joostvb> hrm, "conntrack_max = (ram/16384) / (arch/32)"
