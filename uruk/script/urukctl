@@ -36,8 +36,8 @@ enable_ipv6=true
 enable_uruk_save=false
 
 # The variable enable_uruk_save_warning is no longer supported (since 2013-04-10).
-## display a warning before each uruk-save call
-## enable_uruk_save_warning=true
+# remove this assignment at about 2013-10-01.
+enable_uruk_save_warning=false
 
 # set enable_autosave to "true" to autosave the active ruleset
 # when going from start to stop
