@@ -1,4 +1,18 @@
 
+lintian complains init.d-script-does-not-source-init-functions .
+Either change /etc/init.d/uruk's
+
+  . $lsb_init_functions
+
+in
+
+. /lib/lsb/init-functions
+
+, add lintian override or fix /usr/share/lintian/checks/systemd.pm as shipped
+with lintian 2.5.17
+
+----------
+
 during postinst:
 invoke-rc.d uruk force-reload gives exit 4?  (seen on arrr)
 makes upgrade fail.
