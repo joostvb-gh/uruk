@@ -1,4 +1,17 @@
 
+пон 16 16:04 < joostvb> http://mdcc.cx/tmp/uruk/uruk_20130913-1_all.deb <- klaar voor testen
+пон 16 16:20 < thijs> joostvb: update-rc.d: warning: start and stop actions are no longer 
+                      supported; falling back to defaults
+пон 16 16:21 < thijs> sid
+пон 16 16:22 < Fruit> ja logisch, gaat via dependencies nu toch
+пон 16 16:23 < joostvb> thijs: sysv-rc 2.88dsf-43 zie ik, zo zo
+пон 16 16:24 < joostvb> thijs: maar t werkt verder wel, als je die warnign laat voor wat ie 
+                        is?
+пон 16 16:24 < thijs> inderdaad, hij valt terug naar de defaults
+пон 16 16:25 < joostvb> ok, tnx voor testen
+
+------
+
 lintian complains init.d-script-does-not-source-init-functions .
 Either change /etc/init.d/uruk's
 
