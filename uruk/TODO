@@ -96,9 +96,12 @@ metagross#
 
 -------------
 
-ship a systemd and a daemontools init thingie
+ship a systemd (or go with lsb hack firing of systemd stuff via traditional
+init script) and a daemontools init thingie
 
 -------------
+
+FIXME: this is probably / partially fixed (as of < 2013-09) :
 
 plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
 wel een configfile is, en dan is dit oude script geen debian config file meer.
@@ -348,7 +351,6 @@ Fix this, and accept the introduced cruft.   Tnx Wessel.
 
 - Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
 obsolete syntax
-
 
 ----------------- end of candidates for upcoming release ------------------
 ----------------- stuff which just might happen one day -------------------
