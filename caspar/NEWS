@@ -1,5 +1,12 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 201311DD - The FIXME Release
+
+- caspar/script/csp_sucp: bugfix: feed not just $3, but also any more args
+  as files to tar. now passing more than just one file to csp_sucp actually
+  works.
+
+
 caspar version 20131119 - The Sint Agatha Release
 
 [ Joost van Baal-Ilić ]
