@@ -32,5 +32,12 @@ ssh -t $1 sudo -v
 test -n "$CSP_DEBUG" && echo $1 $opt_u $2 $3
 
 #exec ssh $1 "sudo $opt_u sh -c \"cat - > $2/$3\"" < $3
-exec tar c $3 | ssh -T $1 sudo -n $opt_u tar xC $2
+
+host=$1; shift
+dir=$1; shift
+# files now in $@
+
+test -n "$CSP_DEBUG" && echo exec tar c "$@" \| ssh -T $host sudo -n $opt_u tar xC $dir
+
+exec tar c "$@" | ssh -T $host sudo -n $opt_u tar xC $dir
 
