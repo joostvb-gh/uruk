@@ -3,22 +3,22 @@ Refer to ChangeLog for detailed per-file info.
 caspar version 20131119 - The Sint Agatha Release
 
 [ Joost van Baal-Ilić ]
-* caspar/doc/csp_helper.azm, caspar/script/csp_sucp: Fixes in csp_sucp(1):
-  - update csp_sucp description: since version 20120514 we use tar, not cat.
+- caspar/doc/csp_helper.azm, caspar/script/csp_sucp: Fixes in csp_sucp(1):
+  + update csp_sucp description: since version 20120514 we use tar, not cat.
     document how to use csp_sucp with interactive sudo password prompt.
-  - we no longer suffer from password-prompt bug: run sudo non-interactive
+  + we no longer suffer from password-prompt bug: run sudo non-interactive
     (-n) when stdin is filled with tar data ; explicitly get rid of tty when
     stdin is filled with tar in order to make sure this data will not get
     interpreted as password for sudo; pass -t to ssh, not -T, when refreshing
     sudo password, gets rid of error message "sudo: no tty present and no
     askpass program specified ".
-  - explicitly pass c to tar. (GNU tar) 1.26 needs at least one option.
-* caspar/mk/caspar.mk: Swap dealing with $(csp_TABOOFILES) and
-  $(csp_BUILD) in contructing FILES to be install-ed.  Now
-  $(csp_TABOOFILES) is subtracted from $(csp_BUILD) (was: $(csp_BUILD)
-  gets added to result of subtracting $(csp_TABOOFILES) from list of
-  FILES.  So, now "csp_BUILD = check" and "csp_TABOOFILES_ADD = check"
-  no longer results in caspar trying to install a file called 'check'.
+  + explicitly pass c to tar. (GNU tar) 1.26 needs at least one option.
+- caspar/mk/caspar.mk: Swap dealing with $(csp_TABOOFILES) and $(csp_BUILD) in
+  contructing FILES to be install-ed.  Now $(csp_TABOOFILES) is subtracted
+  from $(csp_BUILD) (was: $(csp_BUILD) gets added to result of subtracting
+  $(csp_TABOOFILES) from list of FILES.  So, now "csp_BUILD = check" and
+  "csp_TABOOFILES_ADD = check" no longer results in caspar trying to install
+  a file called 'check'.
 
 
 caspar version 20120530 - The Miekoekse Release
