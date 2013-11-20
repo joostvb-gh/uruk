@@ -1,3 +1,4 @@
+сре 20 16:41 < Fruit> joostvb: sctp-support in uruk zou handig zijn
 
 if uruk is configured for ipv4, but not for ipv6, it should block all ipv6 traffic.
 if uruk is configured for ipv6, but not for ipv4, it should block all ipv4 traffic.
