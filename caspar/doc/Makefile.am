@@ -16,7 +16,11 @@ ZOEM = zoem
 
 ## tidy is a HTML syntax checker and reformatter, available from
 ## http://www.w3.org/People/Raggett/tidy/ , by Dave Raggett <dsr@w3.org>
-TIDY = tidy -quiet
+
+# FIXME likely it's better NOT to ignore errors from tidy.  if you do, building on a
+# host which lacks tidy will fail terribly _and_ silently!  Or: test here if tidy
+# is installed...
+TIDY = tidy -quiet -utf8
 
 ## http://w3m.sourceforge.net/
 ## w3m is a text-based web browser, which can be used as a text formatting tool
@@ -58,12 +62,10 @@ SUFFIXES = .1 .7 .azm .html .ps .txt
 .1.ps:
 	$(TROFF) -man $< > $@
 
-## FIXME do NOT ignore errors from tidy.  if you do, building on a
-## host which lacks tidy will fail terribly _and_ silently!
 .azm.html:
 	$(ZOEM) -d html -i $< -o $@
 	$(ZOEM) -d html -i $< -o $@
-	-$(TIDY) -utf8 -e $@
+	-$(TIDY) -e $@
 
 ## alternative, one could call something like
 ## groff -man -Tascii $< > $@

@@ -11,8 +11,6 @@
   fix csp_install: add multisupport (also: keep_mode, sucp. rest might just
   work)
 
-- doc/Makefile.am: do NOT ignore errors from tidy
-
 - caspar.mk is not completely tested yet, first and second example in manpage
   succeed, test 3rd and later.
 
@@ -30,6 +28,8 @@
 
 - fix manpage typesetting: install tidy @ buildhost, my name in caspar.ps
   looks like crap
+
+- doc/Makefile.am: do NOT ignore errors from tidy
 
 - ``make dist'' succeeds, but ``make distcheck'' (on hille and dijkstra,
   not after fresh checkout) fails with:
