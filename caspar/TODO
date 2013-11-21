@@ -2,7 +2,7 @@
 
 --- release critical ---- 
 
-- document csp_mkdircp
+- document csp_mkdircp, see FIXME in doc/csp_helper.azm
 
 - decide upon scp keep_mode: purge, and suggest scp -p ?  it currently
   lacks multisupport.
