@@ -11,10 +11,6 @@
   fix csp_install: add multisupport (also: keep_mode, sucp. rest might just
   work)
 
-- test new csp_sucp
-
-- document new csp_sucp: needs tar, other sudo permissions: not cat but tar
-
 - doc/Makefile.am: do NOT ignore errors from tidy
 
 - caspar.mk is not completely tested yet, first and second example in manpage
