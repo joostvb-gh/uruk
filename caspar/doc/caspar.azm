@@ -150,8 +150,8 @@ The variables one can set in a calling Makefile are:
                            and \tt{$(csp_sucp_FUNC)} are supported as push
                            plugins.  If \tt{csp_PUSH} is unset, the default
                            \tt{$(csp_scp_FUNC)} is used.
-  \item{\tt{csp_LOAD}}     targets which should depend on the `load' target.
-  \item{\tt{csp_BUILD}}    targets which should depend on the `build' target.
+  \item{\tt{csp_LOAD}}     the `load' target depends upon these targets.
+  \item{\tt{csp_BUILD}}    the `build' target depends upon these targets.
   \item{\tt{csp_CP}}       cp binary, just "cp" by default
   \item{\tt{csp_SCP}}      scp binary, just "scp" by default
   \item{\tt{csp_SUCP}}     script wrapping sudo in ssh, "csp_sucp" by default

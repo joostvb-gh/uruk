@@ -1,16 +1,5 @@
 # This file is maintained at http://git.mdcc.cx/caspar 
 
-ma 18 13:39 < joostvb>       csp_BUILD
-ma 18 13:39 < joostvb>         targets which should depend on the 
-                       `build' target.
-ma 18 13:40 <@Fruit> die omschrijving klinkt verkeerdom
-ma 18 13:40 < joostvb> wat zou t dan moeten zijn?
-ma 18 13:41 <@Fruit> targets which the `build' target should depend 
-                     on.
-ma 18 13:41 <@Fruit> ofzo
-ma 18 13:41 < joostvb> o ja
-
-
 --- release critical ---- 
 
 - document csp_mkdircp
