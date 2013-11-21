@@ -5,6 +5,8 @@ caspar version 201311DD - The FIXME Release
 - caspar/script/csp_sucp: bugfix: feed not just $3, but also any more args
   as files to tar. now passing more than just one file to csp_sucp actually
   works.
+- caspar/bootstrap: update from automake/aclocal 1.11 to 1.14 (only relevant
+  for developers building caspar from within a git checkout).
 
 
 caspar version 20131119 - The Sint Agatha Release
