@@ -113,8 +113,6 @@ vr 25 16:37 < casper> bah, maar het werkt wel, de reverse cowboy:   make diff |
   ssh://git/~joostvb/git/caspar.git )
   update README on git status (see FIXME's).  set up commit list.
 
-1.2) wait for and apply Fruit patches
-
 1.3) documenteer de new style loadtarget hack even better: run "make load"
 with: combining new load-style is usefull too:
 
