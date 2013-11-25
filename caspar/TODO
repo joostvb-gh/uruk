@@ -2,6 +2,17 @@
 
 --- release critical ---- 
 
+- make distcheck fails with:
+
+config.status: creating script/Makefile
+make[1]: entrant dans le répertoire « /home/joostvb/git/caspar/caspar/caspar-20131121/_build »
+CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/joostvb/git/caspar/caspar/caspar-20131121/missing aclocal-1.14 
+autom4te: cannot create autom4te.cache: Aucun fichier ou dossier de ce type
+aclocal-1.14: error: echo failed with exit status: 1
+make[1]: *** [../aclocal.m4] Erreur 1
+make[1]: quittant le répertoire « /home/joostvb/git/caspar/caspar/caspar-20131121/_build »
+
+
 - document csp_mkdircp, see FIXME in doc/csp_helper.azm
 
 - decide upon scp keep_mode: purge, and suggest scp -p ?  it currently

@@ -16,7 +16,7 @@ VERSION.m4 VERSION stamp.year stamp.month stamp.day: ChangeLog
 CONFIGURE_DEPENDENCIES = VERSION.m4
 
 ## Hook `dist-bzip2' to `dist'.
-AUTOMAKE_OPTIONS = dist-bzip2 check-news
+AUTOMAKE_OPTIONS = dist-xz check-news
 
 ## used in make dist[check]
 VERSION = @PACKAGE_VERSION@

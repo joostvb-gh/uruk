@@ -22,8 +22,6 @@ AC_COPYRIGHT([
 Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar@mdcc.cx>
 ])
 
-AC_REVISION($Revision: 1.6 $)
-
 AC_PROG_INSTALL
 AC_PROG_LN_S
 

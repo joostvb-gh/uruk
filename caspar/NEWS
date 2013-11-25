@@ -1,18 +1,20 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 201311DD - The Bakertand Release
+caspar version 20131121 - The Bakertand Release
 
-- caspar/script/csp_sucp: bugfix: feed not just $3, but also any more args
+- UNRELEASED
+- script/csp_sucp: bugfix: feed not just $3, but also any more args
   as files to tar. Now passing more than just one file to csp_sucp actually
   works.
-- caspar/bootstrap: update from automake/aclocal 1.11 to 1.14 (only relevant
+- bootstrap: update from automake/aclocal 1.11 to 1.14 (only relevant
   for developers building caspar from within a git checkout).
+- Makefile.am: no longer ship caspar-<version>.tar.bz2, do ship caspar-<version>.tar.xz.
 
 
 caspar version 20131119 - The Sint Agatha Release
 
 [ Joost van Baal-Ilić ]
-- caspar/doc/csp_helper.azm, caspar/script/csp_sucp: Fixes in csp_sucp(1):
+- doc/csp_helper.azm, script/csp_sucp: Fixes in csp_sucp(1):
   + update csp_sucp description: since version 20120514 we use tar, not cat.
     document how to use csp_sucp with interactive sudo password prompt.
   + we no longer suffer from password-prompt bug: run sudo non-interactive
@@ -22,7 +24,7 @@ caspar version 20131119 - The Sint Agatha Release
     sudo password, gets rid of error message "sudo: no tty present and no
     askpass program specified ".
   + explicitly pass c to tar. (GNU tar) 1.26 needs at least one option.
-- caspar/mk/caspar.mk: Swap dealing with $(csp_TABOOFILES) and $(csp_BUILD) in
+- mk/caspar.mk: Swap dealing with $(csp_TABOOFILES) and $(csp_BUILD) in
   contructing FILES to be install-ed.  Now $(csp_TABOOFILES) is subtracted
   from $(csp_BUILD) (was: $(csp_BUILD) gets added to result of subtracting
   $(csp_TABOOFILES) from list of FILES.  So, now "csp_BUILD = check" and
@@ -33,10 +35,9 @@ caspar version 20131119 - The Sint Agatha Release
 caspar version 20120530 - The Miekoekse Release
 
 [Wessel Dankers]
-- caspar/NEWS, caspar/mk/caspar.mk: caspar/mk/caspar.mk: do not run
-  bulktargets if no files are available
+- mk/caspar.mk: do not run bulktargets if no files are available
 [Joost van Baal-Ilić]
-- caspar/script/csp_mkdircp: add yet another caspar helper
+- script/csp_mkdircp: add yet another caspar helper
 
 
 caspar version 20120514 - The Железничка Release
