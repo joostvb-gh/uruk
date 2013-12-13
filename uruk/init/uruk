@@ -172,6 +172,7 @@ case "$1" in
     STATUS=$?
     if test "$STATUS" = 0; then
       # uruk is running
+      urukctl force-reload
       log_success_msg "Reloading uruk"
     else
       log_success_msg "Nothing to do for reloading uruk: uruk is not running"
