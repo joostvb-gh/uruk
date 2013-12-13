@@ -2,9 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2013MMDD - The Gweek Release
+uruk version 20131213 - The Gweek Release
 
-- UNRELEASED
+- init/uruk: actually _do_ perform a reload when called as "service uruk
+  force-reload".
+- script/urukctl: fix warning about "enable_uruk_save_warning is no longer
+  supported".
 
 
 uruk version 20130913 - The Clochán na bhFomhórach Release
