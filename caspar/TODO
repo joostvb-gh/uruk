@@ -18,6 +18,20 @@ aclocal-1.14: error: echo failed with exit status: 1
 make[1]: *** [../aclocal.m4] Erreur 1
 make[1]: quittant le répertoire « /home/joostvb/git/caspar/caspar/caspar-20131121/_build »
 
+even on fresh git checkout.  1.14 is current as of 2014-01-06
+ (debian: 
+
+Package: automake
+Source: automake-1.14
+Version: 1:1.14-3 jessie (testing)
+Version: 1:1.14.1-2 sid
+
+, autoconf :
+wheezy (stable)  2.69-1
+jessie (testing) 2.69-2
+sid (unstable)   2.69-2
+
+)
 
 - document csp_mkdircp, see FIXME in doc/csp_helper.azm
 
