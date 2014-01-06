@@ -1,6 +1,6 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 20131121 - The Bakertand Release
+caspar version 20140106 - The Bakertand Release
 
 - UNRELEASED
 - script/csp_sucp: bugfix: feed not just $3, but also any more args

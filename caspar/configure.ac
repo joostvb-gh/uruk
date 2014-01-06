@@ -14,14 +14,12 @@ AC_INIT([Caspar],
        [joostvb-caspar@mdcc.cx],
        [caspar])
 
-AC_PREREQ(2.53)
-
+# AC_PREREQ(2.53)
 AM_INIT_AUTOMAKE
 
-AC_COPYRIGHT([
-Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar@mdcc.cx>
-])
-
+# AC_COPYRIGHT([
+#Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar@mdcc.cx>
+#])
 AC_PROG_INSTALL
 AC_PROG_LN_S
 
