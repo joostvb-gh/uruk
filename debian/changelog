@@ -1,31 +1,41 @@
+caspar (20130106-1) unstable; urgency=low
+
+  * UNRELEASED
+  * New upstream release - The Bakertand Release.  (Missed:
+    version 20131119 - The Sint Agatha Release.)
+
+ -- Joost van Baal-Ilić <joostvb@debian.org>  Mon, 06 Jan 2014 11:20:13 +0100
+
 caspar (20120530-1) unstable; urgency=low
 
-  * New upstream release.
+  * New upstream release - The Miekoekse Release
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Wed, 30 May 2012 14:17:00 +0200
 
 caspar (20120514-1) unstable; urgency=low
 
-   * New experimental upstream release.
+   * New experimental upstream release - The Железничка Release.
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Wed, 16 May 2012 14:18:50 +0200
 
 caspar (20120508-1) unstable; urgency=low
 
-  * New experimental upstream release (missed 20120420).
+  * New experimental upstream release - The Sint Katelijne Release
+    (missed 20120420 - The Lamprais Release, for Danishka Navin.)
   * debian/watch: added.
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Tue, 08 May 2012 10:35:23 +0200
 
 caspar (20120417-1) unstable; urgency=low
 
-  * New experimental upstream release, not uploaded to Debian.
+  * New experimental upstream release - The Kokki Release.  Not uploaded to
+    Debian.
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Tue, 17 Apr 2012 06:56:17 +0200
 
 caspar (20120322-1) unstable; urgency=low
 
-  * New upstream release (not uploaded to Debian):
+  * New upstream release - The Kothu Roti Release (not uploaded to Debian):
     - backwards incompatible with caspar <= 20101204: csp_CPDIRS and
       csp_CPDIR are no longer honored, see /usr/share/doc/caspar/NEWS.gz.
     - debian/copyright: updated.
