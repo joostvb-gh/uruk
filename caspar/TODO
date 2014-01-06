@@ -33,6 +33,8 @@ sid (unstable)   2.69-2
 
 )
 
+("make dist" works, though; maybe "make dist && make distcheck" works reliably...)
+
 - document csp_mkdircp, see FIXME in doc/csp_helper.azm
 
 - decide upon scp keep_mode: purge, and suggest scp -p ?  it currently
