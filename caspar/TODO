@@ -35,6 +35,28 @@ sid (unstable)   2.69-2
 
 ("make dist" works, though; maybe "make dist && make distcheck" works reliably...)
 
+building from .tar.gz on system with automake-1.11 (not 1.14) :
+
+CDPATH="${ZSH_VERSION+.}:" && cd . && /bin/bash /usr/local/src/debian/caspar/20140106/caspar-20140106/missing aclocal-1.14
+/usr/local/src/debian/caspar/20140106/caspar-20140106/missing: ligne81: aclocal-1.14 : commande introuvable
+WARNING: 'aclocal-1.14' is missing on your system.
+         You should only need it if you modified 'acinclude.m4' or
+         'configure.ac' or m4 files included by 'configure.ac'.
+         The 'aclocal' program is part of the GNU Automake package:
+         <http://www.gnu.org/software/automake>
+         It also requires GNU Autoconf, GNU m4 and Perl in order to run:
+         <http://www.gnu.org/software/autoconf>
+         <http://www.gnu.org/software/m4/>
+         <http://www.perl.org/>
+make[1]: *** [aclocal.m4] Erreur 127
+
+it also tries to run automake-1.14
+
+
+
+
+
+
 - document csp_mkdircp, see FIXME in doc/csp_helper.azm
 
 - decide upon scp keep_mode: purge, and suggest scp -p ?  it currently
