@@ -1,11 +1,15 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2014MMDD - The Matonge Release
+caspar version 20140201 - The Matonge Release
 
 - UNRELEASED
 [ Joost van Baal-Ilić ]
 - FIXME
 - FIX autofoo dnbfs bug
+
+- bootstrap:
++#AUTOMAKE=automake-1.14 ACLOCAL=aclocal-1.14 autoreconf --install --symlink
++AUTOMAKE=automake-1.11 ACLOCAL=aclocal-1.11 autoreconf --install --symlink
 
 
 caspar version 20140106 - The Bakertand Release
