@@ -8,7 +8,7 @@
 
 ## see booststrap for git2cl
 ChangeLog: NEWS
-	git log --pretty --numstat --summary | sed 's/<joostvb[^>][^>]*>//g; s/<wsl[^>][^>]*>//g' | git2cl >ChangeLog
+	git log --pretty --numstat --summary | sed 's/<joostvb[^>][^>]*>//g; s/<wsl[^>][^>]*>//g' >ChangeLog
 #	#true >ChangeLog
 #	# git log --pretty --numstat --summary | sed 's/<joostvb[^>][^>]*>//g; s/<wsl[^>][^>]*>//g' | git2cl >ChangeLog
 

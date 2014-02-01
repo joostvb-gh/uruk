@@ -11,6 +11,8 @@ caspar version 20140201 - The Matonge Release
 +#AUTOMAKE=automake-1.14 ACLOCAL=aclocal-1.14 autoreconf --install --symlink
 +AUTOMAKE=automake-1.11 ACLOCAL=aclocal-1.11 autoreconf --install --symlink
 
+autom4te: cannot create autom4te.cache: Nema takve datoteke ili direktorija
+
 
 caspar version 20140106 - The Bakertand Release
 
