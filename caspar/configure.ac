@@ -7,7 +7,8 @@ dnl Process this file with autoconf to produce a configure script.
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
 
-m4_include([VERSION.m4])dnl
+## m4_include([VERSION.m4])dnl
+m4_define([CASPAR_VERSION], [20140202])
 
 AC_INIT([Caspar],
        [CASPAR_VERSION],

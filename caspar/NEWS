@@ -1,16 +1,25 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 20140201 - The Matonge Release
+caspar version 20140202 - The Matonge Release
 
 - UNRELEASED
 [ Joost van Baal-Ilić ]
 - FIXME
 - FIX autofoo dnbfs bug
-
-- bootstrap:
+- Makefile.am: explictly set path of setversion: use $(top_srcdir)/setversion.
+   Specify DISTCLEANFILES.
+- FIXME: Makefile.am: +## CONFIGURE_DEPENDENCIES = VERSION.m4
+- FIXME: configure.ac:
+   +## m4_include([VERSION.m4])dnl
+   +m4_define([CASPAR_VERSION], [20140202])
+- FIXME: bootstrap:
 +#AUTOMAKE=automake-1.14 ACLOCAL=aclocal-1.14 autoreconf --install --symlink
 +AUTOMAKE=automake-1.11 ACLOCAL=aclocal-1.11 autoreconf --install --symlink
 
+autom4te: cannot create autom4te.cache: Nema takve datoteke ili direktorija
+
+make[1]: Ulazim u direktorij `/home/joostvb/git/caspar/caspar/autobug/caspar-20140202/_build'
+CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/joostvb/git/caspar/caspar/autobug/missing --run aclocal-1.11 
 autom4te: cannot create autom4te.cache: Nema takve datoteke ili direktorija
 
 
