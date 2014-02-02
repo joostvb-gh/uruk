@@ -1,6 +1,6 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 20140202 - The Matonge Release
+caspar version 20140202 - The Matonge, BXL Release
 
 - UNRELEASED
 [ Joost van Baal-Ilić ]
@@ -20,6 +20,8 @@ autom4te: cannot create autom4te.cache: Nema takve datoteke ili direktorija
 make[1]: Ulazim u direktorij `/home/joostvb/git/caspar/caspar/autobug/caspar-20140202/_build'
 CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/joostvb/git/caspar/caspar/autobug/missing --run aclocal-1.11 
 autom4te: cannot create autom4te.cache: Nema takve datoteke ili direktorija
+
+- doc/csp_helper.azm: documented csp_mkdircp.
 
 
 caspar version 20140106 - The Bakertand Release

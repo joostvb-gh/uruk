@@ -74,9 +74,10 @@ u=rw,go=r).
 
 \csp_mkdircp calls mkdir(1) and cp(1).
 
-it's like csp_CP.  use \csp_mkdircp if you frequently have to bootstrap
-installation on a fresh system FIXME
-FIXME
+\csp_mkdircp is used like csp_CP.  use \csp_mkdircp if you frequently have to
+bootstrap installation on a fresh system, on which needed directories don't
+exist yet.  \csp_mkdircp makes sure the target directory exists before calling
+cp(1), by calling mkdir -p first.
 
 
 \sec{scp_keep_mode_description}{scp_keep_mode DESCRIPTION}
