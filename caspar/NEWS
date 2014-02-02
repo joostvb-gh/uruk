@@ -7,11 +7,10 @@ caspar version 20140202 - The Matonge Release
 - FIXME
 - FIX autofoo dnbfs bug
 - Makefile.am: explictly set path of setversion: use $(top_srcdir)/setversion.
-   Specify DISTCLEANFILES.
+   Specify DISTCLEANFILES.  Tweak EXTRADIST.
+- configure.ac, setversion: use generic AD1_VERSION, not CASPAR_VERSION
+- configure.ac: AC_PREREQ(2.67), reintroduce AC_COPYRIGHT, set AC_REVISION.
 - FIXME: Makefile.am: +## CONFIGURE_DEPENDENCIES = VERSION.m4
-- FIXME: configure.ac:
-   +## m4_include([VERSION.m4])dnl
-   +m4_define([CASPAR_VERSION], [20140202])
 - FIXME: bootstrap:
 +#AUTOMAKE=automake-1.14 ACLOCAL=aclocal-1.14 autoreconf --install --symlink
 +AUTOMAKE=automake-1.11 ACLOCAL=aclocal-1.11 autoreconf --install --symlink

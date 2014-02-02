@@ -16,6 +16,7 @@ VERSION.m4 VERSION stamp.year stamp.month stamp.day: ChangeLog
 	$(top_srcdir)/setversion
 
 ## CONFIGURE_DEPENDENCIES = VERSION.m4
+CONFIGURE_DEPENDENCIES = VERSION.m4
 
 ## Hook `dist-bzip2' to `dist'.
 AUTOMAKE_OPTIONS = dist-xz check-news
@@ -42,6 +43,5 @@ publish:
 
 ## Only files from the current directory or from subdirectory which
 ## don't have their own Makefile.am should be listed here.
-EXTRA_DIST = bootstrap setversion VERSION.m4 VERSION
-DISTCLEANFILES = VERSION.m4 VERSION stamp.day stamp.month stamp.year
-
+EXTRA_DIST = bootstrap setversion stamp.day stamp.month stamp.year VERSION.m4 VERSION
+## DISTCLEANFILES = VERSION.m4 VERSION stamp.day stamp.month stamp.year

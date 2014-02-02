@@ -7,20 +7,24 @@ dnl Process this file with autoconf to produce a configure script.
 # This script is free software; you can distribute it and/or modify it
 # under the terms of the GNU GPL.  See the file COPYING.
 
-## m4_include([VERSION.m4])dnl
-m4_define([CASPAR_VERSION], [20140202])
+m4_include([VERSION.m4])dnl
+## m4_define([CASPAR_VERSION], [20140202])
 
 AC_INIT([Caspar],
-       [CASPAR_VERSION],
+       [AD1_VERSION],
        [joostvb-caspar@mdcc.cx],
        [caspar])
 
+AC_PREREQ(2.67)
 # AC_PREREQ(2.53)
 AM_INIT_AUTOMAKE
 
-# AC_COPYRIGHT([
-#Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar@mdcc.cx>
-#])
+AC_COPYRIGHT([
+Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar@mdcc.cx>
+])
+
+AC_REVISION([AD1_VERSION])
+
 AC_PROG_INSTALL
 AC_PROG_LN_S
 
