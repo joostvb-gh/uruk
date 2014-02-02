@@ -21,6 +21,7 @@ make[1]: Ulazim u direktorij `/home/joostvb/git/caspar/caspar/autobug/caspar-201
 CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/joostvb/git/caspar/caspar/autobug/missing --run aclocal-1.11 
 autom4te: cannot create autom4te.cache: Nema takve datoteke ili direktorija
 
+- doc/Makefile.am: no longer ignore errors from tidy(1).
 - doc/csp_helper.azm: documented csp_mkdircp.
 
 
