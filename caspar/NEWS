@@ -5,7 +5,7 @@ caspar version 20140202 - The Matonge Release
 - UNRELEASED
 [ Joost van Baal-Ilić ]
 - FIXME
-- FIX autofoo dnbfs bug
+- FIX autofoo dnbfs bug, find bug number in bts.
 - Makefile.am: explictly set path of setversion: use $(top_srcdir)/setversion.
    Specify DISTCLEANFILES.  Tweak EXTRADIST.
 - configure.ac, setversion: use generic AD1_VERSION, not CASPAR_VERSION
