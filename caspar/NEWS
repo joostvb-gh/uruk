@@ -9,7 +9,7 @@ caspar version 20140202 - The Matonge, BXL Release
 - Makefile.am: explictly set path of setversion: use $(top_srcdir)/setversion.
    Specify DISTCLEANFILES.  Tweak EXTRADIST.
 - configure.ac, setversion: use generic AD1_VERSION, not CASPAR_VERSION
-- configure.ac: AC_PREREQ(2.67), reintroduce AC_COPYRIGHT, set AC_REVISION.
+- configure.ac: AC_PREREQ(2.67), reintroduce and update AC_COPYRIGHT, set AC_REVISION.
 - FIXME: Makefile.am: +## CONFIGURE_DEPENDENCIES = VERSION.m4
 - FIXME: bootstrap:
 +#AUTOMAKE=automake-1.14 ACLOCAL=aclocal-1.14 autoreconf --install --symlink

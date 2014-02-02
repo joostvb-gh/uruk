@@ -20,7 +20,8 @@ AC_PREREQ(2.67)
 AM_INIT_AUTOMAKE
 
 AC_COPYRIGHT([
-Copyright (C) 2002, 2003, 2004, 2005, 2006 Joost van Baal <joostvb-caspar@mdcc.cx>
+Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2009, 2010 Joost van Baal <joostvb-caspar@mdcc.cx>
+Copyright (C) 2012, 2013, 2014 Joost van Baal-Ilić <joostvb-caspar@mdcc.cx>
 ])
 
 AC_REVISION([AD1_VERSION])
