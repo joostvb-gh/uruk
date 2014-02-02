@@ -82,16 +82,6 @@ it also tries to run automake-1.14
 - fix manpage typesetting: install tidy @ buildhost, my name in caspar.ps
   looks like crap
 
-- ``make dist'' succeeds, but ``make distcheck'' (on hille and dijkstra,
-  not after fresh checkout) fails with:
-
-make[1]: Entering directory `/home/joostvb/git/caspar/caspar/caspar-20120322/_build'
-CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/joostvb/git/caspar/caspar/caspar-20120322/missing --run aclocal-1.11 
-autom4te: cannot create autom4te.cache: No such file or directory
-aclocal-1.11: autom4te failed with exit status: 1
-make[1]: *** [../aclocal.m4] Error 1
-make[1]: Leaving directory `/home/joostvb/git/caspar/caspar/caspar-20120322/_build'
-
 - The "csp_install -t dir file [file]" issue
 
 zo 13 17:34 < Fruit> die tooltjes die meegeleverd worden
@@ -157,7 +147,8 @@ vr 25 16:37 < casper> bah, maar het werkt wel, de reverse cowboy:   make diff |
 
 0.-2) fix FIXME's in doc/caspar.azm
 
-0.-1) document "make diff" and "make <file>-diff", see NEWS (not trivial...)
+0.-1) complete documentation of "make diff" and "make <file>-diff" in
+  caspar.azm, see NEWS (not trivial...)
 
 1.1) finish convert to git: announce on webpage, create public repo
   ( http://git.fruit.je/caspar , http://git.mdcc.cx/ ,

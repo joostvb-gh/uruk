@@ -101,13 +101,17 @@ which looks something like
 .  From within the CVS tree, one can call:
 
 \verbatim{
+  make <filename>-diff
   make <filename>-install
+  make diff
   make install
   make load
   make
   make install-recursive
 }
 
+Calling \tt{make <filename>-diff} shows the diff between the local file
+and the file as currently installed on the remote location.
 Calling \tt{make install} (or \tt{make}) now will scp all files in the current
 directory to the remote location.  The \it{install-recursive} target descends
 down the tree, and calls \tt{make install} in each subdirectory.

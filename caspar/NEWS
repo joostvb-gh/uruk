@@ -23,6 +23,7 @@ autom4te: cannot create autom4te.cache: Nema takve datoteke ili direktorija
 
 - doc/Makefile.am: no longer ignore errors from tidy(1).
 - doc/csp_helper.azm: documented csp_mkdircp.
+- doc/caspar.azm: started documenting 'make diff'.
 
 
 caspar version 20140106 - The Bakertand Release
