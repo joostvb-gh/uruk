@@ -8,7 +8,6 @@ dnl Process this file with autoconf to produce a configure script.
 # under the terms of the GNU GPL.  See the file COPYING.
 
 m4_include([VERSION.m4])dnl
-## m4_define([CASPAR_VERSION], [20140202])
 
 AC_INIT([Caspar],
        [AD1_VERSION],
@@ -16,7 +15,6 @@ AC_INIT([Caspar],
        [caspar])
 
 AC_PREREQ(2.67)
-# AC_PREREQ(2.53)
 AM_INIT_AUTOMAKE
 
 AC_COPYRIGHT([

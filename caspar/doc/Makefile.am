@@ -65,9 +65,9 @@ SUFFIXES = .1 .7 .azm .html .ps .txt
 .azm.html:
 	$(ZOEM) -d html -i $< -o $@
 	$(ZOEM) -d html -i $< -o $@
-	$(TIDY) -e $@
+	-$(TIDY) -e $@
 
-##	-$(TIDY) -e $@
+##	$(TIDY) -e $@
 
 ## alternative, one could call something like
 ## groff -man -Tascii $< > $@
@@ -77,5 +77,4 @@ SUFFIXES = .1 .7 .azm .html .ps .txt
 	$(W3M) -dump $< > $@
 
 MAINTAINERCLEANFILES = $(manazms) $(typetargets) $(tmpfiles)
-
 DISTCLEANFILES = $(typetargets)
