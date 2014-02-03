@@ -1,5 +1,22 @@
 # This file is maintained at http://git.mdcc.cx/caspar 
 
+fix NEWS:
+- FIX autofoo dnbfs bug, find bug number in bts.
+- Makefile.am: explictly set path of setversion: use $(top_srcdir)/setversion.
+   Specify DISTCLEANFILES.  Tweak EXTRADIST.
+- configure.ac, setversion: use generic AD1_VERSION, not CASPAR_VERSION
+- configure.ac: AC_PREREQ(2.67), reintroduce and update AC_COPYRIGHT, set AC_REVISION.
+- FIXME: Makefile.am: +## CONFIGURE_DEPENDENCIES = VERSION.m4
+- FIXME: bootstrap:
++#AUTOMAKE=automake-1.14 ACLOCAL=aclocal-1.14 autoreconf --install --symlink
++AUTOMAKE=automake-1.11 ACLOCAL=aclocal-1.11 autoreconf --install --symlink
+
+- doc/Makefile.am: no longer ignore errors from tidy(1).
+- doc/csp_helper.azm: documented csp_mkdircp.
+- doc/caspar.azm: started documenting 'make diff'.
+
+------------
+
 link to https://gist.github.com/Argure/7586151 : https://nulpunt.nu/ caspar users
         https://gist.github.com/Argure/7355868
 
