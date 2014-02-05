@@ -1,3 +1,41 @@
+
+apt-get remove uruk
+сре 05 11:38 < Fruit> /etc/init.d/uruk: 17: /etc/default/uruk: enable-ipv6: not found
+(apt-get --purge remove uruk : dat gaat wel goed)
+
+uvt-installer.
+
+
+dit is met uvt uruk config.  daarna uruk 20130426-1 installeren (dat gaat goed)
+en dan upgraden naar 20131213-1 (dat gaat op deze manier fout)
+
+Preparing to replace uruk 20130426-1 (using uruk_20131213-1_all.deb) ...
+Unpacking replacement uruk ...
+Setting up uruk (20131213-1) ...
+Installing new version of config file /etc/init.d/uruk ...
+Installing new version of config file /etc/default/uruk ...
+invoke-rc.d: initscript uruk, action "force-reload" failed.
+dpkg: error processing uruk (--install):
+ subprocess installed post-installation script returned error exit status 3
+Processing triggers for man-db ...
+Errors were encountered while processing:
+ uruk
+
+сре 05 11:45 <Fruit> root@dash3:/tmp# service uruk force-reload
+сре 05 11:45 <Fruit> root@dash3:/tmp# /etc/init.d/uruk force-reload
+сре 05 11:45 <Fruit> root@dash3:/tmp#
+
+dit is op wheezy/stable
+
+test op pompom#
+
+
+
+
+
+
+
+
 сре 20 16:41 < Fruit> joostvb: sctp-support in uruk zou handig zijn
 сре 20 16:46 < Fruit> joostvb: misschien ook meteen dccp dan maar
 
