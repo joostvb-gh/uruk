@@ -33,9 +33,16 @@ Setting up uruk (20130426-1) ...
 Uruk is not running
 [ ok ] Nothing to do for reloading uruk (iptables).
 
+root@pompom:~# grep ^enable_ipv6 /etc/default/uruk 
+enable_ipv6=$(enable-ipv6)
+
+root@pompom:~# dpkg -i ./uruk_20131213-1_all.deb 
+
 en dan upgraden naar 20131213-1 (dat gaat op deze manier fout)
 
-Preparing to replace uruk 20130426-1 (using uruk_20131213-1_all.deb) ...
+root@pompom:~# dpkg -i ./uruk_20131213-1_all.deb 
+(Reading database ... 26172 files and directories currently installed.)
+Preparing to replace uruk 20130426-1 (using ./uruk_20131213-1_all.deb) ...
 Unpacking replacement uruk ...
 Setting up uruk (20131213-1) ...
 Installing new version of config file /etc/init.d/uruk ...
@@ -46,6 +53,31 @@ dpkg: error processing uruk (--install):
 Processing triggers for man-db ...
 Errors were encountered while processing:
  uruk
+root@pompom:~# 
+
+root@pompom:~# /etc/init.d/uruk force-reload && echo ok
+root@pompom:~# 
+
+root@pompom:~# urukctl status && echo ok
+root@pompom:~# 
+
+root@pompom:~# sh -x /sbin/urukctl status
+
++ test -s /var/lib/uruk/iptables/inactive
++ rm -r /tmp/uruk.iptables.XofiVtP7lB
++ test 1
++ test 
++ STATUS=3
++ false
++ exit 3
++ rm -rf /tmp/uruk.iptables.XofiVtP7lB
+
+root@pompom:~# find /var/lib/uruk -ls
+  2141    0 drwxr-xr-x   3 root     root           21 Feb  5 11:55 /var/lib/uruk
+2359699    0 drwxr-xr-x   2 root     root           19 Feb  5 12:02 /var/lib/uruk/iptables
+2359707    8 -rw-r--r--   1 root     root         4806 Feb  5 11:55 /var/lib/uruk/iptables/active
+
+
 
 сре 05 11:45 <Fruit> root@dash3:/tmp# service uruk force-reload
 сре 05 11:45 <Fruit> root@dash3:/tmp# /etc/init.d/uruk force-reload
