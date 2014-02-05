@@ -80,6 +80,17 @@ dit is op wheezy/stable
 
 test op pompom#
 
+is log_success_msg defined in
+
+ lsb_init_functions=/lib/lsb/init-functions
+ uruk_lsb_init_functions=/lib/uruk/lsb/init-functions
+
+?  we run, force-reload init script:
+
+    if
+      log_success_msg "Reloading uruk"
+    else
+      log_success_msg "Nothing to do for reloading uruk: uruk is not running"
 
 
 
