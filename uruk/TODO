@@ -1,10 +1,5 @@
 
-apt-get remove uruk
-сре 05 11:38 < Fruit> /etc/init.d/uruk: 17: /etc/default/uruk: enable-ipv6: not found
-(apt-get --purge remove uruk : dat gaat wel goed)
-
 uvt-installer.
-
 
 dit is met uvt uruk config:
 
@@ -77,17 +72,11 @@ root@pompom:~# find /var/lib/uruk -ls
 2359699    0 drwxr-xr-x   2 root     root           19 Feb  5 12:02 /var/lib/uruk/iptables
 2359707    8 -rw-r--r--   1 root     root         4806 Feb  5 11:55 /var/lib/uruk/iptables/active
 
-
-
 сре 05 11:45 <Fruit> root@dash3:/tmp# service uruk force-reload
 сре 05 11:45 <Fruit> root@dash3:/tmp# /etc/init.d/uruk force-reload
 сре 05 11:45 <Fruit> root@dash3:/tmp#
 
 dit is op wheezy/stable
-
-daarnaast gaat OOK remove (niet purge) fout
-het init-script moet in een veel vroeger stadium checken of uruk executable bestaat
-(dus voordat ie /e/d/uruk gaat lezen)
 
 test op pompom#
 
