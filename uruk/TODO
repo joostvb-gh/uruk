@@ -6,7 +6,33 @@ apt-get remove uruk
 uvt-installer.
 
 
-dit is met uvt uruk config.  daarna uruk 20130426-1 installeren (dat gaat goed)
+dit is met uvt uruk config:
+
+root@pompom:~# find /var/lib/uruk /etc/uruk /etc/default/uruk -ls
+  2141    0 drwxr-xr-x   3 root     root           21 Feb  5 11:55 /var/lib/uruk
+2359699    0 drwxr-xr-x   2 root     root           19 Feb  5 12:02 /var/lib/uruk/iptables
+2359707    8 -rw-r--r--   1 root     root         4806 Feb  5 11:55 /var/lib/uruk/iptables/active
+4456819    0 drwxrwxr-x   3 root     root           72 Feb  5 11:55 /etc/uruk
+4456820    8 -rw-rw-r--   1 root     root         7633 Jan 20 15:22 /etc/uruk/rc
+4456821    4 -rw-rw-r--   1 root     root         2870 Jan 20 15:22 /etc/uruk/vlans
+4456822    8 -rw-r--r--   1 root     root         5189 Jan 20 15:36 /etc/uruk/users
+   482    0 drwxr-xr-x   2 root     root           20 Feb  5 11:55 /etc/uruk/extra.d
+   483    4 -rw-r--r--   1 root     root          309 Jan 20 15:36 /etc/uruk/extra.d/facedin
+4456823    4 -rw-rw-r--   1 root     root          295 Apr 13  2013 /etc/uruk/rc.dpkg-dist
+   883    4 -rw-r--r--   1 root     root          993 Apr 13  2013 /etc/default/uruk
+
+rc  uruk              20130426-1    all           Very small firewall script, for configu
+
+daarna uruk 20130426-1 installeren (dat gaat goed)
+
+root@pompom:~# apt-get -V install uruk
+
+Get:1 http://non-gnu.uvt.nl/debian/ squeeze/uvt uruk all 20130426-1 [86.0 kB]
+
+Setting up uruk (20130426-1) ...
+Uruk is not running
+[ ok ] Nothing to do for reloading uruk (iptables).
+
 en dan upgraden naar 20131213-1 (dat gaat op deze manier fout)
 
 Preparing to replace uruk 20130426-1 (using uruk_20131213-1_all.deb) ...
@@ -26,6 +52,10 @@ Errors were encountered while processing:
 сре 05 11:45 <Fruit> root@dash3:/tmp#
 
 dit is op wheezy/stable
+
+daarnaast gaat OOK remove (niet purge) fout
+het init-script moet in een veel vroeger stadium checken of uruk executable bestaat
+(dus voordat ie /e/d/uruk gaat lezen)
 
 test op pompom#
 
