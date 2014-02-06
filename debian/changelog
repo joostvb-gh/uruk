@@ -1,9 +1,9 @@
 caspar (20140203-1) UNRELEASED; urgency=low
 
   * New upstream release - The Matonge, BXL Release
-    + Makefile.am, configure.ac: "make distcheck" runs succesfully again.  Fixes
-      "FTBFS: /«PKGBUILDDIR»/missing: line 81: aclocal-1.14: command not found".
-      Thanks David Suárez. (closes: #735789)
+    + Makefile.am, configure.ac: "make distcheck" runs successfully again.
+      Fixes "FTBFS: /«PKGBUILDDIR»/missing: line 81: aclocal-1.14: command
+      not found".  Thanks David Suárez. (closes: #735789)
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Wed, 05 Feb 2014 09:17:01 +0100
 
