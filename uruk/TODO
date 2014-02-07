@@ -1,4 +1,7 @@
 
+--------------
+this should be fixed in commit "'no longer abort script if call "urukctl status" fails." :
+
 uvt-installer.
 
 dit is met uvt uruk config:
@@ -92,9 +95,7 @@ is log_success_msg defined in
     else
       log_success_msg "Nothing to do for reloading uruk: uruk is not running"
 
-
 pompom# sh -x  /etc/init.d/uruk force-reload
-
 
 + . /lib/lsb/init-functions
 + run-parts --lsbsysinit --list /lib/lsb/init-functions.d
@@ -108,10 +109,10 @@ pompom# sh -x  /etc/init.d/uruk force-reload
 
 ls: cannot access /etc/lsb-base-logging.sh: No such file or directory
 
-
 pompom# /etc/init.d/uruk force-reload >/tmp/o 2>&1
 -rw-r--r-- 1 root root 0 Feb  7 15:09 /tmp/o
 
+-----------------------------------
 
 
 
