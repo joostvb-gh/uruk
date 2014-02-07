@@ -1,4 +1,4 @@
-caspar (20140203-1) UNRELEASED; urgency=low
+caspar (20140203-1) unstable; urgency=low
 
   * New upstream release - The Matonge, BXL Release
     + Makefile.am, configure.ac: "make distcheck" runs successfully again.
