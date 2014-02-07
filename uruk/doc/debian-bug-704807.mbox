@@ -49,6 +49,9 @@ X-Accept-Language: nl, en
 X-PGP-Key-ID: 0B86B067
 User-Agent: Mutt/1.5.21 (2010-09-15)
 Delivered-To: submit@bugs.debian.org
+Status: O
+Content-Length: 2777
+Lines: 90
 
 Package: uruk
 Tags: patch, upstream
@@ -186,6 +189,9 @@ In-Reply-To: <20130406043557.GA8175@dijkstra.uvt.nl>
 X-Enigmail-Version: 1.4.1
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Status: O
+Content-Length: 578
+Lines: 24
 
 Op 06-04-13 06:35, Joost van Baal-Ilić schreef:
 > Package: uruk
@@ -244,6 +250,9 @@ Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 In-Reply-To: <5162DAE3.6010105@uvt.nl>
 User-Agent: Mutt/1.5.20 (2009-06-14)
+Status: RO
+Content-Length: 1400
+Lines: 51
 
 Hoi,
 
@@ -343,6 +352,9 @@ In-Reply-To: <20130409133538.GH25275@beskar.mdcc.cx>
 X-Enigmail-Version: 1.4.1
 Content-Type: multipart/mixed;
  boundary="------------030504070104040809040300"
+Status: RO
+Content-Length: 3007
+Lines: 99
 
 This is a multi-part message in MIME format.
 --------------030504070104040809040300

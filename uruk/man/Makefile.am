@@ -77,3 +77,6 @@ SUFFIXES = .5 .8 .html .azm .ps .txt
 .8.txt:
 	$(TROFF) -t -e -mandoc -Tascii $< | $(COL) -bxp > $@
 
+MAINTAINERCLEANFILES = $(manazms) $(typetargets) $(tmpfiles)
+DISTCLEANFILES = $(typetargets)
+

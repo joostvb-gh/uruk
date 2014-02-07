@@ -48,6 +48,9 @@ X-Accept-Language: nl, en
 X-PGP-Key-ID: 0B86B067
 User-Agent: Mutt/1.5.21 (2010-09-15)
 Delivered-To: submit@bugs.debian.org
+Status: RO
+Content-Length: 3185
+Lines: 91
 
 
 --G6nVm6DDWH/FONJq
@@ -172,6 +175,9 @@ Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 In-Reply-To: <20130820092138.GE646@dijkstra.uvt.nl>
 User-Agent: Mutt/1.5.21 (2010-09-15)
+Status: RO
+Content-Length: 2671
+Lines: 55
 
 On Tue, Aug 20, 2013 at 11:21:38AM +0200, Joost van Baal-Ilić wrote:
 > Package: uruk
