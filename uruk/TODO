@@ -1,4 +1,15 @@
 
+fix bugs:
+
+querybts --mbox 705687 >debian-bug-705687.mbox
+
+doc/debian-bug-704807.mbox  doc/debian-bug-705687.mbox  doc/debian-bug-720306.mbox
+
+    #704807 [n|+u|  ] [uruk] uruk: autodetect non-routable nets
+    #720306 [n|  |  ] [uruk] uruk: incorrectly blocks and logs tcp RSET packets
+    #705687 [w|  |  ] [uruk] Provide "uruk diff" showing diff between running and config
+
+
 --------------
 this should be fixed in commit "'no longer abort script if call "urukctl status" fails." :
 

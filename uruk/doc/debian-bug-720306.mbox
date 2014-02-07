@@ -1,0 +1,231 @@
+From joostvb-debian-bugs-20130820-2@uvt.nl Tue Aug 20 09:21:52 2013
+Received: (at submit) by bugs.debian.org; 20 Aug 2013 09:21:52 +0000
+X-Spam-Checker-Version: SpamAssassin 3.3.2-bugs.debian.org_2005_01_02
+	(2011-06-06) on buxtehude.debian.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-13.7 required=4.0 tests=BAYES_00,DIGITS_LETTERS,
+	FOURLA,HAS_PACKAGE,PGPSIGNATURE,RCVD_IN_DNSWL_LOW,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.2-bugs.debian.org_2005_01_02
+X-Spam-Bayes: score:0.0000 Tokens: new, 48; hammy, 149; neutral, 116; spammy,
+	2. spammytokens:0.993-1--mailtje, 0.993-1--minuut
+	hammytokens:0.000-+--H*u:1.5.21, 0.000-+--H*UA:1.5.21,
+	0.000-+--H*u:2010-09-15, 0.000-+--H*UA:2010-09-15, 0.000-+--0c03
+Return-path: <joostvb-debian-bugs-20130820-2@uvt.nl>
+Received: from poincare.uvt.nl ([137.56.247.172])
+	by buxtehude.debian.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA256:256)
+	(Exim 4.80)
+	(envelope-from <joostvb-debian-bugs-20130820-2@uvt.nl>)
+	id 1VBi8O-0001dP-5f
+	for submit@bugs.debian.org; Tue, 20 Aug 2013 09:21:52 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by poincare.uvt.nl (Postfix) with ESMTP id 24729100238;
+	Tue, 20 Aug 2013 11:21:39 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at uvt.nl
+Received: from poincare.uvt.nl ([127.0.0.1])
+	by localhost (poincare.uvt.nl [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Rg1hQtjEEWwt; Tue, 20 Aug 2013 11:21:38 +0200 (CEST)
+Received: from laplace.uvt.nl (laplace.uvt.nl [137.56.247.186])
+	by poincare.uvt.nl (Postfix) with ESMTP id CEF2E100237;
+	Tue, 20 Aug 2013 11:21:38 +0200 (CEST)
+Received: from dijkstra.uvt.nl (dijkstra.uvt.nl [137.56.163.97])
+	by laplace.uvt.nl (Postfix) with ESMTP id CC62B4000E9;
+	Tue, 20 Aug 2013 11:21:38 +0200 (CEST)
+Received: by dijkstra.uvt.nl (Postfix, from userid 1000)
+	id C2862D7; Tue, 20 Aug 2013 11:21:38 +0200 (CEST)
+Date: Tue, 20 Aug 2013 11:21:38 +0200
+From: Joost van =?utf-8?Q?Baal-Ili=C4=87?= <joostvb-debian-bugs-20130820-2@uvt.nl>
+To: submit@bugs.debian.org
+Subject: uruk: incorrectly blocks and logs tcp RSET packets
+Message-ID: <20130820092138.GE646@dijkstra.uvt.nl>
+References: <20130820085337.GH32833@homsar.uvt.nl>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="G6nVm6DDWH/FONJq"
+Content-Disposition: inline
+In-Reply-To: <20130820085337.GH32833@homsar.uvt.nl>
+X-URL: http://mdcc.cx/
+X-Accept-Language: nl, en
+X-PGP-Key-ID: 0B86B067
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Delivered-To: submit@bugs.debian.org
+
+
+--G6nVm6DDWH/FONJq
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Package: uruk
+Version: 20130426-1
+Tag: upstream
+
+Hi,
+
+Op Tue 20 Aug 2013 om 10:53:37 +0200 schreef Wessel Dankers:
+>=20
+> Ik dacht dat dit gefixt was, maar ik zie nog steeds:
+>=20
+> Aug 20 10:52:43 poisson postfix/smtp[28282]: B84AA367: to=3D<wsl@cloud.uv=
+t.nl>, relay=3Daspmx.l.google.com[2a00:1450:400c:c03::1b]:25, delay=3D0.33,=
+ delays=3D0.02/0/0.08/0.23, dsn=3D2.0.0, status=3Dsent (250 2.0.0 OK 137698=
+8763 ib3si224878wjb.48 - gsmtp)
+> Aug 20 10:52:43 poisson kernel: [435770.792996] ip6tables: IN=3Deth0 OUT=
+=3D MAC=3D00:50:56:9a:1b:fc:00:0e:39:ff:ec:00:86:dd SRC=3D2a00:1450:400c:0c=
+03:0000:0000:0000:001b DST=3D2001:0610:1410:0000:ef20:61d1:5f73:2857 LEN=3D=
+60 TC=3D0 HOPLIMIT=3D57 FLOWLBL=3D0 PROTO=3DTCP SPT=3D25 DPT=3D42368 WINDOW=
+=3D0 RES=3D0x00 RST URGP=3D0=20
+>=20
+> Die iptables-regel verschijnt na elk verstuurd mailtje.
+
+=D1=81=D1=80=D0=B5 14 10:18 < thijs> overigens, ik krijg nog steeds veel va=
+n dit soort output in syslog:=20
+                      Aug 14 06:03:34 tnli005 kernel: [2554333.457013] ipta=
+bles: IN=3Deth0=20
+                      OUT=3D MAC=3D00:50:56:b3:45:d4:00:0e:39:ff:ec:00:08:0=
+0 SRC=3D137.56.247.155=20
+                      DST=3D137.56.243.55 LEN=3D40 TOS=3D0x00 PREC=3D0x00 T=
+TL=3D63 ID=3D0 DF PROTO=3DTCP=20
+                      SPT=3D58041 DPT=3D443 WINDOW=3D0 RES=3D0x00 RST URGP=
+=3D0
+=D1=81=D1=80=D0=B5 14 10:18 < thijs> 1 per minuut
+=D1=81=D1=80=D0=B5 14 10:19 < Fruit> mja dat is die iptables bug
+=D1=81=D1=80=D0=B5 14 10:19 < thijs> was daar niet een workaround voor aang=
+ebracht?
+=D1=81=D1=80=D0=B5 14 10:21 < joostvb> zou gefixed moeten zijn in "uruk ver=
+sion 20120914 - The Sankt Goar=20
+                        Release
+=D1=81=D1=80=D0=B5 14 10:21 < joostvb> "
+=D1=81=D1=80=D0=B5 14 10:24 < thijs> ii  uruk   20130426-1
+=D1=81=D1=80=D0=B5 14 10:25 < joostvb> misschien http://bugs.debian.org/687=
+621 heropenen dan
+=D1=81=D1=80=D0=B5 14 10:27 < Fruit> hmm dit is een RST-pakketje
+=D1=81=D1=80=D0=B5 14 10:27 < Fruit> geen FIN|ACK
+
+uruk now has:
+
+ $iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j A=
+CCEPT
+ $ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j =
+ACCEPT
+
+would adding
+
+ $iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
+ $ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCE=
+PT
+
+fix it?  Is this yet another bug in iptables?
+
+Bye,
+
+Joost
+
+
+--G6nVm6DDWH/FONJq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.14 (GNU/Linux)
+
+iQEcBAEBAgAGBQJSEzUiAAoJEDNRenKl5rDIfF8H/2gi4KDvde3gs6DxTmebjrMN
+AS9Zu04Uox8qftoYKQkyk5ds9LURVohNhf017jq7bI2056i1JQiL6Db7K1yuCSWa
+Asi4PdneGHOHpJ5kSqMuJ8n0yLzsX6haCyNgj5gtGv0E1/Ne2iVzWDL9UlKVBUm1
+yWB9vf5SAmyM4BYw/h4/M2NRm+dhRwgw+JTJisVXPkZaaaIYDAYdfh1XB44PNON6
+pTB3azFiJ0kyUDk3ssk51sPnjTN73EvKC9wA4tcZIsRGGj8KbDfqQXh2zqAgVBL0
+CIQByfzGyuaZ6jFpqrT7kFboJ2fyU7XEzEfoAKaJvwgT30ZgpUCxK+JNmVbl+UQ=
+=7lpp
+-----END PGP SIGNATURE-----
+
+--G6nVm6DDWH/FONJq--
+
+
+
+From joostvb-debian-bugs-20130820-2@uvt.nl Tue Aug 20 10:03:25 2013
+Received: (at 720306) by bugs.debian.org; 20 Aug 2013 10:03:25 +0000
+X-Spam-Checker-Version: SpamAssassin 3.3.2-bugs.debian.org_2005_01_02
+	(2011-06-06) on buxtehude.debian.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-5.9 required=4.0 tests=BAYES_00,DIGITS_LETTERS,
+	FOURLA,HAS_BUG_NUMBER autolearn=ham version=3.3.2-bugs.debian.org_2005_01_02
+X-Spam-Bayes: score:0.0000 Tokens: new, 15; hammy, 151; neutral, 182; spammy,
+	0. spammytokens: hammytokens:0.000-+--H*u:1.5.21, 0.000-+--H*UA:1.5.21,
+	0.000-+--H*u:2010-09-15, 0.000-+--H*UA:2010-09-15, 0.000-+--0c03
+Return-path: <joostvb-debian-bugs-20130820-2@uvt.nl>
+Received: from beskar.soleus.nu ([94.142.246.89] helo=beskar.mdcc.cx)
+	by buxtehude.debian.org with esmtp (Exim 4.80)
+	(envelope-from <joostvb-debian-bugs-20130820-2@uvt.nl>)
+	id 1VBimb-0005th-9f
+	for 720306@bugs.debian.org; Tue, 20 Aug 2013 10:03:25 +0000
+Received: by beskar.mdcc.cx (Postfix, from userid 1000)
+	id D9B2D25B6E; Tue, 20 Aug 2013 12:03:20 +0200 (CEST)
+Date: Tue, 20 Aug 2013 12:03:20 +0200
+From: Joost van =?utf-8?Q?Baal-Ili=C4=87?= <joostvb-debian-bugs-20130820-2@uvt.nl>
+To: 720306@bugs.debian.org
+Subject: Re: Bug#720306: uruk: incorrectly blocks and logs tcp RSET packets
+Message-ID: <20130820100320.GP5207@beskar.mdcc.cx>
+References: <20130820085337.GH32833@homsar.uvt.nl>
+ <20130820092138.GE646@dijkstra.uvt.nl>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20130820092138.GE646@dijkstra.uvt.nl>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+
+On Tue, Aug 20, 2013 at 11:21:38AM +0200, Joost van Baal-Ilić wrote:
+> Package: uruk
+> Version: 20130426-1
+> Tag: upstream
+> 
+> Hi,
+> 
+> Op Tue 20 Aug 2013 om 10:53:37 +0200 schreef Wessel Dankers:
+> > 
+> > Ik dacht dat dit gefixt was, maar ik zie nog steeds:
+> > 
+> > Aug 20 10:52:43 poisson postfix/smtp[28282]: B84AA367: to=<wsl@cloud.uvt.nl>, relay=aspmx.l.google.com[2a00:1450:400c:c03::1b]:25, delay=0.33, delays=0.02/0/0.08/0.23, dsn=2.0.0, status=sent (250 2.0.0 OK 1376988763 ib3si224878wjb.48 - gsmtp)
+> > Aug 20 10:52:43 poisson kernel: [435770.792996] ip6tables: IN=eth0 OUT= MAC=00:50:56:9a:1b:fc:00:0e:39:ff:ec:00:86:dd SRC=2a00:1450:400c:0c03:0000:0000:0000:001b DST=2001:0610:1410:0000:ef20:61d1:5f73:2857 LEN=60 TC=0 HOPLIMIT=57 FLOWLBL=0 PROTO=TCP SPT=25 DPT=42368 WINDOW=0 RES=0x00 RST URGP=0 
+> > 
+> > Die iptables-regel verschijnt na elk verstuurd mailtje.
+> 
+> сре 14 10:18 < thijs> overigens, ik krijg nog steeds veel van dit soort output in syslog: 
+>                       Aug 14 06:03:34 tnli005 kernel: [2554333.457013] iptables: IN=eth0 
+>                       OUT= MAC=00:50:56:b3:45:d4:00:0e:39:ff:ec:00:08:00 SRC=137.56.247.155 
+>                       DST=137.56.243.55 LEN=40 TOS=0x00 PREC=0x00 TTL=63 ID=0 DF PROTO=TCP 
+>                       SPT=58041 DPT=443 WINDOW=0 RES=0x00 RST URGP=0
+> сре 14 10:18 < thijs> 1 per minuut
+> сре 14 10:19 < Fruit> mja dat is die iptables bug
+> сре 14 10:19 < thijs> was daar niet een workaround voor aangebracht?
+> сре 14 10:21 < joostvb> zou gefixed moeten zijn in "uruk version 20120914 - The Sankt Goar 
+>                         Release
+> сре 14 10:21 < joostvb> "
+> сре 14 10:24 < thijs> ii  uruk   20130426-1
+> сре 14 10:25 < joostvb> misschien http://bugs.debian.org/687621 heropenen dan
+> сре 14 10:27 < Fruit> hmm dit is een RST-pakketje
+> сре 14 10:27 < Fruit> geen FIN|ACK
+> 
+> uruk now has:
+> 
+>  $iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
+>  $ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
+> 
+> would adding
+> 
+>  $iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
+>  $ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
+> 
+> fix it?  Is this yet another bug in iptables?
+
+the story behind this: we are client and initialize outgoing tcp session.
+return traffic gets allowed since matching state.  incoming rset packet gets
+received, apparently kernel doesn't recognize it as belonging to a tcp-session
+being shut down, and can't match the state.
+
+would tweaking one of net.ipv4.netfilter.ip_conntrack_tcp* sysctl flags be
+better?
+
+
+
+
+

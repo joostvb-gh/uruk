@@ -1,0 +1,446 @@
+From joostvb+debian-bugs-20130406@uvt.nl Sat Apr 06 04:36:12 2013
+Received: (at submit) by bugs.debian.org; 6 Apr 2013 04:36:12 +0000
+X-Spam-Checker-Version: SpamAssassin 3.3.2-bugs.debian.org_2005_01_02
+	(2011-06-06) on buxtehude.debian.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-9.9 required=4.0 tests=BAYES_00,FRT_SOMA,FRT_SOMA2,
+	HAS_PACKAGE,MURPHY_DRUGS_REL8,RCVD_IN_DNSWL_LOW,T_RP_MATCHES_RCVD,
+	X_DEBBUGS_CC autolearn=ham version=3.3.2-bugs.debian.org_2005_01_02
+X-Spam-Bayes: score:0.0000 Tokens: new, 43; hammy, 149; neutral, 86; spammy,
+	2. spammytokens:0.993-1--net_, 0.987-1--zomo hammytokens:0.000-+--H*u:1.5.21,
+	0.000-+--H*UA:1.5.21, 0.000-+--H*u:2010-09-15, 0.000-+--H*UA:2010-09-15,
+	0.000-+--44.000000000
+Return-path: <joostvb+debian-bugs-20130406@uvt.nl>
+Received: from poisson.uvt.nl ([137.56.247.187])
+	by buxtehude.debian.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
+	(Exim 4.80)
+	(envelope-from <joostvb+debian-bugs-20130406@uvt.nl>)
+	id 1UOKrL-000645-Pk
+	for submit@bugs.debian.org; Sat, 06 Apr 2013 04:36:12 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by poisson.uvt.nl (Postfix) with ESMTP id 67AD6280049;
+	Sat,  6 Apr 2013 06:36:02 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at uvt.nl
+Received: from poisson.uvt.nl ([127.0.0.1])
+	by localhost (poisson.uvt.nl [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id V9Uuoq7mJL2S; Sat,  6 Apr 2013 06:35:57 +0200 (CEST)
+Received: from lagrange.uvt.nl (lagrange.uvt.nl [137.56.247.171])
+	by poisson.uvt.nl (Postfix) with ESMTP id E7F052800AA;
+	Sat,  6 Apr 2013 06:35:57 +0200 (CEST)
+Received: from dijkstra.uvt.nl (dijkstra.uvt.nl [137.56.163.97])
+	by lagrange.uvt.nl (Postfix) with ESMTP id DF62A400082;
+	Sat,  6 Apr 2013 06:35:57 +0200 (CEST)
+Received: by dijkstra.uvt.nl (Postfix, from userid 1000)
+	id D291C177978; Sat,  6 Apr 2013 06:35:57 +0200 (CEST)
+Date: Sat, 6 Apr 2013 06:35:57 +0200
+From: Joost van =?utf-8?Q?Baal-Ili=C4=87?= <joostvb+debian-bugs-20130406@uvt.nl>
+To: submit@bugs.debian.org
+Subject: uruk: autodetect non-routable nets
+Message-ID: <20130406043557.GA8175@dijkstra.uvt.nl>
+References: <515EEA45.6000003@uvt.nl>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <515EEA45.6000003@uvt.nl>
+X-debbugs-cc: Casper Gielen <c.gielen@uvt.nl>
+X-URL: http://mdcc.cx/
+X-Accept-Language: nl, en
+X-PGP-Key-ID: 0B86B067
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Delivered-To: submit@bugs.debian.org
+
+Package: uruk
+Tags: patch, upstream
+
+Hoi,
+
+Thanks for your bugreport.  I am submitting it to the Debian BTS, so
+it won't get lost.  Please reply to <bugnr>@bugs.debian.org if you have
+any more remarks on this issue.
+
+O!  On which uruk-version are you working?
+
+Groet!
+
+Joost
+
+Op Fri  5 Apr 2013 om 05:14:13 +0200 schreef Casper Gielen:
+> Hoi Joost,
+> hierbij een patch voor uruk.
+> Precies één keer getest (op zomo).
+> 
+> ip-autodetectie werkt niet als je een interface hebt in een non-routable
+> netwerk. Het netmask moet eigenlijk worden aangepast.
+> 192.168.123.0/24 -> 192.168.0.0/16
+> Onderstaande code zorgt daar voor. Na het weekend hoop ik het op een
+> tweede systeem te testen.
+> 
+> 
+> --- autodetect-ips      2013-04-05 17:10:44.000000000 +0200
+> +++ autodetect-ips.old  2013-04-05 16:49:16.000000000 +0200
+> @@ -30,25 +30,6 @@
+>  ###############################################
+> 
+>  # For each interface <if> in interfaces, ip_<if> should be defined.
+> -# if an autodetected address is in a non-routable range,
+> -# then net_<iface>_default should expand to contain the entire range.
+> -expandnet4()
+> -{
+> -       case "$1" in
+> -               192.168.*) echo "192.168.0.0/24" ;;
+> -               172.16.*)  echo "172.16.0.0/12"  ;;
+> -               *)         echo "$1" ;;
+> -       esac
+> -}
+> -
+> -expandnet6()
+> -{
+> -       case "$1" in
+> -               fc00:*)    echo "fc00::/7" ;;
+> -               fec0:*)    echo "fec0::/10"  ;;
+> -               *)         echo "$1" ;;
+> -       esac
+> -}
+> 
+>  # First try Red Hat's init scripts
+>  for f in /etc/sysconfig/network-scripts/ifcfg-*
+> @@ -60,12 +41,10 @@
+>      esac
+>      eval "$(
+>          . $f
+> -       net=$(expandnet4   $IPADDR/$NETMASK)
+> -       net6=$(expandnet6 $IPADDR/$NETMASK)
+>          echo ip_${i}_default=$IPADDR
+> -        echo net_${i}_default=$net
+> +        echo net_${i}_default=$IPADDR/$NETMASK
+>          echo ip6_${i}_default=${IPV6ADDR%/*}
+> -        echo net6_${i}_default=$net6
+> +        echo net6_${i}_default=$IPV6ADDR
+>      )"
+>  done
+> 
+> @@ -92,13 +71,11 @@
+>              esac
+>              case $iface,$address,$netmask in ?*,?*,?*)
+>                  case $type in inet)
+> -                   net=$(expandnet4  $address/$netmask)
+>                      echo ip_${iface}_default=$address
+> -                    echo net_${iface}_default=$net
+> +                    echo net_${iface}_default=$address/$netmask
+>                  ;; inet6)
+> -                   net6=$(expandnet6 $address/$netmask)
+>                      echo ip6_${iface}_default=$address
+> -                    echo net6_${iface}_default=$net6
+> +                    echo net6_${iface}_default=$address/$netmask
+>                  esac
+>                  iface=
+>                  type=
+> 
+
+
+
+
+From c.gielen@uvt.nl Mon Apr 08 14:57:50 2013
+Received: (at 704807) by bugs.debian.org; 8 Apr 2013 14:57:50 +0000
+X-Spam-Checker-Version: SpamAssassin 3.3.2-bugs.debian.org_2005_01_02
+	(2011-06-06) on buxtehude.debian.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-6.7 required=4.0 tests=BAYES_00,FOURLA,
+	HAS_BUG_NUMBER,MURPHY_DRUGS_REL8,RCVD_IN_DNSWL_LOW,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.2-bugs.debian.org_2005_01_02
+X-Spam-Bayes: score:0.0000 Tokens: new, 20; hammy, 151; neutral, 44; spammy,
+	0. spammytokens: hammytokens:0.000-+--H*UA:10.0.12, 0.000-+--H*u:10.0.12,
+	0.000-+--H*u:20130116, 0.000-+--H*UA:20130116, 0.000-+--H*u:Icedove
+Return-path: <c.gielen@uvt.nl>
+Received: from poincare.uvt.nl ([137.56.247.172])
+	by buxtehude.debian.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
+	(Exim 4.80)
+	(envelope-from <c.gielen@uvt.nl>)
+	id 1UPDW2-00083j-Cj
+	for 704807@bugs.debian.org; Mon, 08 Apr 2013 14:57:50 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by poincare.uvt.nl (Postfix) with ESMTP id ED4A8280165
+	for <704807@bugs.debian.org>; Mon,  8 Apr 2013 16:57:40 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at uvt.nl
+Received: from poincare.uvt.nl ([127.0.0.1])
+	by localhost (poincare.uvt.nl [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YAdgus3JjUjZ for <704807@bugs.debian.org>;
+	Mon,  8 Apr 2013 16:57:40 +0200 (CEST)
+Received: from lagrange.uvt.nl (lagrange.uvt.nl [137.56.247.171])
+	by poincare.uvt.nl (Postfix) with ESMTP id B2854280113
+	for <704807@bugs.debian.org>; Mon,  8 Apr 2013 16:57:40 +0200 (CEST)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	(Authenticated sender: cgielen)
+	by lagrange.uvt.nl (Postfix) with ESMTPSA id AE9C4400082
+Message-ID: <5162DAE3.6010105@uvt.nl>
+Date: Mon, 08 Apr 2013 16:57:39 +0200
+From: Casper Gielen <c.gielen@uvt.nl>
+Organization: Tilburg University: lis-unix
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:10.0.12) Gecko/20130116 Icedove/10.0.12
+MIME-Version: 1.0
+To: 704807@bugs.debian.org
+Subject: Re: Bug#704807: uruk: autodetect non-routable nets
+References: <515EEA45.6000003@uvt.nl> <20130406043557.GA8175@dijkstra.uvt.nl>
+In-Reply-To: <20130406043557.GA8175@dijkstra.uvt.nl>
+X-Enigmail-Version: 1.4.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Op 06-04-13 06:35, Joost van Baal-IliÄ‡ schreef:
+> Package: uruk
+> Tags: patch, upstream
+> 
+> Hoi,
+> 
+> Thanks for your bugreport.  I am submitting it to the Debian BTS, so
+> it won't get lost.  Please reply to <bugnr>@bugs.debian.org if you have
+> any more remarks on this issue.
+> 
+> O!  On which uruk-version are you working?
+
+20130226-1
+
+-- 
+Casper Gielen <cgielen@uvt.nl> | LIS UNIX
+PGP fingerprint = 16BD 2C9F 8156 C242 F981  63B8 2214 083C F80E 4AF7
+
+Universiteit van Tilburg | Postbus 90153, 5000 LE
+Warandelaan 2 | Telefoon 013 466 4100 | G 236 | http://www.uvt.nl
+
+
+
+
+
+From joostvb-debian-bugs-20130409-2@mdcc.cx Tue Apr 09 13:35:41 2013
+Received: (at 704807) by bugs.debian.org; 9 Apr 2013 13:35:41 +0000
+X-Spam-Checker-Version: SpamAssassin 3.3.2-bugs.debian.org_2005_01_02
+	(2011-06-06) on buxtehude.debian.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-7.0 required=4.0 tests=BAYES_00,HAS_BUG_NUMBER,
+	MURPHY_DRUGS_REL8 autolearn=ham version=3.3.2-bugs.debian.org_2005_01_02
+X-Spam-Bayes: score:0.0000 Tokens: new, 19; hammy, 151; neutral, 67; spammy,
+	0. spammytokens: hammytokens:0.000-+--39pm, 0.000-+--39PM,
+	0.000-+--H*u:1.5.20, 0.000-+--H*UA:1.5.20, 0.000-+--H*u:2009-06-14
+Return-path: <joostvb-debian-bugs-20130409-2@mdcc.cx>
+Received: from beskar.soleus.nu ([94.142.246.89] helo=beskar.mdcc.cx)
+	by buxtehude.debian.org with esmtp (Exim 4.80)
+	(envelope-from <joostvb-debian-bugs-20130409-2@mdcc.cx>)
+	id 1UPYi5-0002EQ-Fv
+	for 704807@bugs.debian.org; Tue, 09 Apr 2013 13:35:41 +0000
+Received: by beskar.mdcc.cx (Postfix, from userid 1000)
+	id 6A9802C4FF; Tue,  9 Apr 2013 15:35:38 +0200 (CEST)
+Date: Tue, 9 Apr 2013 15:35:38 +0200
+From: Joost van =?utf-8?Q?Baal-Ili=C4=87?= <joostvb-debian-bugs-20130409-2@mdcc.cx>
+To: Casper Gielen <c.gielen@uvt.nl>, 704807@bugs.debian.org
+Subject: Re: Bug#704807: uruk: autodetect non-routable nets
+Message-ID: <20130409133538.GH25275@beskar.mdcc.cx>
+References: <515EEA45.6000003@uvt.nl>
+ <20130406043557.GA8175@dijkstra.uvt.nl>
+ <5162DAE3.6010105@uvt.nl>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5162DAE3.6010105@uvt.nl>
+User-Agent: Mutt/1.5.20 (2009-06-14)
+
+Hoi,
+
+On Mon, Apr 08, 2013 at 04:57:39PM +0200, Casper Gielen wrote:
+> Op 06-04-13 06:35, Joost van Baal-IliÄ‡ schreef:
+> > Package: uruk
+> > Tags: patch, upstream
+> > 
+> > Hoi,
+> > 
+> > Thanks for your bugreport.  I am submitting it to the Debian BTS, so
+> > it won't get lost.  Please reply to <bugnr>@bugs.debian.org if you have
+> > any more remarks on this issue.
+> > 
+> > O!  On which uruk-version are you working?
+> 
+> 20130226-1
+
+That's current latest upstream, OK thanks.
+
+your patch contains:
+
+ -       case "$1" in
+ -               192.168.*) echo "192.168.0.0/24" ;;
+ -               172.16.*)  echo "172.16.0.0/12"  ;;
+ -               *)         echo "$1" ;;
+ -       esac 
+
+it misses some ranges:
+
+joostvb@janacopoulos:~/git/uruk/uruk% grep \^ip._noroute_ranges script/uruk
+ip4_noroute_ranges='127.0.0.1/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16'
+ip6_noroute_ranges='::1/128 ffff:0:0::/96 fc00::/7 fec0::/10 0200::/7 2001:0db8::/32'
+
+Furthermore, 172.16.0.0/12 is 172.16.0.0 - 172.31.255.255.  Your code would
+wrongly place 172.32.0.1 in 172.16.0.0/12.
+
+Care to fix that?
+
+Hrm, there might be an easier way to work around the problem btw.  We could
+e.g. state that autodetect-ips doesn't support that situation, and tell people
+to use another trick.  The patch would update documentation only.  I am not
+sure yet what's the best solution.
+
+Anyway, thanks for your work!
+
+Bye,
+
+Joost
+
+
+
+
+From c.gielen@uvt.nl Thu Apr 11 12:32:18 2013
+Received: (at 704807) by bugs.debian.org; 11 Apr 2013 12:32:18 +0000
+X-Spam-Checker-Version: SpamAssassin 3.3.2-bugs.debian.org_2005_01_02
+	(2011-06-06) on buxtehude.debian.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-2.8 required=4.0 tests=BAYES_00,FOURLA,FRT_SOMA,
+	FRT_SOMA2,HAS_BUG_NUMBER,MIXEDBDN,MURPHY_DRUGS_REL8,RCVD_IN_DNSWL_LOW,
+	T_RP_MATCHES_RCVD autolearn=no version=3.3.2-bugs.debian.org_2005_01_02
+X-Spam-Bayes: score:0.0000 Tokens: new, 24; hammy, 151; neutral, 151; spammy,
+	0. spammytokens: hammytokens:0.000-+--H*u:10.0.12, 0.000-+--H*UA:10.0.12,
+	0.000-+--H*u:20130116, 0.000-+--H*UA:20130116, 0.000-+--12.000000000
+Return-path: <c.gielen@uvt.nl>
+Received: from poincare.uvt.nl ([137.56.247.172])
+	by buxtehude.debian.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
+	(Exim 4.80)
+	(envelope-from <c.gielen@uvt.nl>)
+	id 1UQGfp-0004J7-BY
+	for 704807@bugs.debian.org; Thu, 11 Apr 2013 12:32:18 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by poincare.uvt.nl (Postfix) with ESMTP id 50D44280125;
+	Thu, 11 Apr 2013 14:32:07 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at uvt.nl
+Received: from poincare.uvt.nl ([127.0.0.1])
+	by localhost (poincare.uvt.nl [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hP8I-FyNfC87; Thu, 11 Apr 2013 14:32:07 +0200 (CEST)
+Received: from lagrange.uvt.nl (lagrange.uvt.nl [137.56.247.171])
+	by poincare.uvt.nl (Postfix) with ESMTP id 0279828011C;
+	Thu, 11 Apr 2013 14:32:07 +0200 (CEST)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	(Authenticated sender: cgielen)
+	by lagrange.uvt.nl (Postfix) with ESMTPSA id F1F53400082
+Message-ID: <5166AD46.6010606@uvt.nl>
+Date: Thu, 11 Apr 2013 14:32:06 +0200
+From: Casper Gielen <c.gielen@uvt.nl>
+Organization: Tilburg University: lis-unix
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:10.0.12) Gecko/20130116 Icedove/10.0.12
+MIME-Version: 1.0
+To: =?UTF-8?B?Sm9vc3QgdmFuIEJhYWwtSWxpxIc=?=
+ <joostvb-debian-bugs-20130409-2@mdcc.cx>
+CC: 704807@bugs.debian.org
+Subject: Re: Bug#704807: uruk: autodetect non-routable nets
+References: <515EEA45.6000003@uvt.nl> <20130406043557.GA8175@dijkstra.uvt.nl> <5162DAE3.6010105@uvt.nl> <20130409133538.GH25275@beskar.mdcc.cx>
+In-Reply-To: <20130409133538.GH25275@beskar.mdcc.cx>
+X-Enigmail-Version: 1.4.1
+Content-Type: multipart/mixed;
+ boundary="------------030504070104040809040300"
+
+This is a multi-part message in MIME format.
+--------------030504070104040809040300
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Improvements over the last patch:
+
+- more networkranges recognized
+- proper regex for 172.16/16
+- deal with combined ipv6addr/netmask on RHEL
+
+
+Tested on zeneco, zuniran, zomo & zonozu.
+
+-- 
+Casper Gielen <cgielen@uvt.nl> | LIS UNIX
+PGP fingerprint = 16BD 2C9F 8156 C242 F981  63B8 2214 083C F80E 4AF7
+
+Universiteit van Tilburg | Postbus 90153, 5000 LE
+Warandelaan 2 | Telefoon 013 466 4100 | G 236 | http://www.uvt.nl
+
+
+
+--------------030504070104040809040300
+Content-Type: text/x-patch;
+ name="autodetect-nonroutable.diff"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename="autodetect-nonroutable.diff"
+
+--- autodetect-ips.old	2013-04-05 16:49:16.000000000 +0200
++++ autodetect-ips	2013-04-11 14:30:12.000000000 +0200
+@@ -31,6 +31,31 @@
+ 
+ # For each interface <if> in interfaces, ip_<if> should be defined.
+ 
++# If an autodetected address is in a non-routable range,
++# then net_<iface>_default should expand to contain the entire range.
++expandnet4()
++{
++	case "$1" in
++		10.*)                                echo "10.0.0/8"  ;;
++		192.168.*)           		     echo "192.168.0.0/24" ;;
++                172.1[6-9].*|172.2?.*|172.3[0-1].*)  echo "172.16.0.0/12"  ;;
++		*)                                   echo "$1" ;;
++	esac
++}
++
++expandnet6()
++{
++	# Matching IPv6 with regexes is really hard.
++	# The code below assumes that the usual conventions for writing IPv6-adresses are followed.
++	case "$1" in
++		fc00:*)       echo "fc00::/7" ;;
++		fec0:*)       echo "fec0::/10"  ;;
++		::ffff:*:*)   echo "::ffff:0:0/96" ;;		
++		2001:0db8::*) echo "2001:0db8::/32" ;; 
++		*)            echo "$1" ;;
++	esac
++}
++
+ # First try Red Hat's init scripts
+ for f in /etc/sysconfig/network-scripts/ifcfg-*
+ do
+@@ -41,10 +66,12 @@
+     esac
+     eval "$(
+         . $f
++	net4=$(expandnet4 $IPADDR/$NETMASK)
++	net6=$(expandnet6 $IPV6ADDR)  # netmask is deel van IPV6ADDR
+         echo ip_${i}_default=$IPADDR
+-        echo net_${i}_default=$IPADDR/$NETMASK
++        echo net_${i}_default=$net4
+         echo ip6_${i}_default=${IPV6ADDR%/*}
+-        echo net6_${i}_default=$IPV6ADDR
++        echo net6_${i}_default=$net6
+     )"
+ done
+ 
+@@ -71,11 +98,13 @@
+             esac
+             case $iface,$address,$netmask in ?*,?*,?*)
+                 case $type in inet)
++		    net=$(expandnet4 $address/$netmask)
+                     echo ip_${iface}_default=$address
+-                    echo net_${iface}_default=$address/$netmask
++                    echo net_${iface}_default=$net
+                 ;; inet6)
++		    net=$(expandnet6 $address/$netmask)
+                     echo ip6_${iface}_default=$address
+-                    echo net6_${iface}_default=$address/$netmask
++                    echo net6_${iface}_default=$net
+                 esac
+                 iface=
+                 type=
+
+--------------030504070104040809040300--
+
+
+

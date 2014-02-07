@@ -1,0 +1,63 @@
+From thijs@debian.org Thu Apr 18 14:54:45 2013
+Received: (at submit) by bugs.debian.org; 18 Apr 2013 14:54:45 +0000
+X-Spam-Checker-Version: SpamAssassin 3.3.2-bugs.debian.org_2005_01_02
+	(2011-06-06) on buxtehude.debian.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-13.8 required=4.0 tests=BAYES_00,FROMDEVELOPER,
+	HAS_PACKAGE,RCVD_IN_DNSWL_LOW,XMAILER_REPORTBUG autolearn=ham
+	version=3.3.2-bugs.debian.org_2005_01_02
+X-Spam-Bayes: score:0.0000 Tokens: new, 14; hammy, 84; neutral, 34; spammy, 0.
+	spammytokens: hammytokens:0.000-+--H*M:reportbug, 0.000-+--H*MI:reportbug,
+	0.000-+--H*x:reportbug, 0.000-+--H*UA:reportbug, 0.000-+--Severity
+Return-path: <thijs@debian.org>
+Received: from poincare.uvt.nl ([137.56.247.172])
+	by buxtehude.debian.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
+	(Exim 4.80)
+	(envelope-from <thijs@debian.org>)
+	id 1USqEX-0001za-C8
+	for submit@bugs.debian.org; Thu, 18 Apr 2013 14:54:45 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by poincare.uvt.nl (Postfix) with ESMTP id B14AF28007C;
+	Thu, 18 Apr 2013 16:54:36 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at uvt.nl
+Received: from poincare.uvt.nl ([127.0.0.1])
+	by localhost (poincare.uvt.nl [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LtvT+yH8yL1C; Thu, 18 Apr 2013 16:54:36 +0200 (CEST)
+Received: from lagrange.uvt.nl (lagrange.uvt.nl [137.56.247.171])
+	by poincare.uvt.nl (Postfix) with ESMTP id 53125280100;
+	Thu, 18 Apr 2013 16:54:36 +0200 (CEST)
+Received: from incagijs.uvt.nl (incagijs.uvt.nl [137.56.126.19])
+	by lagrange.uvt.nl (Postfix) with ESMTP id 4ED26400082;
+	Thu, 18 Apr 2013 16:54:36 +0200 (CEST)
+Received: by incagijs.uvt.nl (Postfix, from userid 1000)
+	id 3DD56100F76F; Thu, 18 Apr 2013 16:54:36 +0200 (CEST)
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+From: Thijs Kinkhorst <thijs@debian.org>
+To: Debian Bug Tracking System <submit@bugs.debian.org>
+Subject: Provide "uruk diff" showing diff between running and config
+Message-ID: <20130418145436.16323.52196.reportbug@incagijs.uvt.nl>
+X-Mailer: reportbug 6.4.4
+Date: Thu, 18 Apr 2013 16:54:36 +0200
+Delivered-To: submit@bugs.debian.org
+
+Package: uruk
+Version: 20121005-1
+Severity: wishlist
+
+Hoi Joost,
+
+Please provide an "uruk diff". When uruk config has been changed, this will
+output the difference between the currently installed firewall rules and
+the result of the config that would be installed when force-reload is used.
+
+This can be used to check whether any applied changes indeed have the
+desired effect, and just the desired effect.
+
+
+Cheers,
+Thijs
+
+
+
