@@ -93,6 +93,24 @@ is log_success_msg defined in
       log_success_msg "Nothing to do for reloading uruk: uruk is not running"
 
 
+pompom# sh -x  /etc/init.d/uruk force-reload
+
+
++ . /lib/lsb/init-functions
++ run-parts --lsbsysinit --list /lib/lsb/init-functions.d
++ [ -r /lib/lsb/init-functions.d/20-left-info-blocks ]
++ . /lib/lsb/init-functions.d/20-left-info-blocks
++ FANCYTTY=
++ [ -e /etc/lsb-base-logging.sh ]
++ true
++ set -e
++ urukctl status
+
+ls: cannot access /etc/lsb-base-logging.sh: No such file or directory
+
+
+pompom# /etc/init.d/uruk force-reload >/tmp/o 2>&1
+-rw-r--r-- 1 root root 0 Feb  7 15:09 /tmp/o
 
 
 

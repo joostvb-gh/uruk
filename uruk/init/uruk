@@ -141,8 +141,6 @@ END
 }
 
 
-set -e
-
 case "$1" in
   start)
     urukctl start
