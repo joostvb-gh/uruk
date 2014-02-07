@@ -2,9 +2,17 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201YMMDD - The FIXME Release
+uruk version 2014MMDD - The FIXME Release
 
 - UNRELEASED
+- init/uruk: no longer abort on failed commands.  This fixes a bug: upgrading
+  a "not running" uruk from 20130426 to 20131213 on Debian systems
+  would fail with "invoke-rc.d: initscript uruk, action "force-reload" failed.
+  dpkg: error processing uruk (--install): subprocess installed
+  post-installation script returned error exit status 3".  Indeed, calling
+  /etc/init.d/uruk force-reload on a "not running" uruk would give error exit
+  status 3, and would not give any output.
+
 
 
 uruk version 20131213 - The Gweek Release
