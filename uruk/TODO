@@ -18,6 +18,7 @@ if uruk is configured for ipv4, but not for ipv6, it should block all ipv6 traff
 if uruk is configured for ipv6, but not for ipv4, it should block all ipv4 traffic.
 if uruk is not configured for ipv4 and not for ipv6, it should do nothing (as it currently does).
 
+----
 
 пон 16 16:04 < joostvb> http://mdcc.cx/tmp/uruk/uruk_20130913-1_all.deb <- klaar voor testen
 пон 16 16:20 < thijs> joostvb: update-rc.d: warning: start and stop actions are no longer 
@@ -46,12 +47,6 @@ in
 with lintian 2.5.17
 
 ----------
-
-during postinst:
-invoke-rc.d uruk force-reload gives exit 4?  (seen on arrr)
-makes upgrade fail.
-
-------
 
 stick in documentation somewhere:
 
