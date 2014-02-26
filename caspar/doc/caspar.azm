@@ -727,19 +727,29 @@ Jeroen Hoppenbrouwers blogs about the way he uses caspar, in
 maintain a Linux host"}.
   } \par{
 Lots of tools overlap (partly) with caspar in their functionality.  Here's a
-list.  A big part of it was collected by Ray Miller
+list.
+  } \par{
+ansible (\httpref{http://www.ansible.com/}); code is on github
+(\httpref{https://github.com/ansible/ansible})
+  } \par{
+cfengine (\httpref{http://www.cfengine.org/}), by Mark Burgess e.a., builds
+expert systems to administrate and configure large computer networks: it
+delivers a very big superset of caspar's installation mechanism.
+  } \par{
+Puppet (\httpref{http://reductivelabs.com/projects/puppet}), also something
+like a configuration management system.
+  } \par{
+Here's an older list; a big part of it was collected by Ray Miller
 (\httpref{http://users.ox.ac.uk/~raym/}) of Oxford University, and published in
 the article "Configuration Management with Subversion, YAML and Perl Template
 Toolkit" in the SANE 2006 (\httpref{http://www.sane.nl/sane2006/}) conference
 proceedings.  FIXME: Check urls, update
   } \par{
-
 \: The `cvs-conf' package (\httpref{http://project.tuxfamily.org/cvs-conf},
 \: \httpref{http://packages.debian.org/stable/utils/cvs-conf.html}) probably
 \: offers about the same functionality as \"caspar.mk".  However, this package
 \: seems largely unmaintained (between September 2002 and May 2004, at
 \: least).
-
 docbookmk, by Michael Wiedmann (\httpref{http://www.miwie.org/docbkmake/})
 offers probably a superset of Caspar's \"docbook.mk" functionality.
   } \par{
@@ -757,10 +767,6 @@ though: between Nov 1996 and June 2004, no new release has been published.  The
 Debian (\httpref{ftp://ftp.debian.org/debian/pool/main/s/sup/}) and NetBSD
 packages are likely still maintained, though.
   } \par{
-cfengine (\httpref{http://www.cfengine.org/}), by Mark Burgess e.a., builds
-expert systems to administrate and configure large computer networks: it
-delivers a very big superset of caspar's installation mechanism.
-  } \par{
 PIKT (\httpref{http://www.pikt.org/}) is intended primarily for system
 monitoring, but does do configuration management too.
   } \par{
@@ -769,9 +775,6 @@ system.
   } \par{
 The Arusha Project (ARK, at \httpref{http://ark.sf.net/}) provides a framework
 for collaborative system administration.
-  } \par{
-Puppet (\httpref{http://reductivelabs.com/projects/puppet}), also something
-like a configuration management system.
   } \par{
 Bcfg2 (\httpref{http://trac.mcs.anl.gov/projects/bcfg2/}) is yet another
 configuration management system.
