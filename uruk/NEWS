@@ -12,7 +12,31 @@ uruk version 20140208 - The Alfama Release
   post-installation script returned error exit status 3".  Indeed, calling
   /etc/init.d/uruk force-reload on a "not running" uruk would give error exit
   status 3, and would not give any output.
+- init/autodetect-ips: make sure Debian inet6 stanzas default to netmask=64.
+  Patch contributed by Wessel Dankers.
+- script/uruk: Simplify semantics of sources_${iface}_${proto}_${service} vs
+  sources6_${iface}_${proto}_${service}.  sources6_* is no longer needed; just
+  list both IPv4 and IPv6 addresses in sources_${iface}_${proto}_${service}.
+  E.g.:
 
+(Before this change, uruk required seperate sources_* and sources6_*
+        variables to configure access for v4/v6 sources.)
+
+  To be precise, the semantics now is:
+
+1) If both sources_* and sources6_* are defined (even if they're just empty),
+each is used for its respective address family. (This ensures backwards
+compatibility.) 2) If sources6_* is undefined, sources_* is used for both v4
+and v6.  3) In either case, v4 literals in v6 context and v6 literals in v4
+context are silently (!) ignored.
+
+
+Use sources_${iface}_${proto}_${service} for IPv6
+
+
+ This patch also fixes the detection of undefined variables, which
+        was broken."
+  Patch contributed by Wessel Dankers.
 
 
 uruk version 20131213 - The Gweek Release
