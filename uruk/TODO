@@ -2,6 +2,9 @@ fix NEWS.
 
 document sources_ for IPv6 records in manpage.
 
+if uruk is configured for ipv4, but not for ipv6, it should block all ipv6 traffic.
+if uruk is configured for ipv6, but not for ipv4, it should block all ipv4 traffic.
+if uruk is not configured for ipv4 and not for ipv6, it should do nothing (as it currently does).
 
 fix bugs:
 
@@ -18,10 +21,6 @@ doc/debian-bug-704807.mbox  doc/debian-bug-705687.mbox  doc/debian-bug-720306.mb
 сре 20 16:41 < Fruit> joostvb: sctp-support in uruk zou handig zijn
 сре 20 16:46 < Fruit> joostvb: misschien ook meteen dccp dan maar
 
-if uruk is configured for ipv4, but not for ipv6, it should block all ipv6 traffic.
-if uruk is configured for ipv6, but not for ipv4, it should block all ipv4 traffic.
-if uruk is not configured for ipv4 and not for ipv6, it should do nothing (as it currently does).
-
 ----
 
 пон 16 16:04 < joostvb> http://mdcc.cx/tmp/uruk/uruk_20130913-1_all.deb <- klaar voor testen
@@ -35,6 +34,14 @@ en zie ook insserv package
                         is?
 пон 16 16:24 < thijs> inderdaad, hij valt terug naar de defaults
 пон 16 16:25 < joostvb> ok, tnx voor testen
+
+See insserv(8) for lsb header descriptions
+
+likely removing
+# Default-Start:     S
+# Default-Stop:      0 1 6
+will fix that
+
 
 ------
 

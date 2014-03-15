@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20140208 - The Alfama Release
+uruk version 20140315 - The Alfama Release
 
 - UNRELEASED
 - init/uruk: no longer abort on failed commands.  This fixes a bug: upgrading
@@ -25,7 +25,7 @@ uruk version 20140208 - The Alfama Release
    services_eth0_default_tcp="mail local"
 
    sources_eth0_default_tcp_mail="10.0.0.0/24 192.0.32.0/24 192.168.6.26"
-   sources_eth0_default_tcp_local="$localnet svejk.example.com ::/0"
+   sources_eth0_default_tcp_local="192.0.32.0/24 svejk.example.com ::/0"
 
    ports_eth0_default_tcp_mail=smtp
    ports_eth0_default_tcp_local="ssh ftp"
