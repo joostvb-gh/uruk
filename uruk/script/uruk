@@ -247,72 +247,75 @@ uruk_hook "$rc_c"
 #
 for iface in $interfaces
 do
-    eval is="\"\$ips_${iface}\""
-    if test -n "$is"
-    then
+    eval "is=\$ips_${iface}"
+    case $is in '')
+        interfaces_x=$iface
+    ;; *)
         interfaces_x=
         for i in $is
         do
             interfaces_x="$interfaces_x ${iface}_$i"
         done
-    else
-        interfaces_x=$iface
-    fi
+    esac
 
     for iface_x in $interfaces_x
     do
-        eval ip="\"\$ip_${iface_x}\""
-        eval ip6="\"\$ip6_${iface_x}\""
+        eval "ip=\$ip_${iface_x}"
+        eval "ip6=\$ip6_${iface_x}"
         for proto in tcp udp
         do
-            eval services="\"\$services_${iface_x}_${proto}\""
-            if test -n "$services"
-            then
+            eval "services_defined=\${services_${iface_x}_${proto}+DEFINED}"
+            eval "services=\$services_${iface_x}_${proto}"
+            case $services_defined in '')
+                echo >&2 "WARNING: services_${iface_x}_${proto} is undefined.  (Processing uruk rc file nevertheless.)"
+            ;; *)
                 for service in $services
                 do
                     # service is a servicegroupname, e.g. "local"
-                    eval sources="\"\$sources_${iface_x}_${proto}_${service}\""
-                    case ${sources-UNDEF} in UNDEF)
-                        echo >&2 "WARNING: sources_${iface_x}_${proto}_${service} is undefined.
- (Processing uruk rc file nevertheless.)"
+                    eval "sources_defined=\${sources_${iface_x}_${proto}_${service}+DEFINED}"
+                    eval "sources=\$sources_${iface_x}_${proto}_${service}"
+                    case $sources_defined in '')
+                        echo >&2 "WARNING: sources_${iface_x}_${proto}_${service} is undefined.  (Processing uruk rc file nevertheless.)"
                     esac
 
-                    eval sources6="\"\$sources6_${iface_x}_${proto}_${service}\""
-                    case ${sources6-UNDEF} in UNDEF)
-                        echo >&2 "INFO: sources6_${iface_x}_${proto}_${service} is undefined.
- (Processing uruk rc file nevertheless.)"
+                    eval "sources6_defined=\${sources6_${iface_x}_${proto}_${service}+DEFINED}"
+                    eval "sources6=\$sources6_${iface_x}_${proto}_${service}"
+                    case $sources6_defined in '')
+                        eval "sources6=\$sources_${iface_x}_${proto}_${service}"
                     esac
 
-                    eval ports="\"\$ports_${iface_x}_${proto}_${service}\""
-                    if test -n "$ports"
-                    then
+                    eval "ports_defined=\${ports_${iface_x}_${proto}_${service}+DEFINED}"
+                    eval "ports=\$ports_${iface_x}_${proto}_${service}"
+                    case $ports_defined in '')
+                        echo >&2 "WARNING: ports_${iface_x}_${proto}_${service} is undefined.  (Processing uruk rc file nevertheless.)"
+                    ;; *)
                         for port in $ports
                         do
                             # port is e.g. www or 1023
-                            if test -n "$sources"
-                            then
-                                for source in $sources
-                                do
+                            for source in $sources
+                            do
+                                case $source in *:*) ;; *) # if it doesn't look like an IPv6 address/range
                                     # source is e.g. 10.56.0.10/32
                                     $iptables -A INPUT -m conntrack --ctstate NEW \
                                       -i $iface --protocol $proto \
                                       --source "$source" --destination "$ip" \
                                       --destination-port "$port" -j ACCEPT
-                                done
-                            fi
+                                esac
+                            done
+
                             for source6 in $sources6
                             do
-                                $ip6tables -A INPUT -m conntrack --ctstate NEW \
-                                  -i $iface --protocol $proto \
-                                  --source "$source6" --destination "$ip6" \
-                                  --destination-port "$port" -j ACCEPT
+                                case $source6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
+                                    $ip6tables -A INPUT -m conntrack --ctstate NEW \
+                                      -i $iface --protocol $proto \
+                                      --source "$source6" --destination "$ip6" \
+                                      --destination-port "$port" -j ACCEPT
+                                esac
                             done
                         done
-                    else
-                        echo >&2 "WARNING: ports_${iface_x}_${proto}_${service} is undefined.  (Processing uruk rc file nevertheless.)"
-                    fi
+                    esac
                 done
-            fi
+            esac
         done
     done
 done
