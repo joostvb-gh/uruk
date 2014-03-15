@@ -1,3 +1,7 @@
+fix NEWS.
+
+document sources_ for IPv6 records in manpage.
+
 
 fix bugs:
 

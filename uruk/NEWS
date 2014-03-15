@@ -16,35 +16,34 @@ uruk version 20140208 - The Alfama Release
   Patch contributed by Wessel Dankers.
 - script/uruk: Simplify semantics of sources_${iface}_${proto}_${service} vs
   sources6_${iface}_${proto}_${service}.  sources6_* is no longer needed; just
-  list both IPv4 and IPv6 addresses in sources_${iface}_${proto}_${service}.
-  E.g.:
+  list both IPv4 and IPv6 addresses in sources_*.  E.g.:
 
-ips_eth0='default private'
-ip_eth0_default=1.2.3.4
-ip6_eth0_default=
+   ips_eth0='default private'
+   ip_eth0_default=1.2.3.4
+   ip6_eth0_default=
 
-services_eth0_default_tcp="mail local"
+   services_eth0_default_tcp="mail local"
 
-sources_eth0_default_tcp_mail="10.0.0.0/24 192.0.32.0/24 192.168.6.26"
-sources_eth0_default_tcp_local="$localnet svejk.example.com ::/0"
+   sources_eth0_default_tcp_mail="10.0.0.0/24 192.0.32.0/24 192.168.6.26"
+   sources_eth0_default_tcp_local="$localnet svejk.example.com ::/0"
 
-ports_eth0_default_tcp_mail=smtp
-ports_eth0_default_tcp_local="ssh ftp"
+   ports_eth0_default_tcp_mail=smtp
+   ports_eth0_default_tcp_local="ssh ftp"
 
-If svejk.example.com has both an IPv4 PTR record in DNS, as well as
-an IPv6 record in .ipv6.arpa , ....
-
+  If svejk.example.com has both an IPv4 PTR record in DNS, as well as
+  an IPv6 record in .ipv6.arpa , ....
 
   (Before this change, uruk required seperate sources_* and sources6_*
   variables to configure access for v4/v6 sources.) To be precise, the semantics
-now is: 1) If both sources_* and sources6_* are defined (even if they're just
-empty), each is used for its respective address family. (This ensures backwards
-compatibility.) 2) If sources6_* is undefined, sources_* is used for both v4
-and v6.  3) In either case, v4 literals in v6 context and v6 literals in v4
-context are silently (!) ignored.
+  now is: 1) If both sources_* and sources6_* are defined (even if they're just
+  empty), each is used for its respective address family. (This ensures
+  backwards compatibility.) 2) If sources6_* is undefined, sources_* is used
+  for both v4 and v6.  3) In either case, v4 literals in v6 context and v6
+  literals in v4 context are silently (!) ignored.
 
   The patch also fixes the detection of undefined variables, which was broken.
   Patch contributed by Wessel Dankers.
+
 
 uruk version 20131213 - The Gweek Release
 
