@@ -74,6 +74,9 @@ then
                 esac
                 address=
                 netmask=
+                case $type in inet6)
+                    netmask=64
+                esac
             ;; address)
                     address=$val
                     case $address in */*)
