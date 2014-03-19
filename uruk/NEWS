@@ -2,6 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 2014MMDD - The .... Release
+
+- UNRELEASED
+
+
 uruk version 20140319 - The Alfama Release
 
 - init/uruk: no longer abort on failed commands.  This fixes a bug: upgrading
