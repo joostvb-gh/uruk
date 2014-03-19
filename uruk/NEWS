@@ -31,7 +31,8 @@ uruk version 20140315 - The Alfama Release
    ports_eth0_default_tcp_local="ssh ftp"
 
   If svejk.example.com has both an IPv4 PTR record in DNS, as well as
-  an IPv6 record in .ipv6.arpa , ....
+  an IPv6 PTR record, connection attempts from svejk to the ssh and ftp
+  TCP ports are allowed, via both IPv4 and IPv6.
 
   (Before this change, uruk required seperate sources_* and sources6_*
   variables to configure access for v4/v6 sources.) To be precise, the semantics
