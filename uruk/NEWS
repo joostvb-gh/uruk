@@ -21,13 +21,13 @@ uruk version 20140319 - The Alfama Release
    ip_eth0_default=1.2.3.4
    ip6_eth0_default=
 
-   services_eth0_default_tcp="mail local"
+   services_eth0_default_tcp='mail local'
 
-   sources_eth0_default_tcp_mail="10.0.0.0/24 192.0.32.0/24 192.168.6.26"
-   sources_eth0_default_tcp_local="192.0.32.0/24 svejk.example.com 2001:db8::/32"
+   sources_eth0_default_tcp_mail='10.0.0.0/24 192.0.32.0/24 192.168.6.26'
+   sources_eth0_default_tcp_local='192.0.32.0/24 svejk.example.com 2001:db8::/32'
 
    ports_eth0_default_tcp_mail=smtp
-   ports_eth0_default_tcp_local="ssh ftp"
+   ports_eth0_default_tcp_local='ssh ftp'
 
   If svejk.example.com has both an IPv4 PTR record in DNS, as well as
   an IPv6 PTR record, connection attempts from svejk to the ssh and ftp
