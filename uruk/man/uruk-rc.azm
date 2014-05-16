@@ -117,6 +117,37 @@ For an even more reasonable \rc file, look at the well-commented example \rc
 file in \ttexpath.
 }
 
+\sec{IPv4 and IPv6}{IPv4 AND IPv6}
+
+\par{You can mix IPv4 and IPv6-addresses in sources_*.  E.g.:}
+
+\verbatim{\
+ ips_eth0='default private'
+ ip_eth0_default=1.2.3.4
+ ip6_eth0_default=
+
+ services_eth0_default_tcp='mail local'
+
+ sources_eth0_default_tcp_mail='10.0.0.0/24 192.0.32.0/24 192.168.6.26'
+ sources_eth0_default_tcp_local='192.0.32.0/24 svejk.example.com 2001:db8::/32'
+
+ ports_eth0_default_tcp_mail=smtp
+ ports_eth0_default_tcp_local='ssh ftp'}
+
+\par{If svejk.example.com has both an IPv4 PTR record in DNS, as well as
+an IPv6 PTR record, connection attempts from svejk to the ssh and ftp
+TCP ports are allowed, via both IPv4 and IPv6.}
+
+\par{Uruk used to require variables sources6_* to be set to support ip6tables.
+Since uruk version 20140319 (The Alfama Release), this is no longer needed;
+setting sources_* suffices.  To be precise, the semantics since uruk version
+20140319 is: 1) If both sources_* and sources6_* are defined (even if they're
+just empty), each is used for its respective address family. (This ensures
+backwards compatibility.) 2) If sources6_* is undefined, sources_* is used for
+both v4 and v6.  3) In either case, v4 literals in v6 context and v6 literals
+in v4 context are silently (!) ignored.}
+
+
 \sec{Hooks}{HOOKS}
 
 Uruk offers hooks for inserting your own code between iptables invocations.
