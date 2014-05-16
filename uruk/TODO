@@ -14,10 +14,7 @@ doc/debian-bug-704807.mbox  doc/debian-bug-705687.mbox  doc/debian-bug-720306.mb
 
 joostvb@arrr:ding% mailx -f ./doc/debian-bug-720306.mbox
 
-p
-~e
-:q!
-
+then give 'v' or 'p' or ~v or ~p
 
     #704807 [n|+u|  ] [uruk] uruk: autodetect non-routable nets
     #720306 [n|  |  ] [uruk] uruk: incorrectly blocks and logs tcp RSET packets
