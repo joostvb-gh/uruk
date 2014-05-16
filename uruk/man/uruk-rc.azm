@@ -48,15 +48,18 @@ The simplest \rc file which does allow traffic to our services looks like e.g.:
  ip_eth0_default=192.168.26.27
  net_eth0_default=192.168.0.0/16
 
+ ip6_eth0_default=2001:db8::1/64
+ net6_eth0_default=2001:db8::/32
+
  services_eth0_default_tcp=local
  ports_eth0_default_tcp_local="0:65535"
- sources_eth0_default_tcp_local="0.0.0.0/0"
+ sources_eth0_default_tcp_local="0.0.0.0/0 ::/0"
 
  services_eth0_default_udp=local
  ports_eth0_default_udp_local="0:65535"
  sources_eth0_default_udp_local="0.0.0.0/0"}
 
-This \rc file allows all IPv4 UDP and TCP traffic from publicly routable IPs to
+This \rc file allows all IPv4 and IPv6 UDP and TCP traffic from publicly routable IPs to
 eth0's IP.
 
 }
@@ -70,8 +73,9 @@ wired interface, and don't like to explicitly set your IPs in \rc:
  # list of interfaces you'd like uruk to protect
  interfaces=eth0 wlan0
 
+ # set variables ip{,6}_eth0_default and net{,6}_eth0_default
  . /lib/uruk/init/autodetect-ips
-
+ 
  # names for eth0's 2 IPv4 addresses
  ips_eth0="default dhcp"
 
@@ -79,7 +83,7 @@ wired interface, and don't like to explicitly set your IPs in \rc:
  # from anywhere
  services_eth0_default_tcp=ssh
  ports_eth0_default_tcp_ssh=443
- sources_eth0_default_tcp_ssh="0.0.0.0/0"
+ sources_eth0_default_tcp_ssh="0.0.0.0/0 ::/0"
  
  # we get a static IPv4 via dhcp
  ip_eth0_dhcp=10.0.0.3
