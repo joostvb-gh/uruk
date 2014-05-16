@@ -1,5 +1,8 @@
 fix NEWS.
 
+check/fix wishlist bug: treat ipv6 as ipv4-adressess in user interface.
+should be implemented in uruk version 20140319 - The Alfama Release.  is that one
+in debian testing now/2014-05?  is it properly documented?  i'd guess not:
 document sources_ for IPv6 records in manpage.
 
 if uruk is configured for ipv4, but not for ipv6, it should block all ipv6 traffic.
