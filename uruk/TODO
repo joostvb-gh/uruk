@@ -21,6 +21,21 @@ then give 'v' or 'p' or ~v or ~p
 сре 20 16:41 < Fruit> joostvb: sctp-support in uruk zou handig zijn
 сре 20 16:46 < Fruit> joostvb: misschien ook meteen dccp dan maar
 
+--protocol protocol
+   The  protocol of the rule or of the packet to check.  The specified protocol
+   can be one of tcp, udp, udplite, icmp, icmpv6,esp, ah, sctp, mh or the  spe‐
+   cial  keyword "all", or it can be a numeric value, representing one of these
+   protocols or a different one.  A protocol name from /etc/protocols  is  also
+   allowed.   A  "!" argument before the protocol inverts the test.  The number
+   zero is equivalent to all. "all" will match with all protocols and is  taken
+   as  default  when  this  option  is  omitted.  Note that, in ip6tables, IPv6
+   extension headers except esp are not allowed.  esp and  ipv6-nonext  can  be
+   used  with Kernel version 2.6.11 or later.
+
+----
+
+support for iptables-opvolger: niet netfilter maar ....
+
 ----
 
 пон 16 16:04 < joostvb> http://mdcc.cx/tmp/uruk/uruk_20130913-1_all.deb <- klaar voor testen
