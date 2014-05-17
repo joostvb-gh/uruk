@@ -20,7 +20,6 @@ then give 'v' or 'p' or ~v or ~p
 
 сре 20 16:41 < Fruit> joostvb: sctp-support in uruk zou handig zijn
 сре 20 16:46 < Fruit> joostvb: misschien ook meteen dccp dan maar
-
 --protocol protocol
    The  protocol of the rule or of the packet to check.  The specified protocol
    can be one of tcp, udp, udplite, icmp, icmpv6,esp, ah, sctp, mh or the  spe‐
@@ -31,6 +30,7 @@ then give 'v' or 'p' or ~v or ~p
    as  default  when  this  option  is  omitted.  Note that, in ip6tables, IPv6
    extension headers except esp are not allowed.  esp and  ipv6-nonext  can  be
    used  with Kernel version 2.6.11 or later.
+in script/uruk, see "for proto in tcp udp" and "--tcp-flags"
 
 ----
 
