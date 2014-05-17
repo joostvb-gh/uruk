@@ -31,6 +31,7 @@ then give 'v' or 'p' or ~v or ~p
    extension headers except esp are not allowed.  esp and  ipv6-nonext  can  be
    used  with Kernel version 2.6.11 or later.
 in script/uruk, see "for proto in tcp udp" and "--tcp-flags"
+see also iptables-extensions(8)
 
 ----
 
