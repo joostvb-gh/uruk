@@ -5,14 +5,17 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 2014MMDD - The Vlook Release
 
 - UNRELEASED
-- doc/rc, man/uruk-rc.azm: document new semantics of
-  sources_${iface}_${proto}_${service} vs sources6_${iface}_${proto}_${service}
-- bootstrap: update to automake 1.14.
 
-script/uruk :
+- script/uruk: next to protocols tcp and udp, now supports dccp and sctp.
+  FIXME
+Stream Control Transmission Protocol (needs iptables >= 1.2.9)
+
 -        for proto in tcp udp
 +        for proto in dccp sctp tcp udp
 
+- doc/rc, man/uruk-rc.azm: document new semantics of
+  sources_${iface}_${proto}_${service} vs sources6_${iface}_${proto}_${service}
+- bootstrap: update to automake 1.14.
 
 
 uruk version 20140319 - The Alfama Release

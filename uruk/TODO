@@ -32,6 +32,8 @@ then give 'v' or 'p' or ~v or ~p
    used  with Kernel version 2.6.11 or later.
 in script/uruk, see "for proto in tcp udp" and "--tcp-flags"
 see also iptables-extensions(8)
+-        for proto in tcp udp
++        for proto in dccp sctp tcp udp
 
 ----
 
