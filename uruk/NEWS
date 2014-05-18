@@ -9,6 +9,10 @@ uruk version 2014MMDD - The Vlook Release
   sources_${iface}_${proto}_${service} vs sources6_${iface}_${proto}_${service}
 - bootstrap: update to automake 1.14.
 
+script/uruk :
+-        for proto in tcp udp
++        for proto in dccp sctp tcp udp
+
 
 
 uruk version 20140319 - The Alfama Release

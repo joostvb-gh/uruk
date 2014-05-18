@@ -262,7 +262,7 @@ do
     do
         eval "ip=\$ip_${iface_x}"
         eval "ip6=\$ip6_${iface_x}"
-        for proto in tcp udp
+        for proto in dccp sctp tcp udp
         do
             eval "services_defined=\${services_${iface_x}_${proto}+DEFINED}"
             eval "services=\$services_${iface_x}_${proto}"
