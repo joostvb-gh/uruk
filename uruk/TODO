@@ -1,23 +1,3 @@
-fix NEWS.
-
-phase out sources6 in uruk?  is there still a use-case?
-
-if uruk is configured for ipv4, but not for ipv6, it should block all ipv6 traffic.
-if uruk is configured for ipv6, but not for ipv4, it should block all ipv4 traffic.
-if uruk is not configured for ipv4 and not for ipv6, it should do nothing (as it currently does).
-
-fix bugs:
-
-querybts --mbox 705687 >debian-bug-705687.mbox
-doc/debian-bug-704807.mbox  doc/debian-bug-705687.mbox  doc/debian-bug-720306.mbox
-joostvb@arrr:ding% mailx -f ./doc/debian-bug-720306.mbox
-then give 'v' or 'p' or ~v or ~p
-    #704807 [n|+u|  ] [uruk] uruk: autodetect non-routable nets
-    #720306 [n|  |  ] [uruk] uruk: incorrectly blocks and logs tcp RSET packets
-    #705687 [w|  |  ] [uruk] Provide "uruk diff" showing diff between running and config
-
---------------
-
 сре 20 16:41 < Fruit> joostvb: sctp-support in uruk zou handig zijn
 сре 20 16:46 < Fruit> joostvb: misschien ook meteen dccp dan maar
 --protocol protocol
@@ -34,8 +14,33 @@ in script/uruk, see "for proto in tcp udp" and "--tcp-flags"
 see also iptables-extensions(8)
 -        for proto in tcp udp
 +        for proto in dccp sctp tcp udp
+sctp: find out about --chunk-types (vs --tcp-flags in tcp-case)
+
+---------------
+
+fix NEWS.
 
 ----
+
+phase out sources6 in uruk?  is there still a use-case?
+
+-----
+
+if uruk is configured for ipv4, but not for ipv6, it should block all ipv6 traffic.
+if uruk is configured for ipv6, but not for ipv4, it should block all ipv4 traffic.
+if uruk is not configured for ipv4 and not for ipv6, it should do nothing (as it currently does).
+
+fix bugs:
+
+querybts --mbox 705687 >debian-bug-705687.mbox
+doc/debian-bug-704807.mbox  doc/debian-bug-705687.mbox  doc/debian-bug-720306.mbox
+joostvb@arrr:ding% mailx -f ./doc/debian-bug-720306.mbox
+then give 'v' or 'p' or ~v or ~p
+    #704807 [n|+u|  ] [uruk] uruk: autodetect non-routable nets
+    #720306 [n|  |  ] [uruk] uruk: incorrectly blocks and logs tcp RSET packets
+    #705687 [w|  |  ] [uruk] Provide "uruk diff" showing diff between running and config
+
+--------------
 
 support for iptables-opvolger: niet netfilter maar ....
 
@@ -59,7 +64,6 @@ likely removing
 # Default-Start:     S
 # Default-Stop:      0 1 6
 will fix that
-
 
 ------
 
