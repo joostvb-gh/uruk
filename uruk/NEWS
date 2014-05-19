@@ -13,6 +13,9 @@ FIXME
 -        for proto in tcp udp
 +        for proto in dccp sctp tcp udp
 
+sctp.ko
+dccp.ko Linux kernel modules
+
 - doc/rc, man/uruk-rc.azm: document new semantics of
   sources_${iface}_${proto}_${service} vs sources6_${iface}_${proto}_${service}
 - bootstrap: update to automake 1.14.
