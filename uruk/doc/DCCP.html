@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" />
+<title>Datagram Congestion Control Protocol - Wikipedia, the free encyclopedia</title>
+<meta name="generator" content="MediaWiki 1.24wmf4" />
+<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" />
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=edit" />
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=edit" />
+<link rel="apple-touch-icon" href="//bits.wikimedia.org/apple-touch/wikipedia.png" />
+<link rel="shortcut icon" href="//bits.wikimedia.org/favicon/wikipedia.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd" />
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="canonical" href="http://en.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" />
+<link rel="stylesheet" href="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=ext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2CrefToolbar%2Cteahouse%7Cext.rtlcite%2Cwikihiero%7Cext.uls.nojs%7Cext.visualEditor.viewPageTarget.noscript%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.vector.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector&amp;*" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:3904d24a08aa08f6a68dc338f9be277e */</style>
+<script src="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Datagram_Congestion_Control_Protocol","wgTitle":"Datagram Congestion Control Protocol","wgCurRevisionId":566645431,"wgRevisionId":566645431,"wgArticleId":1017423,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Internet protocols","Transport layer protocols"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Datagram_Congestion_Control_Protocol","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRedirectedFrom":"DCCP","wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"preview":false,"previewDialog":false,"publish":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":false,"wgVisualEditor":{"isPageWatched":false,"magnifyClipIconURL":"//bits.wikimedia.org/static-1.24wmf4/skins/common/images/magnify-clip.png","pageLanguageCode":"en","pageLanguageDir":"ltr","svgMaxSize":2048},"wikilove-recipient":"","wikilove-anon":0,"wgGuidedTourHelpGuiderUrl":"Help:Guided tours/guider","wgFlowTermsOfUseEdit":"By saving changes, you agree to our \u003Ca class=\"external text\" href=\"//wikimediafoundation.org/wiki/Terms_of_use\"\u003ETerms of Use\u003C/a\u003E and agree to irrevocably release your text under the \u003Ca rel=\"nofollow\" class=\"external text\" href=\"//creativecommons.org/licenses/by-sa/3.0\"\u003ECC BY-SA 3.0 License\u003C/a\u003E and \u003Ca class=\"external text\" href=\"//en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License\"\u003EGFDL\u003C/a\u003E","wgFlowTermsOfUseSummarize":"By clicking \"Summarize\", you agree to the terms of use for this wiki.","wgFlowTermsOfUseCloseTopic":"By clicking \"Close topic\", you agree to the terms of use for this wiki.","wgFlowTermsOfUseReopenTopic":"By clicking \"Reopen topic\", you agree to the terms of use for this wiki.","wgULSAcceptLanguageList":["en-us","en"],"wgULSCurrentAutonym":"English","wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgNoticeProject":"wikipedia","wgWikibaseItemId":"Q1049960"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"editfont":"default","editondblclick":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"math":0,"minordefault":0,"newpageshidepatrolled":0,"nickname":"","norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rows":25,"showhiddencats":false,"shownumberswatching":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,
+"useeditwarning":1,"prefershttps":1,"flaggedrevssimpleui":1,"flaggedrevsstable":0,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"multimediaviewer-enable":true,"visualeditor-enable":0,"visualeditor-betatempdisable":0,"visualeditor-enable-experimental":0,"visualeditor-enable-language":0,"wikilove-enabled":1,"mathJax":false,"echo-subscriptions-web-page-review":true,"echo-subscriptions-email-page-review":false,"ep_showtoplink":false,"ep_bulkdelorgs":false,"ep_bulkdelcourses":true,"ep_showdyk":true,"echo-subscriptions-web-education-program":true,"echo-subscriptions-email-education-program":false,"echo-notify-show-link":true,"echo-show-alert":true,"echo-email-frequency":0,"echo-email-format":"html","echo-subscriptions-email-system":true,"echo-subscriptions-web-system":true,"echo-subscriptions-email-other":false,"echo-subscriptions-web-other":true,"echo-subscriptions-email-edit-user-talk":false,"echo-subscriptions-web-edit-user-talk":true,
+"echo-subscriptions-email-reverted":false,"echo-subscriptions-web-reverted":true,"echo-subscriptions-email-article-linked":false,"echo-subscriptions-web-article-linked":false,"echo-subscriptions-email-mention":false,"echo-subscriptions-web-mention":true,"echo-subscriptions-web-edit-thank":true,"echo-subscriptions-email-edit-thank":false,"echo-subscriptions-web-flow-discussion":true,"echo-subscriptions-email-flow-discussion":false,"gettingstarted-task-toolbar-show-intro":true,"uls-preferences":"","language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs100":false,
+"searchNs101":false,"searchNs108":false,"searchNs109":false,"searchNs118":false,"searchNs119":false,"searchNs446":false,"searchNs447":false,"searchNs710":false,"searchNs711":false,"searchNs828":false,"searchNs829":false,"gadget-teahouse":1,"gadget-ReferenceTooltips":1,"gadget-DRN-wizard":1,"gadget-charinsert":1,"gadget-refToolbar":1,"gadget-mySandbox":1,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: enwiki:resourceloader:filter:minify-js:7:c528bfb8e6a77e6b98aa9527991f01db */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralauth.centralautologin","skins.vector.compactPersonalBar.defaultTracking","ext.visualEditor.viewPageTarget.init","ext.uls.init","ext.uls.interface","ext.centralNotice.bannerController","skins.vector.js"]);
+}</script>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" /><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/static-1.24wmf4/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Datagram_Congestion_Control_Protocol skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+			<div id="mw-js-message" style="display:none;"></div>
+							<div id="siteNotice"><!-- CentralNotice --></div>
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Datagram Congestion Control Protocol</span></h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub">  (Redirected from <a href="/w/index.php?title=DCCP&amp;redirect=no" title="DCCP">DCCP</a>)</div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-navigation">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="vertical-navbox nowraplinks hlist" cellspacing="5" cellpadding="0" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;">
+<tr>
+<th class="" style=";padding:0.2em 0.4em 0.2em;;font-size:145%;line-height:1.2em;"><a href="/wiki/Internet_protocol_suite" title="Internet protocol suite">Internet protocol suite</a></th>
+</tr>
+<tr>
+<th class="" style="padding:0.1em;;;"><a href="/wiki/Application_layer" title="Application layer">Application layer</a></th>
+</tr>
+<tr>
+<td class="" style="padding:0 0.1em 0.4em;;">
+<ul>
+<li><a href="/wiki/Border_Gateway_Protocol" title="Border Gateway Protocol">BGP</a></li>
+<li><a href="/wiki/Dynamic_Host_Configuration_Protocol" title="Dynamic Host Configuration Protocol">DHCP</a>
+<ul>
+<li><a href="/wiki/DHCPv6" title="DHCPv6">DHCPv6</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Domain_Name_System" title="Domain Name System">DNS</a></li>
+<li><a href="/wiki/File_Transfer_Protocol" title="File Transfer Protocol">FTP</a></li>
+<li><a href="/wiki/Hypertext_Transfer_Protocol" title="Hypertext Transfer Protocol">HTTP</a></li>
+<li><a href="/wiki/Internet_Message_Access_Protocol" title="Internet Message Access Protocol">IMAP</a></li>
+<li><a href="/wiki/Internet_Relay_Chat" title="Internet Relay Chat">IRC</a></li>
+<li><a href="/wiki/Lightweight_Directory_Access_Protocol" title="Lightweight Directory Access Protocol">LDAP</a></li>
+<li><a href="/wiki/Media_Gateway_Control_Protocol" title="Media Gateway Control Protocol">MGCP</a></li>
+<li><a href="/wiki/Network_News_Transfer_Protocol" title="Network News Transfer Protocol">NNTP</a></li>
+<li><a href="/wiki/Network_Time_Protocol" title="Network Time Protocol">NTP</a></li>
+<li><a href="/wiki/Post_Office_Protocol" title="Post Office Protocol">POP</a></li>
+<li><a href="/wiki/Open_Network_Computing_Remote_Procedure_Call" title="Open Network Computing Remote Procedure Call">RPC</a></li>
+<li><a href="/wiki/Real-time_Transport_Protocol" title="Real-time Transport Protocol">RTP</a></li>
+<li><a href="/wiki/Real_Time_Streaming_Protocol" title="Real Time Streaming Protocol">RTSP</a></li>
+<li><a href="/wiki/Routing_Information_Protocol" title="Routing Information Protocol">RIP</a></li>
+<li><a href="/wiki/Session_Initiation_Protocol" title="Session Initiation Protocol">SIP</a></li>
+<li><a href="/wiki/Simple_Mail_Transfer_Protocol" title="Simple Mail Transfer Protocol">SMTP</a></li>
+<li><a href="/wiki/Simple_Network_Management_Protocol" title="Simple Network Management Protocol">SNMP</a></li>
+<li><a href="/wiki/SOCKS" title="SOCKS">SOCKS</a></li>
+<li><a href="/wiki/Secure_Shell" title="Secure Shell">SSH</a></li>
+<li><a href="/wiki/Telnet" title="Telnet">Telnet</a></li>
+<li><a href="/wiki/Transport_Layer_Security" title="Transport Layer Security">TLS/SSL</a></li>
+<li><a href="/wiki/XMPP" title="XMPP">XMPP</a></li>
+<li><a href="/wiki/Category:Application_layer_protocols" title="Category:Application layer protocols"><i>more...</i></a></li>
+</ul>
+</td>
+</tr>
+<tr>
+<th class="" style="padding:0.1em;;;"><a href="/wiki/Transport_layer" title="Transport layer">Transport layer</a></th>
+</tr>
+<tr>
+<td class="" style="padding:0 0.1em 0.4em;;">
+<ul>
+<li><a href="/wiki/Transmission_Control_Protocol" title="Transmission Control Protocol">TCP</a></li>
+<li><a href="/wiki/User_Datagram_Protocol" title="User Datagram Protocol">UDP</a></li>
+<li><strong class="selflink">DCCP</strong></li>
+<li><a href="/wiki/Stream_Control_Transmission_Protocol" title="Stream Control Transmission Protocol">SCTP</a></li>
+<li><a href="/wiki/Resource_Reservation_Protocol" title="Resource Reservation Protocol">RSVP</a></li>
+<li><a href="/wiki/Category:Transport_layer_protocols" title="Category:Transport layer protocols"><i>more...</i></a></li>
+</ul>
+</td>
+</tr>
+<tr>
+<th class="" style="padding:0.1em;;;"><a href="/wiki/Internet_layer" title="Internet layer">Internet layer</a></th>
+</tr>
+<tr>
+<td class="" style="padding:0 0.1em 0.4em;;">
+<ul>
+<li><a href="/wiki/Internet_Protocol" title="Internet Protocol">IP</a>
+<ul>
+<li><a href="/wiki/IPv4" title="IPv4">IPv4</a></li>
+<li><a href="/wiki/IPv6" title="IPv6">IPv6</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Internet_Control_Message_Protocol" title="Internet Control Message Protocol">ICMP</a></li>
+<li><a href="/wiki/ICMPv6" title="ICMPv6">ICMPv6</a></li>
+<li><a href="/wiki/Explicit_Congestion_Notification" title="Explicit Congestion Notification">ECN</a></li>
+<li><a href="/wiki/Internet_Group_Management_Protocol" title="Internet Group Management Protocol">IGMP</a></li>
+<li><a href="/wiki/IPsec" title="IPsec">IPsec</a></li>
+<li><a href="/wiki/Category:Internet_layer_protocols" title="Category:Internet layer protocols"><i>more...</i></a></li>
+</ul>
+</td>
+</tr>
+<tr>
+<th class="" style="padding:0.1em;;;"><a href="/wiki/Link_layer" title="Link layer">Link layer</a></th>
+</tr>
+<tr>
+<td class="" style="padding:0 0.1em 0.4em;;">
+<ul>
+<li><a href="/wiki/Address_Resolution_Protocol" title="Address Resolution Protocol">ARP/InARP</a></li>
+<li><a href="/wiki/Neighbor_Discovery_Protocol" title="Neighbor Discovery Protocol">NDP</a></li>
+<li><a href="/wiki/Open_Shortest_Path_First" title="Open Shortest Path First">OSPF</a></li>
+<li><a href="/wiki/Tunneling_protocol" title="Tunneling protocol">Tunnels</a>
+<ul>
+<li><a href="/wiki/Layer_2_Tunneling_Protocol" title="Layer 2 Tunneling Protocol">L2TP</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Point-to-Point_Protocol" title="Point-to-Point Protocol">PPP</a></li>
+<li><a href="/wiki/Media_access_control" title="Media access control">Media access control</a>
+<ul>
+<li><a href="/wiki/Ethernet" title="Ethernet">Ethernet</a></li>
+<li><a href="/wiki/Digital_subscriber_line" title="Digital subscriber line">DSL</a></li>
+<li><a href="/wiki/Integrated_Services_Digital_Network" title="Integrated Services Digital Network">ISDN</a></li>
+<li><a href="/wiki/Fiber_Distributed_Data_Interface" title="Fiber Distributed Data Interface">FDDI</a></li>
+<li><a href="/wiki/DOCSIS" title="DOCSIS">DOCSIS</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Category:Link_protocols" title="Category:Link protocols"><i>more...</i></a></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;font-size:115%;">
+<div class="plainlinks hlist navbar mini" style="">
+<ul>
+<li class="nv-view"><a href="/wiki/Template:IPstack" title="Template:IPstack"><span title="View this template" style="">v</span></a></li>
+<li class="nv-talk"><a href="/wiki/Template_talk:IPstack" title="Template talk:IPstack"><span title="Discuss this template" style="">t</span></a></li>
+<li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:IPstack&amp;action=edit"><span title="Edit this template" style="">e</span></a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+<p>The <b>Datagram Congestion Control Protocol</b> (<b>DCCP</b>) is a message-oriented <a href="/wiki/Transport_layer" title="Transport layer">transport layer</a> <a href="/wiki/Protocol_(computing)" title="Protocol (computing)" class="mw-redirect">protocol</a>. DCCP implements reliable connection setup, teardown, <a href="/wiki/Explicit_Congestion_Notification" title="Explicit Congestion Notification">Explicit Congestion Notification</a> (ECN), <a href="/wiki/Congestion_control" title="Congestion control" class="mw-redirect">congestion control</a>, and feature negotiation. DCCP was published as <a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc4340">RFC 4340</a>, a <a href="/wiki/Internet_standard" title="Internet standard" class="mw-redirect">proposed standard</a>, by the IETF in March, 2006. <a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc4336">RFC 4336</a> provides an introduction. FreeBSD had an implementation for version 5.1.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span>[</span>1<span>]</span></a></sup> Linux also had an implementation of DCCP first released in <a href="/wiki/Linux_kernel" title="Linux kernel">Linux kernel</a> version 2.6.14 (released October 28, 2005).</p>
+<p>DCCP provides a way to gain access to <a href="/wiki/Congestion_control" title="Congestion control" class="mw-redirect">congestion control</a> mechanisms without having to implement them at the <a href="/wiki/Application_layer" title="Application layer">application layer</a>. It allows for flow-based semantics like in <a href="/wiki/Transmission_Control_Protocol" title="Transmission Control Protocol">Transmission Control Protocol</a> (TCP), but does not provide reliable in-order delivery. Sequenced delivery within multiple streams as in the <a href="/wiki/Stream_Control_Transmission_Protocol" title="Stream Control Transmission Protocol">Stream Control Transmission Protocol</a> (SCTP) is not available in DCCP.</p>
+<p>DCCP is useful for applications with timing constraints on the delivery of data. Such applications include <a href="/wiki/Streaming_media" title="Streaming media">streaming media</a>, <a href="/wiki/Multiplayer_online_game" title="Multiplayer online game">multiplayer online games</a> and <a href="/wiki/Voice_over_Internet_Protocol" title="Voice over Internet Protocol" class="mw-redirect">Internet telephony</a>. The primary feature of these applications is that old messages quickly become stale so that getting new messages is preferred to resending lost messages. Currently such applications have often either settled for TCP or used <a href="/wiki/User_Datagram_Protocol" title="User Datagram Protocol">User Datagram Protocol</a> (UDP) and implemented their own congestion control mechanisms, or have no congestion control at all.</p>
+<p>While being useful for these applications, DCCP can also be positioned as a general congestion control mechanism for UDP-based applications, by adding, as needed, a mechanism for reliable and/or in-order delivery on the top of UDP/DCCP. In this context, DCCP allows the use of different, but generally <a href="/wiki/TCP_Friendly_Rate_Control" title="TCP Friendly Rate Control">TCP-friendly</a> congestion control mechanisms.</p>
+<p>A DCCP connection contains acknowledgment traffic as well as data traffic. Acknowledgments inform a sender whether its packets have arrived, and whether they were marked by <a href="/wiki/Explicit_Congestion_Notification" title="Explicit Congestion Notification">Explicit Congestion Notification</a> (ECN). <a href="/wiki/Acknowledgement_(data_networks)" title="Acknowledgement (data networks)">Acknowledgements</a> are transmitted as reliably as the congestion control mechanism in use requires, possibly completely reliably.</p>
+<p>DCCP has the option for very long (48-bit) sequence numbers corresponding to a packet ID, rather than a byte ID as in TCP. The long length of the sequence numbers is intended to guard against "<i>some blind attacks, such as the injection of DCCP-Resets into the connection.</i>"<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span>[</span>2<span>]</span></a></sup></p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#DCCP_implementations"><span class="tocnumber">1</span> <span class="toctext">DCCP implementations</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#See_also"><span class="tocnumber">2</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#References"><span class="tocnumber">3</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#External_links"><span class="tocnumber">4</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="DCCP_implementations">DCCP implementations</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=edit&amp;section=1" title="Edit section: DCCP implementations">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>As of June 2008, at least two DCCP implementations are actively maintained. The Linux kernel implementation was first available in Linux release 2.6.14.<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span>[</span>3<span>]</span></a></sup> The dccp-tp implementation is optimized for portability,<sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span>[</span>4<span>]</span></a></sup> but has had no changes since June 2008.<sup id="cite_ref-5" class="reference"><a href="#cite_note-5"><span>[</span>5<span>]</span></a></sup></p>
+<p>Recently, a new <a rel="nofollow" class="external text" href="http://github.com/petar/GoDCCP">user-space implementation of DCCP</a> has been under way. The purpose of this implementation is to provide a standardized, portable NAT-friendly framework for peer-to-peer communications with flexible congestion control, depending on application.</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=edit&amp;section=2" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="/wiki/SCTP" title="SCTP" class="mw-redirect">SCTP</a></li>
+<li><a href="/wiki/Transport_Layer#Comparison_of_transport-layer_protocols" title="Transport Layer" class="mw-redirect">Transport protocol comparison table</a></li>
+</ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=edit&amp;section=3" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="reflist" style="list-style-type: decimal;">
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-1">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external free" href="https://www.ietf.org/mail-archive/web/dccp/current/msg00508.html">https://www.ietf.org/mail-archive/web/dccp/current/msg00508.html</a></span></li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://tools.ietf.org/html/rfc4340#section-7.6">RFC 4340 section 7.6</a></span></li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-3">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://www.linuxfoundation.org/en/Net:DCCP">Linux Foundation</a></span></li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><b><a href="#cite_ref-4">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://www.phelan-4.com/dccp-tp/">dccp-tp implementation</a></span></li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-5">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://www.phelan-4.com/dccp-tp/tiki-lastchanges.php?days=0">Change log for the dccp-tp wiki, retrieved June 13, 2011</a></span></li>
+</ol>
+</div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=edit&amp;section=4" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://www.ietf.org/html.charters/dccp-charter.html">IETF Datagram Congestion Control Protocol (dccp) Charter</a></li>
+</ul>
+<p>Protocol Specifications</p>
+<ul>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc4340">RFC 4340</a> - Datagram Congestion Control Protocol</li>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc5595">RFC 5595</a> - The Datagram Congestion Control Protocol (DCCP) Service Codes</li>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc5596">RFC 5596</a> - DCCP Simultaneous-Open Technique to Facilitate NAT/Middlebox Traversal</li>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc5762">RFC 5762</a> - RTP and the DCCP</li>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc5238">RFC 5238</a> - Datagram Transport Layer Security (DTLS) over DCCP</li>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc5634">RFC 5634</a> - Quick-Start for DCCP</li>
+</ul>
+<p>Congestion Control IDs</p>
+<ul>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc4341">RFC 4341</a> - Profile for DCCP Congestion Control ID 2: TCP-like Congestion Control</li>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc4342">RFC 4342</a> - Profile for DCCP Congestion Control ID 3: TCP-Friendly Rate Control (TFRC)</li>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc4828">RFC 4828</a> - Profile for DCCP Congestion Control ID 4: TCP-Friendly Rate Control for Small Packets (TFRC-SP)</li>
+</ul>
+<p>Other Information</p>
+<ul>
+<li><a class="external mw-magiclink-rfc" rel="nofollow" href="//tools.ietf.org/html/rfc4336">RFC 4336</a> - Problem Statement for the Datagram Congestion Control Protocol (DCCP)</li>
+<li><a rel="nofollow" class="external text" href="http://www.read.cs.ucla.edu/dccp/">DCCP page from one of DCCP authors</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.linuxfoundation.org/collaborate/workgroups/networking/dccp">DCCP support in Linux</a></li>
+<li><a rel="nofollow" class="external text" href="http://lwn.net/Articles/149756/">Linux gets DCCP</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1023
+CPU time usage: 0.388 seconds
+Real time usage: 0.411 seconds
+Preprocessor visited node count: 563/1000000
+Preprocessor generated node count: 6130/1500000
+Post‐expand include size: 11529/2048000 bytes
+Template argument size: 4110/2048000 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:1017423-0!*!0!!en!*!* and timestamp 20140510001933 and revision id 566645431
+ -->
+<noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>									<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://en.wikipedia.org/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;oldid=566645431">http://en.wikipedia.org/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;oldid=566645431</a>"					</div>
+													<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Internet_protocols" title="Category:Internet protocols">Internet protocols</a></li><li><a href="/wiki/Category:Transport_layer_protocols" title="Category:Transport layer protocols">Transport layer protocols</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Datagram+Congestion+Control+Protocol&amp;type=signup">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Datagram+Congestion+Control+Protocol" title="You're encouraged to log in; however, it's not mandatory. [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/Datagram_Congestion_Control_Protocol"  title="View the content page [c]" accesskey="c">Article</a></span></li>
+															<li  id="ca-talk"><span><a href="/wiki/Talk:Datagram_Congestion_Control_Protocol"  title="Discussion about the content page [t]" accesskey="t">Talk</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+						<h3 id="mw-vector-current-variant">
+													</h3>
+
+						<h3 id="p-variants-label"><span>Variants</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="/wiki/Datagram_Congestion_Control_Protocol" >Read</a></span></li>
+															<li id="ca-edit"><span><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=edit"  title="You can edit this page. Please use the preview button before saving [e]" accesskey="e">Edit</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=history"  title="Past versions of this page [h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label"><span>Actions</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/w/index.php" id="searchform">
+														<div id="simpleSearch">
+															<input type="search" name="search" placeholder="Search" title="Search Wikipedia [f]" accesskey="f" id="searchInput" /><input type="hidden" value="Special:Search" name="title" /><input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton" /><input type="submit" name="go" value="Go" title="Go to a page with this exact name if one exists" id="searchButton" class="searchButton" />								</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a style="background-image: url(//upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png);" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+			<h3 id='p-navigation-label'>Navigation</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+													<li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+													<li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li>
+													<li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+													<li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li>
+													<li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li>
+													<li id="n-shoplink"><a href="//shop.wikimedia.org" title="Visit the Wikimedia Shop">Wikimedia Shop</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-interaction' aria-labelledby='p-interaction-label'>
+			<h3 id='p-interaction-label'>Interaction</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+													<li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+													<li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+													<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+													<li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact page</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+			<h3 id='p-tb-label'>Tools</h3>
+
+			<div class="body">
+									<ul>
+													<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Datagram_Congestion_Control_Protocol" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li>
+													<li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Datagram_Congestion_Control_Protocol" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+													<li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li>
+													<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+													<li id="t-permalink"><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;oldid=566645431" title="Permanent link to this revision of the page">Permanent link</a></li>
+													<li id="t-info"><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;action=info">Page information</a></li>
+													<li id="t-wikibase"><a href="//www.wikidata.org/wiki/Q1049960" title="Link to connected data repository item [g]" accesskey="g">Data item</a></li>
+						<li id="t-cite"><a href="/w/index.php?title=Special:Cite&amp;page=Datagram_Congestion_Control_Protocol&amp;id=566645431" title="Information on how to cite this page">Cite this page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-coll-print_export' aria-labelledby='p-coll-print_export-label'>
+			<h3 id='p-coll-print_export-label'>Print/export</h3>
+
+			<div class="body">
+									<ul>
+													<li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Datagram+Congestion+Control+Protocol">Create a book</a></li>
+													<li id="coll-download-as-rl"><a href="/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=Datagram+Congestion+Control+Protocol&amp;oldid=566645431&amp;writer=rl">Download as PDF</a></li>
+													<li id="t-print"><a href="/w/index.php?title=Datagram_Congestion_Control_Protocol&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+			<h3 id='p-lang-label'>Languages</h3>
+
+			<div class="body">
+									<ul>
+													<li class="interlanguage-link interwiki-cs"><a href="//cs.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Czech" lang="cs" hreflang="cs">Čeština</a></li>
+													<li class="interlanguage-link interwiki-de"><a href="//de.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – German" lang="de" hreflang="de">Deutsch</a></li>
+													<li class="interlanguage-link interwiki-es"><a href="//es.wikipedia.org/wiki/Protocolo_de_Control_de_Congesti%C3%B3n_de_Datagramas" title="Protocolo de Control de Congestión de Datagramas – Spanish" lang="es" hreflang="es">Español</a></li>
+													<li class="interlanguage-link interwiki-eu"><a href="//eu.wikipedia.org/wiki/DCCP" title="DCCP – Basque" lang="eu" hreflang="eu">Euskara</a></li>
+													<li class="interlanguage-link interwiki-fa"><a href="//fa.wikipedia.org/wiki/%D8%AF%DB%8C%E2%80%8C%D8%B3%DB%8C%E2%80%8C%D8%B3%DB%8C%E2%80%8C%D9%BE%DB%8C" title="دی‌سی‌سی‌پی – Persian" lang="fa" hreflang="fa">فارسی</a></li>
+													<li class="interlanguage-link interwiki-fr"><a href="//fr.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – French" lang="fr" hreflang="fr">Français</a></li>
+													<li class="interlanguage-link interwiki-ko"><a href="//ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B7%B8%EB%9E%A8_%ED%98%BC%EC%9E%A1_%EC%A0%9C%EC%96%B4_%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C" title="데이터그램 혼잡 제어 프로토콜 – Korean" lang="ko" hreflang="ko">한국어</a></li>
+													<li class="interlanguage-link interwiki-hr"><a href="//hr.wikipedia.org/wiki/DCCP" title="DCCP – Croatian" lang="hr" hreflang="hr">Hrvatski</a></li>
+													<li class="interlanguage-link interwiki-it"><a href="//it.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Italian" lang="it" hreflang="it">Italiano</a></li>
+													<li class="interlanguage-link interwiki-he"><a href="//he.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Hebrew" lang="he" hreflang="he">עברית</a></li>
+													<li class="interlanguage-link interwiki-nl"><a href="//nl.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Dutch" lang="nl" hreflang="nl">Nederlands</a></li>
+													<li class="interlanguage-link interwiki-ja"><a href="//ja.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Japanese" lang="ja" hreflang="ja">日本語</a></li>
+													<li class="interlanguage-link interwiki-pt"><a href="//pt.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Portuguese" lang="pt" hreflang="pt">Português</a></li>
+													<li class="interlanguage-link interwiki-ru"><a href="//ru.wikipedia.org/wiki/DCCP" title="DCCP – Russian" lang="ru" hreflang="ru">Русский</a></li>
+													<li class="interlanguage-link interwiki-sv"><a href="//sv.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Swedish" lang="sv" hreflang="sv">Svenska</a></li>
+													<li class="interlanguage-link interwiki-tr"><a href="//tr.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Turkish" lang="tr" hreflang="tr">Türkçe</a></li>
+													<li class="interlanguage-link interwiki-uk"><a href="//uk.wikipedia.org/wiki/DCCP" title="DCCP – Ukrainian" lang="uk" hreflang="uk">Українська</a></li>
+													<li class="interlanguage-link interwiki-yo"><a href="//yo.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" title="Datagram Congestion Control Protocol – Yoruba" lang="yo" hreflang="yo">Yorùbá</a></li>
+													<li class="interlanguage-link interwiki-zh"><a href="//zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE" title="数据拥塞控制协议 – Chinese" lang="zh" hreflang="zh">中文</a></li>
+													<li class="uls-p-lang-dummy"><a href="#"></a></li>
+											</ul>
+				<div class='after-portlet after-portlet-lang'><span class="wb-langlinks-edit wb-langlinks-link"><a action="edit" href="//www.wikidata.org/wiki/Q1049960#sitelinks-wikipedia" text="Edit links" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>			</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 31 July 2013 at 23:38.<br /></li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="//wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/wiki/Datagram_Congestion_Control_Protocol" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+															<a href="//wikimediafoundation.org/"><img src="//bits.wikimedia.org/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a>
+													</li>
+											<li id="footer-poweredbyico">
+															<a href="//www.mediawiki.org/"><img src="//bits.wikimedia.org/static-1.24wmf4/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+													</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.cite","mediawiki.toc","mobile.desktop","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","mw.MwEmbedSupport.style","ext.gettingstarted.assignToken","ext.eventLogging.subscriber","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","ext.uls.interlanguage"],null,true);
+}</script>
+<script src="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgBackendResponseTime":399,"wgHostname":"mw1066"});
+}</script>
+	</body>
+</html>
+	
