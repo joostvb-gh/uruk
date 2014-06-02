@@ -12,6 +12,8 @@ uruk version 2014MMDD - The Vlook Release
 FIXME
 -        for proto in tcp udp
 +        for proto in dccp sctp tcp udp
+  beware!  we do inspect "tcp --tcp-flags SYN,ACK,FIN,RST [...]", but don't do anything
+  specific yet wrt state of dccp or sctp connections!  Untested code.
 
 - doc/rc, man/uruk-rc.azm: document new semantics of
   sources_${iface}_${proto}_${service} vs sources6_${iface}_${proto}_${service}
