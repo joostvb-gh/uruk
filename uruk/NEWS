@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2014MMDD - The Vlook Release
+uruk version 20140614 FIXME - The Vlook Release
 
 - UNRELEASED
 - script/uruk: next to protocols tcp and udp, now supports dccp and sctp.
