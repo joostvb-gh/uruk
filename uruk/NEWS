@@ -4,7 +4,6 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version 20140627 - The Vlook Release
 
-- UNRELEASED
 - script/uruk: next to protocols tcp and udp, uruk now has preliminary
   experimental support for dccp and sctp.  Stream Control Transmission Protocol
   (needs iptables >= 1.2.9) is defined in RFC 4960; Datagram Congestion Control
