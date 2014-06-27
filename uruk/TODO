@@ -18,10 +18,6 @@ sctp: find out about --chunk-types (vs --tcp-flags in tcp-case)
 
 ---------------
 
-fix NEWS.
-
-----
-
 phase out sources6 in uruk?  is there still a use-case?
 
 -----

@@ -2,18 +2,18 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20140614 FIXME - The Vlook Release
+uruk version 20140627 - The Vlook Release
 
 - UNRELEASED
-- script/uruk: next to protocols tcp and udp, now supports dccp and sctp.
-  Stream Control Transmission Protocol (needs iptables >= 1.2.9) is
-  defined in RFC 4960; Datagram Congestion Control Protocol is defined
-  in RFC 4340. These protocols are implemented in the sctp.ko and dccp.ko
-  Linux kernel modules.
+- script/uruk: next to protocols tcp and udp, uruk now has preliminary
+  experimental support for dccp and sctp.  Stream Control Transmission Protocol
+  (needs iptables >= 1.2.9) is defined in RFC 4960; Datagram Congestion Control
+  Protocol is defined in RFC 4340. These protocols are implemented in the
+  sctp.ko and dccp.ko Linux kernel modules.
   Beware!  For TCP, we do inspect "tcp --tcp-flags SYN,ACK,FIN,RST [...]".
-  However, for DCCP or SCTP, but don't do anything
-  specific yet with rt state of dccp or sctp connections!  Untested code.
-
+  However, for DCCP or SCTP, we don't do anything specific yet with respect to
+  the state of the DCCP or SCTP connections!  You'll have to take measures
+  yourself to deal sanely with open connections.  Untested code.
 - doc/rc, man/uruk-rc.azm: document new semantics of
   sources_${iface}_${proto}_${service} vs sources6_${iface}_${proto}_${service}
 - bootstrap: update to automake 1.14.
