@@ -1,3 +1,14 @@
+
+пет 27 14:43 < joostvb> http://mdcc.cx/tmp/uruk/uruk_20140627-1_all.deb
+пет 27 14:43 < joostvb> casper: ^ of jij?
+пет 27 14:44 < casper> Loading IPv4 uruk rulesWARNING: services_eth0_default_dccp is undefined.  (Processing 
+                       uruk rc file nevertheless.)
+пет 27 14:44 < casper> WARNING: services_eth0_default_sctp is undefined.  (Processing uruk rc file 
+                       nevertheless.)
+пет 27 14:44 < casper> (op metagross)
+
+--------
+
 сре 20 16:41 < Fruit> joostvb: sctp-support in uruk zou handig zijn
 сре 20 16:46 < Fruit> joostvb: misschien ook meteen dccp dan maar
 --protocol protocol
