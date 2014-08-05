@@ -24,6 +24,12 @@
 уто 05 14:29 < joostvb> of gewoon nooit zo'n warning geven
 уто 05 14:30 < Fruit> joostvb: da's ook meh
 
+уто 05 14:31 < Fruit> case ${services_eth0_default_udp+SET}${services_eth0_default_tcp+SET} in '') 
+                      echo gort!; esac
+уто 05 14:31 < Fruit> zoiets
+уто 05 14:32 < Fruit> en dan voor alle protocollen du jour, en iets met eval ofzo
+
+
 ------
 
 enable uruk-save by default
