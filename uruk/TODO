@@ -1,3 +1,31 @@
+уто 05 13:47 < thijs> joostvb: ik krijg de volgende melding met uruk Vlook:
+уто 05 13:47 < thijs> WARNING: services_eth0_default_dccp is undefined.  (Processing uruk rc file 
+                      nevertheless.)
+уто 05 13:47 < thijs> WARNING: services_eth0_default_sctp is undefined.  (Processing uruk rc file 
+                      nevertheless.)
+уто 05 13:48 < Broekman> haast: Pure OAI harvest en vergelijken wat waarom waar wel of niet terecht 
+                         gaat komen in WCL (en dat vergelijken met wat we nu hebben uit ARNO)
+уто 05 13:51 < Fruit> joostvb: misschien die warning alleen voor tcp geven?
+
+уто 05 14:25 < joostvb> thijs, Fruit : mja...
+уто 05 14:25 < joostvb> minor detail, imho
+уто 05 14:26  * Fruit vindt warnings elke keer dat uruk draait niet echt minor
+уто 05 14:27 < joostvb> die services hard op lege string zetten in onze shared uruk rc
+уто 05 14:27 < joostvb> en in de meegeleverde voorbeeld rc
+уто 05 14:27 < thijs> traint je goed om andere warnings niet meer lezen
+уто 05 14:28 < joostvb> expliciet als leeg definieren lijkt me beste oplossing
+уто 05 14:28 < Fruit> joostvb: dat is net zo kut als dat iptables niet in een keer alle tables wist
+уто 05 14:28 < Fruit> joostvb: en dat je dus maar per kernelversie moet weten welke tables er zijn
+уто 05 14:28 < Fruit> vandaag sctp en dccp, morgen isdu en mnei 
+уто 05 14:28 < joostvb> Fruit: wat stel je voor dan? alleen voor tcp warning geven?
+уто 05 14:29 < Fruit> ja
+уто 05 14:29 < joostvb> en dan niet voor udp bv.?
+уто 05 14:29 < Fruit> of je zou kunnen kijken of tenminste één van udp,tcp,sctp,etc gedefinieerd is
+уто 05 14:29 < joostvb> of gewoon nooit zo'n warning geven
+уто 05 14:30 < Fruit> joostvb: da's ook meh
+
+------
+
 enable uruk-save by default
 
 -------
