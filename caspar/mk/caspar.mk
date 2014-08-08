@@ -2,6 +2,7 @@
 
 # Copyright (C) 2012 Joost van Baal-Ilić <joostvb-caspar-c-12@mdcc.cx>
 # Copyright (C) 2002, 2003, 2004, 2005, 2006, 2009, 2010 Joost van Baal <joostvb-caspar-c-12@mdcc.cx>
+# Copyright © 2012,2014 Wessel Dankers <wsl-caspar-git-c@fruit.je>
 #
 # This file is part of caspar.  Caspar is free software; you can redistribute
 # it and/or modify it under the terms of the GNU General Public License as
@@ -10,15 +11,6 @@
 # the GNU General Public License along with this file (see COPYING).
 
 # see caspar(7) for usage
-
-# we use plurals only
-csp_UHOSTS     ?= $(csp_UHOST)
-
-ifneq ($(csp_UHOSTS_SUBSET),)
-csp_UHOSTS     := $(filter $(csp_UHOSTS_SUBSET),$(csp_UHOSTS))
-endif 
-# uhosts that should be excluded for whatever reason
-csp_UHOSTS     := $(filter-out $(csp_UHOSTS_SKIP),$(csp_UHOSTS))
 
 # possibility to choose own cp(1) and scp(1)
 csp_CP         ?= cp
@@ -62,34 +54,43 @@ csp_mkdircp_FUNC = $(csp_MKDIRCP) $(2) $(3)
 csp_PUSH       ?= $(csp_scp_FUNC)
 csp_DIFF       ?= $(csp_diff_FUNC)
 
+# we use plurals only
+csp_UHOSTS     ?= $(csp_UHOST)
+
+# uhosts that should be excluded for whatever reason
+_csp_UHOSTS_COMPUTED := $(filter-out $(csp_UHOSTS_SKIP),$(csp_UHOSTS))
+ifneq ($(csp_UHOSTS_SUBSET),)
+_csp_UHOSTS_COMPUTED := $(filter $(csp_UHOSTS_SUBSET),$(_csp_UHOSTS_COMPUTED))
+endif 
+
 # files, not directories
-FILES   := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
+_csp_FILES := $(shell for f in *; do test -f "$$f" && echo "$$f"; done)
 
 # add built files, exclude editor backup files and other stuff
-FILES   := $(filter-out $(csp_TABOOFILES), $(FILES) $(csp_BUILD))
+_csp_FILES := $(filter-out $(csp_TABOOFILES),$(_csp_FILES) $(csp_BUILD))
 
 # user specified files
-FILES   := $(sort $(FILES) $(csp_EXTRAFILES))
+_csp_FILES := $(sort $(_csp_FILES) $(csp_EXTRAFILES))
 
 all:
 	$(MAKE) build
 	$(MAKE) install
 	$(MAKE) load
 
-define filetargets
-$1-install: $(foreach host,$(csp_UHOSTS),$1--$(host)--push)
-$1-diff: $(foreach host,$(csp_UHOSTS),$1--$(host)--diff)
+define _csp_filetargets
+$1-install: $(foreach host,$(_csp_UHOSTS_COMPUTED),$1--$(host)--push)
+$1-diff: $(foreach host,$(_csp_UHOSTS_COMPUTED),$1--$(host)--diff)
 endef
 
-define bulktargets
+define _csp_bulktargets
 $2--bulk-push: $1
 	$$(call csp_PUSH,$2,$$(csp_DIR),$1)
 endef
 
-$(foreach host,$(csp_UHOSTS),\
-	$(eval $(call bulktargets,$(FILES),$(host))))
+$(foreach host,$(_csp_UHOSTS_COMPUTED),\
+	$(eval $(call _csp_bulktargets,$(_csp_FILES),$(host))))
 
-define remotetargets
+define _csp_remotetargets
 $1--$2--push: $1
 	$$(call csp_PUSH,$2,$$(csp_DIR),$1)
 
@@ -97,52 +98,54 @@ $1--$2--diff: $1
 	$$(call csp_DIFF,$2,$$(csp_DIR),$1)
 endef
 
-$(foreach file,$(FILES),\
-	$(eval $(call filetargets,$(file)))\
-	$(foreach host,$(csp_UHOSTS),\
-		$(eval $(call remotetargets,$(file),$(host)))))
+$(foreach file,$(_csp_FILES),\
+	$(eval $(call _csp_filetargets,$(file)))\
+	$(foreach host,$(_csp_UHOSTS_COMPUTED),\
+		$(eval $(call _csp_remotetargets,$(file),$(host)))))
 
-define loadtarget
-$1: $(patsubst %,$1--%--load,$(csp_UHOSTS))
+define _csp_loadtarget
+$1: $(patsubst %,$1--%--load,$(_csp_UHOSTS_COMPUTED))
 endef
 
-define loadtargets
+define _csp_loadtargets
 $1--$2--load:
 	$$(call $1,$2)
 endef
 
 $(foreach load,$(csp_LOAD),\
-	$(eval $(call loadtarget,$(load)))\
-	$(foreach host,$(csp_UHOSTS),\
-	$(eval $(call loadtargets,$(load),$(host)))))
+	$(eval $(call _csp_loadtarget,$(load)))\
+	$(foreach host,$(_csp_UHOSTS_COMPUTED),\
+		$(eval $(call _csp_loadtargets,$(load),$(host)))))
 
-TARGETS := $(patsubst %,%-install,$(FILES))
+_csp_TARGETS := $(patsubst %,%-install,$(_csp_FILES))
 
-BULKTARGETS := $(if $(FILES),$(patsubst %,%--bulk-push,$(csp_UHOSTS)))
+_csp_BULKTARGETS := $(if $(_csp_FILES),$(patsubst %,%--bulk-push,$(_csp_UHOSTS_COMPUTED)))
 
-DIFFTARGETS := $(patsubst %,%-diff,$(FILES))
+_csp_DIFFTARGETS := $(patsubst %,%-diff,$(_csp_FILES))
 
-DIRS    := $(shell for d in *; do test -d "$$d" && echo "$$d"; done)
-DIRS    := $(filter-out $(csp_TABOODIRS),$(DIRS))
+_csp_LOADTARGETS := $(foreach load,$(csp_LOAD),$(load) $(patsubst %,$(load)--%--load,$(_csp_UHOSTS_COMPUTED)))
 
-define do-recursive
+_csp_DIRS := $(shell for d in *; do test -d "$$d" && echo "$$d"; done)
+_csp_DIRS := $(filter-out $(csp_TABOODIRS),$(_csp_DIRS))
+
+define _csp_do_recursive
 $1--install-recursive:
 	$(MAKE) -C $1 install-recursive
 endef
 
-$(foreach dir,$(DIRS),$(eval $(call do-recursive,$(dir))))
+$(foreach dir,$(_csp_DIRS),$(eval $(call _csp_do_recursive,$(dir))))
 
 build: $(csp_BUILD)
 
-diff: $(DIFFTARGETS)
+diff: $(_csp_DIFFTARGETS)
 
-install: $(BULKTARGETS)
+install: $(_csp_BULKTARGETS)
+
+install-recursive: install $(patsubst %,%--install-recursive,$(_csp_DIRS))
 
 load: $(csp_LOAD)
 
-install-recursive: install $(patsubst %,%--install-recursive,$(DIRS))
-
 debug:
-	@echo TARGETS $(TARGETS) BULKTARGETS $(BULKTARGETS) FILES $(FILES) csp_UHOSTS $(csp_UHOSTS) csp_PUSH $(csp_PUSH)
+	@echo _csp_TARGETS $(_csp_TARGETS) _csp_BULKTARGETS $(_csp_BULKTARGETS) _csp_FILES $(_csp_FILES) csp_UHOSTS $(csp_UHOSTS) _csp_UHOSTS_COMPUTED $(_csp_UHOSTS_COMPUTED) csp_PUSH $(csp_PUSH)
 
-.PHONY: $(csp_BUILD) $(TARGETS) $(BULKTARGETS) $(LOADTARGETS) $(DIFFTARGETS) $(csp_LOAD) build install load
+.PHONY: $(csp_BUILD) $(_csp_TARGETS) $(_csp_BULKTARGETS) $(_csp_LOADTARGETS) $(_csp_DIFFTARGETS) build diff install install-recursive load debug
