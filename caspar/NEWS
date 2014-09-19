@@ -22,6 +22,9 @@ caspar version 2014MMDD - The FIXME Release
 
 - doc/caspar.azm: updated links for ansible, cfengine and puppet.
 
+- bootstrap: update from automake/aclocal 1.11 to 1.14 (only relevant
+  for developers building caspar from within a git checkout).
+
 
 caspar version 20140203 - The Matonge, BXL Release
 
