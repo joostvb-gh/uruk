@@ -1,8 +1,6 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2014MMDD - The Prnjavor Release
-
-- UNRELEASED
+caspar version 20140919 - The Prnjavor Release
 
 - mk/caspar.mk: apply patch contributed by Wessel Dankers, Aug 8 2014:
 
