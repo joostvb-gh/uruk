@@ -1,3 +1,11 @@
+caspar (20140919-1) unstable; urgency=low
+
+  * New upstream release - The Prnjavor Release
+  * debian/control: bumped Standards-Version: from 3.9.3 to 3.9.5 (no
+    changes needed).
+
+ -- Joost van Baal-Ilić <joostvb@debian.org>  Wed, 24 Sep 2014 10:03:03 +0200
+
 caspar (20140203-1) unstable; urgency=low
 
   * New upstream release - The Matonge, BXL Release
