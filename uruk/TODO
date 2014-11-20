@@ -45,6 +45,21 @@ then give 'v' or 'p' or ~v or ~p
     #720306 [n|  |  ] [uruk] uruk: incorrectly blocks and logs tcp RSET packets
     #705687 [w|  |  ] [uruk] Provide "uruk diff" showing diff between running and config
 
+чет 20 11:06 < joostvb> Fruit: heb alleen https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=720306 nog, 
+                        geloof ik
+чет 20 11:07 < joostvb> Fruit: ik weet niet hoe ik doe moet fixen, en ook niet of die bug er eigenlijk nog 
+                        wel in zit....
+чет 20 11:11 < Fruit> gewoon die RST-dingen niet loggen ofzo
+чет 20 11:20 < Fruit> ik zie ze iig nog steeds
+чет 20 14:47 < joostvb> niet loggen voelt niet goed
+чет 20 14:55 < Fruit> hoger loglevel dan?
+чет 20 14:55 < Fruit> zodat je ze kunt loggen als je da per se wil
+чет 20 14:55 < Fruit> net als broadcastcrap
+чет 20 15:22 < joostvb> broadcastcrap krijg je nu ook automagisch in je logs
+чет 20 15:22 < joostvb> das ook n bug dan
+чет 20 15:22  * joostvb noteert t
+
+
 --------------
 
 support for iptables-opvolger: niet netfilter maar ....
