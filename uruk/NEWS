@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2014MMDD - The FIXME Release
+uruk version 20141120 - The Јадар Release
 
 - script/uruk.in: make uruk_version available to rc files.  One can use that
   to handle unsupported uruk versions gracefully in rc files.  Thanks Wessel
