@@ -2,4 +2,7 @@
 ## this file maintained at http://git.mdcc.cx/uruk.git
 
 sbin_SCRIPTS = uruk urukctl uruk-save
-EXTRA_DIST = $(sbin_SCRIPTS)
+EXTRA_DIST = $(sbin_SCRIPTS) uruk
+
+uruk: uruk.in
+	sed 's/@URUK_VERSION@/@PACKAGE_VERSION@/' $< >$@
