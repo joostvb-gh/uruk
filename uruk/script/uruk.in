@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# vim:syntax=sh
+
 # this file maintained at http://git.mdcc.cx/uruk.git
 
 # Copyright (C) 2003 Stichting LogReport Foundation logreport@logreport.org
@@ -264,12 +266,25 @@ do
     do
         eval "ip=\$ip_${iface_x}"
         eval "ip6=\$ip6_${iface_x}"
+
+        # tcp is special
+        eval "services_defined=\${services_${iface_x}_tcp+DEFINED}"
+        case $services_defined in '')
+            cat >&2 <<EOT
+ WARNING: services_${iface_x}_tcp is undefined.  Processing uruk rc file
+ nevertheless.  To suppress this warning, add 'services_${iface_x}_tcp='
+ to your uruk rc.  NB: if udp, dccp or sctp is undefined for
+ services_${iface_x}_, NO warning will be given.
+EOT
+        esac
+
         for proto in dccp sctp tcp udp
         do
             eval "services_defined=\${services_${iface_x}_${proto}+DEFINED}"
             eval "services=\$services_${iface_x}_${proto}"
             case $services_defined in '')
-                echo >&2 "WARNING: services_${iface_x}_${proto} is undefined.  (Processing uruk rc file nevertheless.)"
+                # services_${iface_x}_${proto} is undefined.  Processing uruk rc file nevertheless.
+                :
             ;; *)
                 for service in $services
                 do

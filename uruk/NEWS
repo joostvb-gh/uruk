@@ -7,6 +7,10 @@ uruk version 2014MMDD - The FIXME Release
 - script/uruk.in: make uruk_version available to rc files.  One can use that
   to handle unsupported uruk versions gracefully in rc files.  Thanks Wessel
   Dankers for suggestion.
+- script/uruk.in: no longer warn if services_${iface}_${proto} is undefined
+  for proto in udp, dccp or sctp.  To reduce useless warnings, we now only
+  warn for undefined services_${iface}_tcp.  Thanks Wessel Dankers, Thijs
+  Kinkhorst and Casper Gielen for suggestion.
 
 
 uruk version 20140627 - The Vlook Release
