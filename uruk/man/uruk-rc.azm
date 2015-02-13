@@ -310,9 +310,6 @@ Furthermore, for dropping broadcast packets, specify e.g.
  bcast_eth0_ip0="10.0.0.255"
  bcast_eth0_ip2="10.0.255.255"}
 
-The \it{interfaces_nocast} variable holds things like \v{eth0} and \v{eth1},
-like in single-IP-per-nic mode.
-
 }
 
 \sec{logging and debugging}{LOGGING AND DEBUGGING}

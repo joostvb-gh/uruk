@@ -2,6 +2,22 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 2015MMDD - The De Drie Zwaantjes Release
+
+- UNRELEASED.
+- man/uruk-rc.azm doc/rc: Things like
+
+   interfaces_nocast="eth0"
+
+  are now deprecated in favor of
+
+   bcasts_eth1="local"
+
+  : use the multiple-IP-per-nic style if you want full control over which
+  broadcast and multicast-traffic gets dropped.  (The old syntax is still
+  supported; for now it's just no longer documented.)
+
+
 uruk version 20141120 - The Јадар Release
 
 - script/uruk.in: make uruk_version available to rc files.  One can use that

@@ -65,8 +65,9 @@ ip_eth0_default=10.56.0.201
 ip6_eth0_default=2006:488:1a9b::4a54:e8ff:fe2b:f25c # (aka 2006:488:1a9b:0:4a54:e8ff:fe2b:f25c)
 # NB: /sbin/ip6tables (as shipped with e.g. iptables 1.4.8-2) understands
 # both full and abbreviated IPv6 names.
-ips_eth1=default
+ips_eth1="default local"
 ip_eth1_default=192.168.0.4
+ip_eth1_local=10.0.0.1
 
 # To which network does this interface belong?  Should be one of
 # 0.0.0.0/0 (aka 0/0) 10.0.0.0/8 (aka 10./8) 172.16.0.0/12 (aka 172.16./12)
@@ -76,9 +77,11 @@ ip_eth1_default=192.168.0.4
 # full names only.
 net_eth0_default=0.0.0.0/0
 net_eth1_default=192.168.0.0/16
+net_eth1_local=10.0.0.0/8
 
-# Subset of interfaces, which should drop broadcast and multicast packets
-interfaces_nocast="eth0"
+# Subset of named IPs per interface, which should drop broadcast and multicast packets
+bcasts_eth1="local"
+bcast_eth1_local="10.255.255.255"
 
 # For each interface <if> in interfaces_nocast, bcast_<if> should be defined
 bcast_eth0_default=10.56.255.255
