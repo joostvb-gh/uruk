@@ -287,8 +287,8 @@ In multiple-IP mode, IP addresses are listed as e.g.
 \verbatim{\
  ip_eth0_ip0="137.56.247.16"}
 
-(If you're used to the Linux ifconfig(8) output, you could use the name \v{ip1}
-for \v{eth0:1}, and \v{ip0} for \v{eth0}.)
+(If you're used to the Linux ifconfig(8) output, you could use the name \v{ip}
+for \v{eth0}, and \v{ip0} for \v{eth0:0}.)
 
 The \it{ports}, \it{services} and \it{sources} variables look like
 e.g.
@@ -311,6 +311,12 @@ Furthermore, for dropping broadcast packets, specify e.g.
  bcast_eth0_ip2="10.0.255.255"}
 
 }
+
+As an additional feature, if you have multiple IP addresses that all need
+to get the same rules, you can assign them to a single name:
+
+\verbatim{\
+ ip_eth0_ip0="137.56.247.16 137.56.247.17 137.56.247.18"}
 
 \sec{logging and debugging}{LOGGING AND DEBUGGING}
 

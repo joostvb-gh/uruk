@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # vim:syntax=sh
 
@@ -57,17 +57,15 @@ test -r $config || {
 
 . $config
 
-if test -n "$version"
-then
-    if test "$version" -lt 20040210
-    then
+case $version in ?*)
+    case $((version < 20040210)) in 1)
         cat >&2 <<EOT
  Uruk rc file $config claims to be pre-20040210 format.  That's likely not
  supported.  Please read the Uruk README file for upgrade instructions.
 EOT
         exit 1
-    fi
-fi
+    esac
+esac
 
 uruk_log () {
     $iptables -A INPUT -j LOG --log-level debug --log-prefix 'iptables: ' $@
@@ -118,7 +116,7 @@ test -z "$loglevel" && loglevel=50
 # traffic on interfaces_unprotect (lo, per default) is trusted
 for iface in ${interfaces_unprotect}
 do
-    $iptables -A INPUT  -i $iface -j ACCEPT
+    $iptables -A INPUT -i $iface -j ACCEPT
     $iptables -A OUTPUT -o $iface -j ACCEPT
 
     $ip6tables -A INPUT -i $iface -j ACCEPT
@@ -142,11 +140,11 @@ $ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 # first argument is the flags which we should examine, the second argument is
 # the flags which must be set
-$iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
-$ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
+$iptables -A INPUT -p tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
+$ip6tables -A INPUT -p tcp --tcp-flags SYN,ACK,FIN,RST FIN,ACK -j ACCEPT
 
-$iptables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
-$ip6tables -A INPUT --protocol tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
+$iptables -A INPUT -p tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
+$ip6tables -A INPUT -p tcp --tcp-flags SYN,ACK,FIN,RST RST -j ACCEPT
 
 uruk_hook "$rc_b"
 
@@ -158,37 +156,34 @@ do
     #
     # don't allow anyone to spoof non-routeable addresses
     #
-    eval is="\"\$ips_${iface}\""
-    if test -n "$is"
-    then
+    eval "is=\$ips_${iface}"
+    case $is in '')
+        interfaces_x=$iface
+    ;; *)
         interfaces_x=
         for i in $is
         do
             interfaces_x="$interfaces_x ${iface}_$i"
         done
-    else
-        interfaces_x=$iface
-    fi
+    esac
 
     for iface_x in $interfaces_x
     do
-        eval net="\"\$net_${iface_x}\""
+        eval "net=\$net_${iface_x}"
         for no_route_ip in $ip4_noroute_ranges
         do
             if test $no_route_ip != "$net"
             then
                 # TODO: this behaves odd in multiple-IP cases.  Furthermore,
                 # excluding one private network from being dropped works ugly.
-                $iptables -A INPUT -i $iface --source $no_route_ip -j DROP
-                $iptables -A INPUT -i $iface --destination $no_route_ip \
-                  -j DROP
+                $iptables -A INPUT -i $iface -s $no_route_ip -j DROP
+                $iptables -A INPUT -i $iface -d $no_route_ip -j DROP
 
-                $iptables -A OUTPUT -o $iface --source $no_route_ip -j DROP
-                $iptables -A OUTPUT -o $iface --destination $no_route_ip \
-                  -j DROP
+                $iptables -A OUTPUT -o $iface -s $no_route_ip -j DROP
+                $iptables -A OUTPUT -o $iface -d $no_route_ip -j DROP
             fi
         done
-        eval net6="\"\$net6_${iface_x}\""
+        eval "net6=\$net6_${iface_x}"
         for no_route_ip in $ip6_noroute_ranges
         do
             # rather unlikely for IPv6, borderline useless, left in for
@@ -197,13 +192,11 @@ do
             then
                 # TODO: this behaves odd in multiple-IP cases.  Furthermore,
                 # excluding one private network from being dropped works ugly.
-                $ip6tables -A INPUT -i $iface --source $no_route_ip -j DROP
-                $ip6tables -A INPUT -i $iface --destination $no_route_ip \
-                  -j DROP
+                $ip6tables -A INPUT -i $iface -s $no_route_ip -j DROP
+                $ip6tables -A INPUT -i $iface -d $no_route_ip -j DROP
 
-                $ip6tables -A OUTPUT -o $iface --source $no_route_ip -j DROP
-                $ip6tables -A OUTPUT -o $iface --destination $no_route_ip \
-                  -j DROP
+                $ip6tables -A OUTPUT -o $iface -s $no_route_ip -j DROP
+                $ip6tables -A OUTPUT -o $iface -d $no_route_ip -j DROP
             fi
         done
 
@@ -212,8 +205,7 @@ do
         # for instance), we want to be nice and don't send out garbage.
         #
         # NOTE: this is stricter than above no_route_ip rule.
-        if test -n "$is"
-        then
+        case $is in '')
             # this rule is only enabled in single-ip-per-nic situations.
             # in multiple ip mode, we'd have to drop only if source is
             # not _one_ of the nic's IPs
@@ -221,23 +213,41 @@ do
             # supporting this for multiple-ips would need multiple chains
             # or, perhaps, some iptables extension.
             :
-        else
-            eval ip="\"\$ip_${iface_x}\""
-            eval ip6="\"\$ip6_${iface_x}\""
+        ;; *)
+            eval "ips=\$ip_${iface_x}"
+            case $ips6_defined in '')
+                ips6=$ips
+            ;; *)
+                eval "ips6=\$ip6_${iface_x}"
+            esac
 
-            # drop all outgoing packets which don't have us as a source
-            $iptables  -A OUTPUT -o $iface ! --source "$ip"  -j DROP
-            $ip6tables -A OUTPUT -o $iface ! --source "$ip6" -j DROP
+            for ip in $ips
+            do
+                case $ip in *:*) ;; *) # if it doesn't look like an IPv6 address/range
+                    # drop all outgoing packets which don't have us as a source
+                    $iptables -A OUTPUT -o $iface ! -s "$ip" -j DROP
 
-            # drop all incoming packets which don't have us as destination
-            $iptables  -A INPUT -i $iface ! --destination "$ip"  -j DROP
-            $ip6tables -A INPUT -i $iface ! --destination "$ip6" -j DROP
+                    # drop all incoming packets which don't have us as destination
+                    $iptables -A INPUT -i $iface ! -d "$ip" -j DROP
+                esac
+            done
+
+            for ip6 in $ips6
+            do
+                case $ip6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
+                    # drop all outgoing packets which don't have us as a source
+                    $ip6tables -A OUTPUT -o $iface ! -s "$ip6" -j DROP
+
+                    # drop all incoming packets which don't have us as destination
+                    $ip6tables -A INPUT -i $iface ! -d "$ip6" -j DROP
+                esac
+            done
 
             # NOTE: this is stricter than above no_route_ip rule.  If this
             # rule is used, above rule ``$iptables -A INPUT -i $iface
             # --destination $no_route_ip -j DROP'' could get disabled. See
             # also the broadcast rule below.
-        fi
+        esac
     done
 
     # Always allow outgoing connections
@@ -264,9 +274,6 @@ do
 
     for iface_x in $interfaces_x
     do
-        eval "ip=\$ip_${iface_x}"
-        eval "ip6=\$ip6_${iface_x}"
-
         # tcp is special
         eval "services_defined=\${services_${iface_x}_tcp+DEFINED}"
         case $services_defined in '')
@@ -278,7 +285,24 @@ do
 EOT
         esac
 
-        for proto in dccp sctp tcp udp
+        eval "ips_defined=\${ip_${iface_x}+DEFINED}"
+        eval "ips6_defined=\${ip6_${iface_x}+DEFINED}"
+        case $ips_defined$ips6_defined in '')
+            cat >&2 <<EOT
+ WARNING: neither ip_${iface_x} nor ip6_${iface_x} is defined.
+ Processing uruk rc file nevertheless.
+ To suppress this warning, add 'ip_${iface_x}=' to your uruk rc.
+EOT
+        esac
+
+        eval "ips=\$ip_${iface_x}"
+        case $ips6_defined in '')
+            ips6=$ips
+        ;; *)
+            eval "ips6=\$ip6_${iface_x}"
+        esac
+
+        for proto in tcp udp dccp sctp
         do
             eval "services_defined=\${services_${iface_x}_${proto}+DEFINED}"
             eval "services=\$services_${iface_x}_${proto}"
@@ -313,20 +337,42 @@ EOT
                             do
                                 case $source in *:*) ;; *) # if it doesn't look like an IPv6 address/range
                                     # source is e.g. 10.56.0.10/32
-                                    $iptables -A INPUT -m conntrack --ctstate NEW \
-                                      -i $iface --protocol $proto \
-                                      --source "$source" --destination "$ip" \
-                                      --destination-port "$port" -j ACCEPT
+                                    for ip in $ips
+                                    do
+                                        case $ip in *:*) ;; *) # if it doesn't look like an IPv6 address/range
+                                            $iptables \
+                                                --append INPUT \
+                                                --match conntrack \
+                                                --ctstate NEW \
+                                                --in-interface $iface \
+                                                --protocol $proto \
+                                                --source "$source" \
+                                                --destination "$ip" \
+                                                --destination-port "$port" \
+                                                --jump ACCEPT
+                                        esac
+                                    done
                                 esac
                             done
 
                             for source6 in $sources6
                             do
                                 case $source6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
-                                    $ip6tables -A INPUT -m conntrack --ctstate NEW \
-                                      -i $iface --protocol $proto \
-                                      --source "$source6" --destination "$ip6" \
-                                      --destination-port "$port" -j ACCEPT
+                                    for ip6 in $ips6
+                                    do
+                                        case $ip6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
+                                            $ip6tables \
+                                                --append INPUT \
+                                                --match conntrack \
+                                                --ctstate NEW \
+                                                --in-interface $iface \
+                                                --protocol $proto \
+                                                --source "$source6" \
+                                                --destination "$ip6" \
+                                                --destination-port "$port" \
+                                                --jump ACCEPT
+                                        esac
+                                    done
                                 esac
                             done
                         done
@@ -349,25 +395,24 @@ uruk_hook "$rc_e"
 #
 for iface in $interfaces_nocast
 do
-    eval is="\"\$bcasts_${iface}\""
-    if test -n "$is"
-    then
+    eval "is=\$bcasts_${iface}"
+    case $is in '')
+        interfaces_x=$iface
+    ;; *)
         interfaces_x=
         for i in $is
         do
             interfaces_x="$interfaces_x ${iface}_$i"
         done
-    else
-        interfaces_x=$iface
-    fi
+    esac
 
     for iface_x in $interfaces_x
     do
-        eval bcast="\"\$bcast_${iface_x}\""
-        $iptables -A INPUT -i $iface --destination "$bcast" -j DROP
+        eval "bcast=\$bcast_${iface_x}"
+        $iptables -A INPUT -i $iface -d "$bcast" -j DROP
     done
 
-    $iptables -A INPUT -i $iface --destination 255.255.255.255 -j DROP
+    $iptables -A INPUT -i $iface -d 255.255.255.255 -j DROP
 done
 
 uruk_hook "$rc_f"
@@ -414,7 +459,7 @@ for type in \
   ttl-zero-during-reassembly \
   ttl-zero-during-transit
 do
-    $iptables -A INPUT --protocol icmp --icmp-type $type -j ACCEPT
+    $iptables -A INPUT -p icmp --icmp-type $type -j ACCEPT
 done
 
 # Drop echo replies which have a multicast address as a
@@ -471,8 +516,6 @@ $ip6tables -A INPUT --protocol icmpv6 -j DROP
 
 uruk_hook "$rc_g"
 
-
-
 #
 # log packets which make it till here: denied packets (not denied broadcasts
 #     or spoofed stuff).  take loglevel into account.
@@ -486,24 +529,37 @@ then
     # log denied packets, targetted at our IPs
     for iface in $interfaces
     do
-        eval is="\"\$ips_${iface}\""
-        if test -n "$is"
-        then
+        eval "is=\$ips_${iface}"
+        case $is in '')
+            interfaces_x=$iface
+        ;; *)
             interfaces_x=
             for i in $is
             do
                 interfaces_x="$interfaces_x ${iface}_$i"
             done
-        else
-            interfaces_x=$iface
-        fi
+        esac
 
         for iface_x in $interfaces_x
         do
-            eval ip="\"\$ip_${iface_x}\""
-            eval ip6="\"\$ip6_${iface_x}\""
-            test -n "$ip" && uruk_log -i $iface --destination $ip
-            test -n "$ip6" && uruk6_log -i $iface --destination $ip6
+            eval "ip=\$ip_${iface_x}"
+            case $ips6_defined in '')
+                ips6=$ips
+            ;; *)
+                eval "ips6=\$ip6_${iface_x}"
+            esac
+            for ip in $ips
+            do
+                case $ip in *:*) ;; *) # if it doesn't look like an IPv6 address/range
+                    uruk_log -i $iface -d $ip
+                esac
+            done
+            for ip6 in $ips6
+            do
+                case $ip6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
+					uruk6_log -i $iface -d $ip6
+                esac
+            done
         done
     done
 elif test $loglevel -lt 60
@@ -521,11 +577,11 @@ uruk_hook "$rc_h"
 #
 # reject all others
 #
-$iptables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
+$iptables -A INPUT -j REJECT --reject-with tcp-reset -p tcp
 $iptables -A INPUT -j REJECT
 
 # These ip6tables flags are supported since 2.4.5; we don't support older kernels
-$ip6tables -A INPUT -j REJECT --reject-with tcp-reset --protocol tcp
+$ip6tables -A INPUT -j REJECT --reject-with tcp-reset -p tcp
 $ip6tables -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
 
 uruk_hook "$rc_i"

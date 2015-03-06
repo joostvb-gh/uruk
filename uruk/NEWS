@@ -16,7 +16,22 @@ uruk version 2015MMDD - The De Drie Zwaantjes Release
   : use the multiple-IP-per-nic style if you want full control over which
   broadcast and multicast-traffic gets dropped.  (The old syntax is still
   supported; for now it's just no longer documented.)
+- script/uruk.in man/uruk-rc.azm:
+  ip_* and ip6_* are now unified in the same way as sources_* and
+  sources6_*. As a bonus you can now mention multiple addresses in each
+  ip "name". Example:
 
+   ips_eth0='admin service'
+   ip_eth0_admin='192.0.2.2 2001:db8::2'
+   ip_eth0_public='192.0.2.3 192.0.2.4 2001:db8::3 2001:db8::4'
+
+   services_eth0_admin_tcp='ssh'
+   ports_eth0_admin_tcp_admin='22'
+   sources_eth0_admin_tcp_admin='192.0.2.0/24 2001:db8::/32'
+
+   services_eth0_public_tcp='www'
+   ports_eth0_public_tcp_www='80 443'
+   sources_eth0_public_tcp_www='0/0 ::/0'
 
 uruk version 20141120 - The Јадар Release
 
