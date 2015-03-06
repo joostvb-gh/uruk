@@ -4,6 +4,7 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version 2015MMDD - The De Drie Zwaantjes Release
 
+[ changes by Joost van Baal-Ilić ]
 - UNRELEASED.
 - man/uruk-rc.azm doc/rc: Things like
 
@@ -16,6 +17,8 @@ uruk version 2015MMDD - The De Drie Zwaantjes Release
   : use the multiple-IP-per-nic style if you want full control over which
   broadcast and multicast-traffic gets dropped.  (The old syntax is still
   supported; for now it's just no longer documented.)
+
+[ changes by Wessel Dankers ]
 - script/uruk.in man/uruk-rc.azm:
   ip_* and ip6_* are now unified in the same way as sources_* and
   sources6_*. As a bonus you can now mention multiple addresses in each

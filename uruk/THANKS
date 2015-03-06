@@ -5,8 +5,9 @@ supporting this and other Free Software.
 
 Thanks to Laurence J. Lane for creating the Debian iptables package, giving
 inspiration for the Uruk init script.
-  
-Thanks to Wessel Dankers for giving valuable feedback.
+
+Thanks to Wessel Dankers for giving valuable feedback, and willingness to
+accept commit rights.
 
 Thanks to Fred Vos, Casper Gielen and Thijs Kinkhorst for contributing
 code.
