@@ -32,6 +32,38 @@ uruk version 2015MMDD - The De Drie Zwaantjes Release
    services_eth0_public_tcp='www'
    ports_eth0_public_tcp_www='80 443'
    sources_eth0_public_tcp_www='0/0 ::/0'
+- script/uruk.in script/uruk-save:
+  net_* and net6_ are now unified as well, and accept multiple networks.
+  The list of bogon networks is significantly expanded and now contains:
+
+   0.0.0.0/8
+   10.0.0.0/8
+   100.64.0.0/10
+   127.0.0.0/8
+   169.254.0.0/16
+   172.16.0.0/12
+   192.0.0.0/24
+   192.0.2.0/24
+   192.88.99.0/24
+   192.168.0.0/16
+   198.18.0.0/15
+   198.51.100.0/24
+   203.0.113.0/24
+   224.0.0.0/3
+
+   64:ff9b::/96
+   ::ffff:0:0/96
+   100::/64
+   200::/7
+   2001:2::/48
+   2001:db8::/32
+   2001:10::/28
+   fc00::/7
+   fec0::/10
+   3ffe::/16
+   5f00::/8
+   ::1/128
+   ::/128
 
 uruk version 20141120 - The Јадар Release
 

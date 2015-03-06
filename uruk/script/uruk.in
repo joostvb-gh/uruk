@@ -8,6 +8,7 @@
 # Copyright (C) 2003, 2004, 2010 Tilburg University http://www.uvt.nl/
 # Copyright (C) 2003, 2004, 2005, 2007, 2010 Joost van Baal
 # Copyright (C) 2012, 2013 Joost van Baal-Ilić
+# Copyright © 2014,2015 Wessel Dankers
 #
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -38,16 +39,16 @@ interfaces_unprotect=${URUK_INTERFACES_UNPROTECT:-lo}
 etcdir="/etc/uruk"
 config=${URUK_CONFIG:-${etcdir}/rc}
 
-# IPv4 ranges that should not send or receive packets
-# 127.1/8 10./8 172.16./12 192.168./16
-ip4_noroute_ranges='127.0.0.1/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16'
+# IPv4 ranges that should not send or receive packets unless specifically permitted
+# See RFC 6890.
+ip4_noroute_ranges='0.0.0.0/8 10.0.0.0/8 100.64.0.0/10 127.0.0.0/8 169.254.0.0/16 172.16.0.0/12 192.0.0.0/24 192.0.2.0/24 192.88.99.0/24 192.168.0.0/16 198.18.0.0/15 198.51.100.0/24 203.0.113.0/24 224.0.0.0/3'
 
 # IPv6 ranges that should not send or receive packets
 # see http://www.iana.org/assignments/ipv6-address-space/
 # and http://www.iana.org/assignments/ipv6-unicast-address-assignments/
-# (abbreviated IP v6 addresses are allowed, abbreviated IP v4 addresses are _not_
-# allowed (checked using iptables 1.4.8-2).)
-ip6_noroute_ranges='::1/128 ::ffff:0:0/96 fc00::/7 fec0::/10 0200::/7 2001:0db8::/32'
+# and RFC 6890.
+# All IPv6 addresses in their canonical form.
+ip6_noroute_ranges='64:ff9b::/96 ::ffff:0:0/96 100::/64 200::/7 2001:2::/48 2001:db8::/32 2001:10::/28 fc00::/7 fec0::/10 3ffe::/16 5f00::/8 ::1/128 ::/128'
 
 uruk_version="@URUK_VERSION@"
 
@@ -89,12 +90,18 @@ uruk_hook () {
 
 uruk_save () {
     table=filter
-    case $1 in -t)
+    case $1 in -t|--table)
         shift
         table=$1
         shift
+    ;; -t*)
+        table=${1#-t}
+        shift
+    ;; --table=*)
+        table=${1#--table=}
+        shift
     esac
-    case " $* " in *" -t "*)
+    case " $* " in *[$IFS]-t*|*[$IFS]--table[=$IFS]*)
         echo "Warning: -t must be the first argument or it will be ignored" >&2
     esac
     if test -f $uruk_save_dir/$table
@@ -172,32 +179,24 @@ do
         eval "net=\$net_${iface_x}"
         for no_route_ip in $ip4_noroute_ranges
         do
-            if test $no_route_ip != "$net"
-            then
-                # TODO: this behaves odd in multiple-IP cases.  Furthermore,
-                # excluding one private network from being dropped works ugly.
+            case " $net " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
                 $iptables -A INPUT -i $iface -s $no_route_ip -j DROP
                 $iptables -A INPUT -i $iface -d $no_route_ip -j DROP
 
                 $iptables -A OUTPUT -o $iface -s $no_route_ip -j DROP
                 $iptables -A OUTPUT -o $iface -d $no_route_ip -j DROP
-            fi
+            esac
         done
         eval "net6=\$net6_${iface_x}"
         for no_route_ip in $ip6_noroute_ranges
         do
-            # rather unlikely for IPv6, borderline useless, left in for
-            # consistency with IPv4
-            if test $no_route_ip != "$net6"
-            then
-                # TODO: this behaves odd in multiple-IP cases.  Furthermore,
-                # excluding one private network from being dropped works ugly.
+            case " $net $net6 " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
                 $ip6tables -A INPUT -i $iface -s $no_route_ip -j DROP
                 $ip6tables -A INPUT -i $iface -d $no_route_ip -j DROP
 
                 $ip6tables -A OUTPUT -o $iface -s $no_route_ip -j DROP
                 $ip6tables -A OUTPUT -o $iface -d $no_route_ip -j DROP
-            fi
+            esac
         done
 
         # block outgoing packets that don't have our address as source,
@@ -557,7 +556,7 @@ then
             for ip6 in $ips6
             do
                 case $ip6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
-					uruk6_log -i $iface -d $ip6
+                    uruk6_log -i $iface -d $ip6
                 esac
             done
         done
