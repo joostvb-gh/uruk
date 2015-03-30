@@ -1,4 +1,28 @@
 
+пон 30 11:34 < joostvb_thuis> we weten nog niet of r n uruk-bug is, wel?
+пон 30 11:34 < joostvb_thuis> met dat gedoe met uruk is not running
+пон 30 11:34 < Fruit> volgens mij is het een transitieprobleem
+пон 30 11:35 < Fruit> maar dat weet ik niet 100% zeker
+пон 30 11:35 < joostvb_thuis> en dus niet 100% zeker of dat transitieprobleem in 
+                              uruk zit
+пон 30 11:35 < joostvb_thuis> of in de debian packaging
+пон 30 11:35 < joostvb_thuis> of in onze zut
+пон 30 11:35 < Fruit> combi
+пон 30 11:36 < Fruit> mijn hypothese is dat als je overschakelt naar uruk_save en er 
+                      draaide al een uruk, dat-ie dat dan niet doorheeft
+пон 30 11:36 < joostvb_thuis> klinkt best aannemelijk
+пон 30 11:36 < Fruit> want hij is gestart zonder uruk_save
+пон 30 11:36 < Fruit> dus geen save-file aangemaakt
+пон 30 11:36  * joostvb_thuis gaat t tot de bodem uitzoeken
+
+пон 30 11:37 < Fruit> ik heb wel de nieuwe uruk draaien op pichu
+пон 30 11:37 < Fruit> fwiw
+пон 30 11:37 < joostvb_thuis> die .deb prerelease?
+пон 30 11:37 < Fruit> ja
+
+----
+
+
 think about systemd (and runit, while we're at it)
 
 -------
