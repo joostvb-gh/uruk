@@ -206,8 +206,8 @@ case "$1" in
     ;;
   save|create|load|reload|clear|halt|flush)
     # FIXME to be phased out at 2013-12 (introduced 2013-05)
-    log_warning_msg "Passing argument $* to the uruk initscript is deprecrated.  In an upcoming release, be sure to use the new urukctl interface.  Calling urukctl for you now."
-    exec urukctl $*
+    log_warning_msg "Passing argument $1 to the uruk initscript is deprecated.  In an upcoming release, be sure to use the new urukctl interface.  Calling urukctl for you now."
+    exec urukctl "$@"
     ;;
   *)
     usage
