@@ -174,80 +174,119 @@ do
         done
     esac
 
+	# set of all addresses on this (physical) interface
+    blockips=
+    blockips6=
+
+	# set of all permitted "special" nets for this (physical) interface
+    eval "blocknet=\$net_${iface}"
+    eval "blocknet6=\$net6_${iface}"
+
     for iface_x in $interfaces_x
     do
+        eval "ips=\$ip_${iface_x}"
+        case $ips6_defined in '')
+            ips6=$ips
+        ;; *)
+            eval "ips6=\$ip6_${iface_x}"
+        esac
+
         eval "net=\$net_${iface_x}"
+        eval "net6=\$net6_${iface_x}"
+
+        blocknet="$blocknet $net"
+        blocknet6="$blocknet6 $net6"
+
+        for ip in $ips
+        do
+            case $ip in *:*) ;; *) # if it doesn't look like an IPv6 address/range
+				for no_route_ip in $ip4_noroute_ranges
+				do
+					case " $net " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
+						$iptables -A INPUT -i $iface -s $no_route_ip -d $ip -j DROP
+						$iptables -A OUTPUT -o $iface -s $ip -d $no_route_ip -j DROP
+					esac
+				done
+                blockips="$blockips $ip"
+            esac
+        done
+
+        for ip6 in $ips6
+        do
+            case $ip6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
+				for no_route_ip in $ip6_noroute_ranges
+				do
+					case " $net $net6 " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
+						$ip6tables -A INPUT -i $iface -s $no_route_ip -d $ip6 -j DROP
+						$ip6tables -A OUTPUT -o $iface -s $ip6 -d $no_route_ip -j DROP
+					esac
+				done
+                blockips6="$blockips6 $ip6"
+            esac
+        done
+    done
+
+    case $blockips in *[!$IFS][$IFS]*[!$IFS]*)
+        # in multiple ip mode, we have to drop only if source is
+        # not _one_ of the nic's IPs
+
+        # supporting this for multiple ips would need multiple chains
+        # or, perhaps, some iptables extension.
+
+        # for now, we just block "known bad" addresses
+
         for no_route_ip in $ip4_noroute_ranges
         do
-            case " $net " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
-                $iptables -A INPUT -i $iface -s $no_route_ip -j DROP
+            case " $blocknet " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
                 $iptables -A INPUT -i $iface -d $no_route_ip -j DROP
-
                 $iptables -A OUTPUT -o $iface -s $no_route_ip -j DROP
-                $iptables -A OUTPUT -o $iface -d $no_route_ip -j DROP
             esac
         done
-        eval "net6=\$net6_${iface_x}"
-        for no_route_ip in $ip6_noroute_ranges
-        do
-            case " $net $net6 " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
-                $ip6tables -A INPUT -i $iface -s $no_route_ip -j DROP
-                $ip6tables -A INPUT -i $iface -d $no_route_ip -j DROP
-
-                $ip6tables -A OUTPUT -o $iface -s $no_route_ip -j DROP
-                $ip6tables -A OUTPUT -o $iface -d $no_route_ip -j DROP
-            esac
-        done
-
+    ;; *)
         # block outgoing packets that don't have our address as source,
         # they are either spoofed or something is misconfigured (NAT disabled,
         # for instance), we want to be nice and don't send out garbage.
-        #
-        # NOTE: this is stricter than above no_route_ip rule.
-        case $is in '')
-            # this rule is only enabled in single-ip-per-nic situations.
-            # in multiple ip mode, we'd have to drop only if source is
-            # not _one_ of the nic's IPs
 
-            # supporting this for multiple-ips would need multiple chains
-            # or, perhaps, some iptables extension.
-            :
-        ;; *)
-            eval "ips=\$ip_${iface_x}"
-            case $ips6_defined in '')
-                ips6=$ips
-            ;; *)
-                eval "ips6=\$ip6_${iface_x}"
+        for ip in $blockips
+        do
+            # drop all outgoing packets which don't have us as a source
+            $iptables -A OUTPUT -o $iface ! -s "$ip" -j DROP
+
+            # drop all incoming packets which don't have us as destination
+            $iptables -A INPUT -i $iface ! -d "$ip" -j DROP
+        done
+    esac
+
+    case $blockips6 in *[!$IFS][$IFS]*[!$IFS]*)
+        # in multiple ip mode, we have to drop only if source is
+        # not _one_ of the nic's IPs
+
+        # supporting this for multiple ips would need multiple chains
+        # or, perhaps, some iptables extension.
+
+        # for now, we just block "known bad" addresses
+
+        for no_route_ip in $ip6_noroute_ranges
+        do
+            case " $blocknet $blocknet6 " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
+                $ip6tables -A INPUT -i $iface -d $no_route_ip -j DROP
+                $ip6tables -A OUTPUT -o $iface -s $no_route_ip -j DROP
             esac
+        done
+    ;; *)
+        # block outgoing packets that don't have our address as source,
+        # they are either spoofed or something is misconfigured (wrong scope,
+        # for instance), we want to be nice and don't send out garbage.
 
-            for ip in $ips
-            do
-                case $ip in *:*) ;; *) # if it doesn't look like an IPv6 address/range
-                    # drop all outgoing packets which don't have us as a source
-                    $iptables -A OUTPUT -o $iface ! -s "$ip" -j DROP
+        for ip6 in $blockips6
+        do
+            # drop all outgoing packets which don't have us as a source
+            $ip6tables -A OUTPUT -o $iface ! -s "$ip6" -j DROP
 
-                    # drop all incoming packets which don't have us as destination
-                    $iptables -A INPUT -i $iface ! -d "$ip" -j DROP
-                esac
-            done
-
-            for ip6 in $ips6
-            do
-                case $ip6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
-                    # drop all outgoing packets which don't have us as a source
-                    $ip6tables -A OUTPUT -o $iface ! -s "$ip6" -j DROP
-
-                    # drop all incoming packets which don't have us as destination
-                    $ip6tables -A INPUT -i $iface ! -d "$ip6" -j DROP
-                esac
-            done
-
-            # NOTE: this is stricter than above no_route_ip rule.  If this
-            # rule is used, above rule ``$iptables -A INPUT -i $iface
-            # --destination $no_route_ip -j DROP'' could get disabled. See
-            # also the broadcast rule below.
-        esac
-    done
+            # drop all incoming packets which don't have us as destination
+            $ip6tables -A INPUT -i $iface ! -d "$ip6" -j DROP
+        done
+    esac
 
     # Always allow outgoing connections
     $iptables -A OUTPUT -m conntrack --ctstate NEW -o $iface -j ACCEPT
