@@ -2,6 +2,27 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 20150401 - The Gorp en Roovert Release
+
+[ changes by Wessel Dankers ]
+- script/uruk.in: Don't drop all traffic when multiple addresses are used:
+  In uruk there is a bit of code that drops incoming packets for unknown
+  destinations. In the case where there are multiple IP addresses on an
+  interface, it falls back to just restricting the destination address to
+  non-bogon ranges. In theory it could restrict these packets to the set of
+  configured IP addresses, but this would require creating an extra filter chain
+  (something which uruk has avoided so far).  In commit
+  4b2dd0f71bf38dbf1e759d3b078c8c8692328dee the code for handling multiple IP
+  addresses on an interface was changed, which also touched the code mentioned
+  above. In this commit a logic bug was introduced, which caused packets to be
+  dropped unless they had ALL destinations (instead of ANY). Since packets by
+  design only have a single destination address, that meant all packets were
+  dropped on that interface.  This patch fixes this showstopper issue by fixing
+  the logic bug, properly keeping track of the number of addresses on an
+  interface, and separating the filters for local and remote addresses.
+- init/uruk: fix improper parameter passing (and typo)
+
+
 uruk version 20150325 - The De Drie Zwaantjes Release
 
 Uruk is no longer a one man show: Since this release, Wessel Dankers joined the
