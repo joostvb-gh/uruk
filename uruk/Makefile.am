@@ -10,9 +10,9 @@
 ## Copyright (C) 2013 Joost van Baal-Ilić
 
 ## see booststrap for git2cl
-## authors: joostvb,cgielen. DO display message id's.
+## authors: joostvb,cgielen,wsl. DO display message id's.
 ChangeLog: NEWS
-	git log --pretty --numstat --summary | git2cl | sed 's/<[jc][^>][^>]*>//g' >ChangeLog
+	git log --pretty --numstat --summary | git2cl | sed 's/<[jcw][^>][^>]*>//g' >ChangeLog
 
 VERSION.m4 VERSION stamp.year stamp.month stamp.day: ChangeLog
 	./setversion
