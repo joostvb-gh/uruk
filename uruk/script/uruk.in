@@ -174,11 +174,11 @@ do
         done
     esac
 
-	# set of all addresses on this (physical) interface
+    # set of all addresses on this (physical) interface
     blockips=
     blockips6=
 
-	# set of all permitted "special" nets for this (physical) interface
+    # set of all permitted "special" nets for this (physical) interface
     eval "blocknet=\$net_${iface}"
     eval "blocknet6=\$net6_${iface}"
 
@@ -200,13 +200,13 @@ do
         for ip in $ips
         do
             case $ip in *:*) ;; *) # if it doesn't look like an IPv6 address/range
-				for no_route_ip in $ip4_noroute_ranges
-				do
-					case " $net " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
-						$iptables -A INPUT -i $iface -s $no_route_ip -d $ip -j DROP
-						$iptables -A OUTPUT -o $iface -s $ip -d $no_route_ip -j DROP
-					esac
-				done
+                for no_route_ip in $ip4_noroute_ranges
+                do
+                    case " $net " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
+                        $iptables -A INPUT -i $iface -s $no_route_ip -d $ip -j DROP
+                        $iptables -A OUTPUT -o $iface -s $ip -d $no_route_ip -j DROP
+                    esac
+                done
                 blockips="$blockips $ip"
             esac
         done
@@ -214,13 +214,13 @@ do
         for ip6 in $ips6
         do
             case $ip6 in *[!0-9/.]*) # if it doesn't look like an IPv4 address/range
-				for no_route_ip in $ip6_noroute_ranges
-				do
-					case " $net $net6 " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
-						$ip6tables -A INPUT -i $iface -s $no_route_ip -d $ip6 -j DROP
-						$ip6tables -A OUTPUT -o $iface -s $ip6 -d $no_route_ip -j DROP
-					esac
-				done
+                for no_route_ip in $ip6_noroute_ranges
+                do
+                    case " $net $net6 " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
+                        $ip6tables -A INPUT -i $iface -s $no_route_ip -d $ip6 -j DROP
+                        $ip6tables -A OUTPUT -o $iface -s $ip6 -d $no_route_ip -j DROP
+                    esac
+                done
                 blockips6="$blockips6 $ip6"
             esac
         done
