@@ -1,3 +1,29 @@
+do not ship debian package until this is fixed:
+
+init script is buggy:
+- force-reload does not behave according to specs
+- reload should be supported
+
+(
+restart
+    stop and restart the service if it's already running, otherwise start the
+    service
+
+reload
+    cause the configuration of the service to be reloaded without actually
+    stopping and restarting the service,
+
+force-reload
+    cause the configuration to be reloaded if the service supports this,
+    otherwise restart the service.
+
+The start, stop, restart, and force-reload options should be supported by all
+scripts in /etc/init.d, the reload option is optional.
+
+чет 02 10:16 < casper> https://www.debian.org/doc/debian-policy/ch-opersys.html#s9.3.2
+)
+
+------
 
 пон 30 11:38 < Fruit> ik heb trouwens opeens een file /etc/uruk/extra.d/version
 пон 30 11:39 < Fruit> terwijl ik me niet kan herinneren die ooit aangemaakt te hebben
