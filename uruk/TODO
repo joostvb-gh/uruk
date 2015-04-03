@@ -23,6 +23,10 @@ scripts in /etc/init.d, the reload option is optional.
 чет 02 10:16 < casper> https://www.debian.org/doc/debian-policy/ch-opersys.html#s9.3.2
 )
 
+one possible solution: enforce running uruk in uruk_save-mode; no longer
+support setups having enable_uruk_save=false. reload and force-reload should
+act the same
+
 ------
 
 пон 30 11:38 < Fruit> ik heb trouwens opeens een file /etc/uruk/extra.d/version
