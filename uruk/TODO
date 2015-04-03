@@ -29,15 +29,7 @@ act the same
 
 ------
 
-пон 30 11:38 < Fruit> ik heb trouwens opeens een file /etc/uruk/extra.d/version
-пон 30 11:39 < Fruit> terwijl ik me niet kan herinneren die ooit aangemaakt te hebben
-пон 30 11:39 < Fruit> er zit een datum in de toekomst in
-пон 30 11:39 < Fruit> version=20160319
-пон 30 11:41 < joostvb_thuis> zou n bug in uruk/NEWS kunnen zijn
-пон 30 11:41 < joostvb_thuis> dat dat niet gemeld wordt
-
----
-
+Wessel fixt dit:
 пон 30 11:34 < joostvb_thuis> we weten nog niet of r n uruk-bug is, wel?
 пон 30 11:34 < joostvb_thuis> met dat gedoe met uruk is not running
 пон 30 11:34 < Fruit> volgens mij is het een transitieprobleem
@@ -59,8 +51,21 @@ act the same
 пон 30 11:37 < joostvb_thuis> die .deb prerelease?
 пон 30 11:37 < Fruit> ja
 
+==========================
+
+
+somewhat less urgent issues
+
 ----
 
+пон 30 11:38 < Fruit> ik heb trouwens opeens een file /etc/uruk/extra.d/version
+пон 30 11:39 < Fruit> terwijl ik me niet kan herinneren die ooit aangemaakt te hebben
+пон 30 11:39 < Fruit> er zit een datum in de toekomst in
+пон 30 11:39 < Fruit> version=20160319
+пон 30 11:41 < joostvb_thuis> zou n bug in uruk/NEWS kunnen zijn
+пон 30 11:41 < joostvb_thuis> dat dat niet gemeld wordt
+
+------
 
 think about systemd (and runit, while we're at it)
 
