@@ -73,6 +73,9 @@ somewhat less urgent issues
 
 think about systemd (and runit, while we're at it)
 
+ship a systemd (or go with lsb hack firing of systemd stuff via traditional
+init script) and a daemontools init thingie
+
 -------
 
 document $uruk_version
@@ -250,11 +253,6 @@ metagross#
 
 -------------
 
-ship a systemd (or go with lsb hack firing of systemd stuff via traditional
-init script) and a daemontools init thingie
-
--------------
-
 FIXME: this is probably / partially fixed (as of < 2013-09) :
 
 plan: hernoem dit script naar uruk-ctl, schrijf nieuw sane init-script dat
@@ -412,7 +410,7 @@ vr 28 14:26 < Fruit> 2001:0DB8::/32 has been assigned as a NON-ROUTABLE range
 vr 28 14:26 < Fruit> daar gaat de mooie 2000::/3 regel :(
 
 
---------------- first first prio -----------------------------------
+--------------------------------------------------
 
 - improve flush:
 Subject: Re: uruk Re: iptables leegflikkeren: lelijk maar robuust Wessel
@@ -422,7 +420,6 @@ In-Reply-To: <20110114092236.GA14988@dijkstra.uvt.nl>
 > > iptables-save |
 > >   sed -rn 's/^:([A-Z]+) [A-Z]+ \[[0-9]+:[0-9]+\]$/:\1 ACCEPT [0:0]/p; /^(\*|COMMIT$)/p' |
 > >   iptables-restore
-
 
 
 - gebruik voor net_foo strings als
@@ -459,14 +456,14 @@ http://www.faqs.org/rfcs/rfc3330.html
  broadcast and multicast packets"
 
 
------------------ first prio ------------------------------------
+-----------------------------------------------------
 
 RSN: write urukconfig : generate uruk rc file based upon currently
 offered network services.  all services will be available for _all_ IPs
 (or perhaps just local network?)
 Packages could run this to generate a first rc file.
 
------------------ candidates for upcoming release ------------------
+-----------------------------------
 
 - use ip{,6}tables-apply by Martin Krafft: safe testing of new rules on remote host.
 
@@ -506,7 +503,8 @@ Fix this, and accept the introduced cruft.   Tnx Wessel.
 - Phase out support for services_eth0_udp, but enforce ipS_eth0; warn for
 obsolete syntax
 
------------------ end of candidates for upcoming release ------------------
+----------------- end of candidates for some upcoming release -------------
+
 ----------------- stuff which just might happen one day -------------------
 
 - improve documentation on usage with non-fixed IPs, refer to /etc/network/if-up.d/uruk.
