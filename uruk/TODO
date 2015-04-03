@@ -27,6 +27,10 @@ one possible solution: enforce running uruk in uruk_save-mode; no longer
 support setups having enable_uruk_save=false. reload and force-reload should
 act the same
 
+-----
+
+enable uruk-save by default
+
 ------
 
 Wessel fixt dit:
@@ -74,10 +78,6 @@ think about systemd (and runit, while we're at it)
 document $uruk_version
 
 ------
-
-enable uruk-save by default
-
--------
 
 document this:
 сре 20 16:41 < Fruit> joostvb: sctp-support in uruk zou handig zijn
