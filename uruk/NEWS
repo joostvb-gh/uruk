@@ -2,22 +2,20 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201504DD - FIXME UNRELEASED
+uruk version 20150608 - The Oude Leije Release FIXME UNRELEASED
 
-- FIXME
 - FIXME: init script force-reload / reload, see TODO
 
 [ changes by Joost van Baal-Ilić ]
 - init/autodetect-ips: make sure it no longer gives "autodetect-ips: command
   substitution: line 106: syntax error near unexpected token `newline' [...]"
-  when running under bash 3.2-4.2 as shipped with Debian GNU/Linux 5.0.10 (lenny)
-  (a currently unsupported old Debian release).  Debian releases 6.0 Squeeze
-  and later install with dash as /bin/sh so on these platforms, uruk does not
-  suffer from this issue with bash.  Thanks Casper Gielen for report and initial
-  patch.
+  when running under bash 3.2.  The old Red Hat Enterprise Linux 5.11 ships
+  bash-3.2-33.el5_11.4. Also, bash 3.2-4.2 is shipped with Debian GNU/Linux
+  5.0.10 (lenny) (a currently unsupported old Debian release).  Debian releases
+  6.0 Squeeze and later install with dash as /bin/sh so on these platforms, uruk
+  does not suffer from this issue with bash.  Thanks Casper Gielen for report
+  and initial patch.
 
-
-Debian 6.0 ("squeeze") — obsolete stable release
 
 uruk version 20150401 - The Gorp en Roovert Release
 
