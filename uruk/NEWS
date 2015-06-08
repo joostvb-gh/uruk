@@ -13,7 +13,8 @@ uruk version 201504DD - FIXME UNRELEASED
   when running under bash 3.2-4.2 as shipped with Debian GNU/Linux 5.0.10 (lenny)
   (a currently unsupported old Debian release).  Debian releases 6.0 Squeeze
   and later install with dash as /bin/sh so on these platforms, uruk does not
-  suffer from this issue with bash.
+  suffer from this issue with bash.  Thanks Casper Gielen for report and initial
+  patch.
 
 
 Debian 6.0 ("squeeze") — obsolete stable release

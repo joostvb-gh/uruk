@@ -61,6 +61,10 @@ done
 # Second, Debian's init scripts
 if test -f /etc/network/interfaces
 then
+    # bash 3.2 FIXME :  change `  ` back to $(  ) (twice), and change
+    # eval ip="\"\\$ip_${iface}_default\"" back to
+    # eval ip="\"\$ip_${iface}_default\"" : we are working around a bug in
+    # bash 3.2, since june 2015.  Revert this stuff after dec 2015,
     eval "`
         while read -r key val val1 rest
         do
@@ -116,6 +120,7 @@ fi
 
 if command -v ip >/dev/null 2>&1
 then
+    # bash 3.2 FIXME
     eval "`
 iface=
 # jeden dva tri četiri pet ostalo
@@ -129,6 +134,7 @@ ip a | \
       inet)
         # if ip_${iface}_default unset, assign to it
         # nested eval.  would that work?
+        # bash 3.2 FIXME
         eval ip="\"\\$ip_${iface}_default\""
         if test -z "$ip"
         then
@@ -139,6 +145,7 @@ ip a | \
         fi
       ;;
       inet6)
+        # bash 3.2 FIXME
         eval ip6="\"\\$ip6_${iface}_default\""
         if test -z "$ip6" -a global=$cetiri
         then
