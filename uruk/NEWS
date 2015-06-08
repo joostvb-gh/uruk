@@ -18,6 +18,8 @@ uruk version 20150608 - The Oude Leije Release
   6.0 Squeeze and later install with dash as /bin/sh so on these platforms, uruk
   does not suffer from this issue with bash.  Thanks Casper Gielen for report
   and initial patch.
+- Makefile.am: no longer ship uruk-VERSION.tar.bz2, do ship
+  uruk-VERSION.tar.xz (next to .tar.gz).
 
 
 uruk version 20150401 - The Gorp en Roovert Release
