@@ -1,3 +1,57 @@
+do not ship rpm package until this is fixed:
+
+root@v:~# rpm -q --list iptables-ipv6 | grep lib
+/lib64/iptables/libip6t_CONNMARK.so
+/lib64/iptables/libip6t_DSCP.so
+/lib64/iptables/libip6t_HL.so
+/lib64/iptables/libip6t_LOG.so
+/lib64/iptables/libip6t_MARK.so
+/lib64/iptables/libip6t_NFQUEUE.so
+/lib64/iptables/libip6t_REJECT.so
+/lib64/iptables/libip6t_TRACE.so
+/lib64/iptables/libip6t_ah.so
+/lib64/iptables/libip6t_connmark.so
+/lib64/iptables/libip6t_dscp.so
+/lib64/iptables/libip6t_dst.so
+/lib64/iptables/libip6t_eui64.so
+/lib64/iptables/libip6t_frag.so
+/lib64/iptables/libip6t_hbh.so
+/lib64/iptables/libip6t_hl.so
+/lib64/iptables/libip6t_icmpv6.so
+/lib64/iptables/libip6t_ipv6header.so
+/lib64/iptables/libip6t_length.so
+/lib64/iptables/libip6t_limit.so
+/lib64/iptables/libip6t_mac.so
+/lib64/iptables/libip6t_mark.so
+/lib64/iptables/libip6t_multiport.so
+/lib64/iptables/libip6t_owner.so
+/lib64/iptables/libip6t_physdev.so
+/lib64/iptables/libip6t_policy.so
+/lib64/iptables/libip6t_rt.so
+/lib64/iptables/libip6t_standard.so
+/lib64/iptables/libip6t_state.so
+/lib64/iptables/libip6t_tcp.so
+/lib64/iptables/libip6t_udp.so
+
+root@v:~# service uruk force-reload
+Checking uruk (iptables): active uruk rules loaded
+Checking uruk (ip6tables): active uruk rules loaded
+Flushing all current iptables rules.
+Loading IPv4 uruk rules.
+Saving iptables ruleset: save "active" with counters.
+Flushing all current ip6tables rules.
+Loading IPv6 uruk rulesip6tables v1.3.5: Couldn't load match `conntrack':/lib64/iptables/libip6t_conntrack.so: cannot open shared object file: No such file or directory
+
+Try `ip6tables -h' or 'ip6tables --help' for more information.
+ip6tables v1.3.5: Couldn't load match `conntrack':/lib64/iptables/libip6t_conntrack.so: cannot open shared object file: No such file or directory
+
+root@v:~# rpm -q iptables-ipv6
+iptables-ipv6-1.3.5-9.2.el5_8
+
+Description:    Red Hat Enterprise Linux Server release 5.11 (Tikanga)
+
+----------
+
 do not ship debian package until this is fixed:
 
 init script is buggy:
