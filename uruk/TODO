@@ -50,6 +50,9 @@ iptables-ipv6-1.3.5-9.2.el5_8
 
 Description:    Red Hat Enterprise Linux Server release 5.11 (Tikanga)
 
+not supported by kernel?  users of these system should explicitly disable
+IPv6 support in uruk?
+
 ----------
 
 do not ship debian package until this is fixed:
