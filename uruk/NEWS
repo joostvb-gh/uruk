@@ -2,9 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20150608 - The Oude Leije Release FIXME UNRELEASED
-
-- FIXME: init script force-reload / reload, see TODO
+uruk version 20150608 - The Oude Leije Release
 
 [ changes by Joost van Baal-Ilić ]
 - init/autodetect-ips: make sure it no longer gives "autodetect-ips: command
