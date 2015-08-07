@@ -6,6 +6,12 @@ uruk version 2015MMDD - The FIXME UNRELEASED Release
 
 - FIXME
 
+[ changes by Joost van Baal-Ilić ]
+- init/uruk: no longer inspect obsolete variable $status_active.  Now "service
+  uruk status" will no longer report _both_ 'active uruk rules loaded' _and_
+  'active ruleset not loaded' when uruk is running.  Thanks Casper Gielen for
+  bugreport.
+
 
 uruk version 20150608 - The Oude Leije Release
 
