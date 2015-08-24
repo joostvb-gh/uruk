@@ -185,6 +185,7 @@ do
     for iface_x in $interfaces_x
     do
         eval "ips=\$ip_${iface_x}"
+        eval "ips6_defined=\${ip6_${iface_x}+DEFINED}"
         case $ips6_defined in '')
             ips6=$ips
         ;; *)
@@ -581,6 +582,7 @@ then
         for iface_x in $interfaces_x
         do
             eval "ip=\$ip_${iface_x}"
+            eval "ips6_defined=\${ip6_${iface_x}+DEFINED}"
             case $ips6_defined in '')
                 ips6=$ips
             ;; *)
