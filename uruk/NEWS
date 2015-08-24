@@ -6,6 +6,9 @@ uruk version  FIXME
 
 UNRELEASED
 
+- script/uruk.in: Apply patch contributed by Wessel Dankers: "Fix two cases
+  where $ip6_defined was used without being set."  Relevant in cases where
+  more than one IPv6 address is defined on an interface.
 
 
 uruk version 20150810 - The Гoрњи Милановац Release
