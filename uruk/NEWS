@@ -2,13 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version  FIXME
+uruk version 20150825 - The Прибој Release
 
-UNRELEASED
-
-- script/uruk.in: Apply patch contributed by Wessel Dankers: "Fix two cases
-  where $ip6_defined was used without being set."  Relevant in cases where
-  more than one IPv6 address is defined on an interface.
+[ changes by Wessel Dankers ]
+- script/uruk.in: Fix two cases where $ip6_defined was used without being set.
+  uruk was unusable in cases where more than one IPv6 address is defined on an
+  interface.
 
 
 uruk version 20150810 - The Гoрњи Милановац Release
