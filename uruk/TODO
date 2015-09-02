@@ -1,3 +1,26 @@
+
+#796700 - uruk: Has init script in runlevel S but no matching service file
+Thanks fsateler@debian.org
+
+--
+
+[...] the script is simply not
+applicable in systemd, in which case the package should ship a
+symlink to /dev/null as /lib/systemd/system/<initscript>.service.
+
+We have prepared a transition wiki page[2] explaining the issue in
+more detail, and outlining some general guidance.
+
+pkg-systemd-maintainers@lists.alioth.debian.org
+
+[1] http://sources.debian.net/src/systemd/222-2/debian/patches/Add-support-for-rcS.d-init-scripts-to-the-sysv-gener.patch/
+[763315] https://bugs.debian.org/763315
+[2] https://wiki.debian.org/Teams/pkg-systemd/rcSMigration
+
+--
+
+----
+
 do not ship rpm package until this is fixed:
 
 root@v:~# rpm -q --list iptables-ipv6 | grep lib
@@ -113,7 +136,6 @@ Wessel fixt dit:
 пон 30 11:37 < Fruit> ja
 
 ==========================
-
 
 somewhat less urgent issues
 
