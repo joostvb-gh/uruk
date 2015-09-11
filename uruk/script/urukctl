@@ -200,7 +200,7 @@ initd_active () {
 }
 
 initd_start () {
-  if ! test -s "$libdir/inactive"; then
+  if ! test -e "$libdir/inactive"; then
     initd_save inactive
   fi
   initd_active
@@ -212,7 +212,7 @@ initd_start () {
 initd_stop () {
   # act sane if inactive state file missing
   ruleset="$libdir/inactive"
-  if test -s $ruleset; then
+  if test -e $ruleset; then
     initd_load inactive
     rm $ruleset
   else
@@ -232,7 +232,7 @@ initd_status() {
   for rule in active inactive; do
     eval status_$rule=
     eval found_$rule=
-    if test -s $libdir/$rule; then
+    if test -e $libdir/$rule; then
       sed -n 's/^\[[0-9]\{1,\}:[0-9]\{1,\}\] //p' $libdir/$rule >$tmpdir/ruleset
       if diff $tmpdir/ruleset $tmpdir/kernel >/dev/null; then
          echo "Checking uruk ($iptables_command): $rule uruk rules loaded"
@@ -296,7 +296,7 @@ initd_main () {
     force-reload)
       for rule in active inactive; do
         eval found_$rule=
-        if test -s $libdir/$rule; then
+        if test -e $libdir/$rule; then
           eval found_$rule=1
         fi
       done
@@ -326,7 +326,7 @@ initd_main () {
     reload)
       for rule in active inactive; do
         eval found_$rule=
-        if test -s $libdir/$rule; then
+        if test -e $libdir/$rule; then
           eval found_$rule=1
         fi
       done

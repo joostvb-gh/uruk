@@ -8,6 +8,25 @@ Unreleased
 
 FIXME
 
+- script/urukctl: Behave sane after reboot.  Under some circumstances, after
+  a reboot, one would end up with files like
+
+   -rw-r--r--   1 root     root  17658 Sep 11 13:00 iptables/active
+   -rw-r--r--   1 root     root      0 Sep 11 13:00 iptables/inactive
+   -rw-r--r--   1 root     root      0 Sep 11 13:00 iptables/autosave
+   -rw-r--r--   1 root     root   4060 Sep 11 13:00 ip6tables/active
+   -rw-r--r--   1 root     root      0 Sep 11 13:00 ip6tables/inactive
+   -rw-r--r--   1 root     root      0 Sep 11 13:00 ip6tables/autosave
+
+  in /var/lib/uruk .  Running "sudo service uruk status" would yield
+
+   Checking uruk (iptables): active uruk rules loaded
+   Checking uruk (ip6tables): active uruk rules loaded
+   [ ok ] Checking uruk (): uruk not running.
+
+  . However, uruk _is_ running.  We now no longer ignore zero-sized files in
+  /var/lib/uruk/*/ , but regard them as valid rulesets.  This fixes this bug.
+
 
 uruk version 20150825 - The Прибој Release
 
