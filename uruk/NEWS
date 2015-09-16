@@ -2,12 +2,10 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2015MMDD - The FIXME Release
+uruk version 20150916 - The ᎠᏍᎦᏯ ᎩᎦᎨᏱ; Release
 
-Unreleased
-
-FIXME
-
+UNRELEASED
+[ changes by Joost van Baal-Ilić ]
 - script/urukctl: Behave sane after reboot.  Under some circumstances, after
   a reboot, one would end up with files like
 
