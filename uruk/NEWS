@@ -4,7 +4,6 @@ Refer to ChangeLog for detailed per-file info.
 
 uruk version 20150916 - The ᎠᏍᎦᏯ ᎩᎦᎨᏱ; Release
 
-UNRELEASED
 [ changes by Joost van Baal-Ilić ]
 - script/urukctl: Behave sane after reboot.  Under some circumstances, after
   a reboot, one would end up with files like
