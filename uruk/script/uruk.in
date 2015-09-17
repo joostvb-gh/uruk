@@ -258,36 +258,24 @@ do
         done
     esac
 
-    case $blockips6 in *[!$IFS][$IFS]*[!$IFS]*)
-        # in multiple ip mode, we have to drop only if source is
-        # not _one_ of the nic's IPs
+	# in IPv6 we always have a multiple IP mode, because an interface
+	# always has a link-local address as well
 
-        # supporting this for multiple ips would need multiple chains
-        # or, perhaps, some iptables extension.
+	# in multiple ip mode, we have to drop only if source is
+	# not _one_ of the nic's IPs
 
-        # for now, we just block "known bad" addresses
+	# supporting this for multiple ips would need multiple chains
+	# or, perhaps, some iptables extension.
 
-        for no_route_ip in $ip6_noroute_ranges
-        do
-            case " $blocknet $blocknet6 " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
-                $ip6tables -A INPUT -i $iface -d $no_route_ip -j DROP
-                $ip6tables -A OUTPUT -o $iface -s $no_route_ip -j DROP
-            esac
-        done
-    ;; *)
-        # block outgoing packets that don't have our address as source,
-        # they are either spoofed or something is misconfigured (wrong scope,
-        # for instance), we want to be nice and don't send out garbage.
+	# for now, we just block "known bad" addresses
 
-        for ip6 in $blockips6
-        do
-            # drop all outgoing packets which don't have us as a source
-            $ip6tables -A OUTPUT -o $iface ! -s "$ip6" -j DROP
-
-            # drop all incoming packets which don't have us as destination
-            $ip6tables -A INPUT -i $iface ! -d "$ip6" -j DROP
-        done
-    esac
+	for no_route_ip in $ip6_noroute_ranges
+	do
+		case " $blocknet $blocknet6 " in *[$IFS]$no_route_ip[$IFS]*) ;; *)
+			$ip6tables -A INPUT -i $iface -d $no_route_ip -j DROP
+			$ip6tables -A OUTPUT -o $iface -s $no_route_ip -j DROP
+		esac
+	done
 
     # Always allow outgoing connections
     $iptables -A OUTPUT -m conntrack --ctstate NEW -o $iface -j ACCEPT
