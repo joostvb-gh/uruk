@@ -141,6 +141,8 @@ fi
 
 $iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 $ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+$iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+$ip6tables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 # workaround bug(?) in linux kernel, see also
 # http://serverfault.com/questions/309691/why-is-our-firewall-ubuntu-8-04-rejecting-the-final-packet-fin-ack-psh-wit
@@ -279,6 +281,7 @@ do
 
     # Always allow outgoing connections
     $iptables -A OUTPUT -m conntrack --ctstate NEW -o $iface -j ACCEPT
+    $ip6tables -A OUTPUT -m conntrack --ctstate NEW -o $iface -j ACCEPT
 done
 
 uruk_hook "$rc_c"
