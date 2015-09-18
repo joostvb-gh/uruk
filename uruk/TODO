@@ -1,6 +1,7 @@
 
 - init/{uruk.service,Makefile.am}: ship and install 
-  /lib/systemd/system/uruk.service.  FIXME doesn't work!!
+  /lib/systemd/system/uruk.service.  FIXME probably doesn't work!!
+  init/uruk.service : incomplete
 
 ----
 

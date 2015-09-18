@@ -22,8 +22,9 @@ uruk version 2015MMDD - FIXME UNLRELEASED
   with something other than that primary global address.  It will just always
   apply the simple bogon network range filtering that it used for the explicit
   multiple address case.
+
 [ changes by Joost van Baal-Ilić ]
-- init/{uruk.service,Makefile.am}: ship and install
+- init/{uruk.service,Makefile.am}: ship and install new file
   /lib/systemd/system/uruk.service.  FIXME doesn't work!!
 
 
