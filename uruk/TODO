@@ -1,3 +1,9 @@
+
+- init/{uruk.service,Makefile.am}: ship and install 
+  /lib/systemd/system/uruk.service.  FIXME doesn't work!!
+
+----
+
 fix in RPM: #796700 - uruk: Has init script in runlevel S but no matching service file
 Thanks fsateler@debian.org
 

@@ -1,4 +1,5 @@
-# /lib/systemd/system/uruk.service
+# uruk.service - uruk systemd service file
+# to be installed as /lib/systemd/system/uruk.service
 
 # https://wiki.debian.org/Teams/pkg-systemd/rcSMigration :
 #  _Your service is needed to configure firewalls or network interfaces_
