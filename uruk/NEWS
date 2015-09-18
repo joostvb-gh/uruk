@@ -11,18 +11,17 @@ uruk version 2015MMDD - FIXME UNLRELEASED
   conntrack entries were created in the output chain, these were not used. Fixed
   by adding "--ctstate ESTABLISHED,RELATED" rules, just like in the INPUT chain.
 - script/uruk.in: Always treat IPv6 as a multiple-IPs-per-interface case:
-  Even if you do not explicitly configure multiple IPv6 addresses, you still have
-  to deal with the fact that an interface has at least a link-local and a global
-  address. That means you can't simply drop traffic that isn't directed at the
-  primary global address because that will interfere with things like router
-  advertisements.  Likewise, in the output chain you have to provide for the fact
-  that sometimes the source address on outgoing traffic will not be the primary
-  global address.  This patch removes the code path that would block all traffic
-  not directed at the primary global address as well as outgoing traffic with
-  something other than that primary global address. It will just always apply the
-  simple bogon network range filtering that it used for the explicit multiple
-  address case.
-
+  Even if you do not explicitly configure multiple IPv6 addresses, you still
+  have to deal with the fact that an interface has at least a link-local and a
+  global address.  That means you can't simply drop traffic that isn't directed
+  at the primary global address because that will interfere with things like
+  router advertisements.  Likewise, in the output chain you have to provide for
+  the fact that sometimes the source address on outgoing traffic will not be the
+  primary global address.  This change removes the code path that would block all
+  traffic not directed at the primary global address as well as outgoing traffic
+  with something other than that primary global address.  It will just always
+  apply the simple bogon network range filtering that it used for the explicit
+  multiple address case.
 
 
 uruk version 20150916 - The ᎠᏍᎦᏯ ᎩᎦᎨᏱ; Release
