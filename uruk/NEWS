@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2015MMDD - The FIXME Pristina Release  (dedicated to DJ Esad) UNLRELEASED
+uruk version 2015MMDD - The Prishtinë Release  (dedicated to DJ Esad) UNLRELEASED
 
 [ changes by Wessel Dankers ]
 - script/uruk.in: Add missing conntrack statements:
