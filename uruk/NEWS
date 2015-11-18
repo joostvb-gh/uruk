@@ -2,6 +2,13 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 20151118 - The Āne-wātak Release
+
+[ changes by Joost van Baal-Ilić ]
+- script/uruk.in: uruk is now more verbose when logging the blocking packets
+  with an INVALID connection tracking state.
+
+
 uruk version 20150921 - The Prishtinë Release
 
 [ changes by Wessel Dankers ]
