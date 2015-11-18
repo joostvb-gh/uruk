@@ -557,6 +557,14 @@ then
 elif test $loglevel -lt 40
 then
     # log denied packets, targetted at our IPs
+
+    # INVALID: The packet is associated with no known connection. See iptables-extensions(8)
+    # may be due to the system running out of memory or ICMP error messages that do not
+    # respond to any known connections.  It is helpfull to log these with explicitly
+    # mentioning reason of logging (and dropping).
+    $iptables -A INPUT -j LOG --log-level debug -m state --state INVALID --log-prefix 'iptables: REASON=invalid '
+    $ip6tables -A INPUT -j LOG --log-level debug -m state --state INVALID --log-prefix 'ip6tables: REASON=invalid '
+
     for iface in $interfaces
     do
         eval "is=\$ips_${iface}"
