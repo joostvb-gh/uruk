@@ -202,6 +202,30 @@ then give 'v' or 'p' or ~v or ~p
 чет 20 15:22 < joostvb> das ook n bug dan
 чет 20 15:22  * joostvb noteert t
 
+---
+
+related:
+
+Wed 18 14:01 < casper> bv: diocles: [367870.192739] ip6tables: IN=eth0 OUT= 
+                       MAC=00:50:56:95:0e:1b:00:50:56:95:5a:b3:86:dd 
+                       SRC=2001:0610:1410:0201:7fda:b604:0000:0021 
+                       DST=2001:0610:1410:0201:4966:3510:0000:0036 LEN=2928 
+                       TC=8 HOPLIMIT=64 FLOWLBL=0 PROTO=TCP SPT=22 DPT=47789 
+                       WINDOW=1964 RES=0x00 ACK URGP=0
+
+Wed 18 14:01 < casper> SRC=mumford DST=diocles
+
+return-verkeer van established toegestane connectie wordt onterecht ge-log-d
+(en mogelijk geblokkeerd)
+
+Wed 18 13:59 < casper> ip6tables logt IPv6 pakketjes met de ACK-bit aan
+
+reproduceer met: op diocles:
+Wed 18 14:22 < casper> su -s /bin/bash - diggit -c "git clone 
+                       git@git.uvt.nl:project/diggitmagazine /tmp/bla"
+
+t lijkt verder niks hard stuk te maken...
+
 ---------------
 
     #705687 [w|  |  ] [uruk] Provide "uruk diff" showing diff between running and config
