@@ -7,6 +7,15 @@ group/uruk/etc/default/uruk :
 
 (RH @ Tilburg uses upstream /etc/sysconfig/uruk )
 
+
+[root@roserade]~# urukctl reload
+ Either set enable_uruk_save to true in
+ /etc/{default,sysconfig}/uruk or call this script with
+ the "force-reload" option: cannot reload active file without touching your live
+ rules if using uruk-save is disallowed.
+
+
+
 set this in doc/default
 
 
