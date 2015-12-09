@@ -1,3 +1,15 @@
+- Tilburg has, since 2013-02 :
+
+group/uruk/etc/default/uruk :
+ # enable calling the unstable uruk-save script
+ # (NB: upstream default is false, as of uruk 20121205)
+ enable_uruk_save=true
+
+(RH @ Tilburg uses upstream /etc/sysconfig/uruk )
+
+set this in doc/default
+
+
 
 - init/{uruk.service,Makefile.am}: ship and install 
   /lib/systemd/system/uruk.service.  FIXME probably doesn't work!!
