@@ -13,6 +13,7 @@ uruk version 20160218 - The Snijders-Chaam Release
   + doc/default: set enable_uruk_save to true.
   + script/urukctl: no longer assign obsolete variable enable_uruk_save_warning,
     get rid of warn_uruk_save() function.
+- bootstrap: upgrade from automake 1.14 to 1.15.
 
 
 uruk version 20151118 - The Āne-wātak Release
