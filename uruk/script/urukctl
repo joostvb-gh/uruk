@@ -35,10 +35,6 @@ enable_ipv6=true
 # enable calling the unstable uruk-save script
 enable_uruk_save=false
 
-# The variable enable_uruk_save_warning is no longer supported (since 2013-04-10).
-# remove this assignment at about 2013-10-01.
-enable_uruk_save_warning=false
-
 # set enable_autosave to "true" to autosave the active ruleset
 # when going from start to stop
 enable_autosave=true
@@ -158,7 +154,6 @@ initd_autosave () {
 }
 
 initd_active_uruk_save () {
-  warn_uruk_save
   if test $iptables_command = ip6tables; then
     echo -n "Saving IPv6 uruk rules as active ruleset"
     uruk-save -6 > "$libdir/active"
@@ -369,7 +364,6 @@ END
       case "$*" in
         active)
           if $enable_uruk_save; then
-            warn_uruk_save
             if test $iptables_command = ip6tables; then
               echo -n "Saving IPv6 uruk rules as active ruleset"
               uruk-save -6 > "$libdir/active"
@@ -440,18 +434,6 @@ check_uruk() {
   if grep -q URUK_IS_UNCONFIGURED $uruk_config; then
     echo "Uruk is unconfigured.  Please create a sane file $uruk_config.  See uruk(8)."
     exit 6
-  fi
-}
-
-warn_uruk_save() {
-  # FIXME remove the warn_uruk_save() function at about 2013-10-01.  enable_uruk_save_warning
-  # is unsupported since 2013-04-10
-  if $enable_uruk_save_warning; then
-    cat <<END
- The enable_uruk_save_warning variable is no longer supported.  Please remove
- it from the file /etc/default/uruk (or /etc/sysconfig/uruk).
- (Proceeding anyway.)
-END
   fi
 }
 

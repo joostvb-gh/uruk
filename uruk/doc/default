@@ -16,8 +16,9 @@ PATH=/lib/uruk/init:/sbin:$PATH
 enable_ipv6=$(enable-ipv6)
 
 # enable calling the unstable uruk-save script
-## enable_uruk_save=true
-#
+## enable_uruk_save=false
+enable_uruk_save=true
+
 # set enable_autosave to "false" to disable autosaving the active ruleset
 # when going from start to stop
 ## enable_autosave=false
