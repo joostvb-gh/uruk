@@ -5,7 +5,6 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 20160218 - The Snijders-Chaam Release
 
 [ changes by Joost van Baal-Ilić ]
-- FIXME UNRELEASED
 - Set enable_uruk_save to true in example configuration file doc/default.  If
   this variable is unset or false, uruk-save(8) is by default (still) not used.
   No longer warn when obsolete (since 2013-04) variable enable_uruk_save_warning
