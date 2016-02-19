@@ -2,6 +2,15 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version - UNRELEASED
+
+[ changes by Wessel Dankers ]
+- script/uruk.in: Fix bug which was introduced in version 20151118: when
+  uruk-save is enabled, loading saved active ruleset fails with
+  Loading iptables ruleset: load "active"Bad argument `REASON=invalid'
+  .
+
+
 uruk version 20160218 - The Snijders-Chaam Release
 
 [ changes by Joost van Baal-Ilić ]
