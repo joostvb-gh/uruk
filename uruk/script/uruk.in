@@ -106,7 +106,22 @@ uruk_save () {
     esac
     if test -f $uruk_save_dir/$table
     then
-        echo "$*" >>$uruk_save_dir/$table
+        space=
+        for arg
+        do
+            case $arg in -[a-zA-Z0-9])
+                echo -n "$space-"
+                echo -n "${arg#-}"
+            ;; *[!a-zA-Z0-9_!+,./:=@-]*)
+                echo -n "$space\""
+                echo -n "$arg" | sed 's/[\\\"'\'']/\\&/g'
+                echo -n \"
+            ;; *)
+                echo -n "$space$arg"
+            esac
+            space=' '
+        done >>$uruk_save_dir/$table
+        echo >>$uruk_save_dir/$table
     else
         echo "Unknown table '$table'; skipping rule '" -t $table $* "'" >&2
     fi
