@@ -1,6 +1,8 @@
 # This file is maintained at http://git.mdcc.cx/caspar 
 
 ship in doc/examples oid: printallehosts getgroups in its-unix/systems/juptile/include/install.mk
+user interface (as of 2016-03-04)
+joostvb@incagijs:~/sv...its-unix/systems/juptile% make -f include/install.mk printallehosts | less
 
 link to : https://nulpunt.nu/ caspar users
 Patrick "Argure" Godschalk https://github.com/Argure
