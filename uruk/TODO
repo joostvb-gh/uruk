@@ -1,4 +1,51 @@
 
+FIXME: stop dit in documentatie:
+
+Date: Wed, 9 Mar 2016 11:10:41 +0100
+From: Casper Gielen
+Subject: Uruk met VLANs op Debian
+Message-ID: <56DFF6A1.8000203@uvt.nl>
+
+voor de Uruk Knowledge Base:
+
+Uruk met VLANS op Debian
+========================
+1. Installeer het debian pakket "vlan";
+2. gebruik  "vlan<num>" in /etc/network/interfaces en /etc/uruk/*;
+3. voeg een "vlan-raw-device" statement toe aan /etc/network/interfaces.
+
+
+Toelichting
+===========
+Uruk is niet compatible met de standaard Linux/Debian VLAN-benaming
+omdat er een puntje in de naam zit en dat mag niet in een Bash-variable.
+
+De simpele oplossing is om een naam te nemen zonder puntje maar
+/etc/network/interfaces eist tegenwoordig juist dat er een puntje in de
+naam zit. Het alternatief is om het oude systeem te gebruiken zoals
+aangeboden door het 'vlan' package.
+
+
+Examples
+========
+===/etc/network/interfaces===
+# vlan95 = XM
+auto vlan95
+iface vlan95 inet static
+        address 137.56.126.123
+        netmask 255.255.255.0
+        gateway 137.56.126.1
+        vlan-raw-device eth0
+
+===/etc/uruk/rc===
+interfaces='vlan95'
+ip_vlan95='137.56.126.1234'
+ip6_vlan95='3001::1:2:3:4'
+services_vlan95_tcp="ssh http"
+...
+
+
+
 - init/{uruk.service,Makefile.am}: ship and install 
   /lib/systemd/system/uruk.service.  FIXME probably doesn't work!!
   init/uruk.service : incomplete
