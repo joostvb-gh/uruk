@@ -147,7 +147,7 @@ ip a | \
       inet6)
         # bash 3.2 FIXME
         eval ip6="\"\\$ip6_${iface}_default\""
-        if test -z "$ip6" -a global=$cetiri
+        if test -z "$ip6" -a global = $cetiri
         then
           # test scope?
           # inet6 fe80::250:56ff:fe31:3831/64 scope link
