@@ -2,6 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version
+
+[ changes by Casper Gielen ]
+- init/autodetect-ips ....
+
+
 uruk version 20160219 - The Speurgt Release
 
 [ changes by Wessel Dankers ]
