@@ -44,8 +44,8 @@ typeset: $(TXTS) $(HTMLS) $(TROFFS) $(PSS) $(PDFS)
 %.ps: %.7
 	man -l -Tps $< > $@
 
-%.pdf: %.ps
-	ps2pdf $< $@
+%.pdf: %.pod
+	pod2pdf $< > $@
 
 clean:
 	-rm -f $(PDFS) $(PSS) $(HTMLS) $(TXTS) $(OVERSTRIKES) $(TROFFS)

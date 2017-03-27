@@ -1,10 +1,12 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2015mmdd - The FIXME Release
+caspar version 2017mmdd - The FIXME Release
 
 - UNRELEASED
-
 - TODO: cleanup.
+- mk/pod.mk: drop ps2pdf, use pod2pdf (as shipped with e.g. Debian 8 "jessie")
+  for generating PDF from POD.
+
 
 caspar version 20140919 - The Prnjavor Release
 
