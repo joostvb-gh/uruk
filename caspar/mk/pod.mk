@@ -27,7 +27,7 @@ PDFS        := $(patsubst %,%.pdf,$(BASES))
 typeset: $(TXTS) $(HTMLS) $(TROFFS) $(PSS) $(PDFS)
 
 %.7: %.pod
-	pod2man $< $@
+	pod2man --utf8 $< $@
 
 %.html: %.pod
 	pod2html --infile=$< --outfile=$@
