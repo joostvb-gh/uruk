@@ -1,12 +1,12 @@
-caspar (20140919-2) unstable; urgency=low
+caspar (20170830-1) unstable; urgency=low
 
-  * UNRELEASED.
+  * New upstream release - The Bleukbos Release
   * debian/control: bumped Standards-Version: from 3.9.5 to 3.9.7 (no
     changes needed: caspar-doc behaves as now specified in policy 12.3).
   * debian/control: fix Homepage and Vcs-Git fields: work around bug in my
     current bozohttpd webserver.
 
- -- Joost van Baal-Ilić <joostvb@debian.org>  Fri, 04 Mar 2016 11:38:12 +0100
+ -- Joost van Baal-Ilić <joostvb@debian.org>  Wed, 30 Aug 2017 13:03:51 +0200
 
 caspar (20140919-1) unstable; urgency=low
 
