@@ -1,11 +1,38 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2017mmdd - The FIXME Release
+caspar version 2017mmdd - The Bleukbos Release
 
 - UNRELEASED
+
 - TODO: cleanup.
+
 - mk/pod.mk: drop ps2pdf, use pod2pdf (as shipped with e.g. Debian 8 "jessie")
   for generating PDF from POD.
+
+- mk/caspar.mk: apply patch contributed by Wessel Dankers:
+
+  1) Add support for foo-verify make targets. Such make targets will be
+     executed by caspar and should verify if the file "foo" is correct in terms
+     of syntax and integrity.
+
+  2) Add a csp_CHECK that works identically to csp_LOAD except that no
+     csp_LOAD actions are attempted unless and until csp_CHECK completes
+     successfully.
+
+     Use this to validate config remotely before loading (and potentially
+     breaking) your service.
+
+  3) Officially deprecate csp_BUILD.
+
+  4) Officially deprecate the "for suh in $(csp_UHOSTS) ..." idiom.
+
+- Please note that if you have multiple csp_LOAD targets or multiple csp_CHECK
+  targets, these are NOT necessarily executed in the order you specify them!
+
+  The documentation used to (erroneously) suggest that specifying a check
+  target and a load target in csp_LOAD in the correct order would cause the
+  check to run before the load. This is not true in general, and specifically
+  in the case of make -j.
 
 
 caspar version 20140919 - The Prnjavor Release

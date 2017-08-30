@@ -392,8 +392,7 @@ remote directories.
   csp_LOAD = crontab-load
   include ../include/install.mk
 
-  crontab-load:
-        crontab $(csp_DIR)/crontab
+  crontab-load = crontab $(csp_DIR)/crontab
 }
 
 while \it{../include/install.mk} is just
@@ -425,8 +424,7 @@ like:
 
   include caspar/mk/caspar.mk
 
-  uruk-load:
-    sudo invoke-rc.d uruk force-reload
+  uruk-load = sudo invoke-rc.d uruk force-reload
 }
 
 }
@@ -440,8 +438,7 @@ like:
   csp_LOAD = aliases-load
   include ../include/install.mk
 
-  aliases-load:
-      $(csp_SSH) $(csp_UHOST) "cd /etc; postalias aliases; postfix reload"
+  aliases-load = $(csp_SSH) $1 "cd /etc && postalias aliases; postfix reload"
 }
 
 while \it{../include/install.mk} is
@@ -453,20 +450,20 @@ while \it{../include/install.mk} is
 
 }
 
-\cpar{Using csp_BUILD: building files locally}{
+\cpar{Building files locally}{
+
+Note: csp_BUILD is deprecated. You should not use it.
 
 If you'd like to build some files locally from local sources, before installing
-the just build files, do e.g.
+the just built files, do e.g.:
 
 \verbatim{
  csp_UHOST = root@some.host.somewhere
  csp_DIR = /etc/
+ csp_EXTRAFILES = sshd_config
  csp_TABOOFILES_ADD = sshd_config.m4
- csp_BUILD = my-build
 
  include caspar/mk/caspar.mk
-
- my-build: sshd_config
 
  sshd_config: sshd_config.m4
      m4 $< > $@
@@ -489,66 +486,84 @@ If you'd like to use csp_sucp and want a `load' target, do something like:
 
  include caspar/mk/caspar.mk
 
- rc-load:
-     $(csp_SSH) $(csp_UHOST) "sudo invoke-rc.d uruk force-reload"
+ rc-load = $(csp_SSH) $1 sudo invoke-rc.d uruk force-reload
 }
 
 }
 
-\cpar{Adding a "check" target}{
+\cpar{Using the "verify" target}{
+
+If you want to do some syntax check on the local host for a configuration
+file, define a -verify target (or pattern target):
+
+\verbatim{
+ bar.pem-verify: bar.pem.asc bar.pem
+	gpg --verify $^
+
+ %.php-verify: %.php
+     php -l $<
+}
+
+This command will be invoked when you "make verify" and "make install".
+
+\cpar{Using the "check" target}{
 
 If you want to do some syntax check on the remote host, before loading the just
-installed configuration file (and have a "make check" thing), do
+installed configuration file, do
 
 \verbatim{
   csp_UHOST = foobar.example.com
   csp_DIR = /etc/
-  csp_LOAD = check my-load
+  csp_LOAD = my-load
+  csp_CHECK = my-check
+
+  my-check = $(csp_SSH) $1 do-check-stuff
+  my-load = $(csp_SSH) $1 do-load-stuff
 
   include caspar/mk/caspar.mk
-
-  check:
-      $(csp_SSH) $(csp_UHOST) do-check-stuff
-
-  my-load:
-      $(csp_SSH) $(csp_UHOST) do-load-stuff
 }
 
-This way, "make load" won't cause the file to load if the check fails (which is
-probably what you want).  Running "make" will perform "install", "check" and
-"load".
+This way, "make load" won't cause the file to load if the check fails
+(which is probably what you want).
+You could even give the file a temporary name and have the load target
+rename it to its real name only after a successful check.
 
+As a convenience, if a foo-check variable is defined, it is automatically
+added as a dependency for any csp_LOAD targets named foo or foo-something.
 }
 
 \cpar{Combining the csp_LOAD target with multiple hosts; building files remotely}{
 
-You'll have to loop over csp_UHOSTS to execute load-command.  Here's an example
-doing some preprocessing on the remote hosts too.
+Here's an example doing some preprocessing on the remote hosts before reloading the configuration:
 
 \verbatim{
   csp_DIR = /etc/ssh/
   csp_UHOSTS = root@some.host.somewhere root@some.other.host
   csp_LOAD = sshd_config-load
-  sshd_config-load = ssh $1 "cd $(csp_DIR); \\
-         m4 sshd_config.m4 >sshd_config && \\
-         PATH=$$PATH:/sbin /etc/init.d/ssh restart"
+  sshd_config-load = $(csp_SSH) $1 "set -e; \\
+         cd $(csp_DIR); \\
+         m4 sshd_config.m4 >sshd_config; \\
+         service ssh reload"
   include caspar/mk/caspar.mk
 }
 
 
-(Alternatively, you could explicitly specify the loop over the hosts:
+(The old, deprecated way is to explicitly specify the loop over the hosts:
 
 \verbatim{
   csp_DIR = /etc/ssh/
   sshd_config-load:
       for suh in $(csp_UHOSTS); do \\
-        ssh $$suh "cd $(csp_DIR); \\
-         m4 sshd_config.m4 > sshd_config && \\
-         PATH=$$PATH:/sbin /etc/init.d/ssh restart"; \\
+        $(csp_SSH) $$suh "set -e;
+         cd $(csp_DIR); \\
+         m4 sshd_config.m4 > sshd_config; \\
+         service ssh reload"; \\
       done
 }
 
-).
+.
+You should not use this method.
+Please consider rewriting any existing caspar snippets using the simpler method described above.)
 
 }
 
@@ -577,7 +592,7 @@ Now, \tt{make install} and \tt{make load} will do the right thing.
 
 \cpar{Using the csp_EXTRAFILES variable}{
 
-Using the csp_EXTRAFILES variable is handy if you want to install files
+Using the csp_EXTRAFILES variable can be handy if you want to install files
 with a leading dot.   E.g.:
 
 \verbatim{

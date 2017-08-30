@@ -72,6 +72,55 @@ _csp_FILES := $(filter-out $(csp_TABOOFILES),$(_csp_FILES) $(csp_BUILD))
 # user specified files
 _csp_FILES := $(sort $(_csp_FILES) $(csp_EXTRAFILES))
 
+_csp_INSTALLTARGETS := $(patsubst %,%-install,$(_csp_FILES))
+
+_csp_BULKTARGETS := $(if $(_csp_FILES),$(patsubst %,%--bulk-push,$(_csp_UHOSTS_COMPUTED)))
+
+_csp_DIFFTARGETS := $(patsubst %,%-diff,$(_csp_FILES))
+
+_csp_LOADTARGETS := $(csp_LOAD)
+
+# Generate (a possibly empty) list of automatic check targets based on
+# a given set of load targets.
+#
+# Any load target that does not end in -check gets -check appended to it.
+# Any load target that does not end in -check but does end in -* (for
+# any * that does not contain dashes) gets the last part replaced by
+# -check. In other words: s/-[^-]+$/-check/.
+# Then, finally, we restrict the list thus generated to variables that
+# are actually defined by the user.
+#
+# GNU make functions have limitations that force us to take a very
+# roundabout way of doing this. For example, in patsubst and filter
+# patterns only the first % is a wildcard.
+#
+# In the implementation below, dashverb is the word following the last
+# dash in the word (for "foo-bar-load" that would be "load").
+#
+# Implementation note: uses foreach on singleton lists as a cheap way to
+# create local variables.
+
+# Usage: $(call _csp_autochecktargets,foo-load bar-load)
+_csp_autochecktargets = $(sort\
+	$(foreach target,\
+		$(patsubst %,%-check,$(filter-out %-check,$1))\
+		$(foreach dashtarget,$(filter-out %-check,$1),\
+			$(foreach dashverb,$(lastword $(subst -, ,$(dashtarget))),\
+				$(patsubst %-$(dashverb),%-check,$(filter %-$(dashverb),$(dashtarget)))\
+			)\
+		),\
+		$(if $($(target)),$(target))\
+	)\
+)
+
+# generate check targets based on csp_LOAD
+_csp_CHECKTARGETS := $(sort $(csp_CHECK) $(call _csp_autochecktargets,$(csp_LOAD)))
+
+_csp_VERIFYTARGETS := $(patsubst %,%-verify,$(_csp_FILES))
+
+_csp_DIRS := $(shell for d in *; do test -d "$$d" && echo "$$d"; done)
+_csp_DIRS := $(filter-out $(csp_TABOODIRS),$(_csp_DIRS))
+
 all:
 	$(MAKE) build
 	$(MAKE) install
@@ -83,7 +132,7 @@ $1-diff: $(foreach host,$(_csp_UHOSTS_COMPUTED),$1--$(host)--diff)
 endef
 
 define _csp_bulktargets
-$2--bulk-push: $1
+$2--bulk-push: $1 $(patsubst %,%-verify,$1)
 	$$(call csp_PUSH,$2,$$(csp_DIR),$1)
 endef
 
@@ -91,7 +140,7 @@ $(foreach host,$(_csp_UHOSTS_COMPUTED),\
 	$(eval $(call _csp_bulktargets,$(_csp_FILES),$(host))))
 
 define _csp_remotetargets
-$1--$2--push: $1
+$1--$2--push: $1 $1-verify
 	$$(call csp_PUSH,$2,$$(csp_DIR),$1)
 
 $1--$2--diff: $1
@@ -103,30 +152,33 @@ $(foreach file,$(_csp_FILES),\
 	$(foreach host,$(_csp_UHOSTS_COMPUTED),\
 		$(eval $(call _csp_remotetargets,$(file),$(host)))))
 
+define _csp_checktarget
+$1: $(patsubst %,$1--%--check,$(_csp_UHOSTS_COMPUTED))
+endef
+
+define _csp_checktargets
+$1--$2--check:
+	$$(call $1,$2)
+endef
+
+$(foreach check,$(_csp_CHECKTARGETS),\
+	$(eval $(call _csp_checktarget,$(check)))\
+	$(foreach host,$(_csp_UHOSTS_COMPUTED),\
+		$(eval $(call _csp_checktargets,$(check),$(host)))))
+
 define _csp_loadtarget
 $1: $(patsubst %,$1--%--load,$(_csp_UHOSTS_COMPUTED))
 endef
 
 define _csp_loadtargets
-$1--$2--load:
+$1--$2--load: $(sort $(csp_CHECK) $(call _csp_autochecktargets,$1))
 	$$(call $1,$2)
 endef
 
-$(foreach load,$(csp_LOAD),\
+$(foreach load,$(_csp_LOADTARGETS),\
 	$(eval $(call _csp_loadtarget,$(load)))\
 	$(foreach host,$(_csp_UHOSTS_COMPUTED),\
 		$(eval $(call _csp_loadtargets,$(load),$(host)))))
-
-_csp_TARGETS := $(patsubst %,%-install,$(_csp_FILES))
-
-_csp_BULKTARGETS := $(if $(_csp_FILES),$(patsubst %,%--bulk-push,$(_csp_UHOSTS_COMPUTED)))
-
-_csp_DIFFTARGETS := $(patsubst %,%-diff,$(_csp_FILES))
-
-_csp_LOADTARGETS := $(foreach load,$(csp_LOAD),$(load) $(patsubst %,$(load)--%--load,$(_csp_UHOSTS_COMPUTED)))
-
-_csp_DIRS := $(shell for d in *; do test -d "$$d" && echo "$$d"; done)
-_csp_DIRS := $(filter-out $(csp_TABOODIRS),$(_csp_DIRS))
 
 define _csp_do_recursive
 $1--install-recursive:
@@ -134,6 +186,9 @@ $1--install-recursive:
 endef
 
 $(foreach dir,$(_csp_DIRS),$(eval $(call _csp_do_recursive,$(dir))))
+
+# empty verify target so that we don't break on files without a check.
+%-verify:;
 
 build: $(csp_BUILD)
 
@@ -143,9 +198,22 @@ install: $(_csp_BULKTARGETS)
 
 install-recursive: install $(patsubst %,%--install-recursive,$(_csp_DIRS))
 
-load: $(csp_LOAD)
+load: $(_csp_LOADTARGETS)
+
+check: $(_csp_CHECKTARGETS)
+
+verify: $(_csp_VERIFYTARGETS)
 
 debug:
-	@echo _csp_TARGETS $(_csp_TARGETS) _csp_BULKTARGETS $(_csp_BULKTARGETS) _csp_FILES $(_csp_FILES) csp_UHOSTS $(csp_UHOSTS) _csp_UHOSTS_COMPUTED $(_csp_UHOSTS_COMPUTED) csp_PUSH $(csp_PUSH)
+	@echo csp_UHOSTS = $(csp_UHOSTS)
+	@echo csp_PUSH = $(call csp_PUSH,user@host,dir,file1 file2)
+	@echo _csp_INSTALLTARGETS = $(_csp_INSTALLTARGETS)
+	@echo _csp_BULKTARGETS = $(_csp_BULKTARGETS)
+	@echo _csp_FILES = $(_csp_FILES)
+	@echo _csp_UHOSTS_COMPUTED = $(_csp_UHOSTS_COMPUTED)
+	@echo _csp_CHECKTARGETS = $(_csp_CHECKTARGETS)
+	@echo _csp_VERIFYTARGETS = $(_csp_VERIFYTARGETS)
 
-.PHONY: $(csp_BUILD) $(_csp_TARGETS) $(_csp_BULKTARGETS) $(_csp_LOADTARGETS) $(_csp_DIFFTARGETS) build diff install install-recursive load debug
+# can't put _csp_VERIFYTARGETS in this list because that would disable
+# wildcard ("implicit") patterns
+.PHONY: $(csp_BUILD) $(_csp_INSTALLTARGETS) $(_csp_BULKTARGETS) $(_csp_CHECKTARGETS) $(_csp_LOADTARGETS) $(_csp_DIFFTARGETS) build diff verify install install-recursive load check debug
