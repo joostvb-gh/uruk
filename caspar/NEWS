@@ -1,10 +1,6 @@
 Refer to ChangeLog for detailed per-file info.
 
-caspar version 2017mmdd - The Bleukbos Release
-
-- UNRELEASED
-
-- TODO: cleanup.
+caspar version 20170830 - The Bleukbos Release
 
 - mk/pod.mk: drop ps2pdf, use pod2pdf (as shipped with e.g. Debian 8 "jessie")
   for generating PDF from POD.
@@ -26,7 +22,7 @@ caspar version 2017mmdd - The Bleukbos Release
 
   4) Officially deprecate the "for suh in $(csp_UHOSTS) ..." idiom.
 
-- Please note that if you have multiple csp_LOAD targets or multiple csp_CHECK
+  Please note that if you have multiple csp_LOAD targets or multiple csp_CHECK
   targets, these are NOT necessarily executed in the order you specify them!
 
   The documentation used to (erroneously) suggest that specifying a check
