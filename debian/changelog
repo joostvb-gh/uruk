@@ -5,6 +5,8 @@ caspar (20180315-1) unstable; urgency=low
   * debian/control: update Suggests: "please transition from jadetex to
     texlive-formats-extra". Thanks PREINING Norbert. (closes: #871753, #871746)
   * debian/{compat,control}: update from debhelper 7 to 9.
+  * debian/control: bumped Standards-Version: from 3.9.7 to 3.9.8 (no
+    changes needed).
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Thu, 15 Mar 2018 14:26:21 +0100
 
