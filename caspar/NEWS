@@ -1,5 +1,14 @@
 Refer to ChangeLog for detailed per-file info.
 
+caspar version 20180315 - The   Release
+
+- caspar/mk/caspar.mk: Patch contributed by Wessel Dankers: csp_* variables
+  are part of caspar's public interface. However, in some cases
+  (csp_scp_FUNC and friends) we overwrote those unconditionally.  This patch
+  fixes that behavior: from now on, existing values for csp_scp_FUNC are not
+  overwritten any more.
+
+
 caspar version 20170830 - The Bleukbos Release
 
 - mk/pod.mk: drop ps2pdf, use pod2pdf (as shipped with e.g. Debian 8 "jessie")
