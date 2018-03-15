@@ -33,5 +33,4 @@ test -f ChangeLog || {
 
 test -f VERSION.m4 || ./setversion
 
-AUTOMAKE=automake-1.14 ACLOCAL=aclocal-1.14 autoreconf --install --symlink
-
+AUTOMAKE=automake-1.15 ACLOCAL=aclocal-1.15 autoreconf --install --symlink

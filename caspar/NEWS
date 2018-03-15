@@ -8,6 +8,8 @@ caspar version 20180315 - The   Release
   fixes that behavior: from now on, existing values for csp_scp_FUNC are not
   overwritten any more.
 
+- bootstrap: update from automake/aclocal 1.14 to 1.15 as shipped with current
+  Debian stable.
 
 caspar version 20170830 - The Bleukbos Release
 
