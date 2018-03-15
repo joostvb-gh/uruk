@@ -1,6 +1,5 @@
 caspar (20180315-1) unstable; urgency=low
 
-  * UNRELEASED
   * New upstream release - The Romstjern Release
   * debian/control: update Suggests: "please transition from jadetex to
     texlive-formats-extra". Thanks PREINING Norbert. (closes: #871753, #871746)
