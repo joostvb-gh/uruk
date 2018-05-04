@@ -1,2 +1,3 @@
+# uscan(1)
 version=3
-http://mdcc.cx/pub/caspar/caspar-(.*)\.tar\.gz
+opts="pgpsigurlmangle=s/$/.asc/" http://mdcc.cx/pub/caspar/caspar-([\d\.]+)\.tar\.xz

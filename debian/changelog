@@ -1,3 +1,9 @@
+caspar (20180315-2) UNRELEASED; urgency=low
+
+  * debian/watch: now actually usable: no longer matches caspar-latest.tar.gz
+
+ -- Joost van Baal-Ilić <joostvb@debian.org>  Fri, 04 May 2018 21:13:12 +0200
+
 caspar (20180315-1) unstable; urgency=low
 
   * New upstream release - The Romstjern Release
