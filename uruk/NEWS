@@ -2,10 +2,15 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version
+uruk version 20180mDD - The .... Release
 
 [ changes by Casper Gielen ]
 - init/autodetect-ips ....
+
+[ changes by Joost van Baal-Ilić ]
+- init/uruk.service: Add Install section to uruk's unit configuration file for
+  systemd, in order to act sane upon "systemctl disable uruk" and "systemctl
+  enable uruk".  Thanks Wessel Dankers.
 
 
 uruk version 20160219 - The Speurgt Release

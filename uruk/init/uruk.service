@@ -1,13 +1,7 @@
 # uruk.service - uruk systemd service file
 # to be installed as /lib/systemd/system/uruk.service
 
-# see systemd.service(5)
-
-# https://wiki.debian.org/Teams/pkg-systemd/rcSMigration :
-#  _Your service is needed to configure firewalls or network interfaces_
-#  If you need to configure firewalls, network interfaces, or anything else which
-#  needs to happen before bringing up the first network interface, then you should
-#  order the service as follows (eg, if you need to run before ifupdown/networkd):
+# see systemd.service(5) and https://wiki.debian.org/Teams/pkg-systemd/rcSMigration
 
 [Unit]
 Description=Uruk firewall service
@@ -15,6 +9,10 @@ DefaultDependencies=no
 Wants=network-pre.target
 Before=network-pre.target shutdown.target
 Conflicts=shutdown.target
+
+# act sane on "systemctl disable uruk" and "systemctl enable uruk"
+[Install]
+WantedBy=multi-user.target
 
 # FIXME  how do we handle network interfaces getting assigned IPs? ifupdown?
 # shouldn't we load the block-all-traffic ruleset here?
