@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20180mDD - The Verliefd Laantje Release
+uruk version 20180528 - The Verliefd Laantje Release
 
 [ changes by Joost van Baal-Ilić ]
 - init/uruk.service: Add Install section to uruk's unit configuration file for
