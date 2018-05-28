@@ -1,3 +1,7 @@
+deal with https://bugs.debian.org/704807 "autodetect non-routable nets". see also
+uruk-pkg/autodetect-nonroutable.diff
+
+----
 
 FIXME: stop dit in documentatie:
 
@@ -45,6 +49,7 @@ services_vlan95_tcp="ssh http"
 ...
 
 
+----
 
 - init/{uruk.service,Makefile.am}: ship and install 
   /lib/systemd/system/uruk.service.  FIXME probably doesn't work!!
@@ -142,10 +147,6 @@ scripts in /etc/init.d, the reload option is optional.
 one possible solution: enforce running uruk in uruk_save-mode; no longer
 support setups having enable_uruk_save=false. reload and force-reload should
 act the same
-
------
-
-enable uruk-save by default
 
 ------
 
