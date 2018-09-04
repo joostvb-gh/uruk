@@ -1,35 +1,4 @@
-
-уто 04 14:12 < Fruit> joostvb: uruk start nu (veel) te vroeg
-уто 04 14:13 < Fruit> op een moment dat /tmp nog niet beschikbaar is en
-                      ip6table_filter.ko ook niet
-уто 04 14:14 < casper> ah
-уто 04 14:14 < casper> ik geloof dat ik daar ook tegen aan loop op omo
-уто 04 14:15 < Fruit> het is racy
-уто 04 14:15 < Fruit> racey?
-уто 04 14:15 < joostvb> omg
-уто 04 14:15 < Fruit> DefaultDependencies=no
-уто 04 14:15 < Fruit> en vervolgens 0 After= dependencies
-уто 04 14:15 < Fruit> dus uruk gaat uit de startblokken direct na pivot_root vanuit de
-                      initrd
-уто 04 14:16 < joostvb> Fruit: heb je een idee wat t _wel_ moet zijn qua
-                        DefaultDependencies en After ?
-уто 04 14:16 < Fruit> alleen snap ik niet waarom dit nu pas zichtbaar wordt
-уто 04 14:17 < Fruit> ik zou DefaultDependencies=no weglaten
 уто 04 14:17 < Fruit> en GOED TESTEN
-уто 04 14:17 < joostvb> ``debian/postinst: call "deb-systemd-helper enable uruk" if
-                        needed.''
-уто 04 14:17 < joostvb> is de enige wijziging sinds 20180528-1
-уто 04 14:18 < Fruit> in 20180528-1 was het ws. ook stuk
-уто 04 14:18 < joostvb> hm-ke
-уто 04 14:18 < Fruit> maar kwamen we er misschien mee weg omdat het init.d script er
-                      later ook nog eens overheen ging
-уто 04 14:18 < Fruit> en/of if-up.d
-
-
-уто 04 14:19 < Fruit> er zijn verschillende targets die je zou kunnen gebruiken voor
-                      een After= als je denkt DefaultDependencies=no nodig te hebben
-уто 04 14:20 < Fruit> local-fs.target bijvoorbeeld
-
 
 ----
 

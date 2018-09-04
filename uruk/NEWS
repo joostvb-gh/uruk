@@ -2,6 +2,13 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 201809DD - The FIXME Release
+
+[ changes by Joost van Baal-Ilić ]
+- init/uruk.service: FIXME
+
+
+
 uruk version 20180528 - The Verliefd Laantje Release
 
 [ changes by Joost van Baal-Ilić ]
