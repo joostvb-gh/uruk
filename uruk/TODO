@@ -25,6 +25,12 @@
                       later ook nog eens overheen ging
 уто 04 14:18 < Fruit> en/of if-up.d
 
+
+уто 04 14:19 < Fruit> er zijn verschillende targets die je zou kunnen gebruiken voor
+                      een After= als je denkt DefaultDependencies=no nodig te hebben
+уто 04 14:20 < Fruit> local-fs.target bijvoorbeeld
+
+
 ----
 
 deal with https://bugs.debian.org/704807 "autodetect non-routable nets". see also
