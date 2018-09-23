@@ -3,7 +3,7 @@ Source: caspar
 Section: devel
 Priority: optional
 Maintainer: Joost van Baal-Ilić <joostvb@debian.org>
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 10)
 Standards-Version: 3.9.8
 Homepage: http://mdcc.cx/caspar/
 Vcs-Git: http://git.mdcc.cx/caspar.git/
