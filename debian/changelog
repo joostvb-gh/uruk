@@ -1,15 +1,10 @@
 caspar (20180315-2) UNRELEASED; urgency=low
 
   * debian/watch: now actually usable: no longer matches caspar-latest.tar.gz
-
   * debian/control: caspar-doc marked "Multiarch: foreign" since it is
     Architecture: all, does not contain any maintainer scripts and does not
-    have any dependencies on architecture-dependent packages.  Thanks Multiarch hinter.
-
-https://wiki.debian.org/Multiarch/CrossDependencies
-
-https://wiki.debian.org/MultiArch/Hints#ma-foreign
-
+    have any dependencies on architecture-dependent packages.  Thanks
+    Multiarch hinter.
 
  -- Joost van Baal-Ilić <joostvb@debian.org>  Fri, 04 May 2018 21:13:12 +0200
 
