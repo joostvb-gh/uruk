@@ -1,4 +1,4 @@
-caspar (20180315-2) UNRELEASED; urgency=low
+caspar (20180315-2) unstable; urgency=medium
 
   * debian/watch: now actually usable: no longer matches caspar-latest.tar.gz
   * debian/watch: updated version from 3 to 4.
