@@ -39,6 +39,7 @@ Architecture: all
 Section: doc
 Suggests: caspar
 Depends: ${misc:Depends}
+Multi-Arch: foreign
 Description: documentation for caspar
  Caspar offers Makefile snippets for common tasks, like installing (system
  configuration) files or typesetting documentation.
