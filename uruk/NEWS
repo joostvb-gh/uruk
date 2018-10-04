@@ -5,8 +5,8 @@ Refer to ChangeLog for detailed per-file info.
 uruk version 201809DD - The FIXME Release
 
 [ changes by Joost van Baal-Ilić ]
-- init/uruk.service: FIXME
-
+- init/uruk.service: Remove "DefaultDependencies=no" from [Unit].  Thanks
+  Wessel Dankers.
 
 
 uruk version 20180528 - The Verliefd Laantje Release
