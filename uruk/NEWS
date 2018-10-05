@@ -6,7 +6,32 @@ uruk version 201809DD - The FIXME Release
 
 [ changes by Joost van Baal-Ilić ]
 - init/uruk.service: Remove "DefaultDependencies=no" from [Unit].  Thanks
-  Wessel Dankers.
+  Wessel Dankers.  This should fix uruk problems during system boot like:
+
+    urukctl[307]: Saving IPv4 uruk rules as active ruleset.
+    urukctl[307]: Loading iptables ruleset: load "active".
+    urukctl[307]: Saving IPv6 uruk rules as active rulesetcat: /tmp/tmp.LbYuEr3kNg/raw: No such file or directory
+    urukctl[307]: .
+    urukctl[307]: Loading ip6tables ruleset: load "active"ip6tables-restore: line 134 failed
+    systemd[1]: uruk.service: Main process exited, code=exited, status=1/FAILURE
+    systemd[1]: uruk.service: Unit entered failed state.
+    systemd[1]: uruk.service: Failed with result 'exit-code'.
+
+  .  These 
+
+FIXME
+
+пет 05 10:25 < Fruit> het faalt op alle systemen, maar slechts like 5% van de tijd
+пет 05 10:25 < Fruit> uruk faalt met starten
+пет 05 10:25 < Fruit> maar uh
+пет 05 10:25 < joostvb> ik wil zien wat er in de logs staat als t faalt
+пет 05 10:25 < Fruit> we hebben dit probleem al gedebugt en gefixt
+пет 05 10:25 < Fruit> waarom doen we dit opnieuw?
+пет 05 10:25 < joostvb> tis nog niet gedocumenteerd
+пет 05 10:26 < joostvb> dat wil ik nu ff doen en dan .debje shippen
+пет 05 10:26 < Fruit> fenceroy, freitag, geloof ik
+пет 05 10:26 < joostvb> tnx
+
 
 
 uruk version 20180528 - The Verliefd Laantje Release
