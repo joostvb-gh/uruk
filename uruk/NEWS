@@ -7,6 +7,11 @@ uruk version 2018MMDD - The FIXME Release
 [ changes by Joost van Baal-Ilić ]
 - bootstrap: deal with Wessel's e-mail address as with mine.
 
+FIXME TODO:
+W: uruk: zero-byte-file-in-doc-directory usr/share/doc/uruk/uruk-rc.html
+E: uruk: empty-manual-page usr/share/man/man8/uruk.8.gz
+
+
 
 uruk version 20181005 - The Dampad Release
 
