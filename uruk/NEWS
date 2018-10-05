@@ -2,18 +2,21 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 20181005 UNRELEASED - The Dampad Release
+uruk version 20181005 - The Dampad Release
 
-[ changes by Joost van Baal-Ilić ]
-- init/uruk.service: Remove "DefaultDependencies=no" from [Unit].  Thanks
-  Wessel Dankers.  This should fix uruk problems during system boot like:
+[ changes by Wessel Dankers ]
+- init/uruk.service: Remove "DefaultDependencies=no" from [Unit].  This
+  should fix uruk problems during system boot like:
 
     urukctl[307]: Saving IPv4 uruk rules as active ruleset.
     urukctl[307]: Loading iptables ruleset: load "active".
-    urukctl[307]: Saving IPv6 uruk rules as active rulesetcat: /tmp/tmp.LbYuEr3kNg/raw: No such file or directory
+    urukctl[307]: Saving IPv6 uruk rules as active
+      rulesetcat: /tmp/tmp.LbYuEr3kNg/raw: No such file or directory
     urukctl[307]: .
-    urukctl[307]: Loading ip6tables ruleset: load "active"ip6tables-restore: line 134 failed
-    systemd[1]: uruk.service: Main process exited, code=exited, status=1/FAILURE
+    urukctl[307]: Loading ip6tables ruleset: load "active"ip6tables-restore:
+      line 134 failed
+    systemd[1]: uruk.service: Main process exited, code=exited,
+      status=1/FAILURE
     systemd[1]: uruk.service: Unit entered failed state.
     systemd[1]: uruk.service: Failed with result 'exit-code'.
 
