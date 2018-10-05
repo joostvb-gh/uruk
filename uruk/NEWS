@@ -2,6 +2,12 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 2018MMDD - The FIXME Release
+
+[ changes by Joost van Baal-Ilić ]
+- bootstrap: deal with Wessel's e-mail address as with mine.
+
+
 uruk version 20181005 - The Dampad Release
 
 [ changes by Wessel Dankers ]
