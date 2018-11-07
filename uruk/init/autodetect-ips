@@ -42,6 +42,9 @@
 # This works fine with dash.  (As long as you don't have a file called
 # 'ifcfg-*'.)  Other non-strict shells (zsh, e.g.) might print an error "no
 # matches found: /etc/sysconfig/network-scripts/ifcfg-*"
+
+# this script will NOT work with ancient bash 3.2
+
 for f in /etc/sysconfig/network-scripts/ifcfg-*
 do
     test -e $f || continue
@@ -61,11 +64,7 @@ done
 # Second, Debian's init scripts
 if test -f /etc/network/interfaces
 then
-    # bash 3.2 FIXME :  change `  ` back to $(  ) (twice), and change
-    # eval ip="\"\\$ip_${iface}_default\"" back to
-    # eval ip="\"\$ip_${iface}_default\"" : we are working around a bug in
-    # bash 3.2, since june 2015.  Revert this stuff after dec 2015,
-    eval "`
+    eval "$(
         while read -r key val val1 rest
         do
             case $key in iface)
@@ -104,7 +103,7 @@ then
                 netmask=
             esac
         done </etc/network/interfaces
-    `"
+    )"
 fi
 
 # now, parse output from ip(8).  We might find more interfaces and more IPs.
@@ -120,8 +119,7 @@ fi
 
 if command -v ip >/dev/null 2>&1
 then
-    # bash 3.2 FIXME
-    eval "`
+    eval "$(
 iface=
 # jeden dva tri četiri pet ostalo
 ip a | \
@@ -135,7 +133,7 @@ ip a | \
         # if ip_${iface}_default unset, assign to it
         # nested eval.  would that work?
         # bash 3.2 FIXME
-        eval ip="\"\\$ip_${iface}_default\""
+        eval ip="\"\$ip_${iface}_default\""
         if test -z "$ip"
         then
           address=${dva%/*}
@@ -146,7 +144,7 @@ ip a | \
       ;;
       inet6)
         # bash 3.2 FIXME
-        eval ip6="\"\\$ip6_${iface}_default\""
+        eval ip6="\"\$ip6_${iface}_default\""
         if test -z "$ip6" -a global = $cetiri
         then
           # test scope?
@@ -160,7 +158,7 @@ ip a | \
       ;; 
     esac
   done 
-  `"
+  )"
 else
   cat <<EOT >&2
 autodetecs-ips: command 'ip' not found.  might have missed to autodetect some
