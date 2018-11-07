@@ -2,15 +2,16 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201811DD - The Daničareva Release
+uruk version 20181107 - The Daničareva Release
 
 [ changes by Joost van Baal-Ilić ]
-- init/autodetect-ips: drop support for ancient bash 3.2.  (Red Hat EL 6.10
-  ships bash 4.1.  Debian jessie ships bash 4.3.)  Fix bug: when some needed IPs
-  are not defined in /etc/sysconfig/network-scripts/ifcfg-* (Red Hat) or
-  /etc/network/interfaces (Debian), and autodetect-ips needs to parse output
-  from ip(8), it is reported to use scope link IPv6 adresses where it should
-  have used scope global IPv6 addresses.
+- init/autodetect-ips: drop support for ancient bash 3.2.  (So we drop support
+  for Red Hat EL 5 and older.  Red Hat EL 6.10 ships bash 4.1.  Debian "jessie"
+  ships bash 4.3.)  Fix bug: when some needed IPs are not defined in
+  /etc/sysconfig/network-scripts/ifcfg-* (Red Hat) or /etc/network/interfaces
+  (Debian), and autodetect-ips needs to parse output from ip(8), it is reported
+  to use scope link IPv6 adresses where it should have used scope global IPv6
+  addresses.
 
 
 uruk version 20181006 - The Tidal Basin, Washington, D.C. Release
