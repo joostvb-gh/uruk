@@ -27,6 +27,11 @@
 #
 #  sed -i '1i. /lib/uruk/init/autodetect-ips' /etc/uruk/rc
 #
+# Debugging:
+# ~$ sh
+# ~$ . /lib/uruk/init/autodetect-ips
+# ~$ set | egrep ip6\|ip_
+#
 
 ###############################################
 # assign IPs and networks to network interfaces
@@ -132,7 +137,6 @@ ip a | \
       inet)
         # if ip_${iface}_default unset, assign to it
         # nested eval.  would that work?
-        # bash 3.2 FIXME
         eval ip="\"\$ip_${iface}_default\""
         if test -z "$ip"
         then
@@ -143,7 +147,6 @@ ip a | \
         fi
       ;;
       inet6)
-        # bash 3.2 FIXME
         eval ip6="\"\$ip6_${iface}_default\""
         if test -z "$ip6" -a global = $cetiri
         then
@@ -155,9 +158,9 @@ ip a | \
           echo ip6_${iface}_default=$address
           echo net6_${iface}_default=$address/$netmask
         fi
-      ;; 
+      ;;
     esac
-  done 
+  done
   )"
 else
   cat <<EOT >&2
