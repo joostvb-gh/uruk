@@ -144,7 +144,7 @@ ip a | \
       ;;
       inet6)
         # test scope
-        if global = $cetiri
+        if test global = $cetiri
         then
           address=${dva%/*}
           netmask=${dva#*/}
