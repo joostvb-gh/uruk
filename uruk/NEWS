@@ -2,10 +2,10 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 2018MMDD - The Catharijnepoort Release
+uruk version 20181109 - The Catharijnepoort Release
 
 [ changes by Joost van Baal-Ilić ]
-- init/autodetect-ips: In case run time configuration of IPs to network
+- init/autodetect-ips: In case runtime configuration of IPs to network
   interfaces is available and differs from what's specified in
   /etc/network/interfaces or /etc/sysconfig/network-scripts/ifcfg-*, use the
   runtime information.  Therefore, you might now observe different uruk
