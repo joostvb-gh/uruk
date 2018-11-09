@@ -112,7 +112,9 @@ then
 fi
 
 # now, parse output from ip(8).  We might find more interfaces and more IPs.
-# E.g. IPs assigned not using interfaces or cfg
+# E.g. IPs assigned not using interfaces or ifcfg-*, but instead assigned via
+# udev.  We might also find runtime configuration which differs from what
+# we've found in /etc/ : we go with runtime in such a case.
 
 # if we haven't set any variables, try something like this dynamic trick:
 # (beware, untested code)
@@ -135,29 +137,19 @@ ip a | \
         iface=${dva%:}
       ;;
       inet)
-        # if ip_${iface}_default unset, assign to it
-        # nested eval.  would that work?
-        eval ip="\"\$ip_${iface}_default\""
-        if test -z "$ip"
-        then
-          address=${dva%/*}
-          netmask=${dva#*/}
-          echo ip_${iface}_default=$address
-          echo net_${iface}_default=$address/$netmask
-        fi
+        address=${dva%/*}
+        netmask=${dva#*/}
+        echo ip_${iface}_default=$address
+        echo net_${iface}_default=$address/$netmask
       ;;
       inet6)
-        eval ip6="\"\$ip6_${iface}_default\""
-        if test -z "$ip6" -a global = $cetiri
-        then
-          # test scope?
-          # inet6 fe80::250:56ff:fe31:3831/64 scope link
-          # inet 192.168.1.3/24 brd 192.168.1.255 scope global wlan0
-          address=${dva%/*}
-          netmask=${dva#*/}
-          echo ip6_${iface}_default=$address
-          echo net6_${iface}_default=$address/$netmask
-        fi
+        # test scope?
+        # inet6 fe80::250:56ff:fe31:3831/64 scope link
+        # inet 192.168.1.3/24 brd 192.168.1.255 scope global wlan0
+        address=${dva%/*}
+        netmask=${dva#*/}
+        echo ip6_${iface}_default=$address
+        echo net6_${iface}_default=$address/$netmask
       ;;
     esac
   done
