@@ -8,7 +8,7 @@
 
 # Copyright © 2012 Wessel Dankers
 # Copyright © 2013 Casper Gielen
-# Copyright © 2013 Joost van Baal-Ilić
+# Copyright © 2013, 2018 Joost van Baal-Ilić
 
 # This file is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
@@ -137,10 +137,17 @@ ip a | \
         iface=${dva%:}
       ;;
       inet)
-        address=${dva%/*}
-        netmask=${dva#*/}
-        echo ip_${iface}_default=$address
-        echo net_${iface}_default=$address/$netmask
+        # deal with
+        #  inet 137.56.246.197/24 brd 137.56.246.255 scope global eth0
+        #  inet 137.56.246.200/24 brd 137.56.246.255 scope global secondary eth0:1
+        # and
+        #  inet 169.254.102.80/16 brd 169.254.255.255 scope global eth1:1
+        case $ostalo in "*$iface")
+          address=${dva%/*}
+          netmask=${dva#*/}
+          echo ip_${iface}_default=$address
+          echo net_${iface}_default=$address/$netmask
+        esac
       ;;
       inet6)
         # test scope

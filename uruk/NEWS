@@ -2,6 +2,13 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 20181112 - The
+
+[ changes by Joost van Baal-Ilić ]
+- init/autodetect-ips: properly deal with IPs assigned to virtual interfaces
+  like eth0:1.
+
+
 uruk version 20181109 - The Catharijnepoort Release
 
 [ changes by Joost van Baal-Ilić ]
