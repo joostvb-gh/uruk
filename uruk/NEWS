@@ -2,7 +2,7 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201811dd - The Alfama Release
+uruk version 20181113 - The Alfama Release
 
 [ changes by Joost van Baal-Ilić ]
 - init/autodetect-ips: deal even more properly with IPv4 addresses: previous
