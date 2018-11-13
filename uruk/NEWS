@@ -2,6 +2,13 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
+uruk version 201811DD - The
+
+[ changes by Joost van Baal-Ilić ]
+- init/autodetect-ips: deal yet even more properly with IPv4 addresses: previous
+  version 20181112 failed on some other RHEL 6.10 systems with bash 4.1.2.
+
+
 uruk version 20181113 - The Alfama Release
 
 [ changes by Joost van Baal-Ilić ]

@@ -144,7 +144,7 @@ ip a | \
         # and
         #  inet 169.254.102.80/16 brd 169.254.255.255 scope global eth1:1
         case $ostalo in
-          "*:*")
+          *:*)
             :
           ;;
           *)
