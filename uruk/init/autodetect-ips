@@ -143,11 +143,15 @@ ip a | \
         #  inet 137.56.246.200/24 brd 137.56.246.255 scope global secondary eth0:1
         # and
         #  inet 169.254.102.80/16 brd 169.254.255.255 scope global eth1:1
-        case $ostalo in "*$iface")
-          address=${dva%/*}
-          netmask=${dva#*/}
-          echo ip_${iface}_default=$address
-          echo net_${iface}_default=$address/$netmask
+        case $ostalo in
+          "*:*")
+            :
+          ;;
+          *)
+            address=${dva%/*}
+            netmask=${dva#*/}
+            echo ip_${iface}_default=$address
+            echo net_${iface}_default=$address/$netmask
         esac
       ;;
       inet6)
