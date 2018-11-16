@@ -2,7 +2,9 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201811DD - The
+uruk version 20181114 - The Lombardijen Release
+
+- Unreleased.
 
 [ changes by Joost van Baal-Ilić ]
 - init/autodetect-ips: deal yet even more properly with IPv4 addresses: previous
