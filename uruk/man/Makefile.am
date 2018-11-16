@@ -38,7 +38,6 @@ doc_DATA = $(typetargets) $(azms)
 man_MANS = uruk.8 uruk-rc.5 uruk-save.8 urukctl.8
 
 EXTRA_DIST = $(doc_DATA) $(man_MANS)
-## DISTCLEANFILES = $(man_MANS) $(typetargets) $(tmpfiles)
 
 VERSION = @PACKAGE_VERSION@
 PACKAGE = @PACKAGE_TARNAME@
@@ -77,6 +76,5 @@ SUFFIXES = .5 .8 .html .azm .ps .txt
 .8.txt:
 	$(TROFF) -t -e -mandoc -Tascii $< | $(COL) -bxp > $@
 
-MAINTAINERCLEANFILES = $(manazms) $(typetargets) $(tmpfiles)
+MAINTAINERCLEANFILES = $(typetargets) $(tmpfiles) $(man_MANS)
 DISTCLEANFILES = $(typetargets)
-
