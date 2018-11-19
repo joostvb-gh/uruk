@@ -2,10 +2,11 @@ Uruk NEWS - user visible changes (and some other changes also.)
 
 Refer to ChangeLog for detailed per-file info.
 
-uruk version 201YMMDD - The van Keistoep naar Heisteeg Release
+uruk version 20181119 - The van Keistoep naar Heisteeg Release
 
 UNRELEASED
 
+- init/autodetect-ips: ignore IPs which have "deprecated nodad".
 
 
 uruk version 20181116 - The Lombardijen Release
