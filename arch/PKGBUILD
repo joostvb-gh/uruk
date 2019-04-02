@@ -1,0 +1,30 @@
+# to be processed by makepkg to generated a pacman package for arch linux and
+# derivatives like antergos
+
+# Maintainer: Joost van Baal-Ilić <joostvb@debian.org>
+
+pkgname=caspar
+pkgver=20180315
+pkgrel=1
+pkgdesc="Makefile snippets for centralized configuration management and typesetting"
+arch=('i686' 'x86_64')
+url="http://mdcc.cx/caspar/"
+license=('GPL')
+groups=('base-devel')
+depends=('glibc')
+makedepends=('ed')
+optdepends=('ed: for "patch -e" functionality')
+source=("ftp://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
+md5sums=('e9ae5393426d3ad783a300a338c09b72'
+         'SKIP')
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+        ./configure --prefix=/usr
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        make DESTDIR="$pkgdir/" install
+}
