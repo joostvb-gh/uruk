@@ -18,7 +18,7 @@ uruk version 20181116 - The Lombardijen Release
   $(manazms).
 
 
-uruk version 20181113 - The Alfama Release
+uruk version 20181113 - The Alfama again Release
 
 [ changes by Joost van Baal-Ilić ]
 - init/autodetect-ips: deal even more properly with IPv4 addresses: previous
