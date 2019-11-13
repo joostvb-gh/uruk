@@ -5,7 +5,8 @@ Refer to ChangeLog for detailed per-file info.
 
 UNRELEASED The Barlaque Release
 
--
+[ changes by Joost van Baal-Ilić ]
+- FIXME: uruk-save should save _all_ chains, in order to cooperate with user defined chains like e.g. DOCKER-INGRESS and DOCKER-USER. Thanks Lars Biemans for reporting this issue
 
 
 uruk version 20190121 - The van Keistoep naar Heisteeg Release
