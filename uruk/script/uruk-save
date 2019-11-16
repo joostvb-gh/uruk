@@ -53,6 +53,7 @@ echo "*mangle
 :POSTROUTING ACCEPT [0:0]" >$uruk_save_dir/mangle
 
 case $1 in -6)
+    # invoke the uruk_save shell function, defined in the uruk script
     URUK_IPTABLES=: URUK_IP6TABLES=uruk_save uruk
 ;; *)
     echo "*nat
