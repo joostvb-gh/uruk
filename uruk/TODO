@@ -1,3 +1,12 @@
+
+2020-07
+add PDX-License-Identifier to sources
+нед 12 09:14 < joostvb> # SPDX-License-Identifier: GPL-2.0-or-later
+нед 12 09:14 < joostvb> zo werkt t dus
+https://spdx.dev/ids/
+
+
+
 jessie heeft init.d networking
 stretch heeft networking.service
 
